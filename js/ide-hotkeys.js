@@ -1,6 +1,6 @@
 import { escapeHtml, debounce } from './utils.js';
 
-const DATA_URL = '../../../data/ide-hotkeys.json';
+const DATA_URL = '../../data/ide-hotkeys.json';
 const HISTORY_KEY = 'cr_hotkeys_history';
 const ERRORS_KEY = 'cr_hotkeys_errors';
 const HISTORY_MAX = 8;

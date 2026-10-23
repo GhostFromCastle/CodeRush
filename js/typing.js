@@ -1,4 +1,4 @@
-const WORDS_URL = '../../../data/typing.json';
+const WORDS_URL = '../../data/typing.json';
 const HISTORY_KEY = 'cr_typing_history';
 const ERRORS_KEY = 'cr_typing_errors';
 const HISTORY_MAX = 5;

@@ -1,6 +1,6 @@
 import { escapeHtml } from './utils.js';
 
-const DICT_URL = '../../../data/dictionary.json';
+const DICT_URL = '../../data/dictionary.json';
 
 const state = {
     terms: [],
