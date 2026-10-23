@@ -1,0 +1,733 @@
+.typing-section {
+    padding: 40px 0 80px;
+}
+
+.typing-mobile-warning {
+    max-width: 640px;
+    margin: 0 auto 32px;
+    padding: 16px 22px;
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: var(--radius-md);
+    color: #f59e0b;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.typing-mobile-warning i {
+    margin-right: 6px;
+}
+
+.typing-config {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 20px 32px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-light);
+    border-radius: 50px;
+    margin: 0 auto 40px;
+    max-width: fit-content;
+    transition: opacity 0.3s ease;
+}
+
+.typing-section.done .typing-config {
+    opacity: 0.6;
+}
+
+.typing-config-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: configFadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+@keyframes configFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.typing-config-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.typing-config-label i {
+    color: var(--accent-orange);
+    font-size: 0.95rem;
+}
+
+.typing-config-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border-light);
+}
+
+.typing-chip {
+    padding: 6px 14px;
+    background: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.typing-chip:hover:not(:disabled) {
+    border-color: var(--accent-orange);
+    color: var(--accent-orange);
+    transform: translateY(-1px);
+}
+
+.typing-chip.active {
+    background: var(--accent-orange);
+    border-color: var(--accent-orange);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(255, 90, 0, 0.3);
+}
+
+.typing-chip.locked,
+.typing-chip:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.typing-chip.strict-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.typing-chip.strict-chip.active {
+    background: var(--accent-orange);
+    border-color: var(--accent-orange);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(255, 90, 0, 0.3);
+    outline: 1px dashed rgba(255, 255, 255, 0.5);
+    outline-offset: 3px;
+}
+
+.typing-strict-hint {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 720px;
+    margin: -20px auto 0;
+    max-height: 0;
+    padding: 0 20px;
+    opacity: 0;
+    overflow: hidden;
+    background: rgba(255, 90, 0, 0.08);
+    border-left: 3px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    color: #dcdcdc;
+    line-height: 1.55;
+    transition:
+        max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s ease,
+        padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        margin 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.4s ease;
+}
+
+.typing-section:has(#strictToggle.active) .typing-strict-hint {
+    max-height: 300px;
+    opacity: 1;
+    padding: 14px 20px;
+    margin-bottom: 32px;
+    border-left-color: var(--accent-orange);
+}
+
+.typing-strict-hint i {
+    color: var(--accent-orange);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.typing-strict-hint strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.typing-stats {
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    margin-bottom: 40px;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.typing-section.done .typing-stats {
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0;
+    pointer-events: none;
+}
+
+.typing-stat {
+    text-align: center;
+    min-width: 80px;
+}
+
+.typing-stat-value {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--accent-orange);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -1px;
+    transition: color 0.3s ease;
+}
+
+.typing-stat-value.dim {
+    color: var(--text-dim);
+}
+
+.typing-stat-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.typing-progress-bar {
+    width: 100%;
+    max-width: 720px;
+    height: 2px;
+    background: var(--border-light);
+    border-radius: 50px;
+    margin: 0 auto 40px;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
+    max-height: 10px;
+}
+
+.typing-section.done .typing-progress-bar {
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0;
+}
+
+.typing-progress-fill {
+    height: 100%;
+    background: var(--accent-orange);
+    width: 0%;
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50px;
+    box-shadow: 0 0 12px rgba(255, 90, 0, 0.6);
+}
+
+.typing-words-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto 32px;
+}
+
+.typing-words {
+    font-family: var(--font-mono);
+    font-size: 1.55rem;
+    line-height: 1.9;
+    color: var(--text-dim);
+    padding: 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    letter-spacing: 0.5px;
+    word-spacing: 0.3em;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    cursor: text;
+}
+
+.typing-words::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px transparent;
+    transition: box-shadow var(--transition);
+}
+
+.typing-words.focused::after {
+    box-shadow: inset 0 0 0 1px rgba(255, 90, 0, 0.3);
+}
+
+.typing-words-inner {
+    padding: 40px 40px 0;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    animation: wordsEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes wordsEnter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.typing-words .word {
+    display: inline-block;
+}
+
+.typing-words .char {
+    transition: color 0.08s ease;
+    position: relative;
+}
+
+.typing-words .char.correct {
+    color: #dcdcdc;
+}
+
+.typing-words .char.incorrect {
+    color: #ef4444;
+}
+
+.typing-words .char.incorrect.space {
+    background: rgba(239, 68, 68, 0.25);
+    border-radius: 4px;
+}
+
+.typing-words .char.current {
+    color: #fff;
+}
+
+.typing-words .char.current::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 8%;
+    height: 84%;
+    width: 2px;
+    background: var(--accent-orange);
+    border-radius: 2px;
+    animation: caretBlink 1s step-end infinite;
+}
+
+.typing-words .char.current.shift-needed::after {
+    content: '⇧';
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--accent-orange);
+    background: rgba(255, 90, 0, 0.12);
+    border: 1px solid rgba(255, 90, 0, 0.35);
+    border-radius: 4px;
+    padding: 1px 6px;
+    line-height: 1.2;
+    pointer-events: none;
+    animation: shiftPulse 1.6s ease-in-out infinite;
+    z-index: 3;
+}
+
+@keyframes shiftPulse {
+
+    0%,
+    100% {
+        opacity: 0.85;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes caretBlink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.typing-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.typing-section.done .typing-actions {
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0;
+    pointer-events: none;
+}
+
+.typing-hint {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    line-height: 1.8;
+}
+
+.typing-hint kbd {
+    display: inline-block;
+    padding: 3px 9px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-light);
+    border-radius: 5px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent-orange);
+    font-weight: 600;
+    margin: 0 2px;
+}
+
+.typing-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+    padding: 20px;
+}
+
+.typing-overlay.visible {
+    display: flex;
+    animation: cardEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.typing-overlay-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.typing-overlay-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.typing-overlay .typing-stat-value {
+    font-size: 2.6rem;
+    color: var(--accent-green);
+}
+
+.typing-overlay .typing-stat.clean .typing-stat-value {
+    color: var(--accent-blue);
+}
+
+.typing-focus-prompt {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: rgba(10, 10, 10, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    z-index: 5;
+    transition: background var(--transition), color var(--transition);
+}
+
+.typing-focus-prompt:hover {
+    background: rgba(10, 10, 10, 0.75);
+    color: var(--accent-orange);
+}
+
+.typing-focus-prompt i {
+    color: var(--accent-orange);
+    font-size: 1.3rem;
+}
+
+.typing-focus-prompt.hidden {
+    display: none;
+}
+
+.typing-extra {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto 0;
+}
+
+.typing-extra-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 22px 24px;
+}
+
+.typing-extra-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.typing-extra-title i {
+    color: var(--accent-orange);
+    font-size: 0.95rem;
+}
+
+.typing-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.typing-history-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    animation: historyEnter 0.35s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+@keyframes historyEnter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.typing-history-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-orange);
+    letter-spacing: -0.5px;
+    min-width: 48px;
+    font-variant-numeric: tabular-nums;
+}
+
+.typing-history-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.typing-history-tags {
+    display: flex;
+    gap: 6px;
+}
+
+.typing-history-tag {
+    padding: 2px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+}
+
+.typing-history-empty,
+.typing-error-empty {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+}
+
+.typing-error-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.typing-error-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: var(--radius-sm);
+    animation: errorEnter 0.35s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+@keyframes errorEnter {
+    from {
+        opacity: 0;
+        transform: translateX(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.typing-error-char {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ef4444;
+}
+
+.typing-error-count {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.typing-keyboard-wrap {
+    max-width: 900px;
+    margin: 0 auto 32px;
+}
+
+.typing-keyboard-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+.typing-keyboard-hint i {
+    color: var(--accent-orange);
+    font-size: 1rem;
+}
+
+.typing-section .vkeyboard {
+    transition: opacity 0.3s ease;
+}
+
+.typing-section.done .vkeyboard {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.typing-section .vkey.target {
+    background: linear-gradient(180deg, rgba(255, 90, 0, 0.4) 0%, rgba(255, 90, 0, 0.15) 100%);
+    border-color: var(--accent-orange);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 90, 0, 0.5);
+    animation: typingKeyPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes typingKeyPulse {
+    0%,
+    100% {
+        box-shadow: 0 0 16px rgba(255, 90, 0, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 28px rgba(255, 90, 0, 0.7);
+    }
+}
+
+.typing-section .vkey.target::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border: 1px dashed rgba(255, 90, 0, 0.6);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.typing-section .vkey.correct-flash {
+    animation: typingKeyCorrect 0.4s ease;
+}
+
+@keyframes typingKeyCorrect {
+    0% {
+        background: rgba(16, 185, 129, 0.6);
+        border-color: var(--accent-green);
+    }
+
+    100% {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    }
+}
+
+.typing-section .vkey.wrong-flash {
+    animation: typingKeyWrong 0.4s ease;
+}
+
+@keyframes typingKeyWrong {
+    0% {
+        background: rgba(239, 68, 68, 0.6);
+        border-color: #ef4444;
+    }
+
+    100% {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    }
+}

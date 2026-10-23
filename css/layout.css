@@ -1,0 +1,226 @@
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 20px 0;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+}
+
+.logo i {
+    color: var(--accent-orange);
+    font-size: 1.5rem;
+}
+
+.logo .logo-accent {
+    color: var(--accent-orange);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color var(--transition);
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.burger-menu {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.3rem;
+    transition: all var(--transition);
+}
+
+.burger-menu:hover {
+    background: var(--accent-orange);
+    border-color: var(--accent-orange);
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.breadcrumbs a {
+    color: var(--text-muted);
+    transition: color var(--transition);
+}
+
+.breadcrumbs a:hover {
+    color: var(--accent-orange);
+}
+
+.breadcrumbs i {
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+.site-footer {
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border-light);
+    padding: 72px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 90, 0, 0.4), transparent);
+    pointer-events: none;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-brand p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+.footer-col h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-col a {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color var(--transition), padding-left var(--transition);
+    display: inline-block;
+}
+
+.footer-col a:hover {
+    color: var(--accent-orange);
+    padding-left: 4px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0 30px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: var(--text-dim);
+    transition: color var(--transition);
+}
+
+.footer-bottom-links a:hover {
+    color: var(--accent-orange);
+}
+
+.footer-telegram {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: rgba(41, 182, 246, 0.08);
+    border: 1px solid rgba(41, 182, 246, 0.25);
+    border-radius: 50px;
+    color: #29b6f6;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all var(--transition);
+    width: fit-content;
+}
+
+.footer-telegram i {
+    font-size: 1.2rem;
+}
+
+.footer-telegram:hover {
+    background: #29b6f6;
+    border-color: #29b6f6;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(41, 182, 246, 0.35);
+}
+
+@keyframes menuSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
