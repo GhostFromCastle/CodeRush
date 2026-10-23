@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ввод данных и диалог с пользователем - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="beginner" data-lesson-id="lesson-03">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 03</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson active" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Ввод данных и диалог с пользователем</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>До этого момента все наши программы были односторонними: они что-то говорили, но никого не
+                    слушали. Всё, что происходило в программе, было жёстко прописано в коде. Но настоящие программы
+                    умеют <strong>получать данные от пользователя</strong> - спрашивать имя, возраст, любимое число
+                    и на основе этого что-то делать.</p>
+
+                <p>Сегодня мы научимся вести диалог. Пока без сложной логики - просто спросить и ответить. В следующем
+                    уроке вы узнаете, как заставить программу принимать решения на основе ответов.</p>
+
+                <h2>Проблема односторонней программы</h2>
+
+                <p>Смотрите, что мы умеем сейчас:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.WriteLine("Привет!");</span><span class="code-row">Console.WriteLine("Как дела?");</span></code></pre>
+
+                <p>Программа поздоровается и спросит - но тут же сама себе ответит, что «дела хорошо». Она никого не
+                    слышит. А хочется, чтобы она дождалась ответа пользователя и ответила что-то в зависимости от
+                    того, что он напишет. Для этого есть специальный инструмент.</p>
+
+                <h2>Console.ReadLine - «прочитай строку»</h2>
+
+                <p>Команда <code>Console.ReadLine()</code> делает две вещи:</p>
+
+                <ul>
+                    <li><strong>Останавливает программу</strong> и ждёт, пока пользователь что-то напишет.</li>
+                    <li><strong>Возвращает нам то, что он написал</strong> - как текст.</li>
+                </ul>
+
+                <p>Возвращает - значит «отдаёт нам в руки». Мы можем сразу положить ответ в переменную. Вот пример
+                    простейшего диалога:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.Write("Как тебя зовут? ");</span><span class="code-row">string name = Console.ReadLine();</span><span class="code-row">Console.WriteLine("Привет, " + name + "!");</span></code></pre>
+
+                <p>Давайте разберём построчно.</p>
+
+                <h3>Строка 1: <code>Console.Write("Как тебя зовут? ");</code></h3>
+                <p>Мы задаём вопрос. Обратите внимание: здесь <code>Write</code>, а не <code>WriteLine</code>.
+                    Разница в том, что <code>WriteLine</code> переносит курсор на новую строку, а <code>Write</code>
+                    - нет. Нам нужно, чтобы пользователь отвечал прямо после вопроса, на той же строке.</p>
+
+                <h3>Строка 2: <code>string name = Console.ReadLine();</code></h3>
+                <p>Программа останавливается. Пользователь вводит что-то и нажимает Enter. То, что он ввёл, попадает
+                    в переменную <code>name</code> типа <code>string</code> - то есть как текст.</p>
+
+                <h3>Строка 3: <code>Console.WriteLine("Привет, " + name + "!");</code></h3>
+                <p>Привычным уже способом склеиваем текст и переменную. Если пользователь ввёл «Алексей», программа
+                    скажет «Привет, Алексей!».</p>
+
+                <p>Запустите программу и убедитесь: она остановится, дождётся вашего ввода, и только потом покажет
+                    приветствие. Это первый по-настоящему интерактивный код в курсе.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Как это выглядит на экране
+                    </div>
+                    <p>Пользователь увидит примерно так:</p>
+                    <pre><code>Как тебя зовут? Алексей
+Привет, Алексей!</code></pre>
+                    <p>То, что вводит пользователь (в примере - «Алексей»), появляется на экране сразу после вопроса,
+                        потому что мы использовали <code>Write</code> без переноса.</p>
+                </div>
+
+                <h2>Что если нужно число?</h2>
+
+                <p>Вот тут начинается интересное. <code>Console.ReadLine()</code> <strong>всегда возвращает
+                        строку</strong>, то есть текст. Даже если пользователь введёт «25», мы получим не число 25, а
+                    текст «25». С точки зрения компьютера это разные вещи.</p>
+
+                <p>Попробуйте сложить текст с числом - ничего хорошего не выйдет. Поэтому, если пользователь вводит
+                    число, нам нужно его <strong>преобразовать</strong>. Для этого есть команда
+                    <code>Convert.ToInt32</code>.
+                    Название читается «конверт ту инт три-два».
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.Write("Сколько тебе лет? ");</span><span class="code-row">string ageText = Console.ReadLine();</span><span class="code-row">int age = Convert.ToInt32(ageText);</span><span class="code-row">Console.WriteLine("Тебе " + age + " лет.");</span></code></pre>
+
+                <p>Что произошло:</p>
+                <ul>
+                    <li>Строка 2 - пользователь ввёл что-то, мы сохранили это как текст в <code>ageText</code>.</li>
+                    <li>Строка 3 - команда <code>Convert.ToInt32</code> превратила текст «25» в число 25 и положила
+                        результат в переменную <code>age</code> типа <code>int</code>.</li>
+                </ul>
+
+                <p>После этого с <code>age</code> можно работать как с обычным числом - складывать, вычитать, умножать.
+                    Если бы мы этого не сделали, программа считала бы, что у нас на руках текст, и не смогла бы
+                    сложить его с чем-то числовым.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Для дробных чисел
+                    </div>
+                    <p>Если нужно получить число с дробной частью, используйте <code>Convert.ToDouble(...)</code> -
+                        по аналогии. Например: <code>double weight = Convert.ToDouble(Console.ReadLine());</code>.
+                        Важно: пользователь должен вводить дробную часть через точку, а не запятую.</p>
+                </div>
+
+                <p>Можно записать то же самое в одну строку - тогда не понадобится промежуточная переменная
+                    <code>ageText</code>:
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.Write("Сколько тебе лет? ");</span><span class="code-row">int age = Convert.ToInt32(Console.ReadLine());</span><span class="code-row">Console.WriteLine("Тебе " + age + " лет.");</span></code></pre>
+
+                <p>Здесь <code>Console.ReadLine()</code> сначала получает текст, а <code>Convert.ToInt32</code>
+                    тут же его преобразует. Оба варианта правильные, используйте тот, что удобнее читать.</p>
+
+                <h2>Альтернатива: int.Parse</h2>
+
+                <p>Есть ещё один способ сделать то же самое - команда <code>int.Parse</code>. Читается «инт парс»,
+                    где <em>parse</em> переводится как «разобрать». Смысл тот же: взять текст и превратить его
+                    в число. Вот как это выглядит:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.Write("Сколько тебе лет? ");</span><span class="code-row">int age = int.Parse(Console.ReadLine());</span><span class="code-row">Console.WriteLine("Тебе " + age + " лет.");</span></code></pre>
+
+                <p>Результат абсолютно тот же, что и с <code>Convert.ToInt32</code>. Обе команды делают одно и то
+                    же - превращают текст в число.</p>
+
+                <h3>Какую использовать?</h3>
+
+                <p><strong>Разницы для вас практически нет.</strong> Оба варианта работают, оба выдают ошибку, если
+                    ввести что-то нечисловое. Просто в C# есть две разные «двери» в одну и ту же комнату.</p>
+
+                <ul>
+                    <li><code>int.Parse(...)</code> - короче, пишется быстрее, часто встречается в чужом коде.</li>
+                    <li><code>Convert.ToInt32(...)</code> - чуть более «вежливый»: если ему передать <code>null</code>
+                        (пустое значение), он вернёт 0 вместо ошибки. Но это уже тонкости, которые вам пока не нужны.
+                    </li>
+                </ul>
+
+                <p>Для нашего курса мы будем использовать <code>int.Parse</code> - она короче и её чаще можно
+                    встретить в реальных проектах. Но если где-то увидите <code>Convert.ToInt32</code> - не
+                    удивляйтесь, это тоже правильно.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Шпаргалка
+                    </div>
+                    <p>Целые числа: <code>int.Parse(...)</code> или <code>Convert.ToInt32(...)</code>.<br>
+                        Дробные числа: <code>double.Parse(...)</code> или <code>Convert.ToDouble(...)</code>.<br>
+                        Логические значения: <code>bool.Parse(...)</code> - используется редко.</p>
+                </div>
+
+                <h2>Полный диалог</h2>
+
+                <p>Соберём всё вместе и напишем программу, которая спрашивает имя, город и возраст, а потом
+                    здоровается по-настоящему персонализированно:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.Write("Как тебя зовут? ");</span><span class="code-row">string name = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">Console.Write("Из какого ты города? ");</span><span class="code-row">string city = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">Console.Write("Сколько тебе лет? ");</span><span class="code-row">int age = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Привет, {name} из города {city}! Тебе {age} лет.");</span></code></pre>
+
+                <p>Вот это уже настоящая программа: она вступает в диалог с пользователем, запоминает его ответы и
+                    использует их в персонализированном сообщении. Именно так работают все анкеты, формы
+                    регистрации и интерактивные консольные программы.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Осторожно с числами
+                    </div>
+                    <p>Если в задаче про возраст пользователь введёт «двадцать пять» вместо «25», программа сломается
+                        и покажет ошибку. Мы пока не умеем такое обрабатывать - этому посвящён следующий уровень курса.
+                        Пока просто договариваемся: пользователь вводит числа цифрами.</p>
+                </div>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Ввод данных - тема, где ошибки чаще всего связаны с тем, что именно ввёл пользователь.
+                    Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>«Input string was not in a correct format».</strong> Так C# сообщает, что
+                        <code>int.Parse</code> или <code>Convert.ToInt32</code> получили не число. Скорее всего,
+                        пользователь ввёл текст, пустую строку или число с лишними символами. Пока мы не умеем такое
+                        обрабатывать - это тема среднего уровня. Для тестов всегда вводите корректные числа.
+                    </li>
+                    <li><strong>Программа отвечает сразу, не дожидаясь ввода.</strong> Скорее всего,
+                        <code>Console.ReadLine()</code> вызывается не там, где нужно, или случайно пропущен.
+                        Проверьте, что между вопросом <code>Console.Write</code> и следующим
+                        <code>Console.WriteLine</code> стоит именно чтение.
+                    </li>
+                    <li><strong>Пользователь вводит число с запятой, и всё ломается.</strong> Для
+                        <code>double.Parse</code> и <code>Convert.ToDouble</code> дробная часть отделяется
+                        <strong>точкой</strong>. Если пользователь вводит запятую - программа выдаст ошибку.
+                        В следующем уровне мы научимся это обходить.
+                    </li>
+                    <li><strong>Вопрос и ответ оказываются на разных строках.</strong> Скорее всего, вы использовали
+                        <code>Console.WriteLine</code> вместо <code>Console.Write</code> для вопроса. Разница именно
+                        в переносе строки: <code>WriteLine</code> переносит курсор, <code>Write</code> - нет.
+                    </li>
+                    <li><strong>Программа «проглатывает» ввод.</strong> Иногда кажется, что <code>ReadLine</code>
+                        пропустил одну строку. Обычно это происходит, если перед ним был другой
+                        <code>ReadLine</code> - программа считала ввод до нажатия Enter, а следующая строка осталась
+                        «висеть». Пока просто следите, чтобы на каждый <code>ReadLine</code> приходился один ввод
+                        пользователя.
+                    </li>
+                    <li><strong>«Cannot convert type 'string' to 'int'».</strong> Вы пытаетесь положить результат
+                        <code>Console.ReadLine()</code> прямо в переменную типа <code>int</code>, забыв про
+                        <code>int.Parse</code>. Сначала текст, потом преобразование - два шага.
+                    </li>
+                    <li><strong>Программа падает, если пользователь ничего не ввёл и нажал Enter.</strong> Пустая
+                        строка не преобразуется в число. Это нормальное поведение - <code>int.Parse("")</code>
+                        выдаст ошибку. Такие ситуации мы будем обрабатывать на среднем уровне.</li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Теперь ваша очередь. Ниже - четыре задачи по возрастающей сложности. У каждой есть <strong>подсказка
+                    </strong> и <strong>решение учителя</strong> - открывайте по одному блоку, только если застряли.
+                    Сначала обязательно попробуйте сами.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Знакомство</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая спрашивает у пользователя его имя и
+                                отвечает: «Привет, [имя]!».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вам понадобятся три команды: <code>Console.Write</code> - задать вопрос,
+                                        <code>Console.ReadLine</code> - получить ответ, <code>Console.WriteLine</code>
+                                        - поздороваться. Имя сохраните в переменную типа <code>string</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Как тебя зовут? ");</span><span class="code-row">string name = Console.ReadLine();</span><span class="code-row">Console.WriteLine("Привет, " + name + "!");</span></code></pre>
+                                    <p>Если пользователь введёт «Мария», программа выведет «Привет, Мария!». Обратите
+                                        внимание на пробел внутри кавычек перед восклицательным знаком - без него
+                                        получилось бы «Привет, Мария!».</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Возраст</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя, сколько ему лет, и выведите фразу: «Тебе X
+                                лет». X - это введённое число.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Возраст - это число, значит после <code>Console.ReadLine()</code> нужно
+                                        применить <code>int.Parse(...)</code>. Результат сохраните в переменную типа
+                                        <code>int</code>. А затем склейте текст с числом через <code>+</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Сколько тебе лет? ");</span><span class="code-row">int age = int.Parse(Console.ReadLine());</span><span class="code-row">Console.WriteLine("Тебе " + age + " лет.");</span></code></pre>
+                                    <p>Мы записали преобразование в одну строку - без промежуточной переменной для
+                                        текста. Это короче и читается так же хорошо.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Сумма двух чисел</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Попросите пользователя ввести два целых числа и выведите их сумму.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сначала получите первое число, потом второе. Каждое - через отдельный
+                                        <code>Console.ReadLine</code> + <code>int.Parse</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>После того как оба числа сохранены в переменные, сложите их через
+                                        <code>+</code> и положите результат в третью переменную. Затем выведите её
+                                        на экран.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Введи первое число: ");</span><span class="code-row">int a = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">Console.Write("Введи второе число: ");</span><span class="code-row">int b = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">int sum = a + b;</span><span class="code-row">Console.WriteLine("Сумма: " + sum);</span></code></pre>
+                                    <p>Если пользователь ввёл 10 и 3 - программа выведет «Сумма: 13». Можно было
+                                        вывести и без переменной <code>sum</code>: <code>Console.WriteLine("Сумма: "
+                                        + (a + b));</code>. Скобки здесь обязательны, иначе C# сначала склеит текст с
+                                        первым числом, а потом уже попытается прибавить второе.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Анкета</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя имя, город и возраст. Выведите одной строкой
+                                через интерполяцию: «Привет, [имя] из города [город]! Тебе [возраст] лет.».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Три вопроса, три переменные. Две - <code>string</code> (имя и город), одна -
+                                        <code>int</code> (возраст). Для последней строки используйте интерполяцию:
+                                        поставьте <code>$</code> перед кавычкой и оберните переменные в
+                                        <code>{ }</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Как тебя зовут? ");</span><span class="code-row">string name = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">Console.Write("Из какого ты города? ");</span><span class="code-row">string city = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">Console.Write("Сколько тебе лет? ");</span><span class="code-row">int age = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Привет, {name} из города {city}! Тебе {age} лет.");</span></code></pre>
+                                    <p>Это та же программа, что мы разбирали выше. Теперь вы понимаете её полностью:
+                                        три ввода, три переменные, одна строка вывода через интерполяцию. Именно так
+                                        строятся все настоящие диалоги с пользователем.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы сделали большой шаг: научились получать данные от пользователя. Наши программы перестали
+                    быть односторонними - теперь они могут задавать вопросы и слушать ответы. Разобрались с двумя
+                    способами превратить текст в число: <code>int.Parse</code> и <code>Convert.ToInt32</code>.</p>
+
+                <p>А ещё попрактиковались на четырёх задачах - это уже настоящий опыт написания кода, а не просто
+                    чтение теории.</p>
+
+                <p>В следующем уроке мы познакомимся с <strong>условиями</strong>: программа сможет не просто
+                    принимать данные, но и <em>решать</em>, что делать дальше, в зависимости от них. Например,
+                    пускать пользователя на сайт, только если ему больше 18. Вот это уже настоящая логика.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-02.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-04.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

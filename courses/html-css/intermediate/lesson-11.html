@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Позиционирование и z-index - Вёрстка сайтов - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="html-css" data-level="intermediate" data-lesson-id="lesson-11">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Вёрстка сайтов</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 11</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Настройка окружения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Структура HTML</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Текст и списки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Ссылки и изображения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Семантическая разметка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Введение в CSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Блочная модель</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Собираем первую страницу</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Flexbox</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CSS Grid</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson active" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Позиционирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Адаптивность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Псевдоклассы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Переходы и анимации</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Формы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Таблицы и медиа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Фоны и градиенты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>CSS-переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Современный CSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Методология БЭМ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Доступность (a11y)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Оптимизация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Препроцессоры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Позиционирование и z-index</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Всё, что мы делали до этого, подчинялось строгим правилам «потока документа». Блочные
+                    элементы встают друг под другом, строчные идут в строку. Flexbox и Grid позволяют
+                    управлять этим потоком, но не позволяют его нарушить.</p>
+
+                <p>Но иногда нам нужно, чтобы элемент «выпрыгнул» из потока. Например, чтобы сделать
+                    всплывающую подсказку, модальное окно или прикрепить шапку сайта к верху экрана. Для
+                    этого используется свойство <code>position</code>.</p>
+
+                <p>У него есть пять основных значений. Разберём каждое.</p>
+
+                <h2>1. static (по умолчанию)</h2>
+
+                <p>Все элементы на странице изначально имеют <code>position: static;</code>. Это значит, что
+                    элемент находится в нормальном потоке документа и подчиняется стандартным правилам
+                    (блочные идут сверху вниз, строчные - в строку).</p>
+
+                <p>К элементам со <code>static</code> нельзя применить свойства <code>top</code>,
+                    <code>right</code>, <code>bottom</code>, <code>left</code> и <code>z-index</code>. Они
+                    просто проигнорируются.</p>
+
+                <h2>2. relative (относительное)</h2>
+
+                <p><code>position: relative;</code> делает две вещи:</p>
+                <ol>
+                    <li>Позволяет сдвигать элемент относительно его <strong>обычного</strong> положения с
+                        помощью координат (top, left и т.д.).</li>
+                    <li>Оставляет за элементом его первоначальное место в потоке. То есть остальные элементы
+                        будут вести себя так, будто он всё ещё там.</li>
+                </ol>
+
+                <p>Представьте, что элемент - это человек, который оставил на своём месте невидимую копию,
+                    а сам отошёл в сторону. Место занято, но человека там нет.</p>
+
+                <p>Сдвиг происходит с помощью свойств:</p>
+                <ul>
+                    <li><code>top: 10px;</code> - сдвинуть вниз на 10px от верхнего края.</li>
+                    <li><code>left: 20px;</code> - сдвинуть вправо на 20px от левого края.</li>
+                    <li>И так далее.</li>
+                </ul>
+
+                <p>Но главная суперсила <code>relative</code> в том, что он создаёт <strong>контекст</strong>
+                    для абсолютно позиционированных потомков (о них ниже). Об этом чуть позже.</p>
+
+                <h2>3. absolute (абсолютное)</h2>
+
+                <p>Это самое частое и самое коварное значение. <code>position: absolute;</code>
+                    <strong>вырывает элемент из потока документа</strong>. Остальные элементы сдвигаются так,
+                    будто его вообще не существует.</p>
+
+                <p>Абсолютно позиционированный элемент ищет ближайшего <strong>позиционированного
+                    предка</strong> (то есть родителя, у которого <code>position</code> не равно
+                    <code>static</code>). И позиционируется относительно него.</p>
+
+                <p>Если такого родителя нет, элемент будет позиционироваться относительно всего окна браузера
+                    (как <code>fixed</code>). Это частая причина, почему элементы «улетают» в угол экрана.</p>
+
+                <p>Поэтому классический паттерн для абсолютного позиционирования выглядит так: родителю
+                    задаём <code>position: relative;</code>, а ребёнку - <code>position: absolute;</code>.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">.parent {</span><span class="code-row">    position: relative;</span><span class="code-row">    width: 300px;</span><span class="code-row">    height: 200px;</span><span class="code-row">    background: #eee;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">.child {</span><span class="code-row">    position: absolute;</span><span class="code-row">    top: 10px;</span><span class="code-row">    right: 10px;</span><span class="code-row">}</span></code></pre>
+
+                <p>В этом примере <code>.child</code> «прилипнет» к правому верхнему углу родителя, отступив
+                    по 10 пикселей.</p>
+
+                <h2>4. fixed (фиксированное)</h2>
+
+                <p><code>position: fixed;</code> тоже вырывает элемент из потока, но позиционирует его
+                    <strong>всегда относительно окна браузера</strong> (viewport).</p>
+
+                <p>Самое главное отличие: такой элемент <strong>не двигается при скролле</strong>. Он как
+                    будто приклеен к монитору. Идеально для модальных окон, чатов поддержки в углу экрана или
+                    фиксированных шапок.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">.chat-btn {</span><span class="code-row">    position: fixed;</span><span class="code-row">    bottom: 20px;</span><span class="code-row">    right: 20px;</span><span class="code-row">}</span></code></pre>
+
+                <h2>5. sticky (липкое)</h2>
+
+                <p>Гибрид <code>relative</code> и <code>fixed</code>. Элемент ведёт себя как
+                    <code>relative</code>, пока вы не доскроллите до определённой точки. Как только он
+                    достигает заданного порога (например, <code>top: 0</code>), он «прилипает» и ведёт себя
+                    как <code>fixed</code>.</p>
+
+                <p>Это очень популярно для заголовков таблиц или навигационных панелей, которые должны
+                    оставаться на виду при чтении длинной статьи.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">.sticky-header {</span><span class="code-row">    position: sticky;</span><span class="code-row">    top: 0;</span><span class="code-row">    background: white;</span><span class="code-row">    z-index: 10;</span><span class="code-row">}</span></code></pre>
+
+                <h2>Свойство z-index: слои</h2>
+
+                <p>Когда элементы вырваны из потока (absolute, fixed), они могут накладываться друг на
+                    друга. Кто будет сверху?</p>
+
+                <p>По умолчанию сверху оказывается тот элемент, который написан в HTML позже. Но мы можем
+                    управлять этим с помощью свойства <code>z-index</code>. Оно принимает числовые значения.
+                    Чем больше число, тем выше слой (ближе к нам).</p>
+
+                <p>Представьте стопку бумаг на столе. <code>z-index: 1</code> - это первый лист,
+                    <code>z-index: 10</code> - десятый. Он закроет собой все листы с меньшим индексом.</p>
+
+                <p><strong>Важное правило:</strong> <code>z-index</code> работает <strong>только</strong>
+                    для элементов, у которых задано позиционирование (relative, absolute, fixed или sticky).
+                    Для статических элементов он игнорируется.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>static</code>
+                        <span>по умолчанию, без координат</span>
+                    </li>
+                    <li>
+                        <code>relative</code>
+                        <span>сдвиг относительно себя, сохраняет место</span>
+                    </li>
+                    <li>
+                        <code>absolute</code>
+                        <span>вырван из потока, позиционируется по родителю</span>
+                    </li>
+                    <li>
+                        <code>fixed</code>
+                        <span>прилипает к экрану, не скроллится</span>
+                    </li>
+                    <li>
+                        <code>sticky</code>
+                        <span>прилипает при скролле до заданной точки</span>
+                    </li>
+                    <li>
+                        <code>top, left, right, bottom</code>
+                        <span>координаты для позиционирования</span>
+                    </li>
+                    <li>
+                        <code>z-index</code>
+                        <span>порядок слоёв (работает только с position)</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём самые частые проблемы, связанные с этой темой.</p>
+
+                <ul>
+                    <li><strong>«Мой элемент с absolute улетел в угол экрана».</strong> Это значит, что вы
+                        не задали <code>position: relative</code> родительскому элементу. Абсолютный элемент
+                        ищет ближайшего «позиционированного» родителя, не находит его и позиционируется
+                        относительно всего окна.</li>
+                    <li><strong>«z-index не работает, элементы всё равно перекрывают друг друга».</strong>
+                        Скорее всего, вы забыли добавить <code>position: relative;</code> (или
+                        <code>absolute</code>) к тому элементу, которому задаёте <code>z-index</code>.
+                        Для статических элементов это свойство бесполезно.</li>
+                    <li><strong>«position: fixed не работает внутри другого элемента».</strong> Если у
+                        родителя задан <code>transform</code> (например, для анимации), он ломает
+                        <code>fixed</code>. В таком случае элемент начинает позиционироваться относительно
+                        этого родителя, а не окна. Это особенность браузеров.</li>
+                    <li><strong>«position: sticky не прилипает».</strong> Во-первых, проверьте, есть ли
+                        у элемента свойство <code>top</code> (или <code>bottom</code>), без него он не
+                        знает, когда прилипать. Во-вторых, у родителя не должно быть
+                        <code>overflow: hidden</code>.</li>
+                    <li><strong>«Использовать relative можно только для сдвига?»</strong> Нет. Чаще всего
+                        <code>relative</code> используется просто как «якорь» для абсолютного потомка. Сами
+                        координаты (top, left) при этом не задаются.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание теории, вторые две - на практическое применение.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Выберите position</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой задачи выберите подходящее значение свойства
+                                <code>position</code>.</p>
+                            <ol>
+                                <li>Сделать шапку сайта, которая прилипает к верху при прокрутке.</li>
+                                <li>Добавить бейдж «SALE» в правый верхний угол карточки товара.</li>
+                                <li>Создать модальное окно по центру экрана, которое не двигается при
+                                    прокрутке.</li>
+                                <li>Сдвинуть иконку на 2 пикселя вправо для оптической центровки, не
+                                    ломая остальную вёрстку.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните: sticky - для прилипания, absolute - для привязки к родителю,
+                                        fixed - для привязки к экрану, relative - для маленьких сдвигов.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>sticky.</strong> Идеально для шапок.</li>
+                                        <li><strong>absolute.</strong> Бейдж привяжется к карточке, если у
+                                            карточки задан <code>relative</code>.</li>
+                                        <li><strong>fixed.</strong> Окно всегда по центру viewport.</li>
+                                        <li><strong>relative.</strong> Сдвинет иконку, но оставит за ней
+                                            место в потоке.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Почему не работает?</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Разработчик хотел сделать так, чтобы синий квадрат был поверх
+                                красного. Но красный всё равно перекрывает синий. Почему?</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">.red {</span><span class="code-row">    width: 100px;</span><span class="code-row">    height: 100px;</span><span class="code-row">    background: red;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">.blue {</span><span class="code-row">    width: 100px;</span><span class="code-row">    height: 100px;</span><span class="code-row">    background: blue;</span><span class="code-row">    margin-top: -50px;</span><span class="code-row">    z-index: 10;</span><span class="code-row">}</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Посмотрите на свойство <code>z-index</code>. Что обязательно должно быть
+                                        у элемента, чтобы оно сработало?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Ошибка в том, что у элемента <code>.blue</code> нет позиционирования.
+                                        Свойство <code>z-index</code> работает только для элементов с
+                                        <code>position: relative</code>, <code>absolute</code>,
+                                        <code>fixed</code> или <code>sticky</code>.</p>
+                                    <p>Чтобы исправить, добавьте:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">.blue {</span><span class="code-row">    position: relative;</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Бейдж на карточке</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В вашем проекте создайте карточку товара (можно использовать
+                                код из урока 8). Добавьте внутрь карточки элемент
+                                <code>&lt;span class="badge"&gt;NEW&lt;/span&gt;</code>. С помощью
+                                позиционирования поместите этот бейдж в правый верхний угол карточки.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Карточке задайте <code>position: relative;</code>. Бейджу -
+                                        <code>position: absolute;</code> и координаты
+                                        <code>top: 10px; right: 10px;</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>CSS:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">.card {</span><span class="code-row">    position: relative;</span><span class="code-row">    /* остальные стили карточки */</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">.badge {</span><span class="code-row">    position: absolute;</span><span class="code-row">    top: 10px;</span><span class="code-row">    right: 10px;</span><span class="code-row">    background: #ff5a00;</span><span class="code-row">    color: #fff;</span><span class="code-row">    padding: 4px 10px;</span><span class="code-row">    border-radius: 50px;</span><span class="code-row">    font-size: 0.8rem;</span><span class="code-row">    font-weight: bold;</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Липкое меню</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте страницу с большим количеством текста (можно
+                                сгенерировать абзацы или просто скопировать текст). В самом верху создайте
+                                навигационную панель <code>&lt;nav class="sticky-nav"&gt;</code>. Сделайте
+                                так, чтобы при прокрутке страницы вниз панель прилипала к верхнему краю
+                                экрана.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>position: sticky;</code> и <code>top: 0;</code>. Не
+                                        забудьте задать фоновый цвет, чтобы текст при прокрутке не просвечивал
+                                        сквозь панель.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>CSS:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">.sticky-nav {</span><span class="code-row">    position: sticky;</span><span class="code-row">    top: 0;</span><span class="code-row">    background: white;</span><span class="code-row">    padding: 15px;</span><span class="code-row">    box-shadow: 0 2px 10px rgba(0,0,0,0.1);</span><span class="code-row">    z-index: 100;</span><span class="code-row">}</span></code></pre>
+                                    <p>При прокрутке панель должна оставаться наверху, пока вы не доскроллите
+                                        до конца её родительского контейнера (если он есть).</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Позиционирование - это мощный инструмент, который даёт полный контроль над тем, где
+                    находится элемент. Но, как и любой мощный инструмент, его нужно использовать
+                    осторожно. Не пытайтесь верстать всю страницу на <code>absolute</code> - это путь к
+                    боли при изменении размеров экрана.</p>
+
+                <p>Вы узнали:</p>
+                <ul>
+                    <li><code>static</code> - элементы в обычном потоке.</li>
+                    <li><code>relative</code> - сдвиг и создание контекста для потомков.</li>
+                    <li><code>absolute</code> - вырыв из потока и привязка к родителю.</li>
+                    <li><code>fixed</code> - привязка к окну браузера.</li>
+                    <li><code>sticky</code> - умное прилипание при скролле.</li>
+                    <li><code>z-index</code> - управление слоями.</li>
+                </ul>
+
+                <p>В следующем уроке мы займёмся <strong>адаптивностью</strong>. Вы узнаете, как сделать
+                    так, чтобы ваш сайт выглядел отлично не только на огромном мониторе, но и на
+                    маленьком экране смартфона. Мы изучим медиазапросы - главный инструмент адаптивной
+                    вёрстки.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-10.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-12.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

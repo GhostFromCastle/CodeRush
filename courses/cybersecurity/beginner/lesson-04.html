@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фишинг и социальная инженерия - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="beginner" data-lesson-id="lesson-04">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 04</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson active" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Фишинг и социальная инженерия</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Мы прошли три урока, и теперь у вас есть крепкие пароли и двухфакторная аутентификация.
+                    Казалось бы, база защиты собрана. Но есть одна проблема, которая обходит и то, и другое -
+                    это <strong>сам человек</strong>.</p>
+
+                <p>Можно поставить самую надёжную защиту, но если злоумышленник убедит вас <em>самому</em>
+                    отдать пароль или подтвердить вход - все технические меры окажутся бесполезны. Именно так
+                    работает <strong>фишинг</strong> и <strong>социальная инженерия</strong> - обман людей
+                    через доверие, страх и спешку. Это самая распространённая атака в мире, и сегодня мы
+                    разберёмся, как её распознать.</p>
+
+                <h2>Что такое фишинг</h2>
+
+                <p>Слово <em>phishing</em> (читается «фишинг») происходит от английского <em>fishing</em> -
+                    «рыбалка». Только ловят не рыбу, а людей. Злоумышленник «забрасывает удочку» - рассылает
+                    письма или сообщения, - и ждёт, кто клюнет.</p>
+
+                <p>Суть проста: вам приходит письмо, которое выглядит как настоящее - от банка, от Microsoft,
+                    от Госуслуг, от вашего начальника. Внутри - просьба перейти по ссылке, ввести пароль,
+                    скачать файл или подтвердить действие. Если вы это делаете - злоумышленник получает то,
+                    что ему нужно.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Фишинг - это не взлом техники. Это обман человека. Никакие антивирусы и сложные пароли
+                        не помогут, если вы сами отдадите доступ мошеннику. Поэтому важно научиться
+                        <strong>распознавать</strong> такие атаки.
+                    </p>
+                </div>
+
+                <h2>Классический пример: подмена «m» на «rn»</h2>
+
+                <p>Один из самых показательных случаев в истории фишинга - подмена домена <code>microsoft.com</code>
+                    на <code>rnicrosoft.com</code>. Трюк простой: буква <code>m</code> заменяется на
+                    комбинацию <code>r</code> и <code>n</code> - вместе они выглядят почти как <code>m</code>.
+                    В английском такое слияние называется <em>ligature</em> - так же, как <code>rn</code>
+                    сливается в <code>m</code> при быстром чтении.</p>
+
+                <p>Вот как это выглядит:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Настоящее: microsoft.com</span><span class="code-row">Подделка:  rnicrosoft.com</span></code></pre>
+
+                <p>На первый взгляд разница почти незаметна. На большом мониторе внимательный человек ещё
+                    может заметить странное написание, но на смартфоне - где адресная строка короткая и
+                    часто обрезается - шанс обнаружить подмену минимален.</p>
+
+                <p>Именно на этом и играют мошенники. Домен <code>rnicrosoft.com</code> был зарегистрирован
+                    ещё в 2012 году в Южной Корее и с тех пор остаётся проблемой в интернете уже более десяти
+                    лет. В 2025 году кампания снова активизировалась - злоумышленники начали рассылать письма
+                    от имени <code>noreply@rnicrosoft.com</code>, которые выглядели как настоящие уведомления
+                    от Microsoft: с логотипом, фирменными цветами и даже похожим тоном общения.</p>
+
+                <p>Вот реальный случай, который обсуждали на Reddit. Пользователь получил письмо о сбросе
+                    пароля Microsoft. Всё выглядело абсолютно нормально: логотип, вёрстка, формулировки -
+                    один в один как у Microsoft. Адрес отправителя - <code>noreply@rnicrosoft.com</code> -
+                    при быстром взгляде тоже казался подозрительным только если очень внимательно всматриваться.
+                    Пользователь почти поверил, но в последний момент присмотрелся к домену и заметил
+                    подмену.</p>
+
+                <p>В комментариях к этому посту один из пользователей написал: «The scammer is using 200%
+                    of his brain» - «мошенник использует 200% своего мозга». Другой признался: «If I got that
+                    mail, my account would've been compromised instantly» - «если бы мне пришло такое письмо,
+                    мой аккаунт был бы скомпрометирован мгновенно».</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Это не единичный случай
+                    </div>
+                    <p>Подмена символов - не единственный трюк. Мошенники также используют:</p>
+                    <ul>
+                        <li>Замену <code>o</code> на <code>0</code>: <code>micros0ft.com</code></li>
+                        <li>Добавление дефисов: <code>microsoft-support.com</code></li>
+                        <li>Другие доменные зоны: <code>microsoft.co</code> вместо <code>microsoft.com</code></li>
+                        <li>Похожие домены: <code>rnarriottinternational.com</code> вместо
+                            <code>marriott.com</code>
+                        </li>
+                    </ul>
+                    <p>Принцип один: сделать адрес максимально похожим на настоящий, чтобы вы не заметили
+                        подмены.</p>
+                </div>
+
+                <h2>Виды фишинга</h2>
+
+                <p>Фишинг бывает разным - в зависимости от канала, через который работает злоумышленник,
+                    и от того, насколько он подготовлен.</p>
+
+                <h3>Массовый фишинг (mass phishing)</h3>
+
+                <p>Самый простой вид. Одинаковые письма рассылаются миллионам адресов в надежде, что кто-то
+                    клюнет. Никакой персонализации, никакого изучения жертвы - просто «разброс по площадям».</p>
+
+                <p>Такие письма часто легко распознать: обращение «Уважаемый клиент» вместо имени, странный
+                    адрес отправителя, ссылки на неизвестные сайты, ошибки в тексте. Но даже в массовом
+                    фишинге бывают качественные подделки - как в случае с <code>rnicrosoft.com</code>.</p>
+
+                <h3>Целевой фишинг (spear phishing)</h3>
+
+                <p>Это уже серьёзнее. Злоумышленник заранее изучает конкретного человека или компанию.
+                    Он знает ваше имя, должность, круг общения, недавние события. Письмо пишется под вас -
+                    с правильным обращением, с упоминанием реальных деталей, с правдоподобной легендой.</p>
+
+                <p>Например: «Иван, добрый день! Мы обсуждали проект с Сергеем на прошлой неделе. Он
+                    попросил меня скинуть вам обновлённую смету. Файл во вложении». Если вы действительно
+                    работаете с Сергеем и ждёте смету - велик шанс, что откроете вложение.</p>
+
+                <h3>Вишинг (vishing) и смишинг (smishing)</h3>
+
+                <p>Фишинг бывает не только по электронной почте.</p>
+
+                <ul>
+                    <li><strong>Вишинг</strong> (<em>voice phishing</em>) - звонок по телефону. «Здравствуйте,
+                        это служба безопасности банка. Зафиксирована подозрительная операция по вашей карте.
+                        Чтобы её отменить, продиктуйте код из SMS».</li>
+                    <li><strong>Смишинг</strong> (<em>SMS phishing</em>) - сообщение в SMS или мессенджере.
+                        «Ваша посылка задержана на складе. Оплатите доставку по ссылке». Или «Ваш аккаунт
+                        будет удалён через 24 часа. Подтвердите вход».</li>
+                </ul>
+
+                <p>Принцип тот же - выманить данные или заставить перейти по ссылке.</p>
+
+                <h2>Социальная инженерия: игра на эмоциях</h2>
+
+                <p>Фишинг - это конкретный инструмент. А <strong>социальная инженерия</strong> - это общий
+                    подход, суть которого в манипуляции человеком. Мошенник не взламывает систему, он
+                    взламывает <em>вас</em> - через эмоции, доверие или страх.</p>
+
+                <p>Вот основные эмоции, на которые давят злоумышленники:</p>
+
+                <h3>Страх и паника</h3>
+
+                <p>«Ваш аккаунт будет заблокирован», «С вашей карты списаны деньги», «На вас подали в суд»,
+                    «Ваши данные утекли в сеть». Цель - заставить вас действовать быстро, не думая.
+                    В панике человек теряет бдительность и делает то, что просят.</p>
+
+                <h3>Срочность и дедлайн</h3>
+
+                <p>«Подтвердите в течение 24 часов», «Иначе доступ будет закрыт», «Срочно переведите
+                    деньги», «Успейте до конца дня». Ещё один способ отключить критическое мышление.
+                    Если вы действуете в спешке - вы не проверяете адрес отправителя, не задумываетесь
+                    о правдоподобности.</p>
+
+                <h3>Жадность и выгода</h3>
+
+                <p>«Вы выиграли в лотерею», «Вам полагается компенсация», «Инвестируйте и получите
+                    300% за месяц», «Осталось 3 места по акции». Обещание быстрой выгоды - тоже мощный
+                    крючок.</p>
+
+                <h3>Доверие к авторитету</h3>
+
+                <p>Мошенник представляется «службой безопасности банка», «сотрудником Microsoft»,
+                    «начальником», «сотрудником Госуслуг». Ссылается на официальные органы или на людей,
+                    которым вы доверяете. Это усыпляет бдительность: «Раз это банк - значит, всё
+                    в порядке».</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Главный признак
+                    </div>
+                    <p>Запомните: если вас <strong>торопят</strong>, <strong>пугают</strong> или
+                        <strong>обещают нечто слишком хорошее</strong> - это повод остановиться и
+                        подумать. Настоящие банки и сервисы так не работают. Они дают время и не давят
+                        на эмоции.
+                    </p>
+                </div>
+
+                <h2>Как распознать фишинг</h2>
+
+                <p>Теперь к самому главному - как понять, что перед вами подделка. Есть несколько признаков,
+                    которые в сумме почти всегда выдают мошенника. По отдельности они могут быть безобидны,
+                    но если совпадают два-три - это тревожный сигнал.</p>
+
+                <h3>1. Проверяйте адрес отправителя</h3>
+
+                <p>Самое важное. Посмотрите, с какого домена пришло письмо. Если это не официальный домен
+                    сервиса - уже подозрительно. Мошенники используют:</p>
+
+                <ul>
+                    <li>Похожие домены: <code>rnicrosoft.com</code>, <code>micros0ft.com</code>,
+                        <code>microsoft-support.com</code>
+                    </li>
+                    <li>Другие зоны: <code>microsoft.co</code>, <code>microsoft.net</code></li>
+                    <li>Случайные адреса: <code>support@random-domain.xyz</code></li>
+                </ul>
+
+                <p>Настоящие письма от Microsoft, например, приходят только с доменов, оканчивающихся на
+                    <code>@accountprotection.microsoft.com</code>. Банки пишут со своих
+                    официальных доменов - <code>@sberbank.ru</code>, <code>@tinkoff.ru</code> и так далее.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        На телефоне
+                    </div>
+                    <p>На смартфоне адрес отправителя часто обрезается - видно только имя. Обязательно
+                        нажмите на него, чтобы увидеть полный адрес. Если сомневаетесь - откройте письмо
+                        на компьютере, где видно всё целиком.</p>
+                </div>
+
+                <h3>2. Наводите курсор на ссылки</h3>
+
+                <p>Никогда не кликайте по ссылке сразу. На компьютере наведите на неё курсор - внизу браузера
+                    или в углу экрана появится настоящий адрес, куда ведёт ссылка. На телефоне зажмите ссылку
+                    и удерживайте - появится всплывающее окно с адресом.</p>
+
+                <p>Если текст ссылки говорит «microsoft.com», а ведёт на «rnicrosoft.com» или вообще на
+                    непонятный сайт - не переходите.</p>
+
+                <h3>3. Ищите признаки спешки и давления</h3>
+
+                <p>Мошенники почти всегда торопят. «Срочно», «немедленно», «в течение 24 часов», «иначе
+                    доступ будет заблокирован». Настоящий банк не напишет вам «срочно переведите деньги
+                    на этот счёт». Госуслуги не попросят «подтвердить личность по ссылке из письма».</p>
+
+                <h3>4. Проверяйте, к кому обращаются</h3>
+
+                <p>Если письмо начинается с «Уважаемый клиент» - уже странно. Настоящие сервисы обращаются
+                    по имени, потому что знают его. Мошенники в массовой рассылке имени не знают, поэтому
+                    пишут обезличенно.</p>
+
+                <h3>5. Не открывайте вложения из неожиданных писем</h3>
+
+                <p>Если вам прислали файл, который вы не ждали, - не открывайте его. Даже если это выглядит
+                    как PDF, документ Word или архив. Внутри может быть вирус или шифровальщик. Особенно
+                    осторожно с файлами, которые просят «включить макросы» или «разрешить редактирование».</p>
+
+                <h3>6. Смотрите на оформление</h3>
+
+                <p>Ошибки в тексте, кривые шрифты, странная вёрстка, некорректные логотипы - всё это
+                    признаки подделки. Но будьте осторожны: качественный целевой фишинг может выглядеть
+                    идеально. Поэтому не полагайтесь только на оформление - проверяйте адрес отправителя
+                    и ссылки.</p>
+
+                <h2>Что делать, если получили подозрительное письмо</h2>
+
+                <p>Вы получили письмо и подозреваете, что это фишинг. Что дальше? Вот чёткий алгоритм
+                    действий.</p>
+
+                <h3>Шаг 1. Не отвечайте и не переходите по ссылкам</h3>
+
+                <p>Не отвечайте на письмо - так вы подтвердите, что адрес активный, и получите ещё больше
+                    спама. Не переходите по ссылкам, даже если «просто посмотреть». Не открывайте вложения.</p>
+
+                <h3>Шаг 2. Проверьте отправителя и ссылки</h3>
+
+                <p>Посмотрите на полный адрес отправителя. Наведите курсор на ссылки. Если что-то не
+                    сходится с официальным доменом - это точно фишинг.</p>
+
+                <h3>Шаг 3. Зайдите в сервис напрямую</h3>
+
+                <p>Если письмо якобы от банка - откройте приложение банка или сайт банка вручную,
+                    набрав адрес в браузере. Если от Microsoft - зайдите на <code>microsoft.com</code>
+                    сами. Проверьте, есть ли там уведомление, о котором говорится в письме. Скорее
+                    всего, ничего нет.</p>
+
+                <h3>Шаг 4. Удалите письмо и отметьте как спам</h3>
+
+                <p>После проверки удалите письмо. Отметьте отправителя как спам - почтовые сервисы
+                    научатся фильтровать подобные сообщения в будущем.</p>
+
+                <h3>Шаг 5. Если уже перешли по ссылке и ввели данные</h3>
+
+                <p>Бывает, что мошенник застал врасплох. Что делать, если вы уже ввели пароль на поддельном
+                    сайте:</p>
+
+                <ul>
+                    <li><strong>Сразу смените пароль</strong> на официальном сайте сервиса (не по ссылке
+                        из письма, а зайдя вручную).</li>
+                    <li><strong>Включите двухфакторную аутентификацию</strong> из урока 3 - если её ещё
+                        нет.</li>
+                    <li><strong>Проверьте историю входов</strong> - не заходил ли кто-то кроме вас.</li>
+                    <li><strong>Сообщите в поддержку сервиса</strong> - они могут помочь заблокировать
+                        подозрительную активность.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Про «код из SMS»
+                    </div>
+                    <p>Самый частый сценарий вишинга - звонок от «службы безопасности банка» с просьбой
+                        продиктовать код из SMS. <strong>Никогда не диктуйте коды</strong>. Никому.
+                        Ни по телефону, ни в чате, ни в письме. Настоящий банк никогда не спросит код -
+                        он и так видит, что это вы.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Фишинг</code>
+                        <span>обман через поддельные письма</span>
+                    </li>
+                    <li>
+                        <code>Вишинг</code>
+                        <span>фишинг по телефону</span>
+                    </li>
+                    <li>
+                        <code>Смишинг</code>
+                        <span>фишинг через SMS</span>
+                    </li>
+                    <li>
+                        <code>Spear phishing</code>
+                        <span>целевая атака на человека</span>
+                    </li>
+                    <li>
+                        <code>rnicrosoft.com</code>
+                        <span>подмена «m» на «rn»</span>
+                    </li>
+                    <li>
+                        <code>Проверяй домен</code>
+                        <span>первое правило защиты</span>
+                    </li>
+                    <li>
+                        <code>Не спеши</code>
+                        <span>давление - признак обмана</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Как всегда, вместо ошибок компилятора - разбор типичных ситуаций, в которых люди
+                    попадаются на фишинг, и что с этим делать.</p>
+
+                <ul>
+                    <li><strong>«Я думал, что это от банка, потому что там был логотип».</strong> Логотип
+                        скопировать очень легко - это не признак подлинности. Смотрите на адрес отправителя
+                        и ссылки. Если домен не официальный - это подделка, независимо от логотипа.</li>
+                    <li><strong>«Мне пришло письмо от начальника с просьбой срочно перевести деньги».</strong>
+                        Классический целевой фишинг. Позвоните начальнику по обычному телефону и уточните.
+                        Не отвечайте на письмо и не переводите деньги по реквизитам из письма.</li>
+                    <li><strong>«Мне позвонили из службы безопасности и попросили код».</strong> Настоящий
+                        банк никогда не спрашивает коды. Сбросьте звонок и позвоните в банк сами - по номеру
+                        с обратной стороны карты.</li>
+                    <li><strong>«Я перешёл по ссылке, но ничего не вводил».</strong> Если вы только открыли
+                        сайт, но не вводили логин и пароль - ничего страшного не случилось. Закройте страницу
+                        и очистите кэш. Но если что-то вводили - срочно меняйте пароль.</li>
+                    <li><strong>«В письме не было ссылок, только вопрос».</strong> Иногда мошенники
+                        используют технику «двух шагов»: сначала просто спрашивают что-то безобидное,
+                        чтобы вы ответили. Так они убеждаются, что адрес активный и вы отвечаете. После
+                        этого приходит второе письмо - уже с просьбой или ссылкой. Не отвечайте на
+                        подозрительные письма, даже если там нет ссылок.</li>
+                    <li><strong>«У меня есть антивирус, он меня защитит».</strong> Антивирус помогает
+                        против вирусов, но не против фишинга. Фишинг - это обман человека, а не взлом
+                        техники. От него защищает только внимательность.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на внимательность и распознавание признаков, вторые две -
+                    на практику с реальными письмами. У каждой есть подсказка и разбор.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Найди подделку</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вам пришло письмо якобы от Microsoft. Вот фрагменты,
+                                которые вы видите в почтовом клиенте:</p>
+                            <ul>
+                                <li>Тема: «Срочно: ваш аккаунт будет удалён через 24 часа»</li>
+                                <li>Отправитель: <code>noreply@rnicrosoft.com</code></li>
+                                <li>Текст: «Уважаемый клиент! Мы обнаружили подозрительную активность.
+                                    Чтобы сохранить аккаунт, подтвердите вход по ссылке ниже. В случае
+                                    невыполнения требования в течение 24 часов ваш аккаунт будет удалён».</li>
+                                <li>Ссылка: <code>https://rnicrosoft.com/verify</code></li>
+                            </ul>
+                            <p>Найдите минимум три признака фишинга.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Смотрите на адрес отправителя, тон письма и сроки. Настоящие сервисы
+                                        так не общаются с клиентами.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Признаки фишинга в этом письме:</p>
+                                    <ol>
+                                        <li><strong>Домен отправителя.</strong> <code>rnicrosoft.com</code> -
+                                            это не <code>microsoft.com</code>. Буква <code>m</code> заменена
+                                            на <code>rn</code>.</li>
+                                        <li><strong>Срочность и давление.</strong> «Срочно», «в течение
+                                            24 часов», «иначе аккаунт будет удалён». Настоящие сервисы не
+                                            удаляют аккаунты по такой схеме.</li>
+                                        <li><strong>Обезличенное обращение.</strong> «Уважаемый клиент»
+                                            вместо имени. Microsoft знает ваше имя и обращается по нему.</li>
+                                        <li><strong>Ссылка ведёт на тот же поддельный домен.</strong>
+                                            Если навести курсор на ссылку, всплывёт <code>rnicrosoft.com</code>.</li>
+                                        <li><strong>Просьба «подтвердить вход» по ссылке из письма.</strong>
+                                            Microsoft (как и другие компании) никогда не отправляет такие
+                                            письма - они всегда просят зайти в аккаунт напрямую.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Какая эмоция</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Определите, на какую эмоцию или чувство давит каждое из
+                                сообщений мошенников.</p>
+                            <ol>
+                                <li>«Ваша посылка задержана. Оплатите доставку 250 рублей по ссылке, иначе
+                                    она вернётся отправителю».</li>
+                                <li>«Поздравляем! Вы выиграли 100 000 рублей. Осталось только оплатить
+                                    комиссию за перевод».</li>
+                                <li>«Это служба безопасности банка. На вас оформляют кредит. Чтобы отменить
+                                    заявку, назовите код из SMS».</li>
+                                <li>«Иван, срочно! Я в больнице, переведи 5000 на этот номер. Позже всё
+                                    объясню. Подпись: Мама».</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте, что вы должны почувствовать в первую секунду: страх?
+                                        радость? тревогу за близкого? Именно на это и рассчитано.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Тревога за посылку.</strong> Ожидание чего-то важного
+                                            плюс страх потерять. Работает на тех, кто ждёт заказ.</li>
+                                        <li><strong>Жадность.</strong> Обещание лёгких денег. Классический
+                                            «лохотрон». Если нужно заплатить, чтобы получить приз - это
+                                            обман.</li>
+                                        <li><strong>Страх за деньги и доверие к банку.</strong> «На вас
+                                            оформляют кредит» - пугает, «служба безопасности» - добавляет
+                                            доверия. Но банк никогда не просит код из SMS по телефону.</li>
+                                        <li><strong>Тревога за близкого.</strong> Самый жестокий приём.
+                                            Работает через любовь к близким. Всегда перезвоните человеку
+                                            напрямую, прежде чем переводить деньги.</li>
+                                    </ol>
+                                    <p>Общее у всех четырёх: они бьют по эмоциям, чтобы отключить
+                                        логику. Если чувствуете, что вас «зацепило» - это сигнал остановиться
+                                        и проверить.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Проверьте свои письма</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Откройте свою почту и просмотрите последние 10-15 писем.
+                                Найдите хотя бы одно, которое похоже на фишинг или спам. Посмотрите на
+                                адрес отправителя, на ссылки, на тон письма. Если найдёте подозрительное -
+                                отметьте его как спам и удалите.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Обычно фишинговые письма приходят в папку «Спам», но иногда попадают
+                                        и во входящие. Смотрите на отправителей, которых не знаете, на
+                                        письма с просьбами «подтвердить», «оплатить», «получить приз»,
+                                        на письма с ошибками и странными адресами.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Здесь нет «правильного» ответа - это практическое упражнение. Но
+                                        вот что стоит проверить:</p>
+                                    <ul>
+                                        <li>Есть ли письма от сервисов, которыми вы не пользуетесь?</li>
+                                        <li>Есть ли письма с просьбой «срочно подтвердить» или «оплатить»?</li>
+                                        <li>Есть ли письма, где отправитель - незнакомый адрес, но в теме
+                                            что-то знакомое?</li>
+                                        <li>Есть ли письма с вложениями, которые вы не ждали?</li>
+                                    </ul>
+                                    <p>Если нашли такие - отлично, значит, вы уже начали смотреть на почту
+                                        другими глазами. Если нет - тоже хорошо: возможно, у вас хороший
+                                        фильтр спама или вам пока везло.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Чек-лист проверки</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Составьте для себя короткий чек-лист из 5 пунктов, по
+                                которому вы будете проверять любое подозрительное письмо. Запишите его
+                                (или запомните), чтобы использовать в жизни.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните шесть признаков фишинга из урока: адрес отправителя, ссылки,
+                                        срочность, обращение, вложения, оформление. Выберите самые важные для
+                                        вас и оформите в короткие пункты.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный чек-лист</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>У каждого свой чек-лист, но вот пример, который подойдёт большинству:</p>
+                                    <ol>
+                                        <li>Проверяю полный адрес отправителя - совпадает ли домен с
+                                            официальным.</li>
+                                        <li>Навожу курсор на все ссылки - куда они ведут на самом деле.</li>
+                                        <li>Смотрю, торопят ли меня. Если давят срочностью - красный флаг.</li>
+                                        <li>Смотрю, как обращаются. «Уважаемый клиент» вместо имени -
+                                            подозрительно.</li>
+                                        <li>Никогда не ввожу пароль или код из SMS по ссылке из письма -
+                                            только через официальный сайт или приложение.</li>
+                                    </ol>
+                                    <p>Если хотя бы два пункта не проходят - письмо отправляется в спам.
+                                        Лучше перестраховаться и удалить лишнее, чем один раз ошибиться.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с самой распространённой атакой в мире - фишингом. Узнали, что это не взлом
+                    техники, а <strong>обман человека</strong>. Познакомились с примерами подмены доменов -
+                    от классического <code>rnicrosoft.com</code> до дефисов и других доменных зон. Разобрали
+                    виды фишинга: массовый, целевой, вишинг, смишинг. И самое главное - изучили шесть
+                    признаков, по которым можно распознать подделку, и алгоритм действий, если письмо
+                    вызвало подозрение.</p>
+
+                <p>Теперь у вас есть не только пароли и 2FA, но и <strong>понимание</strong>, как вас
+                    могут обмануть. Это важный слой защиты, который техническими средствами не закрывается -
+                    только вниманием и знанием.</p>
+
+                <p>В следующем уроке мы поговорим о <strong>безопасности в браузере</strong> - как защитить
+                    себя во время сёрфинга интернета. Разберём расширения, трекеры, cookie, публичный Wi-Fi
+                    и то, как браузеры помогают нам оставаться в безопасности (или мешают).</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-03.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-05.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

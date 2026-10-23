@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вайбкодинг: программирование с ИИ - Нейросети и вайбкодинг - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="ai" data-level="intermediate" data-lesson-id="lesson-05">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Нейросети и вайбкодинг</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 05</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое нейросети</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Основы промптинга</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ограничения и галлюцинации</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Нейросети в жизни</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-05.html" class="sidebar-lesson active" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Вайбкодинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Нейросети для текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Генеративные изображения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Автоматизация рутины</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>API нейросетей</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Локальные модели</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Продвинутый промптинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Этика и будущее ИИ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Вайбкодинг: программирование с ИИ</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~20 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Добро пожаловать на средний уровень. Начальный мы закрыли - теперь вы знаете, как работает ИИ,
+                    как писать промпты и где он ошибается. Пора переходить от теории к практике.</p>
+
+                <p>В этом уроке мы разберём <strong>вайбкодинг</strong> (vibe coding). Это подход к созданию
+                    программ, при котором вы не пишете код вручную строчка за строчкой, а объясняете
+                    нейросети, что хотите получить, а она генерирует код. Вы выступаете в роли архитектора
+                    и тестировщика, а ИИ - в роли вашего программиста.</p>
+
+                <h2>Откуда взялся термин</h2>
+
+                <p>Термин «вайбкодинг» в начале 2025 года популяризировал Андрей Карпаты - известный
+                    исследователь ИИ и бывший директор по искусственному интеллекту в Tesla. Он описал
+                    процесс так: вы полностью отдаетесь «вайбу» (атмосфере, потоку) и просите ИИ написать код,
+                    даже не проверяя каждую строчку. Вы просто смотрите, работает программа или нет.</p>
+
+                <p>Звучит как мечта программиста? Отчасти да. Но у этого подхода есть свои правила
+                    безопасности и подводные камни, которые мы сегодня разберём.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Вайбкодинг не делает вас профессиональным разработчиком. Он делает вас
+                        <strong>создателем</strong>. Вы можете собрать скрипт для автоматизации рутины,
+                        простой сайт или игру, не зная синтаксиса языка. Но чем сложнее проект, тем больше
+                        вам придется разбираться в том, что написал ИИ.
+                    </p>
+                </div>
+
+                <h2>Как это работает на практике</h2>
+
+                <p>Процесс вайбкодинга состоит из цикла, который повторяется снова и снова.</p>
+
+                <h3>Шаг 1: Формулировка задачи</h3>
+
+                <p>Вы пишете промпт (используя формулу из урока 2), где описываете, что должна делать
+                    программа. Важно: вы описываете <strong>бизнес-логику</strong>, а не техническую
+                    реализацию.</p>
+
+                <p>Плохо: «Напиши цикл for и массив».</p>
+                <p>Хорошо: «Напиши скрипт на Python, который проходит по папке, находит все файлы
+                    с расширением .jpg и перемещает их в папку "Фото"».</p>
+
+                <h3>Шаг 2: Генерация кода</h3>
+
+                <p>Нейросеть выдает вам готовый код. Обычно в хороших моделях есть кнопка «Скопировать».</p>
+
+                <h3>Шаг 3: Запуск и проверка</h3>
+
+                <p>Вы копируете код, вставляете его в редактор (например, VS Code) и запускаете. Тут
+                    начинается самое интересное.</p>
+
+                <h3>Шаг 4: Работа над ошибками (Цикл отладки)</h3>
+
+                <p>С первого раза код сработает редко. Выдает ошибку? Вы копируете текст ошибки и
+                    отправляете его обратно в нейросеть с комментарием: <em>«Я запустил код, получил
+                        такую ошибку: [текст]. Как это исправить?»</em>.</p>
+
+                <p>Нейросеть анализирует ошибку и выдает исправленный код. Вы снова запускаете. И так
+                    по кругу, пока программа не заработает.</p>
+
+                <h2>Главный навык вайбкодера: умение читать ошибки</h2>
+
+                <p>В обычном программировании нужно знать, как устроен язык. В вайбкодинге нужно уметь
+                    <strong>интерпретировать результат</strong>.
+                </p>
+
+                <p>Когда программа выдает красный текст с ошибкой (Traceback в Python, Exception в C#),
+                    не пугайтесь. Это не «сломался компьютер», а подсказка.</p>
+
+                <p>Ваша задача - просто скопировать этот текст и отправить нейросети. Выступайте в роли
+                    переводчика между реальным миром и ИИ. Чем точнее вы опишете, что именно пошло не так
+                    (например, «программа запускается, но окно закрывается сразу же» или «выдается ошибка
+                    доступа к файлу»), тем быстрее ИИ найдет решение.</p>
+
+                <h2>Правила безопасности вайбкодинга</h2>
+
+                <p>Поскольку вы генерируете код с помощью ИИ, вы должны помнить о рисках. Вот три
+                    железных правила.</p>
+
+                <h3>1. Не запускайте код, который вы не понимаете</h3>
+
+                <p>Даже если вы не знаете синтаксис, вы должны понимать, <em>что</em> делает код. Если
+                    нейросеть сгенерировала скрипт, который удаляет файлы, убедитесь, что вы точно понимаете,
+                    какие именно файлы и из какой папки он удалит. Иначе можно случайно стереть важные данные.</p>
+
+                <p>Перед запуском незнакомого кода спросите нейросеть: <em>«Объясни простыми словами, что
+                        делает этот код. Есть ли в нём опасные операции?»</em>.</p>
+
+                <h3>2. Скачивайте код только из проверенных мест</h3>
+
+                <p>Нейросети могут выдавать код, который содержит уязвимости (SQL-инъекции, XSS и т.д.),
+                    особенно если вы пишете веб-приложение. Код - это потенциальный источник проблем,
+                    как и код, написанный человеком.</p>
+
+                <h3>3. Используйте Git (контроль версий)</h3>
+
+                <p>Вайбкодинг - это процесс проб и ошибок. ИИ может сломать то, что уже работало.
+                    Чтобы не потерять рабочий результат, используйте Git.</p>
+
+                <p>Если вы не знаете, что это, вот простое объяснение: перед тем как просить ИИ
+                    что-то исправить, сохраните текущую рабочую версию. В IDE (например, в VS Code)
+                    это делается через коммит. Если ИИ всё сломает - вы сможете откатиться назад
+                    к рабочей версии одной кнопкой.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Ловушка «черного ящика»
+                    </div>
+                    <p>Главная опасность вайбкодинга - накопление технического долга. Вы можете
+                        нагенерировать 1000 строк кода, которые работают, но никто (включая вас)
+                        не понимает, как они устроены. Когда через месяц нужно будет что-то
+                        поменять, вы не сможете разобраться в этом коде. Поэтому старайтесь
+                        просить ИИ делать код модульным и добавлять комментарии.</p>
+                </div>
+
+                <h2>Пример правильного промпта для кода</h2>
+
+                <p>Допустим, мы хотим написать простого Telegram-бота, который присылает погоду.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Ты опытный Python-разработчик. Напиши код Telegram-бота.</span><span class="code-row">Контекст: бот должен по команде /weather присылать погоду</span><span class="code-row">в Москве. Используй библиотеку aiogram 3 и открытое API</span><span class="code-row">open-meteo.com (не требует API-ключа).</span><span class="code-row">Формат: раздели код на два файла - config.py (токен бота)</span><span class="code-row">и main.py (логика). Добавь обработку ошибок, если API</span><span class="code-row">не отвечает. В ответе напиши инструкцию по установке</span><span class="code-row">зависимостей.</span></code></pre>
+
+                <p>Чем подробнее вы опишете требования (какие библиотеки, какие API, как обрабатывать
+                    ошибки), тем больше шансов, что код заработает с первого раза.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Вайбкодинг</code>
+                        <span>программирование через промпты к ИИ</span>
+                    </li>
+                    <li>
+                        <code>Бизнес-логика</code>
+                        <span>описание того, что должна делать программа</span>
+                    </li>
+                    <li>
+                        <code>Цикл отладки</code>
+                        <span>запуск -> ошибка -> промпт -> исправление</span>
+                    </li>
+                    <li>
+                        <code>Traceback</code>
+                        <span>текст ошибки, который нужно скопировать в ИИ</span>
+                    </li>
+                    <li>
+                        <code>Git</code>
+                        <span>инструмент для сохранения и отката версий</span>
+                    </li>
+                    <li>
+                        <code>Черный ящик</code>
+                        <span>код, который работает, но непонятен</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы, с которыми сталкиваются новички в вайбкодинге.</p>
+
+                <ul>
+                    <li><strong>«Нейросеть выдает код с ошибкой, я уже 10 раз прошу исправить, а она
+                            циклится».</strong> Модель может застрять в контексте. Начните новый чат,
+                        опишите задачу заново и вставьте последнюю версию кода и текст ошибки. Или
+                        скажите: «Твоё решение не работает, предложи принципиально другой подход».</li>
+                    <li><strong>«Она пишет слишком сложный код с кучей библиотек».</strong> Это
+                        проблема промпта. Скажите: «Напиши решение, используя только стандартные
+                        библиотеки» или «Объясни код так, будто я новичок».</li>
+                    <li><strong>«Я случайно удалил всё, что работало».</strong> Это та самая причина,
+                        по которой нужен Git. В будущем сохраняйте рабочую версию перед каждым
+                        большим изменением.</li>
+                    <li><strong>«Я не понимаю, что делает сгенерированный код».</strong> Это нормально
+                        на первых порах. Попросите нейросеть написать комментарии к каждой строчке или
+                        объяснить логику работы блоками.</li>
+                    <li><strong>«Код на Python, но я хочу на C#».</strong> Всё просто. Дайте ИИ
+                        исходный код и напишите: «Перепиши этот код на C# с использованием
+                        .NET 8».</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи для закрепления материала.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Промпт для скрипта</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы хотите автоматизировать скучную задачу. Напишите
+                                промпт для нейросети, который сгенерирует скрипт на Python. Задача:
+                                скрипт должен брать все фотографии из папки "Загрузки", сортировать
+                                их по году создания (EXIF-данные) и раскладывать по папкам с
+                                названиями годов (например, "2023", "2024").</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Укажите, какую библиотеку использовать для работы с EXIF
+                                        (например, Pillow), и обязательно добавьте требование
+                                        обработки ошибок (если у фото нет даты).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный ответ</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Ты опытный Python-разработчик.</span><span class="code-row">Напиши скрипт, который берет все файлы .jpg и .png</span><span class="code-row">из папки "Загрузки" и сортирует их по папкам.</span><span class="code-row">Контекст: папка для сортировки называется "Фото",</span><span class="code-row">внутри нее должны создаваться подпапки с годами (2023, 2024 и т.д.).</span><span class="code-row">Используй библиотеку Pillow для чтения EXIF-данных.</span><span class="code-row">Если у фото нет EXIF-данных, перемещай его в папку "Без даты".</span><span class="code-row">Добавь обработку ошибок, чтобы скрипт не падал.</span><span class="code-row">Выведи в консоль лог: сколько фото обработано,</span><span class="code-row">сколько пропущено.</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Исправление ошибки</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы запустили код, предложенный нейросетью, но получили
+                                ошибку. Напишите ответный промпт, который заставит модель исправить
+                                проблему. Вставьте текст ошибки, если он есть.</p>
+                            <p><em>Ошибка:</em></p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">Traceback (most recent call last):</span><span class="code-row">  File "main.py", line 5, in <module></span><span class="code-row">    response = requests.get(url)</span><span class="code-row">NameError: name 'requests' is not defined</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Покажите модели, что именно она сгенерировала неверно, и дайте
+                                        текст ошибки. Прямо скажите, что не так.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Правильный промпт:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Я запустил твой код, но получил ошибку:</span><span class="code-row">NameError: name 'requests' is not defined.</span><span class="code-row">Похоже, не хватает импорта библиотеки. Пожалуйста,</span><span class="code-row">исправь код и напиши, какую команду pip мне нужно</span><span class="code-row">выполнить, чтобы установить недостающую библиотеку.</span></code></pre>
+                                    <p>Нейросеть должна добавить `import requests` и подсказать
+                                        команду `pip install requests`.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Проверка на безопасность</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Нейросеть написала вам скрипт на Python, который
+                                подключается к базе данных и удаляет записи. Перед запуском вы
+                                должны проверить код. Напишите, на что именно вы будете смотреть,
+                                чтобы убедиться, что он не навредит.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Ищите команду `DELETE` и проверяйте, есть ли в ней условие `WHERE`.
+                                        Убедитесь, что в коде нет закомментированных частей, которые
+                                        могут быть вредоносными.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>На что смотреть перед запуском:</p>
+                                    <ul>
+                                        <li><strong>Наличие `WHERE` в запросе.</strong> Если написано
+                                            `DELETE FROM users`, скрипт удалит всех пользователей.
+                                            Если `DELETE FROM users WHERE id = 5`, то только одного.
+                                            Всегда проверяйте это.</li>
+                                        <li><strong>Параметризация запроса.</strong> Если данные
+                                            передаются через конкатенацию строк, это уязвимость
+                                            SQL-инъекции (см. урок 10 Кибербезопасности).</li>
+                                        <li><strong>Сохранение бэкапа.</strong> Если скрипт делает
+                                            что-то опасное, лучше сначала проверить его на тестовой
+                                            базе данных, а не на реальной.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Рефакторинг</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы написали (или сгенерировали) скрипт, который
+                                работает, но занимает 200 строк. Вы хотите сделать его более
+                                читаемым. Напишите промпт, который попросит нейросеть
+                                улучшить код (сделать рефакторинг).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Попросите разбить код на функции, дать переменным понятные имена
+                                        и добавить комментарии к сложным местам.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный ответ</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Ты опытный Python-разработчик.</span><span class="code-row">Я даю тебе код, который работает, но выглядит грязно.</span><span class="code-row">Пожалуйста, проведи рефакторинг (улучшение кода).</span><span class="code-row">Разбей длинные функции на более мелкие (каждая не</span><span class="code-row">больше 15 строк). Дай переменным понятные имена.</span><span class="code-row">Добавь комментарии туда, где логика неочевидна.</span><span class="code-row">Используй современные конструкции языка (f-строки,</span><span class="code-row">list comprehensions, если уместно).</span><span class="code-row">Вот мой код: [вставить код]</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с вайбкодингом. Узнали, что это подход, при котором вы описываете задачу
+                    словами, а ИИ генерирует код. Поняли, что главное в этом процессе - цикл отладки
+                    (запуск -> ошибка -> исправление) и умение правильно формулировать запросы.</p>
+
+                <p>Запомнили правила безопасности: не запускать код, который вы не понимаете, и
+                    использовать Git для сохранения рабочих версий. Вайбкодинг - это мощный инструмент,
+                    который стирает границы между «идеями» и «реализацией», но требует ответственности
+                    от человека.</p>
+
+                <p>В следующем уроке мы продолжим работу с текстом. Узнаем, как использовать нейросети
+                    для написания статей, редактирования, перевода и создания контента в разных стилях.
+                    Разберём, как заставить ИИ звучать как вы, а не как бездушный робот.</p>
+
+                <div class="lesson-actions">
+                    <a href="../beginner/lesson-04.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-06.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

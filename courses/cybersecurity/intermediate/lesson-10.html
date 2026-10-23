@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL-инъекции и XSS - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="intermediate" data-lesson-id="lesson-10">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 10</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson active" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Уязвимости веб-приложений: SQL-инъекции и XSS</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>До этого момента мы говорили о безопасности с точки зрения пользователя: как защитить
+                    себя, свои аккаунты и данные. Но сайты, которыми мы пользуемся, тоже кто-то пишет.
+                    И в этом коде бывают ошибки. Некоторые из них приводят к тому, что злоумышленник
+                    может украсть данные, подменить содержимое страницы или даже получить контроль над
+                    сервером.</p>
+
+                <p>Сегодня разберём две классические уязвимости веб-приложений: <strong>SQL-инъекции</strong>
+                    и <strong>XSS</strong>. Это те атаки, которые встречаются чаще всего и которые должен
+                    знать каждый, кто работает с веб-разработкой или отвечает за безопасность сайта.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-shield-check"></i>
+                        Важное предупреждение
+                    </div>
+                    <p>Все примеры атак в этом уроке показаны <strong>исключительно в образовательных
+                            целях</strong>. Мы ни к чему не призываем и не даём инструкций для взлома
+                        чужих сайтов.</p>
+                    <p>Наша цель прямо противоположная: <strong>чтобы вы понимали, как работают
+                            атаки, и могли от них защищаться</strong>. Если разработчик знает, как
+                        работает SQL-инъекция, он напишет код, устойчивый к ней. Если администратор
+                        понимает, как злоумышленники используют XSS, он настроит защиту.
+                    </p>
+                    <p>Применение этих знаний против чужих систем - <strong>уголовное
+                            преступление</strong>. Мы учимся защищать, а не атаковать.</p>
+                </div>
+
+                <h2>Почему в веб-приложениях появляются уязвимости</h2>
+
+                <p>Прежде чем разбирать конкретные атаки, давайте поймём общую причину. Почти все
+                    уязвимости веб-приложений сводятся к одной проблеме: <strong>приложение доверяет
+                        данным, которые приходят от пользователя</strong>.</p>
+
+                <p>Согласитесь, странная идея? Сайт не знает, кто зашёл. Может быть, обычный
+                    пользователь, а может - злоумышленник, который специально подготовил вредоносные
+                    данные. Если приложение бездумно вставляет эти данные в SQL-запросы, HTML-страницы
+                    или системные команды - он может заставить программу сделать то, чего разработчик
+                    не планировал.</p>
+
+                <p>Основной принцип безопасной разработки звучит так: <strong>никогда не доверяйте
+                        пользовательскому вводу</strong>. Всё, что приходит с клиента - потенциально
+                    враждебно. Проверяйте, экранируйте, валидируйте.</p>
+
+                <h2>Что такое базы данных и SQL</h2>
+
+                <p>Для понимания SQL-инъекций нужно чуть-чуть контекста. Почти каждый сайт хранит данные
+                    в <strong>базе данных</strong>: пользователи, товары, заказы, сообщения. Чтобы
+                    доставать данные оттуда, используется язык <strong>SQL</strong> (Structured Query
+                    Language).</p>
+
+                <p>Типичный SQL-запрос на выборку пользователя по имени выглядит так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">SELECT * FROM users WHERE username = 'alexey';</span></code></pre>
+
+                <p>Разбирается он так:</p>
+
+                <ul>
+                    <li><code>SELECT *</code> - «выбери все поля».</li>
+                    <li><code>FROM users</code> - «из таблицы <code>users</code>».</li>
+                    <li><code>WHERE username = 'alexey'</code> - «где имя пользователя равно
+                        <code>alexey</code>».
+                    </li>
+                </ul>
+
+                <p>Баз данных и их вариаций много (MySQL, PostgreSQL, SQLite, MS SQL, Oracle), но
+                    принцип везде похож. И везде есть похожие проблемы с безопасностью.</p>
+
+                <h2>SQL-инъекция: как это работает</h2>
+
+                <p>SQL-инъекция (SQL Injection, SQLi) - это атака, при которой злоумышленник вставляет
+                    <strong>SQL-код прямо в пользовательский ввод</strong>, и этот код случайно
+                    выполняется базой данных.
+                </p>
+
+                <p>Как это возможно? Дело в том, как неопытные разработчики собирают SQL-запросы -
+                    простой конкатенацией строк. Вот уязвимый код на Python:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">username = input("Введите логин: ")</span><span class="code-row"></span><span class="code-row">query = "SELECT * FROM users "</span><span class="code-row">query += "WHERE username = '" + username + "'"</span><span class="code-row"></span><span class="code-row">cursor.execute(query)</span></code></pre>
+
+                <p>Обратите внимание: имя пользователя вставляется прямо в строку через конкатенацию.
+                    Пока пользователь вводит нормальные имена вроде <code>alexey</code> или
+                    <code>maria</code> - всё работает. Но что, если он введёт что-то другое?
+                </p>
+
+                <h3>Пример атаки (образовательный)</h3>
+
+                <p>Представьте, что злоумышленник ввёл в поле логина вот такую строку:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">' OR '1'='1</span></code></pre>
+
+                <p>Программа подставит её в свой запрос, и получится:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">SELECT * FROM users WHERE username = '' OR '1'='1';</span></code></pre>
+
+                <p>Что произошло? Одинарная кавычка в начале ввода <strong>закрыла строку</strong>,
+                    которая шла в запросе. Дальше злоумышленник добавил <code>OR '1'='1'</code> -
+                    условие, которое <em>всегда истинно</em> (единица равна единице всегда).</p>
+
+                <p>Получилось: «выбери всех пользователей, у которых username равен пустой строке
+                    ИЛИ единица равна единице». Второе условие всегда истинно - значит, запрос вернёт
+                    <strong>всех пользователей</strong> из таблицы, а не одного. Если приложение
+                    использует этот запрос для входа в систему и проверяет только «есть ли такой
+                    пользователь» - злоумышленник войдёт как первый попавшийся.
+                </p>
+
+                <p>Это самый простой пример. В реальности SQL-инъекции позволяют делать гораздо больше:
+                    читать данные из любых таблиц, изменять их, удалять, а иногда и выполнять команды
+                    на сервере. Именно поэтому SQL-инъекции годами возглавляют список самых опасных
+                    уязвимостей веб-приложений.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Это не «взлом базы» - это ошибка программиста
+                    </div>
+                    <p>Обратите внимание: SQL-инъекция возможна не потому, что база данных плохая.
+                        Она возможна потому, что <strong>разработчик написал небезопасный код</strong>.
+                        Если бы он использовал параметризованные запросы (см. ниже) - инъекция была
+                        бы невозможна, даже если злоумышленник введёт миллион одинарных кавычек.</p>
+                </div>
+
+                <h2>Как защититься от SQL-инъекций</h2>
+
+                <p>Хорошая новость: защита от SQL-инъекций проста и отработана. Есть три подхода,
+                    которые работают в комбинации.</p>
+
+                <h3>1. Параметризованные запросы (главная защита)</h3>
+
+                <p>Вместо того чтобы вставлять пользовательский ввод прямо в строку запроса, используют
+                    <strong>плейсхолдеры</strong> - специальные метки, куда данные подставляются
+                    отдельно, как параметры.
+                </p>
+
+                <p>Вот как выглядит <strong>безопасный</strong> код на Python:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">username = input("Введите логин: ")</span><span class="code-row"></span><span class="code-row">query = "SELECT * FROM users WHERE username = ?"</span><span class="code-row">cursor.execute(query, (username,))</span></code></pre>
+
+                <p>Что изменилось? Вместо того чтобы вклеивать <code>username</code> в строку,
+                    мы написали знак вопроса <code>?</code> - плейсхолдер. А значение передали
+                    отдельным аргументом в <code>execute</code>.</p>
+
+                <p>Теперь, даже если пользователь введёт <code>' OR '1'='1</code>, база данных
+                    воспримет это как <em>строковое значение имени</em>, а не как SQL-код. Она
+                    честно поищет пользователя с буквальным именем <code>' OR '1'='1</code> -
+                    не найдёт - вернёт пустой результат. Никакой инъекции не произойдёт.</p>
+
+                <p>Параметризованные запросы - <strong>основной и обязательный способ</strong>
+                    защиты. Все современные драйверы баз данных его поддерживают.</p>
+
+                <h3>2. Валидация входных данных</h3>
+
+                <p>Второй слой защиты - проверка, что данные выглядят так, как ожидается. Если поле
+                    «возраст» должно быть числом - проверьте, что там действительно число. Если
+                    «email» - проверьте формат email. Если «имя» - ограничьте допустимые символы
+                    (например, только буквы, пробелы и дефис).</p>
+
+                <p>Это не заменяет параметризованные запросы, но добавляет ещё один барьер. Даже если
+                    разработчик где-то ошибётся, валидация может отсеять вредоносный ввод.</p>
+
+                <h3>3. Принцип наименьших привилегий</h3>
+
+                <p>Третий уровень - ограничение прав пользователя базы данных. Приложение должно
+                    подключаться к базе под учёткой, у которой есть только необходимые права.
+                    Например, если приложению нужно только читать данные для отображения каталога -
+                    не давайте ему прав на удаление таблиц.</p>
+
+                <p>Тогда даже если инъекция удастся, злоумышленник сможет сделать только то, что
+                    разрешено этому пользователю. Ущерб будет ограничен.</p>
+
+                <h2>XSS: когда опасен не SQL, а HTML</h2>
+
+                <p>Вторая классическая уязвимость - <strong>XSS</strong> (Cross-Site Scripting,
+                    «межсайтовый скриптинг»). Атака работает по другому принципу: злоумышленник
+                    заставляет браузер жертвы выполнить <strong>JavaScript-код</strong>, который
+                    он внедрил на сайт.</p>
+
+                <p>Название читается как «икс-эс-эс». Сокращение CSS уже занято каскадными таблицами
+                    стилей, поэтому первую букву заменили на X (от слова <em>cross</em>).</p>
+
+                <p>Пример уязвимого кода: сайт берёт имя пользователя из базы и вставляет его прямо
+                    в HTML-страницу без проверки. Если злоумышленник сохранит в качестве имени что-то
+                    вроде тега script с кодом, то этот код выполнится в браузере <strong>каждого</strong>,
+                    кто откроет страницу с его именем.</p>
+
+                <p>Что может сделать внедрённый скрипт:</p>
+
+                <ul>
+                    <li>Украсть cookie и сессионные токены, чтобы войти в аккаунт жертвы.</li>
+                    <li>Перенаправить пользователя на фишинговый сайт.</li>
+                    <li>Показать поддельную форму ввода пароля прямо на настоящем сайте.</li>
+                    <li>Совершить действия от имени пользователя: отправить сообщения, изменить
+                        данные.</li>
+                    <li>Прочитать содержимое страницы и отправить злоумышленнику - включая
+                        потенциально конфиденциальные данные.</li>
+                </ul>
+
+                <h3>Три вида XSS</h3>
+
+                <p>XSS бывает трёх типов - в зависимости от того, как именно код попадает на страницу.</p>
+
+                <h4>Stored XSS (хранимая)</h4>
+
+                <p>Самый опасный вид. Вредоносный код <strong>сохраняется в базе данных сайта</strong> -
+                    например, в комментарии, в сообщении на форуме, в имени профиля. Когда любой
+                    пользователь открывает страницу с этим содержимым - код выполняется в его браузере.</p>
+
+                <p>Именно поэтому опасно публиковать чужой код на форумах и в чатах. Один раз сохранил -
+                    и он срабатывает для всех посетителей страницы.</p>
+
+                <h4>Reflected XSS (отражённая)</h4>
+
+                <p>Код не сохраняется на сервере, а «отражается» в ответе на конкретный запрос. Часто
+                    встречается в поиске: пользователь вводит запрос, а сайт показывает «Вы искали:
+                    <em>запрос</em>». Если запрос не экранируется, можно вставить туда скрипт.
+                </p>
+
+                <p>Жертве нужно перейти по специально подготовленной ссылке, чтобы атака сработала.
+                    Поэтому такие атаки часто распространяют через письма и мессенджеры.</p>
+
+                <h4>DOM-based XSS</h4>
+
+                <p>Самый тонкий вид. Скрипт-уязвимость существует <strong>в самом JavaScript
+                        на странице</strong> - сервер вообще ни при чём. Например, страница читает
+                    что-то из адреса (URL) и вставляет в HTML без проверки. Все манипуляции
+                    происходят в браузере жертвы.</p>
+
+                <h3>Пример (образовательный)</h3>
+
+                <p>Допустим, сайт выводит приветствие пользователю так:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Привет, Иван!</span></code></pre>
+
+                <p>Если имя пользователя вставляется в HTML напрямую, без экранирования, злоумышленник
+                    может зарегистрироваться с именем, содержащим тег script. Тогда при отображении
+                    страницы этот тег «оживёт» и выполнится в браузере жертвы.</p>
+
+                <p>Повторюсь: это не «поломка сайта». Это <strong>ошибка в коде сайта</strong>,
+                    которая позволяет пользовательскому вводу превратиться в исполняемый код.
+                    Задача разработчика - не допустить этого.</p>
+
+                <h2>Как защититься от XSS</h2>
+
+                <p>Защита от XSS строится на трёх принципах.</p>
+
+                <h3>1. Экранирование HTML</h3>
+
+                <p>Главная защита. Прежде чем вставить пользовательские данные в HTML, нужно
+                    <strong>экранировать специальные символы</strong>. Например:
+                </p>
+
+                <ul>
+                    <li>Знак «меньше» <code>&lt;</code> превращается в <code>&amp;lt;</code>.</li>
+                    <li>Знак «больше» <code>&gt;</code> превращается в <code>&amp;gt;</code>.</li>
+                    <li>Амперсанд <code>&amp;</code> превращается в <code>&amp;amp;</code>.</li>
+                    <li>Кавычки - в <code>&amp;quot;</code>.</li>
+                </ul>
+
+                <p>После экранирования браузер увидит в пользовательском вводе не тег script,
+                    а обычный текст - символы «меньше» и «больше» будут отображены как есть,
+                    а не как начало HTML-тега.</p>
+
+                <p>В большинстве современных фреймворков (React, Vue, Angular, Django, Rails)
+                    экранирование включено по умолчанию. Опасность появляется, когда разработчик
+                    специально его отключает - например, вставляет данные как «raw HTML».
+                    Это можно делать только для данных из надёжного источника.</p>
+
+                <h3>2. Content Security Policy (CSP)</h3>
+
+                <p>Дополнительный слой - специальный HTTP-заголовок <strong>Content Security Policy</strong>,
+                    который говорит браузеру, откуда можно загружать скрипты. Если CSP настроен строго,
+                    то даже если злоумышленник внедрит тег script - браузер его не выполнит, потому
+                    что он не соответствует политике.</p>
+
+                <p>Правильно настроенный CSP - мощная защита. Он работает как «белый список»:
+                    разрешены только доверенные источники скриптов, всё остальное блокируется.</p>
+
+                <h3>3. Флаги безопасности cookie</h3>
+
+                <p>Даже если XSS всё-таки случилась, можно ограничить ущерб. У cookie есть специальные
+                    флаги:</p>
+
+                <ul>
+                    <li><strong>HttpOnly</strong> - cookie недоступна для JavaScript. Даже если
+                        злоумышленник внедрит скрипт, он не сможет прочитать этот cookie.</li>
+                    <li><strong>Secure</strong> - cookie передаётся только по HTTPS.</li>
+                    <li><strong>SameSite</strong> - cookie не отправляется при переходах с других
+                        сайтов. Защищает от ряда атак.</li>
+                </ul>
+
+                <p>Правильно настроенные флаги cookie - это «пояс безопасности» на случай аварии.
+                    Основная защита всё равно должна быть - экранирование и CSP.</p>
+
+                <h2>Сравнение двух уязвимостей</h2>
+
+                <p>Чтобы закрепить понимание, вот короткая сводка по двум атакам:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Критерий</th>
+                            <th>SQL-инъекция</th>
+                            <th>XSS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Где выполняется</td>
+                            <td>На сервере, в базе данных</td>
+                            <td>В браузере жертвы</td>
+                        </tr>
+                        <tr>
+                            <td>Что атакуют</td>
+                            <td>Базу данных сайта</td>
+                            <td>Пользователя сайта</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Главная защита</td>
+                            <td><strong>Параметризованные запросы</strong></td>
+                            <td><strong>Экранирование HTML</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Дополнительно</td>
+                            <td>Валидация, минимум привилегий</td>
+                            <td>CSP, HttpOnly cookies</td>
+                        </tr>
+                        <tr>
+                            <td>Кого затрагивает</td>
+                            <td>Всю систему и всех пользователей</td>
+                            <td>Конкретных пользователей</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Почему это важно знать</h2>
+
+                <p>Если вы не разработчик, зачем вам это? Вот несколько причин.</p>
+
+                <p>Во-первых, <strong>понимание помогает распознавать проблемы</strong>. Если вы
+                    работаете с сайтом как менеджер, тестировщик или владелец бизнеса - вы будете
+                    знать, какие вопросы задавать разработчикам. «Используете параметризованные
+                    запросы?» - на этот вопрос у команды должен быть чёткий ответ.</p>
+
+                <p>Во-вторых, <strong>это часть общей грамотности</strong>. Сегодня безопасность
+                    касается всех, кто связан с IT. Даже если вы не пишете код, полезно понимать,
+                    почему это важно и как работает.</p>
+
+                <p>В-третьих, <strong>это основа для более серьёзного изучения</strong>. Если
+                    вы планируете карьеру в разработке или безопасности - SQL-инъекции и XSS это
+                    то, с чего начинают.</p>
+
+                <p>И самое главное: <strong>зная, как атакуют, легче защищаться</strong>. Именно
+                    поэтому мы разбираем эти темы. Не для того, чтобы вы атаковали, а для того,
+                    чтобы вы писали безопасный код и понимали, от чего защищаетесь.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>SQLi</code>
+                        <span>внедрение SQL-кода через ввод</span>
+                    </li>
+                    <li>
+                        <code>XSS</code>
+                        <span>внедрение JS-кода на страницу</span>
+                    </li>
+                    <li>
+                        <code>Плейсхолдеры</code>
+                        <span>главная защита от SQLi</span>
+                    </li>
+                    <li>
+                        <code>Экранирование</code>
+                        <span>главная защита от XSS</span>
+                    </li>
+                    <li>
+                        <code>Валидация</code>
+                        <span>дополнительный слой для обоих</span>
+                    </li>
+                    <li>
+                        <code>CSP</code>
+                        <span>политика источников скриптов</span>
+                    </li>
+                    <li>
+                        <code>HttpOnly cookie</code>
+                        <span>защита от кражи сессий</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Как всегда, вместо ошибок компилятора - типичные заблуждения по теме.</p>
+
+                <ul>
+                    <li><strong>«У меня простой сайт, мне это не грозит».</strong> Именно простые сайты
+                        чаще всего атакуют автоматические сканеры - они ищут известные уязвимости
+                        массово, по всему интернету. Никто не будет персонально вас взламывать,
+                        но сканер обязательно постучится.</li>
+                    <li><strong>«Мой хостинг сам всё защитит».</strong> Хостинг может защитить от
+                        DDoS или базовых атак на инфраструктуру, но не от уязвимостей в вашем коде.
+                        SQL-инъекция и XSS - это ошибки в <em>приложении</em>, а не в сервере.</li>
+                    <li><strong>«У меня есть WAF - firewall, он всё отфильтрует».</strong> WAF (Web
+                        Application Firewall) - полезный инструмент, но он не заменяет безопасный код.
+                        Профессиональные атаки умеют обходить WAF. Это дополнительный слой, а не
+                        основной.</li>
+                    <li><strong>«Я использую ORM, значит SQL-инъекция невозможна».</strong> ORM
+                        (например, Hibernate, Entity Framework, Django ORM) действительно использует
+                        параметризованные запросы по умолчанию. Но есть способы «заставить» ORM
+                        выполнить сырой SQL. Если разработчик использует <code>raw</code>-запросы
+                        без параметров - инъекция вернётся.</li>
+                    <li><strong>«XSS - это проблема только старых браузеров».</strong> Нет. XSS работает
+                        в любом браузере, потому что это не баг браузера, а ошибка сайта. Современные
+                        браузеры добавили некоторые защиты (CSP, SameSite cookies), но полностью
+                        проблему не решили.</li>
+                    <li><strong>«Пользователи не могут вводить код, форма не даёт».</strong> Форма на
+                        сайте - это только удобство. Злоумышленник может отправлять запросы напрямую,
+                        минуя форму. Например, через curl, Postman или свой скрипт. Никогда не
+                        полагайтесь на клиентскую валидацию - она обходится в один клик.</li>
+                    <li><strong>«Раз я не разработчик, я ничего не могу сделать».</strong> Можете.
+                        Если вы заказываете сайт - попросите разработчика показать, что SQL-запросы
+                        параметризованы. Если работаете в команде - поднимите вопрос безопасности
+                        на обсуждении. Даже базовый уровень грамотности помогает не допускать
+                        проблем.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание концепций, вторые две - на размышление
+                    и разбор кода. Каждая с подсказкой и разбором.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Что за уязвимость</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Определите, о какой уязвимости идёт речь в каждой
+                                ситуации.</p>
+                            <ol>
+                                <li>Пользователь оставил комментарий на форуме, и теперь у всех
+                                    посетителей страницы всплывает чужой скрипт.</li>
+                                <li>Введя в поле поиска кавычку, пользователь увидел ошибку базы
+                                    данных.</li>
+                                <li>Ссылка из письма ведёт на сайт, который показывает то же самое,
+                                    что ввёл пользователь в поиске, - и выполняет вставленный код.</li>
+                                <li>Разработчик при входе в систему вставил логин прямо в SQL-запрос
+                                    без параметров.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте, где выполняется код: в базе данных или в браузере.
+                                        И сохраняется ли он где-то между сессиями.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Stored XSS.</strong> Скрипт сохранён в базе и
+                                            срабатывает у всех, кто открывает страницу с комментарием.
+                                            Самый опасный вид XSS.</li>
+                                        <li><strong>SQL-инъекция.</strong> Простая кавычка без
+                                            закрытия сломала SQL-запрос, и приложение показало
+                                            сообщение об ошибке базы. Это признак уязвимости -
+                                            значит, ввод вставляется в запрос без параметров.</li>
+                                        <li><strong>Reflected XSS.</strong> Код не сохраняется, а
+                                            отражается в ответе на конкретный запрос. Жертву ведут
+                                            по специально подготовленной ссылке.</li>
+                                        <li><strong>SQL-инъекция.</strong> Классический пример
+                                            уязвимого кода - конкатенация строк вместо
+                                            параметризованных запросов.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Как исправить код</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами уязвимый код. Объясните, в чём проблема,
+                                и опишите, как его исправить.</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">query = "SELECT * FROM users WHERE "</span><span class="code-row">query += "email = '" + email + "'"</span><span class="code-row">query += " AND password = '" + password + "'"</span><span class="code-row"></span><span class="code-row">result = db.execute(query)</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Обратите внимание, как формируется запрос. Что произойдёт, если
+                                        в <code>email</code> или <code>password</code> попадёт кавычка
+                                        или SQL-оператор?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проблемы в этом коде:</p>
+                                    <ul>
+                                        <li><strong>Конкатенация строк.</strong> Значения <code>email</code>
+                                            и <code>password</code> вставляются в запрос напрямую. Это
+                                            классическая уязвимость к SQL-инъекции.</li>
+                                        <li><strong>Проверка пароля в открытом виде.</strong> В базе
+                                            данных не должен храниться пароль в чистом виде - только
+                                            хеш (см. урок 8 про хеширование).</li>
+                                        <li><strong>Одна проверка для email и password.</strong> Даже
+                                            если убрать инъекцию - такая схема не даёт понять, что именно
+                                            не совпало: email или пароль. Это тоже проблема -
+                                            в реальных системах обычно сначала ищут пользователя, потом
+                                            проверяют пароль.</li>
+                                    </ul>
+                                    <p>Как исправить:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">query = "SELECT * FROM users WHERE email = ?"</span><span class="code-row"></span><span class="code-row">user = db.execute(query, (email,))</span><span class="code-row"></span><span class="code-row">if user and check_password(password, user.password_hash):</span><span class="code-row">    # вход разрешён</span><span class="code-row">else:</span><span class="code-row">    # вход запрещён</span></code></pre>
+                                    <p>Что здесь важно:</p>
+                                    <ul>
+                                        <li><strong>Параметризованный запрос</strong> с плейсхолдером
+                                            <code>?</code> - защита от SQL-инъекции.
+                                        </li>
+                                        <li><strong>Хеш пароля</strong> вместо открытого вида - защита
+                                            при утечке базы.</li>
+                                        <li><strong>Отдельная проверка пароля</strong> через функцию
+                                            <code>check_password</code> (обычно с использованием
+                                            bcrypt или Argon2) - правильная схема аутентификации.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Определите вид XSS</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой ситуации определите тип XSS:
+                                stored, reflected или DOM-based.</p>
+                            <ol>
+                                <li>Пользователь отправляет комментарий, и через час этот скрипт
+                                    срабатывает у всех, кто открывает страницу с этим комментарием.</li>
+                                <li>Хакер присылает жертве ссылку на сайт банка со специально
+                                    подготовленным параметром, и при открытии ссылки выполняется
+                                    скрипт.</li>
+                                <li>Страница читает название раздела из адреса и вставляет
+                                    его в HTML без проверки.</li>
+                                <li>Злоумышленник изменил своё имя в соцсети на скрипт, и оно
+                                    попало в базу данных.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Ключевой вопрос: где хранится скрипт? В базе данных (stored),
+                                        в URL (reflected) или в самом JavaScript на странице
+                                        (DOM-based)?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Stored XSS.</strong> Код сохранён в базе данных
+                                            (комментарий) и срабатывает у всех посетителей страницы.
+                                            Самый опасный вид.</li>
+                                        <li><strong>Reflected XSS.</strong> Код не хранится на
+                                            сервере, а «отражается» в ответе на конкретный запрос.
+                                            Жертву ведут по специально подготовленной ссылке.</li>
+                                        <li><strong>DOM-based XSS.</strong> Ни сервер, ни база
+                                            данных не при чём. Всё происходит в самом JavaScript
+                                            страницы, который небезопасно обрабатывает данные из
+                                            URL.</li>
+                                        <li><strong>Stored XSS.</strong> Имя сохранено в базе
+                                            данных и будет отображаться на всех страницах, где оно
+                                            появляется - в профиле, комментариях, ленте.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Этическая дилемма</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы обнаружили уязвимость SQL-инъекции на сайте,
+                                которым пользуетесь. Что делать? Опишите правильный порядок
+                                действий.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте о разнице между «проверить» и «использовать». И о
+                                        том, кто должен узнать об уязвимости первым.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Правильный порядок действий:</p>
+                                    <ol>
+                                        <li><strong>Не эксплуатировать уязвимость.</strong> Не
+                                            пытаться украсть данные, не менять содержимое, не
+                                            проверять «какие ещё таблицы доступны». Само по себе
+                                            использование уязвимости - это уже правонарушение,
+                                            даже если цель «просто посмотреть».</li>
+                                        <li><strong>Сообщить владельцу сайта.</strong> Через
+                                            официальный контакт - форму обратной связи, письмо
+                                            на <code>security@company.com</code>, если такой
+                                            адрес есть. Опишите проблему так, чтобы её можно было
+                                            воспроизвести, но не публикуйте детали.</li>
+                                        <li><strong>Дать время на исправление.</strong>
+                                            Обычно это 30-90 дней. За это время владелец должен
+                                            закрыть уязвимость. Такая практика называется
+                                            <em>responsible disclosure</em> («ответственное
+                                            раскрытие»).
+                                        </li>
+                                        <li><strong>Не публиковать уязвимость до исправления.</strong>
+                                            Публикация до фикса - это подсказка злоумышленникам,
+                                            а не помощь пользователям.</li>
+                                        <li><strong>Если владелец не отвечает.</strong>
+                                            Можно обратиться в CERT (Computer Emergency Response
+                                            Team) - в России это <code>cert.gov.ru</code>.
+                                            Они свяжутся с владельцем и помогут закрыть
+                                            проблему.</li>
+                                    </ol>
+                                    <p>Многие компании и сайты платят за сообщения об уязвимостях -
+                                        это называется <em>bug bounty</em>. Участие в таких
+                                        программах - легальный способ применять знания по
+                                        безопасности.</p>
+                                    <p>Самое главное правило: <strong>знания не дают права их
+                                            применять без разрешения</strong>. Всё, что мы разбираем
+                                        в этом курсе - для защиты, а не для атаки.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с двумя самыми распространёнными уязвимостями веб-приложений - SQL-инъекцией
+                    и XSS. Узнали, что обе они происходят из одной корневой причины: <strong>приложение
+                        доверяет пользовательскому вводу</strong>. SQL-инъекция возможна, когда разработчик
+                    вставляет ввод прямо в SQL-запрос через конкатенацию. XSS - когда ввод превращается
+                    в исполняемый JavaScript в браузере жертвы.</p>
+
+                <p>Разобрались, как защищаться. От SQL-инъекций - <strong>параметризованные
+                        запросы</strong>, валидация и минимальные привилегии базы данных. От XSS -
+                    <strong>экранирование HTML</strong>, Content Security Policy и флаги безопасности
+                    cookie. Познакомились с тремя видами XSS: stored, reflected и DOM-based.
+                </p>
+
+                <p>И самое важное: вы поняли, зачем это знать. Не для того, чтобы атаковать - а
+                    для того, чтобы <strong>защищать</strong>. Понимание механики атак - это основа
+                    безопасной разработки. Зная, как ломают, легче строить так, чтобы не сломали.</p>
+
+                <p>В следующем уроке мы займёмся <strong>DDoS-атаками</strong> - разберёмся,
+                    что такое распределённый отказ в обслуживании, как собираются ботнеты из
+                    заражённых устройств, какие бывают типы атак и как от них защищаются
+                    крупные сервисы. Это ещё одна грань кибербезопасности - не кража данных
+                    и не внедрение кода, а полное нарушение доступности сервиса.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-09.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-11.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

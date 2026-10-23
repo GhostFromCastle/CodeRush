@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Списки и словари - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="beginner" data-lesson-id="lesson-11">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 11</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson active" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Списки и словари</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы познакомились с массивами - и это был большой шаг. Массив позволяет хранить
+                    много однотипных данных в одной переменной. Но у него есть один серьёзный недостаток, который
+                    вы, наверное, уже заметили: <strong>размер массива нельзя изменить</strong>.</p>
+
+                <p>Создали массив на 5 элементов - значит, там всегда будет ровно 5 ячеек. Добавить шестую нельзя.
+                    Если нужно больше - придётся создавать новый массив, копировать туда старые значения и
+                    выбрасывать старый. Согласитесь, это неудобно.</p>
+
+                <p>В реальных программах данные почти всегда приходят «порциями»: пользователь добавляет товары в
+                    корзину, бот получает сообщения, программа читает строки из файла. Заранее неизвестно, сколько
+                    их будет. Поэтому в C# есть <strong>списки</strong> и <strong>словари</strong> - две самые
+                    используемые коллекции. Сегодня мы с ними и познакомимся.</p>
+
+                <h2>List - «резиновый массив»</h2>
+
+                <p><code>List</code> (читается «лист», от английского «список») - это как массив, только гибкий.
+                    Его размер может меняться: добавляйте элементы - список растёт, удаляйте - сжимается. Идеально
+                    для случаев, когда количество данных заранее неизвестно.</p>
+
+                <p>Чтобы использовать <code>List</code>, нужна одна подготовительная строка - подключить
+                    специальное пространство имён. Помните <code>using System;</code> в самом начале файла? Так
+                    вот, для списков нужно добавить ещё одно:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">using System.Collections.Generic;</span></code></pre>
+
+                <p>Скорее всего, Visual Studio уже добавила её за вас. Если нет - допишите в самый верх файла,
+                    рядом с другими <code>using</code>. Без неё компилятор не поймёт, что такое <code>List</code>.</p>
+
+                <h3>Создание списка</h3>
+
+                <p>Синтаксис создания списка похож на массив, но с угловыми скобками:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">List&lt;int&gt; numbers = new List&lt;int&gt;();</span></code></pre>
+
+                <p>Разберём:</p>
+
+                <ul>
+                    <li><code>List&lt;int&gt;</code> - тип «список целых чисел». В угловых скобках указывается
+                        тип элементов.</li>
+                    <li><code>numbers</code> - имя переменной.</li>
+                    <li><code>new List&lt;int&gt;()</code> - команда «создай новый пустой список целых чисел».</li>
+                </ul>
+
+                <p>После этой строки у нас пустой список. Внутри него пока ноль элементов. И в отличие от массива,
+                    мы можем сразу начинать добавлять.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        А с var короче
+                    </div>
+                    <p>Так как тип очевиден из правой части, можно записать через <code>var</code>:
+                        <code>var numbers = new List&lt;int&gt;();</code>. Так делают почти все - код получается
+                        чище. Мы тоже будем использовать этот стиль дальше.
+                    </p>
+                </div>
+
+                <h3>Добавляем элементы: .Add()</h3>
+
+                <p>У списка есть метод <code>.Add()</code> - «добавить». Передаёте ему значение, и оно встаёт в
+                    конец списка:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var numbers = new List&lt;int&gt;();</span><span class="code-row"></span><span class="code-row">numbers.Add(10);</span><span class="code-row">numbers.Add(20);</span><span class="code-row">numbers.Add(30);</span></code></pre>
+
+                <p>Теперь внутри <code>numbers</code> три числа: 10, 20 и 30. Каждый вызов <code>Add</code>
+                    добавляет новый элемент в конец. Список автоматически растёт - нам не нужно заранее знать,
+                    сколько элементов будет.</p>
+
+                <p>Можно добавить сразу несколько значений - либо в цикле, либо через другую форму инициализации:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var numbers = new List&lt;int&gt; { 10, 20, 30, 40, 50 };</span></code></pre>
+
+                <p>Фигурные скобки работают так же, как у массивов - список сразу заполняется значениями. Тип
+                    справа (<code>new List&lt;int&gt;</code>) определяет, что внутри будут целые числа.</p>
+
+                <h3>Сколько элементов? .Count</h3>
+
+                <p>У массива была <code>.Length</code>, у списка - <code>.Count</code> («количество»). Смысл тот
+                    же, но название другое:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var numbers = new List&lt;int&gt; { 10, 20, 30 };</span><span class="code-row">Console.WriteLine(numbers.Count);</span></code></pre>
+
+                <p>Программа выведет <code>3</code>. Да, это одна из мелочей, к которой надо привыкнуть: у массива
+                    <code>.Length</code>, у списка <code>.Count</code>. Оба показывают «сколько элементов внутри»,
+                    но называются по-разному.
+                </p>
+
+                <h3>Обращение по индексу</h3>
+
+                <p>Список тоже работает с индексами, как массив. Нумерация с нуля:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var fruits = new List&lt;string&gt; { "Яблоко", "Банан", "Апельсин" };</span><span class="code-row"></span><span class="code-row">Console.WriteLine(fruits[0]);</span><span class="code-row">Console.WriteLine(fruits[2]);</span><span class="code-row"></span><span class="code-row">fruits[1] = "Груша";</span></code></pre>
+
+                <p>В первых двух строках мы выводим первый и третий элементы. В третьей - заменяем «Банан» на
+                    «Грушу». Всё работает точно так же, как с массивом. Просто у списка возможностей больше.</p>
+
+                <h3>Удаление элементов: .Remove() и .RemoveAt()</h3>
+
+                <p>Здесь начинается настоящее преимущество списка перед массивом. Удалить элемент можно двумя
+                    способами:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var fruits = new List&lt;string&gt; { "Яблоко", "Банан", "Апельсин" };</span><span class="code-row"></span><span class="code-row">fruits.Remove("Банан");</span><span class="code-row">fruits.RemoveAt(0);</span></code></pre>
+
+                <p>После этих строк в списке остался только «Апельсин».</p>
+
+                <p><code>.Remove(значение)</code> ищет первый элемент с таким значением и удаляет его.
+                    <code>.RemoveAt(индекс)</code> удаляет элемент по его номеру. Оба метода сразу сдвигают
+                    оставшиеся элементы - в списке не остаётся «дырок».
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Что если элемента нет?
+                    </div>
+                    <p>Если попытаться удалить значение, которого в списке нет, - ничего страшного не произойдёт.
+                        <code>.Remove()</code> просто вернёт <code>false</code> и оставит список как есть. А вот
+                        <code>.RemoveAt()</code> с несуществующим индексом вызовет ошибку - программа упадёт.
+                    </p>
+                </div>
+
+                <h3>Другие полезные методы</h3>
+
+                <p>У списка их много. Вот самые нужные:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>.Add(x)</code>
+                        <span>добавить в конец</span>
+                    </li>
+                    <li>
+                        <code>.Insert(i, x)</code>
+                        <span>вставить на позицию i</span>
+                    </li>
+                    <li>
+                        <code>.Remove(x)</code>
+                        <span>удалить по значению</span>
+                    </li>
+                    <li>
+                        <code>.RemoveAt(i)</code>
+                        <span>удалить по индексу</span>
+                    </li>
+                    <li>
+                        <code>.Contains(x)</code>
+                        <span>есть ли элемент (bool)</span>
+                    </li>
+                    <li>
+                        <code>.IndexOf(x)</code>
+                        <span>индекс элемента или −1</span>
+                    </li>
+                    <li>
+                        <code>.Clear()</code>
+                        <span>удалить всё</span>
+                    </li>
+                    <li>
+                        <code>.Count</code>
+                        <span>сколько элементов</span>
+                    </li>
+                </ul>
+
+                <h2>Цикл foreach - перебор коллекций</h2>
+
+                <p>Мы уже умеем перебирать массив через <code>for</code> и индексы. Но для списков и других
+                    коллекций есть более удобный цикл - <code>foreach</code> («фо-рич», от «for each» - «для
+                    каждого»). Он проходит по всем элементам, не требуя работы с индексами.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var fruits = new List&lt;string&gt; { "Яблоко", "Банан", "Апельсин" };</span><span class="code-row"></span><span class="code-row">foreach (string fruit in fruits)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(fruit);</span><span class="code-row">}</span></code></pre>
+
+                <p>Смысл этой конструкции: «для каждого <code>fruit</code> в коллекции <code>fruits</code> -
+                    выполни то, что в теле». На каждой итерации переменная <code>fruit</code> содержит очередной
+                    элемент списка.</p>
+
+                <p>Сравните с обычным <code>for</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">for (int i = 0; i &lt; fruits.Count; i++)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(fruits[i]);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">foreach (string fruit in fruits)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(fruit);</span><span class="code-row">}</span></code></pre>
+
+                <p>Результат один и тот же. Но <code>foreach</code> короче и читается легче. Особенно когда нам
+                    не нужен индекс - просто хотим пройти по всем элементам и что-то с ними сделать.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Когда for, а когда foreach
+                    </div>
+                    <p><strong>foreach</strong> - когда нужно пройти по всем элементам и нам не важен порядковый
+                        номер.<br>
+                        <strong>for</strong> - когда нужен индекс (например, чтобы изменить элемент по позиции)
+                        или когда нужно идти не с начала, а с середины, или в обратном порядке.
+                    </p>
+                </div>
+
+                <h3>Имя переменной в foreach</h3>
+
+                <p>В <code>foreach (string fruit in fruits)</code> имя <code>fruit</code> - это просто «как мы
+                    будем называть очередной элемент внутри тела цикла». Можно назвать как угодно:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">foreach (string f in fruits)</span><span class="code-row">foreach (string item in fruits)</span><span class="code-row">foreach (string яблоко in fruits)</span></code></pre>
+
+                <p>Все три варианта правильные. Главное - чтобы имя было понятным и не конфликтовало с другими
+                    переменными в этом же месте.</p>
+
+                <h2>Dictionary - «словарь»</h2>
+
+                <p>Второй тип коллекции, с которым стоит познакомиться, - <code>Dictionary</code> («дикшенери»,
+                    от английского «словарь»). Он хранит данные не по номерам, а по <strong>ключам</strong>.</p>
+
+                <p>Аналогия - обычный бумажный словарь. У вас есть слово (ключ) и его значение. Чтобы найти
+                    перевод, вы ищете не по номеру страницы, а по самому слову. В <code>Dictionary</code> то же
+                    самое: у каждого значения есть свой ключ, по которому его можно мгновенно найти.</p>
+
+                <p>Примеры из реальной жизни, где удобен словарь:</p>
+
+                <ul>
+                    <li>Имя ученика → его оценка.</li>
+                    <li>Логин пользователя → пароль.</li>
+                    <li>Название товара → его цена.</li>
+                    <li>Код страны → название страны.</li>
+                </ul>
+
+                <p>Везде есть «ключ» (по чему ищем) и «значение» (что находим).</p>
+
+                <h3>Создание словаря</h3>
+
+                <p>Синтаксис похож на список, только в угловых скобках теперь <strong>два</strong> типа - сначала
+                    ключ, потом значение:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var scores = new Dictionary&lt;string, int&gt;();</span></code></pre>
+
+                <p>Здесь <code>string</code> - тип ключа, <code>int</code> - тип значения. То есть «словарь, где
+                    ключи - строки, а значения - целые числа». Например, имя ученика → его оценка.</p>
+
+                <h3>Добавление пар: .Add()</h3>
+
+                <p>У словаря тоже есть метод <code>.Add()</code>, но принимает он <strong>два</strong> аргумента -
+                    ключ и значение:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var scores = new Dictionary&lt;string, int&gt;();</span><span class="code-row"></span><span class="code-row">scores.Add("Алексей", 5);</span><span class="code-row">scores.Add("Мария", 4);</span><span class="code-row">scores.Add("Иван", 3);</span></code></pre>
+
+                <p>Теперь в словаре три пары. Ключ «Алексей» связан со значением 5, «Мария» - с 4,
+                    «Иван» - с 3.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Ключи уникальны
+                    </div>
+                    <p>В словаре <strong>не может быть двух одинаковых ключей</strong>. Если попытаться добавить
+                        ещё одного «Алексея», C# выдаст ошибку. Это логично: если бы в словаре было два слова
+                        «стол», по какому из них искать перевод? Если нужно изменить значение для существующего
+                        ключа - используйте не <code>.Add()</code>, а присваивание (см. ниже).</p>
+                </div>
+
+                <h3>Чтение значений</h3>
+
+                <p>Чтобы достать значение, обращаемся к словарю по ключу в квадратных скобках:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.WriteLine(scores["Алексей"]);</span><span class="code-row">Console.WriteLine(scores["Мария"]);</span></code></pre>
+
+                <p>Программа выведет 5 и 4. Очень удобно: не надо искать по индексу, бегать по всему массиву -
+                    сразу получаем нужное значение по ключу. Внутри словарь устроен так, что поиск происходит
+                    моментально, даже если внутри миллион записей.</p>
+
+                <h3>Изменение значения</h3>
+
+                <p>Чтобы изменить оценку существующего ученика, просто присваиваем новое значение по ключу:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">scores["Мария"] = 5;</span></code></pre>
+
+                <p>Никаких <code>.Add()</code> - если ключ уже есть, значение просто заменится. Если ключа нет -
+                    он добавится. Кстати, эту форму можно использовать и вместо <code>.Add()</code> вообще:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">scores["Пётр"] = 5;</span></code></pre>
+
+                <p>Так часто даже удобнее - не надо думать, есть ключ или нет.</p>
+
+                <h3>Проверка наличия ключа: .ContainsKey()</h3>
+
+                <p>Если обратиться к словарю по ключу, которого в нём нет, - программа упадёт с ошибкой. Поэтому
+                    перед чтением иногда полезно проверить, существует ли ключ:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">if (scores.ContainsKey("Мария"))</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(scores["Мария"]);</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Такого ученика нет");</span><span class="code-row">}</span></code></pre>
+
+                <p>Метод <code>.ContainsKey()</code> возвращает <code>true</code> или <code>false</code> - есть
+                    такой ключ или нет. Идеально сочетается с условиями из четвёртого урока.</p>
+
+                <h3>Перебор словаря через foreach</h3>
+
+                <p>Словарь тоже можно перебрать циклом <code>foreach</code>. Только на каждой итерации мы
+                    получаем не одно значение, а <strong>пару</strong> «ключ-значение». Для этого используется
+                    специальный тип <code>KeyValuePair</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">foreach (var pair in scores)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"{pair.Key}: {pair.Value}");</span><span class="code-row">}</span></code></pre>
+
+                <p>На каждой итерации <code>pair</code> содержит две части: <code>.Key</code> - ключ
+                    и <code>.Value</code> - значение. Программа выведет что-то вроде:</p>
+
+                <pre><code>Алексей: 5
+Мария: 4
+Иван: 3
+Пётр: 5</code></pre>
+
+                <p>Порядок может быть любым - словарь не гарантирует последовательность, в отличие от списка.
+                    Это связано с тем, как он устроен внутри.</p>
+
+                <h2>Когда что использовать</h2>
+
+                <p>Мы познакомились с тремя коллекциями. Давайте соберём в одном месте, что и когда применять.</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Коллекция</th>
+                            <th>Особенность</th>
+                            <th>Когда использовать</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Массив</code></td>
+                            <td>Фиксированный размер</td>
+                            <td>Когда количество элементов известно заранее и не меняется</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td><code>List&lt;T&gt;</code></td>
+                            <td>Растущий список по индексам</td>
+                            <td><strong>По умолчанию для любой коллекции.</strong> Когда важно хранить порядок и нужен
+                                доступ по номеру</td>
+                        </tr>
+                        <tr>
+                            <td><code>Dictionary&lt;K,V&gt;</code></td>
+                            <td>Поиск по ключу</td>
+                            <td>Когда нужно быстро находить значение по имени, коду, идентификатору</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Проще говоря: <strong>90% задач решает <code>List</code></strong>. Если только вам не нужен
+                    поиск по ключу - тогда <code>Dictionary</code>. Массивы же используются реже, в основном
+                    там, где размер действительно фиксирован.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        А как же производительность?
+                    </div>
+                    <p>Может показаться, что <code>List</code> медленнее массива, ведь он «резиновый». На самом
+                        деле разница незаметна почти во всех задачах. Не думайте об этом на начальном уровне -
+                        используйте <code>List</code> везде, где он удобен.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>new List&lt;int&gt;()</code>
+                        <span>создать список</span>
+                    </li>
+                    <li>
+                        <code>list.Add(x)</code>
+                        <span>добавить элемент</span>
+                    </li>
+                    <li>
+                        <code>list.Remove(x)</code>
+                        <span>удалить по значению</span>
+                    </li>
+                    <li>
+                        <code>list[i]</code>
+                        <span>элемент по индексу</span>
+                    </li>
+                    <li>
+                        <code>list.Count</code>
+                        <span>количество элементов</span>
+                    </li>
+                    <li>
+                        <code>new Dictionary&lt;string, int&gt;()</code>
+                        <span>создать словарь</span>
+                    </li>
+                    <li>
+                        <code>dict.Add(key, value)</code>
+                        <span>добавить пару</span>
+                    </li>
+                    <li>
+                        <code>dict[key]</code>
+                        <span>значение по ключу</span>
+                    </li>
+                    <li>
+                        <code>dict.ContainsKey(key)</code>
+                        <span>есть ли ключ</span>
+                    </li>
+                    <li>
+                        <code>foreach (var x in collection)</code>
+                        <span>перебор всех элементов</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Списки и словари - тема, где ошибки часто связаны с одним-двумя конкретными местами.
+                    Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>«The type or namespace name 'List' could not be found».</strong> Забыли
+                        <code>using System.Collections.Generic;</code> в начале файла. Без него ни <code>List</code>,
+                        ни <code>Dictionary</code> не распознаются.
+                    </li>
+                    <li><strong>«Cannot implicitly convert type 'List&lt;int&gt;' to 'int[]'».</strong> Список и
+                        массив - разные типы. Их нельзя присвоить друг другу. Если нужно передать данные из одного
+                        в другой - используйте цикл или метод <code>.ToArray()</code>.</li>
+                    <li><strong>«ArgumentOutOfRangeException».</strong> Обратились к элементу списка по индексу,
+                        которого нет. Последний индекс - это <code>.Count - 1</code>, а не <code>.Count</code>.
+                        Если в списке 5 элементов, индексы идут от 0 до 4.</li>
+                    <li><strong>«An item with the same key has already been added».</strong> Пытаетесь добавить
+                        в словарь ключ, который уже есть. Помните: ключи уникальны. Если нужно обновить значение -
+                        используйте <code>dict[key] = value</code> вместо <code>.Add()</code>.</li>
+                    <li><strong>«The given key was not present in the dictionary».</strong> Обратились к словарю
+                        по ключу, которого в нём нет. Проверьте через <code>.ContainsKey()</code> перед чтением,
+                        или используйте <code>.TryGetValue()</code> (это уже тема среднего уровня).</li>
+                    <li><strong>Изменили коллекцию внутри <code>foreach</code>.</strong> Нельзя добавлять или
+                        удалять элементы из списка прямо во время перебора циклом <code>foreach</code> - программа
+                        упадёт с ошибкой. Если нужно удалить элементы - используйте обычный <code>for</code> или
+                        сначала сохраните нужные данные в отдельный список.</li>
+                    <li><strong>Порядок элементов в словаре не совпадает с порядком добавления.</strong> Это
+                        нормально - <code>Dictionary</code> не гарантирует порядок. Если порядок важен - используйте
+                        список, а не словарь.</li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой - подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Список покупок</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте список из пяти продуктов и выведите их на экран
+                                через <code>foreach</code>. Каждый продукт - на новой строке.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте список через <code>new List&lt;string&gt; { ... }</code>,
+                                        заполнив его сразу. Затем пройдитесь циклом <code>foreach (string item
+                                        in list)</code> и внутри выведите каждый элемент.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">var products = new List&lt;string&gt; { "Хлеб", "Молоко", "Сыр", "Яйца", "Масло" };</span><span class="code-row"></span><span class="code-row">foreach (string product in products)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(product);</span><span class="code-row">}</span></code></pre>
+                                    <p>Обратите внимание, как компактно получилось: список создали и заполнили
+                                        в одну строку, а вывод - тремя строками цикла. С массивом было бы почти
+                                        так же, но у списка ещё остаётся возможность добавлять и удалять элементы.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Список с вводом</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя пять чисел и добавьте их в список. Затем
+                                выведите сумму всех чисел и среднее арифметическое.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте пустой список целых чисел. В цикле <code>for</code> от 0 до 4
+                                        спрашивайте число и добавляйте его через <code>list.Add(...)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для суммы пригодится аккумулятор из пятого урока. Пройдитесь по списку
+                                        через <code>foreach</code>, прибавляя каждый элемент к <code>sum</code>.
+                                        Потом разделите на <code>list.Count</code> с приведением к <code>double</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">var numbers = new List&lt;int&gt;();</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; 5; i++)</span><span class="code-row">{</span><span class="code-row">    Console.Write($"Число {i + 1}: ");</span><span class="code-row">    numbers.Add(int.Parse(Console.ReadLine()));</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">int sum = 0;</span><span class="code-row">foreach (int num in numbers)</span><span class="code-row">{</span><span class="code-row">    sum += num;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">double average = (double)sum / numbers.Count;</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Сумма: {sum}");</span><span class="code-row">Console.WriteLine($"Среднее: {average}");</span></code></pre>
+                                    <p>Обратите внимание: мы не указываем заранее, сколько чисел будет в списке.
+                                        Просто создали пустой <code>List</code> и добавляли по мере ввода. Это и
+                                        есть главное преимущество списка перед массивом.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Словарь оценок</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте словарь с именами трёх учеников и их оценками. Спросите
+                                у пользователя имя и выведите оценку этого ученика. Если такого нет - сообщите
+                                об этом.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Тип словаря - <code>Dictionary&lt;string, int&gt;</code>. Заполните его
+                                        через <code>.Add(имя, оценка)</code> или через инициализацию в фигурных
+                                        скобках. Для проверки наличия имени используйте <code>.ContainsKey()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">var scores = new Dictionary&lt;string, int&gt;</span><span class="code-row">{</span><span class="code-row">    { "Алексей", 5 },</span><span class="code-row">    { "Мария", 4 },</span><span class="code-row">    { "Иван", 3 }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">Console.Write("Введи имя: ");</span><span class="code-row">string name = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">if (scores.ContainsKey(name))</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Оценка {name}: {scores[name]}");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Такого ученика нет");</span><span class="code-row">}</span></code></pre>
+                                    <p>Обратите внимание на форму инициализации словаря - пары в фигурных скобках
+                                        через запятую. Каждая пара тоже в своих фигурных скобках.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Телефонная книга</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте словарь «имя → номер телефона» с пятью записями. Выведите
+                                книгу на экран через <code>foreach</code>, а затем найдите номер конкретного
+                                человека, спросив имя у пользователя.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Тип словаря - <code>Dictionary&lt;string, string&gt;</code> (ключ и значение
+                                        оба строки). Имена - по одному слову, чтобы не путаться. Номера - например,
+                                        «+7-900-123-45-67» или короче.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для вывода словаря используйте <code>foreach (var pair in book)</code> и
+                                        обращайтесь к <code>pair.Key</code> и <code>pair.Value</code>. Поиск номера -
+                                        через <code>.ContainsKey()</code> и <code>book[name]</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">var book = new Dictionary&lt;string, string&gt;</span><span class="code-row">{</span><span class="code-row">    { "Алексей", "+7-900-123-45-67" },</span><span class="code-row">    { "Мария",   "+7-900-765-43-21" },</span><span class="code-row">    { "Иван",    "+7-900-111-22-33" },</span><span class="code-row">    { "Ольга",   "+7-900-444-55-66" },</span><span class="code-row">    { "Пётр",    "+7-900-777-88-99" }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">Console.WriteLine("Телефонная книга:");</span><span class="code-row">foreach (var pair in book)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"{pair.Key}: {pair.Value}");</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.Write("Чей номер найти? ");</span><span class="code-row">string name = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">if (book.ContainsKey(name))</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Телефон {name}: {book[name]}");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Такого человека нет в книге");</span><span class="code-row">}</span></code></pre>
+                                    <p>Программа выведет все записи, затем спросит имя, и если оно есть - покажет
+                                        номер. Именно так работают настоящие телефонные книги: миллионы записей,
+                                        но поиск занимает доли секунды, потому что он идёт по ключу, а не перебором.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы познакомились с двумя самыми используемыми коллекциями C#. Разобрались, что
+                    <code>List</code> - это «резиновый массив» с методами <code>Add</code>, <code>Remove</code>,
+                    <code>Contains</code> и свойством <code>Count</code>. А <code>Dictionary</code> - это словарь
+                    с парами «ключ → значение», где поиск идёт мгновенно по ключу. Освоили цикл
+                    <code>foreach</code>, который делает перебор коллекций коротким и читаемым.
+                </p>
+
+                <p>С этого момента у вас есть полный набор инструментов для работы с данными: одна переменная для
+                    одного значения, массив для фиксированного набора, список для растущей коллекции и словарь
+                    для быстрого поиска по ключу.</p>
+
+                <p>В следующем уроке мы познакомимся с ещё одной конструкцией из мира условий -
+                    <code>switch</code>. Это альтернатива длинным цепочкам <code>if / else if</code>, когда
+                    вариантов много, а условия простые: «если пользователь ввёл 1 - сделай одно, если 2 - другое,
+                    если 3 - третье». Такой код <code>switch</code> делает в разы короче и читаемее.
+                </p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-10.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-12.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

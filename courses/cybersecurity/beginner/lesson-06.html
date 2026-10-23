@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Защита устройств и личных данных - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="beginner" data-lesson-id="lesson-06">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 06</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson active" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Защита устройств и личных данных</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Это последний урок начального уровня. Мы прошли путь от базовых понятий безопасности через
+                    пароли, двухфакторную аутентификацию, фишинг и браузер. Осталось поговорить о том, где
+                    всё это живёт - о ваших <strong>устройствах</strong>.</p>
+
+                <p>Смартфон, ноутбук, планшет, домашний роутер, «умная» колонка, телевизор - все они
+                    подключены к интернету и все хранят какие-то ваши данные. Если хотя бы одно из этих
+                    устройств окажется незащищённым - через него можно добраться и до остального. Сегодня
+                    разберёмся, как этого не допустить.</p>
+
+                <h2>Обновления: скучно, но критично</h2>
+
+                <p>Начнём с самой простой и самой недооценённой вещи. Обновления системы и приложений - это
+                    не «очередное скачивание на 500 мегабайт». Это <strong>заплатки для дыр в безопасности</strong>.</p>
+
+                <p>Как это работает. Разработчики находят уязвимость - например, в способе, которым браузер
+                    обрабатывает картинки. Злоумышленник может использовать эту уязвимость, чтобы запустить
+                    свой код на вашем устройстве. Разработчики выпускают обновление, которое закрывает эту
+                    дыру. Обновляясь, вы закрываете её тоже.</p>
+
+                <p>Проблема в том, что уязвимость уже существует и о ней знают определённые люди. С момента
+                    обнаружения до момента, когда её начинают использовать массово, проходит <strong>от
+                        нескольких дней до нескольких недель</strong>. Обновление часто выходит быстрее, но если
+                    вы его не установили - вы в зоне риска всё это время.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главное правило
+                    </div>
+                    <p>Включите <strong>автоматические обновления</strong> везде, где это возможно.
+                        Windows, macOS, Linux, Android, iOS, приложения из магазинов, браузеры - всё
+                        должно обновляться само. Исключений почти нет.</p>
+                </div>
+
+                <h3>Что обновлять в первую очередь</h3>
+
+                <p>Если у вас есть выбор, что обновлять сейчас, а что потом - вот приоритеты:</p>
+
+                <ul>
+                    <li><strong>Операционная система.</strong> Самый важный слой. Уязвимости в ОС дают
+                        злоумышленнику полный контроль над устройством.</li>
+                    <li><strong>Браузер.</strong> Второй по важности - в нём вы проводите больше всего
+                        времени в интернете.</li>
+                    <li><strong>Мессенджеры и почта.</strong> Там приходят ссылки и файлы, через которые
+                        атакуют.</li>
+                    <li><strong>Приложения для работы с деньгами.</strong> Банк, криптокошельки, платёжные
+                        сервисы.</li>
+                    <li><strong>Остальное.</strong> Всё по порядку.</li>
+                </ul>
+
+                <h2>Пароль на устройстве: простой, но важный шаг</h2>
+
+                <p>Может показаться странным, но многие люди не ставят пароль на телефон или ноутбук. «Я
+                    всегда рядом», «Никто не возьмёт», «Неудобно каждый раз вводить». Однако отсутствие
+                    пароля - это очень серьёзная проблема.</p>
+
+                <p>Что может случиться без пароля на устройстве:</p>
+
+                <ul>
+                    <li><strong>Кража или потеря.</strong> Телефон украли в метро - и злоумышленник сразу
+                        получает доступ ко всему: почте, банку, мессенджерам, фото.</li>
+                    <li><strong>Случайный доступ.</strong> Оставили ноутбук в кафе - сосед за столиком может
+                        посмотреть переписку.</li>
+                    <li><strong>Друзья и знакомые.</strong> Иногда проблема не в злоумышленниках, а в тех,
+                        кто просто берёт телефон «посмотреть фото» и лезет куда не надо.</li>
+                </ul>
+
+                <p>Пароль на устройстве - это первая линия защиты. Ставьте что-то посерьёзнее, чем «0000»
+                    или свой год рождения. Хороший вариант - <strong>биометрия</strong>: отпечаток пальца
+                    или распознавание лица. Это удобно (не надо каждый раз вводить), безопасно (сложно
+                    подделать) и работает почти на всех современных смартфонах.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Автоблокировка
+                    </div>
+                    <p>Даже с паролем устройство остаётся уязвимым, если оно не блокируется автоматически.
+                        Настройте блокировку через 30 секунд или минуту бездействия. Так, даже если вы
+                        отвлеклись и оставили телефон - он сам заблокируется.</p>
+                </div>
+
+                <h2>Шифрование диска: если украдут</h2>
+
+                <p>Пароль на экране блокировки защищает от случайного доступа, но не от того, кто получил
+                    физический доступ к устройству. Если злоумышленник вынет жёсткий диск из ноутбука и
+                    подключит его к своему компьютеру - он сможет прочитать все файлы, обойдя пароль.</p>
+
+                <p>Чтобы этого не случилось, используют <strong>шифрование диска</strong>. Суть простая: все
+                    данные на диске хранятся в зашифрованном виде. Без правильного ключа их невозможно
+                    прочитать, даже если вынуть диск и подключить к другому устройству.</p>
+
+                <p>Что это даёт:</p>
+
+                <ul>
+                    <li><strong>Ноутбук украли</strong> - данные остались у вас. Злоумышленник видит только
+                        нечитаемый набор байтов.</li>
+                    <li><strong>Диск сломался</strong> - вы отдаёте его в ремонт или на утилизацию без
+                        страха за содержимое.</li>
+                    <li><strong>Устройство потеряно</strong> - никто не достанет ваши пароли, фото,
+                        документы.</li>
+                </ul>
+
+                <p>Хорошая новость: на современных устройствах шифрование диска обычно включено по
+                    умолчанию. Вот где что искать:</p>
+
+                <ul>
+                    <li><strong>Windows</strong> - BitLocker. На Windows Pro включён по умолчанию. На
+                        Windows Home его иногда нужно включать вручную.</li>
+                    <li><strong>macOS</strong> - FileVault. Включается в «Системных настройках» →
+                        «Конфиденциальность и безопасность».</li>
+                    <li><strong>iPhone и iPad</strong> - шифрование всегда включено, если установлен
+                        пароль.</li>
+                    <li><strong>Android</strong> - шифрование включено по умолчанию с Android 6.</li>
+                    <li><strong>Linux</strong> - LUKS. Обычно предлагается при установке.</li>
+                </ul>
+
+                <p>Проверьте, что шифрование включено на всех ваших устройствах. Если нет - включите.
+                    Единственное неудобство: при включении нужно один раз сохранить ключ восстановления в
+                    надёжном месте.</p>
+
+                <h2>Резервные копии: спасают от всех проблем</h2>
+
+                <p>Резервная копия (или «бэкап», от английского <em>backup</em>) - это копия ваших данных
+                    в отдельном месте. Если что-то случится с основным устройством - данные не потеряются.</p>
+
+                <p>Что может случиться:</p>
+
+                <ul>
+                    <li><strong>Смерть диска.</strong> Жёсткие диски и SSD выходят из строя. Без бэкапа
+                        все фото, документы, проекты пропадут.</li>
+                    <li><strong>Программы-шифровальщики.</strong> Вредоносная программа шифрует все ваши
+                        файлы и требует выкуп. Без бэкапа придётся либо платить, либо терять данные.</li>
+                    <li><strong>Кража.</strong> Украли ноутбук - данные ушли вместе с ним.</li>
+                    <li><strong>Случайное удаление.</strong> Иногда файл удаляют по ошибке. Без копии его
+                        не вернуть.</li>
+                </ul>
+
+                <h3>Правило 3-2-1</h3>
+
+                <p>У безопасников есть классическое правило, как делать бэкапы. Называется оно
+                    <strong>3-2-1</strong>:
+                </p>
+
+                <ul>
+                    <li><strong>3 копии данных.</strong> Оригинал плюс две резервные копии.</li>
+                    <li><strong>2 разных носителя.</strong> Например, внешний диск и облако. Не всё на одном
+                        диске.</li>
+                    <li><strong>1 копия вне дома.</strong> Облако или диск у родственников. Если случится
+                        пожар или кража - одна копия сохранится.</li>
+                </ul>
+
+                <p>Это правило может показаться избыточным, но оно работает. Именно поэтому его используют
+                    крупные компании и серьёзные люди. Для домашнего пользователя можно упростить: главное -
+                    чтобы была <strong>хотя бы одна копия вне основного устройства</strong>.</p>
+
+                <h3>Что использовать для бэкапов</h3>
+
+                <ul>
+                    <li><strong>Облачные сервисы</strong> (Google Drive, iCloud, OneDrive, Яндекс.Диск).
+                        Удобно, доступно отовсюду, обычно 5-15 ГБ бесплатно. Для большего объёма -
+                        платно.</li>
+                    <li><strong>Внешние жёсткие диски.</strong> 1-2 ТБ за небольшие деньги. Быстро,
+                        безопасно, работает без интернета.</li>
+                    <li><strong>Специализированные сервисы</strong> (Backblaze, Carbonite). Платная
+                        подписка, зато автоматические бэкапы всей системы.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Бэкапы делаются автоматически
+                    </div>
+                    <p>Если вам нужно каждый раз вспоминать «о, пора бы сделать бэкап» - вы его никогда
+                        не сделаете. Настройте автоматические бэкапы: раз в день или раз в неделю, но без
+                        вашего участия. Так они будут делаться всегда, даже когда вы забудете.</p>
+                </div>
+
+                <h2>Смартфон: главное устройство современности</h2>
+
+                <p>Для многих смартфон - не просто устройство, а центр цифровой жизни. Там почта, банк,
+                    мессенджеры, фото, документы, двухфакторная аутентификация. Потеря контроля над
+                    смартфоном - это почти что потеря контроля над всей цифровой жизнью.</p>
+
+                <p>Что сделать для защиты смартфона:</p>
+
+                <ul>
+                    <li><strong>Пароль или биометрия.</strong> Обязательно. И не «0000».</li>
+                    <li><strong>Автоматическая блокировка</strong> через 30-60 секунд.</li>
+                    <li><strong>Обновления системы и приложений.</strong> Автоматически.</li>
+                    <li><strong>Шифрование.</strong> Обычно включено по умолчанию, но проверьте.</li>
+                    <li><strong>Резервные копии.</strong> iCloud, Google Drive или локально на компьютер.</li>
+                    <li><strong>Установка приложений только из официальных магазинов.</strong> APK с
+                        форумов и сторонних сайтов - источник вирусов.</li>
+                    <li><strong>Проверка разрешений приложений.</strong> Фонарику не нужен доступ к
+                        контактам. Калькулятору не нужен микрофон.</li>
+                    <li><strong>Очистка неиспользуемых приложений.</strong> Удалили игру - удалите и её
+                        доступ к вашим данным.</li>
+                </ul>
+
+                <h3>Функции «Найти устройство»</h3>
+
+                <p>На всех современных смартфонах есть функция поиска при потере: «Find My iPhone»,
+                    «Найти устройство» в Google, «Локатор» в Samsung. Она позволяет:</p>
+
+                <ul>
+                    <li>Увидеть, где находится телефон на карте.</li>
+                    <li>Удалённо заблокировать его.</li>
+                    <li>Удалённо стереть все данные.</li>
+                    <li>Показать сообщение на экране с контактом для возврата.</li>
+                </ul>
+
+                <p>Обязательно включите эту функцию заранее - если телефон уже потерян, включить её не
+                    получится.</p>
+
+                <h2>Домашний роутер: входная дверь в вашу сеть</h2>
+
+                <p>Роутер - это устройство, которое раздаёт интернет всем вашим гаджетам. Он стоит между
+                    вашей домашней сетью и внешним интернетом. Если роутер плохо настроен - через него
+                    можно атаковать все устройства в доме.</p>
+
+                <h3>Что сделать с роутером</h3>
+
+                <ul>
+                    <li><strong>Сменить пароль администратора.</strong> Заводские пароли вроде
+                        «admin / admin» знают все - включая автоматические сканеры, которые круглосуточно
+                        ищут такие роутеры в интернете.</li>
+                    <li><strong>Обновить прошивку.</strong> Как и любое устройство, роутер получает
+                        обновления безопасности. Проверьте в настройках, включено ли автообновление.</li>
+                    <li><strong>Сменить имя Wi-Fi сети.</strong> Чтобы имя не выдавало модель роутера -
+                        зная модель, легче подобрать уязвимость.</li>
+                    <li><strong>Использовать WPA2 или WPA3.</strong> Это стандарты шифрования Wi-Fi.
+                        WEP и WPA давно устарели и легко взламываются.</li>
+                    <li><strong>Настроить гостевую сеть.</strong> Для гостей и умных устройств -
+                        отдельная сеть, изолированная от ваших основных гаджетов.</li>
+                    <li><strong>Отключить WPS.</strong> Эта функция «для удобного подключения» имеет
+                        известные уязвимости.</li>
+                    <li><strong>Не включать удалённое управление.</strong> Если не пользуетесь -
+                        выключите.</li>
+                </ul>
+
+                <p>Может показаться, что это много. На самом деле большинство этих настроек делается один
+                    раз при установке роутера - и забывается. Зато вы закрываете огромную дыру в защите
+                    домашней сети.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        «Умные» устройства
+                    </div>
+                    <p>Умные колонки, камеры, лампочки, пылесосы - все они тоже часть домашней сети. К ним
+                        требования те же: смена заводских паролей, обновление прошивки, изоляция от
+                        основных устройств. Особенно это касается <strong>камер</strong> - они часто
+                        становятся жертвами взлома. Если у вас есть умная камера - обязательно смените
+                        пароль и обновите прошивку.</p>
+                </div>
+
+                <h2>Что делать с ненужными устройствами</h2>
+
+                <p>Старый телефон, ноутбук или планшет, который вы собираетесь продать или отдать, -
+                    это потенциальная утечка. Даже после сброса к factory-настройкам данные иногда
+                    можно восстановить.</p>
+
+                <p>Как правильно избавляться от устройств:</p>
+
+                <ol>
+                    <li><strong>Выгрузите важное.</strong> Сначала перенесите всё, что нужно, на новое
+                        устройство или в облако.</li>
+                    <li><strong>Выйдите из аккаунтов.</strong> Google, Apple ID, Microsoft - всё, что
+                        залогинено, отвяжите.</li>
+                    <li><strong>Отключите двухфакторную аутентификацию</strong> на старом устройстве,
+                        если она там использовалась.</li>
+                    <li><strong>Сбросьте до заводских настроек.</strong> Через настройки системы, а не
+                        просто удалив файлы.</li>
+                    <li><strong>Убедитесь, что шифрование было включено.</strong> Если диск был
+                        зашифрован, после сброса данные точно не восстановить.</li>
+                    <li><strong>Заводские настройки на iPhone и Android также отвязывают устройство
+                            от вашего Apple ID или Google-аккаунта.</strong> Без этого новый владелец не
+                        сможет им пользоваться, что защищает и вас.</li>
+                </ol>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Обновления</code>
+                        <span>автоматически, везде, всегда</span>
+                    </li>
+                    <li>
+                        <code>Пароль на устройстве</code>
+                        <span>не «0000», лучше биометрия</span>
+                    </li>
+                    <li>
+                        <code>Автоблокировка</code>
+                        <span>30-60 секунд бездействия</span>
+                    </li>
+                    <li>
+                        <code>Шифрование диска</code>
+                        <span>BitLocker, FileVault, встроенное</span>
+                    </li>
+                    <li>
+                        <code>Бэкап 3-2-1</code>
+                        <span>3 копии, 2 носителя, 1 вне дома</span>
+                    </li>
+                    <li>
+                        <code>Найти устройство</code>
+                        <span>включить заранее</span>
+                    </li>
+                    <li>
+                        <code>Роутер</code>
+                        <span>сменить пароль и обновить прошивку</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Как всегда, вместо ошибок компилятора - типичные ситуации, связанные с защитой
+                    устройств.</p>
+
+                <ul>
+                    <li><strong>«Обновления постоянно что-то ломают».</strong> Иногда бывает. Но
+                        безопасность важнее. Если очень боитесь крупных обновлений Windows - отложите их
+                        на пару дней, но не больше. Долгий отказ от обновлений = открытые уязвимости.</li>
+                    <li><strong>«Боюсь включать шифрование - вдруг забуду пароль и потеряю
+                            данные».</strong> Это реальный риск. Поэтому при включении шифрования
+                        <strong>обязательно</strong> сохраните ключ восстановления. Распечатайте,
+                        положите в надёжное место. Без ключа данные действительно не восстановить.
+                    </li>
+                    <li><strong>«У меня старый ноутбук, не поддерживает BitLocker».</strong> На Windows
+                        Home BitLocker недоступен. Альтернативы: VeraCrypt (бесплатный, открытый код),
+                        или шифрование отдельных папок через встроенные средства Windows. Что-то лучше,
+                        чем ничего.</li>
+                    <li><strong>«Бэкапы в облако - это же небезопасно».</strong> Небезопасно - это
+                        хранить только одну копию данных. Большие облачные провайдеры используют
+                        шифрование и надёжную инфраструктуру. Плюс можно дополнительно зашифровать
+                        файлы перед загрузкой (например, через 7-Zip с паролем).</li>
+                    <li><strong>«Роутер от провайдера - я не могу его настроить».</strong> Обычно можно.
+                        Заходите в веб-интерфейс роутера по адресу типа <code>192.168.0.1</code> или
+                        <code>192.168.1.1</code> с логином и паролем. Если пароль не подходит -
+                        звоните провайдеру и просите подсказать.
+                    </li>
+                    <li><strong>«Умная камера не даёт сменить пароль».</strong> Тогда это плохая
+                        камера. Если пароль жёстко зашит производителем и не меняется - устройство
+                        потенциально опасно. В идеале заменить. Если не получается - хотя бы изолировать
+                        в отдельную сеть (гостевую), чтобы даже при взломе камеры основная сеть
+                        оставалась защищённой.</li>
+                    <li><strong>«Продаю старый телефон, но боюсь, что данные восстановят».</strong>
+                        Правильный порядок: выгрузить данные, отвязать от аккаунтов, сбросить до
+                        заводских настроек. Если шифрование было включено - после сброса данные
+                        действительно невозможно восстановить даже специальными программами.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Это финальный урок начального уровня, поэтому задачи практические -
+                    каждая требует, чтобы вы что-то проверили или настроили на своих устройствах.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Проверьте обновления</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Проверьте на своём телефоне и компьютере, включены ли
+                                автоматические обновления системы. Если нет - включите. Проверьте
+                                основные приложения: браузер, мессенджеры, банковские приложения.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Где искать:</p>
+                                    <ul>
+                                        <li><strong>Windows</strong>: Параметры → Центр обновления Windows</li>
+                                        <li><strong>macOS</strong>: Системные настройки → Основные →
+                                            Обновление ПО</li>
+                                        <li><strong>Android</strong>: Настройки → Система → Обновление
+                                            системы</li>
+                                        <li><strong>iPhone</strong>: Настройки → Основные → Обновление ПО</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Если окажется, что обновления выключены или отложены - самое время
+                                        это исправить. На современных системах автоматические обновления
+                                        работают хорошо: скачивают в фоне, устанавливают при перезагрузке.
+                                        Вам даже не нужно об этом думать.</p>
+                                    <p>Если что-то уже устарело на несколько месяцев - обновите вручную.
+                                        Особенно важно для браузера и системы.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Проверьте шифрование</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Проверьте, включено ли шифрование диска на вашем ноутбуке
+                                и телефоне. Если нет - включите, сохранив ключ восстановления в надёжном
+                                месте.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Где искать:</p>
+                                    <ul>
+                                        <li><strong>Windows</strong>: Параметры → Конфиденциальность и
+                                            защита → Шифрование устройства, или искать «BitLocker» в
+                                            меню «Пуск».</li>
+                                        <li><strong>macOS</strong>: Системные настройки →
+                                            Конфиденциальность и безопасность → FileVault.</li>
+                                        <li><strong>iPhone</strong>: Настройки → Face ID и код-пароль →
+                                            внизу «Защита данных» (если установлен код-пароль, шифрование
+                                            уже включено).</li>
+                                        <li><strong>Android</strong>: Настройки → Безопасность →
+                                            Шифрование и учётные данные.</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Если шифрование уже включено - отлично. На современных
+                                        устройствах оно часто включено по умолчанию.</p>
+                                    <p>Если включено только что - <strong>обязательно</strong> сохраните
+                                        ключ восстановления. Обычно предлагается распечатать, скопировать в
+                                        файл или сохранить в Microsoft/Apple-аккаунте. Выберите вариант,
+                                        который вам понятен, и убедитесь, что сможете найти ключ при
+                                        необходимости.</p>
+                                    <p>Если диск не зашифрован и устройство поддерживает шифрование -
+                                        обязательно включите. Это займёт от 20 минут до нескольких часов
+                                        (зависит от объёма данных), но идёт в фоне.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Настройте бэкап</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Проверьте, есть ли у вас резервная копия важных данных.
+                                Если нет - настройте её. Определите, что именно нужно бэкапить: фото,
+                                документы, рабочие файлы. И куда: облако, внешний диск или оба.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для большинства пользователей достаточно:</p>
+                                    <ul>
+                                        <li>Фото с телефона - в iCloud или Google Photos.</li>
+                                        <li>Документы - в облако (Google Drive, OneDrive, Яндекс.Диск).</li>
+                                        <li>Раз в месяц - полный бэкап важных папок на внешний диск.</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Минимально рабочая схема:</p>
+                                    <ol>
+                                        <li><strong>Автоматические бэкапы в облако</strong> для самых важных
+                                            данных - фото, документы, заметки. Включите один раз, дальше
+                                            работает само.</li>
+                                        <li><strong>Один внешний диск</strong> для полного бэкапа системы
+                                            и файлов. Раз в месяц подключаете, делаете копию, отключаете.</li>
+                                    </ol>
+                                    <p>Если вы пока не делали бэкапы - начните сегодня. Самая обидная
+                                        потеря данных - та, к которой вы были не готовы. А устройство
+                                        может сломаться в любой момент, часто без предупреждения.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Ревизия домашней сети</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Зайдите в настройки домашнего роутера и проверьте:
+                                сменили ли вы пароль администратора, использует ли сеть WPA2 или WPA3,
+                                отключён ли WPS. Если что-то не настроено - настройте.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Адрес роутера обычно написан на наклейке снизу: <code>192.168.0.1</code>
+                                        или <code>192.168.1.1</code>. Логин и пароль по умолчанию тоже на
+                                        наклейке - но их стоит сменить. Если наклейки нет и пароль не
+                                        подходит - звоните провайдеру.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Что стоит проверить в настройках роутера:</p>
+                                    <ul>
+                                        <li>Пароль администратора - не «admin/admin» и не заводской.</li>
+                                        <li>Тип шифрования Wi-Fi - WPA2 или WPA3 (не WEP, не WPA).</li>
+                                        <li>WPS - отключён, если вы им не пользуетесь.</li>
+                                        <li>Удалённое управление - отключено, если вы им не пользуетесь.</li>
+                                        <li>Автообновление прошивки - включено, если есть такая опция.</li>
+                                    </ul>
+                                    <p>Если что-то из этого не настроено - исправьте прямо сейчас.
+                                        Это делается один раз и защищает вас на годы.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с защитой устройств и личных данных. Узнали, почему обновления критичны и
+                    как их правильно настроить. Поговорили про пароли на устройстве, автоблокировку и
+                    шифрование диска - то, что защищает данные при потере или краже. Разобрались с
+                    бэкапами и правилом 3-2-1. Прошлись по защите смартфона и домашнего роутера. И
+                    посмотрели, как правильно избавляться от старых устройств.</p>
+
+                <p>Это финальный урок начального уровня. Мы прошли большой путь за шесть уроков - от
+                    базовых понятий безопасности через пароли, 2FA, фишинг, браузер и до защиты устройств.
+                    Теперь у вас есть полный набор знаний и привычек для базовой цифровой гигиены.</p>
+
+                <h3>Что вы теперь умеете</h3>
+
+                <ul>
+                    <li>Понимать, какие цели преследует кибербезопасность и от кого защищаемся.</li>
+                    <li>Создавать надёжные пароли и использовать менеджеры паролей.</li>
+                    <li>Настраивать двухфакторную аутентификацию и пользоваться ей.</li>
+                    <li>Распознавать фишинг и социальную инженерию.</li>
+                    <li>Настраивать браузер безопасно и понимать, где риски в интернете.</li>
+                    <li>Защищать свои устройства обновлениями, шифрованием и бэкапами.</li>
+                </ul>
+
+                <p>Этого достаточно, чтобы быть <strong>сильно выше среднего</strong> пользователя по
+                    уровню безопасности. Большинство людей не делает и половины того, что мы разобрали.
+                    Теперь вы знаете, как защитить себя и свою семью.</p>
+
+                <h3>Что дальше</h3>
+
+                <p>Впереди - <strong>средний уровень</strong>. Там мы пойдём глубже в технические детали.
+                    Вот что вас ждёт:</p>
+
+                <ul>
+                    <li><strong>Симметричное и асимметричное шифрование.</strong> Как устроены алгоритмы,
+                        которые защищают данные.</li>
+                    <li><strong>Хеширование и цифровые подписи.</strong> Как проверить, что данные не
+                        подменили.</li>
+                    <li><strong>HTTPS и TLS изнутри.</strong> Что происходит, когда вы видите замок в
+                        браузере.</li>
+                    <li><strong>Уязвимости веб-приложений.</strong> SQL-инъекции, XSS - как работают
+                        и как защищаться разработчикам.</li>
+                    <li><strong>Аутентификация и сессии.</strong> Что на самом деле означает «войти в
+                        аккаунт».</li>
+                </ul>
+
+                <p>Средний уровень будет техничнее. Но у вас уже есть база - и это главное. А пока
+                    сделайте паузу, примените то, что узнали. Проверьте свои устройства, настройте бэкапы,
+                    включите шифрование. Именно так знания превращаются в привычки.</p>
+
+                <p>Поздравляем с завершением начального уровня!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-05.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../intermediate/lesson-07.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы пентеста и этичного хакинга - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="advanced" data-lesson-id="lesson-14">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 14</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson active" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Основы пентеста и этичного хакинга</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~50 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы разобрались, как защищают сети с помощью firewall, VPN и
+                    систем обнаружения вторжений. Но защита не может быть надёжной, если её
+                    никогда не проверяют. Можно настроить сотни правил, поставить самые
+                    современные системы - и всё равно не знать, что где-то осталась лазейка.
+                    Именно для этого существует <strong>пентест</strong> - тестирование на
+                    проникновение.</p>
+
+                <p>Сегодня мы разберёмся, что это за профессия, как она устроена, какие
+                    методологии и инструменты используются, и - самое главное - какие
+                    правовые и этические рамки отделяют специалиста по безопасности от
+                    преступника.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-shield-check"></i>
+                        Важное предупреждение
+                    </div>
+                    <p>Все примеры и объяснения в этом уроке приведены <strong>исключительно
+                            в образовательных целях</strong>. Мы ни к чему не призываем и не
+                        даём инструкций для проведения атак.</p>
+                    <p>Пентест - это <strong>легальная деятельность</strong>, но только
+                        при наличии письменного разрешения. Без разрешения любые действия
+                        против чужих систем - <strong>уголовное преступление</strong>,
+                        даже если вы «просто хотели проверить».</p>
+                    <p>Наша цель - чтобы вы понимали, как работают пентестеры, и могли
+                        отличать легальное тестирование от преступной деятельности.</p>
+                </div>
+
+                <h2>Что такое пентест</h2>
+
+                <p><strong>Пентест</strong> (penetration testing, «тестирование на
+                    проникновение») - это <strong>имитация реальной атаки</strong> на
+                    информационную систему с целью найти уязвимости до того, как их
+                    найдут злоумышленники. Специалист, который проводит пентест, называется
+                    <strong>пентестером</strong> или <strong>этичным хакером</strong>.
+                </p>
+
+                <p>Ключевое отличие пентеста от обычного сканирования уязвимостей -
+                    <strong>глубина</strong>. Сканер просто сообщает: «На порту 3306
+                    открыт MySQL». Пентестер идёт дальше: пробует подключиться, проверяет
+                    слабые пароли, ищет способы получить доступ к данным. Он не просто
+                    находит слабое место - он <strong>доказывает, что его можно
+                        использовать</strong>.
+                </p>
+
+                <p>Аналогия из мира физической безопасности. Аудит может сказать:
+                    «У вас на задней двери замок слабый». А пентест - это когда специалист
+                    приходит и <em>на самом деле</em> вскрывает эту дверь, чтобы показать
+                    владельцу: «Смотри, вот так сюда может попасть любой желающий».</p>
+
+                <h3>Зачем это нужно</h3>
+
+                <p>Основные цели пентеста:</p>
+
+                <ul>
+                    <li><strong>Найти уязвимости до злоумышленников.</strong> Лучше
+                        заплатить пентестеру сейчас, чем потерять данные и деньги
+                        потом.</li>
+                    <li><strong>Проверить реальный уровень защиты.</strong> Можно
+                        думать, что firewall настроен идеально - а пентест покажет,
+                        что он обходится за пять минут.</li>
+                    <li><strong>Выполнить требования регуляторов.</strong> PCI DSS,
+                        ISO 27001 и другие стандарты требуют регулярных пентестов.</li>
+                    <li><strong>Проверить людей и процессы.</strong> Пентест может
+                        включать социальную инженерию - проверку, попадётся ли
+                        сотрудник на фишинговое письмо.</li>
+                    <li><strong>Обучить команду.</strong> Отчёт пентеста становится
+                        основой для улучшения защиты и обучения сотрудников.</li>
+                </ul>
+
+                <h2>Правовые и этические рамки</h2>
+
+                <p>Вот здесь проходит самая важная граница. Пентест и
+                    киберпреступление используют <strong>одни и те же техники</strong>.
+                    Разница - в одном слове: <strong>разрешение</strong>.</p>
+
+                <p>Пентестер атакует систему <strong>только с письменного разрешения
+                        её владельца</strong>. Это оформляется документом, который
+                    называется <em>Rules of Engagement</em> (правила взаимодействия)
+                    или контрактом на пентест. В нём указано:</p>
+
+                <ul>
+                    <li><strong>Что можно тестировать</strong> - какие системы,
+                        IP-адреса, приложения.</li>
+                    <li><strong>Что нельзя</strong> - например, атаковать
+                        production-базы данных или выводить сервисы из строя.</li>
+                    <li><strong>В какое время</strong> - чтобы не мешать
+                        работе бизнеса.</li>
+                    <li><strong>Как действовать при обнаружении критичных
+                            проблем</strong> - сообщать немедленно или только
+                        по окончании.</li>
+                    <li><strong>Какие техники разрешены</strong> - можно ли
+                        использовать социальную инженерию, физический доступ,
+                        атаки на сотрудников.</li>
+                </ul>
+
+                <p>Без такого документа пентест превращается в преступление. Никакие
+                    благие намерения не оправдывают несанкционированный доступ.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        «Safe harbour» и правовые риски
+                    </div>
+                    <p>Даже этичные хакеры иногда оказываются в серой зоне. Законы
+                        о компьютерных преступлениях (Computer Fraud and Abuse Act
+                        в США, аналоги в других странах) не всегда чётко отделяют
+                        добросовестное исследование от преступления. Некоторые
+                        страны вводят «safe harbour» - положения, защищающие
+                        исследователей, действующих добросовестно. Но это пока
+                        скорее исключение, чем правило.</p>
+                    <p>Поэтому золотое правило: <strong>без письменного разрешения
+                            - не трогай</strong>. Даже если кажется, что это «просто
+                        проверка».</p>
+                </div>
+
+                <h2>Методологии пентеста</h2>
+
+                <p>Пентест - это не хаотичный набор действий. Существуют отработанные
+                    методологии, которые описывают, как правильно проводить
+                    тестирование. Рассмотрим основные.</p>
+
+                <h3>PTES (Penetration Testing Execution Standard)</h3>
+
+                <p>Одна из самых популярных методологий. PTES определяет
+                    <strong>семь фаз</strong> пентеста:
+                </p>
+
+                <ol>
+                    <li><strong>Pre-engagement Interactions</strong> - предварительные
+                        договорённости: что тестируем, когда, с какими ограничениями.
+                        Именно здесь подписывается разрешение.</li>
+                    <li><strong>Intelligence Gathering</strong> - сбор информации
+                        о цели: домены, IP-адреса, технологии, сотрудники. То, что
+                        можно узнать из открытых источников.</li>
+                    <li><strong>Threat Modeling</strong> - моделирование угроз:
+                        какие сценарии атак наиболее вероятны для этой цели.</li>
+                    <li><strong>Vulnerability Analysis</strong> - анализ уязвимостей:
+                        поиск слабых мест в системах.</li>
+                    <li><strong>Exploitation</strong> - эксплуатация: попытка
+                        использовать найденные уязвимости для получения доступа.</li>
+                    <li><strong>Post Exploitation</strong> - действия после
+                        получения доступа: что можно сделать, имея foothold в
+                        системе.</li>
+                    <li><strong>Reporting</strong> - отчёт: описание найденных
+                        проблем, доказательств, рекомендаций по исправлению.</li>
+                </ol>
+
+                <h3>OWASP WSTG</h3>
+
+                <p>Для тестирования веб-приложений существует отдельная методология -
+                    <strong>OWASP Web Security Testing Guide</strong> (WSTG). Это
+                    подробное руководство, которое описывает сотни конкретных
+                    проверок: как тестировать аутентификацию, управление сессиями,
+                    ввод данных, обработку ошибок и многое другое.
+                </p>
+
+                <p>WSTG - стандарт де-факто для веб-пентеста. Если вы тестируете
+                    сайт или веб-приложение, вы почти наверняка будете
+                    использовать его.</p>
+
+                <h3>MITRE ATT&CK</h3>
+
+                <p><strong>MITRE ATT&CK</strong> - это не методология пентеста
+                    в чистом виде, а <strong>база знаний</strong> о тактиках,
+                    техниках и процедурах (TTP) реальных атакующих групп. Это
+                    огромная матрица, которая описывает, как именно действуют
+                    злоумышленники на каждом этапе атаки.</p>
+
+                <p>Пентестеры используют MITRE ATT&CK для того, чтобы имитировать
+                    <strong>конкретных противников</strong>. Если известно, что
+                    вашу отрасль атакует определённая группировка - пентест
+                    строится по её техникам. Это даёт гораздо более реалистичную
+                    картину, чем «среднестатистическая атака».
+                </p>
+
+                <p>Матрица Enterprise включает 12 тактик: Initial Access,
+                    Execution, Persistence, Privilege Escalation, Defense
+                    Evasion, Credential Access, Discovery, Lateral Movement,
+                    Collection, Command and Control, Exfiltration, Impact.</p>
+
+                <h3>Другие методологии</h3>
+
+                <ul>
+                    <li><strong>OSSTMM</strong> (Open Source Security Testing
+                        Methodology Manual) - более широкий взгляд на
+                        безопасность, включая физическую и социальную.</li>
+                    <li><strong>ISSAF</strong> (Information Systems Security
+                        Assessment Framework) - подробная методология,
+                        покрывающая множество технологий.</li>
+                    <li><strong>NIST SP 800-115</strong> - американский
+                        государственный стандарт для тестирования
+                        безопасности.</li>
+                </ul>
+
+                <h2>Типы пентеста</h2>
+
+                <p>Пентесты различаются по уровню информированности
+                    тестировщика и по цели.</p>
+
+                <h3>По уровню информированности</h3>
+
+                <ul>
+                    <li><strong>Black Box.</strong> Пентестер не знает
+                        ничего о системе. Работает как внешний атакующий -
+                        начинает с нуля, собирает информацию, ищет входы.
+                        Самый реалистичный сценарий, но может пропустить
+                        внутренние уязвимости.</li>
+                    <li><strong>White Box.</strong> Пентестер имеет полный
+                        доступ к информации: исходный код, архитектура,
+                        документация, учётные данные. Это позволяет
+                        найти больше уязвимостей, но менее реалистично.</li>
+                    <li><strong>Grey Box.</strong> Компромисс: частичная
+                        информация. Например, известны учётные данные
+                        обычного пользователя, но не администратора.
+                        Самый распространённый формат.</li>
+                </ul>
+
+                <h3>По цели</h3>
+
+                <ul>
+                    <li><strong>Внешний пентест</strong> - тестирование
+                        систем, доступных из интернета: сайты, почтовые
+                        серверы, VPN-шлюзы.</li>
+                    <li><strong>Внутренний пентест</strong> - тестирование
+                        изнутри сети. Имитирует сценарий, когда
+                        злоумышленник уже получил доступ к внутренней
+                        сети (например, через фишинг).</li>
+                    <li><strong>Веб-приложение</strong> - тестирование
+                        конкретного сайта или веб-сервиса.</li>
+                    <li><strong>Мобильное приложение</strong> - тестирование
+                        iOS/Android приложений.</li>
+                    <li><strong>Социальная инженерия</strong> - проверка
+                        сотрудников на устойчивость к фишингу, звонкам
+                        «из службы безопасности».</li>
+                    <li><strong>Физический пентест</strong> - попытка
+                        проникнуть в офис: пройти через турникет,
+                        получить доступ к серверной.</li>
+                    <li><strong>Red Team</strong> - полноценная имитация
+                        APT (Advanced Persistent Threat): длительная,
+                        многоэтапная атака с использованием всех
+                        доступных техник.</li>
+                </ul>
+
+                <h2>Инструменты пентестера</h2>
+
+                <p>Пентестер использует большой арсенал инструментов. Вот основные
+                    категории и самые популярные представители.</p>
+
+                <h3>Сканеры портов и сервисов</h3>
+
+                <ul>
+                    <li><strong>Nmap</strong> - легендарный сканер. Определяет
+                        открытые порты, запущенные сервисы, версии ПО,
+                        операционные системы.</li>
+                    <li><strong>Masscan</strong> - очень быстрый сканер
+                        для больших диапазонов IP-адресов.</li>
+                </ul>
+
+                <h3>Сканеры уязвимостей</h3>
+
+                <ul>
+                    <li><strong>Nessus</strong> - коммерческий стандарт.
+                        Огромная база проверок, подробные отчёты.</li>
+                    <li><strong>OpenVAS</strong> - открытая альтернатива
+                        Nessus.</li>
+                    <li><strong>Nikto</strong> - сканер веб-серверов:
+                        ищет типичные ошибки конфигурации, известные
+                        уязвимости.</li>
+                </ul>
+
+                <h3>Инструменты для веб-приложений</h3>
+
+                <ul>
+                    <li><strong>Burp Suite</strong> - главный инструмент
+                        веб-пентестера. Перехватывает и модифицирует
+                        HTTP-запросы, сканирует уязвимости, автоматизирует
+                        атаки.</li>
+                    <li><strong>OWASP ZAP</strong> - открытая альтернатива
+                        Burp Suite.</li>
+                    <li><strong>sqlmap</strong> - автоматизированный
+                        инструмент для SQL-инъекций.</li>
+                    <li><strong>Gobuster</strong> / <strong>dirsearch</strong> -
+                        перебор директорий и файлов на веб-сервере.</li>
+                </ul>
+
+                <h3>Фреймворки для эксплуатации</h3>
+
+                <ul>
+                    <li><strong>Metasploit</strong> - самый популярный
+                        фреймворк. Содержит тысячи готовых эксплойтов,
+                        полезных нагрузок и модулей пост-эксплуатации.</li>
+                    <li><strong>Cobalt Strike</strong> - коммерческий
+                        инструмент для Red Team. Мощный, но дорогой.</li>
+                </ul>
+
+                <h3>Дистрибутивы Linux</h3>
+
+                <p>Большинство пентестеров используют специализированные
+                    дистрибутивы, в которых уже предустановлены все
+                    инструменты:</p>
+
+                <ul>
+                    <li><strong>Kali Linux</strong> - самый известный.
+                        Разработан Offensive Security.</li>
+                    <li><strong>Parrot OS</strong> - альтернатива с
+                        акцентом на приватность.</li>
+                    <li><strong>BlackArch</strong> - на базе Arch Linux,
+                        огромный репозиторий инструментов.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Инструменты - это только половина дела
+                    </div>
+                    <p>Новички часто думают, что пентест - это запустить
+                        Metasploit и нажать кнопку. На самом деле
+                        инструменты - только вспомогательные средства.
+                        Главное - <strong>методология, понимание систем
+                            и творческий подход</strong>. Опытный пентестер
+                        с Nmap и Burp Suite найдёт больше, чем новичок
+                        со всем арсеналом Kali.</p>
+                </div>
+
+                <h2>Как проходит пентест: пошагово</h2>
+
+                <p>Разберём типичный пентест по шагам - на основе методологии PTES.</p>
+
+                <h3>Шаг 1. Договорённости (Pre-engagement)</h3>
+
+                <p>Всё начинается с подписания документов. Клиент и пентестер
+                    согласовывают:</p>
+
+                <ul>
+                    <li>Scope (границы тестирования) - что именно тестируем.</li>
+                    <li>Ограничения - что нельзя делать.</li>
+                    <li>Сроки и время проведения.</li>
+                    <li>Контактные лица на случай критических находок.</li>
+                    <li>Форма отчёта.</li>
+                </ul>
+
+                <p>Без этого документа пентест не начинается. Точка.</p>
+
+                <h3>Шаг 2. Разведка (Reconnaissance)</h3>
+
+                <p>Сбор информации о цели. На этом этапе пентестер работает
+                    как исследователь - использует только открытые источники
+                    (OSINT).</p>
+
+                <p>Что можно узнать:</p>
+
+                <ul>
+                    <li><strong>Домены и IP-адреса</strong> - через WHOIS,
+                        DNS-запросы.</li>
+                    <li><strong>Технологии</strong> - какие CMS, фреймворки,
+                        серверы используются (по заголовкам, отпечаткам).</li>
+                    <li><strong>Сотрудники</strong> - имена, должности,
+                        email-адреса (из LinkedIn, корпоративного сайта).</li>
+                    <li><strong>Утёкшие данные</strong> - проверка по
+                        базам утечек (haveibeenpwned).</li>
+                    <li><strong>Субдомены</strong> - через DNS-перебор,
+                        сертификаты.</li>
+                </ul>
+
+                <p>Этот этап может занять от нескольких часов до нескольких
+                    недель - в зависимости от размера цели.</p>
+
+                <h3>Шаг 3. Сканирование и анализ</h3>
+
+                <p>Активное взаимодействие с целью. Пентестер сканирует
+                    порты, определяет запущенные сервисы, ищет известные
+                    уязвимости.</p>
+
+                <p>Например:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">nmap -sV -sC -oA scan 203.0.113.0/24</span></code></pre>
+
+                <p>Эта команда:</p>
+                <ul>
+                    <li><code>-sV</code> - определяет версии сервисов.</li>
+                    <li><code>-sC</code> - запускает стандартные скрипты
+                        проверки.</li>
+                    <li><code>-oA scan</code> - сохраняет результаты в файлы.</li>
+                    <li><code>203.0.113.0/24</code> - диапазон для
+                        сканирования.</li>
+                </ul>
+
+                <p>После сканирования портов - проверка веб-приложений,
+                    анализ конфигураций, поиск уязвимостей.</p>
+
+                <h3>Шаг 4. Эксплуатация</h3>
+
+                <p>Попытка использовать найденные уязвимости. Это может быть
+                    подбор паролей, эксплуатация уязвимости в ПО, обход
+                    аутентификации.</p>
+
+                <p>Пример: найден открытый SSH-порт. Пентестер пробует
+                    стандартные учётные данные, слабые пароли, известные
+                    уязвимости в версии OpenSSH.</p>
+
+                <p>Важно: эксплуатация проводится <strong>только в рамках
+                        разрешённого scope</strong>. Если в контракте сказано
+                    «не трогать production-базы» - пентестер не трогает,
+                    даже если может.</p>
+
+                <h3>Шаг 5. Пост-эксплуатация</h3>
+
+                <p>После получения доступа - что можно сделать? Пентестер
+                    оценивает масштаб компрометации:</p>
+
+                <ul>
+                    <li>Какие данные доступны?</li>
+                    <li>Можно ли повысить привилегии до администратора?</li>
+                    <li>Можно ли перемещаться по сети (lateral movement)?</li>
+                    <li>Есть ли доступ к другим системам?</li>
+                </ul>
+
+                <p>На этом этапе важно не навредить: не удалять данные,
+                    не менять конфигурации, не устанавливать backdoor
+                    «для демонстрации».</p>
+
+                <h3>Шаг 6. Отчёт</h3>
+
+                <p>Самый важный этап. Пентест без отчёта - бесполезная
+                    трата денег. Отчёт должен содержать:</p>
+
+                <ul>
+                    <li><strong>Executive Summary</strong> - для
+                        руководства: общая оценка, критичные находки,
+                        риски.</li>
+                    <li><strong>Технические детали</strong> - для
+                        специалистов: как нашли, как эксплуатировали,
+                        доказательства (скриншоты, логи).</li>
+                    <li><strong>Рекомендации</strong> - как исправить
+                        каждую уязвимость.</li>
+                    <li><strong>Приоритеты</strong> - что исправлять
+                        в первую очередь.</li>
+                </ul>
+
+                <p>Хороший отчёт - это документ, по которому команда
+                    может сразу начать исправления.</p>
+
+                <h2>Сертификации пентестера</h2>
+
+                <p>В этой профессии важен не только опыт, но и подтверждение
+                    квалификации. Основные сертификации:</p>
+
+                <ul>
+                    <li><strong>OSCP</strong> (Offensive Security Certified
+                        Professional) - самая уважаемая практическая
+                        сертификация. Экзамен длится 24 часа, нужно
+                        скомпрометировать несколько машин в лабораторной
+                        сети и написать отчёт. Требует курса PEN-200
+                        (Penetration Testing with Kali Linux).</li>
+                    <li><strong>CompTIA PenTest+</strong> - более
+                        теоретическая, но признанная в индустрии.
+                        Покрывает методологию, инструменты, отчётность.</li>
+                    <li><strong>HTB CPTS</strong> (Hack The Box Certified
+                        Penetration Testing Specialist) - практическая
+                        сертификация от Hack The Box. Полностью hands-on.</li>
+                    <li><strong>CREST</strong> - британская сертификация,
+                        признанная во многих странах.</li>
+                </ul>
+
+                <p>Для junior-позиций часто достаточно OSCP или HTB CPTS.
+                    Для senior-уровня важнее опыт и портфолио реальных
+                    проектов.</p>
+
+                <h2>Этичный хакинг: кодекс</h2>
+
+                <p>Профессия пентестера строится на доверии. Клиент даёт
+                    доступ к своим системам - и ожидает, что этот доступ
+                    не будет использован во вред. Поэтому существуют
+                    негласные этические правила.</p>
+
+                <ul>
+                    <li><strong>Действовать только в рамках разрешения.</strong>
+                        Никаких «а давайте ещё вот это проверим» без
+                        согласования.</li>
+                    <li><strong>Не навредить.</strong> Если эксплуатация
+                        может уронить сервис или повредить данные -
+                        согласовать с клиентом или отказаться.</li>
+                    <li><strong>Сохранять конфиденциальность.</strong>
+                        Всё, что увидено в ходе пентеста, - конфиденциально.
+                        Данные клиента, пароли сотрудников, внутренние
+                        документы - не разглашать.</li>
+                    <li><strong>Сообщать о критичных находках немедленно.</strong>
+                        Если найден способ украсть все данные клиента -
+                        сообщить сразу, а не в отчёте через месяц.</li>
+                    <li><strong>Не оставлять backdoor.</strong> После
+                        пентеста не должно остаться никаких «сюрпризов» -
+                        ни новых учётных записей, ни установленных
+                        инструментов.</li>
+                    <li><strong>Уничтожить данные после проекта.</strong>
+                        Все собранные данные, дампы, логи - удалить
+                        по завершении.</li>
+                </ul>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Пентест</code>
+                        <span>легальная имитация атаки с разрешения</span>
+                    </li>
+                    <li>
+                        <code>PTES</code>
+                        <span>7 фаз: от договорённостей до отчёта</span>
+                    </li>
+                    <li>
+                        <code>OWASP WSTG</code>
+                        <span>методология для веб-приложений</span>
+                    </li>
+                    <li>
+                        <code>MITRE ATT&CK</code>
+                        <span>база знаний о техниках атакующих</span>
+                    </li>
+                    <li>
+                        <code>Black Box</code>
+                        <span>без информации о цели</span>
+                    </li>
+                    <li>
+                        <code>White Box</code>
+                        <span>с полным доступом к информации</span>
+                    </li>
+                    <li>
+                        <code>Nmap, Burp, Metasploit</code>
+                        <span>ключевые инструменты</span>
+                    </li>
+                    <li>
+                        <code>OSCP</code>
+                        <span>самая уважаемая сертификация</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ситуации и заблуждения по теме.</p>
+
+                <ul>
+                    <li><strong>«Пентестер - это тот же хакер, только
+                            легальный».</strong> По технике - да, используются
+                        похожие инструменты и методы. Но по сути -
+                        противоположность. Пентестер защищает системы,
+                        а хакер их ломает. Разница - в разрешении и цели.</li>
+                    <li><strong>«Можно провести пентест без разрешения,
+                            если я не наврежу».</strong> Нет. Само
+                        несанкционированное сканирование или попытка
+                        входа - уже преступление. Никакие благие
+                        намерения не защищают от уголовной ответственности.</li>
+                    <li><strong>«Пентест - это когда запускают
+                            сканер и смотрят результат».</strong> Сканер -
+                        только начало. Настоящая работа пентестера -
+                        анализировать результаты, искать цепочки
+                        уязвимостей, творчески подходить к обходу
+                        защит.</li>
+                    <li><strong>«Купил курс на Udemy, теперь я
+                            пентестер».</strong> Курсы дают базу, но
+                        профессия требует практики. Нужны лаборатории
+                        (Hack The Box, TryHackMe), CTF, реальные
+                        проекты. Без практики теория бесполезна.</li>
+                    <li><strong>«Пентест гарантирует безопасность».</strong>
+                        Нет. Пентест - это снимок на конкретный
+                        момент. Системы меняются, появляются новые
+                        уязвимости. Безопасность - это процесс, а
+                        не одноразовое мероприятие.</li>
+                    <li><strong>«Инструменты сделают всё за меня».</strong>
+                        Инструменты помогают, но не заменяют мышление.
+                        Опытный пентестер с Nmap найдёт больше, чем
+                        новичок с полным арсеналом Kali. Понимание
+                        систем важнее, чем знание кнопок.</li>
+                    <li><strong>«Пентест нужен только большим
+                            компаниям».</strong> Нет. Малый бизнес тоже
+                        атакуют - часто автоматическими сканерами.
+                        И последствия для малого бизнеса могут быть
+                        фатальными. Пентест (или хотя бы сканирование
+                        уязвимостей) нужен всем.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание концепций,
+                    вторые две - на размышление и разбор ситуаций.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Легально или нет</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой ситуации определите,
+                                является ли действие легальным пентестом
+                                или преступлением.</p>
+                            <ol>
+                                <li>Компания наняла специалиста и подписала
+                                    контракт на тестирование своего сайта.
+                                    Специалист сканирует порты и пробует
+                                    подобрать пароли.</li>
+                                <li>Студент нашёл сайт небольшой компании
+                                    и решил «проверить» его на SQL-инъекции,
+                                    чтобы «помочь».</li>
+                                <li>Пентестер работает в рамках контракта,
+                                    но случайно нашёл уязвимость в системе
+                                    партнёра компании, который не входил
+                                    в scope.</li>
+                                <li>Сотрудник компании тестирует
+                                    внутреннюю систему по заданию
+                                    руководства.</li>
+                                <li>Исследователь нашёл уязвимость в
+                                    open-source продукте и сообщил
+                                    разработчикам через responsible
+                                    disclosure.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Ключевой критерий - наличие
+                                        письменного разрешения от владельца
+                                        системы. Если разрешения нет -
+                                        это преступление, даже если
+                                        «без вреда».</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Легальный пентест.</strong>
+                                            Есть контракт, действия в рамках
+                                            scope.</li>
+                                        <li><strong>Преступление.</strong>
+                                            Нет разрешения. Даже «помочь»
+                                            не оправдывает несанкционированный
+                                            доступ. Ответственность по
+                                            статье 272 УК РФ.</li>
+                                        <li><strong>Сложная ситуация.</strong>
+                                            Формально пентестер должен
+                                            остановиться - система партнёра
+                                            не в scope. Правильное действие:
+                                            сообщить клиенту о находке и
+                                            запросить разрешение на
+                                            тестирование партнёра отдельно,
+                                            либо сообщить партнёру через
+                                            клиента.</li>
+                                        <li><strong>Зависит от разрешения.</strong>
+                                            Если руководство дало письменное
+                                            задание и есть внутренний
+                                            документ - легально. Если
+                                            «на словах» - серая зона, лучше
+                                            оформить письменно.</li>
+                                        <li><strong>Легально.</strong>
+                                            Responsible disclosure -
+                                            правильный способ сообщить
+                                            об уязвимости. Без публикации
+                                            эксплойта, с уведомлением
+                                            разработчиков.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Что за этап пентеста</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Определите, на каком этапе
+                                пентеста (по PTES) находится специалист
+                                в каждой ситуации.</p>
+                            <ol>
+                                <li>Пентестер собирает информацию о
+                                    компании через LinkedIn и WHOIS.</li>
+                                <li>Пентестер подписывает договор с
+                                    клиентом и согласовывает scope.</li>
+                                <li>Пентестер запускает Nmap и Burp Suite
+                                    для поиска открытых портов и
+                                    уязвимостей.</li>
+                                <li>Пентестер получил доступ к серверу
+                                    и проверяет, какие данные там
+                                    хранятся.</li>
+                                <li>Пентестер оформляет отчёт с описанием
+                                    всех находок и рекомендаций.</li>
+                                <li>Пентестер использует найденную
+                                    уязвимость для получения
+                                    начального доступа.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните семь фаз PTES:
+                                        Pre-engagement, Intelligence
+                                        Gathering, Threat Modeling,
+                                        Vulnerability Analysis,
+                                        Exploitation, Post Exploitation,
+                                        Reporting.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Intelligence Gathering.</strong>
+                                            Сбор информации из открытых
+                                            источников.</li>
+                                        <li><strong>Pre-engagement.</strong>
+                                            Договорённости и подписание
+                                            документов.</li>
+                                        <li><strong>Vulnerability Analysis.</strong>
+                                            Сканирование и анализ
+                                            уязвимостей.</li>
+                                        <li><strong>Post Exploitation.</strong>
+                                            Действия после получения
+                                            доступа.</li>
+                                        <li><strong>Reporting.</strong>
+                                            Оформление отчёта.</li>
+                                        <li><strong>Exploitation.</strong>
+                                            Использование уязвимости для
+                                            получения доступа.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Выберите инструмент</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой задачи выберите
+                                подходящий инструмент и обоснуйте.</p>
+                            <ol>
+                                <li>Нужно узнать, какие порты открыты на
+                                    сервере 203.0.113.5.</li>
+                                <li>Нужно найти все страницы на сайте,
+                                    включая скрытые административные
+                                    разделы.</li>
+                                <li>Нужно проверить, уязвима ли форма
+                                    входа к SQL-инъекциям.</li>
+                                <li>Нужно перехватить и модифицировать
+                                    HTTP-запрос к сайту.</li>
+                                <li>Нужно получить доступ к серверу,
+                                    используя известную уязвимость в
+                                    версии ПО.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните категории инструментов:
+                                        сканеры портов (Nmap),
+                                        перебор директорий (Gobuster),
+                                        SQL-инъекции (sqlmap),
+                                        перехват запросов (Burp Suite),
+                                        эксплуатация (Metasploit).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Nmap.</strong>
+                                            Классический сканер портов
+                                            и сервисов. Команда:
+                                            <code>nmap -sV 203.0.113.5</code>.
+                                        </li>
+                                        <li><strong>Gobuster или dirsearch.</strong>
+                                            Перебор директорий и файлов.
+                                            Ищет скрытые страницы,
+                                            админ-панели, резервные
+                                            копии.</li>
+                                        <li><strong>sqlmap.</strong>
+                                            Автоматизированный инструмент
+                                            для обнаружения и эксплуатации
+                                            SQL-инъекций.</li>
+                                        <li><strong>Burp Suite или OWASP ZAP.</strong>
+                                            Прокси для перехвата и
+                                            модификации HTTP-трафика.</li>
+                                        <li><strong>Metasploit.</strong>
+                                            Фреймворк с тысячами готовых
+                                            эксплойтов. Модуль выбирается
+                                            под конкретную уязвимость.</li>
+                                    </ol>
+                                    <p>Важно: инструменты - только
+                                        вспомогательные средства. Главное -
+                                        понимать, что и зачем делать.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Этическая дилемма</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы пентестер. В ходе
+                                тестирования сайта клиента вы обнаружили
+                                уязвимость, через которую можно получить
+                                доступ к персональным данным клиентов
+                                компании. Что делать? Опишите правильный
+                                порядок действий.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте о разнице между «найти»,
+                                        «проверить» и «использовать».
+                                        И о том, кто должен узнать
+                                        первым.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Правильный порядок действий:</p>
+                                    <ol>
+                                        <li><strong>Не эксплуатировать
+                                                уязвимость дальше.</strong>
+                                            Не пытаться скачать реальные
+                                            данные клиентов. Достаточно
+                                            доказать, что уязвимость
+                                            существует.</li>
+                                        <li><strong>Зафиксировать
+                                                доказательства.</strong>
+                                            Скриншоты, логи, описание
+                                            шагов воспроизведения.</li>
+                                        <li><strong>Сообщить клиенту
+                                                немедленно.</strong>
+                                            Критичные находки не ждут
+                                            отчёта через месяц. Связаться
+                                            с контактным лицом и сообщить
+                                            о проблеме.</li>
+                                        <li><strong>Не публиковать
+                                                информацию.</strong>
+                                            Не рассказывать в блогах,
+                                            не обсуждать с коллегами,
+                                            не использовать для демонстрации
+                                            другим клиентам.</li>
+                                        <li><strong>Удалить все
+                                                собранные данные.</strong>
+                                            После подтверждения находки
+                                            удалить все данные, которые
+                                            были получены при
+                                            демонстрации.</li>
+                                        <li><strong>Дождаться
+                                                исправления и перепроверить.</strong>
+                                            После того как клиент закроет
+                                            уязвимость, провести
+                                            повторное тестирование
+                                            (retest).</li>
+                                    </ol>
+                                    <p>Ключевой принцип: <strong>«найти,
+                                            но не использовать»</strong>.
+                                        Пентестер доказывает существование
+                                        уязвимости, но не эксплуатирует
+                                        её во вред клиенту.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с пентестом - легальной имитацией атак, которая
+                    помогает компаниям находить уязвимости до того, как их
+                    найдут злоумышленники. Узнали, что главное отличие
+                    пентестера от преступника - <strong>письменное
+                        разрешение</strong> и соблюдение этических рамок.</p>
+
+                <p>Познакомились с методологиями: <strong>PTES</strong> с
+                    семью фазами, <strong>OWASP WSTG</strong> для веб-приложений,
+                    <strong>MITRE ATT&CK</strong> для имитации конкретных
+                    противников. Разобрали типы пентеста: Black/White/Grey Box,
+                    внешний/внутренний, веб/мобильный/социальный.
+                </p>
+
+                <p>Изучили основной арсенал инструментов: Nmap, Burp Suite,
+                    Metasploit, sqlmap, Nessus. И поняли, что инструменты -
+                    только вспомогательные средства. Главное - методология,
+                    понимание систем и творческий подход.</p>
+
+                <p>Разобрали, как проходит пентест пошагово: от договорённостей
+                    до отчёта. И узнали про сертификации: <strong>OSCP</strong> -
+                    самая уважаемая практическая, <strong>CompTIA PenTest+</strong> -
+                    индустриальный стандарт, <strong>HTB CPTS</strong> -
+                    полностью практическая.</p>
+
+                <p>И, что самое важное, разобрались с этическим кодексом
+                    пентестера: действовать только в рамках разрешения,
+                    не навредить, сохранять конфиденциальность, сообщать
+                    о критичных находках немедленно.</p>
+
+                <p>В следующем уроке курса мы займёмся
+                    <strong>безопасной разработкой</strong> и
+                    <strong>OWASP Top 10</strong> - списком самых
+                    критичных уязвимостей веб-приложений. Разберём,
+                    как разработчики должны строить приложения,
+                    чтобы они были устойчивы к атакам с самого
+                    начала.
+                </p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-13.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-15.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

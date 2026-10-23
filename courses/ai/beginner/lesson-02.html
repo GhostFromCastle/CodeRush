@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы промптинга - Нейросети и вайбкодинг - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="ai" data-level="beginner" data-lesson-id="lesson-02">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Нейросети и вайбкодинг</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 02</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое нейросети</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson active" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Основы промптинга</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ограничения и галлюцинации</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Нейросети в жизни</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Вайбкодинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Нейросети для текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Генеративные изображения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Автоматизация рутины</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>API нейросетей</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Локальные модели</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Продвинутый промптинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Этика и будущее ИИ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Основы промптинга: как общаться с ИИ</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~15 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы выяснили, что нейросеть - это по сути очень сложный калькулятор, который
+                    предсказывает следующее слово на основе статистики. Она не умеет читать мысли. Если вы
+                    дадите ей размытый запрос, она выдаст усредненный, шаблонный ответ.</p>
+
+                <p>Именно поэтому умение общаться с ИИ - это новый навык, который называют
+                    <strong>промптингом</strong> (от английского <em>prompt</em> - подсказка, побуждение).
+                    Промпт - это ваш запрос к нейросети. И то, насколько хорошим будет результат, зависит
+                    от того, насколько хорошо вы составили промпт.
+                </p>
+
+                <h2>Почему «напиши код» - это плохой промпт</h2>
+
+                <p>Представьте, что вы приходите к фрилансеру и говорите: «Сделай мне сайт». Что он сделает?
+                    Сайт-визитку? Интернет-магазин? Блог? На каком языке? В каком стиле? Скорее всего, он
+                    сделает что-то очень простое на свой вкус, и вам это не понравится. Придется переделывать
+                    и тратить время.</p>
+
+                <p>С нейросетью то же самое. Запрос «напиши код» или «сделай текст» - это отсутствие контекста.
+                    Модель будет гадать, что вы имели в виду, и выдаст самый вероятный (то есть самый
+                    банальный) вариант.</p>
+
+                <p>Сравните два подхода:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Плохой промпт: Напиши код на Python.</span></code></pre>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Хороший промпт: Ты опытный Python-разработчик. Напиши функцию,</span><span class="code-row">которая принимает список чисел и возвращает их сумму. Если</span><span class="code-row">список пустой, функция должна возвращать 0. Используй</span><span class="code-row">только стандартные библиотеки. Добавь краткий комментарий</span><span class="code-row">к коду.</span></code></pre>
+
+                <p>Во втором случае у модели нет шансов ошибиться. Вы дали ей роль, задачу, ограничения и
+                    требования к формату.</p>
+
+                <h2>Анатомия идеального промпта</h2>
+
+                <p>Существует простая формула, которая помогает составлять качественные запросы. Она состоит
+                    из четырех компонентов:</p>
+
+                <h3>1. Роль (Кто ты?)</h3>
+
+                <p>Задайте модели контекст. Скажите ей, кем она должна быть. Это настраивает стиль и глубину
+                    ответа.</p>
+
+                <ul>
+                    <li><em>«Ты профессиональный редактор»</em> - модель будет обращать внимание на стиль,
+                        орфографию и структуру.</li>
+                    <li><em>«Ты сеньор-разработчик на C#»</em> - модель напишет код с использованием
+                        продвинутых паттернов и будет следовать конвенциям языка.</li>
+                    <li><em>«Объясни это так, будто мне 10 лет»</em> - модель упростит термины.</li>
+                </ul>
+
+                <h3>2. Задача (Что нужно сделать?)</h3>
+
+                <p>Четко и недвусмысленно опишите действие. Используйте глаголы действия: напиши,
+                    проанализируй, переведи, сократи, придумай.</p>
+
+                <ul>
+                    <li><em>«Напиши поздравительное письмо»</em>.</li>
+                    <li><em>«Найди ошибку в этом коде»</em>.</li>
+                    <li><em>«Составь план тренировок на неделю»</em>.</li>
+                </ul>
+
+                <h3>3. Контекст (Почему и для кого?)</h3>
+
+                <p>Самая важная часть. Добавьте детали, которые помогут модели понять ситуацию.</p>
+
+                <ul>
+                    <li><em>«...для коллеги, с которым мы работаем 5 лет»</em> (для письма).</li>
+                    <li><em>«...код на Python, который выдает ошибку TypeError на 5 строке»</em> (для кода).</li>
+                    <li><em>«...для новичка, который только купил абонемент в зал»</em> (для плана).</li>
+                </ul>
+
+                <h3>4. Формат (Как должен выглядеть ответ?)</h3>
+
+                <p>Скажите модели, в каком виде вы хотите получить результат.</p>
+
+                <ul>
+                    <li><em>«Ответь в виде маркированного списка»</em>.</li>
+                    <li><em>«Выведи только код, без пояснений»</em>.</li>
+                    <li><em>«Сделай таблицу с колонками: день, упражнение, время»</em>.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Нейросеть - это не волшебник, а ваш стажер. Чем подробнее вы объясните стажеру задачу,
+                        тем лучше он ее выполнит. Не стесняйтесь писать длинные промпты - они работают
+                        в разы лучше коротких.</p>
+                </div>
+
+                <h2>Продвинутые приемы для начинающих</h2>
+
+                <p>Когда вы освоите базовую формулу, можно добавить пару трюков, которые сильно повышают
+                    качество ответов.</p>
+
+                <h3>Давайте примеры (Few-shot prompting)</h3>
+
+                <p>Модели отлично умеют подражать. Если вы хотите получить текст в определенном стиле,
+                    покажите ей 1-2 примера такого стиля.</p>
+
+                <p>Вместо: <em>«Напиши смешной пост про котов»</em>.</p>
+
+                <p>Лучше: <em>«Напиши пост про котов в таком же стиле, как эти два примера: [Пример 1],
+                        [Пример 2]»</em>.</p>
+
+                <h3>Просите думать по шагам (Chain of Thought)</h3>
+
+                <p>Если задача сложная (например, логическая или математическая), попросите модель
+                    рассуждать вслух. Это заставляет нейросеть генерировать промежуточные шаги, а не
+                    выдавать случайный ответ.</p>
+
+                <p>Добавьте в конец промпта фразу: <strong>«Давай порассуждаем по шагам»</strong> или
+                    <strong>«Опиши свой ход мыслей перед тем, как дать ответ»</strong>.
+                </p>
+
+                <h3>Используйте разделители</h3>
+
+                <p>Если вы вставляете в промпт большой кусок текста или кода, отделите его от своих инструкций
+                    с помощью маркеров. Например, тройных кавычек или тегов.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Сократи этот текст до 3 предложений:</span><span class="code-row">"""</span><span class="code-row">[Здесь очень длинный текст, который нужно сократить]</span><span class="code-row">"""</span></code></pre>
+
+                <p>Так модель точно поймет, что является инструкцией, а что - материалом для работы.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Промпт</code>
+                        <span>текстовый запрос к нейросети</span>
+                    </li>
+                    <li>
+                        <code>Роль</code>
+                        <span>кем должна быть модель (эксперт, учитель)</span>
+                    </li>
+                    <li>
+                        <code>Задача</code>
+                        <span>что именно нужно сделать</span>
+                    </li>
+                    <li>
+                        <code>Контекст</code>
+                        <span>детали и ограничения</span>
+                    </li>
+                    <li>
+                        <code>Формат</code>
+                        <span>как должен выглядеть ответ</span>
+                    </li>
+                    <li>
+                        <code>Few-shot</code>
+                        <span>обучение на примерах в промпте</span>
+                    </li>
+                    <li>
+                        <code>Chain of Thought</code>
+                        <span>просьба рассуждать по шагам</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы, с которыми сталкиваются новички при составлении промптов.</p>
+
+                <ul>
+                    <li><strong>«Нейросеть отвечает слишком коротко».</strong> Скорее всего, вы не указали
+                        объем. Добавьте: «Напиши подробный ответ на 3 абзаца» или «Разверни мысль, приведи
+                        примеры».</li>
+                    <li><strong>«Нейросеть пишет код с ошибками».</strong> Проверьте, дали ли вы ей контекст.
+                        На каком языке писать? Какую версию использовать? Какие библиотеки запрещены? Чем
+                        больше вводных, тем меньше ошибок.</li>
+                    <li><strong>«Ответы слишком сложные».</strong> Добавьте в промпт: «Объясни простыми
+                        словами», «Представь, что объясняешь школьнику» или «Избегай сложных терминов».</li>
+                    <li><strong>«Модель отвечает не в том формате».</strong> Если вам нужна таблица, так и
+                        напишите: «Выведи результат в виде Markdown-таблицы». Модели отлично понимают
+                        Markdown.</li>
+                    <li><strong>«Я пишу очень длинные промпты, а модель всё равно тупит».</strong> Иногда
+                        проблема в том, что инструкция потерялась в середине текста. Самые важные требования
+                        ставьте в самое начало или в самый конец промпта.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи для отработки навыков промптинга.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Найдите ошибки</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами три плохих промпта. Определите, каких компонентов
+                                (роль, задача, контекст, формат) в них не хватает, и как бы вы их
+                                улучшили.</p>
+                            <ol>
+                                <li>«Расскажи про космос».</li>
+                                <li>«Напиши статью».</li>
+                                <li>«Переведи текст на английский».</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте о целевой аудитории и цели этих запросов.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ul>
+                                        <li><strong>«Расскажи про космос».</strong> Нет контекста и формата.
+                                            Улучшение: «Ты учитель астрономии. Расскажи про черные дыры для
+                                            школьников 5 класса в виде трех коротких абзацев».</li>
+                                        <li><strong>«Напиши статью».</strong> Нет темы, роли, объема.
+                                            Улучшение: «Ты копирайтер. Напиши SEO-статью на тему "Как выбрать
+                                            первый смартфон" объемом 500 слов. Используй подзаголовки и
+                                            маркированные списки».</li>
+                                        <li><strong>«Переведи текст на английский».</strong> Нет самого текста
+                                            (или указания на него) и стиля. Улучшение: «Ты профессиональный
+                                            переводчик IT-тематики. Переведи этот текст на английский язык,
+                                            сохранив технические термины: [Текст]».</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Напишите промпт</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы хотите попросить нейросеть написать для вас резюме
+                                (CV) на позицию Junior Python Developer. Составьте подробный промпт,
+                                используя формулу «Роль + Задача + Контекст + Формат». В контексте
+                                укажите пару своих реальных или выдуманных навыков.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Не забудьте сказать модели, какой у вас опыт (например, «закончил
+                                        курсы», «писал пет-проекты»).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный ответ</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Промпт может выглядеть так:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Ты опытный IT-рекрутер и карьерный консультант.</span><span class="code-row">Напиши резюме на позицию Junior Python Developer.</span><span class="code-row">Контекст: Я закончил курсы по Python, умею работать с Django</span><span class="code-row">и PostgreSQL, написал пару пет-проектов (телеграм-бот и</span><span class="code-row">парсер маркетплейса). Опыта коммерческой разработки нет.</span><span class="code-row">Формат: Оформи в виде структурированного текста с разделами</span><span class="code-row">"О себе", "Навыки", "Проекты", "Образование". Добавь</span><span class="code-row">краткое сопроводительное письмо.</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Примените Chain of Thought</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вам нужно решить логическую задачу: «У фермера есть
+                                куры и кролики. Всего у них 35 голов и 94 ноги. Сколько кур и сколько
+                                кроликов?». Как изменить промпт, чтобы нейросеть не просто выдала
+                                ответ, а показала логику решения?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте фразы-триггеры для пошагового рассуждения.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В конец промпта нужно добавить фразу:</p>
+                                    <p><em>«Реши эту задачу. Давай порассуждаем по шагам. Сначала составь
+                                            уравнения, затем объясни, как ты их решаешь, и только в конце дай
+                                            итоговый ответ»</em>.</p>
+                                    <p>Такой подход заставляет модель сначала сгенерировать правильные
+                                        математические шаги (что снижает вероятность ошибки), а потом уже
+                                        выдать итоговый ответ.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Поиграем в редактора</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Представьте, что вы получили от нейросети вот такой
+                                текст: <em>«Нейросети это очень круто. Они могут делать много разных
+                                    вещей. Скоро они заменят всех людей. Надо срочно учиться
+                                    программировать».</em></p>
+                            <p>Напишите промпт, который заставит нейросеть переписать этот текст,
+                                сделав его более профессиональным, объективным и убрав панические
+                                нотки.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Задайте роль (например, технический писатель) и четко опишите, что
+                                        нужно изменить в тоне текста.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный ответ</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Промпт:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Ты профессиональный технический писатель и редактор.</span><span class="code-row">Перепиши следующий текст, сделав его более объективным,</span><span class="code-row">взвешенным и профессиональным. Убери панические и</span><span class="code-row">субъективные оценки (например, "заменят всех людей").</span><span class="code-row">Сохрани при этом главную мысль о важности развития навыков.</span><span class="code-row">Текст: """Нейросети это очень круто..."""</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с основами промптинга. Узнали, что качество ответа нейросети напрямую
+                    зависит от качества запроса. Выучили формулу идеального промпта: <strong>Роль,
+                        Задача, Контекст, Формат</strong>. Познакомились с продвинутыми приемами: обучение
+                    на примерах и пошаговое рассуждение (Chain of Thought).</p>
+
+                <p>Теперь вы умеете не просто «тыкать кнопки», а осознанно управлять нейросетью,
+                    превращая ее в полезного ассистента. Но у каждой технологии есть обратная сторона.
+                    В следующем уроке мы поговорим о самом частом и опасном недостатке ИИ -
+                    <strong>галлюцинациях</strong>. Узнаем, почему нейросети уверенно врут, как
+                    распознать выдумку и в каких случаях доверять им категорически нельзя.
+                </p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-01.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-03.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

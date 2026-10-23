@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Безопасность облаков и IAM - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="advanced" data-lesson-id="lesson-17">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 17</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson active" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Безопасность облаков и управление доступом (IAM)</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~50 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>За последние десять лет инфраструктура переехала в облака. Сегодня почти
+                    каждое современное приложение работает в AWS, Azure или Google Cloud.
+                    Это дало огромные преимущества: масштабируемость, гибкость, скорость
+                    разработки. Но появились и новые проблемы безопасности, которых
+                    не было в классических дата-центрах.</p>
+
+                <p>Именно поэтому <strong>Security Misconfiguration</strong> поднялся на
+                    второе место в OWASP Top 10:2025 - это прямое следствие облачной
+                    эры. Открытые S3-бакеты, слишком широкие IAM-политики, публичные
+                    снапшоты баз данных - всё это стало массовым явлением.</p>
+
+                <p>Сегодня разберёмся, как устроена безопасность облаков, что такое модель
+                    разделения ответственности, как работает IAM, где хранить секреты,
+                    и почему облачные ошибки приводят к самым громким утечкам данных.</p>
+
+                <h2>Что такое облако и почему это важно</h2>
+
+                <p><strong>Облако</strong> (cloud) - это модель предоставления вычислительных
+                    ресурсов по требованию через интернет. Вместо того чтобы покупать
+                    собственные серверы и держать их в дата-центре, вы арендуете мощности
+                    у провайдера: Amazon (AWS), Microsoft (Azure), Google (GCP) и других.</p>
+
+                <p>Три основных модели облачных услуг:</p>
+
+                <ul>
+                    <li><strong>IaaS</strong> (Infrastructure as a Service) - вы арендуете
+                        виртуальные машины, диски, сети. Отвечаете за всё, что выше
+                        операционной системы: ОС, приложения, данные. Примеры:
+                        AWS EC2, Azure VMs, Google Compute Engine.</li>
+                    <li><strong>PaaS</strong> (Platform as a Service) - провайдер управляет
+                        инфраструктурой и средой выполнения, вы отвечаете за код и данные.
+                        Примеры: AWS Elastic Beanstalk, Azure App Service, Heroku.</li>
+                    <li><strong>SaaS</strong> (Software as a Service) - готовое приложение,
+                        которым вы пользуетесь. Провайдер отвечает почти за всё.
+                        Примеры: Gmail, Office 365, Salesforce.</li>
+                </ul>
+
+                <p>В реальности большинство проектов используют комбинацию этих моделей.
+                    И это усложняет безопасность: разные модели предполагают разную
+                    зону ответственности клиента.</p>
+
+                <h2>Модель разделения ответственности</h2>
+
+                <p>Самый важный принцип облачной безопасности -
+                    <strong>Shared Responsibility Model</strong> (модель разделения
+                    ответственности). Суть проста: <strong>провайдер отвечает за
+                        безопасность облака, клиент - за безопасность в облаке</strong>.
+                </p>
+
+                <p>Проще говоря:</p>
+
+                <ul>
+                    <li><strong>Провайдер</strong> отвечает за физическую безопасность
+                        дата-центров, гипервизоры, глобальную сеть, оборудование.</li>
+                    <li><strong>Клиент</strong> отвечает за свой код, конфигурацию,
+                        данные, управление доступом, шифрование.</li>
+                </ul>
+
+                <p>И вот здесь происходит большинство ошибок. Клиенты часто думают:
+                    «Мы в облаке, значит, Amazon/Google/Microsoft сами всё защитят».
+                    Это опасное заблуждение. Провайдер даёт инструменты - но
+                    правильно их настроить должен клиент.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия
+                    </div>
+                    <p>Облачный провайдер - как застройщик многоквартирного дома. Он
+                        строит крепкие стены, ставит лифты, обеспечивает водоснабжение.
+                        Но он не отвечает за то, что вы храните в квартире, как
+                        защищаете входную дверь и что делаете с ключами. Это уже ваша
+                        зона ответственности.</p>
+                </div>
+
+                <p>Границы ответственности зависят от модели услуг:</p>
+
+                <ul>
+                    <li><strong>IaaS.</strong> Клиент отвечает почти за всё: ОС, патчи,
+                        приложения, данные, доступ. Провайдер только за железо
+                        и виртуализацию.</li>
+                    <li><strong>PaaS.</strong> Провайдер берёт на себя ОС и среду выполнения.
+                        Клиент отвечает за код, данные и конфигурацию доступа.</li>
+                    <li><strong>SaaS.</strong> Провайдер отвечает почти за всё. Клиент -
+                        за своих пользователей, настройки доступа и данные, которые
+                        он вводит.</li>
+                </ul>
+
+                <h2>IAM: управление идентификацией и доступом</h2>
+
+                <p><strong>IAM</strong> (Identity and Access Management) - это система
+                    управления доступами в облаке. Она определяет, <strong>кто</strong>
+                    может <strong>что</strong> делать с <strong>какими ресурсами</strong>.</p>
+
+                <p>В каждой облачной платформе есть свой IAM. Названия различаются,
+                    но принципы похожи:</p>
+
+                <ul>
+                    <li><strong>AWS IAM</strong> - пользователи, группы, роли, политики.</li>
+                    <li><strong>Azure RBAC</strong> - роли и назначения ролей.</li>
+                    <li><strong>Google Cloud IAM</strong> - роли и привязки политик.</li>
+                </ul>
+
+                <p>Основные понятия IAM:</p>
+
+                <ul>
+                    <li><strong>Пользователь</strong> (user) - учётная запись для человека
+                        или приложения.</li>
+                    <li><strong>Группа</strong> (group) - набор пользователей, которым
+                        одинаково нужны права.</li>
+                    <li><strong>Роль</strong> (role) - набор прав, который можно
+                        привязать к пользователю, сервису или другому аккаунту.</li>
+                    <li><strong>Политика</strong> (policy) - правила, что разрешено
+                        и что запрещено.</li>
+                </ul>
+
+                <h3>Принцип наименьших привилегий в IAM</h3>
+
+                <p>Главное правило IAM: <strong>каждому давать ровно столько прав,
+                        сколько нужно для работы</strong>. Ни больше. Это тот самый принцип
+                    наименьших привилегий, который мы обсуждали в уроке 15.</p>
+
+                <p>Но в облаках он критичен особенно. Почему? Потому что одна утёкшая
+                    учётная запись с избыточными правами может дать злоумышленнику
+                    контроль над всей инфраструктурой.</p>
+
+                <p>Типичные ошибки в IAM:</p>
+
+                <ul>
+                    <li>Давать всем пользователям права администратора «чтобы
+                        не мешало работать».</li>
+                    <li>Использовать <code>*</code> в политиках: <code>Action: "*"</code>
+                        означает «разрешить любые действия».</li>
+                    <li>Не удалять старые учётные записи уволенных сотрудников.</li>
+                    <li>Использовать долгоживущие ключи доступа вместо временных
+                        ролей.</li>
+                    <li>Хранить ключи доступа в коде, в Git, в публичных
+                        репозиториях.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Пример: Code Spaces
+                    </div>
+                    <p>В 2014 году компания Code Spaces, предоставлявшая сервис для
+                        разработчиков, подверглась атаке. Злоумышленник получил доступ
+                        к консоли AWS через украденные учётные данные. Компания не
+                        смогла остановить атаку вовремя, и злоумышленник удалил почти
+                        все данные и бэкапы. В течение 12 часов Code Spaces прекратила
+                        существование.</p>
+                    <p>Урок: даже одна скомпрометированная учётная запись с широкими
+                        правами может уничтожить компанию. Если бы права были
+                        ограничены, ущерб был бы значительно меньше.</p>
+                </div>
+
+                <h2>Управление секретами</h2>
+
+                <p><strong>Секреты</strong> (secrets) - это ключи API, пароли к базам
+                    данных, токены, сертификаты. Всё, что даёт доступ к ресурсам
+                    и должно быть скрыто.</p>
+
+                <p>Плохие практики, которые до сих пор встречаются:</p>
+
+                <ul>
+                    <li>Секреты в коде: прямо в исходниках приложения.</li>
+                    <li>Секреты в Git: в истории коммитов, где их находят
+                        автоматические сканеры.</li>
+                    <li>Секреты в публичных репозиториях: GitHub, GitLab,
+                        Bitbucket.</li>
+                    <li>Секреты в конфигах, которые попадают в Docker-образы.</li>
+                    <li>Секреты в переменных окружения на production-серверах
+                        без дополнительной защиты.</li>
+                </ul>
+
+                <p>Правильный подход - использовать специализированные сервисы
+                    для управления секретами:</p>
+
+                <ul>
+                    <li><strong>AWS Secrets Manager</strong> - хранение, ротация
+                        и доступ к секретам.</li>
+                    <li><strong>AWS Systems Manager Parameter Store</strong> -
+                        более простой вариант.</li>
+                    <li><strong>HashiCorp Vault</strong> - популярный
+                        мультиоблачный вариант.</li>
+                    <li><strong>Azure Key Vault</strong> и <strong>Google Secret
+                            Manager</strong> - аналоги в своих облаках.</li>
+                </ul>
+
+                <p>Эти сервисы предоставляют:</p>
+
+                <ul>
+                    <li>Хранение секретов в зашифрованном виде.</li>
+                    <li>Автоматическую ротацию (смену) ключей.</li>
+                    <li>Доступ по IAM-ролям, а не по файлам с паролями.</li>
+                    <li>Аудит - кто и когда получал секреты.</li>
+                </ul>
+
+                <h2>Типичные ошибки в облаках</h2>
+
+                <p>Разберём самые частые ошибки, которые приводят к утечкам данных.</p>
+
+                <h3>Открытые S3-бакеты</h3>
+
+                <p>S3 (Simple Storage Service) в AWS - это хранилище файлов.
+                    Аналоги есть в других облаках (Azure Blob Storage,
+                    Google Cloud Storage).</p>
+
+                <p>Проблема: если настройки доступа неправильные, бакет
+                    становится публично доступным. Любой в интернете может
+                    скачать его содержимое.</p>
+
+                <p>Инциденты с открытыми бакетами происходили с:</p>
+
+                <ul>
+                    <li>Правительственными организациями.</li>
+                    <li>Крупными корпорациями (Accenture, Verizon, Dow Jones).</li>
+                    <li>Спортивными и медийными компаниями.</li>
+                    <li>Множеством стартапов.</li>
+                </ul>
+
+                <p>Что утекало: персональные данные, резервные копии баз данных,
+                    внутренние документы, ключи доступа, конфигурации.</p>
+
+                <p><strong>Причина:</strong> разработчики или администраторы
+                    неправильно настроили политику доступа к бакету или не
+                    проверили её после создания.</p>
+
+                <h3>Публичные снапшоты баз данных</h3>
+
+                <p>В облаках можно делать снапшоты (снимки) баз данных. Иногда
+                    их случайно делают публичными - и вся база данных становится
+                    доступной.</p>
+
+                <p>Это часто происходит потому, что кто-то скопировал конфигурацию
+                    из тестовой среды, где было открыто для удобства, в production.</p>
+
+                <h3>Слишком широкие IAM-политики</h3>
+
+                <p>Политика вида <code>Action: "*" Resource: "*"</code> даёт
+                    пользователю полный доступ ко всему аккаунту. Это
+                    катастрофа, если учётная запись утечёт.</p>
+
+                <p>Иногда такие политики используются «для удобства» - например,
+                    чтобы разработчики не отвлекали администраторов на каждый
+                    запрос. Но цена такого удобства - огромный риск.</p>
+
+                <h3>Секреты в переменных окружения</h3>
+
+                <p>Переменные окружения - распространённый способ передать
+                    секреты приложению. Но они часто утекают: попадают в логи,
+                    в дампы, в отчёты об ошибках (вспомните A10 из урока 15).</p>
+
+                <p>Правильно: использовать сервисы управления секретами,
+                    получать их через IAM-роли, не хранить в переменных
+                    окружения долгосрочно.</p>
+
+                <h2>Атака через метаданные инстансов (IMDS)</h2>
+
+                <p>Отдельная и очень важная тема. В облаках виртуальные машины
+                    (инстансы) могут получать информацию о себе через специальный
+                    сервис - <strong>Instance Metadata Service</strong> (IMDS).</p>
+
+                <p>Он доступен по локальному адресу <code>169.254.169.254</code>
+                    изнутри инстанса. Через него можно узнать:</p>
+
+                <ul>
+                    <li>ID инстанса и тип.</li>
+                    <li>Публичный IP-адрес.</li>
+                    <li>Имя хоста.</li>
+                    <li>Учётные данные IAM-роли, привязанной к инстансу.</li>
+                </ul>
+
+                <p>Последний пункт - самое интересное. Если приложение на инстансе
+                    имеет IAM-роль - временные креденшелы этой роли можно получить
+                    через метаданные. Это законный механизм: приложению не нужно
+                    хранить ключи, оно получает их автоматически.</p>
+
+                <p>Проблема появляется, когда атакующий может отправить запрос
+                    изнутри инстанса. Как? Через <strong>SSRF</strong>
+                    (Server-Side Request Forgery) - атаку, при которой злоумышленник
+                    заставляет сервер обратиться к внутреннему ресурсу.</p>
+
+                <h3>Пример: Capital One (2019)</h3>
+
+                <p>Один из самых громких инцидентов в облачной безопасности.
+                    Злоумышленник использовала SSRF-уязвимость в приложении Capital
+                    One, чтобы обратиться к IMDS и получить временные креденшелы
+                    IAM-роли. С этими креденшелами она получила доступ к S3-бакетам
+                    и скачала данные более 100 миллионов клиентов.</p>
+
+                <p>Ущерб: 80 миллионов долларов штрафа, потеря репутации, отставка
+                    топ-менеджеров.</p>
+
+                <p>Что пошло не так:</p>
+
+                <ul>
+                    <li>В приложении была SSRF-уязвимость.</li>
+                    <li>IAM-роль инстанса имела слишком широкие права.</li>
+                    <li>IMDS был доступен в старой версии (IMDSv1) без
+                        дополнительной защиты.</li>
+                </ul>
+
+                <h3>Защита: IMDSv2</h3>
+
+                <p>После серии подобных инцидентов AWS ввела <strong>IMDSv2</strong> -
+                    вторую версию сервиса метаданных. Ключевое отличие: для
+                    получения данных нужно сначала создать сессию через PUT-запрос
+                    с токеном. Это защищает от простых SSRF-атак, потому что
+                    большинство SSRF не поддерживают PUT-запросы.</p>
+
+                <p>Правильные практики для защиты от атак через IMDS:</p>
+
+                <ul>
+                    <li>Использовать IMDSv2 (обязательно).</li>
+                    <li>Не давать инстансам больше прав, чем нужно.</li>
+                    <li>Валидировать пользовательский ввод в приложениях, чтобы
+                        не было SSRF.</li>
+                    <li>Ограничивать сетевой доступ с инстансов.</li>
+                </ul>
+
+                <h2>Мониторинг и логирование в облаках</h2>
+
+                <p>Безопасность в облаках невозможна без мониторинга. Ключевые
+                    сервисы:</p>
+
+                <ul>
+                    <li><strong>AWS CloudTrail</strong> - записывает все API-вызовы
+                        в аккаунте: кто, что, когда и откуда сделал.</li>
+                    <li><strong>AWS CloudWatch</strong> - метрики, логи, алерты.</li>
+                    <li><strong>AWS GuardDuty</strong> - обнаружение угроз на
+                        основе машинного обучения.</li>
+                    <li><strong>AWS Config</strong> - отслеживание изменений
+                        конфигурации ресурсов.</li>
+                    <li><strong>Аналоги в Azure</strong>: Azure Monitor, Log
+                        Analytics, Microsoft Defender for Cloud.</li>
+                    <li><strong>Аналоги в GCP</strong>: Cloud Logging, Cloud
+                        Monitoring, Security Command Center.</li>
+                </ul>
+
+                <p>Что важно логировать и мониторить:</p>
+
+                <ul>
+                    <li>Все попытки аутентификации - успешные и неуспешные.</li>
+                    <li>Изменения IAM-политик и ролей.</li>
+                    <li>Создание и удаление ресурсов.</li>
+                    <li>Доступ к секретам и чувствительным данным.</li>
+                    <li>Изменения конфигураций безопасности.</li>
+                    <li>Аномальную активность: вход из необычного региона,
+                        массовое скачивание данных.</li>
+                </ul>
+
+                <p>Обязательная практика: <strong>включить логирование с самого
+                        начала</strong>. Если атака произошла - только по логам можно
+                    понять, что случилось. Без логов расследование невозможно.</p>
+
+                <h2>Инструменты для безопасности облаков</h2>
+
+                <p>Отдельная категория инструментов - для выявления ошибок
+                    конфигурации и оценки защищённости облачной инфраструктуры.</p>
+
+                <h3>CSPM (Cloud Security Posture Management)</h3>
+
+                <p>Инструменты, которые сканируют облачную инфраструктуру
+                    и находят ошибки конфигурации:</p>
+
+                <ul>
+                    <li>Открытые S3-бакеты.</li>
+                    <li>Публичные снапшоты баз данных.</li>
+                    <li>Слишком широкие IAM-политики.</li>
+                    <li>Отсутствие шифрования на дисках.</li>
+                    <li>Незакрытые порты на security groups.</li>
+                    <li>Устаревшие или неиспользуемые ресурсы.</li>
+                </ul>
+
+                <p>Популярные инструменты:</p>
+
+                <ul>
+                    <li><strong>Prowler</strong> - открытый, для AWS, Azure, GCP.</li>
+                    <li><strong>ScoutSuite</strong> - открытый, мультиоблачный.</li>
+                    <li><strong>CloudSploit</strong> - открытый сканер.</li>
+                    <li><strong>Wiz, Orca Security, Lacework</strong> - коммерческие
+                        платформы.</li>
+                </ul>
+
+                <h3>IaC Security</h3>
+
+                <p>Инфраструктура как код (Terraform, CloudFormation) тоже
+                    может содержать ошибки. Инструменты проверяют конфигурации
+                    до применения:</p>
+
+                <ul>
+                    <li><strong>Checkov</strong> - популярный сканер IaC.</li>
+                    <li><strong>tfsec</strong> - специализация на Terraform.</li>
+                    <li><strong>KICS</strong> - мультиплатформенный.</li>
+                </ul>
+
+                <p>Идея: находить ошибки на этапе code review, а не когда они уже
+                    развернуты в production.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Shared Responsibility</code>
+                        <span>провайдер vs клиент</span>
+                    </li>
+                    <li>
+                        <code>IAM</code>
+                        <span>управление доступами</span>
+                    </li>
+                    <li>
+                        <code>Least Privilege</code>
+                        <span>минимум прав</span>
+                    </li>
+                    <li>
+                        <code>Secrets Manager</code>
+                        <span>хранилище секретов</span>
+                    </li>
+                    <li>
+                        <code>S3 Public</code>
+                        <span>открытые бакеты - катастрофа</span>
+                    </li>
+                    <li>
+                        <code>IMDSv2</code>
+                        <span>защита от SSRF</span>
+                    </li>
+                    <li>
+                        <code>CloudTrail</code>
+                        <span>логирование API-вызовов</span>
+                    </li>
+                    <li>
+                        <code>CSPM</code>
+                        <span>сканирование конфигурации</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные заблуждения и ошибки в облачной безопасности.</p>
+
+                <ul>
+                    <li><strong>«Мы в облаке, значит, безопасность обеспечена
+                            провайдером».</strong> Нет. Провайдер отвечает только за
+                        безопасность <em>облака</em> (инфраструктуры). За безопасность
+                        <em>в облаке</em> (ваш код, конфигурация, данные) отвечаете вы.
+                        Именно на клиентской части происходят почти все инциденты.
+                    </li>
+                    <li><strong>«Наш S3-бакет приватный, потому что мы так
+                            думали».</strong> Надо проверять, а не думать. Инструменты
+                        вроде Prowler или AWS Config находят открытые бакеты
+                        автоматически. Периодически запускайте проверки.</li>
+                    <li><strong>«Мы используем <code>*</code> в IAM-политике
+                            для простоты».</strong> Это опасная практика. Один утёкший
+                        ключ - и злоумышленник получает контроль над аккаунтом.
+                        Ограничивайте политики конкретными действиями
+                        и ресурсами.</li>
+                    <li><strong>«Секреты в переменных окружения безопаснее,
+                            чем в коде».</strong> Слегка безопаснее, но всё равно
+                        уязвимо. Переменные окружения часто утекают через логи,
+                        дампы, отчёты об ошибках. Используйте сервисы управления
+                        секретами (Vault, Secrets Manager).</li>
+                    <li><strong>«IMDS - это внутренний сервис, атаковать его
+                            нельзя».</strong> Именно через IMDS атаковали Capital
+                        One и множество других компаний. Если приложение
+                        уязвимо к SSRF, злоумышленник может получить временные
+                        креденшелы. Всегда используйте IMDSv2.</li>
+                    <li><strong>«Логирование можно включить позже».</strong>
+                        Позже может не быть. Если атака произошла до включения
+                        логирования - восстановить картину событий невозможно.
+                        Включайте CloudTrail, CloudWatch, GuardDuty с самого
+                        начала.</li>
+                    <li><strong>«Много разных аккаунтов - сложно управлять».</strong>
+                        Наоборот. Разделение на несколько аккаунтов
+                        (dev, staging, prod) - лучшая практика. Это ограничивает
+                        ущерб: компрометация одного аккаунта не затронет
+                        остальные.</li>
+                    <li><strong>«Мы не можем позволить себе коммерческие
+                            инструменты».</strong> Многие открытые инструменты
+                        (Prowler, ScoutSuite, Checkov) дают 80% пользы
+                        бесплатно. Начните с них.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание концепций, вторые
+                    две - на разбор реальных ситуаций.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Чья ответственность</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Определите, кто отвечает за каждую
+                                задачу - облачный провайдер или клиент. По модели
+                                Shared Responsibility.</p>
+                            <ol>
+                                <li>Физическая охрана дата-центра.</li>
+                                <li>Патчинг операционной системы на виртуальной
+                                    машине (IaaS).</li>
+                                <li>Безопасность гипервизора.</li>
+                                <li>Настройка firewall-правил на виртуальной
+                                    машине.</li>
+                                <li>Управление IAM-пользователями и ролями.</li>
+                                <li>Шифрование данных в S3.</li>
+                                <li>Безопасность глобальной сети провайдера.</li>
+                                <li>Обновление версии Python в приложении.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Провайдер отвечает за физическую
+                                        инфраструктуру и виртуализацию.
+                                        Клиент - за всё, что выше: ОС, патчи,
+                                        код, данные, конфигурация, доступ.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Провайдер.</strong> Физическая
+                                            безопасность дата-центров - часть
+                                            инфраструктуры провайдера.</li>
+                                        <li><strong>Клиент.</strong> В модели IaaS
+                                            клиент отвечает за ОС и её
+                                            патчинг.</li>
+                                        <li><strong>Провайдер.</strong> Гипервизор
+                                            (слой виртуализации) - часть
+                                            платформы.</li>
+                                        <li><strong>Клиент.</strong> Security
+                                            groups и firewall - настройки
+                                            клиента.</li>
+                                        <li><strong>Клиент.</strong> Управление
+                                            IAM-пользователями - полностью на
+                                            клиенте.</li>
+                                        <li><strong>Клиент.</strong> Провайдер
+                                            предоставляет возможность
+                                            шифрования, но включить его -
+                                            задача клиента.</li>
+                                        <li><strong>Провайдер.</strong> Глобальная
+                                            сеть, соединяющая дата-центры, -
+                                            часть инфраструктуры.</li>
+                                        <li><strong>Клиент.</strong> Обновление
+                                            зависимостей приложения -
+                                            ответственность клиента.</li>
+                                    </ol>
+                                    <p>Общее правило: если это ваш код,
+                                        ваша конфигурация или ваши данные -
+                                        отвечаете вы. Если это железо,
+                                        гипервизор или глобальная
+                                        инфраструктура - провайдер.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Найдите проблему в IAM</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Администратор настроил IAM
+                                для нового разработчика. Посмотрите на политику
+                                и найдите минимум три проблемы.</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">{</span><span class="code-row">  "Effect": "Allow",</span><span class="code-row">  "Action": "*",</span><span class="code-row">  "Resource": "*"</span><span class="code-row">}</span></code></pre>
+                            <p>Плюс: разработчику выдали долгосрочный ключ
+                                доступа и сохранили его в общий документ
+                                Notion. Также он использует один и тот же
+                                ключ для всех проектов компании.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните принцип наименьших привилегий,
+                                        практики управления секретами и
+                                        срок жизни ключей.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проблемы этой конфигурации:</p>
+                                    <ol>
+                                        <li><strong>Action: "*" - полный
+                                                доступ.</strong> Разработчику
+                                            дали права на <em>все</em> действия
+                                            во всём аккаунте. Если его ключ
+                                            утечёт - злоумышленник сможет
+                                            удалить данные, изменить
+                                            инфраструктуру, похитить секреты.
+                                            Нужно ограничить конкретными
+                                            действиями.</li>
+                                        <li><strong>Resource: "*" - все
+                                                ресурсы.</strong> Даже если
+                                            ограничить действия, доступ
+                                            ко всем ресурсам всё равно
+                                            опасен. Разработчику нужны
+                                            только его ресурсы - база
+                                            данных проекта, его S3-бакет
+                                            и т.д.</li>
+                                        <li><strong>Долгосрочный ключ
+                                                доступа.</strong> Ключи не должны
+                                            жить месяцами и годами. Лучше
+                                            использовать временные роли
+                                            (STS AssumeRole) или SSO.
+                                            Долгосрочный ключ - большая
+                                            поверхность атаки.</li>
+                                        <li><strong>Ключ в документе Notion.</strong>
+                                            Хранение секретов в wiki,
+                                            документах, чатах - это утечка
+                                            рано или поздно. Нужны
+                                            специализированные сервисы
+                                            (Vault, Secrets Manager) с
+                                            контролем доступа.</li>
+                                        <li><strong>Один ключ на все
+                                                проекты.</strong> Если ключ
+                                            утечёт - пострадают все проекты
+                                            сразу. Разные проекты должны
+                                            использовать разные
+                                            учётные записи с разными
+                                            правами.</li>
+                                    </ol>
+                                    <p>Как надо:</p>
+                                    <ul>
+                                        <li>IAM-политика с минимально
+                                            необходимыми действиями.</li>
+                                        <li>Ограничение по конкретным
+                                            ресурсам (по ARN).</li>
+                                        <li>Временные креденшелы через
+                                            SSO или роли.</li>
+                                        <li>Секреты - в Secrets Manager
+                                            с аудитом доступа.</li>
+                                        <li>Отдельная учётная запись
+                                            для каждого проекта.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Разбор инцидента</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Компания обнаружила, что из
+                                её S3-бакета были скачаны данные клиентов.
+                                При расследовании выяснилось, что доступ
+                                был получен через временные креденшелы
+                                IAM-роли, привязанной к EC2-инстансу.
+                                Как мог произойти этот инцидент? Какие
+                                ошибки были допущены?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните про SSRF и IMDS. Как
+                                        злоумышленник может получить
+                                        креденшелы роли, если у него нет
+                                        прямого доступа к инстансу?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Наиболее вероятный сценарий -
+                                        атака через <strong>SSRF</strong>
+                                        (как в случае Capital One):</p>
+                                    <ol>
+                                        <li>В приложении на инстансе была
+                                            уязвимость SSRF. Например,
+                                            эндпоинт, который загружает
+                                            картинки по URL.</li>
+                                        <li>Злоумышленник отправил запрос,
+                                            который заставил сервер обратиться
+                                            к <code>169.254.169.254</code> -
+                                            внутреннему адресу сервиса
+                                            метаданных.</li>
+                                        <li>Через IMDS злоумышленник получил
+                                            временные креденшелы IAM-роли,
+                                            привязанной к инстансу.</li>
+                                        <li>С этими креденшелами он обратился
+                                            к S3 и скачал данные.</li>
+                                    </ol>
+                                    <p>Допущенные ошибки:</p>
+                                    <ul>
+                                        <li><strong>SSRF-уязвимость
+                                                в приложении.</strong> Не валидировался
+                                            пользовательский ввод, позволяя
+                                            обращаться к произвольным URL,
+                                            включая внутренние адреса.</li>
+                                        <li><strong>Слишком широкие права
+                                                IAM-роли.</strong> Роль имела
+                                            доступ ко всем S3-бакетам, а не
+                                            только к нужному. Если бы права
+                                            были ограничены - злоумышленник
+                                            не смог бы получить данные
+                                            клиентов.</li>
+                                        <li><strong>IMDSv1 вместо
+                                                IMDSv2.</strong> Старая версия
+                                            сервиса метаданных уязвима к
+                                            простым SSRF. IMDSv2 требует
+                                            PUT-запрос с токеном, что
+                                            большинство SSRF не могут
+                                            выполнить.</li>
+                                        <li><strong>Отсутствие
+                                                мониторинга.</strong> Массовое
+                                            скачивание данных из S3 должно
+                                            было вызвать алерт. Но никто
+                                            не смотрел логи.</li>
+                                    </ul>
+                                    <p>Как надо было защититься:</p>
+                                    <ul>
+                                        <li>Валидировать все URL в приложении,
+                                            запретить доступ к внутренним
+                                            адресам.</li>
+                                        <li>Ограничить права IAM-роли
+                                            минимально необходимыми.</li>
+                                        <li>Обязательно использовать
+                                            IMDSv2.</li>
+                                        <li>Настроить алерты на аномальные
+                                            объёмы чтения из S3.</li>
+                                        <li>Шифровать данные на стороне
+                                            клиента (клиентское шифрование),
+                                            чтобы даже при утечке они были
+                                            бесполезны.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Аудит облачной инфраструктуры</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы новый инженер по безопасности
+                                в компании, которая использует AWS. Опишите
+                                минимальный набор шагов для аудита безопасности
+                                облачной инфраструктуры. Что проверить
+                                в первую очередь?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Начните с самого критичного: IAM,
+                                        публичные ресурсы, секреты, логи.
+                                        Потом перейдите к остальному.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>План аудита по приоритетам:</p>
+                                    <ol>
+                                        <li><strong>IAM - кто имеет доступ
+                                                и какие права.</strong>
+                                            <ul>
+                                                <li>Найти пользователей
+                                                    с правами <code>*:*</code>
+                                                    (полный доступ).</li>
+                                                <li>Проверить неактивные
+                                                    учётные записи.</li>
+                                                <li>Проверить наличие
+                                                    MFA у root-аккаунта
+                                                    и админов.</li>
+                                                <li>Проверить срок жизни
+                                                    ключей доступа.</li>
+                                                <li>Убедиться, что
+                                                    используются роли,
+                                                    а не долгосрочные
+                                                    ключи.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Публичные ресурсы -
+                                                S3, снапшоты, базы данных.</strong>
+                                            <ul>
+                                                <li>Запустить Prowler
+                                                    или ScoutSuite.</li>
+                                                <li>Найти все открытые
+                                                    бакеты и снапшоты.</li>
+                                                <li>Проверить,
+                                                    что базы данных
+                                                    не доступны из
+                                                    интернета.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Секреты.</strong>
+                                            <ul>
+                                                <li>Найти секреты
+                                                    в коде и Git-истории
+                                                    (TruffleHog,
+                                                    GitGuardian).</li>
+                                                <li>Проверить, что
+                                                    используется
+                                                    Secrets Manager
+                                                    или Vault.</li>
+                                                <li>Проверить,
+                                                    что секреты
+                                                    не хранятся
+                                                    в переменных
+                                                    окружения без
+                                                    шифрования.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Логирование и
+                                                мониторинг.</strong>
+                                            <ul>
+                                                <li>Проверить,
+                                                    что CloudTrail
+                                                    включён во всех
+                                                    регионах.</li>
+                                                <li>Включить GuardDuty,
+                                                    если не
+                                                    включён.</li>
+                                                <li>Настроить алерты
+                                                    на критичные
+                                                    события.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Сеть - security
+                                                groups и NACL.</strong>
+                                            <ul>
+                                                <li>Найти слишком
+                                                    широкие правила
+                                                    (0.0.0.0/0).</li>
+                                                <li>Закрыть порты,
+                                                    которые не должны
+                                                    быть доступны
+                                                    из интернета
+                                                    (SSH, RDP, базы
+                                                    данных).</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>IMDS.</strong>
+                                            <ul>
+                                                <li>Проверить, что
+                                                    IMDSv2 обязателен
+                                                    на всех EC2-инстансах.</li>
+                                                <li>Отключить IMDSv1.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Шифрование.</strong>
+                                            <ul>
+                                                <li>Проверить,
+                                                    что S3, EBS, RDS
+                                                    используют
+                                                    шифрование.</li>
+                                                <li>Проверить,
+                                                    что ключи
+                                                    управляются
+                                                    через KMS.</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                    <p>После аудита - приоритизировать
+                                        находки по критичности. Начать
+                                        с тех, что дают немедленный
+                                        доступ к данным или позволяют
+                                        уничтожить инфраструктуру.
+                                        Завести план исправлений
+                                        с дедлайнами.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с безопасностью облаков - одной из самых важных тем
+                    современной инфраструктуры. Узнали про <strong>Shared Responsibility
+                        Model</strong>: провайдер отвечает за безопасность облака, клиент -
+                    за безопасность в облаке.</p>
+
+                <p>Разобрались с <strong>IAM</strong> - управлением идентификацией
+                    и доступом. Поняли, почему принцип наименьших привилегий
+                    особенно критичен в облаках: одна утёкшая учётная запись с широкими
+                    правами может уничтожить всю компанию (пример Code Spaces).</p>
+
+                <p>Изучили типичные ошибки: открытые S3-бакеты, публичные снапшоты,
+                    слишком широкие IAM-политики, секреты в коде и переменных
+                    окружения. Разобрали <strong>атаку через IMDS</strong> - механизм,
+                    через который хакеры получили доступ к данным Capital One
+                    (80 миллионов долларов штрафа).</p>
+
+                <p>Познакомились с инструментами мониторинга (CloudTrail, GuardDuty)
+                    и сканерами конфигураций (Prowler, ScoutSuite, Checkov).
+                    Узнали про <strong>CSPM</strong> - отдельную категорию инструментов
+                    для оценки защищённости облака.</p>
+
+                <p>Главный вывод: <strong>облако - это не «безопасно по умолчанию»</strong>.
+                    Провайдер даёт инструменты, но правильно их использовать - задача
+                    клиента. Большинство облачных инцидентов происходит из-за ошибок
+                    конфигурации, а не из-за проблем самих облачных платформ.</p>
+
+                <p>В следующем уроке займёмся <strong>управлением уязвимостями</strong> -
+                    разберёмся, как системно находить и приоритизировать уязвимости
+                    в инфраструктуре и приложениях. Познакомимся с CVE, CVSS,
+                    сканерами уязвимостей, а также с тем, как отличать критичные
+                    уязвимости от тех, на которые можно отложить реакцию.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-16.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-18.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

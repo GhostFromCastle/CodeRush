@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сетевая безопасность: firewall, VPN, IDS - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="advanced" data-lesson-id="lesson-13">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 13</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson active" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Сетевая безопасность: firewall, VPN, IDS</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~50 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Добро пожаловать на продвинутый уровень. Начальный и средний мы закрыли - теперь
+                    вы понимаете, как защищаются данные, как работают атаки и как устроены механизмы
+                    аутентификации. Дальше будем смотреть на безопасность глазами инженера: как
+                    защищают целые сети, как строят периметр и как отлавливают вторжения.</p>
+
+                <p>Начнём с сетевой безопасности - фундамента, на котором стоит всё остальное.
+                    Разберём три ключевых инструмента: <strong>firewall</strong> (межсетевой экран),
+                    <strong>VPN</strong> (виртуальные частные сети) и <strong>IDS/IPS</strong>
+                    (системы обнаружения и предотвращения вторжений). Это три кита, на которых
+                    держится защита любой современной сети - от домашней до корпоративной.
+                </p>
+
+                <h2>Периметр сети: что мы защищаем</h2>
+
+                <p>Прежде чем говорить об инструментах, разберёмся, что такое <strong>периметр
+                        сети</strong>. Это граница между «внутренней» сетью (доверенной) и внешним
+                    миром (интернетом, враждебной средой).</p>
+
+                <p>Аналогия простая - средневековый замок. Есть крепостная стена, ворота, стражники
+                    на входе. Внутри - жители, которым доверяют. Снаружи - все остальные. Задача
+                    стражи - не пустить внутрь того, кто не должен войти, но при этом пропустить
+                    тех, кто идёт по делу.</p>
+
+                <p>В сетевой безопасности периметр - это не одна стена, а целая система уровней
+                    защиты. Именно поэтому используют термин <strong>defense in depth</strong>
+                    (эшелонированная защита). Периметр состоит из нескольких слоёв, и каждый
+                    следующий слой включается, если предыдущий не справился.</p>
+
+                <p>Три главных инструмента, которые образуют этот периметр:</p>
+
+                <ul>
+                    <li><strong>Firewall</strong> - решает, какие соединения пропускать, а какие
+                        блокировать.</li>
+                    <li><strong>VPN</strong> - шифрует трафик, чтобы его не перехватили по дороге.</li>
+                    <li><strong>IDS/IPS</strong> - следит за происходящим в сети и реагирует на
+                        подозрительные события.</li>
+                </ul>
+
+                <h2>Firewall: пограничник сети</h2>
+
+                <p>Firewall (в русской терминологии «брандмауэр» или «межсетевой экран») -
+                    это система, которая <strong>контролирует сетевой трафик</strong> по
+                    заранее заданным правилам. Он стоит на границе сети и пропускает только то,
+                    что разрешено.</p>
+
+                <p>Аналогия с реальным миром: вахтёр на проходной. У него есть список правил:
+                    «сотрудники проходят по пропуску», «посетители - только с 9 до 18»,
+                    «грузовики - только через задние ворота». Каждое действие проверяется на
+                    соответствие правилам.</p>
+
+                <h3>Типы firewall</h3>
+
+                <p>Firewall бывает нескольких видов - в зависимости от того, как глубоко он
+                    анализирует трафик.</p>
+
+                <h4>Packet Filter (пакетный фильтр)</h4>
+
+                <p>Самый простой и самый быстрый тип. Работает на уровне отдельных
+                    <strong>пакетов данных</strong>. Смотрит на поля в заголовках:
+                </p>
+
+                <ul>
+                    <li><strong>IP-адрес источника</strong> - откуда пришёл пакет.</li>
+                    <li><strong>IP-адрес назначения</strong> - куда он идёт.</li>
+                    <li><strong>Порт источника</strong> - какой порт у отправителя.</li>
+                    <li><strong>Порт назначения</strong> - на какой порт он идёт
+                        (например, 80 для HTTP, 443 для HTTPS, 22 для SSH).</li>
+                    <li><strong>Протокол</strong> - TCP, UDP, ICMP.</li>
+                </ul>
+
+                <p>На основе этих полей применяются правила. Например: «Разрешить входящие
+                    соединения на порт 443 откуда угодно» или «Запретить входящие на порт 22
+                    кроме адресов из офиса».</p>
+
+                <p>Плюсы: очень быстрый, не требует много ресурсов. Минусы: не понимает
+                    контекст - не отличает легитимный трафик от атакующего, если они
+                    выглядят одинаково с точки зрения пакетов.</p>
+
+                <h4>Stateful Inspection</h4>
+
+                <p>Более умный тип. Firewall <strong>помнит состояние соединений</strong>.
+                    Если клиент внутри сети первым открыл соединение с внешним сервером,
+                    firewall запоминает это и разрешает ответные пакеты от этого сервера.
+                    Но если снаружи приходит пакет, который «не принадлежит» ни одному
+                    известному соединению - блокирует его.</p>
+
+                <p>Это как вахтёр, который ведёт журнал: «Сотрудник Иванов вышел на улицу,
+                    жду его возвращения - впущу». Без журнала он бы каждого проверял с
+                    нуля, а с журналом уже знает контекст.</p>
+
+                <p>Современные firewall почти всегда stateful - это стандарт де-факто.</p>
+
+                <h4>Application Layer Firewall (WAF)</h4>
+
+                <p>Самый глубокий уровень. Анализирует не только пакеты, но и
+                    <strong>содержимое прикладного трафика</strong>. Например, смотрит
+                    внутрь HTTP-запросов и может распознать:
+                </p>
+
+                <ul>
+                    <li>Попытки SQL-инъекций (по паттернам в параметрах).</li>
+                    <li>Внедрение XSS-скриптов.</li>
+                    <li>Подозрительные загрузки файлов.</li>
+                    <li>Аномальное поведение пользователей.</li>
+                </ul>
+
+                <p>Такие firewall называются <strong>WAF</strong> (Web Application Firewall).
+                    Они медленнее и сложнее в настройке, но защищают от атак, которые
+                    stateful firewall просто не видит - потому что на уровне TCP/IP всё
+                    выглядит нормально.</p>
+
+                <p>Примеры WAF: ModSecurity, AWS WAF, Cloudflare WAF, Imperva.</p>
+
+                <h3>Правила firewall</h3>
+
+                <p>Firewall работает по набору правил. Каждое правило - это условие
+                    и действие. Например:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Allow TCP from any to 203.0.113.5 port 443</span><span class="code-row">Allow TCP from 10.0.0.0/8 to 203.0.113.5 port 22</span><span class="code-row">Allow ICMP from any to 203.0.113.5 type 8</span><span class="code-row">Deny  all from any to any</span></code></pre>
+
+                <p>Первое правило: разрешить HTTPS-соединения откуда угодно к нашему
+                    серверу. Второе: разрешить SSH только из внутренней сети. Третье:
+                    разрешить ping. Последнее: запретить всё остальное.</p>
+
+                <p>Правило «Deny all» в конце - обязательное. Оно означает <strong>«всё,
+                        что не разрешено явно, запрещено»</strong>. Это принцип
+                    <em>default deny</em> - основа безопасной настройки.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Default deny vs default allow
+                    </div>
+                    <p>Два подхода к firewall:</p>
+                    <ul>
+                        <li><strong>Default deny</strong> - «всё, что не разрешено
+                            явно, запрещено». Безопасный подход. Используется в
+                            корпоративных сетях, на серверах.</li>
+                        <li><strong>Default allow</strong> - «всё, что не запрещено
+                            явно, разрешено». Небезопасный, но проще в настройке.
+                            Используется редко.</li>
+                    </ul>
+                    <p>Всегда стремитесь к default deny. Пусть лучше пользователи
+                        попросят открыть нужный порт, чем злоумышленник найдёт
+                        открытый порт, о котором вы забыли.</p>
+                </div>
+
+                <h3>Где встречается firewall</h3>
+
+                <ul>
+                    <li><strong>Домашний роутер</strong> - простой stateful firewall,
+                        включён по умолчанию.</li>
+                    <li><strong>Операционная система</strong> - Windows Firewall,
+                        ufw/iptables на Linux, pf на macOS.</li>
+                    <li><strong>Облачные платформы</strong> - Security Groups в AWS,
+                        Network Security Groups в Azure.</li>
+                    <li><strong>Корпоративные сети</strong> - отдельные аппаратные
+                        firewall от Cisco, Palo Alto, Fortinet, Check Point.</li>
+                </ul>
+
+                <h2>VPN: защищённый туннель</h2>
+
+                <p>VPN расшифровывается как <em>Virtual Private Network</em> -
+                    «виртуальная частная сеть». Идея: создать <strong>защищённый
+                        туннель</strong> между двумя точками через враждебную среду
+                    (интернет).</p>
+
+                <p>Внутри туннеля трафик зашифрован - никто «по дороге» не может его
+                    прочитать или изменить. Снаружи это выглядит как обычный шум.</p>
+
+                <p>Аналогия: представьте, что вы отправляете бронированный грузовик
+                    через опасный район. Обычный курьер с сумкой будет ограблен, а
+                    бронированный грузовик доедет без потерь. VPN - это такой грузовик
+                    для ваших данных.</p>
+
+                <h3>Зачем используют VPN</h3>
+
+                <p>Три основные задачи:</p>
+
+                <ul>
+                    <li><strong>Приватность.</strong> Провайдер и владелец Wi-Fi-сети
+                        не видят, какие сайты вы посещаете. Они видят только, что вы
+                        подключаетесь к VPN-серверу.</li>
+                    <li><strong>Удалённый доступ.</strong> Сотрудник дома подключается
+                        к корпоративной сети через VPN - и работает так, будто
+                        физически находится в офисе.</li>
+                    <li><strong>Обход географических ограничений.</strong> Подключение
+                        через сервер в другой стране. Это самый спорный сценарий -
+                        некоторые сервисы его явно запрещают.</li>
+                </ul>
+
+                <h3>Виды VPN</h3>
+
+                <h4>Site-to-Site VPN</h4>
+
+                <p>Соединяет две сети - например, офис в Москве и офис в Новосибирске.
+                    Сотрудники работают так, будто обе сети физически рядом, хотя
+                    трафик проходит через интернет в зашифрованном виде.</p>
+
+                <h4>Remote Access VPN</h4>
+
+                <p>Для отдельных пользователей. Сотрудник дома подключается к
+                    корпоративной сети через VPN-клиент на своём компьютере.
+                    Это то, что чаще всего имеют в виду, когда говорят «подключиться
+                    к рабочему VPN».</p>
+
+                <h4>Personal / Consumer VPN</h4>
+
+                <p>Коммерческие сервисы для обычных пользователей (NordVPN,
+                    ExpressVPN, Mullvad и другие). Обещают приватность,
+                    обход геоограничений, защиту в публичных Wi-Fi.</p>
+
+                <p>Важно: <strong>не все VPN одинаковы</strong>. Платный сервис с
+                    прозрачной политикой - одно. Бесплатный VPN от неизвестного
+                    разработчика - совсем другое. Во втором случае вы просто
+                    меняете одного наблюдателя (провайдера) на другого (владельца
+                    VPN), причём часто менее надёжного. Вспомните урок 5 про
+                    расширения: бесплатные VPN - частая приманка для мошенников.</p>
+
+                <h3>Протоколы VPN</h3>
+
+                <p>VPN работает через один из нескольких протоколов. Каждый
+                    со своими особенностями.</p>
+
+                <ul>
+                    <li><strong>OpenVPN</strong> - открытый, надёжный, работает
+                        везде. Немного медленнее современных альтернатив.</li>
+                    <li><strong>WireGuard</strong> - современный протокол. Быстрый,
+                        простой, безопасный. Сегодня - стандарт де-факто для новых
+                        VPN.</li>
+                    <li><strong>IPsec</strong> - используется в корпоративных
+                        сетях и site-to-site. Сложный в настройке, но проверенный
+                        временем.</li>
+                    <li><strong>IKEv2/IPsec</strong> - для мобильных устройств.
+                        Быстро переподключается при смене сети (важно на телефоне).</li>
+                    <li><strong>L2TP/IPsec</strong> - устаревший, медленный. Всё
+                        ещё встречается, но не рекомендуется.</li>
+                    <li><strong>PPTP</strong> - устарел, небезопасен. Не
+                        использовать.</li>
+                </ul>
+
+                <h3>Как работает VPN-туннель</h3>
+
+                <p>Технически VPN работает так:</p>
+
+                <ol>
+                    <li>Клиент устанавливает соединение с VPN-сервером.</li>
+                    <li>Происходит взаимная аутентификация (по сертификатам,
+                        ключам или логину-паролю).</li>
+                    <li>Стороны договариваются о параметрах шифрования
+                        (алгоритмы, ключи).</li>
+                    <li>Клиент перенаправляет весь сетевой трафик через
+                        VPN-туннель.</li>
+                    <li>Данные шифруются на клиенте, передаются через интернет,
+                        расшифровываются на сервере.</li>
+                    <li>Сервер отправляет запросы в интернет от своего имени.</li>
+                    <li>Ответы возвращаются через туннель клиенту.</li>
+                </ol>
+
+                <p>С точки зрения внешнего наблюдателя, клиент общается только с
+                    VPN-сервером. Всё остальное скрыто внутри шифрованного туннеля.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        VPN - не панацея
+                    </div>
+                    <p>VPN защищает трафик в пути, но не защищает от:</p>
+                    <ul>
+                        <li>Фишинга - если вы сами введёте данные на поддельном
+                            сайте, VPN не поможет.</li>
+                        <li>Заражённого устройства - если у вас вирус, он видит
+                            всё, что происходит до шифрования.</li>
+                        <li>Самораскрытия - если вы залогинены в соцсети под
+                            своим именем, VPN не сделает вас анонимным.</li>
+                        <li>Слежки на стороне VPN-сервера - если провайдер
+                            VPN ведёт логи, он видит всё, что вы делаете.</li>
+                    </ul>
+                </div>
+
+                <h2>IDS и IPS: системы обнаружения вторжений</h2>
+
+                <p>Третий инструмент сетевой безопасности - <strong>системы обнаружения и
+                        предотвращения вторжений</strong>. Они не блокируют трафик на входе
+                    (это делает firewall), а <strong>следят за тем, что происходит
+                        внутри</strong>.</p>
+
+                <p>Аналогия: если firewall - это вахтёр на входе, то IDS - это камеры
+                    видеонаблюдения по всему зданию плюс охранник у мониторов. Если
+                    что-то подозрительное - он замечает и подаёт сигнал.</p>
+
+                <h3>IDS: обнаружение</h3>
+
+                <p><strong>IDS</strong> (Intrusion Detection System) - система обнаружения
+                    вторжений. Она <strong>анализирует трафик и события</strong>,
+                    сравнивает их с известными сигнатурами атак и паттернами
+                    подозрительного поведения. При обнаружении - <strong>оповещает</strong>
+                    администратора.</p>
+
+                <p>IDS бывает двух видов по расположению:</p>
+
+                <ul>
+                    <li><strong>NIDS</strong> (Network IDS) - анализирует сетевой
+                        трафик. Стоит на стратегических точках сети и смотрит
+                        все пакеты, которые через них проходят.</li>
+                    <li><strong>HIDS</strong> (Host IDS) - работает на отдельном
+                        компьютере или сервере. Следит за системными вызовами,
+                        изменениями файлов, действиями процессов.</li>
+                </ul>
+
+                <h3>IPS: предотвращение</h3>
+
+                <p><strong>IPS</strong> (Intrusion Prevention System) - система
+                    предотвращения вторжений. Это следующий шаг после IDS:
+                    она не только обнаруживает атаки, но и <strong>блокирует
+                        их в реальном времени</strong>.</p>
+
+                <p>IPS обычно стоит «в разрыве» сети - трафик физически проходит
+                    через неё. Это позволяет ей не только увидеть атаку, но и
+                    немедленно её остановить: разорвать соединение, заблокировать
+                    IP-адрес, отбросить пакет.</p>
+
+                <h3>IDS/IPS vs firewall</h3>
+
+                <p>Часто путают, чем IDS/IPS отличается от firewall. Разница в
+                    глубине анализа:</p>
+
+                <ul>
+                    <li><strong>Firewall</strong> - смотрит на «кто и куда»
+                        (IP-адреса, порты, протоколы). Действует по правилам.</li>
+                    <li><strong>IDS/IPS</strong> - смотрит на «что именно
+                        происходит» (содержимое пакетов, паттерны поведения).
+                        Действует по сигнатурам и аномалиям.</li>
+                </ul>
+
+                <p>Firewall и IDS/IPS дополняют друг друга. Firewall стоит
+                    на периметре, IDS/IPS работает внутри сети и на ключевых
+                    узлах.</p>
+
+                <h3>Методы обнаружения</h3>
+
+                <p>Как IDS понимает, что происходит что-то плохое?</p>
+
+                <h4>Signature-based (по сигнатурам)</h4>
+
+                <p>Самый распространённый метод. Система содержит базу
+                    <strong>сигнатур</strong> - известных паттернов атак.
+                    Например, характерный паттерн SQL-инъекции или известного
+                    эксплойта. Если трафик совпадает с сигнатурой - это атака.
+                </p>
+
+                <p>Плюсы: точно определяет известные атаки, мало ложных
+                    срабатываний. Минусы: не видит новые, ещё не описанные
+                    атаки (zero-day).</p>
+
+                <h4>Anomaly-based (по аномалиям)</h4>
+
+                <p>Система сначала изучает <strong>нормальное поведение</strong>
+                    сети или сервера, а потом сигналит обо всём, что от
+                    нормы отклоняется. Например, если обычно сервер получает
+                    100 запросов в час, а тут вдруг 100 000 - это аномалия.</p>
+
+                <p>Плюсы: может обнаружить новые атаки. Минусы: много ложных
+                    срабатываний - «норма» может меняться законно, а система
+                    всё равно подаёт сигнал.</p>
+
+                <h4>Hybrid (гибридный)</h4>
+
+                <p>Современные IDS/IPS обычно используют оба подхода
+                    в комбинации. Это даёт лучшее из двух миров: точность
+                    сигнатур плюс гибкость аномалий.</p>
+
+                <h3>Примеры систем</h3>
+
+                <ul>
+                    <li><strong>Snort</strong> - открытый, самый известный
+                        NIDS/IPS. Правила сообщества, широкое применение.</li>
+                    <li><strong>Suricata</strong> - современная альтернатива
+                        Snort. Быстрее, поддерживает многопоточность.</li>
+                    <li><strong>Zeek</strong> - не только IDS, но и мощный
+                        инструмент для анализа трафика.</li>
+                    <li><strong>OSSEC</strong> - популярный HIDS.</li>
+                    <li><strong>Wazuh</strong> - расширение OSSEC, современный
+                        HIDS с хорошей визуализацией.</li>
+                    <li><strong>Коммерческие</strong>: Cisco Firepower,
+                        Palo Alto Threat Prevention, Check Point IPS.</li>
+                </ul>
+
+                <h2>Как всё это работает вместе</h2>
+
+                <p>Три инструмента не заменяют, а <strong>дополняют</strong> друг друга.
+                    Вот как выглядит типичная защита современной сети:</p>
+
+                <ol>
+                    <li><strong>На входе в сеть</strong> - пограничный firewall.
+                        Пропускает только разрешённые соединения.</li>
+                    <li><strong>За firewall</strong> - IPS. Анализирует содержимое
+                        разрешённого трафика и блокирует атаки, которые firewall
+                        не видит.</li>
+                    <li><strong>Между сегментами сети</strong> - внутренние
+                        firewall. Ограничивают перемещение внутри сети на случай
+                        компрометации.</li>
+                    <li><strong>На ключевых серверах</strong> - HIDS. Следят
+                        за происходящим на самих серверах.</li>
+                    <li><strong>Для удалённого доступа</strong> - VPN. Сотрудники
+                        подключаются через зашифрованный туннель.</li>
+                    <li><strong>Для веб-приложений</strong> - WAF. Защищает
+                        на уровне приложения от SQL-инъекций и XSS.</li>
+                </ol>
+
+                <p>Это принцип <strong>defense in depth</strong> - эшелонированная
+                    защита. Каждый слой закрывает свою часть угроз. Если один
+                    слой пробит - следующий подхватывает.</p>
+
+                <p>Ни один инструмент не даёт 100% защиты. Но вместе они делают
+                    сеть устойчивой к большинству атак.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Zero Trust: следующий шаг
+                    </div>
+                    <p>В последние годы классическая модель «доверенная внутренняя
+                        сеть + недоверенный интернет» уступает место концепции
+                        <strong>Zero Trust</strong> («нулевое доверие»). Её принцип:
+                        <em>«Никому не доверяй, всегда проверяй»</em>. Даже
+                        сотрудник в офисе должен проходить аутентификацию и
+                        авторизацию при каждом действии. Это следствие того, что
+                        периметр уже давно не является надёжной границей -
+                        облака, удалённая работа и BYOD размыли его.
+                    </p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Firewall</code>
+                        <span>контролирует трафик по правилам</span>
+                    </li>
+                    <li>
+                        <code>Stateful</code>
+                        <span>помнит состояние соединений</span>
+                    </li>
+                    <li>
+                        <code>WAF</code>
+                        <span>firewall прикладного уровня</span>
+                    </li>
+                    <li>
+                        <code>VPN</code>
+                        <span>защищённый туннель через интернет</span>
+                    </li>
+                    <li>
+                        <code>WireGuard</code>
+                        <span>современный протокол VPN</span>
+                    </li>
+                    <li>
+                        <code>IDS</code>
+                        <span>обнаружение вторжений</span>
+                    </li>
+                    <li>
+                        <code>IPS</code>
+                        <span>предотвращение вторжений</span>
+                    </li>
+                    <li>
+                        <code>Defense in depth</code>
+                        <span>эшелонированная защита</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ситуации и заблуждения по теме.</p>
+
+                <ul>
+                    <li><strong>«У меня есть firewall, я в безопасности».</strong>
+                        Firewall закрывает один уровень угроз, но не все. Внутренние
+                        атаки, фишинг, уязвимости приложений он не ловит. Нужны
+                        ещё IPS, WAF, правильные процессы.</li>
+                    <li><strong>«VPN делает меня анонимным».</strong> Нет. VPN
+                        скрывает ваш IP от сайтов, но не делает вас невидимым.
+                        Провайдер VPN видит ваш трафик. Плюс вы можете быть
+                        залогинены под своим именем на сайтах.</li>
+                    <li><strong>«Бесплатный VPN ничем не хуже платного».</strong>
+                        Часто хуже. Серверы, трафик и поддержка стоят денег. Если
+                        сервис бесплатный - вы либо платите своей приватностью
+                        (данные, реклама), либо качество сильно ниже. Вспомните
+                        урок 5 про расширения.</li>
+                    <li><strong>«Firewall блокирует весь вредоносный трафик».</strong>
+                        Нет. Firewall работает по правилам, которые кто-то написал.
+                        Если правило не описывает конкретную атаку - она может
+                        пройти. Плюс атаки через разрешённые порты (например,
+                        SQL-инъекция через порт 443) firewall не видит - этим
+                        занимается WAF.</li>
+                    <li><strong>«IDS автоматически всё исправит».</strong> IDS
+                        только <em>обнаруживает</em> и оповещает. Реагировать
+                        должен человек (или связанный с IDS IPS). Без
+                        мониторинга и реакции IDS бесполезна.</li>
+                    <li><strong>«Мне не нужна сетевая безопасность, у меня
+                            маленькая сеть».</strong> Именно маленькие сети -
+                        частая цель автоматических сканеров: у них слабая
+                        защита. Плюс скомпрометированная маленькая сеть может
+                        стать частью ботнета для атак на других (вспомните
+                        урок 11 про DDoS).</li>
+                    <li><strong>«Правила firewall настроил один раз и забыл».</strong>
+                        Правила нужно регулярно пересматривать: закрывать
+                        ненужные порты, убирать устаревшие разрешения,
+                        обновлять под новые сервисы. Без ревизии накапливаются
+                        «мусорные» правила, которые создают дыры.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание инструментов, вторые
+                    две - на применение и размышление.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Что за инструмент</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Определите, какой инструмент сетевой
+                                безопасности нужен в каждой ситуации: firewall,
+                                VPN, IDS или IPS.</p>
+                            <ol>
+                                <li>Заблокировать входящие соединения на порт 22
+                                    для всех, кроме офисной сети.</li>
+                                <li>Сотрудник работает из дома и должен подключаться
+                                    к внутренним сервисам компании.</li>
+                                <li>Система замечает, что кто-то сканирует порты
+                                    на серверах, и оповещает администратора.</li>
+                                <li>Система обнаруживает попытку SQL-инъекции
+                                    в HTTP-запросе и разрывает соединение.</li>
+                                <li>Защитить корпоративную сеть от перехвата
+                                    трафика в публичном Wi-Fi.</li>
+                                <li>Заблокировать массовые попытки подбора пароля
+                                    к SSH-серверу в реальном времени.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Firewall - «кто и куда». VPN - «защищённый
+                                        туннель». IDS - «обнаружить и оповестить».
+                                        IPS - «обнаружить и заблокировать».</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Firewall.</strong> Классическая
+                                            задача - фильтрация входящего трафика
+                                            по IP-адресам и портам.</li>
+                                        <li><strong>VPN.</strong> Remote Access VPN
+                                            - именно для этого сценария.</li>
+                                        <li><strong>IDS.</strong> «Обнаружить и
+                                            оповестить» - это определение IDS.
+                                            Сканирование портов - подозрительное
+                                            событие, о котором нужно сообщить.</li>
+                                        <li><strong>IPS.</strong> Не просто обнаружение,
+                                            а блокировка. WAF с функцией IPS -
+                                            типичная защита веб-приложений.</li>
+                                        <li><strong>VPN.</strong> Защита от перехвата -
+                                            это именно то, для чего нужен VPN.</li>
+                                        <li><strong>IPS.</strong> Блокировка в реальном
+                                            времени - функция IPS. Fail2ban и
+                                            аналогичные инструменты работают именно так.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Проверьте конфигурацию</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами набор правил firewall.
+                                Найдите минимум три проблемы.</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">Allow TCP from any to any port 22</span><span class="code-row">Allow TCP from any to any port 3306</span><span class="code-row">Allow TCP from any to any port 80</span><span class="code-row">Allow TCP from any to any port 443</span><span class="code-row">Allow all from 192.168.1.0/24 to any</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте, какие порты должны быть
+                                        открыты в интернет, а какие - только
+                                        внутри сети. И нет ли тут отсутствия
+                                        важного правила.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проблемы этой конфигурации:</p>
+                                    <ol>
+                                        <li><strong>SSH (порт 22) открыт всему
+                                                миру.</strong> Это значит, что любой
+                                            может попытаться подобрать пароль.
+                                            SSH должен быть доступен только из
+                                            доверенной сети (например,
+                                            <code>Allow TCP from 10.0.0.0/8 to any
+                                            port 22</code>).
+                                        </li>
+                                        <li><strong>MySQL (порт 3306) открыт
+                                                всему миру.</strong> Это катастрофа.
+                                            База данных никогда не должна быть
+                                            доступна из интернета. Только из
+                                            локальной сети или с конкретных
+                                            серверов приложений.</li>
+                                        <li><strong>Правило «Allow all» для
+                                                внутренней сети слишком широкое.</strong>
+                                            Оно разрешает любые соединения
+                                            откуда угодно. Если злоумышленник
+                                            попадёт в эту сеть - он получит
+                                            доступ ко всему.</li>
+                                        <li><strong>Нет правила «Deny all» в
+                                                конце.</strong> Без него неизвестно,
+                                            что происходит с неразрешённым
+                                            трафиком. Может быть, он запрещается
+                                            по умолчанию - а может, разрешается.
+                                            Всегда пишите явно.</li>
+                                    </ol>
+                                    <p>Исправленная конфигурация:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Allow TCP from 10.0.0.0/8 to any port 22</span><span class="code-row">Allow TCP from 10.0.1.0/24 to 10.0.2.5 port 3306</span><span class="code-row">Allow TCP from any to any port 80</span><span class="code-row">Allow TCP from any to any port 443</span><span class="code-row">Deny  all from any to any</span></code></pre>
+                                    <p>SSH - только из офисной сети. MySQL -
+                                        только с серверов приложений. HTTP
+                                        и HTTPS - всем (это публичные сервисы).
+                                        Всё остальное - запрещено.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Спроектируйте защиту</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы отвечаете за безопасность
+                                сети небольшой компании (30 сотрудников).
+                                У компании есть: офис, облачный сервер с сайтом
+                                и базой данных, сотрудники иногда работают
+                                из дома. Опишите архитектуру защиты с
+                                использованием firewall, VPN и IDS/IPS.
+                                Расставьте приоритеты.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Начните с того, что критично (защита
+                                        облачного сервера и базы данных).
+                                        Потом - что важно (безопасность
+                                        офисной сети). Потом - что удобно
+                                        (удалённый доступ).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Разумная архитектура для такой компании:</p>
+                                    <ol>
+                                        <li><strong>Облачный сервер с сайтом.</strong>
+                                            <ul>
+                                                <li><strong>Firewall:</strong>
+                                                    открыты только порты
+                                                    80 и 443 (сайт). SSH
+                                                    - только с офисного
+                                                    IP.</li>
+                                                <li><strong>База данных</strong>
+                                                    не доступна из
+                                                    интернета. Только
+                                                    с сервера приложений.</li>
+                                                <li><strong>WAF</strong> перед
+                                                    сайтом - для защиты
+                                                    от SQL-инъекций и
+                                                    XSS.</li>
+                                                <li><strong>IPS</strong> -
+                                                    блокировка атак в
+                                                    реальном времени.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Офисная сеть.</strong>
+                                            <ul>
+                                                <li><strong>Firewall</strong>
+                                                    на периметре с
+                                                    default deny.</li>
+                                                <li><strong>IPS</strong> для
+                                                    анализа внутреннего
+                                                    трафика.</li>
+                                                <li><strong>HIDS</strong> на
+                                                    критичных серверах.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Удалённый доступ.</strong>
+                                            <ul>
+                                                <li><strong>VPN</strong>
+                                                    на базе WireGuard
+                                                    или OpenVPN.</li>
+                                                <li>Обязательная 2FA для
+                                                    входа в VPN.</li>
+                                                <li>Раздельный доступ:
+                                                    не все сотрудники
+                                                    видят всю сеть.</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                    <p>Приоритеты для бюджета ограниченного:</p>
+                                    <ol>
+                                        <li><strong>В первую очередь:</strong>
+                                            защита облачного сервера -
+                                            это лицо компании и данные
+                                            клиентов.</li>
+                                        <li><strong>Во вторую:</strong> VPN
+                                            для удалённого доступа -
+                                            без него сотрудники работают
+                                            небезопасно.</li>
+                                        <li><strong>В третью:</strong>
+                                            IDS/IPS - для мониторинга
+                                            и реакции на атаки.</li>
+                                        <li><strong>В четвёртую:</strong>
+                                            расширенные WAF, HIDS
+                                            на всех серверах.</li>
+                                    </ol>
+                                    <p>Начинать нужно с базового уровня по
+                                        всем трём направлениям, а потом
+                                        постепенно углублять там, где больше
+                                        рисков.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. VPN или не VPN</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой ситуации решите,
+                                нужен ли VPN и почему.</p>
+                            <ol>
+                                <li>Проверяете почту дома через домашний
+                                    Wi-Fi.</li>
+                                <li>Работаете с банковским приложением в
+                                    кафе через публичный Wi-Fi.</li>
+                                <li>Сотрудник подключается к корпоративным
+                                    сервисам из дома.</li>
+                                <li>Читаете новости в аэропорту.</li>
+                                <li>Хотите посмотреть видео, доступное
+                                    только в другой стране.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>VPN нужен, если вы работаете с чем-то
+                                        важным в небезопасной сети или
+                                        подключаетесь к чему-то защищённому
+                                        издалека. Для домашнего Wi-Fi -
+                                        обычно не нужен.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Домашний Wi-Fi - не
+                                                нужен.</strong> Если ваш роутер
+                                            правильно настроен (урок 6),
+                                            домашняя сеть достаточно
+                                            безопасна. VPN даст приватность
+                                            от провайдера, но это вопрос
+                                            желания, а не необходимости.</li>
+                                        <li><strong>Банк в кафе - очень
+                                                желателен.</strong> Публичный
+                                            Wi-Fi - враждебная среда. Даже
+                                            с HTTPS лучше дополнительно
+                                            зашифровать трафик через VPN.
+                                            Идеально - вообще не заходить
+                                            в банк в публичной сети,
+                                            обойтись мобильным интернетом.</li>
+                                        <li><strong>Работа из дома - обязательно
+                                                нужен.</strong> Это классический
+                                            Remote Access VPN. Без него
+                                            сотрудник либо не имеет доступа,
+                                            либо подключается по небезопасным
+                                            каналам.</li>
+                                        <li><strong>Новости в аэропорту - не
+                                                нужен.</strong> Это публичная
+                                            информация. Если только вы не
+                                            хотите скрыть от местного Wi-Fi,
+                                            что читаете новости (что вряд ли
+                                            имеет значение).</li>
+                                        <li><strong>Обход геоограничений -
+                                                спорный.</strong> Технически VPN
+                                            сработает. Но многие сервисы
+                                            (Netflix, некоторые банки)
+                                            активно блокируют VPN-соединения.
+                                            Плюс это может нарушать условия
+                                            использования сервиса. Зависит
+                                            от конкретного случая.</li>
+                                    </ol>
+                                    <p>Общий принцип: <strong>VPN нужен, когда
+                                            важность данных высока, а среда
+                                            небезопасна</strong>. В остальных
+                                        случаях он не обязателен, хотя и
+                                        не повредит.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с сетевым уровнем безопасности - тем, как защищают целые
+                    сети. Узнали, что представляет собой <strong>периметр сети</strong>
+                    и зачем нужен принцип <strong>defense in depth</strong> - несколько
+                    слоёв защиты вместо одного.</p>
+
+                <p>Разобрали три ключевых инструмента:</p>
+
+                <ul>
+                    <li><strong>Firewall</strong> - контролирует трафик по правилам.
+                        Packet filter, stateful, WAF - три уровня глубины.
+                        Правило «default deny» в конце обязательно.</li>
+                    <li><strong>VPN</strong> - защищённый туннель через враждебную
+                        среду. Site-to-site, remote access, personal. Протоколы
+                        WireGuard, OpenVPN, IPsec.</li>
+                    <li><strong>IDS/IPS</strong> - обнаружение и предотвращение
+                        вторжений. Сигнатуры и аномалии. NIDS, HIDS.</li>
+                </ul>
+
+                <p>Поняли, как всё это работает вместе. Firewall на периметре,
+                    IPS внутри сети, WAF для веб-приложений, HIDS на серверах,
+                    VPN для удалённого доступа. Каждый слой закрывает свою
+                    часть угроз, а вместе они делают сеть устойчивой к большинству
+                    атак.</p>
+
+                <p>И увидели, что классический периметр размывается - облака,
+                    удалённая работа и BYOD привели к появлению концепции
+                    <strong>Zero Trust</strong>: «никому не доверяй, всегда
+                    проверяй».
+                </p>
+
+                <p>В следующем уроке мы займёмся <strong>основами пентеста</strong> -
+                    разберёмся, как проходит тестирование на проникновение, что
+                    такое этичный хакинг и как специалисты по безопасности
+                    находят уязвимости до того, как их найдут злоумышленники.</p>
+
+                <div class="lesson-actions">
+                    <a href="../intermediate/lesson-12.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-14.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

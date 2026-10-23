@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика: игра «Угадай число» - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="beginner" data-lesson-id="lesson-08">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 08</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson active" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Практика: игра «Угадай число»</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Проект</span>
+                </div>
+
+                <p>Сегодня мы соберём первую настоящую игру. Не «привет, мир», не калькулятор - а игру, в которую можно
+                    играть и которая реагирует на действия пользователя. Игра называется «Угадай число»: программа
+                    загадывает число, а игрок пытается его отгадать, получая подсказки «больше» или «меньше».</p>
+
+                <p>Это не просто упражнение. Мы будем использовать <strong>всё</strong>, чему научились за семь уроков:
+                    переменные, ввод данных, условия, циклы, строки и случайные числа. Если что-то из прошлого
+                    подзабылось - это нормально, будем разбираться по ходу. А в конце мы даже заглянем немного в будущее
+                    и познакомимся с первой магией - методами.</p>
+
+                <h2>Что должна уметь игра</h2>
+
+                <p>Прежде чем писать код, давайте опишем игру словами, как будто объясняем её другу:</p>
+
+                <ol>
+                    <li>Программа загадывает случайное число от 1 до 100.</li>
+                    <li>Игрок вводит своё предположение.</li>
+                    <li>Программа говорит: «больше», «меньше» или «угадал!».</li>
+                    <li>Если не угадал - игрок пробует снова.</li>
+                    <li>Когда угадал - программа поздравляет и показывает количество попыток.</li>
+                </ol>
+
+                <p>Отличный план. Теперь будем собирать игру по шагам - от простого к сложному. Каждый шаг добавляет
+                    одну новую деталь, и к концу урока получится готовая игра.</p>
+
+                <h2>Шаг 1. Загадываем число</h2>
+
+                <p>Первое, что нужно сделать - научить программу загадывать число. Мы уже умеем это делать из прошлого
+                    урока, используя <code>Random</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row">int secret = rnd.Next(1, 101);</span></code></pre>
+
+                <p><code>rnd.Next(1, 101)</code> - это число от 1 до 100. Помним правило: минимум включается, максимум
+                    нет. Значит, 101 надо писать именно так, чтобы 100 тоже могло выпасть.</p>
+
+                <p>Переменную назвали <code>secret</code> - «секретное число». Имя должно говорить о том, что внутри. Не
+                    <code>n</code>, не <code>x</code>, а <code>secret</code>. Когда через месяц вы вернётесь к этому
+                    коду, сразу поймёте, что здесь загадано.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Для отладки
+                    </div>
+                    <p>Пока пишете игру, полезно временно добавить строку
+                        <code>Console.WriteLine($"Подсказка: {secret}");</code> - она покажет загаданное число.
+                        Так проще проверять логику. Когда игра заработает - уберите эту строку.
+                    </p>
+                </div>
+
+                <h2>Шаг 2. Спрашиваем пользователя</h2>
+
+                <p>Теперь нужно получить от игрока число. Здесь пригодится связка из третьего урока -
+                    <code>Console.Write</code> для вопроса и <code>int.Parse(Console.ReadLine())</code> для получения
+                    числа:
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.Write("Угадай число от 1 до 100: ");</span><span class="code-row">int guess = int.Parse(Console.ReadLine());</span></code></pre>
+
+                <p>Если запустить сейчас, программа загадает число, спросит ваше, но ничего не сделает - просто
+                    завершится. Это нормально, мы ещё не написали проверку. Переходим к следующему шагу.</p>
+
+                <h2>Шаг 3. Сравниваем и подсказываем</h2>
+
+                <p>Теперь самое интересное - сравнить предположение игрока с секретным числом и выдать подсказку. Здесь
+                    понадобятся условия из четвёртого урока:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">if (guess == secret)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Угадал!");</span><span class="code-row">}</span><span class="code-row">else if (guess &lt; secret)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Загаданное число больше");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Загаданное число меньше");</span><span class="code-row">}</span></code></pre>
+
+                <p>Разберём логику:</p>
+
+                <ul>
+                    <li>Если <code>guess == secret</code> - числа совпали, победа.</li>
+                    <li>Если <code>guess &lt; secret</code> - игрок назвал меньше, чем было загадано. Значит, загаданное
+                        число <strong>больше</strong>. Не наоборот! Здесь новички часто путаются.</li>
+                    <li>Иначе (значит, <code>guess &gt; secret</code>) - игрок назвал слишком много, загаданное число
+                        <strong>меньше</strong>.
+                    </li>
+                </ul>
+
+                <h2>Шаг 4. Зацикливаем игру</h2>
+
+                <p>Сейчас игра даёт только одну попытку. Это скучно - нужно повторять, пока игрок не угадает.
+                    Заворачиваем ввод и проверку в бесконечный цикл <code>while (true)</code> с выходом через
+                    <code>break</code>, как в пятом уроке:
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">while (true)</span><span class="code-row">{</span><span class="code-row">    Console.Write("Угадай число от 1 до 100: ");</span><span class="code-row">    int guess = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">    if (guess == secret)</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine("Угадал!");</span><span class="code-row">        break;</span><span class="code-row">    }</span><span class="code-row">    else if (guess &lt; secret)</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine("Загаданное число больше");</span><span class="code-row">    }</span><span class="code-row">    else</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine("Загаданное число меньше");</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Обратите внимание: <code>break</code> стоит <strong>внутри</strong> блока <code>if</code>, который
+                    срабатывает, только когда число угадано. Пока игрок ошибается, цикл продолжается. Как только угадал
+                    - выходим из цикла и идём дальше.</p>
+
+                <h2>Шаг 5. Выносим проверку в отдельный метод</h2>
+
+                <p>Прежде чем мы добавим подсчёт попыток, давайте обратим внимание на наш цикл. Смотрите, сколько всего
+                    внутри <code>while</code>: и ввод, и проверки, и вывод. Код становится громоздким.</p>
+
+                <p>В программировании есть замечательный инструмент, который позволяет «завернуть» кусок кода в
+                    отдельную коробочку и дать ей имя. Эта коробочка называется <strong>метод</strong>. Подробно мы
+                    будем проходить их в уроке 13, но давайте уже сейчас попробуем - на таком простом примере это будет
+                    очень кстати.</p>
+
+                <p>Давайте вынесем проверку числа в отдельный метод <code>CheckGuess</code>. Вот как он выглядит:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static bool CheckGuess(int guess, int secret)</span><span class="code-row">{</span><span class="code-row">    if (guess == secret)</span><span class="code-row">    {</span><span class="code-row">        return true;</span><span class="code-row">    }</span><span class="code-row">    else if (guess &lt; secret)</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine("Загаданное число больше");</span><span class="code-row">    }</span><span class="code-row">    else</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine("Загаданное число меньше");</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return false;</span><span class="code-row">}</span></code></pre>
+
+                <p>Давайте разберём эту магию:</p>
+                <ul>
+                    <li><code>static</code> - пока просто пишите это слово, если создаёте метод внутри
+                        <code>Program</code>. Это обязательно.
+                    </li>
+                    <li><code>bool</code> - это тип того, что метод нам вернёт. <code>bool</code> значит «правда или
+                        ложь» (<code>true</code> или <code>false</code>). Метод будет отвечать на вопрос: «Игрок
+                        угадал?».</li>
+                    <li><code>CheckGuess</code> - имя метода, которое мы придумали сами.</li>
+                    <li><code>(int guess, int secret)</code> - в скобках мы говорим, что метод будет принимать два
+                        числа: то, что ввёл игрок, и то, что загадано.</li>
+                    <li><code>return true;</code> - если числа совпали, метод возвращает «правду» и сразу завершается.
+                    </li>
+                    <li><code>return false;</code> - если не совпали, метод доходит до этой строчки и возвращает «ложь».
+                    </li>
+                </ul>
+
+                <p>Метод нужно писать внутри класса <code>Program</code>, но <strong>за пределами</strong>
+                    <code>Main</code>. Обычно его пишут прямо после закрывающей скобки <code>Main</code>.
+                </p>
+
+                <p>А теперь посмотрите, каким чистым стал наш цикл в <code>Main</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">while (true)</span><span class="code-row">{</span><span class="code-row">    Console.Write("Угадай число от 1 до 100: ");</span><span class="code-row">    int guess = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">    if (CheckGuess(guess, secret))</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine("Угадал!");</span><span class="code-row">        break;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Читается как обычный текст: «Спроси число. Если метод <code>CheckGuess</code> говорит, что угадал -
+                    выведи "Угадал!" и выйди из цикла». Всю грязную работу по сравнению чисел метод делает сам.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Что это было?
+                    </div>
+                    <p>Мы только что использовали метод. Пока не переживайте, если не всё уложилось в голове. На данном
+                        этапе достаточно понять главную идею: <strong>мы можем дать имя куску кода и вызывать его по
+                            этому имени</strong>. Это делает основную программу короче и понятнее. А глубоко и подробно
+                        мы разберём методы в среднем уровне курса.</p>
+                </div>
+
+                <h2>Шаг 6. Считаем попытки</h2>
+
+                <p>Хочется знать, за сколько попыток игрок справился. Для этого нужен счётчик - как в пятом уроке, когда
+                    мы считали сумму чисел. Создаём переменную перед циклом и увеличиваем внутри:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int attempts = 0;</span><span class="code-row"></span><span class="code-row">while (true)</span><span class="code-row">{</span><span class="code-row">    Console.Write("Угадай число от 1 до 100: ");</span><span class="code-row">    int guess = int.Parse(Console.ReadLine());</span><span class="code-row">    attempts++;</span><span class="code-row"></span><span class="code-row">    if (CheckGuess(guess, secret))</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine("Угадал!");</span><span class="code-row">        break;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Строка <code>attempts++</code> стоит сразу после ввода - увеличиваем счётчик один раз на каждую
+                    попытку игрока. Нет разницы, угадал он или нет - попытка была, значит, считаем.</p>
+
+                <h2>Шаг 7. Поздравляем с победой</h2>
+
+                <p>После выхода из цикла игрок победил, и у нас есть количество попыток. Осталось красиво его
+                    поздравить:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.WriteLine($"Победа! Ты угадал число {secret} за {attempts} попыток.");</span></code></pre>
+
+                <h2>Полный код игры</h2>
+
+                <p>Соберём всё вместе. Именно так выглядит готовый код - целиком, от начала до конца:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">using System;</span><span class="code-row"></span><span class="code-row">namespace ConsoleApp1</span><span class="code-row">{</span><span class="code-row">    internal class Program</span><span class="code-row">    {</span><span class="code-row">        static void Main(string[] args)</span><span class="code-row">        {</span><span class="code-row">            Random rnd = new Random();</span><span class="code-row">            int secret = rnd.Next(1, 101);</span><span class="code-row">            int attempts = 0;</span><span class="code-row"></span><span class="code-row">            Console.WriteLine("Я загадал число от 1 до 100. Попробуй угадать!");</span><span class="code-row"></span><span class="code-row">            while (true)</span><span class="code-row">            {</span><span class="code-row">                Console.Write("Твоё предположение: ");</span><span class="code-row">                int guess = int.Parse(Console.ReadLine());</span><span class="code-row">                attempts++;</span><span class="code-row"></span><span class="code-row">                if (CheckGuess(guess, secret))</span><span class="code-row">                {</span><span class="code-row">                    Console.WriteLine("Угадал!");</span><span class="code-row">                    break;</span><span class="code-row">                }</span><span class="code-row">            }</span><span class="code-row"></span><span class="code-row">            Console.WriteLine($"Победа! Ты угадал число {secret} за {attempts} попыток.");</span><span class="code-row">        }</span><span class="code-row"></span><span class="code-row">        static bool CheckGuess(int guess, int secret)</span><span class="code-row">        {</span><span class="code-row">            if (guess == secret)</span><span class="code-row">            {</span><span class="code-row">                return true;</span><span class="code-row">            }</span><span class="code-row">            else if (guess &lt; secret)</span><span class="code-row">            {</span><span class="code-row">                Console.WriteLine("Загаданное число больше");</span><span class="code-row">            }</span><span class="code-row">            else</span><span class="code-row">            {</span><span class="code-row">                Console.WriteLine("Загаданное число меньше");</span><span class="code-row">            }</span><span class="code-row"></span><span class="code-row">            return false;</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Запустите игру и сыграйте несколько раз. Меняйте число каждый раз - попробуйте угадать за минимум
+                    попыток. Оптимальная стратегия: каждый раз называть середину оставшегося диапазона, тогда число от 1
+                    до 100 угадывается максимум за 7 попыток.</p>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Игра собрана из кусочков разных уроков - и ошибки могут прийти откуда угодно. Проверьте по списку:
+                </p>
+
+                <ul>
+                    <li><strong>Программа падает с ошибкой при вводе.</strong> Скорее всего, пользователь ввёл текст
+                        вместо числа, и <code>int.Parse</code> не смог его преобразовать. Пока мы не умеем такое
+                        обрабатывать - это тема среднего уровня. Договоримся: вводим только цифры.</li>
+                    <li><strong>«Число больше» и «число меньше» путаются местами.</strong> Классическая ловушка.
+                        Запомните: если введённое число <code>guess</code> меньше загаданного <code>secret</code>,
+                        значит, загаданное <strong>больше</strong> - надо искать выше. И наоборот.</li>
+                    <li><strong>Программа зациклилась и не выходит.</strong> Проверьте, что <code>break</code> стоит
+                        внутри <code>if (CheckGuess(...))</code> и что метод возвращает <code>true</code>, когда угадал.
+                    </li>
+                    <li><strong>Счётчик попыток всегда показывает 1 или 0.</strong> Убедитесь, что
+                        <code>attempts++</code> стоит <strong>внутри</strong> цикла, после получения <code>guess</code>.
+                    </li>
+                    <li><strong>Ошибка: «The name 'CheckGuess' does not exist».</strong> Метод <code>CheckGuess</code>
+                        написан за пределами класса <code>Program</code> или вы забыли написать слово
+                        <code>static</code> перед <code>bool</code>.
+                    </li>
+                    <li><strong>Ошибка: «Not all code paths return a value».</strong> В методе <code>CheckGuess</code>
+                        не хватает <code>return</code> в самом конце. Если числа не равны - метод должен вернуть
+                        <code>false</code>.
+                    </li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Идеи для улучшения</h2>
+
+                <p>Игра работает, но её можно сделать интереснее. Попробуйте реализовать одну или несколько из этих идей
+                    - каждая потребует совсем немного кода.</p>
+
+                <h3>Ограничение попыток</h3>
+
+                <p>Дайте игроку только 7 попыток. Если не угадал за 7 - программа сообщает секретное число и
+                    проигрывает.</p>
+
+                <h3>Спрашивать имя игрока</h3>
+
+                <p>В начале игры узнайте имя и обращайтесь к игроку по нему: «Привет, Алексей! Попробуй угадать…».</p>
+
+                <h3>Подсказка «горячо-холодно»</h3>
+
+                <p>Добавьте в метод <code>CheckGuess</code> ещё одну проверку. Посчитайте разницу между введённым и
+                    загаданным числом с помощью <code>Math.Abs(guess - secret)</code> (модуль числа). Если разница
+                    маленькая (меньше 5) - напишите дополнительно «Горячо!». Если большая - «Холодно».</p>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы собрали первую настоящую игру. Это был большой шаг - от разрозненных фрагментов кода к
+                    работающей программе, которую можно запустить, показать другу и похвастаться.</p>
+
+                <p>Но самое главное - мы сделали первый, пусть и осторожный, шаг в мир <strong>методов</strong>. Мы
+                    увидели, как можно дать имя куску кода и тем самым разгрузить основной цикл игры. Пусть сейчас это
+                    кажется просто «магической строчкой», но фундамент уже заложен.</p>
+
+                <p>В следующих уроках мы:</p>
+
+                <ul>
+                    <li><strong>Заглянем под капот типов данных</strong>.</li>
+                    <li><strong>Познакомимся с массивами</strong>.</li>
+                    <li><strong>Освоим списки и словари</strong>.</li>
+                    <li><strong>Закроем последние пробелы</strong> начального уровня.</li>
+                </ul>
+
+                <p>А когда перейдём на средний уровень - вернёмся к методам и разберём их по-настоящему, со всеми
+                    деталями.</p>
+
+                <p>Пока - играйте в свою первую игру. Пробуйте улучшения, ломайте код, чините, экспериментируйте. Именно
+                    так рождается настоящий опыт.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-07.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-09.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

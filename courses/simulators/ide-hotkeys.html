@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Горячие клавиши IDE - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/ide-hotkeys.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../../../index.html#catalog">Курсы</a>
+                    <a href="../../../index.html#about">О нас</a>
+                    <a href="../../../index.html#faq">FAQ</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Горячие клавиши IDE</span>
+        </nav>
+    </div>
+
+    <section class="hotkeys-section" id="hotkeysSection">
+        <div class="container">
+            <div class="section-header centered" style="margin-bottom: 40px;">
+                <div class="section-label">[ Тренажёр ]</div>
+                <h2>Горячие <span class="text-orange">клавиши</span></h2>
+                <p class="section-desc" style="margin-left: auto; margin-right: auto;">
+                    Проверьте, насколько хорошо вы знаете комбинации VS Code и Rider / IntelliJ.
+                    Тренируйтесь вслепую или подсматривайте в библиотеке.
+                </p>
+            </div>
+
+            <div class="hotkeys-mobile-warning" id="mobileWarning" hidden>
+                <i class="ph ph-warning"></i>
+                Тренажёр рассчитан на физическую клавиатуру. На мобильных устройствах он работать не будет.
+            </div>
+
+            <div class="hotkeys-tabs" role="tablist">
+                <button type="button" class="hotkeys-tab active" data-tab="trainer" role="tab">
+                    <i class="ph ph-target"></i> Тренажёр
+                </button>
+                <button type="button" class="hotkeys-tab" data-tab="library" role="tab">
+                    <i class="ph ph-books"></i> Библиотека
+                </button>
+            </div>
+
+            <div class="hotkeys-view" data-view="trainer">
+                <div class="hotkeys-config">
+                    <div class="hotkeys-config-group">
+                        <span class="hotkeys-config-label">
+                            <i class="ph ph-app-window"></i> Среда
+                        </span>
+                        <div class="hotkeys-chips" id="ideChips"></div>
+                    </div>
+
+                    <div class="hotkeys-config-divider"></div>
+
+                    <div class="hotkeys-config-group">
+                        <span class="hotkeys-config-label">
+                            <i class="ph ph-squares-four"></i> Категория
+                        </span>
+                        <div class="hotkeys-chips" id="categoryChips"></div>
+                    </div>
+                </div>
+
+                <div class="hotkeys-stats">
+                    <div class="hotkeys-stat">
+                        <div class="hotkeys-stat-value" id="statProgress">0/0</div>
+                        <div class="hotkeys-stat-label">Прогресс</div>
+                    </div>
+                    <div class="hotkeys-stat">
+                        <div class="hotkeys-stat-value hotkeys-stat-green" id="statCorrect">0</div>
+                        <div class="hotkeys-stat-label">Правильно</div>
+                    </div>
+                    <div class="hotkeys-stat">
+                        <div class="hotkeys-stat-value hotkeys-stat-red" id="statWrong">0</div>
+                        <div class="hotkeys-stat-label">Ошибок</div>
+                    </div>
+                    <div class="hotkeys-stat">
+                        <div class="hotkeys-stat-value" id="statStreak">0</div>
+                        <div class="hotkeys-stat-label">Серия</div>
+                    </div>
+                </div>
+
+                <div class="hotkeys-progress-bar">
+                    <div class="hotkeys-progress-fill" id="progressFill"></div>
+                </div>
+
+                <div class="hotkeys-stage">
+                    <div class="hotkeys-task" id="taskCard">
+                        <div class="hotkeys-task-category" id="taskCategory">Редактирование</div>
+                        <div class="hotkeys-task-action" id="taskAction">Закомментировать строку</div>
+                        <div class="hotkeys-task-prompt" id="taskPrompt">Нажмите комбинацию клавиш</div>
+                        <div class="hotkeys-task-keys empty" id="taskKeys"></div>
+                        <div class="hotkeys-task-hint" id="taskHint" hidden></div>
+                    </div>
+
+                    <div class="vkeyboard" id="keyboard"></div>
+                </div>
+
+                <div class="hotkeys-actions">
+                    <button class="btn-secondary" id="skipBtn">
+                        <i class="ph ph-skip-forward"></i> Пропустить
+                    </button>
+                    <button class="btn-secondary" id="hintBtn">
+                        <i class="ph ph-lightbulb"></i> Подсказка
+                    </button>
+                    <button class="btn-secondary" id="restartBtn">
+                        <i class="ph ph-arrow-counter-clockwise"></i> Заново
+                    </button>
+                </div>
+
+                <div class="hotkeys-hint">
+                    Комбинации указаны для Windows и Linux. В VS Code на macOS вместо <kbd>Ctrl</kbd> обычно используется <kbd>Cmd</kbd>.
+                </div>
+
+                <div class="hotkeys-extra">
+                    <div class="hotkeys-extra-card">
+                        <div class="hotkeys-extra-title">
+                            <i class="ph ph-clock-counter-clockwise"></i> Последние ответы
+                        </div>
+                        <div class="hotkeys-empty" id="historyEmpty">Пока ничего нет - сделайте первую попытку.</div>
+                        <div class="hotkeys-history-list" id="historyList"></div>
+                    </div>
+
+                    <div class="hotkeys-extra-card">
+                        <div class="hotkeys-extra-title">
+                            <i class="ph ph-warning"></i> Проблемные комбинации
+                        </div>
+                        <div class="hotkeys-empty" id="errorEmpty">Здесь появятся комбинации, в которых вы чаще ошибаетесь.</div>
+                        <div class="hotkeys-error-list" id="errorList"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotkeys-view" data-view="library" hidden>
+                <div class="hotkeys-config">
+                    <div class="hotkeys-config-group">
+                        <span class="hotkeys-config-label">
+                            <i class="ph ph-app-window"></i> Среда
+                        </span>
+                        <div class="hotkeys-chips" id="libraryIdeChips"></div>
+                    </div>
+
+                    <div class="hotkeys-config-divider"></div>
+
+                    <div class="hotkeys-config-group">
+                        <span class="hotkeys-config-label">
+                            <i class="ph ph-squares-four"></i> Категория
+                        </span>
+                        <div class="hotkeys-chips" id="libraryCategoryChips"></div>
+                    </div>
+                </div>
+
+                <div class="library-search">
+                    <i class="ph ph-magnifying-glass library-search-icon"></i>
+                    <input type="text" id="librarySearch" placeholder="Поиск по действию или клавишам..." autocomplete="off">
+                    <button type="button" class="library-search-clear" id="librarySearchClear" hidden aria-label="Очистить">
+                        <i class="ph ph-x"></i>
+                    </button>
+                </div>
+
+                <div class="library-results-bar">
+                    <span class="library-results-count" id="libraryResultsCount">Загрузка...</span>
+                </div>
+
+                <div class="library-grid" id="libraryGrid"></div>
+
+                <div class="library-empty" id="libraryEmpty" hidden>
+                    <div class="library-empty-icon">
+                        <i class="ph ph-magnifying-glass"></i>
+                    </div>
+                    <h3>Ничего не найдено</h3>
+                    <p>Попробуйте изменить запрос или сбросить фильтры</p>
+                    <button class="btn-secondary" id="libraryReset">
+                        <i class="ph ph-arrow-counter-clockwise"></i> Сбросить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../../../index.html" class="logo">
+                        <i class="ph-fill ph-code"></i>
+                        <span>Code<span class="logo-accent">Rush</span></span>
+                    </a>
+                    <p>Бесплатная образовательная платформа по программированию. Учитесь в своём темпе, без подписок и
+                        дедлайнов.</p>
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer"
+                        class="footer-telegram">
+                        <i class="ph-fill ph-telegram-logo"></i>
+                        <span>@GhostFromCastle</span>
+                    </a>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="../../../index.html">Главная</a></li>
+                        <li><a href="../../../courses.html">Все курсы</a></li>
+                        <li><a href="../../../index.html#about">О нас</a></li>
+                        <li><a href="../../../index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Курсы</h4>
+                    <ul>
+                        <li><a href="../../../courses.html">Все курсы</a></li>
+                        <li><a href="typing.html">Слепая печать</a></li>
+                        <li><a href="ide-hotkeys.html">Горячие клавиши IDE</a></li>
+                        <li><a href="../ai/index.html">Нейросети</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Помощь</h4>
+                    <ul>
+                        <li><a href="../../../index.html#faq">Частые вопросы</a></li>
+                        <li><a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Связаться с
+                                нами</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 CodeRush. Сделано с душой.</span>
+                <div class="footer-bottom-links">
+                    <a href="../../../index.html#about">О платформе</a>
+                    <a href="../../../index.html#faq">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="../../../js/ide-hotkeys.js"></script>
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

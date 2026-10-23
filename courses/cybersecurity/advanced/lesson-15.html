@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Безопасная разработка и OWASP Top 10 - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="advanced" data-lesson-id="lesson-15">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 15</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson active" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Безопасная разработка и OWASP Top 10</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~50 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлых уроках мы разбирались, как защищают сети и как ищут уязвимости
+                    в существующих системах. Но есть вопрос важнее: <strong>как строить
+                        системы, которые изначально устойчивы к атакам</strong>. Ведь можно
+                    бесконечно находить уязвимости и латать их - а можно писать код так,
+                    чтобы их не было.</p>
+
+                <p>Сегодня мы разберём <strong>безопасную разработку</strong> и
+                    <strong>OWASP Top 10</strong> - список десяти самых критичных рисков
+                    веб-приложений, который обновляется раз в несколько лет и служит
+                    ориентиром для всей индустрии. Это те знания, которые отличают
+                    разработчика, «пишущего код», от инженера, который <em>сознательно
+                        строит защищённые системы</em>.
+                </p>
+
+                <h2>Что такое OWASP</h2>
+
+                <p><strong>OWASP</strong> (Open Worldwide Application Security Project) -
+                    это международная некоммерческая организация, которая занимается
+                    безопасностью веб-приложений. Она существует с 2001 года и объединяет
+                    тысячи специалистов по всему миру.</p>
+
+                <p>OWASP известна несколькими проектами, но самый знаменитый - это
+                    <strong>OWASP Top 10</strong>. Это список десяти самых критичных
+                    рисков безопасности веб-приложений. Он основан на анализе огромного
+                    количества данных: уязвимостей (CVE), результатов тестирований,
+                    опросов сообщества.
+                </p>
+
+                <p>Важно понимать: OWASP Top 10 - это <strong>не чек-лист и не стандарт
+                        соответствия</strong>. Это <em>ориентир</em>, который помогает
+                    командам понять, на что обращать внимание в первую очередь. Если
+                    вы закрыли все десять категорий - вы устранили большую часть
+                    способов, которыми реальные приложения бывают скомпрометированы.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Зачем это нужно
+                    </div>
+                    <p>Вспомните урок 10 про SQL-инъекции и XSS. Это были конкретные
+                        технические атаки. OWASP Top 10 - это систематизированный
+                        взгляд на все подобные проблемы сразу. Он помогает разработчикам
+                        и командам безопасности говорить на одном языке и приоритизировать
+                        работу.</p>
+                </div>
+
+                <h2>OWASP Top 10:2025 - актуальный список</h2>
+
+                <p>Самый свежий выпуск - <strong>OWASP Top 10:2025</strong>. Он был
+                    представлен в ноябре 2025 года на конференции OWASP Global AppSec
+                    в Вашингтоне и финализирован в январе 2026 года. Это первое крупное
+                    обновление с 2021 года, и в нём есть заметные изменения.</p>
+
+                <p>Вот полный список 2025 года:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Код</th>
+                            <th>Категория</th>
+                            <th>Что означает</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight">
+                            <td><code>A01</code></td>
+                            <td>Broken Access Control</td>
+                            <td>Пользователь делает то, на что не имеет прав</td>
+                        </tr>
+                        <tr>
+                            <td><code>A02</code></td>
+                            <td>Security Misconfiguration</td>
+                            <td>Неправильные настройки системы</td>
+                        </tr>
+                        <tr>
+                            <td><code>A03</code></td>
+                            <td>Software Supply Chain Failures</td>
+                            <td>Проблемы в цепочке поставок ПО</td>
+                        </tr>
+                        <tr>
+                            <td><code>A04</code></td>
+                            <td>Cryptographic Failures</td>
+                            <td>Ошибки в шифровании</td>
+                        </tr>
+                        <tr>
+                            <td><code>A05</code></td>
+                            <td>Injection</td>
+                            <td>Внедрение кода через ввод</td>
+                        </tr>
+                        <tr>
+                            <td><code>A06</code></td>
+                            <td>Insecure Design</td>
+                            <td>Небезопасный дизайн архитектуры</td>
+                        </tr>
+                        <tr>
+                            <td><code>A07</code></td>
+                            <td>Authentication Failures</td>
+                            <td>Ошибки аутентификации</td>
+                        </tr>
+                        <tr>
+                            <td><code>A08</code></td>
+                            <td>Software or Data Integrity Failures</td>
+                            <td>Нарушения целостности данных</td>
+                        </tr>
+                        <tr>
+                            <td><code>A09</code></td>
+                            <td>Logging &amp; Alerting Failures</td>
+                            <td>Проблемы с логированием и оповещением</td>
+                        </tr>
+                        <tr>
+                            <td><code>A10</code></td>
+                            <td>Mishandling of Exceptional Conditions</td>
+                            <td>Неправильная обработка исключений</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Что изменилось по сравнению с 2021</h3>
+
+                <p>Список 2025 не просто перетасовали - в нём появились две новые категории
+                    и одна ушла. Вот ключевые изменения:</p>
+
+                <ul>
+                    <li><strong>Появилась категория A03: Software Supply Chain Failures.</strong>
+                        Раньше это был более узкий пункт «Vulnerable and Outdated Components»
+                        (A06 в 2021). Теперь он расширен и поднялся на третье место. Это
+                        отражает волну реальных атак через скомпрометированные зависимости,
+                        взломанные системы сборки и угнанные аккаунты мейнтейнеров.</li>
+                    <li><strong>Появилась категория A10: Mishandling of Exceptional
+                            Conditions.</strong> Совершенно новая категория. Она про
+                        неправильную обработку ошибок, логических сбоев и краевых случаев.
+                        С ростом связанности систем и AI-компонентов эта область
+                        становится критичной.</li>
+                    <li><strong>SSRF больше не отдельная категория.</strong> Server-Side
+                        Request Forgery, который в 2021 был A10, теперь включён в
+                        A01 Broken Access Control.</li>
+                    <li><strong>Security Misconfiguration поднялся с 5-го на 2-е место.</strong>
+                        Это самый резкий скачок в рейтинге. Причина - бум облачных
+                        технологий: неправильные настройки S3-бакетов, IAM-политик,
+                        контейнеров стали массовым явлением.</li>
+                    <li><strong>Injection опустился с 3-го на 5-е место.</strong> Не
+                        потому, что проблема исчезла, а потому, что другие категории
+                        стали встречаться чаще. Организации научились бороться с
+                        SQL-инъекциями, но появились новые вызовы.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Как читать OWASP Top 10
+                    </div>
+                    <p>Категории в Top 10 - это не отдельные уязвимости, а <strong>группы
+                            связанных проблем</strong>. Например, A01 Broken Access Control
+                        включает 40 различных CWE (Common Weakness Enumeration). A04
+                        Cryptographic Failures включает всё, что связано с шифрованием,
+                        хранением секретов и генерацией случайных чисел.</p>
+                </div>
+
+                <h2>Разбор каждой категории</h2>
+
+                <p>Пройдёмся по всем десяти категориям, чтобы понять, что каждая из них
+                    означает и как от неё защищаться.</p>
+
+                <h3>A01: Broken Access Control (Нарушение контроля доступа)</h3>
+
+                <p>Самая частая категория, которая держится на первом месте уже четыре
+                    выпуска подряд. Суть: <strong>пользователь получает доступ к данным
+                        или действиям, которые ему не разрешены</strong>.</p>
+
+                <p>Классический пример - IDOR (Insecure Direct Object Reference).
+                    Приложение имеет эндпоинт <code>/api/orders/1002</code>, который
+                    возвращает заказ по ID. Пользователь может изменить число и получить
+                    чужой заказ. Проверка «залогинен ли пользователь» проходит, но
+                    проверка «принадлежит ли этот заказ ему» - нет.</p>
+
+                <p>Другой пример - когда обычный пользователь может получить доступ
+                    к админ-панели, просто зная URL. Или когда API не проверяет роль
+                    при вызове метода.</p>
+
+                <p><strong>Как защищаться:</strong></p>
+
+                <ul>
+                    <li>Проверять авторизацию на <strong>каждом</strong> запросе на
+                        стороне сервера.</li>
+                    <li>Принцип <em>deny by default</em>: если доступ не разрешён
+                        явно - значит, запрещён.</li>
+                    <li>Не полагаться на скрытие URL или UI-элементов - злоумышленник
+                        может запросить эндпоинт напрямую.</li>
+                    <li>Использовать централизованные механизмы проверки прав,
+                        а не разбросанные по коду <code>if</code>.</li>
+                </ul>
+
+                <h3>A02: Security Misconfiguration (Неправильные настройки)</h3>
+
+                <p>Второе место в 2025 - резкий скачок с пятого. Суть: <strong>система
+                        настроена небезопасно</strong>. Это может быть что угодно:</p>
+
+                <ul>
+                    <li>Стандартные пароли администратора (<code>admin/admin</code>).</li>
+                    <li>Открытые S3-бакеты, доступные всему интернету.</li>
+                    <li>Подробные сообщения об ошибках, раскрывающие внутреннюю
+                        структуру.</li>
+                    <li>Включённые по умолчанию ненужные функции и сервисы.</li>
+                    <li>Отсутствие HTTPS или слабые настройки TLS.</li>
+                    <li>Слишком широкие права в IAM-политиках.</li>
+                </ul>
+
+                <p><strong>Как защищаться:</strong></p>
+
+                <ul>
+                    <li>Использовать безопасные конфигурации по умолчанию.</li>
+                    <li>Регулярно пересматривать настройки и удалять ненужное.</li>
+                    <li>Автоматизировать проверки конфигурации через инструменты
+                        (например, сканеры Infrastructure as Code).</li>
+                    <li>Разделять окружения (dev, staging, prod) с разными
+                        настройками.</li>
+                </ul>
+
+                <h3>A03: Software Supply Chain Failures (Сбои в цепочке поставок ПО)</h3>
+
+                <p>Новая категория, которая сразу попала в топ-3. Это расширение
+                    прежней A06 (Vulnerable and Outdated Components). Суть:
+                    <strong>проблемы не в вашем коде, а в том, что вы используете</strong>.
+                </p>
+
+                <p>Сюда входят:</p>
+
+                <ul>
+                    <li>Устаревшие библиотеки с известными CVE.</li>
+                    <li>Скомпрометированные пакеты в репозиториях (npm, PyPI и т.д.).</li>
+                    <li>Взломанные системы сборки и CI/CD.</li>
+                    <li>Угнанные аккаунты мейнтейнеров, через которые злоумышленники
+                        публикуют вредоносные обновления.</li>
+                </ul>
+
+                <p>Вспомните урок 5: кампания GhostPoster, где вредоносный код был
+                    спрятан прямо в PNG-файле расширения Firefox. Или инцидент с
+                    Cyberhaven, где был скомпрометирован аккаунт разработчика в Chrome
+                    Web Store. Всё это - supply chain атаки.</p>
+
+                <p><strong>Как защищаться:</strong></p>
+
+                <ul>
+                    <li>Вести полный список всех зависимостей (SBOM - Software Bill
+                        of Materials).</li>
+                    <li>Использовать инструменты сканирования зависимостей (Dependabot,
+                        Snyk, OWASP Dependency-Check).</li>
+                    <li>Регулярно обновлять библиотеки и следить за security-релизами.</li>
+                    <li>Проверять подписи пакетов перед установкой.</li>
+                    <li>Изолировать системы сборки и ограничивать права CI/CD-систем.</li>
+                </ul>
+
+                <h3>A04: Cryptographic Failures (Ошибки шифрования)</h3>
+
+                <p>Бывшая A02 в 2021. Суть: <strong>данные плохо защищены из-за
+                        ошибок в криптографии</strong>.</p>
+
+                <ul>
+                    <li>Хранение паролей в открытом виде или через устаревшие
+                        алгоритмы (MD5, SHA-1).</li>
+                    <li>Отсутствие шифрования при передаче (HTTP вместо HTTPS).</li>
+                    <li>Использование слабых или предсказуемых ключей.</li>
+                    <li>Отсутствие шифрования данных при хранении (data at rest).</li>
+                </ul>
+
+                <p><strong>Как защищаться:</strong></p>
+
+                <ul>
+                    <li>Использовать современные алгоритмы: AES-256 для шифрования,
+                        Argon2 или bcrypt для хеширования паролей.</li>
+                    <li>Всегда использовать HTTPS.</li>
+                    <li>Не изобретать свои криптографические схемы - использовать
+                        проверенные библиотеки.</li>
+                    <li>Правильно управлять ключами и секретами (никогда не хранить
+                        в коде).</li>
+                </ul>
+
+                <h3>A05: Injection (Внедрение кода)</h3>
+
+                <p>Опустился с третьего на пятое место, но никуда не исчез. Суть:
+                    <strong>недоверенные данные интерпретируются как код или
+                        команда</strong>.
+                </p>
+
+                <p>Это то, что мы разбирали в уроке 10: SQL-инъекции, XSS, командные
+                    инъекции. Злоумышленник вставляет свой код туда, где приложение
+                    ожидает данные - и этот код выполняется.</p>
+
+                <p><strong>Как защищаться:</strong></p>
+
+                <ul>
+                    <li>Параметризованные запросы (prepared statements) для SQL.</li>
+                    <li>Экранирование вывода для XSS (или контекстно-зависимое
+                        кодирование).</li>
+                    <li>Валидация и whitelist допустимых значений.</li>
+                    <li>Не передавать пользовательский ввод в системные вызовы
+                        без строгой проверки.</li>
+                </ul>
+
+                <h3>A06: Insecure Design (Небезопасный дизайн)</h3>
+
+                <p>Бывшая A04 в 2021. Ключевое отличие этой категории от остальных:
+                    <strong>проблема не в реализации, а в самом дизайне</strong>.
+                    Даже если код написан идеально, архитектура может быть
+                    уязвимой.
+                </p>
+
+                <p>Примеры:</p>
+
+                <ul>
+                    <li>Сервис сброса пароля, который требует только email - любой
+                        может сбросить пароль чужого аккаунта.</li>
+                    <li>Отсутствие rate limiting на критичных эндпоинтах.</li>
+                    <li>«Доверие на слово» данным от клиента (например, цене
+                        товара в корзине).</li>
+                    <li>Отсутствие проверок на стороне сервера, потому что
+                        «на клиенте уже проверено».</li>
+                </ul>
+
+                <p><strong>Как защищаться:</strong></p>
+
+                <ul>
+                    <li>Threat modeling на этапе проектирования.</li>
+                    <li>Принцип secure by design: безопасность закладывается
+                        с самого начала, а не добавляется после.</li>
+                    <li>Использование проверенных паттернов безопасного
+                        проектирования.</li>
+                    <li>Обязательные code review и security review архитектуры.</li>
+                </ul>
+
+                <h3>A07: Authentication Failures (Ошибки аутентификации)</h3>
+
+                <p>Стабильно на седьмом месте. Суть: <strong>слабая проверка
+                        личности пользователя</strong>.</p>
+
+                <ul>
+                    <li>Слабые требования к паролям.</li>
+                    <li>Отсутствие защиты от подбора (brute force, credential
+                        stuffing).</li>
+                    <li>Сессии, которые не истекают или не обновляются после
+                        входа.</li>
+                    <li>Отсутствие 2FA там, где она критична.</li>
+                    <li>Уязвимости в механизмах восстановления пароля.</li>
+                </ul>
+
+                <p><strong>Как защищаться:</strong></p>
+
+                <ul>
+                    <li>Требовать длинные пароли (минимум 12 символов).</li>
+                    <li>Внедрять 2FA/MFA для критичных действий.</li>
+                    <li>Rate limiting на эндпоинтах входа.</li>
+                    <li>Правильно управлять сессиями (см. урок 12): HttpOnly,
+                        Secure, SameSite, короткий срок жизни.</li>
+                </ul>
+
+                <h3>A08: Software or Data Integrity Failures</h3>
+
+                <p>Бывшая A08 в 2021. Суть: <strong>приложение доверяет коду
+                        или данным без проверки их целостности</strong>.</p>
+
+                <p>Примеры:</p>
+
+                <ul>
+                    <li>Небезопасная десериализация (deserialization) - данные
+                        превращаются в объекты и выполняются как код.</li>
+                    <li>Автообновления без проверки подписи.</li>
+                    <li>CI/CD-пайплайны, которые выполняют код из
+                        непроверенных источников.</li>
+                    <li>Загрузка зависимостей без проверки контрольных сумм.</li>
+                </ul>
+
+                <p><strong>Как защищаться:</strong></p>
+
+                <ul>
+                    <li>Проверять цифровые подписи обновлений и пакетов.</li>
+                    <li>Не использовать небезопасную десериализацию для
+                        недоверенных данных.</li>
+                    <li>Изолировать CI/CD-среды.</li>
+                    <li>Использовать SBOM и контрольные суммы для зависимостей.</li>
+                </ul>
+
+                <h3>A09: Security Logging &amp; Alerting Failures</h3>
+
+                <p>Бывшая A09, только переименованная: Monitoring заменили на
+                    Alerting. Суть: <strong>недостаточное логирование и
+                        оповещение</strong>, из-за чего атаки остаются незамеченными.</p>
+
+                <p>Если в системе не ведётся логирование входов, изменений
+                    данных, ошибок - атаку невозможно обнаружить. А если
+                    логи есть, но никто на них не смотрит - это то же самое,
+                    что их нет.</p>
+
+                <p><strong>Как защищаться:</strong></p>
+
+                <ul>
+                    <li>Логировать критичные события: входы, выходы, изменения
+                        прав, ошибки.</li>
+                    <li>Настроить автоматические алерты на подозрительные
+                        паттерны.</li>
+                    <li>Централизованно собирать логи (SIEM-системы).</li>
+                    <li>Регулярно проверять, что логи пишутся и алерты
+                        срабатывают.</li>
+                </ul>
+
+                <h3>A10: Mishandling of Exceptional Conditions</h3>
+
+                <p>Самая новая категория, которой не было в 2021. Суть:
+                    <strong>неправильная обработка ошибок и краевых случаев</strong>.
+                </p>
+
+                <p>Сюда входит:</p>
+
+                <ul>
+                    <li>Раскрытие внутренней информации через сообщения
+                        об ошибках.</li>
+                    <li>Логические ошибки, которые срабатывают только в
+                        нестандартных ситуациях.</li>
+                    <li>Необработанные исключения, которые приводят к
+                        падению или неопределённому поведению.</li>
+                    <li>Неправильная обработка «пустых» или «слишком больших»
+                        значений.</li>
+                </ul>
+
+                <p>С ростом связанности систем (микросервисы, AI) и
+                    усложнением сценариев использования, эта категория
+                    становится всё важнее. Ошибка в одном сервисе может
+                    каскадно обрушить всю систему.</p>
+
+                <p><strong>Как защищаться:</strong></p>
+
+                <ul>
+                    <li>Обрабатывать все исключения явно - никаких «молчаливых»
+                        ошибок.</li>
+                    <li>Не показывать пользователю внутренние сообщения об
+                        ошибках (стек-трейсы, пути к файлам, SQL-запросы).</li>
+                    <li>Тестировать краевые случаи: пустые значения, максимумы,
+                        неожиданные типы.</li>
+                    <li>Использовать fail-safe defaults: при ошибке поведение
+                        должно быть безопасным.</li>
+                </ul>
+
+                <h2>Принципы безопасной разработки</h2>
+
+                <p>OWASP Top 10 - это список того, чего нужно избегать. Но есть и
+                    позитивные принципы, которые помогают строить безопасные
+                    системы с самого начала.</p>
+
+                <h3>Принцип наименьших привилегий</h3>
+
+                <p>Каждый компонент системы - пользователь, сервис, процесс -
+                    должен иметь <strong>минимально необходимые права</strong>.
+                    Ни больше. Это ограничивает ущерб при компрометации: даже
+                    если злоумышленник получит доступ к одному компоненту, он
+                    не сможет через него управлять всей системой.</p>
+
+                <h3>Defense in Depth (эшелонированная защита)</h3>
+
+                <p>Не полагайтесь на один уровень защиты. Даже если он кажется
+                    надёжным. Пароль + 2FA. Валидация на клиенте + валидация
+                    на сервере. Firewall + WAF + IPS. Каждый слой закрывает
+                    свою часть угроз, а вместе они делают систему устойчивой.</p>
+
+                <h3>Fail Secure</h3>
+
+                <p>При сбое система должна переходить в <strong>безопасное
+                        состояние</strong>. Если что-то пошло не так - доступ
+                    должен закрыться, а не открыться. Если проверка прав
+                    упала с ошибкой - отказать, а не разрешить.</p>
+
+                <h3>Don't Trust User Input</h3>
+
+                <p>Всё, что приходит от пользователя, - потенциально
+                    враждебно. Валидируйте, экранируйте, проверяйте.
+                    Даже если валидация уже была на клиенте - клиент
+                    можно обойти.</p>
+
+                <h3>Keep It Simple</h3>
+
+                <p>Сложные системы сложнее защищать. Чем больше кода,
+                    зависимостей, интеграций - тем больше поверхность
+                    атаки. Упрощайте там, где это возможно.</p>
+
+                <h2>Инструменты безопасной разработки</h2>
+
+                <p>Помимо принципов, есть конкретные инструменты, которые
+                    помогают внедрять безопасность в процесс разработки.</p>
+
+                <ul>
+                    <li><strong>SAST</strong> (Static Application Security
+                        Testing) - анализ исходного кода без запуска.
+                        Инструменты: SonarQube, Semgrep, Checkmarx.</li>
+                    <li><strong>DAST</strong> (Dynamic Application Security
+                        Testing) - анализ работающего приложения через
+                        имитацию атак. Инструменты: OWASP ZAP, Burp Suite.</li>
+                    <li><strong>SCA</strong> (Software Composition Analysis) -
+                        анализ зависимостей на известные уязвимости.
+                        Инструменты: Snyk, Dependabot, OWASP
+                        Dependency-Check.</li>
+                    <li><strong>IaC Security</strong> - проверка конфигураций
+                        инфраструктуры как кода. Инструменты: Checkov,
+                        tfsec, Terrascan.</li>
+                    <li><strong>Secret Scanning</strong> - поиск утёкших
+                        секретов в коде. Инструменты: GitGuardian, TruffleHog.</li>
+                </ul>
+
+                <p>Все эти инструменты можно встроить в CI/CD-пайплайн, чтобы
+                    проблемы находились на этапе разработки, а не в
+                    production.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>A01</code>
+                        <span>Broken Access Control</span>
+                    </li>
+                    <li>
+                        <code>A02</code>
+                        <span>Security Misconfiguration</span>
+                    </li>
+                    <li>
+                        <code>A03</code>
+                        <span>Supply Chain Failures</span>
+                    </li>
+                    <li>
+                        <code>A04</code>
+                        <span>Cryptographic Failures</span>
+                    </li>
+                    <li>
+                        <code>A05</code>
+                        <span>Injection</span>
+                    </li>
+                    <li>
+                        <code>A06</code>
+                        <span>Insecure Design</span>
+                    </li>
+                    <li>
+                        <code>A07</code>
+                        <span>Authentication Failures</span>
+                    </li>
+                    <li>
+                        <code>A08</code>
+                        <span>Integrity Failures</span>
+                    </li>
+                    <li>
+                        <code>A09</code>
+                        <span>Logging &amp; Alerting Failures</span>
+                    </li>
+                    <li>
+                        <code>A10</code>
+                        <span>Exceptional Conditions</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные заблуждения, связанные с OWASP Top 10 и
+                    безопасной разработкой.</p>
+
+                <ul>
+                    <li><strong>«Мы используем OWASP Top 10 как чек-лист».</strong>
+                        Top 10 - это не чек-лист, а ориентир. Каждая категория
+                        включает десятки конкретных CWE. Для детальной проверки
+                        используйте OWASP ASVS (Application Security Verification
+                        Standard) - он гораздо подробнее.</li>
+                    <li><strong>«Мы закрыли Top 10 - мы в безопасности».</strong>
+                        Закрыть Top 10 - это необходимый минимум. Но есть и
+                        другие угрозы: бизнес-логика, физическая безопасность,
+                        социальная инженерия, zero-day. Безопасность - это
+                        процесс, а не галочка.</li>
+                    <li><strong>«OWASP Top 10 устарел».</strong> Список обновляется
+                        раз в несколько лет. Актуальная версия - 2025 года.
+                        Если вы используете список 2017 года - вы работаете
+                        с устаревшей информацией, в которой нет supply chain
+                        и mishandling of exceptional conditions.</li>
+                    <li><strong>«Security - это задача команды безопасности».</strong>
+                        Нет. Безопасность - это ответственность каждого
+                        разработчика. Большинство проблем из Top 10 возникают
+                        именно в коде, а не в инфраструктуре. Разработчики
+                        должны знать и применять эти принципы.</li>
+                    <li><strong>«Мы используем фреймворк, он всё делает
+                            безопасно».</strong> Фреймворки помогают, но не
+                        решают все проблемы. Неправильная конфигурация,
+                        логические ошибки в бизнес-логике, ошибки в
+                        архитектуре - всё это остаётся на разработчике.</li>
+                    <li><strong>«SAST-сканер найдёт все проблемы».</strong>
+                        Сканеры находят типовые паттерны, но не понимают
+                        контекст. Логические ошибки, проблемы дизайна,
+                        неправильную бизнес-логику они не увидят. Нужно
+                        сочетать инструменты и ручной анализ.</li>
+                    <li><strong>«Мы проведём аудит, и всё будет хорошо».</strong>
+                        Разовый аудит - это снимок на конкретный момент.
+                        Безопасность требует постоянного процесса:
+                        регулярные проверки, обновления, обучение,
+                        мониторинг.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание категорий, вторые
+                    две - на применение принципов.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Определите категорию</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой уязвимости определите,
+                                к какой категории OWASP Top 10:2025 она
+                                относится.</p>
+                            <ol>
+                                <li>Пользователь может изменить ID в URL и
+                                    получить доступ к чужому заказу.</li>
+                                <li>Приложение использует библиотеку с
+                                    известной уязвимостью.</li>
+                                <li>Пароли хранятся в базе данных в виде
+                                    MD5-хешей.</li>
+                                <li>Поле поиска не экранирует ввод, что
+                                    позволяет внедрить SQL-код.</li>
+                                <li>Сообщение об ошибке показывает полный
+                                    стек-трейс с путями к файлам.</li>
+                                <li>S3-бакет с данными пользователей
+                                    доступен всему интернету.</li>
+                                <li>В системе нет логирования неудачных
+                                    попыток входа.</li>
+                                <li>Автообновление приложения не проверяет
+                                    подпись обновлений.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните описания категорий. Обратите
+                                        внимание на ключевые слова: «доступ
+                                        к чужому» - A01, «устаревшая
+                                        библиотека» - A03, «MD5» - A04,
+                                        «ввод» - A05, «стек-трейс» - A10,
+                                        «S3-бакет» - A02, «логирование» -
+                                        A09, «подпись» - A08.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>A01: Broken Access
+                                                Control.</strong> IDOR -
+                                            классический пример нарушения
+                                            контроля доступа.</li>
+                                        <li><strong>A03: Software Supply
+                                                Chain Failures.</strong>
+                                            Устаревшая библиотека -
+                                            это supply chain.</li>
+                                        <li><strong>A04: Cryptographic
+                                                Failures.</strong> MD5 -
+                                            устаревший алгоритм, пароли
+                                            должны хешироваться через
+                                            Argon2 или bcrypt.</li>
+                                        <li><strong>A05: Injection.</strong>
+                                            SQL-инъекция - классический
+                                            пример.</li>
+                                        <li><strong>A10: Mishandling
+                                                of Exceptional Conditions.</strong>
+                                            Раскрытие внутренних
+                                            данных через ошибки.</li>
+                                        <li><strong>A02: Security
+                                                Misconfiguration.</strong>
+                                            Открытый S3-бакет -
+                                            неправильная конфигурация.</li>
+                                        <li><strong>A09: Logging &amp;
+                                                Alerting Failures.</strong>
+                                            Отсутствие логирования - не
+                                            сможем обнаружить атаку.</li>
+                                        <li><strong>A08: Software or
+                                                Data Integrity Failures.</strong>
+                                            Отсутствие проверки подписи
+                                            - угроза целостности.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Что изменилось в 2025</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Опишите ключевые изменения
+                                в OWASP Top 10:2025 по сравнению с версией
+                                2021 года. Почему эти изменения произошли?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните: какая категория появилась,
+                                        какая ушла, что поднялось, а что
+                                        опустилось. И подумайте, с чем связаны
+                                        эти сдвиги.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Ключевые изменения:</p>
+                                    <ol>
+                                        <li><strong>Появилась A03: Supply
+                                                Chain Failures.</strong>
+                                            Была расширена из A06:2021
+                                            (Vulnerable Components).
+                                            Причина - волна атак через
+                                            скомпрометированные зависимости
+                                            и CI/CD.</li>
+                                        <li><strong>Появилась A10: Mishandling
+                                                of Exceptional Conditions.</strong>
+                                            Совершенно новая категория.
+                                            Причина - рост связанности
+                                            систем и важность корректной
+                                            обработки ошибок.</li>
+                                        <li><strong>SSRF включён в A01.</strong>
+                                            Раньше был отдельной категорией,
+                                            теперь часть Broken Access Control.</li>
+                                        <li><strong>Security Misconfiguration
+                                                поднялся с 5 на 2 место.</strong>
+                                            Причина - бум облачных технологий
+                                            и массовые ошибки в конфигурациях.</li>
+                                        <li><strong>Injection опустился с 3
+                                                на 5 место.</strong> Не потому,
+                                            что проблема решена, а потому,
+                                            что другие категории стали
+                                            встречаться чаще.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Примените принципы</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы проектируете систему
+                                управления задачами для небольшой компании.
+                                Примените принципы безопасной разработки
+                                к следующим аспектам:</p>
+                            <ol>
+                                <li>Права пользователей.</li>
+                                <li>Хранение паролей.</li>
+                                <li>Обработка ошибок.</li>
+                                <li>Логирование.</li>
+                                <li>Обновления зависимостей.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для каждого пункта подумайте, какие
+                                        категории OWASP Top 10 могут быть
+                                        затронуты и какие принципы помогут
+                                        их закрыть.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Примерный план:</p>
+                                    <ol>
+                                        <li><strong>Права пользователей (A01).</strong>
+                                            Принцип наименьших привилегий.
+                                            Каждый пользователь видит только
+                                            свои задачи. Проверка прав на
+                                            каждом запросе. Роли: админ,
+                                            менеджер, исполнитель.</li>
+                                        <li><strong>Хранение паролей (A04).</strong>
+                                            Argon2 или bcrypt с солью.
+                                            Никакого MD5 или SHA-1.
+                                            Обязательная 2FA для админов.</li>
+                                        <li><strong>Обработка ошибок (A10).</strong>
+                                            Fail secure: при ошибке -
+                                            отказать, а не разрешить.
+                                            Пользователю - общее сообщение,
+                                            детали - только в логи.</li>
+                                        <li><strong>Логирование (A09).</strong>
+                                            Логировать входы, изменения
+                                            задач, ошибки. Настроить алерты
+                                            на подозрительную активность.
+                                            Централизованный сбор.</li>
+                                        <li><strong>Обновления зависимостей
+                                                (A03).</strong> SBOM. Регулярное
+                                            сканирование через Snyk или
+                                            Dependabot. Автоматические
+                                            security-обновления.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Проверьте свой проект</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вспомните любой проект, над
+                                которым вы работали или который хорошо знаете
+                                (рабочий, учебный, свой pet-проект). Пройдитесь
+                                по OWASP Top 10:2025 и найдите минимум три
+                                категории, которые у этого проекта могут быть
+                                уязвимы. Опишите, что конкретно может пойти
+                                не так и как это исправить.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Начните с самых частых: A01 (доступ),
+                                        A02 (конфигурация), A07 (аутентификация).
+                                        Потом подумайте про зависимости (A03)
+                                        и обработку ошибок (A10).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>У каждого проекта свои слабые места,
+                                        но вот пример того, что часто
+                                        встречается:</p>
+                                    <ul>
+                                        <li><strong>A01: Broken Access Control.</strong>
+                                            API не проверяет принадлежность
+                                            объекта пользователю. Можно
+                                            получить чужой ресурс, зная ID.
+                                            Решение: на каждом запросе
+                                            проверять, что объект принадлежит
+                                            текущему пользователю.</li>
+                                        <li><strong>A02: Security Misconfiguration.</strong>
+                                            В dev-конфиге остались дефолтные
+                                            пароли или включён debug-режим.
+                                            Решение: разные конфиги для
+                                            окружений, автоматическая проверка
+                                            через IaC-сканеры.</li>
+                                        <li><strong>A03: Supply Chain Failures.</strong>
+                                            В проекте десятки зависимостей,
+                                            обновления не отслеживаются.
+                                            Решение: Snyk, Dependabot,
+                                            регулярное обновление.</li>
+                                        <li><strong>A07: Authentication Failures.</strong>
+                                            Нет rate limiting на входе,
+                                            пароли короткие, 2FA отсутствует.
+                                            Решение: rate limiting, требования
+                                            к паролям, 2FA для важных
+                                            аккаунтов.</li>
+                                        <li><strong>A09: Logging Failures.</strong>
+                                            Логи есть, но никто их не
+                                            смотрит. Решение: централизованный
+                                            сбор (SIEM), алерты на подозрительные
+                                            события.</li>
+                                        <li><strong>A10: Exceptional Conditions.</strong>
+                                            Необработанные исключения приводят
+                                            к падению API с раскрытием
+                                            стек-трейса. Решение: обрабатывать
+                                            все исключения, отдавать общее
+                                            сообщение пользователю, детали -
+                                            в логи.</li>
+                                    </ul>
+                                    <p>Цель упражнения - научиться смотреть
+                                        на знакомый проект глазами атакующего.
+                                        Такой «взгляд извне» помогает найти
+                                        проблемы, которые обычно
+                                        не замечаются.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с <strong>OWASP Top 10:2025</strong> - актуальным
+                    списком самых критичных рисков веб-приложений. Узнали, что
+                    список обновляется раз в несколько лет и в 2025 году появились
+                    две новые категории: <strong>Software Supply Chain
+                        Failures</strong> и <strong>Mishandling of Exceptional
+                        Conditions</strong>.</p>
+
+                <p>Поняли, что <strong>Broken Access Control</strong> остаётся
+                    на первом месте уже четыре выпуска подряд, а
+                    <strong>Security Misconfiguration</strong> резко поднялся
+                    на второе - из-за облачных технологий. Разобрали каждую из
+                    десяти категорий и то, как от неё защищаться.
+                </p>
+
+                <p>Изучили принципы безопасной разработки: <strong>принцип
+                        наименьших привилегий</strong>, <strong>defense in
+                        depth</strong>, <strong>fail secure</strong>, «не доверяй
+                    пользовательскому вводу», «keep it simple».</p>
+
+                <p>И, что важно, поняли: безопасность - это не задача
+                    отдельной команды, а <strong>ответственность каждого
+                        разработчика</strong>. Большинство проблем из Top 10
+                    возникают именно в коде. И знание этих принципов
+                    отличает инженера от «кодера».</p>
+
+                <p>Мы уже прошли три урока продвинутого уровня: разобрали
+                    сетевую безопасность, пентест и безопасную разработку.
+                    Но это только начало. Впереди ещё много тем, которые
+                    отличают продвинутого специалиста от уверенного
+                    пользователя безопасности.</p>
+
+                <p>В следующем уроке мы заглянем <strong>глубоко в
+                        криптографию</strong>. Узнаем, почему «использовать
+                    AES» - это недостаточно, что такое режимы шифрования
+                    (ECB, CBC, GCM), почему нельзя использовать ECB, что
+                    такое padding oracle и side-channel атаки. Разберём,
+                    как правильно применять шифрование, чтобы не создавать
+                    ложное чувство защищённости.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-14.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-16.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

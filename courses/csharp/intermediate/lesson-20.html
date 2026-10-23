@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StringBuilder - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="intermediate" data-lesson-id="lesson-20">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 20</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson active" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>StringBuilder</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В шестом уроке мы научились склеивать строки через знак <code>+</code>. Это удобно, когда строк две
+                    или три: <code>"Привет, " + name + "!"</code>. Но есть ситуация, когда такой подход превращается в
+                    катастрофу.</p>
+
+                <p>Представьте, что вам нужно собрать длинный текст из 10 000 строк. Например, сформировать отчет или
+                    вывести таблицу. Если делать это через `+` в цикле, программа начнет работать очень медленно.</p>
+
+                <p>Сегодня мы разберёмся, почему так происходит, и познакомимся с инструментом, который решает эту
+                    проблему - <strong>StringBuilder</strong>.</p>
+
+                <h2>Почему `+` в цикле - это плохо</h2>
+
+                <p>В C# строки (<code>string</code>) - это <strong>неизменяемые</strong> (immutable) объекты. Это
+                    значит, что после создания строки её нельзя изменить. Вообще.</p>
+
+                <p>Когда вы пишете <code>text += "новая строка"</code>, C# не дописывает текст в конец существующей
+                    строки. Вместо этого он:</p>
+                <ol>
+                    <li>Берет старую строку.</li>
+                    <li>Берет новую строку.</li>
+                    <li>Создает в памяти <strong>третью, совершенно новую строку</strong>, в которую копирует старую и
+                        новую.</li>
+                    <li>Старую строку выбрасывает в мусор.</li>
+                </ol>
+
+                <p>Если мы склеиваем 10 000 строк в цикле, то на первой итерации создается 1 строка, на второй - еще 2,
+                    на третьей - еще 3. Итого в памяти будет создано более 50 миллионов символов! Компьютер будет
+                    тратить всё время на копирование памяти и сборку мусора.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия
+                    </div>
+                    <p>Представьте, что вы пишете книгу. Вместо того чтобы просто дописывать слова на следующей
+                        странице, вы каждый раз переписываете всю книгу с нуля заново, чтобы добавить одно предложение.
+                        И так 10 000 раз. Вы сойдете с ума. Именно это и происходит со строкой через `+`.</p>
+                </div>
+
+                <h2>Класс StringBuilder</h2>
+
+                <p><strong>StringBuilder</strong> (сборщик строк) решает эту проблему. Это как блокнот: вы просто
+                    дописываете в него новые строки, и он не создает каждый раз всё заново. Он хранит список изменений и
+                    создает финальную строку только тогда, когда вы сами об этом попросите.</p>
+
+                <p>Для использования <code>StringBuilder</code> нужно подключить пространство имен:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">using System.Text;</span></code></pre>
+
+                <p>Теперь создадим объект:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">StringBuilder sb = new StringBuilder();</span></code></pre>
+
+                <h3>Основные методы</h3>
+
+                <ul>
+                    <li><code>sb.Append(текст)</code> - добавить текст в конец (аналог <code>+=</code>).</li>
+                    <li><code>sb.AppendLine(текст)</code> - добавить текст и перейти на новую строку.</li>
+                    <li><code>sb.Clear()</code> - очистить содержимое.</li>
+                    <li><code>sb.ToString()</code> - получить итоговую строку (то, ради чего всё и делалось).</li>
+                </ul>
+
+                <p>Вот как выглядит правильное решение задачи с 10 000 строк:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">StringBuilder sb = new StringBuilder();</span><span class="code-row"></span><span class="code-row">for (int i = 1; i <= 10000; i++)</span><span class="code-row">{</span><span class="code-row">    sb.AppendLine($"Строка номер {i}");</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">string result = sb.ToString();</span><span class="code-row">Console.WriteLine(result);</span></code></pre>
+
+                <p>Обратите внимание: мы вызываем <code>ToString()</code> в самом конце, когда всё собрано. Только в
+                    этот момент в памяти создастся одна финальная строка. Остальное время StringBuilder просто хранил
+                    кусочки текста.</p>
+
+                <h2>Когда использовать StringBuilder</h2>
+
+                <p>Не нужно везде и всегда использовать StringBuilder. Если вам нужно склеить три-четыре строки, обычный
+                    `+` работает быстрее и выглядит понятнее. Используйте StringBuilder, если:</p>
+                <ul>
+                    <li>Вы собираете текст в цикле.</li>
+                    <li>Вам нужно склеить более 10-15 строк.</li>
+                    <li>Вы генерируете HTML-код, SQL-запросы или большие отчеты.</li>
+                </ul>
+
+                <h2>Другие полезные методы</h2>
+
+                <p>Помимо добавления в конец, StringBuilder умеет делать и другие вещи:</p>
+
+                <h3>AppendFormat</h3>
+
+                <p>Аналог интерполяции, но работает быстрее. Позволяет вставить значения в строку по шаблону:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string name = "Алексей";</span><span class="code-row">int age = 25;</span><span class="code-row"></span><span class="code-row">sb.AppendFormat("Пользователь: {0}, Возраст: {1}\n", name, age);</span></code></pre>
+
+                <p>Фигурные скобки с цифрами - это плейсхолдеры. В них подставляются аргументы, переданные после строки
+                    (начиная с нулевого).</p>
+
+                <h3>Insert и Replace</h3>
+
+                <p>Insert вставляет текст в определенную позицию (по индексу), а Replace заменяет все вхождения
+                    подстроки:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">sb.Insert(0, "Привет! ");</span><span class="code-row">sb.Replace("Привет", "Здравствуй");</span></code></pre>
+
+                <h3>Свойство Length</h3>
+
+                <p>Как и у строки, у StringBuilder есть <code>Length</code>, который показывает текущую длину.</p>
+
+                <h2>Замер производительности</h2>
+
+                <p>Хотите увидеть разницу своими глазами? Вот код с использованием класса <code>Stopwatch</code> из
+                    <code>System.Diagnostics</code>, который замеряет время выполнения.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">using System;</span><span class="code-row">using System.Text;</span><span class="code-row">using System.Diagnostics;</span><span class="code-row"></span><span class="code-row">class Program</span><span class="code-row">{</span><span class="code-row">    static void Main()</span><span class="code-row">    {</span><span class="code-row">        Stopwatch sw = new Stopwatch();</span><span class="code-row"></span><span class="code-row">        sw.Start();</span><span class="code-row">        string result = "";</span><span class="code-row">        for (int i = 0; i < 10000; i++)</span><span class="code-row">        {</span><span class="code-row">            result += i.ToString();</span><span class="code-row">        }</span><span class="code-row">        sw.Stop();</span><span class="code-row">        Console.WriteLine($"Строки (через +): {sw.ElapsedMilliseconds} мс");</span><span class="code-row"></span><span class="code-row">        sw.Restart();</span><span class="code-row">        StringBuilder sb = new StringBuilder();</span><span class="code-row">        for (int i = 0; i < 10000; i++)</span><span class="code-row">        {</span><span class="code-row">            sb.Append(i.ToString());</span><span class="code-row">        }</span><span class="code-row">        string result2 = sb.ToString();</span><span class="code-row">        sw.Stop();</span><span class="code-row">        Console.WriteLine($"StringBuilder: {sw.ElapsedMilliseconds} мс");</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Если вы запустите этот код, то увидите, что разница может достигать нескольких секунд против
+                    нескольких миллисекунд. В реальных проектах это критично.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>using System.Text;</code>
+                        <span>подключить пространство имен</span>
+                    </li>
+                    <li>
+                        <code>new StringBuilder()</code>
+                        <span>создать сборщик</span>
+                    </li>
+                    <li>
+                        <code>sb.Append(x)</code>
+                        <span>добавить в конец</span>
+                    </li>
+                    <li>
+                        <code>sb.AppendLine(x)</code>
+                        <span>добавить с новой строки</span>
+                    </li>
+                    <li>
+                        <code>sb.ToString()</code>
+                        <span>получить готовую строку</span>
+                    </li>
+                    <li>
+                        <code>sb.Clear()</code>
+                        <span>очистить</span>
+                    </li>
+                    <li>
+                        <code>sb.Replace(a, b)</code>
+                        <span>заменить</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при работе со StringBuilder.</p>
+
+                <ul>
+                    <li><strong>«The type or namespace name 'StringBuilder' could not be found».</strong> Забыли
+                        добавить <code>using System.Text;</code> в самом верху файла.</li>
+                    <li><strong>Программа выводит на экран «System.Text.StringBuilder» вместо текста.</strong> Вы
+                        пытаетесь вывести сам объект <code>sb</code> в <code>Console.WriteLine</code>, но забыли вызвать
+                        <code>.ToString()</code>.</li>
+                    <li><strong>Не работает метод <code>.Length</code> или <code>.ToUpper()</code>.</strong> Помните,
+                        что <code>StringBuilder</code> - это не строка. У него нет методов строк (например,
+                        <code>ToUpper</code>, <code>Split</code>, <code>Trim</code>). Сначала получите строку через
+                        <code>.ToString()</code>, а потом уже вызывайте методы.</li>
+                    <li><strong>«IndexOutOfRangeException» в <code>Insert</code>.</strong> Вы пытаетесь вставить текст
+                        на позицию, которой не существует. Индекс должен быть от 0 до <code>sb.Length</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Красивая рамка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая выводит слово «Привет» внутри красивой
+                                рамки из символов <code>=</code>.</p>
+                            <pre><code>========
+Привет!
+========</code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте StringBuilder. Сначала добавьте строку из символов <code>=</code>. Потом
+                                        слово. В конце снова рамку. Не забудьте про <code>AppendLine</code> для переноса
+                                        строк.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">StringBuilder sb = new StringBuilder();</span><span class="code-row">sb.AppendLine("========");</span><span class="code-row">sb.AppendLine("Привет!");</span><span class="code-row">sb.AppendLine("========");</span><span class="code-row"></span><span class="code-row">Console.WriteLine(sb.ToString());</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Генерация списка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте список строк (например, список покупок). Используя
+                                StringBuilder и цикл <code>foreach</code>, соберите все элементы в одну строку, где
+                                каждый элемент начинается с новой строки и с дефиса. Выведите результат.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Внутри цикла используйте метод <code>AppendLine("- " + item)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">var products = new List&lt;string&gt; { "Хлеб", "Молоко", "Сыр" };</span><span class="code-row"></span><span class="code-row">StringBuilder sb = new StringBuilder();</span><span class="code-row">foreach (string item in products)</span><span class="code-row">{</span><span class="code-row">    sb.AppendLine("- " + item);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.WriteLine(sb.ToString());</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Генератор HTML</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая создает простую HTML-страницу с заголовком
+                                и параграфом. Используйте StringBuilder для сборки тегов <code>&lt;html&gt;</code>,
+                                <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;h1&gt;</code> и
+                                <code>&lt;p&gt;</code>. Сохраните результат в строку и выведите в консоль.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Добавляйте теги по одному через <code>AppendLine</code>. Это идеальный пример
+                                        использования StringBuilder, так как HTML состоит из множества строк.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">StringBuilder html = new StringBuilder();</span><span class="code-row"></span><span class="code-row">html.AppendLine("&lt;html&gt;");</span><span class="code-row">html.AppendLine("&lt;head&gt;&lt;title&gt;Моя страница&lt;/title&gt;&lt;/head&gt;");</span><span class="code-row">html.AppendLine("&lt;body&gt;");</span><span class="code-row">html.AppendLine("  &lt;h1&gt;Добро пожаловать!&lt;/h1&gt;");</span><span class="code-row">html.AppendLine("  &lt;p&gt;Этот код собран через StringBuilder.&lt;/p&gt;");</span><span class="code-row">html.AppendLine("&lt;/body&gt;");</span><span class="code-row">html.AppendLine("&lt;/html&gt;");</span><span class="code-row"></span><span class="code-row">Console.WriteLine(html.ToString());</span></code></pre>
+                                    <p>Обратите внимание, что в C# для вывода HTML-тегов в консоль нам пришлось
+                                        экранировать угловые скобки: <code>&amp;lt;</code> вместо <code>&lt;</code>. В
+                                        реальном коде при сохранении в файл этого делать не нужно.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Очистка и повторное использование</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте StringBuilder. Добавьте в него три любые строки. Выведите
+                                результат. Затем очистите его с помощью <code>Clear()</code> и добавьте три других
+                                строки. Снова выведите результат. Убедитесь, что старые строки исчезли.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Метод <code>Clear()</code> не удаляет сам объект, а просто делает его пустым. Вы
+                                        можете продолжать добавлять в него новые данные.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">StringBuilder sb = new StringBuilder();</span><span class="code-row"></span><span class="code-row">sb.AppendLine("Первая строка");</span><span class="code-row">sb.AppendLine("Вторая строка");</span><span class="code-row">sb.AppendLine("Третья строка");</span><span class="code-row"></span><span class="code-row">Console.WriteLine("До очистки:");</span><span class="code-row">Console.WriteLine(sb.ToString());</span><span class="code-row"></span><span class="code-row">sb.Clear();</span><span class="code-row"></span><span class="code-row">sb.AppendLine("Совсем новый текст");</span><span class="code-row">sb.AppendLine("И еще один");</span><span class="code-row"></span><span class="code-row">Console.WriteLine("После очистки:");</span><span class="code-row">Console.WriteLine(sb.ToString());</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы разобрались, почему строки в C# - коварные создания, и научились использовать
+                    <code>StringBuilder</code> для эффективной сборки длинных текстов. Теперь ваш код не будет тормозить
+                    при генерации отчетов или HTML-страниц.</p>
+
+                <p>В следующем уроке мы перейдем к двумерным массивам. Вы узнаете, как создавать таблицы и сетки, и это
+                    станет отличной подготовкой к финальному проекту - игре «Крестики-нолики».</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-19.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-21.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

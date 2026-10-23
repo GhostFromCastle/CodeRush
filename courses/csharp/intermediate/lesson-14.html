@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Методы с возвратом - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="intermediate" data-lesson-id="lesson-14">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 14</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson active" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+            <article class="lesson-content">
+                <h1>Методы с возвратом</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Добро пожаловать во второй урок среднего уровня! В прошлом уроке мы познакомились с методами:
+                    научились писать <code>void</code>-методы, которые просто что-то делают, и методы с возвратом,
+                    которые отдают результат через <code>return</code>. Это была база. Сегодня мы углубимся именно
+                    в возврат значений - разберём несколько приёмов, без которых невозможно представить настоящий
+                    код.</p>
+
+                <p>Если урок 13 был про то, "как вообще объявлять методы", то этот - про то, "как делать это
+                    красиво и по-взрослому". Поехали.</p>
+
+                <h2>Быстрое напоминание</h2>
+
+                <p>Давайте на одну минуту вспомним, что было в прошлом уроке. Метод - это как кнопка на пульте от
+                    телевизора. Мы один раз описываем действие, даём ему имя, а потом вызываем по имени, когда
+                    нужно. Нам не важно, как он устроен внутри, - важно, что он делает.</p>
+
+                <p>Методы бывают двух видов:</p>
+
+                <ul>
+                    <li><code>void</code> - просто выполняют действие, ничего не отдают.</li>
+                    <li>С типом (<code>int</code>, <code>string</code>, <code>bool</code> и так далее) - возвращают
+                        значение через команду <code>return</code>.</li>
+                </ul>
+
+                <p>Пример метода, который складывает два числа и отдаёт результат:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static int Sum(int a, int b)</span><span class="code-row">{</span><span class="code-row">    return a + b;</span><span class="code-row">}</span></code></pre>
+
+                <p>А вот как им пользуются:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int result = Sum(3, 4);</span><span class="code-row">Console.WriteLine(result);</span></code></pre>
+
+                <p>Метод вернул число 7, и мы положили его в переменную <code>result</code>. Как будто в том месте,
+                    где стоит <code>Sum(3, 4)</code>, после выполнения появляется число 7, и дальше код работает с
+                    ним как с обычным числом.</p>
+
+                <p>Всё это мы уже знаем. Но есть несколько приёмов, которые делают работу с <code>return</code> ещё
+                    удобнее. О них и поговорим сегодня.</p>
+
+                <h2>return может сработать раньше, чем вы думаете</h2>
+
+                <p>В прошлом уроке мы часто писали так: сначала что-то посчитать, а в самом конце вернуть. Но
+                    <code>return</code> - это не просто "последняя строчка метода". Это команда, которая означает:
+                    <strong>выйди из метода прямо сейчас и вот тебе значение</strong>.
+                </p>
+
+                <p>Давайте посмотрим на такой метод:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static int Check(int x)</span><span class="code-row">{</span><span class="code-row">    if (x &lt; 0)</span><span class="code-row">    {</span><span class="code-row">        return 0;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return x * 2;</span><span class="code-row">}</span></code></pre>
+
+                <p>Что здесь происходит? Если <code>x</code> отрицательный - метод на первой же строчке
+                    <code>return</code> отдаёт 0 и тут же заканчивается. До второй строчки дело не дойдёт. Если
+                    <code>x</code> положительный - первая проверка не сработала, и метод спокойно доходит до
+                    <code>return x * 2</code>.
+                </p>
+
+                <p>У метода целых два <code>return</code>, но выполнится только один. Как только сработал один -
+                    метод закрылся, второй уже не проверяется.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Как это запомнить
+                    </div>
+                    <p>Представьте, что вы идёте по коридору, а на каждой двери написано "выход". Как только вы
+                        открыли одну и вышли - вы уже снаружи, и остальные двери вам не важны. Так же работает
+                        <code>return</code>: первый сработавший завершает метод, и до остальных дело не доходит.
+                    </p>
+                </div>
+
+                <h2>Сторожевые проверки</h2>
+
+                <p>Раз мы теперь знаем, что <code>return</code> может сработать где угодно, давайте разберём очень
+                    полезный приём. Он называется "guard clauses", что по-русски значит "сторожевые проверки".</p>
+
+                <p>Идея такая: в самом начале метода мы проверяем, можно ли вообще продолжать. Если нельзя - сразу
+                    возвращаем что-то и выходим. А если можно - спокойно работаем дальше, уже не отвлекаясь на
+                    плохие случаи.</p>
+
+                <p>Вот пример:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static double Divide(double a, double b)</span><span class="code-row">{</span><span class="code-row">    if (b == 0)</span><span class="code-row">    {</span><span class="code-row">        return 0;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return a / b;</span><span class="code-row">}</span></code></pre>
+
+                <p>Сначала проверяем: не делим ли мы на ноль? Если делим - отдаём 0 и выходим. Если всё в порядке -
+                    считаем по-настоящему.</p>
+
+                <p>Зачем так писать? Ведь можно было бы сделать через обычный <code>if / else</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static double Divide(double a, double b)</span><span class="code-row">{</span><span class="code-row">    if (b == 0)</span><span class="code-row">    {</span><span class="code-row">        return 0;</span><span class="code-row">    }</span><span class="code-row">    else</span><span class="code-row">    {</span><span class="code-row">        return a / b;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Оба варианта работают одинаково. Но первый читается легче. Мы сначала "отсекаем" плохой случай,
+                    а потом работаем с хорошим. И не надо задумываться, что код находится внутри <code>else</code>.
+                </p>
+
+                <p>Когда таких проверок в методе много, разница становится огромной. Сравните два варианта:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static string Describe(int age)</span><span class="code-row">{</span><span class="code-row">    if (age &lt; 0)</span><span class="code-row">    {</span><span class="code-row">        return "Неверный возраст";</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    if (age &lt; 3)</span><span class="code-row">    {</span><span class="code-row">        return "Малыш";</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    if (age &lt; 18)</span><span class="code-row">    {</span><span class="code-row">        return "Школьник";</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return "Взрослый";</span><span class="code-row">}</span></code></pre>
+
+                <p>Каждая проверка отсекает свой случай. Если дошли до конца - значит, человек взрослый. Никаких
+                    вложенных условий, никаких лишних отступов. Читается как список правил сверху вниз.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия
+                    </div>
+                    <p>Представьте охранника на входе в клуб. Он смотрит на вас и говорит: "Тебе меньше 18? Тогда
+                        не заходи". Если вы подходите - охранник отступает, и вы идёте дальше. Он не загораживает
+                        проход всем подряд, он просто отсекает тех, кому нельзя. Сторожевые проверки работают так же.
+                    </p>
+                </div>
+
+                <h2>Методы, которые отвечают "да" или "нет"</h2>
+
+                <p>Самый частый тип возврата после чисел - это <code>bool</code>. Такой метод возвращает
+                    <code>true</code> или <code>false</code>. Это как ответ на вопрос.
+                </p>
+
+                <p>Такие методы особенно удобно вставлять прямо в условия <code>if</code>. Посмотрите:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static bool IsEven(int number)</span><span class="code-row">{</span><span class="code-row">    return number % 2 == 0;</span><span class="code-row">}</span></code></pre>
+
+                <p>Этот метод отвечает на вопрос: "число чётное?" Если да - вернёт <code>true</code>. Если нет -
+                    <code>false</code>.
+                </p>
+
+                <p>Теперь можно писать вот так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">if (IsEven(10))</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Число чётное");</span><span class="code-row">}</span></code></pre>
+
+                <p>Читается как обычная фраза: "если <code>IsEven</code> от 10 - то...". Гораздо понятнее, чем
+                    писать в лоб <code>if (10 % 2 == 0)</code>. Согласитесь, первое звучит по-человечески.</p>
+
+                <p>Такие методы-вопросы встречаются в реальном коде постоянно. Названия у них обычно начинаются
+                    на <code>Is</code>, <code>Has</code> или <code>Can</code>. Вот ещё примеры:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static bool IsAdult(int age)</span><span class="code-row">{</span><span class="code-row">    return age &gt;= 18;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static bool IsEmpty(string text)</span><span class="code-row">{</span><span class="code-row">    return text.Length == 0;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static bool HasDigit(string text)</span><span class="code-row">{</span><span class="code-row">    for (int i = 0; i &lt; text.Length; i++)</span><span class="code-row">    {</span><span class="code-row">        if (char.IsDigit(text[i]))</span><span class="code-row">        {</span><span class="code-row">            return true;</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return false;</span><span class="code-row">}</span></code></pre>
+
+                <p>В последнем примере метод <code>HasDigit</code> проходит по всей строке. Если найдёт хоть одну
+                    цифру - сразу вернёт <code>true</code> и завершится. Если пройдёт всю строку и не найдёт -
+                    вернёт <code>false</code>. Это классический приём: "нашли - сразу выходим".</p>
+
+                <h2>Возвращаем что угодно</h2>
+
+                <p>Возвращать можно не только числа и <code>bool</code>. Можно возвращать строки, массивы, списки -
+                    всё, что угодно. Главное правило: тип возврата в объявлении метода должен совпадать с тем, что
+                    отдаётся через <code>return</code>.</p>
+
+                <p>Возвращаем строку:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static string GetGreeting(string name)</span><span class="code-row">{</span><span class="code-row">    return $"Привет, {name}!";</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">string hello = GetGreeting("Алексей");</span><span class="code-row">Console.WriteLine(hello);</span></code></pre>
+
+                <p>Возвращаем массив:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static int[] GetNumbers()</span><span class="code-row">{</span><span class="code-row">    return new int[] { 1, 2, 3, 4, 5 };</span><span class="code-row">}</span></code></pre>
+
+                <p>Возвращаем список:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static List&lt;string&gt; GetShoppingList()</span><span class="code-row">{</span><span class="code-row">    return new List&lt;string&gt; { "Хлеб", "Молоко", "Сыр" };</span><span class="code-row">}</span></code></pre>
+
+                <p>Возвращать можно всё, что может храниться в переменной. Если вы можете написать
+                    <code>int[] arr = ...</code>, то и метод может вернуть <code>int[]</code>. Если можете написать
+                    <code>List&lt;string&gt; list = ...</code> - метод может вернуть <code>List&lt;string&gt;</code>.
+                </p>
+
+                <h2>Параметры со значением по умолчанию</h2>
+
+                <p>А теперь интересная возможность C#. Оказывается, у параметров метода могут быть
+                    <strong>значения по умолчанию</strong>. Тогда при вызове их можно не указывать - C# подставит
+                    то, что вы задали в объявлении.
+                </p>
+
+                <p>Вот пример:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void Greet(string name, string greeting = "Привет")</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"{greeting}, {name}!");</span><span class="code-row">}</span></code></pre>
+
+                <p>Здесь у параметра <code>greeting</code> стоит <code>= "Привет"</code>. Это и есть значение по
+                    умолчанию. Теперь метод можно вызывать двумя способами:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Greet("Алексей");</span><span class="code-row">Greet("Алексей", "Здравствуй");</span></code></pre>
+
+                <p>Первый вызов даст "Привет, Алексей!". Второй - "Здравствуй, Алексей!". Если мы не указываем
+                    второе значение - C# сам подставит "Привет".</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия
+                    </div>
+                    <p>Представьте, что вы заказываете пиццу. По умолчанию вам принесут среднюю с сыром. Но вы
+                        можете сказать: "Большую!" - и размер поменяется. Или промолчать - и получите стандартную.
+                        Значения по умолчанию работают так же: если не сказали - берётся то, что заранее
+                        договорились.</p>
+                </div>
+
+                <p>Важное правило: параметры со значением по умолчанию должны идти <strong>после</strong> обычных
+                    параметров. Нельзя сначала сделать необязательный, а потом обязательный - C# запутается. Вот так
+                    неправильно:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void Greet(string greeting = "Привет", string name)</span></code></pre>
+
+                <p>Компилятор подчеркнёт это красным и скажет: "Optional parameters must appear after all required
+                    parameters". Просто помните: обязательные - сначала, необязательные - в конце.</p>
+
+                <h2>Именованные аргументы</h2>
+
+                <p>Ещё одна маленькая полезность, которая часто идёт рука об руку со значениями по умолчанию.
+                    Обычно мы передаём аргументы в том порядке, в котором они идут в объявлении. Но их можно
+                    передавать <strong>по имени</strong>.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Greet(greeting: "Здравствуй", name: "Алексей");</span></code></pre>
+
+                <p>Результат тот же, что и при обычном вызове. Но теперь порядок неважен - мы явно говорим, что
+                    есть что. Это удобно, когда параметров много и легко запутаться, какой за что отвечает.</p>
+
+                <p>Особенно полезно это в связке со значениями по умолчанию. Можно пропустить необязательный
+                    параметр в середине:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void Describe(string name, int age = 0, string city = "неизвестно")</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"{name}, {age} лет, из {city}");</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Describe("Алексей", city: "Москва");</span></code></pre>
+
+                <p>Мы не указали возраст, но указали город. Без именованных аргументов так бы не получилось -
+                    пришлось бы писать <code>Describe("Алексей", 0, "Москва")</code>, хотя возраст нам неважен.</p>
+
+                <h2>Короткая запись методов</h2>
+
+                <p>А теперь про синтаксический сахар. Если метод состоит из одной команды <code>return</code>, его
+                    можно записать короче. Вместо фигурных скобок пишем стрелочку <code>=&gt;</code>.</p>
+
+                <p>Было:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static int Sum(int a, int b)</span><span class="code-row">{</span><span class="code-row">    return a + b;</span><span class="code-row">}</span></code></pre>
+
+                <p>Стало:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static int Sum(int a, int b) =&gt; a + b;</span></code></pre>
+
+                <p>Смысл абсолютно тот же, но кода меньше. Это называется "метод-выражение" (по-английски
+                    expression-bodied method).</p>
+
+                <p>То же самое работает и для <code>void</code>-методов, если у них одно действие:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void SayHello() =&gt; Console.WriteLine("Привет!");</span></code></pre>
+
+                <p>Такой стиль в C# встречается очень часто. Поначалу может казаться непривычным, но постепенно
+                    вы привыкнете. Многие короткие методы в реальных проектах пишут именно так.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Когда использовать
+                    </div>
+                    <p>Стрелочную запись удобно применять для методов, которые умещаются в одну строку. Как только
+                        в методе становится больше одной команды, возвращайтесь к обычным фигурным скобкам - так
+                        код читается легче.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>static int Name(...)</code>
+                        <span>метод с возвратом</span>
+                    </li>
+                    <li>
+                        <code>return value;</code>
+                        <span>вернуть значение и выйти</span>
+                    </li>
+                    <li>
+                        <code>return true;</code>
+                        <span>метод-вопрос</span>
+                    </li>
+                    <li>
+                        <code>if (bad) return 0;</code>
+                        <span>сторожевая проверка</span>
+                    </li>
+                    <li>
+                        <code>param = value</code>
+                        <span>значение по умолчанию</span>
+                    </li>
+                    <li>
+                        <code>Name(param: value)</code>
+                        <span>именованный аргумент</span>
+                    </li>
+                    <li>
+                        <code>=&gt; expression</code>
+                        <span>короткая запись метода</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Методы с возвратом - место, где ошибки бывают особенно частыми. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>"Not all code paths return a value".</strong> Не все ветки метода возвращают
+                        значение. Например, у вас есть <code>if</code> без <code>else</code>, и <code>return</code>
+                        стоит только внутри <code>if</code>. Компилятор не знает, что делать, если условие
+                        ложно. Добавьте <code>return</code> в конце метода.</li>
+                    <li><strong>"Cannot implicitly convert type 'X' to 'Y'".</strong> Тип возвращаемого значения
+                        не совпадает с тем, что вы вернули. Например, метод объявлен как <code>int</code>, а вы
+                        пытаетесь вернуть строку. Проверьте, что в объявлении стоит тот же тип, что и после
+                        <code>return</code>.
+                    </li>
+                    <li><strong>"Use of unassigned local variable".</strong> Переменная создана, но не заполнена
+                        значением. Убедитесь, что перед использованием вы присвоили ей что-то.</li>
+                    <li><strong>"No overload for method takes N arguments".</strong> Вы вызвали метод с неправильным
+                        числом аргументов. Проверьте объявление метода и количество значений в вызове.</li>
+                    <li><strong>"Named argument specifications must appear after all fixed arguments".</strong>
+                        Именованные аргументы должны идти после обычных. Если пишете
+                        <code>Greet(name: "Алексей", "Привет")</code> - C# не поймёт, какой из них какой.
+                    </li>
+                    <li><strong>"Optional parameters must appear after all required parameters".</strong>
+                        Параметры со значением по умолчанию должны идти в самом конце. Нельзя сначала сделать
+                        необязательный, потом обязательный.</li>
+                    <li><strong>Метод возвращает не то, что ожидали.</strong> Проверьте, какой именно
+                        <code>return</code> сработал. Помните: первый сработавший завершает метод, до остальных
+                        дело не доходит. Если у вас несколько <code>return</code> - убедитесь, что логика условий
+                        правильная.
+                    </li>
+                    <li><strong>Стрелочная запись не компилируется.</strong> Проверьте, что после <code>=&gt;</code>
+                        идёт выражение, которое действительно возвращает нужный тип. Если у вас больше одной команды -
+                        используйте обычные фигурные скобки.</li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя. Сначала
+                    обязательно попробуйте сами.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Проверка на чётность</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите метод <code>IsEven</code>, который принимает число и
+                                возвращает <code>true</code>, если оно чётное, и <code>false</code> - если нет.
+                                Проверьте его на нескольких числах.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Тип возврата - <code>bool</code>. Внутри метода одна строка:
+                                        <code>return number % 2 == 0;</code>. Обратите внимание: здесь нет
+                                        <code>if</code> - сравнение само по себе даёт <code>true</code> или
+                                        <code>false</code>, и его можно сразу вернуть.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static bool IsEven(int number)</span><span class="code-row">{</span><span class="code-row">    return number % 2 == 0;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(IsEven(4));</span><span class="code-row">    Console.WriteLine(IsEven(7));</span><span class="code-row">    Console.WriteLine(IsEven(0));</span><span class="code-row">}</span></code></pre>
+                                    <p>Программа выведет <code>True</code>, <code>False</code>, <code>True</code>.
+                                        Кстати, ноль - чётное число, поэтому <code>IsEven(0)</code> возвращает
+                                        <code>true</code>. Это правило математики: ноль делится на два без остатка.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Максимум из массива</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите метод <code>FindMax</code>, который принимает массив
+                                чисел и возвращает наибольшее значение. Используйте приём "взять первый элемент как
+                                стартовый максимум" из урока про массивы.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Тип возврата - <code>int</code>, параметр - <code>int[] numbers</code>.
+                                        Создайте переменную <code>max</code> и положите туда <code>numbers[0]</code>.
+                                        Потом цикл <code>for</code> от 1 до конца массива. Внутри -
+                                        <code>if</code>, который обновляет <code>max</code>. В конце -
+                                        <code>return max;</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Почему цикл начинается с 1, а не с 0? Потому что нулевой элемент мы уже
+                                        взяли как стартовый максимум. Сравнивать его с самим собой нет смысла.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static int FindMax(int[] numbers)</span><span class="code-row">{</span><span class="code-row">    int max = numbers[0];</span><span class="code-row"></span><span class="code-row">    for (int i = 1; i &lt; numbers.Length; i++)</span><span class="code-row">    {</span><span class="code-row">        if (numbers[i] &gt; max)</span><span class="code-row">        {</span><span class="code-row">            max = numbers[i];</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return max;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    int[] data = { 15, 42, 8, 99, 23 };</span><span class="code-row">    Console.WriteLine(FindMax(data));</span><span class="code-row">}</span></code></pre>
+                                    <p>Программа выведет <code>99</code>. Обратите внимание: метод принимает
+                                        массив, а возвращает одно число. Это очень частый сценарий - "получить
+                                        коллекцию, вернуть её характеристику".</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Опиши число</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите метод <code>DescribeNumber</code>, который принимает число
+                                и возвращает строку: "положительное", "отрицательное" или "ноль". Используйте
+                                сторожевые проверки - каждая проверка отсекает свой случай.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Тип возврата - <code>string</code>, параметр - <code>int number</code>.
+                                        Используйте три отдельных <code>if</code>, каждый со своим
+                                        <code>return</code>. Никаких <code>else</code> не нужно - как только
+                                        сработает один <code>return</code>, метод завершится.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Порядок проверок важен. Сначала проверьте ноль - это отдельный случай.
+                                        Потом больше нуля. Потом меньше нуля. Каждый раз возвращайте нужную строку
+                                        сразу.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static string DescribeNumber(int number)</span><span class="code-row">{</span><span class="code-row">    if (number == 0)</span><span class="code-row">    {</span><span class="code-row">        return "ноль";</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    if (number &gt; 0)</span><span class="code-row">    {</span><span class="code-row">        return "положительное";</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return "отрицательное";</span><span class="code-row">}</span></code></pre>
+                                    <p>В последней строке нет <code>if</code> - если дошли до неё, значит, число
+                                        не ноль и не больше нуля. Остаётся только один вариант - отрицательное. C#
+                                        сам понимает, что других вариантов нет, и не требует проверки.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Приветствие с настройками</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите метод <code>MakeGreeting</code>, который принимает имя,
+                                приветствие (по умолчанию "Привет") и восклицательный знак (по умолчанию
+                                <code>true</code>). Метод возвращает готовую строку. Вызовите его несколькими
+                                способами - с разными наборами аргументов.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Тип возврата - <code>string</code>. Три параметра:
+                                        <code>string name</code>, <code>string greeting = "Привет"</code>,
+                                        <code>bool exclamation = true</code>. Внутри метода - тернарный оператор
+                                        из урока 12: если <code>exclamation</code> равно <code>true</code> -
+                                        добавить "!", иначе - ничего.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Можно записать так:
+                                        <code>string sign = exclamation ? "!" : "";</code> - а потом вставить
+                                        <code>sign</code> в общую строку через интерполяцию. Или сразу внутри
+                                        интерполяции использовать тернарник.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static string MakeGreeting(string name, string greeting = "Привет", bool exclamation = true)</span><span class="code-row">{</span><span class="code-row">    string sign = exclamation ? "!" : "";</span><span class="code-row">    return $"{greeting}, {name}{sign}";</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(MakeGreeting("Алексей"));</span><span class="code-row">    Console.WriteLine(MakeGreeting("Мария", "Здравствуй"));</span><span class="code-row">    Console.WriteLine(MakeGreeting("Иван", exclamation: false));</span><span class="code-row">    Console.WriteLine(MakeGreeting("Ольга", "Добрый день", false));</span><span class="code-row">}</span></code></pre>
+                                    <p>Программа выведет:</p>
+                                    <pre><code>Привет, Алексей!
+Здравствуй, Мария!
+Привет, Иван
+Добрый день, Ольга</code></pre>
+                                    <p>Обратите внимание на третий вызов: мы передали имя и сразу указали
+                                        <code>exclamation: false</code>, пропустив <code>greeting</code>. Это работает
+                                        именно благодаря именованным аргументам - без них пришлось бы писать
+                                        <code>MakeGreeting("Иван", "Привет", false)</code>.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы углубились в методы с возвратом значений. Разобрали несколько важных приёмов: как
+                    использовать несколько <code>return</code> в одном методе, как писать сторожевые проверки в
+                    начале метода, как делать методы-вопросы с <code>bool</code>, как возвращать строки и коллекции.
+                    Плюс познакомились со значениями по умолчанию, именованными аргументами и короткой стрелочной
+                    записью методов.</p>
+
+                <p>Теперь у вас есть не просто "умение писать методы", а целый инструментарий. Вы можете делать
+                    код чистым, коротким и понятным - и именно это отличает программиста, который пишет "чтобы
+                    работало", от программиста, который пишет "чтобы читалось".</p>
+
+                <p>В следующем уроке нас ждёт большой шаг - <strong>классы и объекты</strong>. До этого мы
+                    пользовались только готовыми типами: <code>int</code>, <code>string</code>, <code>List</code>.
+                    А теперь научимся создавать свои собственные типы данных. Это начало объектно-ориентированного
+                    программирования, и это одна из самых интересных тем в C#.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-13.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-15.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

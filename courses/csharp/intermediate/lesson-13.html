@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Методы - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="intermediate" data-lesson-id="lesson-13">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 13</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson active" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Методы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Добро пожаловать на средний уровень! Начальный мы закрыли - теперь у вас есть весь базовый набор
+                    инструментов. Пора учиться писать код не только правильно, но и <strong>красиво</strong>. И первый
+                    шаг на этом пути - методы.</p>
+
+                <p>До этого момента почти весь код жил внутри одного большого метода <code>Main</code>. Мы писали
+                    строчку за строчкой, и это работало, пока программа была маленькой. Но представьте, что у вас
+                    десять мест, где нужно посчитать среднее арифметическое. Или пять мест, где нужно вывести
+                    приветствие. Что, копировать один и тот же код десять раз?</p>
+
+                <p>Методы решают эту проблему. Они позволяют <strong>один раз написать действие и вызывать его по
+                        имени</strong> сколько угодно раз.</p>
+
+                <h2>Проблема дублирования</h2>
+
+                <p>Посмотрите на этот код - он выводит приветствие трижды, и каждый раз мы пишем одно и то же:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.WriteLine("Привет, Алексей!");</span><span class="code-row">Console.WriteLine("Добро пожаловать в CodeRush!");</span><span class="code-row"></span><span class="code-row">Console.WriteLine("Привет, Мария!");</span><span class="code-row">Console.WriteLine("Добро пожаловать в CodeRush!");</span><span class="code-row"></span><span class="code-row">Console.WriteLine("Привет, Иван!");</span><span class="code-row">Console.WriteLine("Добро пожаловать в CodeRush!");</span></code></pre>
+
+                <p>Шесть строк, из которых три - одно и то же. Если завтра мы захотим поменять текст «Добро пожаловать
+                    в CodeRush!» на что-то другое, придётся править в трёх местах. А если таких мест сто? Это уже
+                    не работа, а наказание.</p>
+
+                <p>С методом тот же код выглядит так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Greet("Алексей");</span><span class="code-row">Greet("Мария");</span><span class="code-row">Greet("Иван");</span></code></pre>
+
+                <p>Три строки вместо шести. Текст приветствия написан в одном месте, и если его надо поменять - правим
+                    только там.</p>
+
+                <h2>Что такое метод</h2>
+
+                <p>Аналогия простая. Представьте пульт от телевизора. На нём есть кнопка «Включить». Вы нажимаете её -
+                    телевизор включается. Вам не нужно знать, какие там внутри микросхемы, какие сигналы посылаются.
+                    Достаточно знать: <em>«кнопка Включить делает так, чтобы телевизор заработал»</em>.</p>
+
+                <p><strong>Метод</strong> - это такая же кнопка. Мы один раз описываем, что должно произойти, даём
+                    этому действию имя, и потом вызываем по имени. Внутреннее устройство метода нас больше не
+                    интересует.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Метод - это именованный блок кода, который можно вызывать из любого места программы. Один раз
+                        написали - много раз используем.</p>
+                </div>
+
+                <h2>Первый метод - без параметров</h2>
+
+                <p>Начнём с самого простого. Напишем метод, который просто выводит приветствие:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void SayHello()</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Привет!");</span><span class="code-row">    Console.WriteLine("Добро пожаловать!");</span><span class="code-row">}</span></code></pre>
+
+                <p>Разберём эту запись по частям:</p>
+
+                <ul>
+                    <li><code>static</code> - «статический». Пока просто запомните: метод нужно писать со словом
+                        <code>static</code>, если мы хотим вызывать его из <code>Main</code>. Подробнее разберём
+                        в уроке про классы.
+                    </li>
+                    <li><code>void</code> - «пустота». Означает, что метод <strong>ничего не возвращает</strong>.
+                        Просто выполняет действие и всё.</li>
+                    <li><code>SayHello</code> - имя метода. Придумываем сами. Обычно оно описывает, что метод делает.
+                    </li>
+                    <li><code>()</code> - пустые скобки. Значит, метод не принимает никаких данных.</li>
+                    <li><code>{ ... }</code> - тело метода. Что именно происходит, когда его вызывают.</li>
+                </ul>
+
+                <p>Теперь где-то в <code>Main</code> можно написать:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">SayHello();</span><span class="code-row">SayHello();</span><span class="code-row">SayHello();</span></code></pre>
+
+                <p>И приветствие выведется три раза. Согласитесь, это удобнее, чем писать одни и те же строки
+                    трижды.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Где писать методы
+                    </div>
+                    <p>Метод пишется внутри класса <code>Program</code>, но <strong>не внутри</strong>
+                        <code>Main</code>. Проще всего - сразу после закрывающей скобки <code>Main</code>, перед
+                        закрывающей скобкой класса. Тогда структура программы остаётся чистой.
+                    </p>
+                </div>
+
+                <h2>Метод с параметрами</h2>
+
+                <p>Метод выше выводит всегда одно и то же. Но что, если мы хотим передать ему имя? Сделаем так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void Greet(string name)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Привет, {name}!");</span><span class="code-row">}</span></code></pre>
+
+                <p>Внутри скобок появилось <code>string name</code> - это <strong>параметр</strong>. Он работает
+                    как обычная переменная, только внутри метода. Когда мы вызываем метод, мы передаём туда
+                    конкретное значение:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Greet("Алексей");</span><span class="code-row">Greet("Мария");</span><span class="code-row">Greet("Иван");</span></code></pre>
+
+                <p>На экране появится:</p>
+
+                <pre><code>Привет, Алексей!
+Привет, Мария!
+Привет, Иван!</code></pre>
+
+                <p>Один метод - три разных приветствия. Именно так и должна работать правильная программа: описание
+                    действия в одном месте, конкретные данные приходят в момент вызова.</p>
+
+                <h3>Несколько параметров</h3>
+
+                <p>Метод может принимать не один, а много параметров - они перечисляются через запятую. Например:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void PrintSum(int a, int b)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"{a} + {b} = {a + b}");</span><span class="code-row">}</span></code></pre>
+
+                <p>Вызов: <code>PrintSum(3, 5);</code> - программа выведет <code>3 + 5 = 8</code>.</p>
+
+                <p>Порядок параметров важен. Если у метода <code>(int a, int b)</code>, а вы вызовете
+                    <code>PrintSum(5, 3)</code> - то внутри <code>a</code> будет равно 5, а <code>b</code> - 3.
+                    Поменяются местами только числа в выводе, но сумма останется той же. А вот если метод работает
+                    со строками, порядок уже важен по смыслу.
+                </p>
+
+                <h2>Методы, возвращающие значение</h2>
+
+                <p>До сих пор все наши методы просто что-то делали: выводили, здоровались, печатали. Но часто нужно,
+                    чтобы метод <strong>возвращал нам результат</strong>, с которым мы потом будем работать.
+                    Например, метод, который считает сумму двух чисел и возвращает её нам.</p>
+
+                <p>Для этого вместо <code>void</code> пишем <strong>тип возвращаемого значения</strong>, а в конце
+                    добавляем команду <code>return</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static int Sum(int a, int b)</span><span class="code-row">{</span><span class="code-row">    return a + b;</span><span class="code-row">}</span></code></pre>
+
+                <p>Что изменилось:</p>
+
+                <ul>
+                    <li>Вместо <code>void</code> - <code>int</code>. Значит, метод возвращает целое число.</li>
+                    <li>Вместо вывода на экран - <code>return a + b;</code>. Команда <code>return</code> «выдаёт»
+                        результат тому, кто вызвал метод.</li>
+                </ul>
+
+                <p>А теперь самое интересное - как этим пользоваться:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int result = Sum(3, 4);</span><span class="code-row">Console.WriteLine(result);</span><span class="code-row"></span><span class="code-row">Console.WriteLine(Sum(10, 20));</span></code></pre>
+
+                <p>Метод вернул число - и мы можем сразу положить его в переменную или вывести. Как обычное значение.
+                    Представьте, что <code>Sum(3, 4)</code> после выполнения как будто превращается в <code>7</code>,
+                    и дальше код работает с этим <code>7</code>.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        void или тип?
+                    </div>
+                    <p>Запомните простое правило: если метод что-то <strong>делает</strong> (выводит, рисует,
+                        печатает) и не отдаёт результат - пишем <code>void</code>. Если метод <strong>считает</strong>
+                        и отдаёт результат - пишем тип этого результата (<code>int</code>, <code>double</code>,
+                        <code>string</code> и т.д.) и внутри используем <code>return</code>.
+                    </p>
+                </div>
+
+                <h3>return прерывает метод</h3>
+
+                <p>Важная деталь: команда <code>return</code> не только возвращает значение, но и <strong>сразу
+                        завершает метод</strong>. Код после неё не выполнится. Вот пример:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static int Check(int x)</span><span class="code-row">{</span><span class="code-row">    if (x &lt; 0)</span><span class="code-row">    {</span><span class="code-row">        return 0;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return x * 2;</span><span class="code-row">}</span></code></pre>
+
+                <p>Если <code>x</code> отрицательное - метод сразу вернёт 0 и остановится. До строки
+                    <code>return x * 2;</code> дело не дойдёт. Если положительное - сработает вторая строка.
+                </p>
+
+                <p>Это очень удобный приём: сначала «отсекаем» неподходящие случаи ранним <code>return</code>,
+                    потом работаем с основным.</p>
+
+                <h2>Области видимости</h2>
+
+                <p>Один важный момент, который часто сбивает новичков. Переменные, созданные <strong>внутри</strong>
+                    метода, видны только внутри него. Снаружи их не существует.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void Test()</span><span class="code-row">{</span><span class="code-row">    int secret = 42;</span><span class="code-row">    Console.WriteLine(secret);</span><span class="code-row">}</span></code></pre>
+
+                <p>Если после этого попробовать обратиться к <code>secret</code> из <code>Main</code> - программа
+                    не скомпилируется. Переменной <code>secret</code> для <code>Main</code> не существует.</p>
+
+                <p>То же самое с параметрами. Параметр <code>name</code> в методе <code>Greet</code> существует
+                    только внутри <code>Greet</code>. Из другого метода его не видно.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Аналогия
+                    </div>
+                    <p>Метод - как отдельная комната. Внутри неё лежат свои вещи. Когда вы выходите, эти вещи
+                        остаются в комнате, и снаружи их не достать. Если нужно передать что-то наружу - используйте
+                        <code>return</code>. Если нужно занести что-то внутрь - передавайте через параметры.
+                    </p>
+                </div>
+
+                <p>Это не баг, а очень удобная особенность: методы изолированы друг от друга, и изменения внутри
+                    одного метода не влияют на другие. Именно поэтому код получается надёжным.</p>
+
+                <h2>Main - это тоже метод</h2>
+
+                <p>Помните, мы говорили в первом уроке, что <code>Main</code> - это «точка входа»? Теперь вы можете
+                    смотреть на него по-новому: <code>Main</code> - это такой же метод, как и все остальные.
+                    Просто особенный - с него начинает работу программа.</p>
+
+                <p>Смотрите на знакомую запись:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void Main(string[] args)</span></code></pre>
+
+                <p>Всё то же самое: <code>static</code>, <code>void</code>, имя <code>Main</code>, параметр
+                    <code>string[] args</code>. Если бы мы написали его сами, мы бы сказали: «метод, который ничего
+                    не возвращает, называется Main, и принимает массив строк». Просто C# договорились, что программу
+                    начинает именно этот метод.
+                </p>
+
+                <p>А значит, <code>Main</code> тоже может вызывать другие методы и получать от них значения - что мы
+                    и делаем весь урок.</p>
+
+                <h2>Перегрузка методов</h2>
+
+                <p>А теперь - интересный и очень полезный приём. В C# можно создавать <strong>несколько методов
+                        с одинаковым именем, но разными параметрами</strong>. Это называется «перегрузка».</p>
+
+                <p>Посмотрите:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static int Sum(int a, int b)</span><span class="code-row">{</span><span class="code-row">    return a + b;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static int Sum(int a, int b, int c)</span><span class="code-row">{</span><span class="code-row">    return a + b + c;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static double Sum(double a, double b)</span><span class="code-row">{</span><span class="code-row">    return a + b;</span><span class="code-row">}</span></code></pre>
+
+                <p>Три разных метода, у всех одно имя - <code>Sum</code>. Как C# понимает, какой именно вызвать?
+                    По количеству и типам аргументов:</p>
+
+                <ul>
+                    <li><code>Sum(3, 4)</code> - подходит первый, для двух <code>int</code>.</li>
+                    <li><code>Sum(3, 4, 5)</code> - сработает второй, для трёх <code>int</code>.</li>
+                    <li><code>Sum(1.5, 2.5)</code> - а вот тут вызовется третий, для <code>double</code>.</li>
+                </ul>
+
+                <p>Компилятор сам подбирает подходящий вариант. Нам не надо придумывать разные имена вроде
+                    <code>Sum2</code>, <code>Sum3</code>, <code>SumDouble</code>. Просто <code>Sum</code>.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия
+                    </div>
+                    <p>Представьте глагол «открыть» в русском языке. Можно открыть дверь, открыть банку, открыть
+                        глаза. Слово одно, а действия разные - и мы понимаем, что имеется в виду, из контекста.
+                        Перегрузка методов работает так же: имя одно, а конкретное поведение зависит от того, что
+                        мы передали.</p>
+                </div>
+
+                <p>Кстати, <code>Console.WriteLine</code> - тоже перегруженный метод. У него есть версия для
+                    <code>string</code>, для <code>int</code>, для <code>double</code>, для <code>bool</code> и так
+                    далее. Именно поэтому он умеет печатать что угодно - компилятор подбирает подходящую версию.
+                </p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>static void Name()</code>
+                        <span>метод без параметров и возврата</span>
+                    </li>
+                    <li>
+                        <code>static void Name(int x)</code>
+                        <span>метод с параметром</span>
+                    </li>
+                    <li>
+                        <code>static int Name(int a, int b)</code>
+                        <span>метод с возвратом значения</span>
+                    </li>
+                    <li>
+                        <code>return value;</code>
+                        <span>вернуть значение</span>
+                    </li>
+                    <li>
+                        <code>Name();</code>
+                        <span>вызов метода</span>
+                    </li>
+                    <li>
+                        <code>Sum(3, 4)</code>
+                        <span>вызов с аргументами</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Методы - тема, где легко запутаться в мелочах. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>«The name 'Greet' does not exist in the current context».</strong> Метод не
+                        найден. Проверьте: он объявлен <strong>внутри класса</strong>, но <strong>за пределами
+                            Main</strong>? И не забыли ли вы слово <code>static</code>? Без него Main просто не увидит
+                        метод.</li>
+                    <li><strong>«An object reference is required».</strong> Это тоже про <code>static</code>.
+                        Пока мы работаем внутри одного класса - все методы должны быть <code>static</code>. Подробнее
+                        про это - в уроке про классы.</li>
+                    <li><strong>«No overload for method takes 1 arguments».</strong> Вы вызвали метод с другим
+                        количеством аргументов, чем он принимает. Например, метод просит два числа, а вы передали
+                        одно.</li>
+                    <li><strong>«Cannot implicitly convert type 'void' to...».</strong> Вы пытаетесь положить
+                        результат <code>void</code>-метода в переменную. Но <code>void</code> ничего не возвращает.
+                        Если нужен результат - метод должен иметь тип возврата и <code>return</code>.</li>
+                    <li><strong>«Not all code paths return a value».</strong> Метод с возвратом содержит не все
+                        пути с <code>return</code>. Например, у вас есть <code>if</code>, после которого
+                        <code>return</code> есть только внутри одного блока. Компилятор подскажет, где именно
+                        нужен дополнительный <code>return</code>.
+                    </li>
+                    <li><strong>«Use of unassigned local variable».</strong> Переменная внутри метода создана,
+                        но не заполнена значением. Убедитесь, что перед использованием переменная получила
+                        значение.</li>
+                    <li><strong>Изменение переменной внутри метода не видно снаружи.</strong> Это не ошибка, а
+                        особенность. Метод работает со своими локальными переменными и параметрами. Если нужно
+                        поменять что-то снаружи - используйте <code>return</code>.</li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя. Сначала
+                    обязательно попробуйте сами.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Приветствие по имени</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите метод <code>Greet</code>, который принимает имя и выводит
+                                «Привет, [имя]!». Вызовите его для трёх разных имён.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Метод возвращает <code>void</code> - он ничего не отдаёт, только печатает.
+                                        Параметр один: <code>string name</code>. Внутри - один
+                                        <code>Console.WriteLine</code> с интерполяцией. А в <code>Main</code> три
+                                        раза вызовете метод с разными именами.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static void Greet(string name)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Привет, {name}!");</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    Greet("Алексей");</span><span class="code-row">    Greet("Мария");</span><span class="code-row">    Greet("Иван");</span><span class="code-row">}</span></code></pre>
+                                    <p>Обратите внимание: метод объявлен <strong>до</strong> <code>Main</code>.
+                                        На самом деле C# неважно, в каком порядке идут методы в классе - можно
+                                        объявить <code>Greet</code> и после <code>Main</code>. Главное, чтобы он
+                                        был внутри класса <code>Program</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Сумма и произведение</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите два метода: <code>Sum(a, b)</code> и
+                                <code>Multiply(a, b)</code>. Оба принимают два целых числа и возвращают целое число.
+                                Вызовите оба и выведите результаты.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Тип возврата - <code>int</code>. Внутри метода - команда <code>return</code>.
+                                        Например, для суммы: <code>return a + b;</code>. А для произведения:
+                                        <code>return a * b;</code>. Результат можно сразу выводить через
+                                        <code>Console.WriteLine(Sum(3, 4));</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static int Sum(int a, int b)</span><span class="code-row">{</span><span class="code-row">    return a + b;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static int Multiply(int a, int b)</span><span class="code-row">{</span><span class="code-row">    return a * b;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(Sum(3, 4));</span><span class="code-row">    Console.WriteLine(Multiply(3, 4));</span><span class="code-row">}</span></code></pre>
+                                    <p>Программа выведет <code>7</code> и <code>12</code>. Оба метода возвращают
+                                        результат, и мы сразу передаём его в <code>Console.WriteLine</code>. Можно
+                                        было и сохранить в переменные, а потом выводить - разницы нет.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Максимум из трёх</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите метод <code>MaxOfThree</code>, который принимает три числа
+                                и возвращает наибольшее из них.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Три параметра типа <code>int</code>, возврат тоже <code>int</code>. Внутри
+                                        можно использовать цепочку условий <code>if / else if / else</code>, которую
+                                        мы разбирали в четвёртом уроке начального уровня.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Не забудьте, что <code>return</code> работает не только для возврата значения,
+                                        но и для выхода из метода. Удобно сначала проверить случай
+                                        <code>a &gt;= b &amp;&amp; a &gt;= c</code>, потом остальные. Или наоборот:
+                                        сравнить <code>a</code> и <code>b</code> между собой, потом результат
+                                        сравнить с <code>c</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static int MaxOfThree(int a, int b, int c)</span><span class="code-row">{</span><span class="code-row">    int max = a;</span><span class="code-row"></span><span class="code-row">    if (b &gt; max)</span><span class="code-row">    {</span><span class="code-row">        max = b;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    if (c &gt; max)</span><span class="code-row">    {</span><span class="code-row">        max = c;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return max;</span><span class="code-row">}</span></code></pre>
+                                    <p>Такой подход - «взять одно значение за максимум и обновлять его при
+                                        необходимости» - мы уже использовали в уроке про массивы. Он короче, чем
+                                        три ветки <code>if / else if / else</code>, и легко расширяется до четырёх
+                                        и более чисел.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Таблица умножения</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите метод <code>PrintTable</code>, который принимает число
+                                и выводит таблицу умножения на это число от 1 до 10. Вызовите метод из
+                                <code>Main</code> три раза с разными числами.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Метод возвращает <code>void</code> - он ничего не отдаёт, только печатает.
+                                        Один параметр типа <code>int</code>. Внутри - цикл <code>for</code> от 1
+                                        до 10 из пятого урока начального уровня.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Чтобы таблицы не слипались, добавьте в конце метода пустой
+                                        <code>Console.WriteLine();</code>. Он просто переведёт курсор на новую
+                                        строку перед следующей таблицей.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static void PrintTable(int n)</span><span class="code-row">{</span><span class="code-row">    for (int i = 1; i &lt;= 10; i++)</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine($"{n} × {i} = {n * i}");</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    Console.WriteLine();</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    PrintTable(3);</span><span class="code-row">    PrintTable(5);</span><span class="code-row">    PrintTable(7);</span><span class="code-row">}</span></code></pre>
+                                    <p>Программа выведет три таблицы подряд: на 3, на 5 и на 7. Обратите внимание,
+                                        как компактно: метод описан один раз, а вызывается три раза. Если завтра
+                                        понадобится таблица на 9 - просто добавите ещё одну строчку
+                                        <code>PrintTable(9);</code>.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы сделали большой шаг вперёд - научились писать методы. Это фундамент всего дальнейшего
+                    курса. Разобрались, что методы бывают двух видов: <code>void</code> (просто выполняют действие)
+                    и с возвратом значения (отдают результат). Узнали про параметры и команду <code>return</code>.
+                    Поняли, как работают области видимости. И познакомились с перегрузкой - одной из самых удобных
+                    возможностей C#.</p>
+
+                <p>Теперь наш код может быть коротким и структурированным. Один раз написали действие - вызываем
+                    его по имени, где нужно. Не надо копировать одни и те же строки по десять раз.</p>
+
+                <p>В следующем уроке мы закрепим методы на практике: будем брать код из старых уроков и
+                    переписывать его с использованием методов. Это называется <strong>рефакторинг</strong> - очень
+                    полезный навык, который отличает опытного программиста от новичка. А заодно подробнее разберём
+                    методы с возвратом значений и параметрами.</p>
+
+                <div class="lesson-actions">
+                    <a href="../beginner/lesson-12.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-14.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы шифрования - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="intermediate" data-lesson-id="lesson-07">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 07</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson active" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Основы шифрования: симметричное и асимметричное</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Добро пожаловать на средний уровень. Начальный мы закрыли - теперь у вас есть все базовые
+                    привычки для защиты себя в цифровом мире. Пора заглянуть под капот и разобраться, как
+                    устроены технологии, которыми вы пользуетесь каждый день.</p>
+
+                <p>И начнём мы с самого фундамента - <strong>шифрования</strong>. Это то, что защищает вашу
+                    переписку в мессенджерах, банковские операции, пароли на сайтах и данные на диске
+                    вашего ноутбука. Без шифрования интернет был бы прозрачным: любой, кто находится «на
+                    проводе» между вами и сайтом, мог бы читать всё, что вы отправляете. Сегодня разберёмся,
+                    как это работает и почему существует целых два вида шифрования.</p>
+
+                <h2>Что такое шифрование</h2>
+
+                <p>Шифрование - это процесс превращения читаемых данных (<em>открытый текст</em>) в
+                    нечитаемый набор символов (<em>шифротекст</em>). Обратный процесс - расшифровка -
+                    возвращает данные в исходный вид.</p>
+
+                <p>Аналогия простая. Представьте, что вы хотите отправить другу записку, но боитесь, что
+                    кто-то прочитает её по дороге. Вы придумываете с другом секретный способ: каждую букву
+                    заменяете на следующую по алфавиту. «Привет» превращается в «Рсйгжу». Курьер, который
+                    несёт записку, видит бессмыслицу. Друг, зная правило, расшифровывает обратно.</p>
+
+                <p>В реальной криптографии «правило» называется <strong>ключом</strong>. И от того, как
+                    этот ключ устроен, зависит, какой вид шифрования перед нами - симметричный или
+                    асимметричный.</p>
+
+                <h2>Симметричное шифрование</h2>
+
+                <p>Самый простой и самый старый вид шифрования. Идея в одной фразе: <strong>один и тот же
+                        ключ используется и для шифрования, и для расшифровки</strong>.</p>
+
+                <p>Возвращаясь к аналогии с запиской: вы и друг заранее договорились о правиле замены.
+                    Вы шифруете записку этим правилом. Друг расшифровывает <em>тем же самым</em> правилом.
+                    Ключ - один на двоих.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>В симметричном шифровании один ключ и для замка, и для отмычки. Кто знает ключ - тот
+                        и может и зашифровать, и расшифровать. Этот ключ должен быть тайной, известной
+                        только отправителю и получателю.</p>
+                </div>
+
+                <h3>Как это работает на практике</h3>
+
+                <p>Современное симметричное шифрование не сводится к простой замене букв. Это сложные
+                    математические преобразования, которые делают данные неотличимыми от случайного шума.
+                    Но принцип остаётся тем же: на входе - открытый текст и ключ, на выходе - шифротекст.</p>
+
+                <p>Схема выглядит так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Открытый текст + Ключ → [Алгоритм шифрования] → Шифротекст</span><span class="code-row">Шифротекст + Тот же ключ → [Алгоритм расшифровки] → Открытый текст</span></code></pre>
+
+                <h3>Популярные алгоритмы</h3>
+
+                <p>Самый известный сегодня - <strong>AES</strong> (Advanced Encryption Standard). Он
+                    используется везде: от шифрования дисков до защиты Wi-Fi. AES работает с блоками
+                    данных по 128 бит и поддерживает ключи длиной 128, 192 или 256 бит.
+                    Чем длиннее ключ - тем сложнее его подобрать.</p>
+
+                <p>Другие известные алгоритмы: <strong>ChaCha20</strong> (используется в мобильных
+                    приложениях и TLS), <strong>Twofish</strong> (финалист конкурса на замену DES),
+                    <strong>Blowfish</strong> (его предшественник). А вот <strong>DES</strong> и
+                    <strong>3DES</strong> уже устарели - их ключи слишком короткие для современных
+                    компьютеров.
+                </p>
+
+                <h3>Проблема распределения ключей</h3>
+
+                <p>У симметричного шифрования есть одна большая проблема: <strong>как передать ключ
+                        получателю</strong>? Ведь если вы отправите ключ по тому же каналу, по которому
+                    собираетесь передавать зашифрованное сообщение, злоумышленник может перехватить и его.</p>
+
+                <p>И чем больше людей в системе, тем острее проблема. Если у вас трое собеседников -
+                    нужно три общих ключа. Если сто - уже 4950 ключей. Если тысяча - почти 500 000
+                    ключей. Управлять таким количеством секретов вручную невозможно.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Проблема курицы и яйца
+                    </div>
+                    <p>Чтобы безопасно передать зашифрованное сообщение, нужно сначала безопасно передать
+                        ключ. А чтобы безопасно передать ключ, нужно... зашифровать его. И тут мы возвращаемся
+                        к началу. Именно эту проблему решило асимметричное шифрование.</p>
+                </div>
+
+                <h2>Асимметричное шифрование</h2>
+
+                <p>В конце 1970-х годов криптографы придумали принципиально новый подход. Идея: у каждого
+                    участника есть <strong>два ключа</strong> - <em>публичный</em> и <em>приватный</em>.
+                    Они математически связаны, но из одного невозможно вычислить другой.</p>
+
+                <ul>
+                    <li><strong>Публичный ключ</strong> можно свободно раздавать всем. Он нужен для
+                        шифрования.</li>
+                    <li><strong>Приватный ключ</strong> хранится в секрете. Только он может расшифровать
+                        то, что зашифровано публичным ключом.</li>
+                </ul>
+
+                <p>Аналогия, которая часто используется: <strong>почтовый ящик</strong>. У него есть
+                    прорезь, в которую любой может бросить письмо (публичный ключ - открыт для всех).
+                    Но открыть ящик и достать письма может только владелец с ключом (приватный ключ -
+                    только у одного человека).</p>
+
+                <p>Или ещё точнее: представьте, что вы раздаёте всем желающим <em>открытые</em> замки.
+                    Любой может закрыть свой секрет в такой замок и отправить вам. Но открыть его
+                    можете только вы - потому что ключ есть только у вас.</p>
+
+                <h3>Как это работает</h3>
+
+                <p>Схема такая:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Открытый текст + Публичный ключ Боба → [Шифрование] → Шифротекст</span><span class="code-row">Шифротекст + Приватный ключ Боба → [Расшифровка] → Открытый текст</span></code></pre>
+
+                <p>Если Алиса хочет отправить сообщение Бобу, она берёт <em>публичный</em> ключ Боба
+                    (который знают все) и шифрует им текст. Боб получает шифротекст и расшифровывает
+                    своим <em>приватным</em> ключом, который есть только у него. Даже Алиса не сможет
+                    расшифровать своё же сообщение обратно - у неё нет приватного ключа Боба.</p>
+
+                <h3>Популярные алгоритмы</h3>
+
+                <p>Самый известный - <strong>RSA</strong>. Он используется для шифрования небольших
+                    объёмов данных и для цифровых подписей. Ключи RSA обычно имеют длину 2048 или
+                    4096 бит. Назван по фамилиям создателей: Rivest, Shamir, Adleman.</p>
+
+                <p>Другой важный алгоритм - <strong>ECC</strong> (Elliptic Curve Cryptography). Он даёт
+                    такую же стойкость, как RSA, но при гораздо меньшей длине ключа. Например, ключ
+                    ECC в 256 бит примерно эквивалентен ключу RSA в 3072 бита. Именно поэтому ECC
+                    популярен в мобильных устройствах, где важна экономия ресурсов.</p>
+
+                <h3>Что асимметричное шифрование даёт помимо секретности</h3>
+
+                <p>Помимо решения проблемы распределения ключей, асимметричная криптография подарила нам
+                    ещё одну важную вещь - <strong>цифровые подписи</strong>. Если зашифровать данные
+                    <em>своим приватным ключом</em>, то любой может проверить подпись <em>вашим публичным
+                        ключом</em>. Это подтверждает, что сообщение действительно от вас и не было изменено
+                    по дороге. В симметричном шифровании такое невозможно: там у обеих сторон
+                    один и тот же ключ, и никто не может доказать, кто именно отправил сообщение.
+                </p>
+
+                <h2>Сравнение: что выбрать</h2>
+
+                <p>Каждый подход имеет свои сильные и слабые стороны. Вот основное:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Критерий</th>
+                            <th>Симметричное</th>
+                            <th>Асимметричное</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ключи</td>
+                            <td>Один общий секрет</td>
+                            <td>Пара: публичный + приватный</td>
+                        </tr>
+                        <tr>
+                            <td>Скорость</td>
+                            <td>Очень высокая</td>
+                            <td>В разы медленнее</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Что шифровать</td>
+                            <td>Большие объёмы данных</td>
+                            <td><strong>Небольшие объёмы</strong> (ключи, подписи)</td>
+                        </tr>
+                        <tr>
+                            <td>Распределение ключей</td>
+                            <td>Сложная проблема</td>
+                            <td>Решена: публичный ключ открыт</td>
+                        </tr>
+                        <tr>
+                            <td>Цифровые подписи</td>
+                            <td>Невозможны</td>
+                            <td>Возможны</td>
+                        </tr>
+                        <tr>
+                            <td>Примеры</td>
+                            <td>AES, ChaCha20</td>
+                            <td>RSA, ECC</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Главный вывод: <strong>симметричное шифрование быстрое, но плохо решает проблему
+                        обмена ключами. Асимметричное решает проблему ключей, но медленное</strong>. Поэтому
+                    в реальных системах их не противопоставляют, а <em>комбинируют</em>.</p>
+
+                <h2>Гибридное шифрование: лучшее из двух миров</h2>
+
+                <p>Именно так работают почти все защищённые соединения в интернете. Схема называется
+                    <strong>гибридным шифрованием</strong> и выглядит так:
+                </p>
+
+                <ol>
+                    <li><strong>Асимметричное шифрование</strong> используется для того, чтобы безопасно
+                        договориться о <em>сессионном ключе</em> - временном симметричном ключе.
+                    </li>
+                    <li><strong>Симметричное шифрование</strong> используется для передачи самих данных
+                        этим сессионным ключом - потому что это быстро.</li>
+                </ol>
+
+                <p>Пошагово это выглядит так. Клиент (ваш браузер) и сервер (сайт) обмениваются публичными
+                    ключами. С их помощью они договариваются о случайном сессионном ключе. Дальше весь
+                    трафик между ними шифруется симметричным алгоритмом (обычно AES) с этим сессионным
+                    ключом. После завершения сессии ключ уничтожается - и следующий разговор начнётся
+                    с нового ключа.</p>
+
+                <p>Именно так работает <strong>HTTPS</strong> - вы видите замок в адресной строке, и за
+                    этим замком стоит гибридная схема: асимметричная криптография для рукопожатия,
+                    симметричная - для данных. Подробнее разберём в уроке про TLS, а пока просто
+                    запомните принцип.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия
+                    </div>
+                    <p>Представьте, что вы хотите передать другу сундук с сокровищами. Асимметричное
+                        шифрование - это как передать ему ключ от сундука через надёжного курьера
+                        (медленно, но безопасно). А симметричное - это как отправить сам сундук
+                        обычной почтой (быстро). Гибридная схема: курьером передаём <em>один раз</em>
+                        ключ, а дальше возим сундуки почтой сколько угодно - ключ уже у друга.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Шифрование</code>
+                        <span>превращение текста в нечитаемый вид</span>
+                    </li>
+                    <li>
+                        <code>Ключ</code>
+                        <span>«правило» для шифрования и расшифровки</span>
+                    </li>
+                    <li>
+                        <code>Симметричное</code>
+                        <span>один ключ, быстро, но сложно передать</span>
+                    </li>
+                    <li>
+                        <code>Асимметричное</code>
+                        <span>пара ключей, медленно, но решает передачу</span>
+                    </li>
+                    <li>
+                        <code>AES</code>
+                        <span>самый популярный симметричный алгоритм</span>
+                    </li>
+                    <li>
+                        <code>RSA, ECC</code>
+                        <span>популярные асимметричные алгоритмы</span>
+                    </li>
+                    <li>
+                        <code>Гибридное</code>
+                        <span>асимметрика для ключа + симметрика для данных</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Это теория, но даже здесь есть типичные заблуждения и путаницы. Разберём самые частые.</p>
+
+                <ul>
+                    <li><strong>«Асимметричное шифрование безопаснее симметричного».</strong> Не совсем
+                        так. Оба вида могут быть сколь угодно стойкими - всё зависит от длины ключа и
+                        качества алгоритма. Просто у них разные задачи. Симметричное быстрее, поэтому
+                        именно им шифруют основные данные.</li>
+                    <li><strong>«Если у меня есть публичный ключ, я могу расшифровать чужое
+                            сообщение».</strong> Нет. Публичный ключ нужен только для шифрования.
+                        Расшифровать может только владелец приватного ключа.</li>
+                    <li><strong>«Приватный ключ - это просто пароль».</strong> Нет, это математическое
+                        число огромной длины. Пароль - это то, чем вы защищаете доступ к приватному
+                        ключу. Сам ключ - это файл или последовательность байтов.</li>
+                    <li><strong>«HTTPS использует только асимметричное шифрование».</strong> Нет,
+                        HTTPS использует гибридную схему. Асимметричное - только для начального
+                        рукопожатия, дальше всё идёт через симметричное.</li>
+                    <li><strong>«Чем длиннее ключ, тем абсолютно безопаснее».</strong> Да, длиннее -
+                        лучше (в разумных пределах). Но есть и другие факторы: качество алгоритма,
+                        как хранится ключ, как передаётся. Ключ в 4096 бит, записанный на стикере
+                        под клавиатурой, защищает хуже, чем 2048 бит в защищённом хранилище.</li>
+                    <li><strong>«Я не разработчик, зачем мне это знать».</strong> Понимание основ
+                        шифрования помогает принимать решения: какой мессенджер выбрать, как настроить
+                        VPN, почему нельзя игнорировать обновления браузера. Это база цифровой
+                        грамотности.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание концепций, вторые две - на применение
+                    знаний и размышление. У каждой есть подсказка и разбор.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Что за тип шифрования</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Определите, какой тип шифрования (симметричное или
+                                асимметричное) описан в каждой ситуации.</p>
+                            <ol>
+                                <li>Вы и друг договорились о секретном правиле замены букв ещё до того,
+                                    как начали переписку.</li>
+                                <li>Вы оставляете на сайте свой публичный ключ, и любой может
+                                    зашифровать вам сообщение, но прочитать его можете только вы.</li>
+                                <li>Сервер и клиент договорились о временном ключе на время сессии,
+                                    а потом весь трафик идёт через него.</li>
+                                <li>Вы подписываете документ своим приватным ключом, а получатель
+                                    проверяет подпись вашим публичным ключом.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Ключевой вопрос: сколько ключей участвует и что ими делают?
+                                        Если ключ один и общий - это симметричное. Если пара ключей
+                                        (публичный + приватный) - асимметричное.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ul>
+                                        <li><strong>Ситуация 1.</strong> Симметричное. Один общий
+                                            секрет, который используется и для шифрования, и для
+                                            расшифровки. Классическая схема симметричной
+                                            криптографии.</li>
+                                        <li><strong>Ситуация 2.</strong> Асимметричное. Публичный
+                                            ключ открыт для всех, приватный - только у вас.
+                                            Аналогия с почтовым ящиком, куда любой может бросить
+                                            письмо, но достать может только владелец.</li>
+                                        <li><strong>Ситуация 3.</strong> Это гибридная схема.
+                                            Асимметричное шифрование (или обмен ключами на его
+                                            основе) использовалось, чтобы договориться о сессионном
+                                            ключе. Дальше данные шли через симметричное шифрование.
+                                            Так работает HTTPS.</li>
+                                        <li><strong>Ситуация 4.</strong> Асимметричное. Точнее -
+                                            цифровая подпись. Приватный ключ используется для
+                                            создания подписи, публичный - для её проверки.
+                                            Это работает только в асимметричной криптографии.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Почему не только асимметричное</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Асимметричное шифрование решает проблему распределения
+                                ключей. Почему бы тогда не использовать только его? Назовите минимум
+                                две причины, почему в реальных системах всё равно применяют
+                                симметричное шифрование.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте о скорости работы и о том, какие данные чаще всего
+                                        нужно шифровать. Что быстрее: шифровать гигабайты фильма
+                                        или один ключ?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Минимум две причины:</p>
+                                    <ol>
+                                        <li><strong>Скорость.</strong> Симметричное шифрование
+                                            работает в десятки и сотни раз быстрее асимметричного.
+                                            Если бы HTTPS шифровал весь трафик через RSA -
+                                            интернет был бы невероятно медленным. Симметричное
+                                            шифрование справляется с гигабайтами данных легко,
+                                            а асимметричное задыхается уже на килобайтах.</li>
+                                        <li><strong>Объём данных.</strong> RSA и ECC не
+                                            предназначены для шифрования больших объёмов.
+                                            Они работают с небольшими числами и короткими
+                                            сообщениями. Для потокового шифрования видео или
+                                            загрузки файлов они просто не подходят.</li>
+                                    </ol>
+                                    <p>Поэтому в реальных системах используется гибридная схема:
+                                        асимметричное шифрование для обмена ключами (маленький
+                                        объём), симметричное - для данных (большой объём).</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Найдите аналогию</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Придумайте свою аналогию для симметричного и
+                                асимметричного шифрования из повседневной жизни. Не из тех, что
+                                были в уроке (записка с заменой букв, почтовый ящик, сейф с
+                                ключом). Объясните, почему она подходит.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте о ситуациях, где есть общий секрет (симметричное)
+                                        и где есть что-то публичное, но открыть может только
+                                        владелец (асимметричное). Например, дверь с кодовым
+                                        замком и дверь с ключом.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерные аналогии</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>У каждого своя аналогия, но вот несколько примеров:</p>
+                                    <ul>
+                                        <li><strong>Симметричное:</strong> кодовый замок на
+                                            подъезде. Все жильцы знают один и тот же код.
+                                            Один знает - значит, знают все. Если код сменили -
+                                            его надо сообщить каждому жильцу заново.</li>
+                                        <li><strong>Асимметричное:</strong> банковская ячейка.
+                                            Все знают, где находится банк и как туда зайти
+                                            (публичный ключ - открытая информация). Но
+                                            открыть ячейку может только владелец с ключом
+                                            (приватный ключ).</li>
+                                        <li><strong>Гибридное:</strong> курьер с чемоданом.
+                                            Чемодан заперт кодовым замком (симметрично,
+                                            быстро). А код курьеру передали через защищённый
+                                            канал (асимметрично, безопасно).</li>
+                                    </ul>
+                                    <p>Главное - чтобы аналогия передавала ключевое различие:
+                                        один общий секрет против пары ключей.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Разберите реальный случай</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Когда вы заходите на сайт по HTTPS, в адресной
+                                строке появляется замок. Это значит, что соединение защищено.
+                                Опишите, какие типы шифрования и в какой момент используются,
+                                начиная с момента, когда вы ввели адрес, и заканчивая
+                                загрузкой страницы.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Разделите процесс на два этапа: «рукопожатие» (когда
+                                        клиент и сервер договариваются) и «передача данных»
+                                        (когда страница уже загружается). На каждом этапе
+                                        используется свой тип шифрования.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Процесс выглядит так:</p>
+                                    <ol>
+                                        <li><strong>Рукопожатие (TLS Handshake).</strong>
+                                            Браузер и сервер обмениваются публичными ключами и
+                                            другими данными. Здесь используется
+                                            <strong>асимметричное шифрование</strong> (или
+                                            основанный на нём обмен ключами). Цель -
+                                            безопасно договориться о сессионном ключе.
+                                        </li>
+                                        <li><strong>Сессионный ключ.</strong> В результате
+                                            рукопожатия обе стороны получают один и тот же
+                                            симметричный ключ. Он временный - только для
+                                            этой сессии.</li>
+                                        <li><strong>Передача данных.</strong> Дальше весь
+                                            трафик (HTML, CSS, картинки, ваши данные из форм)
+                                            шифруется <strong>симметричным шифрованием</strong>
+                                            (обычно AES) с этим сессионным ключом. Это быстро
+                                            и эффективно.</li>
+                                        <li><strong>Конец сессии.</strong> Когда вы закрываете
+                                            вкладку или соединение прерывается, сессионный
+                                            ключ уничтожается. Следующий визит начнётся с
+                                            нового рукопожатия и нового ключа.</li>
+                                    </ol>
+                                    <p>Именно поэтому HTTPS одновременно и безопасный, и
+                                        быстрый: асимметрика даёт безопасность на старте,
+                                        симметрика - скорость на основном потоке данных.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с фундаментом всей современной безопасности - шифрованием. Узнали, что
+                    существует два вида: <strong>симметричное</strong> (один общий ключ, быстро, но сложно
+                    передать) и <strong>асимметричное</strong> (пара ключей, медленнее, но решает проблему
+                    распределения). Познакомились с реальными алгоритмами - AES, RSA, ECC. И поняли, как
+                    в реальности их комбинируют в <strong>гибридную схему</strong>, которая лежит в основе
+                    HTTPS и защищённых мессенджеров.</p>
+
+                <p>Это была теория, но без неё невозможно понять всё остальное. Теперь вы знаете, почему
+                    для передачи ключа нужно одно шифрование, а для данных - другое. И почему «просто
+                    зашифровать всё одним способом» не работает.</p>
+
+                <p>В следующем уроке мы займёмся <strong>хешированием</strong> - ещё одной технологией
+                    из мира криптографии, которая решает совсем другие задачи. Разберёмся, чем хеш
+                    отличается от шифрования, почему его нельзя «расшифровать», как он помогает
+                    проверять целостность данных и почему пароли на серверах хранятся именно в виде
+                    хешей.</p>
+
+                <div class="lesson-actions">
+                    <a href="../beginner/lesson-06.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-08.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

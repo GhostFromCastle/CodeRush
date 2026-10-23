@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch, тернарный оператор и ещё пара конструкций - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="beginner" data-lesson-id="lesson-12">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 12</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson active" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Switch, тернарный оператор и ещё пара конструкций</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Это последний урок начального уровня. Мы уже знаем почти всё, что нужно для базового
+                    программирования. Осталась пара инструментов, которые не влезли в предыдущие уроки, но о
+                    которых вы обязательно услышите в чужом коде. Это <code>switch</code>, тернарный оператор
+                    и пара небольших конструкций для циклов.</p>
+
+                <p>Разберём их - и на этом начальный уровень будет полностью закрыт.</p>
+
+                <h2>Проблема длинных if / else if</h2>
+
+                <p>Вспомните четвёртый урок. Когда вариантов много, мы писали длинные цепочки условий:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int day = 3;</span><span class="code-row"></span><span class="code-row">if (day == 1)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Понедельник");</span><span class="code-row">}</span><span class="code-row">else if (day == 2)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Вторник");</span><span class="code-row">}</span><span class="code-row">else if (day == 3)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Среда");</span><span class="code-row">}</span><span class="code-row">else if (day == 4)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Четверг");</span><span class="code-row">}</span><span class="code-row">else if (day == 5)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Пятница");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Выходной");</span><span class="code-row">}</span></code></pre>
+
+                <p>Работает - но выглядит громоздко. И здесь мы каждый раз пишем <code>day ==</code>, хотя
+                    проверяем одну и ту же переменную. Есть более удобный инструмент для таких случаев - оператор
+                    <code>switch</code>.
+                </p>
+
+                <h2>Оператор switch</h2>
+
+                <p><code>switch</code> переводится как «переключатель». Его идея: мы говорим «вот эта переменная,
+                    проверь её значение, и в зависимости от него выполни одно из действий». Синтаксис:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int day = 3;</span><span class="code-row"></span><span class="code-row">switch (day)</span><span class="code-row">{</span><span class="code-row">    case 1:</span><span class="code-row">        Console.WriteLine("Понедельник");</span><span class="code-row">        break;</span><span class="code-row">    case 2:</span><span class="code-row">        Console.WriteLine("Вторник");</span><span class="code-row">        break;</span><span class="code-row">    case 3:</span><span class="code-row">        Console.WriteLine("Среда");</span><span class="code-row">        break;</span><span class="code-row">    case 4:</span><span class="code-row">        Console.WriteLine("Четверг");</span><span class="code-row">        break;</span><span class="code-row">    case 5:</span><span class="code-row">        Console.WriteLine("Пятница");</span><span class="code-row">        break;</span><span class="code-row">    default:</span><span class="code-row">        Console.WriteLine("Выходной");</span><span class="code-row">        break;</span><span class="code-row">}</span></code></pre>
+
+                <p>Результат тот же, что и у цепочки <code>if / else if</code>, но код читается легче. Разберём
+                    по частям:</p>
+
+                <ul>
+                    <li><code>switch (day)</code> - «проверь значение переменной <code>day</code>».</li>
+                    <li><code>case 1:</code> - «если значение равно 1, выполни то, что идёт ниже».</li>
+                    <li><code>break;</code> - «выход из switch». Обязателен после каждого блока.</li>
+                    <li><code>default:</code> - «во всех остальных случаях». Аналог <code>else</code>.</li>
+                </ul>
+
+                <p>Компьютер заходит в <code>switch</code>, сравнивает значение с каждым <code>case</code> по
+                    очереди. Как только совпало - выполняет блок и выходит. Если ни один не совпал - выполняется
+                    <code>default</code>.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Про break
+                    </div>
+                    <p>Без <code>break</code> компьютер не остановится, а «провалится» в следующий <code>case</code>
+                        и выполнит его тоже. В C# это запрещено на уровне компилятора - если забудете
+                        <code>break</code>, Visual Studio подчеркнёт строку красным. Так что случайно не забудете,
+                        но знать эту особенность полезно.
+                    </p>
+                </div>
+
+                <h3>Когда switch удобен</h3>
+
+                <p><code>switch</code> - идеальный инструмент, когда выполняются три условия:</p>
+
+                <ul>
+                    <li>Проверяется <strong>одна</strong> переменная (или выражение).</li>
+                    <li>Вариантов <strong>много</strong> - 3 и больше.</li>
+                    <li>Проверка идёт на <strong>равенство</strong> конкретному значению, а не на диапазон.</li>
+                </ul>
+
+                <p>Если у вас проверка вида «если <code>age &gt;= 18</code>» или «если <code>login == "admin"
+                    &amp;&amp; password == "1234"</code>» - это <code>if</code>, а не <code>switch</code>.
+                    <code>switch</code> не умеет работать с диапазонами и составными условиями напрямую.
+                </p>
+
+                <h3>Switch со строками</h3>
+
+                <p>В отличие от некоторых других языков, в C# <code>switch</code> работает не только с числами,
+                    но и со строками:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.Write("Введи команду: ");</span><span class="code-row">string command = Console.ReadLine().ToLower();</span><span class="code-row"></span><span class="code-row">switch (command)</span><span class="code-row">{</span><span class="code-row">    case "start":</span><span class="code-row">        Console.WriteLine("Запускаю...");</span><span class="code-row">        break;</span><span class="code-row">    case "stop":</span><span class="code-row">        Console.WriteLine("Останавливаю...");</span><span class="code-row">        break;</span><span class="code-row">    case "help":</span><span class="code-row">        Console.WriteLine("Доступные команды: start, stop, help");</span><span class="code-row">        break;</span><span class="code-row">    default:</span><span class="code-row">        Console.WriteLine("Неизвестная команда");</span><span class="code-row">        break;</span><span class="code-row">}</span></code></pre>
+
+                <p>Мы использовали <code>.ToLower()</code> из шестого урока - теперь команды <code>START</code>,
+                    <code>Start</code> и <code>start</code> обрабатываются одинаково. Удобно.
+                </p>
+
+                <h3>Объединение case</h3>
+
+                <p>Иногда несколько <code>case</code> должны привести к одному и тому же действию. Их можно
+                    объединять, написав подряд без тела:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int day = 6;</span><span class="code-row"></span><span class="code-row">switch (day)</span><span class="code-row">{</span><span class="code-row">    case 1:</span><span class="code-row">    case 2:</span><span class="code-row">    case 3:</span><span class="code-row">    case 4:</span><span class="code-row">    case 5:</span><span class="code-row">        Console.WriteLine("Рабочий день");</span><span class="code-row">        break;</span><span class="code-row">    case 6:</span><span class="code-row">    case 7:</span><span class="code-row">        Console.WriteLine("Выходной");</span><span class="code-row">        break;</span><span class="code-row">}</span></code></pre>
+
+                <p>Читается так: «если 1, 2, 3, 4 или 5 - рабочий день. Если 6 или 7 - выходной». Гораздо
+                    компактнее, чем пять отдельных блоков с одинаковым содержимым.</p>
+
+                <h2>Тернарный оператор</h2>
+
+                <p>Вернёмся ненадолго к условиям. Иногда нужно сделать простую проверку и по результату выбрать
+                    одно из двух значений. Например:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int age = 20;</span><span class="code-row">string status;</span><span class="code-row"></span><span class="code-row">if (age &gt;= 18)</span><span class="code-row">{</span><span class="code-row">    status = "взрослый";</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    status = "ребёнок";</span><span class="code-row">}</span></code></pre>
+
+                <p>Семь строк ради одной проверки. Есть способ записать это в одну строку - <strong>тернарный
+                        оператор</strong>. Называется так, потому что в нём три части:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string status = age &gt;= 18 ? "взрослый" : "ребёнок";</span></code></pre>
+
+                <p>Читается это так: «если <code>age &gt;= 18</code> - возьми значение <code>"взрослый"</code>,
+                    иначе - <code>"ребёнок"</code>». Символ <code>?</code> как бы спрашивает «что, если да?»,
+                    а <code>:</code> разделяет два варианта.</p>
+
+                <p>Схема такая:</p>
+
+                <pre><code>условие ? значение_если_истина : значение_если_ложь</code></pre>
+
+                <p>Ещё пример - сразу в выводе:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int score = 85;</span><span class="code-row"></span><span class="code-row">Console.WriteLine(score &gt;= 60 ? "Сдал" : "Не сдал");</span></code></pre>
+
+                <p>Программа выведет «Сдал», потому что 85 ≥ 60.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Когда использовать тернарный оператор
+                    </div>
+                    <p>Тернарный оператор удобен для <strong>простых проверок</strong>, где результат - это одно
+                        или другое значение. Если в блоках <code>if / else</code> больше одной строки или
+                        действия сложнее, чем просто «выбрать значение», - используйте обычный
+                        <code>if / else</code>. Тернарник существует не чтобы всё сокращать, а чтобы делать код
+                        чище в правильных местах.
+                    </p>
+                </div>
+
+                <h2>Дополнительно: две конструкции для циклов</h2>
+
+                <p>Мы прошли циклы в пятом уроке, но там разобрали только <code>for</code> и <code>while</code>.
+                    Осталось ещё две вещи, о которых стоит знать: <code>continue</code> и <code>do while</code>.</p>
+
+                <h3>Оператор continue</h3>
+
+                <p>Мы знаем <code>break</code> - он <strong>полностью прерывает</strong> цикл. А
+                    <code>continue</code> работает мягче: он <strong>пропускает текущую итерацию</strong> и
+                    сразу переходит к следующей.
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">for (int i = 1; i &lt;= 10; i++)</span><span class="code-row">{</span><span class="code-row">    if (i % 2 == 0)</span><span class="code-row">    {</span><span class="code-row">        continue;</span><span class="code-row">    }</span><span class="code-row">    Console.WriteLine(i);</span><span class="code-row">}</span></code></pre>
+
+                <p>Эта программа выводит только нечётные числа от 1 до 10. Как это работает: когда
+                    <code>i</code> чётное, мы говорим «пропусти эту итерацию» - и <code>Console.WriteLine</code>
+                    не выполняется, цикл сразу переходит к следующему <code>i</code>.
+                </p>
+
+                <p>Тот же результат можно получить через обычное условие <code>if (i % 2 != 0)</code>. Но иногда
+                    <code>continue</code> делает код чище: сначала «отсекаем» всё ненужное, потом работаем с
+                    остальным.
+                </p>
+
+                <h3>Цикл do while</h3>
+
+                <p>Это родственник обычного <code>while</code> с одним отличием: <strong>условие проверяется
+                        после</strong> тела цикла, а не перед ним. То есть тело выполнится хотя бы один раз - всегда,
+                    даже если условие изначально ложно.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int number;</span><span class="code-row"></span><span class="code-row">do</span><span class="code-row">{</span><span class="code-row">    Console.Write("Введи положительное число: ");</span><span class="code-row">    number = int.Parse(Console.ReadLine());</span><span class="code-row">}</span><span class="code-row">while (number &lt;= 0);</span></code></pre>
+
+                <p>Эта программа просит число, и если оно не положительное - просит снова. И так до тех пор, пока
+                    пользователь не введёт что-то больше нуля. Идеально для валидации ввода.</p>
+
+                <p>Разница между <code>while</code> и <code>do while</code>:</p>
+
+                <ul>
+                    <li><strong>while</strong> - сначала проверяем, потом делаем. Если условие ложно - тело не
+                        выполнится ни разу.</li>
+                    <li><strong>do while</strong> - сначала делаем, потом проверяем. Тело выполнится минимум один
+                        раз, даже если условие ложно.</li>
+                </ul>
+
+                <p>Кстати, именно <code>do while</code> пригодился бы в игре «Угадай число» из восьмого урока, если
+                    бы вы захотели добавить «Играть ещё раз?». Цикл покажет игру хотя бы один раз, а потом спросит -
+                    и если пользователь ответит «нет», завершится.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>switch (x)</code>
+                        <span>проверка на равенство</span>
+                    </li>
+                    <li>
+                        <code>case 1:</code>
+                        <span>случай «если x == 1»</span>
+                    </li>
+                    <li>
+                        <code>break;</code>
+                        <span>выход из switch</span>
+                    </li>
+                    <li>
+                        <code>default:</code>
+                        <span>все остальные случаи</span>
+                    </li>
+                    <li>
+                        <code>условие ? a : b</code>
+                        <span>тернарный оператор</span>
+                    </li>
+                    <li>
+                        <code>continue;</code>
+                        <span>пропустить итерацию</span>
+                    </li>
+                    <li>
+                        <code>do { ... } while (...);</code>
+                        <span>цикл с проверкой после</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Новые конструкции компактные, но у каждой есть свои подводные камни. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>«Control cannot fall through from one case label to another».</strong> Забыли
+                        <code>break</code> после <code>case</code>. В C# это обязательное правило, и компилятор
+                        не даст собрать программу, пока не добавите <code>break</code>.
+                    </li>
+                    <li><strong><code>switch</code> не видит совпадений.</strong> Проверьте тип переменной и
+                        типы значений в <code>case</code>. Нельзя сравнивать <code>int</code> со строкой
+                        <code>"1"</code> - это разные типы.
+                    </li>
+                    <li><strong>Тернарный оператор возвращает не то, что нужно.</strong> Проверьте порядок:
+                        <code>условие ? значение_если_истина : значение_если_ложь</code>. Условие первым, до
+                        знака вопроса. И <code>:</code> разделяет две ветки.
+                    </li>
+                    <li><strong>Обе ветки тернарника должны возвращать один и тот же тип.</strong> Нельзя написать
+                        <code>age &gt;= 18 ? "взрослый" : 0</code> - первая ветка даёт <code>string</code>,
+                        вторая <code>int</code>. Компилятор выдаст ошибку.
+                    </li>
+                    <li><strong>«; expected» после <code>do while</code>.</strong> У этого цикла точка с запятой
+                        ставится после <code>while (условие)</code>, а не после закрывающей скобки тела. Обратите
+                        внимание: <code>while (number &lt;= 0);</code> - с точкой с запятой в конце.</li>
+                    <li><strong><code>continue</code> зацикливает программу.</strong> Если в цикле <code>while</code>
+                        стоит <code>continue</code> до изменения счётчика, счётчик никогда не изменится, и цикл
+                        будет крутиться вечно. Убедитесь, что <code>i++</code> идёт <strong>до</strong>
+                        <code>continue</code> или в самом <code>for</code>.
+                    </li>
+                    <li><strong>Бесконечный цикл в <code>do while</code>.</strong> Если тело цикла не меняет
+                        условие - оно никогда не станет ложным. Убедитесь, что внутри цикла переменная из
+                        <code>while (...)</code> как-то изменяется.
+                    </li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. У каждой - подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Месяцы</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Пользователь вводит номер месяца (1–12). Выведите название месяца.
+                                Если номер вне диапазона - «Неверный месяц».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>switch</code>. Для каждого месяца - свой блок
+                                        <code>case</code> с выводом и <code>break</code>. А для всех остальных
+                                        значений - <code>default</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Введи номер месяца: ");</span><span class="code-row">int month = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">switch (month)</span><span class="code-row">{</span><span class="code-row">    case 1:  Console.WriteLine("Январь");   break;</span><span class="code-row">    case 2:  Console.WriteLine("Февраль");  break;</span><span class="code-row">    case 3:  Console.WriteLine("Март");     break;</span><span class="code-row">    case 4:  Console.WriteLine("Апрель");   break;</span><span class="code-row">    case 5:  Console.WriteLine("Май");      break;</span><span class="code-row">    case 6:  Console.WriteLine("Июнь");     break;</span><span class="code-row">    case 7:  Console.WriteLine("Июль");     break;</span><span class="code-row">    case 8:  Console.WriteLine("Август");   break;</span><span class="code-row">    case 9:  Console.WriteLine("Сентябрь"); break;</span><span class="code-row">    case 10: Console.WriteLine("Октябрь");  break;</span><span class="code-row">    case 11: Console.WriteLine("Ноябрь");   break;</span><span class="code-row">    case 12: Console.WriteLine("Декабрь");  break;</span><span class="code-row">    default: Console.WriteLine("Неверный месяц"); break;</span><span class="code-row">}</span></code></pre>
+                                    <p>Обратите внимание: каждая короткая команда уместилась в одну строку - так
+                                        код становится компактнее, а читать его всё равно легко.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Калькулятор</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя два числа и знак операции
+                                (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>). Выведите результат.
+                                Используйте <code>switch</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сначала получите два числа через <code>double.Parse</code>. Знак операции -
+                                        строка, её сравнивать через <code>case "+":</code> и так далее. Для деления
+                                        используйте <code>double</code>, чтобы не потерять дробную часть.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Первое число: ");</span><span class="code-row">double a = double.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">Console.Write("Второе число: ");</span><span class="code-row">double b = double.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">Console.Write("Операция (+, -, *, /): ");</span><span class="code-row">string op = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">switch (op)</span><span class="code-row">{</span><span class="code-row">    case "+":</span><span class="code-row">        Console.WriteLine($"{a} + {b} = {a + b}");</span><span class="code-row">        break;</span><span class="code-row">    case "-":</span><span class="code-row">        Console.WriteLine($"{a} - {b} = {a - b}");</span><span class="code-row">        break;</span><span class="code-row">    case "*":</span><span class="code-row">        Console.WriteLine($"{a} * {b} = {a * b}");</span><span class="code-row">        break;</span><span class="code-row">    case "/":</span><span class="code-row">        if (b == 0)</span><span class="code-row">        {</span><span class="code-row">            Console.WriteLine("На ноль делить нельзя");</span><span class="code-row">        }</span><span class="code-row">        else</span><span class="code-row">        {</span><span class="code-row">            Console.WriteLine($"{a} / {b} = {a / b}");</span><span class="code-row">        }</span><span class="code-row">        break;</span><span class="code-row">    default:</span><span class="code-row">        Console.WriteLine("Неизвестная операция");</span><span class="code-row">        break;</span><span class="code-row">}</span></code></pre>
+                                    <p>Обратите внимание: внутри <code>case "/"</code> у нас обычный
+                                        <code>if / else</code> - потому что проверка «деление на ноль» уже не
+                                        вписывается в равенство. <code>switch</code> и <code>if</code> отлично
+                                        работают вместе.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Тернарный оператор</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя число. С помощью тернарного оператора
+                                определите, чётное оно или нет, и выведите результат одной строкой.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проверка на чётность - <code>number % 2 == 0</code>. Тернарный оператор
+                                        выглядит так: <code>условие ? "чётное" : "нечётное"</code>. Можно сразу
+                                        вставить его внутрь интерполяции.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Введи число: ");</span><span class="code-row">int number = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">Console.WriteLine(number % 2 == 0 ? "Чётное" : "Нечётное");</span></code></pre>
+                                    <p>Всё в одной строке. Обратите внимание: результат тернарного оператора - это
+                                        значение, поэтому его можно сразу передать в <code>Console.WriteLine</code>.
+                                        Внутри интерполяции он тоже работает без проблем.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Меню на switch</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Сделайте простое меню: пользователь вводит команду <code>add</code>,
+                                <code>list</code>, <code>remove</code> или <code>quit</code>. Программа выполняет
+                                соответствующее действие (например, просто выводит фразу «Добавляю...»). Если
+                                пользователь ввёл <code>quit</code> - выходим из программы.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Понадобится бесконечный цикл <code>while (true)</code>. На каждой итерации
+                                        спрашивайте команду и выполняйте её через <code>switch</code>. Команда
+                                        <code>quit</code> должна сделать <code>break</code> - но не внутри switch,
+                                        а из внешнего цикла.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Есть проблема: <code>break</code> внутри <code>case "quit":</code> выйдет из
+                                        <code>switch</code>, а не из цикла. Чтобы выйти из цикла, используйте
+                                        <code>return;</code> - он завершает программу целиком. Это простой способ
+                                        для нашего случая.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">while (true)</span><span class="code-row">{</span><span class="code-row">    Console.Write("Команда (add / list / remove / quit): ");</span><span class="code-row">    string command = Console.ReadLine().ToLower();</span><span class="code-row"></span><span class="code-row">    switch (command)</span><span class="code-row">    {</span><span class="code-row">        case "add":</span><span class="code-row">            Console.WriteLine("Добавляю...");</span><span class="code-row">            break;</span><span class="code-row">        case "list":</span><span class="code-row">            Console.WriteLine("Показываю список...");</span><span class="code-row">            break;</span><span class="code-row">        case "remove":</span><span class="code-row">            Console.WriteLine("Удаляю...");</span><span class="code-row">            break;</span><span class="code-row">        case "quit":</span><span class="code-row">            Console.WriteLine("Пока!");</span><span class="code-row">            return;</span><span class="code-row">        default:</span><span class="code-row">            Console.WriteLine("Неизвестная команда");</span><span class="code-row">            break;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                                    <p>Команда <code>return</code> завершает программу целиком - это простой способ
+                                        выйти из бесконечного цикла. Позже, на среднем уровне, мы разберём более
+                                        правильные способы, но для меню этого достаточно.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы закрыли последние пробелы начального уровня. Познакомились с оператором
+                    <code>switch</code> - он заменяет длинные цепочки <code>if / else if</code>, когда вариантов
+                    много и все они - простые проверки на равенство. Разобрали тернарный оператор
+                    <code>?:</code> - короткая запись для условия «или одно, или другое». И заодно посмотрели две
+                    полезные конструкции для циклов: <code>continue</code> и <code>do while</code>.
+                </p>
+
+                <p>На этом начальный уровень завершён. Давайте оглянемся назад и посмотрим, что вы успели
+                    освоить за 12 уроков.</p>
+
+                <h3>Что вы уже умеете</h3>
+
+                <ul>
+                    <li>Устанавливать Visual Studio и создавать проекты.</li>
+                    <li>Объявлять переменные всех основных типов и выбирать подходящий.</li>
+                    <li>Писать и читать данные через консоль - <code>Console.WriteLine</code> и
+                        <code>ReadLine</code>.
+                    </li>
+                    <li>Принимать решения через <code>if / else if / else</code> и <code>switch</code>.</li>
+                    <li>Повторять действия через <code>for</code>, <code>while</code>, <code>do while</code> и
+                        <code>foreach</code>.
+                    </li>
+                    <li>Работать со строками и символами - <code>.Length</code>, <code>.ToUpper</code>,
+                        <code>.Trim</code>, <code>char.IsDigit</code> и другими.
+                    </li>
+                    <li>Генерировать случайные числа через <code>Random</code>.</li>
+                    <li>Хранить коллекции через массивы, <code>List</code> и <code>Dictionary</code>.</li>
+                    <li>Писать короткий код через <code>var</code> и тернарный оператор.</li>
+                </ul>
+
+                <p>Это <strong>настоящая база программиста</strong>. Не «Hello, World» на один день, а полноценный
+                    фундамент, на котором строится всё остальное. С этими знаниями уже можно писать небольшие
+                    программы и разбираться в чужом коде.</p>
+
+                <h3>Что дальше</h3>
+
+                <p>Впереди - <strong>средний уровень</strong>. Он сложнее и глубже, но и интереснее. Вот что
+                    вас ждёт:</p>
+
+                <ul>
+                    <li><strong>Методы.</strong> Свои собственные команды. Вместо того чтобы писать один и тот же
+                        код в пяти местах - выносим его в метод и вызываем по имени.</li>
+                    <li><strong>Классы и объекты.</strong> Основы объектно-ориентированного программирования.
+                        Как описывать свои типы данных и работать с ними.</li>
+                    <li><strong>Обработка ошибок.</strong> <code>try / catch</code> - что делать, когда программа
+                        встречает что-то неожиданное: пользователь ввёл текст вместо числа, файл не найден,
+                        интернет пропал.</li>
+                    <li><strong>Работа с файлами.</strong> Чтение и запись данных на диск - чтобы ваши программы
+                        могли сохранять и загружать информацию.</li>
+                    <li><strong>Реальные проекты.</strong> Например, текстовый квест, крестики-нолики или
+                        консольный менеджер задач - с файлами, классами и обработкой ошибок.</li>
+                </ul>
+
+                <p>А пока - поздравляем с завершением начального уровня! Вы проделали большую работу. Сделайте
+                    паузу, поиграйте с кодом, попробуйте написать что-то своё. Когда будете готовы - встречаемся
+                    на среднем.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-11.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../intermediate/lesson-13.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

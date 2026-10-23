@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переменные и типы данных - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="beginner" data-lesson-id="lesson-02">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 02</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson active" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Переменные и типы данных</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~20 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В первом уроке мы заставили программу сказать «Hello, World!» - но она просто повторила за нами
+                    готовую фразу. Настоящая программа должна уметь <strong>хранить данные</strong> и работать с ними.
+                    Сегодня мы разберёмся, как это делать с помощью переменных.</p>
+
+                <h2>Важно: куда вставлять код</h2>
+
+                <p>Прежде чем мы начнём, давайте на всякий случай освежим структуру программы. В прошлом уроке
+                    Visual Studio сгенерировала нам файл <code>Program.cs</code>. Если вы ставили галочку
+                    «Не использовать операторы верхнего уровня», он выглядит примерно так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">using System;</span><span class="code-row"></span><span class="code-row">namespace ConsoleApp1</span><span class="code-row">{</span><span class="code-row">    internal class Program</span><span class="code-row">    {</span><span class="code-row">        static void Main(string[] args)</span><span class="code-row">        {</span><span class="code-row">            Console.WriteLine("Hello, World!");</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Весь новый код в этом уроке нужно писать <strong>внутрь метода <code>Main</code></strong> - то
+                    есть между его открывающей <code>{</code> и закрывающей <code>}</code>.</p>
+
+                <p>Новые строки кода добавляйте в тот же блок, где стоит <code>Console.WriteLine</code> - на
+                    одном уровне с ним, с тем же отступом.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Что будет, если вставить не туда
+                    </div>
+                    <p>Если случайно вставить код не в <code>Main</code>, а, например, до <code>class Program</code>
+                        или после закрывающей скобки <code>Main</code>, программа не запустится. Visual Studio
+                        подчеркнёт строки красным и покажет ошибку. Не пугайтесь - это значит, что код лежит не на
+                        своём месте. Верните его внутрь <code>Main</code> - и всё заработает.</p>
+                </div>
+
+                <h2>Что такое переменная</h2>
+
+                <p>Представьте, что у вас на столе стоит несколько коробочек. В каждой лежит что-то своё: в одной -
+                    число, в другой - слово, в третьей - галочка. На каждой коробочке наклеена бумажка с именем, чтобы
+                    вы могли сказать компьютеру: «Возьми то, что в коробочке <code>age</code>».</p>
+
+                <p><strong>Переменная</strong> - это и есть такая коробочка. Только вместо бумажки у неё есть
+                    <em>имя</em>, вместо содержимого - <em>значение</em>, и всё это живёт в памяти компьютера. Мы
+                    можем положить в неё что-то, потом достать, потом заменить на другое.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Переменная - это именованное место в памяти, где хранится какое-то значение. Как ящик с
+                        наклейкой.</p>
+                </div>
+
+                <h2>Зачем нужны типы</h2>
+
+                <p>Компьютер очень педантичен: он хочет знать <em>заранее</em>, что именно лежит в коробочке - число,
+                    слово или что-то ещё. Потому что с числом можно складывать, а со словом - склеивать. Это разные
+                    действия.</p>
+
+                <p>Поэтому в C# у каждой переменной есть <strong>тип</strong>. Проще говоря, тип - это «форма» коробки:
+                    только для чисел, только для слов, только для галочек. Нам на первое время хватит четырёх типов.</p>
+
+                <h2>Четыре главных типа</h2>
+
+                <ul>
+                    <li><code>int</code> - целые числа: 1, 42, -7, 2026. Без дробной части.</li>
+                    <li><code>double</code> - числа с дробной частью: 3.14, 99.9, -0.5. Название читается «дабл».</li>
+                    <li><code>string</code> - текст, то есть набор символов в кавычках: "Привет", "Hello, World!",
+                        "C#".</li>
+                    <li><code>bool</code> - логический тип, только два значения: <code>true</code> (истина) или
+                        <code>false</code> (ложь). Используется для галочек и проверок.
+                    </li>
+                </ul>
+
+                <p>Не пытайтесь запомнить всё сразу. Через пару уроков вы будете использовать их на автомате, а пока
+                    просто знайте, что они есть.</p>
+
+                <h2>Создаём первую переменную</h2>
+
+                <p>Переменную в C# создают в два шага: сначала указывают тип и имя, а потом кладут в неё значение.
+                    Звучит сложно, но на практике это выглядит вот так. Эти четыре строки пишем внутри
+                    <code>Main</code>:
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int age = 25;</span><span class="code-row">string name = "Алексей";</span><span class="code-row">double pi = 3.14;</span><span class="code-row">bool isStudent = true;</span></code></pre>
+
+                <p>Разберём каждую строку:</p>
+
+                <h3>Строка 1: <code>int age = 25;</code></h3>
+                <p>Мы говорим компьютеру: «Создай коробочку для целых чисел, назови её <code>age</code> и положи туда
+                    число 25». Обратите внимание на знак <code>=</code> - он здесь не значит «равно» в
+                    математическом смысле. Он значит <strong>«положи справа в коробку слева»</strong>.</p>
+
+                <h3>Строка 2: <code>string name = "Алексей";</code></h3>
+                <p>То же самое, но для текста. Тип <code>string</code> (строка), имя <code>name</code> («имя»), а
+                    значение обязательно в <strong>двойных кавычках</strong> - иначе C# подумает, что это название
+                    какой-то команды, а не текст.</p>
+
+                <h3>Строка 3: <code>double pi = 3.14;</code></h3>
+                <p>Число с дробной частью. Дробная часть отделяется <strong>точкой</strong>, а не запятой, как в
+                    русском языке. Это важно - если поставить запятую, C# запутается.</p>
+
+                <h3>Строка 4: <code>bool isStudent = true;</code></h3>
+                <p>Логическое значение. <code>true</code> и <code>false</code> - это ключевые слова в C#, их нельзя
+                    писать с большой буквы, и нельзя взять в кавычки. Это как ответ «да/нет» на вопрос.</p>
+
+                <h2>Используем переменные в выводе</h2>
+
+                <p>Теперь самое интересное - давайте заставим программу напечатать содержимое наших коробочек. Пишем
+                    так (снова внутри <code>Main</code>):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int age = 25;</span><span class="code-row">string name = "Алексей";</span><span class="code-row">Console.WriteLine("Привет, " + name + "!");</span><span class="code-row">Console.WriteLine("Тебе " + age + " лет.");</span></code></pre>
+
+                <p>Обратите внимание на строки 3 и 4. Мы используем <code>+</code>, чтобы <strong>склеить</strong> текст
+                    с переменной. Знак плюс в C# умеет не только складывать числа - если хотя бы одна сторона является
+                    текстом, он «соединяет» их в один текст.</p>
+
+                <p>На экране появится:</p>
+
+                <pre><code>Привет, Алексей!
+Тебе 25 лет.</code></pre>
+
+                <p>Мы вставили пробелы внутри кавычек, чтобы между словами не было «слипания». Попробуйте убрать
+                    пробел - увидите, как получится «Привет,Алексей!». Мелочь, но так работают все строки.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Про кавычки
+                    </div>
+                    <p>Внутри кавычек компьютер воспринимает текст буквально - в том числе пробелы и знаки. Именно
+                        поэтому все слова снаружи переменных и должны быть в кавычках: иначе C# подумает, что вы
+                        обращаетесь к какой-то переменной или команде.</p>
+                </div>
+
+                <h2>Меняем значение</h2>
+
+                <p>Переменная называется так именно потому, что её значение можно менять. Например, у пользователя
+                    может измениться возраст:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int age = 25;</span><span class="code-row">Console.WriteLine(age);</span><span class="code-row">age = 26;</span><span class="code-row">Console.WriteLine(age);</span></code></pre>
+
+                <p>Программа напечатает:</p>
+
+                <pre><code>25
+26</code></pre>
+
+                <p>Обратите внимание: в строке 3 мы <strong>не пишем <code>int</code> ещё раз</strong>. Тип указывается
+                    только в момент создания переменной. Когда вы просто присваиваете новое значение, достаточно
+                    написать имя и знак «равно».</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Запомните разницу
+                    </div>
+                    <p><code>int age = 25;</code> - «создай коробочку и положи туда 25».<br>
+                        <code>age = 26;</code> - «найди коробочку <code>age</code> и замени её содержимое на 26».
+                    </p>
+                </div>
+
+                <h2>Считаем числа</h2>
+
+                <p>С числами можно делать обычные арифметические операции: складывать, вычитать, умножать и делить.
+                    Например:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int a = 10;</span><span class="code-row">int b = 3;</span><span class="code-row">int sum = a + b;</span><span class="code-row">Console.WriteLine("Сумма: " + sum);</span></code></pre>
+
+                <p>Программа выведет <code>Сумма: 13</code>. Всё, что справа от знака «равно», сначала вычисляется,
+                    а потом результат кладётся в переменную слева. То есть компьютер сначала складывает 10 и 3, а
+                    потом создаёт переменную <code>sum</code> и кладёт туда 13.</p>
+
+                <h2>Работаем с текстом</h2>
+
+                <p>Со строками тоже можно делать полезные штуки. Например, соединять их вместе - мы уже видели это
+                    через <code>+</code>. Но есть способ ещё удобнее, который называется <strong>интерполяция</strong>.
+                    Сравните:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string name = "Алексей";</span><span class="code-row">int age = 25;</span><span class="code-row">Console.WriteLine("Меня зовут " + name + ", мне " + age + " лет.");</span><span class="code-row">Console.WriteLine($"Меня зовут {name}, мне {age} лет.");</span></code></pre>
+
+                <p>Строки 3 и 4 выводят одно и то же. Но во второй мы поставили перед кавычкой знак <code>$</code>
+                    и написали переменные прямо в тексте, обернув их в <code>{ }</code>. Так гораздо удобнее: не надо
+                    разрывать фразу плюсами и следить за пробелами.</p>
+
+                <p>Интерполяция - это то, что вы будете использовать постоянно. Постарайтесь её запомнить.</p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя. Сначала
+                    обязательно попробуйте сами.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Визитка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте три переменные: имя (string), возраст (int) и рост (double).
+                                Выведите их на экран одной строкой через интерполяцию.</p>
+                            <p>Пример результата:</p>
+                            <pre><code>Меня зовут Алексей, мне 25 лет, мой рост 1.85 м.</code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>$"..."</code> перед строкой и вставьте переменные в фигурных
+                                        скобках <code>{name}</code>. Для роста используйте тип <code>double</code> и
+                                        напишите число через точку (например, 1.85).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">string name = "Алексей";</span><span class="code-row">int age = 25;</span><span class="code-row">double height = 1.85;</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Меня зовут {name}, мне {age} лет, мой рост {height} м.");</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Среднее арифметическое</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте три переменные с целыми числами (например, оценки ученика).
+                                Найдите их сумму и среднее арифметическое. Выведите оба результата.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сумма вычисляется через <code>+</code>. Среднее - это сумма, поделённая на 3.
+                                        Обратите внимание: если вы поделите <code>int</code> на <code>int</code>,
+                                        дробная часть отбросится. Чтобы этого избежать, приведите одно из чисел к
+                                        <code>double</code>: <code>(double)sum / 3</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">int grade1 = 4;</span><span class="code-row">int grade2 = 5;</span><span class="code-row">int grade3 = 3;</span><span class="code-row"></span><span class="code-row">int sum = grade1 + grade2 + grade3;</span><span class="code-row">double average = (double)sum / 3;</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Сумма: {sum}");</span><span class="code-row">Console.WriteLine($"Среднее: {average}");</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Чек в магазине</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте переменные для названия товара (string), его цены (double) и
+                                количества (int). Выведите на экран чек в формате:</p>
+                            <pre><code>Товар: Кофе
+Цена: 599.99
+Количество: 3
+Итого: 1799.97</code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Итоговую стоимость можно посчитать в отдельной переменной:
+                                        <code>double total = price * count;</code>. Для вывода используйте интерполяцию.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">string product = "Кофе";</span><span class="code-row">double price = 599.99;</span><span class="code-row">int count = 3;</span><span class="code-row">double total = price * count;</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Товар: {product}");</span><span class="code-row">Console.WriteLine($"Цена: {price}");</span><span class="code-row">Console.WriteLine($"Количество: {count}");</span><span class="code-row">Console.WriteLine($"Итого: {total}");</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Логические значения</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте переменные <code>isStudent</code> (студент ли вы) и
+                                <code>hasJob</code> (есть ли у вас работа). Присвойте им значения <code>true</code> или
+                                <code>false</code>. Выведите их на экран.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Тип переменных должен быть <code>bool</code>. Значения пишутся с маленькой буквы
+                                        без кавычек.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">bool isStudent = true;</span><span class="code-row">bool hasJob = false;</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Студент: {isStudent}");</span><span class="code-row">Console.WriteLine($"Есть работа: {hasJob}");</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Не переживайте, если при запуске появилась ошибка. В 99% случаев это одно из типичных мест, которые
+                    легко поправить. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>Visual Studio подчёркивает код красным.</strong> Скорее всего, вы вставили строки не
+                        внутрь <code>Main</code>, а за его пределами. Вернитесь к началу урока, там наглядно показано,
+                        куда писать код.</li>
+                    <li><strong>«The name 'Console' does not exist».</strong> Проверьте самую первую строку файла -
+                        должна быть <code>using System;</code>. Если её случайно удалили, допишите обратно.</li>
+                    <li><strong>«; expected».</strong> Забыли точку с запятой в конце строки. В C# каждая инструкция
+                        заканчивается символом <code>;</code>.</li>
+                    <li><strong>Ругается на дробное число.</strong> Поставьте точку, а не запятую:
+                        <code>3.14</code>, а не <code>3,14</code>.
+                    </li>
+                    <li><strong>«Cannot implicitly convert type 'string' to 'int'».</strong> Вы пытаетесь положить
+                        текст в переменную для чисел (или наоборот). Проверьте, что у каждой переменной правильный тип.
+                    </li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы разобрались с самыми важными вещами: что такое переменные, зачем нужны типы, какие типы
+                    бывают и как с ними работать. Это фундамент - без переменных не будет ни одной настоящей программы.
+                </p>
+
+                <p>В следующем уроке мы сделаем наши программы <strong>интерактивными</strong>: научим их задавать
+                    вопросы пользователю и получать от него ответы. Это называется «ввод данных». Вы разберётесь с
+                    командой <code>Console.ReadLine</code> и узнаете, как превращать введённый текст в числа. Настоящий
+                    диалог с пользователем - вот что нас ждёт.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-01.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-03.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

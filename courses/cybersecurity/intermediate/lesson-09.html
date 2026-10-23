@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTPS и TLS - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="intermediate" data-lesson-id="lesson-09">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 09</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson active" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>HTTPS и TLS: как работает защищённое соединение</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлых двух уроках мы разобрали два столпа криптографии: <strong>шифрование</strong>
+                    (чтобы спрятать данные) и <strong>хеширование</strong> (чтобы проверить целостность).
+                    Сегодня мы соберём эти кирпичики вместе и посмотрим, как из них строится главная
+                    защита интернета - <strong>HTTPS</strong>.</p>
+
+                <p>Вы видите замок в адресной строке каждый день. Когда он есть - браузер говорит
+                    «всё в порядке». Когда его нет - Chrome и Firefox пишут «Не защищено» красным
+                    шрифтом. Но что именно стоит за этим замком? Как браузер понимает, что сайту можно
+                    доверять? Почему HTTPS защищает от перехвата, но не защищает от фишинга? Сегодня
+                    разберёмся с каждым шагом этого механизма.</p>
+
+                <h2>Что такое HTTPS и зачем он нужен</h2>
+
+                <p>HTTPS расшифровывается как <em>HyperText Transfer Protocol Secure</em> - «защищённый
+                    протокол передачи гипертекста». Это тот же HTTP, которым пользовались с начала
+                    интернета, но работающий поверх <strong>TLS</strong>.</p>
+
+                <p>TLS расшифровывается как <em>Transport Layer Security</em> - «безопасность транспортного
+                    уровня». Это протокол, который обеспечивает три вещи:</p>
+
+                <ul>
+                    <li><strong>Шифрование.</strong> Никто «на проводе» между вами и сайтом не может
+                        прочитать, что вы передаёте.</li>
+                    <li><strong>Аутентификация.</strong> Вы точно общаетесь с тем сайтом, к которому
+                        хотели зайти, а не с подделкой.</li>
+                    <li><strong>Целостность.</strong> Никто не может незаметно изменить данные
+                        по дороге - ни запрос, ни ответ.</li>
+                </ul>
+
+                <p>Раньше протокол назывался SSL (<em>Secure Sockets Layer</em>). Сегодня это название
+                    устарело - все современные версии называются TLS. Но иногда в обиходе говорят
+                    «SSL-сертификат», хотя технически правильно «TLS-сертификат». Мы будем использовать
+                    актуальные термины.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>HTTPS = HTTP + TLS. Протокол HTTP сам по себе не защищён: всё, что вы отправляете,
+                        идёт по сети в открытом виде. TLS оборачивает HTTP в защитную оболочку: шифрует,
+                        проверяет подлинность и целостность.</p>
+                </div>
+
+                <h2>Что произошло бы без HTTPS</h2>
+
+                <p>Давайте представим, что вы заходите на сайт по обычному HTTP и вводите пароль. Что
+                    может произойти:</p>
+
+                <ul>
+                    <li><strong>Перехват трафика.</strong> Любой, кто находится между вами и сервером -
+                        провайдер, администратор Wi-Fi в кафе, злоумышленник в той же сети - может
+                        прочитать всё, что вы передаёте.</li>
+                    <li><strong>Подмена данных.</strong> Злоумышленник может изменить текст страницы
+                        на лету: подменить реквизиты для оплаты, вставить ссылку на вирус, показать
+                        фальшивую форму ввода.</li>
+                    <li><strong>Подмена сайта.</strong> Через атаку «человек посередине» (MITM)
+                        злоумышленник может подменить сервер и перенаправить вас на полностью
+                        поддельный сайт.</li>
+                </ul>
+
+                <p>Именно поэтому сегодня HTTPS - не «опция», а стандарт. Chrome и Firefox помечают
+                    все HTTP-сайты как «Не защищено», а крупные сервисы (Google, банки, соцсети) работают
+                    только через HTTPS.</p>
+
+                <h2>Сертификаты: паспорт сайта</h2>
+
+                <p>Самый важный вопрос, который решает TLS - <strong>как убедиться, что сервер именно тот,
+                        за кого себя выдаёт</strong>. Если Алиса хочет поговорить с bank.com, как она узнает,
+                    что на другом конце провода действительно bank.com, а не мошенник?</p>
+
+                <p>Ответ: <strong>цифровой сертификат</strong>. Это документ, который связывает доменное
+                    имя с публичным ключом и подписан доверенной стороной - <strong>центром сертификации</strong>
+                    (Certificate Authority, CA).</p>
+
+                <p>Сертификат - это файл в формате <strong>X.509</strong>, который содержит:</p>
+
+                <ul>
+                    <li><strong>Доменное имя</strong>, для которого он выдан (<code>example.com</code>).</li>
+                    <li><strong>Публичный ключ</strong> сервера.</li>
+                    <li><strong>Срок действия</strong> (обычно 90 дней или год).</li>
+                    <li><strong>Информацию о владельце</strong> - организацию, страну.</li>
+                    <li><strong>Подпись центра сертификации</strong>, которая подтверждает, что всё
+                        это проверено и заверено.</li>
+                </ul>
+
+                <p>Аналогия простая: сертификат - это как паспорт. В нём написано имя (домен), фотография
+                    (публичный ключ) и печать государства (подпись CA). Без печати паспорт недействителен -
+                    точно так же и сертификат без подписи CA никем не признаётся.</p>
+
+                <h3>Цепочка доверия</h3>
+
+                <p>Но тут возникает следующий вопрос: как браузер узнаёт, какие CA заслуживают доверия?
+                    Не может же он проверить каждого в мире.</p>
+
+                <p>Решение - <strong>иерархия сертификатов</strong>, которая называется «цепочка доверия»
+                    (chain of trust). Работает она так:</p>
+
+                <ol>
+                    <li>В браузере <strong>заранее установлен список корневых сертификатов</strong>
+                        от доверенных CA. Этот список - вшитый в браузер набор доверенных источников.
+                        Они называются <strong>корневыми</strong> (root CA).</li>
+                    <li>Корневой CA <strong>подписывает сертификаты промежуточных CA</strong> -
+                        организаций, которые тоже имеют право выдавать сертификаты.</li>
+                    <li>Промежуточный CA <strong>подписывает сертификаты сайтов</strong>.</li>
+                    <li>Браузер проверяет всю цепочку: от сертификата сайта до одного из корневых
+                        сертификатов, которым он доверяет.</li>
+                </ol>
+
+                <p>Аналогия с подписью нотариуса: есть главный нотариус (корневой CA), которого
+                    государство назначило. Он может обучить и назначить других нотариусов
+                    (промежуточные CA). Те, в свою очередь, заверяют документы обычных людей
+                    (сертификаты сайтов). Если вы доверяете главному нотариусу - доверяете и всей
+                    цепочке.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Почему промежуточные?
+                    </div>
+                    <p>Если бы корневой CA подписывал сертификаты сайтов напрямую, то в случае компромата
+                        на любой сайт пришлось бы отзывать весь корневой сертификат - а это отключило бы
+                        HTTPS на миллионах других сайтов. Промежуточные CA решают эту проблему: если
+                        скомпрометирован промежуточный - отзывают только его, а корневой остаётся.</p>
+                </div>
+
+                <h2>Как работает рукопожатие TLS</h2>
+
+                <p>Теперь самое интересное - <strong>TLS-рукопожатие</strong> (TLS handshake). Это
+                    процесс, во время которого клиент и сервер договариваются о параметрах соединения,
+                    проверяют сертификат и генерируют сессионные ключи.</p>
+
+                <p>Разберём его по шагам - так, как это происходит в реальности.</p>
+
+                <h3>Шаг 1. Client Hello</h3>
+
+                <p>Клиент (браузер) отправляет серверу сообщение <strong>Client Hello</strong>. В нём:</p>
+
+                <ul>
+                    <li>Список поддерживаемых версий TLS.</li>
+                    <li>Список поддерживаемых шифров (алгоритмов шифрования).</li>
+                    <li>Случайное число (<code>client_random</code>), которое будет использоваться
+                        для генерации сессионных ключей.</li>
+                    <li>Доменное имя сайта, к которому подключается (SNI extension).</li>
+                </ul>
+
+                <p>Звучит так: «Привет! Я поддерживаю вот такие версии и вот такие алгоритмы. Вот
+                    моё случайное число. Я хочу поговорить с <code>example.com</code>».</p>
+
+                <h3>Шаг 2. Server Hello</h3>
+
+                <p>Сервер выбирает из предложенного списка подходящие параметры и отправляет
+                    <strong>Server Hello</strong>:
+                </p>
+
+                <ul>
+                    <li>Выбранная версия TLS.</li>
+                    <li>Выбранный набор шифров.</li>
+                    <li>Своё случайное число (<code>server_random</code>).</li>
+                </ul>
+
+                <p>Звучит так: «Понял тебя. Будем использовать TLS 1.3 и вот такой набор алгоритмов.
+                    Вот моё случайное число».</p>
+
+                <h3>Шаг 3. Сертификат сервера</h3>
+
+                <p>Сервер отправляет клиенту свой <strong>сертификат</strong> (или цепочку сертификатов).
+                    Клиент проверяет его:</p>
+
+                <ul>
+                    <li>Совпадает ли домен в сертификате с тем, куда он подключается?</li>
+                    <li>Не истёк ли срок действия?</li>
+                    <li>Подписан ли сертификат доверенным CA?</li>
+                    <li>Не отозван ли сертификат (проверка через OCSP или CRL)?</li>
+                </ul>
+
+                <p>Если хотя бы один пункт не проходит - браузер покажет предупреждение: «Подключение
+                    не защищено» или «Сертификат недействителен».</p>
+
+                <h3>Шаг 4. Обмен ключами</h3>
+
+                <p>После проверки сертификата клиент и сервер должны <strong>договориться о сессионном
+                        ключе</strong> - симметричном ключе, которым будут шифроваться все дальнейшие данные.</p>
+
+                <p>В TLS 1.2 это происходило так: клиент генерировал случайное число (pre-master secret),
+                    шифровал его публичным ключом сервера и отправлял. Сервер расшифровывал своим приватным
+                    ключом. Обе стороны использовали это число для генерации сессионного ключа.</p>
+
+                <p>В TLS 1.3 используется более современный подход - <strong>обмен ключами Диффи-Хеллмана
+                        на эллиптических кривых (ECDHE)</strong>. Это сложный математический протокол, но суть
+                    проста: обе стороны обмениваются <em>публичными</em> значениями и на их основе
+                    независимо вычисляют <em>общий секрет</em>, который никто со стороны не может
+                    вычислить.</p>
+
+                <h3>Шаг 5. Проверка и завершение рукопожатия</h3>
+
+                <p>Обе стороны отправляют сообщение <strong>Finished</strong> - хеш всех предыдущих
+                    сообщений рукопожатия, зашифрованный сессионным ключом. Если хеши совпадают -
+                    значит, рукопожатие прошло корректно и никто не подменил сообщения по дороге.</p>
+
+                <p>После этого соединение готово. Клиент и сервер обмениваются данными, зашифрованными
+                    симметричным ключом.</p>
+
+                <h2>TLS 1.2 vs TLS 1.3: что изменилось</h2>
+
+                <p>Самые распространённые сегодня версии - TLS 1.2 и TLS 1.3. Вторая - новее и лучше
+                    почти во всём. Вот ключевые различия:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Критерий</th>
+                            <th>TLS 1.2</th>
+                            <th>TLS 1.3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Раундов рукопожатия</td>
+                            <td>2</td>
+                            <td><strong>1</strong></td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Скорость</td>
+                            <td>Медленнее</td>
+                            <td><strong>Заметно быстрее</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Устаревшие алгоритмы</td>
+                            <td>Поддерживаются</td>
+                            <td>Убраны</td>
+                        </tr>
+                        <tr>
+                            <td>Шифрование рукопожатия</td>
+                            <td>Частичное</td>
+                            <td>Почти всё зашифровано</td>
+                        </tr>
+                        <tr>
+                            <td>Forward Secrecy</td>
+                            <td>Опционально</td>
+                            <td><strong>Обязательно</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>TLS 1.3 сократил количество раундов рукопожатия с двух до одного. Это значит, что
+                    соединение устанавливается быстрее. Плюс из TLS убрали устаревшие и небезопасные
+                    алгоритмы (RC4, SHA-1, MD5, RSA key exchange), которые в TLS 1.2 ещё можно было
+                    включить.</p>
+
+                <h3>Forward Secrecy</h3>
+
+                <p>Отдельно стоит сказать про <strong>Forward Secrecy</strong> (прямая секретность).
+                    Это свойство, которое гарантирует: даже если злоумышленник украдёт долгосрочный
+                    приватный ключ сервера <em>сегодня</em>, он не сможет расшифровать <em>прошлые</em>
+                    сессии, записанные ранее.</p>
+
+                <p>Как это работает: в TLS 1.3 сессионные ключи генерируются с использованием
+                    эфемерных (временных) ключей Диффи-Хеллмана. Эти временные ключи уничтожаются
+                    после завершения сессии. Украденный приватный ключ сервера не даёт возможности
+                    восстановить их - а значит, и расшифровать прошлые разговоры.</p>
+
+                <p>В TLS 1.2 forward secrecy был опциональным - зависел от выбранного набора шифров.
+                    В TLS 1.3 он обязателен всегда.</p>
+
+                <h2>Типы сертификатов: DV, OV, EV</h2>
+
+                <p>Сертификаты бывают разных типов - в зависимости от того, насколько тщательно CA
+                    проверяет владельца сайта перед выдачей.</p>
+
+                <h3>DV (Domain Validation)</h3>
+
+                <p>Проверяется только <strong>владение доменом</strong>. CA проверяет, что вы
+                    действительно контролируете домен - например, просит разместить файл по
+                    определённому адресу или добавить DNS-запись. Никаких проверок организации,
+                    юридического адреса, паспорта владельца - ничего.</p>
+
+                <p>Плюсы: очень быстро и бесплатно (Let's Encrypt выдаёт именно такие). Минусы:
+                    не подтверждает, что за сайтом стоит реальная компания.</p>
+
+                <h3>OV (Organization Validation)</h3>
+
+                <p>Проверяется <strong>и домен, и организация</strong>. CA запрашивает документы,
+                    подтверждающие существование компании, её юридический адрес, контактные данные.
+                    Только после проверки выдаёт сертификат.</p>
+
+                <p>Плюсы: выше уровень доверия. Минусы: дороже и дольше оформляется.</p>
+
+                <h3>EV (Extended Validation)</h3>
+
+                <p>Самый строгий тип. Помимо домена и организации, CA проверяет <strong>юридическое
+                        право компании</strong> на работу, запрашивает дополнительные документы, иногда
+                    проводит проверку на месте.</p>
+
+                <p>Раньше браузеры показывали для EV-сертификатов зелёную адресную строку с названием
+                    компании. Сейчас эту практику убрали - все HTTPS-сайты выглядят одинаково
+                    (замок). Но EV по-прежнему используется для сайтов с высокими требованиями к
+                    доверию - банков, госуслуг.</p>
+
+                <h2>Отзыв сертификатов</h2>
+
+                <p>Что делать, если приватный ключ сервера украли или сайт скомпрометирован?
+                    Сертификат нужно <strong>отозвать</strong> - объявить его недействительным до
+                    истечения срока действия.</p>
+
+                <p>Есть два основных способа проверки отзыва:</p>
+
+                <h3>CRL (Certificate Revocation List)</h3>
+
+                <p>CA публикует список отозванных сертификатов. Браузер скачивает этот список и
+                    проверяет, нет ли в нём сертификата сайта. Минус: списки огромные и быстро
+                    устаревают.</p>
+
+                <h3>OCSP (Online Certificate Status Protocol)</h3>
+
+                <p>Браузер отправляет запрос CA: «Этот сертификат ещё действителен?». CA отвечает
+                    «да» или «нет». Быстрее, чем CRL, но добавляет задержку.</p>
+
+                <p>Есть также <strong>OCSP Stapling</strong>: сервер сам запрашивает у CA статус
+                    своего сертификата и прикрепляет («пристёгивает») ответ к рукопожатию. Это
+                    быстрее для клиента и приватнее - не нужно обращаться к CA напрямую.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Let's Encrypt и автоматизация
+                    </div>
+                    <p>В 2015 году появился проект <strong>Let's Encrypt</strong> - бесплатный CA,
+                        который автоматизировал выдачу сертификатов через протокол ACME. До этого
+                        сертификаты были платными и требовали ручной настройки. Let's Encrypt
+                        сделал HTTPS доступным для всех - сегодня более 80% сайтов в интернете
+                        используют HTTPS, во многом благодаря этому проекту.</p>
+                </div>
+
+                <h2>Что такое SNI и зачем он нужен</h2>
+
+                <p>Есть одна тонкость, которую стоит знать. Когда вы подключаетесь к сайту по HTTPS,
+                    серверу нужно знать, <strong>какой именно сайт</strong> вы запрашиваете - ведь на
+                    одном IP-адресе может быть несколько сайтов.</p>
+
+                <p>Для этого используется <strong>SNI (Server Name Indication)</strong> - расширение
+                    TLS, которое позволяет клиенту указать доменное имя прямо в первом сообщении
+                    рукопожатия (Client Hello).</p>
+
+                <p>Раньше без SNI было невозможно размещать несколько HTTPS-сайтов на одном
+                    IP-адресе. SNI решил эту проблему. Но у него есть недостаток: имя сайта
+                    передаётся <em>в открытом виде</em> - даже в TLS 1.3.</p>
+
+                <p>В 2023 году появилось расширение <strong>ECH (Encrypted Client Hello)</strong>,
+                    которое шифрует SNI. Оно ещё не получило массового распространения, но это
+                    шаг вперёд для приватности.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>HTTPS</code>
+                        <span>HTTP + TLS: шифрование, аутентификация, целостность</span>
+                    </li>
+                    <li>
+                        <code>TLS</code>
+                        <span>современный протокол защиты транспорта</span>
+                    </li>
+                    <li>
+                        <code>Сертификат</code>
+                        <span>документ, связывающий домен и публичный ключ</span>
+                    </li>
+                    <li>
+                        <code>CA</code>
+                        <span>центр сертификации, подписывает сертификаты</span>
+                    </li>
+                    <li>
+                        <code>Chain of Trust</code>
+                        <span>цепочка доверия от сайта до корневого CA</span>
+                    </li>
+                    <li>
+                        <code>TLS Handshake</code>
+                        <span>процесс установления защищённого соединения</span>
+                    </li>
+                    <li>
+                        <code>TLS 1.3</code>
+                        <span>быстрее и безопаснее TLS 1.2</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ситуации, связанные с HTTPS и сертификатами.</p>
+
+                <ul>
+                    <li><strong>«Браузер пишет, что сертификат недействителен. Что делать?»</strong>
+                        Не игнорируйте предупреждение. Это может быть истёкший сертификат (тогда сайт
+                        сам виноват), а может - атака MITM (тогда за вас пытаются выдать поддельный
+                        сайт). Нажмите «Дополнительно» и посмотрите детали. Если сайт важный
+                        (банк, почта) - закройте и не вводите ничего.</li>
+                    <li><strong>«Замок есть, но браузер всё равно пишет "Не защищено"».</strong>
+                        Это может быть смешанное содержимое (mixed content): сайт загружается по
+                        HTTPS, но какие-то элементы - по HTTP. Это ослабляет защиту. Современные
+                        браузеры блокируют такие элементы или помечают страницу как небезопасную.</li>
+                    <li><strong>«Почему сайт без HTTPS, но браузер не ругается?»</strong>
+                        Если сайт работает по HTTP, современные браузеры показывают «Не защищено»
+                        в адресной строке. Не вводите там пароли, данные карт, личную информацию.</li>
+                    <li><strong>«Сертификат Let's Encrypt - это безопасно?»</strong> Да, это
+                        полноценный DV-сертификат. Разница только в типе проверки: Let's Encrypt
+                        проверяет владение доменом, а не организацию. Для 99% сайтов этого
+                        достаточно.</li>
+                    <li><strong>«Что значит "самоподписанный сертификат"?»</strong> Это сертификат,
+                        который сайт выдал сам себе, без участия CA. Браузеры таким не доверяют по
+                        умолчанию и показывают предупреждение. Самоподписанные сертификаты используют
+                        для внутренних систем, тестовых сред, локальной разработки.</li>
+                    <li><strong>«TLS 1.0 и 1.1 ещё можно использовать?»</strong> Нет. Эти версии
+                        устарели и содержат уязвимости. Все современные сайты должны поддерживать
+                        минимум TLS 1.2, а лучше - только TLS 1.3.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание концепций, вторые две - на практику
+                    с реальным браузером.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Цепочка доверия</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Расположите элементы цепочки доверия в правильном
+                                порядке - от самого нижнего уровня к самому верхнему.</p>
+                            <ul>
+                                <li>Промежуточный CA</li>
+                                <li>Сертификат сайта</li>
+                                <li>Корневой CA</li>
+                            </ul>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните аналогию с нотариусами. Кто кого назначает и кто
+                                        кого подписывает?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Правильный порядок - снизу вверх:</p>
+                                    <ol>
+                                        <li><strong>Сертификат сайта</strong> - нижний уровень.
+                                            Его подписывает промежуточный CA.</li>
+                                        <li><strong>Промежуточный CA</strong> - средний уровень.
+                                            Его сертификат подписывает корневой CA.</li>
+                                        <li><strong>Корневой CA</strong> - верхний уровень.
+                                            Его сертификат самоподписанный, и он заранее вшит
+                                            в браузер как доверенный.</li>
+                                    </ol>
+                                    <p>Браузер проверяет цепочку с конца: «Сертификат сайта подписан
+                                        промежуточным CA? Да. Промежуточный подписан корневым? Да.
+                                        Корневой в моём списке доверенных? Да. Всё в порядке».</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Что покажет браузер</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой ситуации определите, что покажет браузер
+                                и почему.</p>
+                            <ol>
+                                <li>Сайт использует HTTPS с сертификатом от Let's Encrypt.</li>
+                                <li>Сайт использует HTTP.</li>
+                                <li>Сайт использует HTTPS с истёкшим сертификатом.</li>
+                                <li>Сайт использует HTTPS с самоподписанным сертификатом.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для каждого случая подумайте: прошёл ли сертификат проверку?
+                                        Доверяет ли браузер CA, который его выдал? Не истёк ли
+                                        срок?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Замок, «Защищено».</strong> Let's Encrypt -
+                                            доверенный CA, сертификат действителен, всё в порядке.</li>
+                                        <li><strong>«Не защищено» красным.</strong> HTTP - нет
+                                            шифрования, нет сертификата. Современные браузеры
+                                            помечают такие сайты предупреждением.</li>
+                                        <li><strong>«Подключение не защищено» или
+                                                «Сертификат недействителен».</strong> Браузер не
+                                            пропустит вас дальше без явного подтверждения.
+                                            Истёкший сертификат означает, что владелец сайта
+                                            вовремя его не продлил - доверять такому сайту
+                                            рискованно.</li>
+                                        <li><strong>«Подключение не защищено. Этот сертификат
+                                                не является доверенным».</strong> Самоподписанный
+                                            сертификат не подписан доверенным CA. Браузер не
+                                            может подтвердить, что сайт - тот, за кого себя
+                                            выдаёт. Для внутренних систем это нормально, для
+                                            публичных сайтов - подозрительно.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Посмотрите сертификат</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Зайдите на любой HTTPS-сайт и посмотрите информацию
+                                о его сертификате. В Chrome это делается через «Настройки сайта»
+                                (нажмите на замок в адресной строке). В Firefox - нажмите
+                                на замок, потом «Подробнее».</p>
+                            <p>Ответьте на вопросы:</p>
+                            <ol>
+                                <li>Кто выдал сертификат (кто CA)?</li>
+                                <li>Какой тип сертификата (DV, OV, EV)?</li>
+                                <li>Когда истекает срок действия?</li>
+                                <li>Какой алгоритм подписи (SHA-256, SHA-384 и т.д.)?</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Попробуйте посмотреть на разных сайтах. Сравните сертификат
+                                        крупного сервиса (Google, банк) и небольшого сайта.
+                                        Разница будет заметна.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Что вы увидите:</p>
+                                    <ul>
+                                        <li><strong>CA:</strong> Для большинства современных
+                                            сайтов это Let's Encrypt (DV), для крупных компаний
+                                            - DigiCert, GlobalSign, Sectigo и другие.</li>
+                                        <li><strong>Тип:</strong> Большинство сайтов используют
+                                            DV (Let's Encrypt и аналоги). Банки и госструктуры
+                                            - OV или EV.</li>
+                                        <li><strong>Срок:</strong> Let's Encrypt выдаёт
+                                            сертификаты на 90 дней и автоматически их
+                                            обновляет. Платные CA - на год или два.</li>
+                                        <li><strong>Алгоритм:</strong> Чаще всего SHA-256.
+                                            Для EV-сертификатов может быть SHA-384.</li>
+                                    </ul>
+                                    <p>Это упражнение помогает понять, что «замок в адресной строке»
+                                        - не магия, а конкретный сертификат с конкретными полями,
+                                        которые можно посмотреть.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. HTTPS и фишинг</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вспомните урок про фишинг. Мошенники всё чаще
+                                используют HTTPS на своих поддельных сайтах - сертификат
+                                Let's Encrypt получить легко и бесплатно. Объясните, почему
+                                HTTPS-замок <strong>не гарантирует</strong>, что сайт настоящий.
+                                Что нужно проверять помимо замка?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте, что проверяет сертификат. Он подтверждает, что
+                                        вы говорите с владельцем домена <code>example.com</code>.
+                                        Но подтверждает ли он, что <code>example.com</code> -
+                                        это <em>тот самый</em> сайт, который вам нужен?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>HTTPS-замок гарантирует только то, что соединение зашифровано
+                                        и что вы говорите с владельцем <em>этого конкретного
+                                            домена</em>. Он не гарантирует, что домен - настоящий.</p>
+                                    <p>Пример: мошенники создали сайт <code>sberbank-online.ru</code>.
+                                        Они получили на него сертификат Let's Encrypt. HTTPS работает,
+                                        замок есть. Но домен не имеет отношения к Сбербанку.</p>
+                                    <p>Что нужно проверять помимо замка:</p>
+                                    <ul>
+                                        <li><strong>Точный домен.</strong>
+                                            <code>sberbank.ru</code> - настоящий,
+                                            <code>sberbank-online.ru</code> - фишинг.
+                                        </li>
+                                        <li><strong>Источник перехода.</strong> Если вы пришли
+                                            по ссылке из письма - это красный флаг. Лучше открыть
+                                            сайт вручную.</li>
+                                        <li><strong>Обращение.</strong> Настоящие сервисы
+                                            обращаются по имени. Фишинговые - «Уважаемый
+                                            клиент».</li>
+                                        <li><strong>Запрашиваемые данные.</strong> Если сайт
+                                            просит пароль от почты или данные карты там, где
+                                            это не нужно - это подозрительно.</li>
+                                    </ul>
+                                    <p>Вывод: HTTPS - это необходимо, но недостаточно. Замок
+                                        защищает от перехвата, но не от того, что вы сами
+                                        перешли на поддельный сайт.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с HTTPS и TLS - технологией, которая защищает каждое ваше соединение
+                    с интернетом. Узнали, что HTTPS - это HTTP, обёрнутый в TLS, и что TLS решает три
+                    задачи: шифрование, аутентификация и целостность.</p>
+
+                <p>Разобрались с <strong>сертификатами</strong> - «паспортами» сайтов, которые
+                    связывают домен с публичным ключом и подписываются доверенным CA. Поняли, как
+                    работает <strong>цепочка доверия</strong> от сертификата сайта через промежуточный
+                    CA до корневого, вшитого в браузер. Прошли по шагам <strong>TLS-рукопожатия</strong>,
+                    во время которого клиент и сервер договариваются о параметрах, проверяют сертификат
+                    и генерируют сессионные ключи.</p>
+
+                <p>Узнали, чем отличается <strong>TLS 1.3</strong> от TLS 1.2: быстрее, безопаснее,
+                    с обязательным Forward Secrecy. Разобрали типы сертификатов - DV, OV, EV - и
+                    способы проверки отзыва (CRL и OCSP). И поняли главное: HTTPS защищает от перехвата,
+                    но не от фишинга - замок не гарантирует, что сайт настоящий.</p>
+
+                <p>В следующем уроке мы займёмся <strong>уязвимостями веб-приложений</strong> -
+                    разберём SQL-инъекции и XSS. Это атаки, которые используют ошибки в коде сайтов.
+                    Мы посмотрим, как они работают, почему появляются и как разработчики от них
+                    защищаются.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-08.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-10.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

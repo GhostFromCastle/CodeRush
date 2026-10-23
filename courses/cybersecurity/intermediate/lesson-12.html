@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аутентификация и сессии - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="intermediate" data-lesson-id="lesson-12">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 12</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson active" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Аутентификация и сессии: как сервер узнаёт вас</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Это финальный урок среднего уровня. Мы прошли шифрование, хеширование, HTTPS,
+                    уязвимости веб-приложений и DDoS. Остался последний крупный блок - понять, что
+                    происходит, когда вы <strong>входите в аккаунт</strong>.</p>
+
+                <p>Вы вводите логин и пароль, нажимаете «Войти» - и сайт вас узнаёт. Но как? Как
+                    сервер понимает, что следующий запрос от вашего браузера - это именно вы, а
+                    не кто-то другой? Как он отличает вас от другого пользователя, зашедшего
+                    в ту же секунду? Ответ на эти вопросы - <strong>аутентификация и
+                        управление сессиями</strong>. Без этого не работает ни один сайт с
+                    логином.</p>
+
+                <h2>Аутентификация и авторизация: важное различие</h2>
+
+                <p>Прежде чем говорить о механизмах, разберёмся с терминами. Их часто путают,
+                    хотя это разные вещи.</p>
+
+                <ul>
+                    <li><strong>Аутентификация</strong> (authentication) отвечает на вопрос
+                        «Кто ты?». Это проверка личности. Когда вы вводите логин и пароль -
+                        вы <em>аутентифицируетесь</em>.</li>
+                    <li><strong>Авторизация</strong> (authorization) отвечает на вопрос
+                        «Что тебе можно?». Это проверка прав. Админ может удалять пользователей,
+                        обычный пользователь - нет. Это <em>авторизация</em>.</li>
+                </ul>
+
+                <p>Аналогия с офисом. Аутентификация - это когда охранник на входе проверяет
+                    ваш пропуск и убеждается, что вы - сотрудник. Авторизация - это когда
+                    вы пытаетесь войти в серверную, а система смотрит, есть ли у вас туда
+                    доступ. Пройти аутентификацию можно, но это не даёт права зайти куда
+                    угодно.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Простая мнемоника
+                    </div>
+                    <p><strong>Аутентификация</strong> - «кто ты». Проверяется <em>один раз</em>,
+                        при входе.<br>
+                        <strong>Авторизация</strong> - «что тебе можно». Проверяется <em>при
+                            каждом действии</em>.<br>
+                        Сначала аутентификация, потом - авторизация.
+                    </p>
+                </div>
+
+                <h2>Проблема: HTTP не помнит вас</h2>
+
+                <p>Вот главная сложность. HTTP - протокол <strong>без состояния</strong>
+                    (stateless). Это означает, что каждый запрос независим. Сервер не
+                    помнит, что вы делали секунду назад.</p>
+
+                <p>Вы отправили логин и пароль - сервер вас проверил. Запрос завершён.
+                    Через секунду браузер отправляет следующий запрос (например, «покажи
+                    мою страницу профиля»). И этот запрос приходит как новый, без какого-либо
+                    контекста. Сервер не знает, что это тот же пользователь, что и минуту
+                    назад.</p>
+
+                <p>Как быть? Как заставить сервер «помнить» вас между запросами? Есть
+                    несколько подходов, и они называются <strong>управлением сессиями</strong>.</p>
+
+                <h2>Session ID: пропуск на время работы</h2>
+
+                <p>Классический подход, который использовался с самого начала веба и
+                    используется до сих пор. Идея такая:</p>
+
+                <ol>
+                    <li>Вы входите с логином и паролем. Сервер проверяет их.</li>
+                    <li>Если всё верно - генерирует <strong>уникальный идентификатор
+                            сессии</strong> (session ID) - большую случайную строку.</li>
+                    <li>Сервер сохраняет у себя: «session ID <code>abc123...</code>
+                        принадлежит пользователю <code>alexey</code>».</li>
+                    <li>Отправляет session ID браузеру в виде <strong>cookie</strong>.</li>
+                    <li>Браузер при каждом следующем запросе автоматически отправляет
+                        этот cookie обратно.</li>
+                    <li>Сервер смотрит на session ID, находит пользователя и понимает:
+                        «А, это снова Алексей».</li>
+                </ol>
+
+                <p>Так работает почти весь интернет: интернет-магазины, соцсети, форумы,
+                    банковские приложения.</p>
+
+                <p>Аналогия с гардеробом. Вы сдаёте пальто и получаете номерок. Пока вы
+                    внутри - вас узнают по номерку, а не по имени. Потеряли номерок -
+                    пальто не вернут.</p>
+
+                <h3>Как выглядит cookie</h3>
+
+                <p>Технически cookie - это небольшая текстовая строка, которую сервер
+                    отправляет браузеру в заголовке <code>Set-Cookie</code>. Выглядит
+                    примерно так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Set-Cookie: session_id=abc123xyz789;</span><span class="code-row">            HttpOnly; Secure; SameSite=Lax;</span><span class="code-row">            Path=/; Max-Age=3600</span></code></pre>
+
+                <p>Разберём флаги:</p>
+
+                <ul>
+                    <li><code>session_id=abc123xyz789</code> - имя cookie и его значение
+                        (сам идентификатор).</li>
+                    <li><code>HttpOnly</code> - cookie недоступна для JavaScript.
+                        Это защита от XSS (урок 10).</li>
+                    <li><code>Secure</code> - cookie передаётся только по HTTPS.</li>
+                    <li><code>SameSite=Lax</code> - cookie не отправляется при переходах
+                        с чужих сайтов (защита от CSRF-атак).</li>
+                    <li><code>Max-Age=3600</code> - срок жизни cookie в секундах.
+                        Через час сессия истечёт.</li>
+                </ul>
+
+                <h2>Что хранится на сервере</h2>
+
+                <p>Важно понимать: при сессионном подходе <strong>вся информация о
+                        пользователе хранится на сервере</strong>. Cookie содержит только
+                    случайный идентификатор - и ничего больше. Если кто-то украдёт этот
+                    идентификатор, он увидит только строку символов, но не пароль и
+                    не личные данные.</p>
+
+                <p>Сервер, получив session ID, идёт в своё хранилище (память, файл, база
+                    данных, Redis) и смотрит: «Кому принадлежит эта сессия? Какие у
+                    пользователя права? Когда истекает срок?».</p>
+
+                <p>Это безопаснее и гибче, чем хранить всё в cookie. Но и требует
+                    серверной инфраструктуры: при большом количестве пользователей
+                    нужно быстро находить сессии.</p>
+
+                <h2>Альтернатива: токены (JWT)</h2>
+
+                <p>В последние годы всё большую популярность набирает другой подход -
+                    <strong>токены</strong>. Самый известный тип - <strong>JWT</strong>
+                    (JSON Web Token).
+                </p>
+
+                <p>Идея такая же: после входа сервер выдаёт вам строку-токен, и вы
+                    отправляете её при каждом запросе. Но есть важное отличие: <strong>сервер
+                        не хранит состояние токена</strong>. Вся информация о пользователе
+                    закодирована <em>внутри</em> самого токена.</p>
+
+                <h3>Структура JWT</h3>
+
+                <p>JWT состоит из трёх частей, разделённых точками:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">header.payload.signature</span></code></pre>
+
+                <ul>
+                    <li><strong>Header</strong> - информация об алгоритме подписи.</li>
+                    <li><strong>Payload</strong> - данные о пользователе: id, имя, роль,
+                        время выдачи, время истечения.</li>
+                    <li><strong>Signature</strong> - подпись, которая гарантирует, что
+                        токен не был изменён.</li>
+                </ul>
+
+                <p>Клиент отправляет JWT серверу при каждом запросе (обычно в заголовке
+                    <code>Authorization: Bearer ...</code>). Сервер проверяет подпись
+                    секретным ключом - и если она валидна, доверяет содержимому.
+                </p>
+
+                <h3>Плюсы и минусы JWT</h3>
+
+                <p><strong>Плюсы:</strong></p>
+                <ul>
+                    <li>Серверу не нужно хранить состояние - токен самодостаточен.</li>
+                    <li>Легко масштабируется на много серверов: каждый может проверить
+                        подпись независимо.</li>
+                    <li>Удобно для API и мобильных приложений.</li>
+                </ul>
+
+                <p><strong>Минусы:</strong></p>
+                <ul>
+                    <li>Нельзя мгновенно «отозвать» токен - пока он действителен,
+                        он действителен везде.</li>
+                    <li>Если payload большой - токен тоже большой, каждый запрос
+                        его таскает.</li>
+                    <li>Если злоумышленник украл токен - он получил доступ
+                        до истечения срока.</li>
+                    <li>Сложнее в реализации: легко сделать ошибку в проверке
+                        подписи.</li>
+                </ul>
+
+                <p>Именно поэтому классические сессии всё ещё живы и не собираются
+                    уходить. Оба подхода имеют свою нишу.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Что выбрать
+                    </div>
+                    <p>Для классического веб-приложения с формами и страницами (интернет-магазин,
+                        соцсеть) - сессии. Для API, мобильных приложений, микросервисов -
+                        JWT. Многие проекты используют комбинацию: сессии для интерфейса,
+                        токены для API.</p>
+                </div>
+
+                <h2>Уязвимости сессий</h2>
+
+                <p>Раз механизм сессий критичен для безопасности - он и является частой
+                    целью атак. Разберём основные уязвимости.</p>
+
+                <h3>Session Hijacking (угон сессии)</h3>
+
+                <p>Самый распространённый сценарий. Злоумышленник крадёт session ID
+                    жертвы - и использует его от своего имени. С точки зрения сервера
+                    он выглядит как обычный пользователь: правильный session ID, значит,
+                    сессия валидна.</p>
+
+                <p>Как крадут session ID:</p>
+
+                <ul>
+                    <li><strong>Через XSS.</strong> Внедрённый на сайт скрипт читает
+                        cookie и отправляет злоумышленнику. Защита - флаг
+                        <code>HttpOnly</code>.
+                    </li>
+                    <li><strong>Через перехват трафика.</strong> Если сайт использует
+                        HTTP - session ID передаётся в открытом виде. Защита -
+                        HTTPS + флаг <code>Secure</code>.</li>
+                    <li><strong>Через заражённое устройство.</strong> Вредоносное
+                        ПО на компьютере читает cookie прямо из браузера. Здесь
+                        помогает только чистота устройства.</li>
+                    <li><strong>Через подделку DNS.</strong> Перенаправление
+                        пользователя на поддельный сайт, где он «логинится»,
+                        отдавая свой session ID злоумышленнику.</li>
+                </ul>
+
+                <p>Что делать пользователю: всегда проверять HTTPS, не заходить
+                    на важные сайты в публичных сетях без VPN, следить за чистотой
+                    устройства.</p>
+
+                <p>Что делать разработчику: обязательно флаги <code>HttpOnly</code>
+                    и <code>Secure</code>, только HTTPS, привязка сессии к IP
+                    или User-Agent (с осторожностью), короткий срок жизни.</p>
+
+                <h3>Session Fixation (фиксация сессии)</h3>
+
+                <p>Более тонкая атака. Злоумышленник <strong>заранее создаёт
+                        session ID</strong>, заставляет жертву использовать именно
+                    его - и потом сам пользуется этим ID.</p>
+
+                <p>Схема такая:</p>
+
+                <ol>
+                    <li>Злоумышленник заходит на сайт и получает session ID
+                        (например, <code>abc123</code>).</li>
+                    <li>Как-то заставляет жертву перейти по ссылке с этим
+                        session ID (например, в URL: <code>?sessionid=abc123</code>).</li>
+                    <li>Жертва вводит логин и пароль. Сайт «привязывает» её аккаунт
+                        к уже существующей сессии <code>abc123</code>.</li>
+                    <li>Теперь злоумышленник знает session ID жертвы и может
+                        зайти под её аккаунтом.</li>
+                </ol>
+
+                <p>Защита: <strong>сервер должен генерировать новый session ID
+                        после успешного входа</strong>. Это стандартная практика.
+                    Если бы сервер делал так всегда - атака была бы невозможна.</p>
+
+                <h3>Session Sidejacking</h3>
+
+                <p>Кража cookie через незащищённое соединение. Особенно актуально
+                    на публичном Wi-Fi. Если сайт хотя бы частично работает по
+                    HTTP - session ID может «утечь» через открытый канал.</p>
+
+                <p>Защита: флаг <code>Secure</code> на cookie + HSTS-заголовок
+                    (который заставляет браузер использовать только HTTPS).</p>
+
+                <h3>Cross-Site Request Forgery (CSRF)</h3>
+
+                <p>Отдельная атака, связанная с сессиями. Суть: злоумышленник
+                    заставляет браузер жертвы отправить запрос на сайт, где
+                    она залогинена - и этот запрос автоматически будет содержать
+                    cookie.</p>
+
+                <p>Пример: жертва залогинена в банке. Злоумышленник присылает
+                    ей письмо с картинкой, ссылка которой ведёт на
+                    <code>bank.com/transfer?amount=10000&to=attacker</code>.
+                    Браузер автоматически отправит cookie банка, и перевод
+                    может выполниться.
+                </p>
+
+                <p>Защита - флаг <code>SameSite=Lax</code> или <code>Strict</code>
+                    на cookie. Он не даёт браузеру отправлять cookie при
+                    переходах с чужих сайтов.</p>
+
+                <h2>Как правильно устроить сессии</h2>
+
+                <p>Соберём в одном месте все практики, которые делают управление
+                    сессиями безопасным. Это то, что должен знать каждый
+                    разработчик.</p>
+
+                <h3>1. Случайный session ID достаточной длины</h3>
+
+                <p>Session ID должен быть криптографически стойким - не «1001»,
+                    не «user_123», а случайная строка минимум 128 бит. Обычно
+                    используют UUID или hex-строку длиной 32-64 символа. Слабые
+                    ID легко подобрать или предсказать.</p>
+
+                <h3>2. Флаги cookie</h3>
+
+                <p>Cookie сессии обязательно должна иметь:</p>
+
+                <ul>
+                    <li><strong>HttpOnly</strong> - защита от XSS.</li>
+                    <li><strong>Secure</strong> - только по HTTPS.</li>
+                    <li><strong>SameSite=Lax</strong> или <code>Strict</code> -
+                        защита от CSRF.</li>
+                </ul>
+
+                <p>Без этих флагов сессия становится уязвимой для нескольких типов
+                    атак сразу.</p>
+
+                <h3>3. Регенерация session ID после входа</h3>
+
+                <p>Как только пользователь успешно залогинился - старый session ID
+                    должен быть уничтожен, а новый сгенерирован. Это защита от
+                    Session Fixation.</p>
+
+                <p>Правило простое: <strong>любое изменение уровня привилегий -
+                        повод сменить session ID</strong>. Вход, выход, повышение роли -
+                    во всех этих случаях новая сессия.</p>
+
+                <h3>4. Короткое время жизни и timeout по бездействию</h3>
+
+                <p>Сессия не должна жить вечно. Разумные сроки:</p>
+
+                <ul>
+                    <li><strong>Absolute timeout.</strong> Максимальное время
+                        сессии независимо от активности. Например, 8 часов.
+                        Потом - принудительный logout.</li>
+                    <li><strong>Idle timeout.</strong> Время бездействия.
+                        Если пользователь не делал запросов 30 минут -
+                        сессия истекает.</li>
+                </ul>
+
+                <p>Для чувствительных систем (банк, госуслуги) - короче. Для
+                    обычных сайтов - длиннее.</p>
+
+                <h3>5. Правильный logout</h3>
+
+                <p>При выходе сессия должна быть <strong>уничтожена на
+                        сервере</strong>, а не просто удалена из cookie. Иначе,
+                    если session ID утёк раньше - злоумышленник всё ещё
+                    может им воспользоваться.</p>
+
+                <p>Плохо: удалить cookie на клиенте. Хорошо: удалить запись
+                    сессии из хранилища + удалить cookie.</p>
+
+                <h3>6. Хранение в защищённом месте</h3>
+
+                <p>Если сессии хранятся на сервере - в Redis, базе данных
+                    или другом защищённом хранилище. Не в открытых файлах,
+                    не в общедоступных директориях.</p>
+
+                <h2>Многофакторная аутентификация в связке с сессией</h2>
+
+                <p>Вспомним урок 3 про 2FA. Как это работает вместе с сессиями?</p>
+
+                <p>Обычно так:</p>
+
+                <ol>
+                    <li>Пользователь вводит логин и пароль.</li>
+                    <li>Сервер проверяет их - это первая ступень.</li>
+                    <li>Сервер не создаёт полноценную сессию, а выдаёт
+                        «полу-сессию» - временный токен, действительный
+                        только для прохождения второй ступени.</li>
+                    <li>Пользователь вводит код 2FA.</li>
+                    <li>Сервер проверяет код и только теперь создаёт
+                        полноценную сессию.</li>
+                </ol>
+
+                <p>Даже если злоумышленник украл пароль, он не сможет пройти
+                    вторую ступень - и полноценной сессии не получит.
+                    Именно поэтому 2FA так эффективна.</p>
+
+                <h2>Что видит разработчик</h2>
+
+                <p>Если вы разработчик - вот пример правильной инициализации
+                    сессии на Python с Flask:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from flask import session</span><span class="code-row">import secrets</span><span class="code-row"></span><span class="code-row"># После успешной проверки логина и пароля</span><span class="code-row">session["user_id"] = user.id</span><span class="code-row">session["login_time"] = time.time()</span><span class="code-row"></span><span class="code-row"># Настройки сессии</span><span class="code-row">app.config["SESSION_COOKIE_HTTPONLY"] = True</span><span class="code-row">app.config["SESSION_COOKIE_SECURE"] = True</span><span class="code-row">app.config["SESSION_COOKIE_SAMESITE"] = "Lax"</span><span class="code-row">app.config["PERMANENT_SESSION_LIFETIME"] = 3600</span></code></pre>
+
+                <p>Фреймворк сам генерирует session ID и управляет cookie.
+                    Разработчику остаётся правильно настроить флаги - что мы
+                    и видим в примере. <code>HttpOnly</code>, <code>Secure</code>,
+                    <code>SameSite=Lax</code>, время жизни 1 час.
+                </p>
+
+                <p>При выходе пользователя вызывается <code>session.clear()</code> -
+                    сессия уничтожается на сервере. Идеальный минимализм.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Аутентификация</code>
+                        <span>кто ты (один раз)</span>
+                    </li>
+                    <li>
+                        <code>Авторизация</code>
+                        <span>что можно (каждый раз)</span>
+                    </li>
+                    <li>
+                        <code>Session ID</code>
+                        <span>случайный идентификатор сессии</span>
+                    </li>
+                    <li>
+                        <code>HttpOnly</code>
+                        <span>защита cookie от JS</span>
+                    </li>
+                    <li>
+                        <code>Secure</code>
+                        <span>cookie только по HTTPS</span>
+                    </li>
+                    <li>
+                        <code>SameSite</code>
+                        <span>защита от CSRF</span>
+                    </li>
+                    <li>
+                        <code>Регенерация</code>
+                        <span>новый session ID после входа</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные заблуждения и проблемы.</p>
+
+                <ul>
+                    <li><strong>«Если я не выхожу из аккаунта, злоумышленник
+                            тоже не сможет».</strong> Наоборот - долгая сессия
+                        увеличивает окно атаки. Если session ID утёк, у
+                        злоумышленника больше времени им воспользоваться.
+                        Настраивайте idle timeout.</li>
+                    <li><strong>«Cookie - это небезопасно, лучше всё в URL».</strong>
+                        Нет, хуже. Session ID в URL попадает в логи сервера,
+                        в историю браузера, в заголовок Referer при переходах.
+                        Cookie с флагами - безопаснее.</li>
+                    <li><strong>«У меня на сайте HTTPS, cookie в безопасности».</strong>
+                        HTTPS защищает cookie в транзите, но не защищает
+                        от XSS на самом сайте. Если скрипт может читать
+                        cookie - HttpOnly обязателен.</li>
+                    <li><strong>«JWT безопаснее сессий».</strong> Не «безопаснее»,
+                        а «по-другому». У JWT свои сложности: легко ошибиться
+                        в проверке подписи, сложно отозвать токен. Оба подхода
+                        можно сделать безопасными или небезопасными.</li>
+                    <li><strong>«Сессии можно хранить в localStorage».</strong>
+                        Хранить session ID в localStorage - плохая идея.
+                        localStorage доступен любому JavaScript на странице,
+                        то есть уязвим к XSS. Cookie с HttpOnly - безопаснее.</li>
+                    <li><strong>«Достаточно проверять, что cookie есть».</strong>
+                        Недостаточно. Нужно проверять, что session ID
+                        валиден, не истёк, принадлежит текущему IP/браузеру
+                        (если применимо), и что пользователь имеет права
+                        на запрашиваемое действие.</li>
+                    <li><strong>«Раз пользователь залогинен, ему можно
+                            всё».</strong> Нет, это путаница аутентификации
+                        и авторизации. Залогиненный пользователь всё ещё
+                        не может открывать чужие аккаунты. Каждый запрос
+                        должен проверяться на права.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание концепций, вторые две -
+                    на размышление и разбор реальных ситуаций.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Аутентификация или авторизация</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Определите, что происходит в каждой ситуации -
+                                аутентификация или авторизация.</p>
+                            <ol>
+                                <li>Пользователь вводит логин и пароль.</li>
+                                <li>Сервер проверяет, что у пользователя есть права
+                                    администратора.</li>
+                                <li>Пользователь проходит проверку по коду из SMS.</li>
+                                <li>Сервер отклоняет попытку пользователя удалить чужой
+                                    комментарий.</li>
+                                <li>Сервер проверяет, что session ID валиден и не истёк.</li>
+                                <li>Сервер пропускает пользователя только к его собственным
+                                    сообщениям, но не к чужим.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Аутентификация - «кто ты». Авторизация -
+                                        «что тебе можно». Проверка session ID ближе
+                                        к аутентификации: она подтверждает, что
+                                        вы - тот, за кого себя выдаёте.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Аутентификация.</strong> Ввод
+                                            логина и пароля - классический способ
+                                            подтвердить, кто вы.</li>
+                                        <li><strong>Авторизация.</strong> Проверка
+                                            прав, что можно делать. Админ - это
+                                            роль, а не личность.</li>
+                                        <li><strong>Аутентификация.</strong> Второй
+                                            фактор - часть процесса подтверждения
+                                            личности.</li>
+                                        <li><strong>Авторизация.</strong> Сервер
+                                            проверяет, можно ли конкретному
+                                            пользователю выполнить конкретное
+                                            действие.</li>
+                                        <li><strong>Аутентификация.</strong>
+                                            Проверка валидности session ID -
+                                            это подтверждение, что запрос идёт
+                                            от уже аутентифицированного
+                                            пользователя.</li>
+                                        <li><strong>Авторизация.</strong> Даже
+                                            аутентифицированный пользователь
+                                            не может читать чужие данные. Это
+                                            про права доступа.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Что не так с этим кодом</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Разработчик написал такой код для
+                                управления сессией после входа. Найдите минимум четыре
+                                проблемы.</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row"># После успешной проверки пароля</span><span class="code-row">session_id = str(user.id)</span><span class="code-row"></span><span class="code-row">response.set_cookie(</span><span class="code-row">    "session", session_id</span><span class="code-row">)</span><span class="code-row"></span><span class="code-row"># Проверка при следующих запросах</span><span class="code-row">def is_logged_in(request):</span><span class="code-row">    return "session" in request.cookies</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Обратите внимание на: как генерируется session ID,
+                                        какие флаги у cookie, как проверяется
+                                        авторизация.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проблемы этого кода:</p>
+                                    <ol>
+                                        <li><strong>Session ID = user.id.</strong>
+                                            Это катастрофа. Злоумышленник легко
+                                            подберёт ID: 1, 2, 3... Он просто
+                                            подставит чужой ID и войдёт под чужим
+                                            аккаунтом. Session ID должен быть
+                                            случайным (128+ бит энтропии).</li>
+                                        <li><strong>Нет флага HttpOnly.</strong>
+                                            Cookie доступна для JavaScript. Если
+                                            на сайте есть XSS - session ID
+                                            украдут.</li>
+                                        <li><strong>Нет флага Secure.</strong>
+                                            Cookie передаётся и по HTTP, и по
+                                            HTTPS. На публичном Wi-Fi можно
+                                            перехватить.</li>
+                                        <li><strong>Нет флага SameSite.</strong>
+                                            Cookie отправится при переходах с
+                                            чужих сайтов - уязвимость к CSRF.</li>
+                                        <li><strong>Нет срока жизни.</strong>
+                                            Сессия бессрочная - утёкшая cookie
+                                            будет работать вечно.</li>
+                                        <li><strong>Проверка только на наличие
+                                                cookie.</strong> Сервер не проверяет,
+                                            валиден ли session ID. Любой может
+                                            подставить произвольное значение и
+                                            «войти».</li>
+                                    </ol>
+                                    <p>Правильно примерно так:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row"># Генерация криптостойкого ID</span><span class="code-row">session_id = secrets.token_urlsafe(32)</span><span class="code-row">sessions[session_id] = user.id</span><span class="code-row"></span><span class="code-row">response.set_cookie(</span><span class="code-row">    "session", session_id,</span><span class="code-row">    httponly=True,</span><span class="code-row">    secure=True,</span><span class="code-row">    samesite="Lax",</span><span class="code-row">    max_age=3600,</span><span class="code-row">)</span><span class="code-row"></span><span class="code-row"># Проверка</span><span class="code-row">def is_logged_in(request):</span><span class="code-row">    sid = request.cookies.get("session")</span><span class="code-row">    return sid in sessions</span></code></pre>
+                                    <p>Проверка теперь идёт по реальному хранилищу,
+                                        а не «есть cookie или нет».</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Сессия или JWT</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждого проекта выберите подходящий
+                                подход - классические сессии или JWT - и объясните
+                                почему.</p>
+                            <ol>
+                                <li>Интернет-магазин на классическом фреймворке с
+                                    формами и страницами.</li>
+                                <li>Мобильное приложение, которое общается с API.</li>
+                                <li>Микросервисная архитектура с десятком независимых
+                                    сервисов.</li>
+                                <li>Корпоративная система с высокими требованиями
+                                    к безопасности (банк).</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сессии хороши, когда нужен моментальный отзыв
+                                        и когда данные хранятся централизованно.
+                                        JWT удобны для распределённых систем и API,
+                                        но сложны с отзывом токенов.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Интернет-магазин - сессии.</strong>
+                                            Классический веб, состояние хранится
+                                            централизованно, легко управлять.
+                                            Фреймворк всё сделает сам.</li>
+                                        <li><strong>Мобильное приложение - JWT.</strong>
+                                            Мобильные клиенты не всегда
+                                            поддерживают cookie, а токен легко
+                                            хранить в защищённом хранилище
+                                            устройства. Плюс API не хранит
+                                            состояние - масштабируется.</li>
+                                        <li><strong>Микросервисы - JWT.</strong>
+                                            Каждый сервис может независимо
+                                            проверить подпись токена, не обращаясь
+                                            к общему хранилищу сессий. Это
+                                            упрощает архитектуру.</li>
+                                        <li><strong>Банк - сессии.</strong>
+                                            Несмотря на всю современность JWT,
+                                            в банках предпочитают сессии: можно
+                                            моментально разлогинить пользователя,
+                                            централизованно управлять безопасностью.
+                                            Для критичных систем это важнее
+                                            масштабируемости.</li>
+                                    </ol>
+                                    <p>Многие проекты используют комбинацию:
+                                        сессии для интерфейса пользователя,
+                                        JWT для API. Нет одного «правильного»
+                                        выбора - есть подходящий для конкретной
+                                        задачи.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Опасный сценарий</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы залогинились в интернет-магазин
+                                в кафе через публичный Wi-Fi. Заметили, что адрес
+                                сайта начинается с <code>http://</code> - без замка.
+                                Какие риски? Что делать?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните, как передаётся session ID
+                                        и что может сделать злоумышленник
+                                        в той же сети.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Риски высокие:</p>
+                                    <ul>
+                                        <li><strong>Перехват session ID.</strong>
+                                            По HTTP cookie передаётся в открытом
+                                            виде. Любой в той же Wi-Fi сети
+                                            может её перехватить и войти
+                                            в ваш аккаунт.</li>
+                                        <li><strong>Перехват пароля.</strong>
+                                            Если вы уже вошли, пароль мог
+                                            тоже утечь в момент входа.
+                                            Даже если вы не вводили его сейчас -
+                                            сессия, полученная по HTTP,
+                                            уже скомпрометирована.</li>
+                                        <li><strong>MITM-атака.</strong>
+                                            Злоумышленник может изменить
+                                            содержимое страниц прямо на лету.</li>
+                                    </ul>
+                                    <p>Что делать:</p>
+                                    <ol>
+                                        <li><strong>Немедленно выйти из
+                                                аккаунта</strong> и сменить пароль
+                                            с безопасного соединения (дома,
+                                            через мобильный интернет).</li>
+                                        <li><strong>Включить 2FA</strong> в
+                                            аккаунте, если ещё не включена.
+                                            Даже если пароль утёк - без второго
+                                            фактора не войдут.</li>
+                                        <li><strong>Проверить историю
+                                                входов</strong> - не заходил ли
+                                            кто-то ещё.</li>
+                                        <li><strong>В будущем</strong> -
+                                            не работать с важными сайтами в
+                                            публичных сетях. Если очень нужно -
+                                            только через VPN и только с сайтами,
+                                            которые используют HTTPS.</li>
+                                    </ol>
+                                    <p>Общее правило: <strong>если сайт просит
+                                            ввести пароль или данные карты по HTTP -
+                                            закройте его немедленно</strong>. Даже
+                                        если это любимый магазин. Никакая покупка
+                                        не стоит украденного аккаунта.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с аутентификацией и сессиями - механизмом, который стоит
+                    за каждым вашим входом в аккаунт. Узнали главное различие:
+                    <strong>аутентификация</strong> отвечает на вопрос «кто ты»,
+                    <strong>авторизация</strong> - «что тебе можно».
+                </p>
+
+                <p>Поняли, как работает классическое управление сессиями: сервер
+                    генерирует <strong>session ID</strong>, хранит его у себя, а
+                    клиенту отправляет через cookie. При каждом следующем запросе
+                    браузер автоматически возвращает этот ID, и сервер узнаёт
+                    пользователя. Разобрали флаги cookie - <code>HttpOnly</code>,
+                    <code>Secure</code>, <code>SameSite</code> - и объяснили,
+                    от чего каждый защищает.
+                </p>
+
+                <p>Познакомились с альтернативой - <strong>JWT</strong>. Разобрали
+                    её плюсы и минусы, сравнили с сессиями. Убедились, что нет
+                    одного «правильного» варианта: для классических сайтов -
+                    сессии, для API и микросервисов - JWT.</p>
+
+                <p>Разобрали основные атаки на сессии: <strong>Session Hijacking</strong>
+                    (кража ID), <strong>Session Fixation</strong> (навязанная сессия),
+                    <strong>Session Sidejacking</strong> (кража через открытый канал),
+                    <strong>CSRF</strong> (запросы от имени жертвы). Изучили, как
+                    от каждой защищаться: флаги cookie, регенерация ID после входа,
+                    короткое время жизни, правильный logout.
+                </p>
+
+                <h3>Средний уровень завершён</h3>
+
+                <p>Это был последний урок среднего уровня. Давайте посмотрим, что
+                    мы прошли:</p>
+
+                <ul>
+                    <li><strong>Урок 7.</strong> Симметричное и асимметричное
+                        шифрование, гибридные схемы.</li>
+                    <li><strong>Урок 8.</strong> Хеширование, соль, алгоритмы
+                        для паролей.</li>
+                    <li><strong>Урок 9.</strong> HTTPS, сертификаты, TLS-рукопожатие.</li>
+                    <li><strong>Урок 10.</strong> SQL-инъекции и XSS.</li>
+                    <li><strong>Урок 11.</strong> DDoS-атаки и защита от них.</li>
+                    <li><strong>Урок 12.</strong> Аутентификация, сессии, JWT.</li>
+                </ul>
+
+                <p>Вместе с начальным уровнем у вас теперь <strong>полный набор
+                        знаний</strong> о том, как устроена защита в современном
+                    цифровом мире. От паролей и фишинга до TLS, уязвимостей
+                    веб-приложений и механизмов аутентификации.</p>
+
+                <h3>Что дальше</h3>
+
+                <p>В следующем уроке начнём <strong>продвинутый уровень</strong>.
+                    Первая тема - <strong>сетевая безопасность</strong>: разберём,
+                    как защищают сети предприятия с помощью firewall, VPN и систем
+                    обнаружения вторжений. А затем пойдём ещё глубже:</p>
+
+                <ul>
+                    <li><strong>Сетевая безопасность.</strong> Firewall, VPN, IDS -
+                        как защищают сети предприятий.</li>
+                    <li><strong>Основы пентеста.</strong> Как проходит тестирование
+                        на проникновение, что такое этичный хакинг.</li>
+                    <li><strong>Безопасная разработка.</strong> OWASP Top 10 -
+                        список самых критичных уязвимостей и как их избегать.</li>
+                </ul>
+
+                <p>Но сначала - пауза. Попробуйте применить то, что узнали. Зайдите
+                    в свой банк и посмотрите настройки безопасности. Проверьте, как
+                    устроены сессии на любимых сайтах. Подумайте, какие решения
+                    принял бы ты сам как разработчик. Именно так знания
+                    превращаются в опыт.</p>
+
+                <p>Поздравляем с завершением среднего уровня!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-11.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../advanced/lesson-13.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

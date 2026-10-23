@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Работа со строками и тип char - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="beginner" data-lesson-id="lesson-06">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 06</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson active" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Работа со строками и тип char</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Мы уже работали со строками с самого первого урока - выводили их, склеивали через <code>+</code>,
+                    вставляли переменные через интерполяцию. Но строка умеет гораздо больше. Сегодня мы узнаем, что
+                    с ней можно делать: измерять длину, менять регистр, убирать лишние пробелы, заменять буквы
+                    и проверять отдельные символы.</p>
+
+                <p>И познакомимся с новым типом - <code>char</code>. Это «кирпичик», из которых состоят все строки.</p>
+
+                <h2>Строка - это набор символов</h2>
+
+                <p>Когда мы пишем <code>"Привет"</code>, компьютер видит шесть отдельных символов:
+                    <code>П</code>, <code>р</code>, <code>и</code>, <code>в</code>, <code>е</code>, <code>т</code>.
+                    Каждый из них - это отдельный <strong>символ</strong>, и для него в C# есть свой тип:
+                    <code>char</code> (читается «чар», от английского <em>character</em> - «символ»).
+                </p>
+
+                <p>Разница простая:</p>
+
+                <ul>
+                    <li><code>string</code> - это <strong>строка</strong>, много символов вместе. Пишется в двойных
+                        кавычках: <code>"Привет"</code>.</li>
+                    <li><code>char</code> - это <strong>один символ</strong>. Пишется в одинарных кавычках:
+                        <code>'П'</code>.
+                    </li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Одинарные и двойные кавычки - это не одно и то же
+                    </div>
+                    <p><code>"П"</code> - это строка из одного символа. <code>'П'</code> - это символ.
+                        Для компьютера это разные типы. Если случайно поставить не те кавычки - C# подчеркнёт
+                        строку красным и скажет, что типы не совпадают.</p>
+                </div>
+
+                <p>Зачем нужен <code>char</code>? Очень часто бывает нужно работать с отдельными буквами:
+                    проверить, с большой ли буквы начинается имя, является ли символ цифрой, заглавная это буква
+                    или строчная. Об этом ниже.</p>
+
+                <h2>Длина строки: .Length</h2>
+
+                <p>У каждой строки можно узнать её длину - то есть сколько в ней символов. Для этого есть
+                    свойство <code>Length</code> («длина»):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string word = "Привет";</span><span class="code-row">int len = word.Length;</span><span class="code-row">Console.WriteLine($"Длина слова: {len}");</span></code></pre>
+
+                <p>Программа выведет <code>Длина слова: 6</code>. Потому что «Привет» - это шесть символов.
+                    Пробелы и знаки препинания тоже считаются, так что у строки <code>"Привет, мир!"</code> длина
+                    будет 12.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Length - без скобок
+                    </div>
+                    <p>У <code>Length</code> нет круглых скобок после названия. Это <em>свойство</em>, а не метод.
+                        Скобки ставим только там, где вызываем действие (<code>ToUpper()</code>), а <code>Length</code>
+                        - это как характеристика строки, которую просто читаем.</p>
+                </div>
+
+                <h2>Обращаемся к символу по индексу</h2>
+
+                <p>Любую строку можно «пронумеровать» и брать из неё символы по номеру. Только программисты считают
+                    не с 1, а <strong>с 0</strong> - это важно запомнить.</p>
+
+                <p>Допустим, у нас есть строка <code>"Привет"</code>. Вот как её видят индексы:</p>
+
+                <pre><code>П  р  и  в  е  т
+0  1  2  3  4  5</code></pre>
+
+                <p>Чтобы получить символ, пишем имя строки и квадратные скобки с индексом:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string word = "Привет";</span><span class="code-row"></span><span class="code-row">char first = word[0];</span><span class="code-row">char third = word[2];</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Первая буква: {first}");</span><span class="code-row">Console.WriteLine($"Третья буква: {third}");</span></code></pre>
+
+                <p>Программа выведет:</p>
+
+                <pre><code>Первая буква: П
+Третья буква: и</code></pre>
+
+                <p>Обратите внимание: <code>word[0]</code> - это <code>char</code>, а не <code>string</code>.
+                    Мы получили один символ, а не строку. Это и есть знакомство с типом <code>char</code> в действии.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Что если индекса не существует?
+                    </div>
+                    <p>Если у строки 6 символов, индексы идут от 0 до 5. Запись <code>word[6]</code> вызовет ошибку
+                        и программа упадёт. Всегда помните: последний символ - это <code>Length - 1</code>, а не
+                        <code>Length</code>.
+                    </p>
+                </div>
+
+                <h2>Меняем регистр: .ToUpper и .ToLower</h2>
+
+                <p>Очень частые задачи в программировании - привести текст к одному регистру. Например, при
+                    сравнении логина «ADMIN» и «admin» - это должно быть одно и то же. Есть два метода:</p>
+
+                <ul>
+                    <li><code>.ToUpper()</code> - делает все буквы заглавными.</li>
+                    <li><code>.ToLower()</code> - делает все буквы строчными.</li>
+                </ul>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string text = "Привет, Мир!";</span><span class="code-row"></span><span class="code-row">Console.WriteLine(text.ToUpper());</span><span class="code-row">Console.WriteLine(text.ToLower());</span></code></pre>
+
+                <p>Результат:</p>
+
+                <pre><code>ПРИВЕТ, МИР!
+привет, мир!</code></pre>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Строки неизменяемы
+                    </div>
+                    <p>Метод <code>ToUpper()</code> <strong>не меняет</strong> оригинальную строку. Он создаёт новую
+                        и возвращает её нам. Если мы не сохраним результат в переменную - он потеряется. Оригинал
+                        <code>text</code> останется таким же, каким был.
+                    </p>
+                </div>
+
+                <h2>Убираем лишние пробелы: .Trim</h2>
+
+                <p>Очень частая проблема - пользователь случайно ставит пробелы в начале или конце строки.
+                    Особенно когда копирует текст откуда-то. Из-за этого строки, которые должны быть одинаковыми,
+                    оказываются разными:</p>
+
+                <pre><code>"admin"    - здесь 5 символов
+"admin "   - здесь 6 символов</code></pre>
+
+                <p>Метод <code>.Trim()</code> убирает все пробелы в начале и в конце строки, но не трогает те, что
+                    внутри:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string dirty = "   Привет!   ";</span><span class="code-row">string clean = dirty.Trim();</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"[{clean}]");</span></code></pre>
+
+                <p>Программа выведет <code>[Привет!]</code> - без лишних пробелов по краям. Мы специально поставили
+                    квадратные скобки, чтобы было видно, где начинается и заканчивается строка.</p>
+
+                <h2>Замена и проверка: .Replace и .Contains</h2>
+
+                <p>Два простых, но полезных метода строки:</p>
+
+                <p><code>.Replace(что, на_что)</code> - заменяет все вхождения одной подстроки на другую:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string text = "Я люблю яблоки";</span><span class="code-row">string newText = text.Replace("яблоки", "груши");</span><span class="code-row"></span><span class="code-row">Console.WriteLine(newText);</span></code></pre>
+
+                <p>Получится <code>Я люблю груши</code>.</p>
+
+                <p><code>.Contains(подстрока)</code> - проверяет, есть ли подстрока внутри строки. Возвращает
+                    <code>true</code> или <code>false</code> - то есть уже знакомый нам <code>bool</code>:
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string email = "user@mail.ru";</span><span class="code-row"></span><span class="code-row">if (email.Contains("@"))</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Похоже на email");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Это не email");</span><span class="code-row">}</span></code></pre>
+
+                <p>Обратите внимание, как красиво это сочетается с условиями из прошлого урока. Мы используем
+                    <code>Contains</code> прямо внутри <code>if</code>.
+                </p>
+
+                <h2>Проверяем символы через char</h2>
+
+                <p>Мы уже знаем, что <code>char</code> - это один символ. Теперь давайте научимся с ним работать.
+                    У типа <code>char</code> есть несколько очень полезных методов для проверки, что именно
+                    находится в символе:</p>
+
+                <ul>
+                    <li><code>char.IsUpper(c)</code> - заглавная ли это буква.</li>
+                    <li><code>char.IsLower(c)</code> - строчная ли это буква.</li>
+                    <li><code>char.IsLetter(c)</code> - буква ли это (любая - заглавная или строчная).</li>
+                    <li><code>char.IsDigit(c)</code> - цифра ли это.</li>
+                </ul>
+
+                <p>Все они возвращают <code>true</code> или <code>false</code> и принимают в скобках символ.
+                    Вот пример:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">char letter = 'А';</span><span class="code-row">char digit = '7';</span><span class="code-row">char space = ' ';</span><span class="code-row"></span><span class="code-row">Console.WriteLine(char.IsUpper(letter));</span><span class="code-row">Console.WriteLine(char.IsLower(letter));</span><span class="code-row">Console.WriteLine(char.IsDigit(digit));</span><span class="code-row">Console.WriteLine(char.IsLetter(space));</span></code></pre>
+
+                <p>Программа выведет:</p>
+
+                <pre><code>True
+False
+True
+False</code></pre>
+
+                <p>Поясним каждый результат. Буква <code>'А'</code> заглавная - поэтому <code>IsUpper</code> даёт
+                    <code>True</code>, а <code>IsLower</code> - <code>False</code>. Символ <code>'7'</code> - это
+                    цифра, поэтому <code>IsDigit</code> возвращает <code>True</code>. А пробел не является буквой,
+                    значит <code>IsLetter</code> вернёт <code>False</code>.
+                </p>
+
+                <p>Особенно круто это работает в связке со строкой и циклом. Например, посчитать количество
+                    цифр в строке:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string text = "Мне 25 лет, а моей сестре 7";</span><span class="code-row">int digitsCount = 0;</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; text.Length; i++)</span><span class="code-row">{</span><span class="code-row">    if (char.IsDigit(text[i]))</span><span class="code-row">    {</span><span class="code-row">        digitsCount++;</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Цифр в тексте: {digitsCount}");</span></code></pre>
+
+                <p>Разберём этот код:</p>
+
+                <ul>
+                    <li>Мы проходим по строке циклом <code>for</code>, от <code>0</code> до
+                        <code>text.Length - 1</code>.
+                    </li>
+                    <li>На каждом шаге берём символ: <code>text[i]</code>. Это <code>char</code>.</li>
+                    <li>Проверяем через <code>char.IsDigit</code> - цифра это или нет.</li>
+                    <li>Если да - увеличиваем счётчик на 1.</li>
+                </ul>
+
+                <p>Программа выведет <code>Цифр в тексте: 3</code> - это символы <code>2</code>, <code>5</code>
+                    и <code>7</code> из чисел 25 и 7.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        char.IsUpper и логины
+                    </div>
+                    <p>Классический пример использования - проверка, что логин начинается с заглавной буквы:</p>
+                    <pre><code>if (char.IsUpper(login[0]))
+{
+    Console.WriteLine("Логин начинается с заглавной");
+}</code></pre>
+                    <p>Обратите внимание: <code>login[0]</code> - это первый символ строки, то есть <code>char</code>.
+                        Именно его мы передаём в <code>char.IsUpper</code>.</p>
+                </div>
+
+                <h2>Шпаргалка по строкам</h2>
+
+                <p>Давайте соберём в одном месте всё, что мы сегодня изучили.</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>.Length</code>
+                        <span>длина строки</span>
+                    </li>
+                    <li>
+                        <code>[i]</code>
+                        <span>символ по индексу (char)</span>
+                    </li>
+                    <li>
+                        <code>.ToUpper()</code>
+                        <span>все буквы заглавные</span>
+                    </li>
+                    <li>
+                        <code>.ToLower()</code>
+                        <span>все буквы строчные</span>
+                    </li>
+                    <li>
+                        <code>.Trim()</code>
+                        <span>убрать пробелы по краям</span>
+                    </li>
+                    <li>
+                        <code>.Replace(a, b)</code>
+                        <span>заменить a на b</span>
+                    </li>
+                    <li>
+                        <code>.Contains(s)</code>
+                        <span>содержит ли подстроку</span>
+                    </li>
+                    <li>
+                        <code>char.IsUpper(c)</code>
+                        <span>заглавная ли буква</span>
+                    </li>
+                    <li>
+                        <code>char.IsLower(c)</code>
+                        <span>строчная ли буква</span>
+                    </li>
+                    <li>
+                        <code>char.IsLetter(c)</code>
+                        <span>буква ли это</span>
+                    </li>
+                    <li>
+                        <code>char.IsDigit(c)</code>
+                        <span>цифра ли это</span>
+                    </li>
+                </ul>
+
+                <p>Не пытайтесь запомнить всё сразу. Постепенно эти методы станут привычными - вы будете
+                    использовать их каждый день.</p>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Строки - тема, где ошибки бывают особенно коварными: код компилируется, но ведёт себя не так,
+                    как вы ожидали. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>«Cannot convert type 'string' to 'char'».</strong> Скорее всего, вы поставили
+                        двойные кавычки там, где нужны одинарные. <code>'А'</code> - это <code>char</code>,
+                        а <code>"А"</code> - это уже <code>string</code>.</li>
+                    <li><strong>«IndexOutOfRangeException».</strong> Вы обратились к символу, которого нет. Если
+                        строка длиной 6, последний индекс - 5, а не 6. Проверьте, что индекс меньше
+                        <code>.Length</code>.
+                    </li>
+                    <li><strong>Строка не меняется после <code>.ToUpper()</code>.</strong> Методы строк возвращают
+                        новую строку, а не меняют исходную. Сохраните результат: <code>text = text.ToUpper();</code>.
+                    </li>
+                    <li><strong>«; expected».</strong> Проверьте точку с запятой в конце строки. После
+                        <code>Console.WriteLine(...)</code> она обязательна.
+                    </li>
+                    <li><strong>Сравнение строк не работает.</strong> Помните: для строк работает только
+                        <code>==</code>, а не <code>=</code>. И если строки отличаются регистром, они не равны.
+                        Приводите к одному регистру через <code>.ToLower()</code> перед сравнением.
+                    </li>
+                    <li><strong><code>char.IsDigit</code> возвращает <code>false</code> для числа.</strong>
+                        <code>char.IsDigit</code> работает только с отдельным символом - <code>char</code>.
+                        Если передать в него <code>int</code>, программа не скомпилируется. Проверьте, что
+                        передаёте именно <code>char</code>.
+                    </li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя. Сначала
+                    обязательно попробуйте сами.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Приветствие в верхнем регистре</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя его имя и выведите приветствие, где имя
+                                написано полностью заглавными буквами: «ПРИВЕТ, АЛЕКСЕЙ!».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сначала получите имя через <code>Console.ReadLine()</code>. Затем примените
+                                        к нему <code>.ToUpper()</code> - либо в момент вывода, либо сохраните
+                                        результат в новую переменную. Для вывода удобно использовать интерполяцию.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Как тебя зовут? ");</span><span class="code-row">string name = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Привет, {name.ToUpper()}!");</span></code></pre>
+                                    <p>Метод <code>ToUpper()</code> можно вызывать прямо внутри интерполяции -
+                                        это удобно, когда оригинальное имя нам больше не нужно. Если бы понадобилось
+                                        ещё где-то использовать имя в исходном виде - сохранили бы результат в
+                                        отдельную переменную.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Длина имени</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя слово и выведите, сколько в нём символов.
+                                Например: «В слове 6 символов».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для длины строки есть свойство <code>.Length</code> - без круглых скобок.
+                                        Сохраните введённое слово в переменную, потом выведите
+                                        <code>word.Length</code> через интерполяцию.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Введи слово: ");</span><span class="code-row">string word = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"В слове {word.Length} символов");</span></code></pre>
+                                    <p>Если пользователь введёт «привет», программа выведет «В слове 6 символов».
+                                        Если «кот» - «В слове 3 символов». Да, фраза не согласуется по числу, но
+                                        на начальном уровне это нормально. В следующем уровне мы научимся склонять
+                                        слова по правилам русского языка.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. С большой ли буквы?</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя имя и проверьте, начинается ли оно
+                                с заглавной буквы. Если да - выведите «Всё верно!», если нет - «Имена пишутся
+                                с большой буквы».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Первый символ строки можно получить через квадратные скобки:
+                                        <code>name[0]</code>. Это будет <code>char</code>. Проверить его можно
+                                        через <code>char.IsUpper(...)</code> - метод вернёт
+                                        <code>true</code> или <code>false</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте условие <code>if</code> из прошлого урока. Условие - это
+                                        <code>char.IsUpper(name[0])</code>. Внутри <code>if</code> - один вывод,
+                                        внутри <code>else</code> - другой.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Как тебя зовут? ");</span><span class="code-row">string name = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">if (char.IsUpper(name[0]))</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Всё верно!");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Имена пишутся с большой буквы");</span><span class="code-row">}</span></code></pre>
+                                    <p>Обратите внимание: <code>name[0]</code> - это первый символ строки. Если
+                                        пользователь введёт «Алексей» - программа скажет «Всё верно!». Если
+                                        «алексей» - «Имена пишутся с большой буквы».</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Считаем цифры</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Пользователь вводит строку. Программа должна посчитать, сколько
+                                в ней цифр, и вывести результат.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Здесь понадобится цикл <code>for</code>, который пройдёт по всем символам
+                                        строки. Счётчик цикла - это индекс символа: от <code>0</code> до
+                                        <code>text.Length</code> (не включая его).
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Перед циклом создайте переменную-счётчик <code>count = 0</code>. Внутри
+                                        цикла проверьте <code>char.IsDigit(text[i])</code>. Если да - увеличьте
+                                        счётчик на 1.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Введи текст: ");</span><span class="code-row">string text = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">int count = 0;</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; text.Length; i++)</span><span class="code-row">{</span><span class="code-row">    if (char.IsDigit(text[i]))</span><span class="code-row">    {</span><span class="code-row">        count++;</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Цифр в тексте: {count}");</span></code></pre>
+                                    <p>Если пользователь введёт «Мне 25 лет, а сестре 7» - программа выведет
+                                        «Цифр в тексте: 3». Это та же программа, что мы разбирали в теории. Теперь
+                                        вы можете воспроизвести её сами.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы заглянули внутрь строки и увидели, что она состоит из символов типа <code>char</code>.
+                    Научились измерять длину, брать символы по индексу, менять регистр, убирать пробелы, заменять
+                    и искать подстроки. А ещё познакомились с целой группой методов <code>char.Is...</code>, которые
+                    проверяют, что именно лежит в символе.</p>
+
+                <p>Строки - самая «бытовая» тема в программировании. Что бы вы ни писали дальше: сайт, приложение
+                    или игру - вы будете работать с текстом каждый день. Теперь у вас есть базовый набор инструментов.
+                </p>
+
+                <p>В следующем уроке мы познакомимся с <strong>случайными числами</strong> - они нужны почти в
+                    любой игре. А сразу после этого соберём нашу первую настоящую игру: «Угадай число».</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-05.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-07.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

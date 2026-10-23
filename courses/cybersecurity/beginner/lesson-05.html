@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Безопасность в браузере - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="beginner" data-lesson-id="lesson-05">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 05</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson active" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Безопасность в браузере и интернете</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Браузер - это окно в интернет. Через него мы читаем новости, проверяем почту, заходим в банк,
+                    смотрим видео, работаем. Именно там проходит большая часть нашей цифровой жизни. И именно
+                    поэтому браузер - лакомая цель для злоумышленников.</p>
+
+                <p>В прошлых уроках мы разобрались с паролями, двухфакторной аутентификацией и фишингом. Теперь
+                    поговорим о том, что нас окружает в самом браузере: расширениях, cookie, трекерах и
+                    публичном Wi-Fi. Разберёмся, где реальная угроза, а где преувеличение, и как настроить
+                    браузер так, чтобы он работал на нас, а не против нас.</p>
+
+                <h2>Браузер - это не только окно</h2>
+
+                <p>Когда мы открываем Chrome, Firefox или Safari, мы видим просто страницу. Но под капотом
+                    браузер - это сложная программа, которая:</p>
+
+                <ul>
+                    <li>Загружает и выполняет код с сайтов.</li>
+                    <li>Хранит ваши пароли и данные автозаполнения.</li>
+                    <li>Управляет cookie и сессиями.</li>
+                    <li>Позволяет устанавливать расширения - маленькие программы, которые добавляют
+                        функциональность.</li>
+                    <li>Подключается к сети - иногда через публичный Wi-Fi.</li>
+                </ul>
+
+                <p>Каждая из этих возможностей - это и удобство, и потенциальная уязвимость. Разберём по
+                    порядку.</p>
+
+                <h2>Расширения: полезные, но не всегда безопасные</h2>
+
+                <p>Расширения - это то, что делает браузер по-настоящему вашим. Блокировщики рекламы, менеджеры
+                    паролей, переводчики, тёмная тема - всё это расширения. Но у них есть доступ к тому, что
+                    вы делаете в браузере. И если расширение окажется вредоносным - оно получит этот доступ
+                    тоже.</p>
+
+                <h3>Реальный случай: GhostPoster</h3>
+
+                <p>В 2025 году исследователи обнаружили кампанию под названием GhostPoster. Злоумышленники
+                    опубликовали в официальном магазине Firefox 17 расширений, которые выглядели как полезные
+                    инструменты: бесплатные VPN, переводчики, погодные виджеты, блокировщики рекламы. В сумме
+                    их установили более 50 000 пользователей.</p>
+
+                <p>Что было внутри? Вредоносный код, спрятанный прямо в PNG-файле с логотипом расширения -
+                    техника, называемая стеганографией. При загрузке расширения код извлекался и тихо
+                    связывался с серверами злоумышленников. Дальше он мог подменять партнёрские ссылки,
+                    внедрять трекинг, удалять заголовки безопасности с сайтов и показывать скрытые
+                    iframe-фреймы. Всё это происходило без ведома пользователя.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Бесплатные VPN - отдельная зона риска
+                    </div>
+                    <p>Одно из расширений в кампании GhostPoster называлось «Free VPN Forever» и было
+                        установлено более 16 000 раз. Это не случайность: бесплатные VPN -
+                        популярная приманка. Они обещают приватность, а на деле могут собирать и продавать
+                        ваши данные. Хороший VPN не может быть полностью бесплатным - серверы, трафик и
+                        поддержка стоят денег.</p>
+                </div>
+
+                <h3>Реальный случай: Cyberhaven</h3>
+
+                <p>Ещё один громкий случай произошёл в декабре 2024 года. Компания Cyberhaven, занимающаяся
+                    защитой данных, стала жертвой фишинговой атаки на одного из сотрудников. Злоумышленники
+                    получили доступ к аккаунту разработчика в Chrome Web Store и выпустили вредоносное
+                    обновление для их расширения.</p>
+
+                <p>Самое неприятное: расширение обновлялось автоматически. Пользователи ничего не делали -
+                    просто в какой-то момент у них оказалась вредоносная версия. Через неё злоумышленники
+                    воровали cookie и сессионные токены с посещаемых сайтов. В итоге пострадало более
+                    400 000 пользователей.</p>
+
+                <p>Этот случай показывает важную вещь: даже расширение от проверенного разработчика может
+                    стать опасным, если его взломают. Атака на цепочку поставок - так это называется -
+                    становится всё популярнее.</p>
+
+                <h3>Как выбирать расширения</h3>
+
+                <p>Не всё так страшно. Большинство расширений безопасны и полезны. Но стоит соблюдать
+                    несколько правил:</p>
+
+                <ul>
+                    <li><strong>Устанавливайте только необходимое.</strong> Чем меньше расширений - тем
+                        меньше поверхность атаки. Если расширением не пользуетесь - удалите его.</li>
+                    <li><strong>Смотрите на разработчика.</strong> Если расширение от известной компании
+                        (uBlock Origin, Bitwarden, Proton) - риск ниже. Если от неизвестного «разработчика»
+                        с одной звездой - подумайте дважды.</li>
+                    <li><strong>Проверяйте разрешения.</strong> Блокировщику рекламы не нужен доступ к
+                        вашим вкладкам. Менеджеру паролей - доступ к истории. Если расширение просит
+                        больше, чем нужно для его работы, - это красный флаг.</li>
+                    <li><strong>Читайте отзывы.</strong> Особенно свежие. Если после обновления появились
+                        жалобы на странное поведение - стоит насторожиться.</li>
+                    <li><strong>Не устанавливайте «бесплатные VPN».</strong> Лучше заплатить за
+                        проверенный сервис, чем отдать данные неизвестно кому.</li>
+                </ul>
+
+                <h2>Cookie и трекеры: кто и зачем за вами следит</h2>
+
+                <p>Cookie - это маленькие текстовые файлы, которые сайты сохраняют в вашем браузере. Они
+                    нужны для полезных вещей: запомнить, что вы уже вошли в аккаунт, сохранить настройки,
+                    положить товар в корзину. Без cookie интернет был бы очень неудобным.</p>
+
+                <p>Но есть и обратная сторона. Сторонние cookie (cookie, которые ставят не сам сайт, а
+                    рекламные сети) позволяют отслеживать ваши перемещения между сайтами. Зашли в интернет-
+                    магазин - увидели рекламу кроссовок на новостном портале. Поискали рецепт - теперь везде
+                    всплывают продукты. Это работа трекеров.</p>
+
+                <p>Чем это опасно для безопасности? Само по себе отслеживание - это скорее вопрос
+                    приватности, а не прямой угрозы. Но:</p>
+
+                <ul>
+                    <li>Трекеры собирают большой портрет ваших интересов, привычек и поведения. Эти данные
+                        могут быть проданы или утечь.</li>
+                    <li>Некоторые трекеры используют уязвимости браузера, чтобы работать даже при
+                        заблокированных cookie.</li>
+                    <li>Если трекер скомпрометирован, злоумышленники могут получить доступ к данным о вас.</li>
+                </ul>
+
+                <h3>Что можно сделать</h3>
+
+                <p>Хорошая новость: современные браузеры сами помогают с трекерами.</p>
+
+                <ul>
+                    <li><strong>Firefox</strong> по умолчанию блокирует сторонние cookie и известные
+                        трекеры.</li>
+                    <li><strong>Safari</strong> делает то же самое через Intelligent Tracking Prevention.</li>
+                    <li><strong>Brave</strong> - браузер, построенный вокруг приватности: блокирует рекламу
+                        и трекеры из коробки.</li>
+                    <li><strong>Chrome</strong> долгое время обещал отказаться от сторонних cookie, но
+                        затем отложил это. В итоге в 2024 году Google решил оставить сторонние cookie,
+                        но добавить больше пользовательского контроля.</li>
+                </ul>
+
+                <p>Помимо браузера, помогают расширения вроде <strong>uBlock Origin</strong> (блокирует
+                    рекламу, трекеры и вредоносные скрипты) и <strong>Privacy Badger</strong> (автоматически
+                    учится, какие трекеры вас преследуют, и блокирует их).</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Про режим инкогнито
+                    </div>
+                    <p>Режим инкогнито (приватное окно) не делает вас невидимым в интернете. Он только не
+                        сохраняет историю, cookie и данные форм <em>на вашем устройстве</em>. Сайты,
+                        провайдер и работодатель по-прежнему видят, куда вы заходите. Инкогнито - это про
+                        локальную чистоту, а не про анонимность.</p>
+                </div>
+
+                <h2>Публичный Wi-Fi: удобно, но небезопасно</h2>
+
+                <p>Кофейня, аэропорт, отель, торговый центр - везде есть Wi-Fi. Это удобно. И именно поэтому
+                    публичные сети - излюбленное место для атак.</p>
+
+                <p>Вот основные риски:</p>
+
+                <ul>
+                    <li><strong>Перехват трафика (packet sniffing).</strong> Злоумышленник в той же сети
+                        может «слушать» трафик. Если сайт использует HTTP (без шифрования) - данные видны
+                        как на ладони.</li>
+                    <li><strong>Атака «человек посередине» (MITM).</strong> Злоумышленник может создать
+                        поддельную точку доступа с названием, похожим на легитимную, и перехватывать
+                        всё, что вы отправляете.</li>
+                    <li><strong>Session Hijacking.</strong> Если перехватить сессионные cookie, можно
+                        войти в ваш аккаунт без пароля и двухфакторной аутентификации - просто используя
+                        вашу активную сессию.</li>
+                    <li><strong>Вредоносные сети.</strong> Иногда сама точка доступа создана для
+                        распространения вирусов и перенаправления на фишинговые сайты.</li>
+                </ul>
+
+                <p>Что делать, если всё-таки нужно подключиться к публичному Wi-Fi:</p>
+
+                <ul>
+                    <li><strong>Используйте VPN.</strong> Он шифрует весь трафик, и даже если кто-то его
+                        перехватит - увидит только набор непонятных данных. Это главная рекомендация
+                        для публичных сетей.</li>
+                    <li><strong>Проверяйте HTTPS.</strong> Убедитесь, что сайт использует HTTPS (замок
+                        в адресной строке). Если только HTTP - не вводите там ничего важного.</li>
+                    <li><strong>Не заходите в банк и не совершайте платежи.</strong> Даже с VPN лучше
+                        воздержаться от финансовых операций в публичной сети.</li>
+                    <li><strong>Отключите автоматическое подключение к Wi-Fi.</strong> Чтобы телефон или
+                        ноутбук не подключались к подозрительным сетям без вашего ведома.</li>
+                    <li><strong>После использования - забудьте сеть.</strong> В настройках Wi-Fi удалите
+                        сохранённую публичную сеть, чтобы устройство к ней больше не подключалось.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Если VPN нет
+                    </div>
+                    <p>Если VPN под рукой нет - используйте мобильный интернет (4G/5G) вместо публичного
+                        Wi-Fi для важных дел. Мобильная сеть обычно безопаснее, чем открытая точка
+                        доступа.</p>
+                </div>
+
+                <h2>HTTPS: замок, который стоит проверять</h2>
+
+                <p>HTTP - это протокол, по которому браузер общается с сайтом. Изначально он был открытым:
+                    всё, что вы отправляете, шло по сети в чистом виде. Потом появился HTTPS - тот же
+                    протокол, но с шифрованием. Сейчас HTTPS - стандарт, и большинство сайтов его
+                    используют.</p>
+
+                <p>Как понять, что сайт использует HTTPS:</p>
+
+                <ul>
+                    <li>В адресной строке стоит <strong>замок</strong>.</li>
+                    <li>Адрес начинается с <code>https://</code>, а не <code>http://</code>.</li>
+                </ul>
+
+                <p>Но есть нюанс: замок означает только, что соединение зашифровано. Он <strong>не
+                        гарантирует</strong>, что сайт настоящий. Фишинговые сайты тоже могут использовать
+                    HTTPS - сертификат сейчас получить легко. Поэтому замок - это необходимое, но
+                    недостаточное условие. Всегда проверяйте ещё и домен.</p>
+
+                <p>В Chrome и Firefox можно включить режим «Всегда использовать HTTPS» в настройках
+                    безопасности. Тогда браузер будет сам стараться переключить вас на защищённую
+                    версию сайта.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Расширения</code>
+                        <span>минимум, только проверенные</span>
+                    </li>
+                    <li>
+                        <code>Бесплатный VPN</code>
+                        <span>скорее всего, продаёт ваши данные</span>
+                    </li>
+                    <li>
+                        <code>Cookie</code>
+                        <span>нужны для удобства, но следят</span>
+                    </li>
+                    <li>
+                        <code>Инкогнито</code>
+                        <span>не делает вас анонимным</span>
+                    </li>
+                    <li>
+                        <code>Публичный Wi-Fi</code>
+                        <span>используйте только с VPN</span>
+                    </li>
+                    <li>
+                        <code>HTTPS</code>
+                        <span>замок в адресной строке</span>
+                    </li>
+                    <li>
+                        <code>Обновления</code>
+                        <span>закрывают дыры в браузере</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Как всегда, вместо ошибок компилятора - разбор типичных ситуаций, связанных с
+                    безопасностью в браузере.</p>
+
+                <ul>
+                    <li><strong>«Я установил расширение, а теперь везде странная реклама».</strong>
+                        Возможно, расширение оказалось вредоносным или было скомпрометировано. Удалите его,
+                        очистите cookie и кэш, проверьте браузер на вредоносные расширения в настройках.</li>
+                    <li><strong>«Мне кажется, что за мной следят через рекламу».</strong> Скорее всего,
+                        это не «следят», а работают трекеры. Установите uBlock Origin или Privacy Badger,
+                        переключитесь на браузер с блокировкой трекеров (Firefox, Brave), ограничьте
+                        сторонние cookie в настройках.</li>
+                    <li><strong>«В кафе подключился к Wi-Fi, а теперь переживаю».</strong> Если вы
+                        пользовались только HTTPS-сайтами и не вводили пароли - скорее всего, всё в порядке.
+                        На будущее: используйте VPN, не заходите в банк, после использования «забудьте»
+                        сеть.</li>
+                    <li><strong>«Сайт без замка - это опасно?»</strong> Если сайт использует HTTP и вы
+                        собираетесь вводить там пароль или данные карты - да, опасно. Не вводите. Если
+                        это просто чтение новостей - риск ниже, но всё равно старайтесь переходить на
+                        HTTPS-версию, если она есть.</li>
+                    <li><strong>«Браузер предлагает сохранить пароль - соглашаться?»</strong> Это удобно,
+                        но если устройством пользуетесь не только вы - лучше отказаться. Идеальный вариант:
+                        менеджер паролей с главным паролем, который знаете только вы.</li>
+                    <li><strong>«Обновления браузера раздражают».</strong> Понимаю. Но обновления закрывают
+                        уязвимости, через которые злоумышленники могут атаковать. Включите автоматическое
+                        обновление - и не думайте об этом.</li>
+                    <li><strong>«Я пользуюсь Tor - я в безопасности».</strong> Tor скрывает ваш IP,
+                        но не защищает от фишинга, вредоносных расширений или того, что вы сами вводите
+                        данные на поддельном сайте. Tor - это про анонимность, а не про защиту от
+                        всех угроз.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на размышление, вторые две - на практику с вашим браузером.
+                    У каждой есть подсказка и разбор.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Какие расширения оставить</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Посмотрите список расширений в вашем браузере. Для каждого
+                                ответьте на три вопроса:</p>
+                            <ol>
+                                <li>Пользуюсь ли я им регулярно?</li>
+                                <li>Что он просит в разрешениях?</li>
+                                <li>Кто разработчик?</li>
+                            </ol>
+                            <p>На основе ответов решите, что оставить, а что удалить.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В Chrome список расширений - <code>chrome://extensions</code>, в
+                                        Firefox - <code>about:addons</code>. Нажмите «Подробнее» на каждом
+                                        расширении, чтобы увидеть разрешения и разработчика.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Нет «правильного» ответа - это зависит от ваших привычек. Но вот
+                                        что стоит проверить:</p>
+                                    <ul>
+                                        <li>Есть ли расширения, которыми вы не пользовались месяц и
+                                            больше? Удалите.</li>
+                                        <li>Есть ли расширения от неизвестных разработчиков с
+                                            подозрительными разрешениями? Проверьте, что они делают.</li>
+                                        <li>Есть ли «бесплатные VPN» или «ускорители интернета»?
+                                            Это зона риска.</li>
+                                        <li>Есть ли дубликаты (два блокировщика рекламы, два переводчика)?
+                                            Оставьте один.</li>
+                                    </ul>
+                                    <p>Цель упражнения - осознанно относиться к тому, что у вас в
+                                        браузере. Не «поставил и забыл», а «знаю, что стоит и зачем».</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Проверка на публичном Wi-Fi</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Представьте, что вы в кафе и подключились к бесплатному
+                                Wi-Fi. Что из перечисленного безопасно делать, а что нет?</p>
+                            <ol>
+                                <li>Читать новости на HTTPS-сайте.</li>
+                                <li>Заходить в интернет-банк.</li>
+                                <li>Смотреть видео на YouTube.</li>
+                                <li>Отправлять рабочую почту через корпоративный VPN.</li>
+                                <li>Покупать что-то на маркетплейсе с вводом данных карты.</li>
+                                <li>Обновлять приложения в App Store / Google Play.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Оценивайте по двум критериям: использует ли сайт HTTPS (шифрование)
+                                        и насколько чувствительные данные вы вводите.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ul>
+                                        <li><strong>Читать новости на HTTPS-сайте</strong> - безопасно.
+                                            Данные зашифрованы, ничего важного не вводится.</li>
+                                        <li><strong>Заходить в интернет-банк</strong> - рискованно.
+                                            Даже с HTTPS лучше избегать. Если очень нужно - только с
+                                            VPN, и то старайтесь не делать этого в публичной сети.</li>
+                                        <li><strong>Смотреть видео на YouTube</strong> - безопасно
+                                            (если HTTPS, а он там есть). Никаких чувствительных данных
+                                            не передаётся.</li>
+                                        <li><strong>Отправлять почту через корпоративный
+                                                VPN</strong> - безопасно, потому что VPN шифрует трафик
+                                            поверх уже защищённого соединения.</li>
+                                        <li><strong>Покупать что-то с вводом данных
+                                                карты</strong> - рискованно. Финансовые операции в
+                                            публичной сети - плохая идея. Отложите до дома или
+                                            используйте мобильный интернет.</li>
+                                        <li><strong>Обновлять приложения</strong> - обычно
+                                            безопасно, если у вас официальный магазин приложений. Но
+                                            скачивание больших объёмов в публичной сети может быть
+                                            медленным и нестабильным.</li>
+                                    </ul>
+                                    <p>Общий принцип: чем чувствительнее данные - тем осторожнее нужно
+                                        быть. И VPN - ваш друг в публичных сетях.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Настройте браузер</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Зайдите в настройки своего браузера и сделайте три вещи:</p>
+                            <ol>
+                                <li>Проверьте, включена ли защита от трекеров и сторонних cookie.
+                                    Если нет - включите.</li>
+                                <li>Проверьте, обновлён ли браузер до последней версии. Если нет -
+                                    обновите.</li>
+                                <li>Проверьте, включено ли «всегда использовать HTTPS», если такая опция
+                                    есть.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Настройки приватности обычно находятся в разделе «Конфиденциальность
+                                        и безопасность». В Chrome - <code>chrome://settings/privacy</code>,
+                                        в Firefox - <code>about:preferences#privacy</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Здесь нет «правильного» ответа, но вот что стоит проверить:</p>
+                                    <ul>
+                                        <li>Включена ли блокировка сторонних cookie? В Firefox это
+                                            «Строгая» защита, в Safari - по умолчанию, в Chrome - можно
+                                            включить вручную.</li>
+                                        <li>Включена ли блокировка трекеров? В Chrome это «Защита от
+                                            отслеживания», в Firefox - «Защита от отслеживания» в
+                                            настройках приватности.</li>
+                                        <li>Есть ли обновления? В Chrome: <code>chrome://settings/help</code>,
+                                            в Firefox: <code>about:preferences#general</code> - раздел
+                                            «Обновления Firefox».</li>
+                                        <li>Есть ли настройка HTTPS? В Chrome: «Всегда использовать
+                                            безопасные соединения» в разделе конфиденциальности.</li>
+                                    </ul>
+                                    <p>Если что-то из этого не было настроено - теперь настроено. Это
+                                        простые шаги, которые заметно повышают базовый уровень
+                                        безопасности.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Чек-лист безопасного браузера</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Составьте для себя короткий чек-лист из 5 пунктов, по
+                                которому вы будете проверять свой браузер раз в месяц. Например: «раз в
+                                месяц я захожу в настройки и проверяю...».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните всё, что мы разобрали: расширения, cookie, трекеры, HTTPS,
+                                        обновления. Что из этого вы можете проверить за 5 минут раз в
+                                        месяц?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный чек-лист</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>У каждого свой чек-лист, но вот пример, который подойдёт большинству:</p>
+                                    <ol>
+                                        <li>Проверяю список расширений: всё ли ещё нужно, нет ли новых
+                                            с подозрительными разрешениями.</li>
+                                        <li>Проверяю, что браузер обновлён до последней версии.</li>
+                                        <li>Проверяю, что включена блокировка сторонних cookie и
+                                            трекеров.</li>
+                                        <li>Проверяю, что включено «всегда использовать HTTPS».</li>
+                                        <li>Очищаю cookie и кэш от старых сайтов, которыми больше не
+                                            пользуюсь.</li>
+                                    </ol>
+                                    <p>Это займёт 5 минут. Зато вы будете знать, что ваш браузер в
+                                        порядке. И заметите, если что-то вдруг изменилось - например,
+                                        появилось новое расширение, которое вы не ставили.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с безопасностью в браузере. Узнали, что расширения - это удобно, но и опасно:
+                    кампании вроде GhostPoster и инцидент с Cyberhaven показывают, что даже официальные
+                    магазины расширений не гарантируют полной безопасности. Разобрались с cookie и трекерами:
+                    они нужны для удобства, но следят за нами, и с этим можно и нужно бороться. Поняли, что
+                    публичный Wi-Fi - это удобно, но требует осторожности и VPN. И убедились, что HTTPS -
+                    обязательный минимум, но не панацея.</p>
+
+                <p>Теперь у вас есть не только базовые привычки (пароли, 2FA, распознавание фишинга), но и
+                    понимание того, как защитить себя в самом браузере. Это последний слой цифровой гигиены
+                    на начальном уровне.</p>
+
+                <p>В следующем уроке мы займёмся <strong>защитой устройств и личных данных</strong> -
+                    разберём обновления системы, шифрование диска, бэкапы, защиту смартфона и домашней
+                    сети. Это финальный урок начального уровня, после которого вы будете знать всё, что
+                    нужно для базовой безопасности в цифровом мире.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-04.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-06.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

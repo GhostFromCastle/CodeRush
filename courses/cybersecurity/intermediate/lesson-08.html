@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хеширование - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="intermediate" data-lesson-id="lesson-08">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 08</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson active" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Хеширование: цифровой отпечаток данных</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы разобрались с шифрованием - способом спрятать данные так, чтобы их
+                    мог прочитать только владелец ключа. Сегодня поговорим о другой криптографической
+                    технологии, которая решает <strong>совершенно другие задачи</strong>. Она не прячет
+                    данные, а создаёт их уникальный отпечаток.</p>
+
+                <p>Называется эта технология <strong>хеширование</strong>. Вы сталкиваетесь с ней каждый
+                    день: когда заходите на сайт, когда скачиваете программу, когда вводите пароль. Просто
+                    не замечаете. Сегодня разберёмся, что это такое, зачем нужно и почему хеширование
+                    нельзя «расшифровать».</p>
+
+                <h2>Что такое хеш-функция</h2>
+
+                <p>Хеш-функция - это математическое правило, которое превращает данные любого размера в
+                    строку <strong>фиксированной длины</strong>. На входе может быть слово, целая книга,
+                    видеофайл на 10 гигабайт - на выходе всегда будет строка одинаковой длины.</p>
+
+                <p>Аналогия, которая хорошо помогает понять суть: <strong>отпечаток пальца</strong>. По
+                    нему невозможно восстановить человека - только идентифицировать. Скорее всего, у двух
+                    разных людей отпечатки будут разные. Если отпечаток изменится - значит, это уже другой
+                    человек. То же самое с хешами: по ним нельзя восстановить данные, но можно их
+                    идентифицировать.</p>
+
+                <p>Или другая аналогия - <strong>фарш</strong>. Из мяса можно сделать фарш, но из фарша
+                    обратно мясо не соберёшь. При этом по вкусу фарша можно отличить говядину от свинины,
+                    но не восстановить исходный кусок.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Хеш - это «отпечаток» данных. Он уникален для каждого набора данных. По хешу нельзя
+                        восстановить исходные данные, но по нему можно проверить, что данные не изменились.</p>
+                </div>
+
+                <h2>Свойства хеш-функции</h2>
+
+                <p>Хорошая криптографическая хеш-функция обладает пятью свойствами. Каждое из них важно -
+                    если хотя бы одно нарушено, функцию нельзя использовать для безопасности.</p>
+
+                <h3>1. Фиксированная длина выхода</h3>
+
+                <p>Вне зависимости от размера входа, хеш всегда будет одной и той же длины. У SHA-256 -
+                    256 бит (64 символа в шестнадцатеричном виде). У SHA-512 - 512 бит. Хоть один байт
+                    подайте на вход, хоть миллион - длина выхода не изменится.</p>
+
+                <h3>2. Детерминированность</h3>
+
+                <p>Одни и те же данные всегда дают один и тот же хеш. Не «обычно такой же», а всегда
+                    абсолютно идентичный. Если вы дважды посчитаете SHA-256 от слова «привет» - получите
+                    два одинаковых хеша.</p>
+
+                <h3>3. Необратимость (one-way)</h3>
+
+                <p>По хешу <strong>невозможно</strong> восстановить исходные данные. Это не «сложно», а
+                    математически невозможно. Именно поэтому хеш-функции не являются шифрованием - их
+                    нельзя «расшифровать», потому что там нечего расшифровывать.</p>
+
+                <h3>4. Лавинный эффект</h3>
+
+                <p>Малейшее изменение входных данных полностью меняет хеш. Измените одну букву в тексте -
+                    и хеш будет выглядеть совершенно иначе. Не «похоже с одной изменённой цифрой», а
+                    совершенно другим набором символов.</p>
+
+                <p>Вот как это выглядит на практике. Возьмём две почти одинаковые строки и посмотрим их
+                    хеши SHA-256:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">привет  → 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824</span><span class="code-row">Привет  → 5d5c1f4a3f5b8e9d... (совершенно другой набор)</span></code></pre>
+
+                <p>Разница между ними - одна заглавная буква. Но хеши абсолютно разные. Этот эффект
+                    называется лавинным: маленькое изменение на входе «обрушивает лавину» на выходе.</p>
+
+                <h3>5. Устойчивость к коллизиям</h3>
+
+                <p>Практически невозможно найти два разных входа, которые дадут одинаковый хеш. Теоретически
+                    такие пары существуют (ведь вход бесконечен, а выход фиксирован), но найти их на
+                    практике - вычислительно невозможно для хороших алгоритмов.</p>
+
+                <p>Коллизия - это как найти двух людей с одинаковым отпечатком пальца. Может быть,
+                    теоретически возможно, но практически - нет.</p>
+
+                <h2>Хеширование против шифрования</h2>
+
+                <p>Многие путают эти две технологии. Давайте раз и навсегда разберёмся, чем они
+                    отличаются.</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Критерий</th>
+                            <th>Шифрование</th>
+                            <th>Хеширование</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Цель</td>
+                            <td>Скрыть данные</td>
+                            <td>Создать отпечаток</td>
+                        </tr>
+                        <tr>
+                            <td>Обратимость</td>
+                            <td>Можно расшифровать</td>
+                            <td><strong>Нельзя восстановить</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Ключ</td>
+                            <td>Обязателен</td>
+                            <td>Не нужен</td>
+                        </tr>
+                        <tr>
+                            <td>Длина выхода</td>
+                            <td>Зависит от входа</td>
+                            <td>Фиксированная</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Когда использовать</td>
+                            <td>Передать секретное сообщение</td>
+                            <td><strong>Проверить целостность, хранить пароли</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Запомните простое правило: <strong>шифрование - чтобы спрятать, хеширование - чтобы
+                        проверить</strong>. Если нужно передать кому-то секретное сообщение, которое получатель
+                    должен прочитать - это шифрование. Если нужно убедиться, что данные не подменили, или
+                    хранить пароли - это хеширование.</p>
+
+                <h2>Популярные алгоритмы</h2>
+
+                <p>За всю историю криптографии было придумано много хеш-функций. Некоторые устарели, другие
+                    используются до сих пор. Разберём основные.</p>
+
+                <h3>MD5 (устарел)</h3>
+
+                <p>MD5 был очень популярен в 90-х и 2000-х. Он выдаёт хеш длиной 128 бит. Но в 2004 году
+                    нашли способ быстро находить коллизии - это подорвало доверие к алгоритму. Сегодня
+                    MD5 нельзя использовать нигде, где важна безопасность. Он ещё встречается для быстрых
+                    проверок целостности, но не для защиты.</p>
+
+                <h3>SHA-1 (устарел)</h3>
+
+                <p>SHA-1 выдаёт 160 бит. Долгое время считался надёжным, использовался в Git и HTTPS.
+                    Но в 2017 году исследователи Google и CWI показали, как создать коллизию для SHA-1
+                    (атака получила название SHAttered). С тех пор SHA-1 тоже не рекомендуется для
+                    безопасности.</p>
+
+                <h3>SHA-2 (актуален)</h3>
+
+                <p>Семейство SHA-2 включает SHA-224, SHA-256, SHA-384 и SHA-512. Число в названии -
+                    длина хеша в битах. Самый популярный - <strong>SHA-256</strong>. Он используется
+                    везде: в TLS, в блокчейне Bitcoin, в цифровых подписях, для проверки целостности
+                    файлов. На сегодняшний день SHA-256 считается надёжным.</p>
+
+                <h3>SHA-3 (актуален)</h3>
+
+                <p>В 2015 году NIST провёл конкурс на новый стандарт и выбрал алгоритм Keccak. Он получил
+                    название SHA-3. Это не «замена» SHA-2, а альтернатива - на случай, если в SHA-2
+                    найдут уязвимость. SHA-3 имеет другую внутреннюю структуру и пока не взломан.</p>
+
+                <h3>BLAKE2, BLAKE3 (актуальны)</h3>
+
+                <p>Более быстрые альтернативы с хорошей криптографической стойкостью. BLAKE2 часто
+                    используется в приложениях, где важна скорость. BLAKE3 - ещё новее и быстрее, но пока
+                    менее распространён.</p>
+
+                <h2>Где применяется хеширование</h2>
+
+                <p>Хеш-функции используются в огромном количестве сфер. Разберём самые важные.</p>
+
+                <h3>Проверка целостности файлов</h3>
+
+                <p>Когда вы скачиваете программу или образ системы, разработчики публикуют её хеш
+                    (обычно SHA-256). После скачивания вы можете посчитать хеш у себя и сравнить. Если
+                    совпадает - файл скачался корректно и не был подменён. Если нет - что-то пошло не так,
+                    файл повреждён или скомпрометирован.</p>
+
+                <h3>Хранение паролей</h3>
+
+                <p>Это самое важное применение в контексте безопасности. Когда вы регистрируетесь на сайте,
+                    <strong>сайт не хранит ваш пароль в открытом виде</strong>. Он хранит только его хеш.
+                    При следующем входе вы вводите пароль, сервер считает хеш и сравнивает с сохранённым.
+                    Если совпадают - пароль верный.
+                </p>
+
+                <p>Это значит, что даже если база данных сайта утечёт, злоумышленники получат только хеши,
+                    а не реальные пароли. А поскольку хеш необратим, восстановить пароли из хешей очень
+                    сложно.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        На самом деле не совсем так
+                    </div>
+                    <p>Если бы сайты хранили просто хеши паролей, злоумышленники всё равно могли бы их
+                        подобрать. Как? Просто посчитать хеши всех популярных паролей и сравнить с
+                        украденной базой. Именно поэтому в реальности используют <strong>соль</strong> -
+                        о ней чуть позже.</p>
+                </div>
+
+                <h3>Цифровые подписи</h3>
+
+                <p>В прошлом уроке мы упоминали цифровые подписи. Так вот, они работают именно на основе
+                    хешей. Схема такая: сначала считают хеш документа, потом шифруют этот хеш приватным
+                    ключом отправителя. Полученный «зашифрованный хеш» и есть цифровая подпись.</p>
+
+                <p>Получатель может расшифровать подпись публичным ключом, получить исходный хеш и сравнить
+                    с хешем самого документа. Если совпадает - документ не изменили и он точно от
+                    отправителя.</p>
+
+                <h3>Блокчейн и криптовалюты</h3>
+
+                <p>Биткойн, Эфириум и другие блокчейны основаны на хешировании. Каждый блок содержит хеш
+                    предыдущего блока - так формируется цепочка, которую невозможно подделать. Если изменить
+                    данные в старом блоке - изменится его хеш - рассыплется вся последующая цепочка.</p>
+
+                <h3>Контрольные суммы</h3>
+
+                <p>Везде, где нужно быстро проверить, не повредились ли данные при передаче, используются
+                    хеши. Скачивание файлов, обновление системы, синхронизация папок - всё это работает
+                    через хеширование.</p>
+
+                <h2>Соль: почему нельзя хранить просто хеш</h2>
+
+                <p>Вернёмся к хранению паролей. Вот сценарий: у вас есть база данных с хешами паролей
+                    пользователей. Хеши посчитаны через SHA-256. Как злоумышленник восстановит пароли?</p>
+
+                <p>Он берёт список популярных паролей - «123456», «password», «qwerty» и ещё миллионы
+                    таких - считает их хеши и сравнивает с украденными. Если хеш совпал - пароль найден.
+                    Такой подход называется <strong>rainbow table</strong> - заранее подготовленная таблица
+                    хешей популярных паролей.</p>
+
+                <p>Именно для защиты от таких атак используется <strong>соль</strong> (по-английски
+                    <em>salt</em>). Соль - это случайная строка, которая добавляется к паролю перед
+                    хешированием. Она уникальна для каждого пользователя и хранится вместе с хешем
+                    открыто.
+                </p>
+
+                <p>Как это работает:</p>
+
+                <ol>
+                    <li>При регистрации сайт генерирует случайную соль, например <code>X9p2kL</code>.</li>
+                    <li>Считает хеш от <em>пароль + соль</em>: <code>hash("password123" + "X9p2kL")</code>.</li>
+                    <li>Сохраняет и хеш, и соль в базе.</li>
+                    <li>При следующем входе соль берётся из базы, прибавляется к введённому паролю,
+                        снова считается хеш, и он сравнивается с сохранённым.</li>
+                </ol>
+
+                <p>Что это даёт? Даже если два пользователя выбрали одинаковый пароль, хеши у них будут
+                    разные - потому что соли разные. И rainbow tables становятся бесполезны: под каждый
+                    хеш надо строить свою таблицу, что делает атаку бессмысленной.</p>
+
+                <h2>Специализированные алгоритмы для паролей</h2>
+
+                <p>Итак, у нас есть хеш и соль. Достаточно ли этого? Почти. Но есть ещё одна проблема:
+                    <strong>скорость</strong>. SHA-256 спроектирован так, чтобы считать хеши максимально
+                    быстро. А это значит, что злоумышленник тоже может перебирать миллионы вариантов в
+                    секунду.
+                </p>
+
+                <p>Для паролей были придуманы специальные алгоритмы, которые работают <strong>медленно
+                        по дизайну</strong>. Медленно - значит, перебор становится impractical. При этом
+                    для одной проверки пароля при входе задержка незаметна (сотые доли секунды), а для
+                    миллиарда попыток подбора - это уже годы.</p>
+
+                <p>Три основных алгоритма:</p>
+
+                <ul>
+                    <li><strong>bcrypt</strong> - разработан в 1999 году. Надёжный, используется до сих
+                        пор, но имеет ограничение по длине пароля (72 символа).</li>
+                    <li><strong>scrypt</strong> - использует не только время CPU, но и память. Это
+                        усложняет атаку на специализированном оборудовании (ASIC).</li>
+                    <li><strong>Argon2</strong> - победитель конкурса Password Hashing Competition (2015).
+                        Современный стандарт. Позволяет настраивать использование памяти, CPU и
+                        параллелизм.</li>
+                </ul>
+
+                <p>Если вы когда-нибудь будете писать бэкенд - используйте Argon2 или bcrypt. Никогда
+                    не храните пароли через простой SHA-256 без соли.</p>
+
+                <h2>Как посчитать хеш на практике</h2>
+
+                <p>Хеширование доступно во всех языках программирования. Вот как это выглядит на Python
+                    - самый наглядный пример:</p>
+
+                <div class="code-examples code-examples-single">
+
+                    <div class="code-example-card">
+                        <div class="code-example-header">
+                            <i class="ph ph-file-py code-example-icon"></i>
+                            <span>Python</span>
+                        </div>
+                        <pre class="code-example-body"><code>import hashlib
+
+text = "привет"
+data = text.encode("utf-8")
+
+# Хеш SHA-256
+sha256 = hashlib.sha256(data).hexdigest()
+print("SHA-256:", sha256)
+
+# Хеш SHA-512
+sha512 = hashlib.sha512(data).hexdigest()
+print("SHA-512:", sha512)
+
+# Хеш с солью
+import os
+salt = os.urandom(16)
+salted = hashlib.sha256(data + salt).hexdigest()
+print("С солью:", salted)</code></pre>
+                    </div>
+
+                </div>
+
+                <p>В Python есть готовая библиотека <code>hashlib</code> со всеми стандартными алгоритмами.
+                    Для паролей существует отдельная библиотека <code>bcrypt</code> или
+                    <code>argon2-cffi</code> - их стоит использовать именно для хранения паролей, потому
+                    что они добавляют соль и замедление автоматически.
+                </p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Хеш</code>
+                        <span>отпечаток данных фиксированной длины</span>
+                    </li>
+                    <li>
+                        <code>Необратимость</code>
+                        <span>по хешу нельзя восстановить данные</span>
+                    </li>
+                    <li>
+                        <code>Лавинный эффект</code>
+                        <span>малое изменение меняет хеш целиком</span>
+                    </li>
+                    <li>
+                        <code>SHA-256</code>
+                        <span>актуальный стандарт</span>
+                    </li>
+                    <li>
+                        <code>MD5, SHA-1</code>
+                        <span>устарели, не использовать</span>
+                    </li>
+                    <li>
+                        <code>Соль</code>
+                        <span>случайная добавка к паролю</span>
+                    </li>
+                    <li>
+                        <code>Argon2, bcrypt</code>
+                        <span>специально для паролей</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Как всегда, разберём типичные заблуждения и путаницы, связанные с хешированием.</p>
+
+                <ul>
+                    <li><strong>«Хеш можно расшифровать».</strong> Нет. Хеш - это не шифрование. Расшифровать
+                        его невозможно, потому что там нечего расшифровывать. По хешу нельзя восстановить
+                        исходные данные - это математическое свойство, а не «сложность».</li>
+                    <li><strong>«Если сайт хранит хеш моего пароля, значит он в безопасности».</strong>
+                        Не всегда. Многое зависит от того, как хеш посчитан. Если сайт использует SHA-256
+                        без соли - пароли можно подобрать по rainbow tables. Если используются Argon2 или
+                        bcrypt - безопасно.</li>
+                    <li><strong>«Если я изменю один символ в файле, хеш останется похожим».</strong> Это
+                        самое частое заблуждение. Лавинный эффект работает так: даже изменение одного бита
+                        полностью меняет хеш. Никакого «похожего» результата нет.</li>
+                    <li><strong>«Хеширование работает быстрее шифрования, поэтому оно лучше».</strong>
+                        Они решают разные задачи. Хеширование не заменяет шифрование и наоборот. Скорость -
+                        не критерий выбора, а следствие разных целей.</li>
+                    <li><strong>«MD5 всё ещё можно использовать для паролей, если добавить соль».</strong>
+                        Нет. MD5 сломан по коллизиям, и это делает его непригодным для безопасности, даже
+                        с солью. Соль защищает от rainbow tables, но не от коллизионных атак.</li>
+                    <li><strong>«Идеальная хеш-функция гарантирует отсутствие коллизий».</strong> Нет.
+                        Коллизии существуют математически, потому что вход бесконечен, а выход фиксирован.
+                        Хорошая хеш-функция гарантирует лишь, что найти коллизию практически невозможно.</li>
+                    <li><strong>«Разные входы всегда дают разные хеши».</strong> В теории - нет, коллизии
+                        возможны. На практике - для хорошей хеш-функции вероятность случайно наткнуться на
+                        коллизию настолько мала, что ей можно пренебречь.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание свойств, вторые две - на применение знаний.
+                    У каждой есть подсказка и разбор.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Хеш или шифрование</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой задачи определите, что нужно использовать -
+                                шифрование или хеширование.</p>
+                            <ol>
+                                <li>Хочу передать другу секретное сообщение, чтобы только он смог прочитать.</li>
+                                <li>Хочу хранить пароли пользователей в базе данных.</li>
+                                <li>Хочу проверить, что скачанный файл не был изменён.</li>
+                                <li>Хочу подписать документ так, чтобы получатель мог убедиться, что это
+                                    именно я.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Помните: шифрование можно расшифровать, хеш - нет. Если нужно
+                                        восстановить данные - это шифрование. Если нужно только сравнить
+                                        или проверить - это хеширование.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Шифрование.</strong> Друг должен прочитать сообщение -
+                                            значит, нужна возможность восстановить исходные данные.
+                                            Хеширование не подойдёт: по хешу нельзя восстановить
+                                            сообщение.</li>
+                                        <li><strong>Хеширование (с солью + Argon2 или bcrypt).</strong>
+                                            Хранить пароли в виде, который можно восстановить - плохая
+                                            идея. Хеш необратим, и даже при утечке реальные пароли
+                                            восстановить сложно.</li>
+                                        <li><strong>Хеширование.</strong> Целостность проверяется именно
+                                            через хеш. Разработчик публикует хеш файла, вы считаете
+                                            свой, сравниваете. Совпадение - файл в порядке.</li>
+                                        <li><strong>Хеширование (в составе цифровой подписи).</strong>
+                                            Считаем хеш документа, шифруем его приватным ключом.
+                                            Это и есть цифровая подпись.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Лавинный эффект</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">У вас есть два пароля:</p>
+                            <ul>
+                                <li><code>password123</code></li>
+                                <li><code>Password123</code></li>
+                            </ul>
+                            <p>Они отличаются только первой буквой (строчная / заглавная). Как вы думаете,
+                                насколько сильно будут отличаться их SHA-256 хеши?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните про лавинный эффект. Он работает именно так: маленькое
+                                        изменение на входе - полностью другой выход.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Хеши будут <strong>совершенно разными</strong>. Не «похожими с одной
+                                        изменённой цифрой», а абсолютно другими наборами символов. Вот
+                                        реальные значения:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">password123  →  ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f</span><span class="code-row">Password123  →  008c70392e3abfbd0fa47bbc2ed96aa99bd49e159727fcba0f2e6abeb3a9d6a3</span></code></pre>
+                                    <p>Видите? Ничего общего. Именно поэтому хеш-функции отлично подходят
+                                        для проверки целостности: любое изменение данных мгновенно
+                                        обнаруживается.</p>
+                                    <p>Интересное следствие: злоумышленник не может «подобрать пароль
+                                        постепенно», меняя по одной букве. Каждая попытка даёт совершенно
+                                        новый хеш, который не подсказывает, «близко ли» он к цели. Это
+                                        называется устойчивостью к анализу по частям.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Что не так с этим кодом</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Разработчик написал такой код для хранения пароля:</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">import hashlib</span><span class="code-row"></span><span class="code-row">def save_password(password):</span><span class="code-row">    hash_value = hashlib.md5(password.encode()).hexdigest()</span><span class="code-row">    db.save(hash_value)</span><span class="code-row"></span><span class="code-row">def check_password(password, stored_hash):</span><span class="code-row">    return hashlib.md5(password.encode()).hexdigest() == stored_hash</span></code></pre>
+                            <p>Найдите минимум три проблемы.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Обратите внимание на три вещи: какой алгоритм используется, есть
+                                        ли соль, и насколько быстро работает MD5.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проблемы этого кода:</p>
+                                    <ol>
+                                        <li><strong>Используется MD5.</strong> Этот алгоритм устарел ещё
+                                            в 2004 году. Найти коллизии для него - дело минут.
+                                            Использовать его для паролей - грубая ошибка.</li>
+                                        <li><strong>Нет соли.</strong> Одинаковые пароли дадут одинаковые
+                                            хеши. Rainbow tables мгновенно восстановят все простые пароли.
+                                            Даже сложные можно подобрать через заранее подготовленные
+                                            таблицы.</li>
+                                        <li><strong>MD5 слишком быстрый.</strong> Даже с солью он
+                                            перебирается на современных GPU миллиардами вариантов
+                                            в секунду. Для паролей нужны алгоритмы, которые работают
+                                            медленно по дизайну - Argon2, bcrypt или scrypt.</li>
+                                    </ol>
+                                    <p>Как надо:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import bcrypt</span><span class="code-row"></span><span class="code-row">def save_password(password):</span><span class="code-row">    hash_value = bcrypt.hashpw(</span><span class="code-row">        password.encode(), bcrypt.gensalt()</span><span class="code-row">    )</span><span class="code-row">    db.save(hash_value)</span><span class="code-row"></span><span class="code-row">def check_password(password, stored_hash):</span><span class="code-row">    return bcrypt.checkpw(</span><span class="code-row">        password.encode(), stored_hash</span><span class="code-row">    )</span></code></pre>
+                                    <p>bcrypt сам генерирует соль, включает её в результат и работает
+                                        достаточно медленно, чтобы затруднить подбор.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Хеширование в жизни</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Назовите минимум три места, где вы лично сталкиваетесь с
+                                хешированием в повседневной жизни (не считая тех, что были в уроке).
+                                Объясните, зачем там нужен хеш.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте про: обновления системы, скачивание файлов, работу Git,
+                                        проверку подлинности ПО, синхронизацию облачных дисков, электронную
+                                        подпись документов.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примеры из жизни</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вот несколько примеров, где вы сталкиваетесь с хешами, сами того
+                                        не замечая:</p>
+                                    <ul>
+                                        <li><strong>Обновления Windows и приложений.</strong> Когда система
+                                            скачивает пакет обновлений, она проверяет его хеш, чтобы
+                                            убедиться, что файл не был подменён.</li>
+                                        <li><strong>Скачивание программ с сайтов.</strong> Многие проекты
+                                            публикуют SHA-256 хеши своих установщиков. Это позволяет
+                                            проверить, что скачанный файл идентичен оригиналу.</li>
+                                        <li><strong>Git и системы контроля версий.</strong> Каждый коммит
+                                            идентифицируется хешем SHA-1 (сейчас переходят на SHA-256).
+                                            Это гарантирует неизменность истории.</li>
+                                        <li><strong>Облачные диски</strong> (Google Drive, Dropbox).
+                                            Когда файл синхронизируется, сервис сравнивает хеши, чтобы
+                                            понять, изменился ли файл, и передавать только разницу.</li>
+                                        <li><strong>Электронная подпись документов</strong> (например,
+                                            при подаче налоговой декларации). Работает на основе хеша
+                                            документа, зашифрованного приватным ключом.</li>
+                                        <li><strong>Менеджеры паролей.</strong> Они хранят ваш главный
+                                            пароль в виде хеша - чтобы даже при взломе приложения
+                                            его нельзя было восстановить.</li>
+                                        <li><strong>Блокировка неверных попыток входа.</strong> Некоторые
+                                            сервисы хешируют неудачные попытки, чтобы не хранить реальные
+                                            введённые пароли (иногда люди по ошибке вводят пароль от
+                                            другого сервиса).</li>
+                                    </ul>
+                                    <p>Как видите, хеширование окружает нас везде. Скорее всего, вы
+                                        сталкиваетесь с ним десятки раз в день, просто не замечаете.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с хешированием - технологией, которая на первый взгляд похожа на шифрование,
+                    но решает совсем другие задачи. Узнали, что хеш - это «цифровой отпечаток» данных
+                    фиксированной длины. Разобрали пять ключевых свойств: фиксированная длина,
+                    детерминированность, необратимость, лавинный эффект и устойчивость к коллизиям.</p>
+
+                <p>Поняли главное отличие от шифрования: <strong>шифрование можно расшифровать, хеш -
+                        нет</strong>. Именно поэтому хеши применяются там, где нужно проверить целостность
+                    или хранить пароли, а не спрятать данные.</p>
+
+                <p>Разобрались с алгоритмами: MD5 и SHA-1 устарели, SHA-256 и SHA-3 актуальны. Познакомились
+                    с солью - случайной добавкой к паролю, которая защищает от rainbow tables. И увидели,
+                    как в реальных проектах пароли хранятся через bcrypt или Argon2 - специально медленные
+                    алгоритмы.</p>
+
+                <p>В следующем уроке мы займёмся <strong>HTTPS и TLS</strong> - разберёмся, что на самом
+                    деле происходит, когда вы видите замок в адресной строке. Познакомимся с сертификатами,
+                    рукопожатием TLS, и увидим, как шифрование и хеширование работают вместе, защищая
+                    каждое ваше соединение с интернетом.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-07.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-09.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

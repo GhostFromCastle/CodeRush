@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Условия: if, else, else if - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="beginner" data-lesson-id="lesson-04">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 04</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson active" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Условия: if, else, else if</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>До этого момента наши программы шли строго по прямой: команда за командой, сверху вниз, без
+                    остановок. Что бы ни происходило вокруг, программа делала одно и то же. Настоящие программы так
+                    не работают - они умеют <strong>принимать решения</strong> в зависимости от ситуации. Сегодня мы
+                    научим их этому.</p>
+
+                <p>Если пользователю больше 18 - пустим его на сайт. Если пароль верный - авторизуем. Если оценка
+                    ниже 3 - скажем «попробуй ещё раз». Именно так рождается логика программы.</p>
+
+                <h2>Булев тип - напоминание</h2>
+
+                <p>Ещё во втором уроке мы познакомились с типом <code>bool</code>. Это переменная, в которой хранится
+                    только одно из двух значений: <code>true</code> (истина) или <code>false</code> (ложь). Что-то
+                    вроде ответа «да» или «нет».</p>
+
+                <p>Условия - это как раз работа с такими «да/нет». Программа задаёт вопрос: «Пользователю больше 18?»
+                    - и получает ответ <code>true</code> или <code>false</code>. В зависимости от ответа она делает
+                    одно или другое.</p>
+
+                <h2>Операторы сравнения</h2>
+
+                <p>Чтобы задать программе такой вопрос, нужны специальные знаки - <strong>операторы сравнения</strong>.
+                    Они сравнивают два значения и возвращают <code>true</code> или <code>false</code>.</p>
+
+                <p>Важно понимать: в программировании нельзя писать «по-математически». Знаки <code>≥</code>,
+                    <code>≤</code>
+                    и <code>≠</code> компьютер не понимает - их просто нет на клавиатуре. Вместо них используются
+                    комбинации из обычных символов:
+                </p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>==</code>
+                        <span>равно</span>
+                    </li>
+                    <li>
+                        <code>!=</code>
+                        <span>не равно</span>
+                    </li>
+                    <li>
+                        <code>&gt;</code>
+                        <span>больше</span>
+                    </li>
+                    <li>
+                        <code>&lt;</code>
+                        <span>меньше</span>
+                    </li>
+                    <li>
+                        <code>&gt;=</code>
+                        <span>больше или равно</span>
+                    </li>
+                    <li>
+                        <code>&lt;=</code>
+                        <span>меньше или равно</span>
+                    </li>
+                </ul>
+
+                <p>Посмотрим, как это выглядит в реальном коде. Вот шесть выражений - каждое из них можно вычислить
+                    и получить либо <code>true</code>, либо <code>false</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">5 == 5</span><span class="code-row">5 != 3</span><span class="code-row">5 &gt; 3</span><span class="code-row">5 &lt; 3</span><span class="code-row">5 &gt;= 5</span><span class="code-row">5 &lt;= 3</span></code></pre>
+
+                <p>Первые три выражения истинны (<code>true</code>), последние три - ложны (<code>false</code>).
+                    Каждый оператор как бы задаёт вопрос и получает ответ «да» или «нет». Именно эти ответы программа
+                    и использует, чтобы решить, что делать дальше.</p>
+
+                <p>Обратите внимание на запись <code>&gt;=</code>: сначала знак «больше», потом знак «равно». Не
+                    наоборот. То же самое с <code>&lt;=</code>. Такой порядок зафиксирован в языке и его нужно
+                    просто запомнить.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Не путайте = и ==
+                    </div>
+                    <p>Это самая частая ошибка новичков, поэтому повторим отдельно.</p>
+                    <ul>
+                        <li>Один знак <code>=</code> - <strong>присвоить</strong>. Мы используем его при создании
+                            переменных:
+                            «положи в коробочку <code>age</code> число 18».</li>
+                        <li>Два знака <code>==</code> - <strong>сравнить</strong>. Это вопрос: «равно ли одно другому?».
+                        </li>
+                    </ul>
+                    <p>Если написать <code>if (age = 18)</code> - это ошибка. Компилятор её заметит и подсветит красным.
+                        Правильно - <code>if (age == 18)</code>. Разница в один символ, но смысл совершенно разный.</p>
+                </div>
+
+                <h2>Конструкция if</h2>
+
+                <p>Основной инструмент - оператор <code>if</code>, что переводится как «если». Он работает просто:
+                    проверяет условие в скобках, и если оно <code>true</code> - выполняет блок кода внутри фигурных
+                    скобок. Если <code>false</code> - блок пропускается.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int age = 25;</span><span class="code-row"></span><span class="code-row">if (age &gt;= 18)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Ты совершеннолетний");</span><span class="code-row">}</span></code></pre>
+
+                <p>Разберём построчно:</p>
+
+                <h3>Строка 1: <code>int age = 25;</code></h3>
+                <p>Просто создаём переменную с возрастом. Пока ничего нового.</p>
+
+                <h3>Строка 3: <code>if (age &gt;= 18)</code></h3>
+                <p>Это проверка. Компьютер смотрит: правда ли, что <code>age</code> (то есть 25) больше или равно
+                    18? Да, правда. Значит, условие <code>true</code>, и мы заходим внутрь блока.</p>
+
+                <h3>Строки 4–6: блок <code>{ ... }</code></h3>
+                <p>Всё, что внутри фигурных скобок после <code>if</code>, выполнится, только если условие истинно.
+                    Если бы возраст был, например, 15 - программа просто пропустила бы эти строки и пошла дальше.</p>
+
+                <p>Запустите - увидите «Ты совершеннолетний». Теперь поменяйте <code>age</code> на 15 и запустите
+                    снова. Программа ничего не выведет: условие оказалось ложным.</p>
+
+                <h2>Конструкция if / else</h2>
+
+                <p>Что, если мы хотим, чтобы при неверном условии программа делала что-то другое, а не просто молчала?
+                    Для этого есть <code>else</code> - «иначе». Оно идёт сразу после закрывающей скобки <code>if</code>
+                    и выполняется, когда условие ложно.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int age = 15;</span><span class="code-row"></span><span class="code-row">if (age &gt;= 18)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Ты совершеннолетний");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Ты ещё несовершеннолетний");</span><span class="code-row">}</span></code></pre>
+
+                <p>Теперь при <code>age = 15</code> программа выведет «Ты ещё несовершеннолетний». А если поставить
+                    25 - сработает первая ветка и выведет «Ты совершеннолетний».</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Как это читается вслух
+                    </div>
+                    <p>Программу можно читать как обычный русский текст: «Если возраст больше или равен 18 -
+                        напиши одно. Иначе - напиши другое». C# специально сделан так, чтобы код было легко
+                        читать.</p>
+                </div>
+
+                <h2>Конструкция if / else if / else</h2>
+
+                <p>А что, если вариантов больше двух? Например, оценка может быть 5, 4, 3 или 2. Просто
+                    <code>else</code>
+                    тут не хватит. На помощь приходит <code>else if</code> - «иначе если». Его можно добавлять
+                    сколько угодно раз, проверяя всё новые условия по очереди.
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int score = 85;</span><span class="code-row"></span><span class="code-row">if (score &gt;= 90)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Отлично!");</span><span class="code-row">}</span><span class="code-row">else if (score &gt;= 75)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Хорошо");</span><span class="code-row">}</span><span class="code-row">else if (score &gt;= 60)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Удовлетворительно");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Надо ещё поработать");</span><span class="code-row">}</span></code></pre>
+
+                <p>Как это работает: программа проверяет условия <strong>сверху вниз</strong>, и как только
+                    находит первое истинное - выполняет его блок и пропускает всё остальное. При <code>score = 85</code>
+                    первое условие (<code>&gt;= 90</code>) ложно, второе (<code>&gt;= 75</code>) истинно - выведется
+                    «Хорошо».</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Порядок важен
+                    </div>
+                    <p>Условия нужно располагать <strong>от самого строгого к самому мягкому</strong>. Если поставить
+                        <code>else if (score &gt;= 60)</code> первым, то оно перехватит вообще всё, что больше 60, и до
+                        проверки на «отлично» дело уже не дойдёт. Просто держите в голове: первым идёт самое узкое
+                        условие.
+                    </p>
+                </div>
+
+                <h2>Логические операторы: И, ИЛИ</h2>
+
+                <p>Иногда одного условия мало. Например: «Пустить на сайт, если пользователю больше 18
+                    <strong>и</strong> он зарегистрирован». Для этого в C# есть два специальных знака:
+                </p>
+
+                <ul>
+                    <li><code>&amp;&amp;</code> - «И». Оба условия должны быть истинны.</li>
+                    <li><code>||</code> - «ИЛИ». Достаточно, чтобы хотя бы одно было истинным.</li>
+                </ul>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int age = 20;</span><span class="code-row">bool isRegistered = true;</span><span class="code-row"></span><span class="code-row">if (age &gt;= 18 &amp;&amp; isRegistered)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Добро пожаловать!");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Доступ запрещён");</span><span class="code-row">}</span></code></pre>
+
+                <p>В этом примере программа пустит пользователя только если ему больше 18 <strong>И</strong> он
+                    зарегистрирован. Если хотя бы одно условие ложно - сработает <code>else</code>.</p>
+
+                <p>Про <code>||</code> («ИЛИ») можно думать так: «Пользователь получает скидку, если он студент
+                    <em>или</em> пенсионер». Достаточно одного из двух.
+                </p>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Условия - место, где ошибки особенно коварны: программа запускается, но ведёт себя не так, как
+                    вы ожидали. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>«Cannot implicitly convert type 'int' to 'bool'».</strong> Скорее всего, вы написали
+                        <code>=</code> вместо <code>==</code>. Выражение <code>if (age = 18)</code> пытается
+                        присвоить значение, а не сравнить его. Правильно - <code>if (age == 18)</code>.
+                    </li>
+                    <li><strong>Ветка <code>else if</code> никогда не срабатывает.</strong> Проверьте порядок
+                        условий. Если мягкое условие стоит выше строгого, оно «съест» все случаи, и до строгого
+                        дело не дойдёт. Правило: от самого строгого к самому мягкому.</li>
+                    <li><strong>Программа пропускает блок, хотя условие вроде бы верное.</strong> Проверьте, что
+                        внутри скобок действительно сравнение: <code>==</code>, <code>&gt;</code>,
+                        <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>!=</code>. И что после
+                        условия нет случайной точки с запятой:
+                        <code>if (age &gt;= 18);</code> - тело блока станет пустым, а код ниже выполнится всегда.
+                    </li>
+                    <li><strong><code>&amp;&amp;</code> и <code>||</code> перепутаны местами.</strong> Иногда
+                        кажется, что оба условия должны выполняться, а вы написали <code>||</code>. Или наоборот:
+                        хотите пустить при любом из двух вариантов, а написали <code>&amp;&amp;</code>. Проверьте
+                        логику вслух: «нужно, чтобы и то, и другое» - это <code>&amp;&amp;</code>. «Достаточно
+                        одного» - это <code>||</code>.</li>
+                    <li><strong>Сравнение строк не работает.</strong> Помните: строки сравниваются через
+                        <code>==</code>, и регистр важен. «Admin» и «admin» - для C# разные строки. Если нужно
+                        сравнивать без учёта регистра - приводите обе стороны к одному регистру через
+                        <code>.ToLower()</code> (это мы разберём в шестом уроке).
+                    </li>
+                    <li><strong>Программа падает на строке с <code>if</code>.</strong> Скорее всего, дело не в самом
+                        условии, а в том, что внутри него вызывается метод, который получил некорректные данные.
+                        Например, <code>if (name.Length &gt; 0)</code> упадёт, если <code>name</code> равен
+                        <code>null</code>. Про <code>null</code> мы поговорим в среднем уровне, а пока просто
+                        помните: не всё, что выглядит как строка, действительно ей является.
+                    </li>
+                    <li><strong>Забыли фигурные скобки.</strong> Если тело <code>if</code> состоит из одной строки,
+                        скобки формально можно опустить - сработает только эта строка. Но как только вы добавляете
+                        вторую строку, она уже вне <code>if</code> и выполнится всегда. Совет: всегда ставьте
+                        фигурные скобки, даже для одной строки. Это спасает от половины ошибок.</li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Теперь ваша очередь. Четыре задачи по возрастающей сложности. У каждой есть <strong>подсказка
+                    </strong> и <strong>решение учителя</strong> - открывайте по одному блоку, только если застряли.
+                    Сначала обязательно попробуйте сами.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Совершеннолетие</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя его возраст. Если ему 18 или больше - выведите
+                                «Добро пожаловать!». Иначе - «Доступ запрещён».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Возраст нужно получить через <code>int.Parse(Console.ReadLine())</code>. Затем
+                                        используйте <code>if (age &gt;= 18)</code> и <code>else</code>. Помните: знак
+                                        «больше или равно» пишется как <code>&gt;=</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Сколько тебе лет? ");</span><span class="code-row">int age = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">if (age &gt;= 18)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Добро пожаловать!");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Доступ запрещён");</span><span class="code-row">}</span></code></pre>
+                                    <p>Если пользователь введёт 18 - «Добро пожаловать!». Если 17 - «Доступ запрещён».
+                                        Обратите внимание на <code>&gt;=</code>, а не просто <code>&gt;</code>: мы
+                                        хотим пустить и ровно 18-летних.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Большее из двух</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Попросите пользователя ввести два числа и выведите то, которое больше.
+                                Если числа равны - выведите «Числа равны».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Три возможных случая - три ветки. Сначала проверьте равенство через
+                                        <code>==</code> (два знака!), потом больше или меньше. Порядок важен: сравнение
+                                        на равенство обычно ставят первым, чтобы оно не потерялось среди других
+                                        условий.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Введи первое число: ");</span><span class="code-row">int a = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">Console.Write("Введи второе число: ");</span><span class="code-row">int b = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">if (a == b)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Числа равны");</span><span class="code-row">}</span><span class="code-row">else if (a &gt; b)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Больше первое число: {a}");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Больше второе число: {b}");</span><span class="code-row">}</span></code></pre>
+                                    <p>В последней ветке <code>else</code> мы не проверяем ничего - если не равны и
+                                        первое не больше, значит, второе точно больше. C# это понимает, и лишняя
+                                        проверка не нужна.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Оценка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Пользователь вводит число баллов от 0 до 100. Выведите оценку по
+                                правилам: 90+ - «Отлично», 75–89 - «Хорошо», 60–74 - «Удовлетворительно», меньше 60 -
+                                «Надо ещё поработать».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте цепочку <code>if / else if / else if / else</code>. Условия
+                                        идут от самого строгого к самому мягкому: сначала <code>&gt;= 90</code>, потом
+                                        <code>&gt;= 75</code>, потом <code>&gt;= 60</code>, а последнее оставьте
+                                        просто <code>else</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В последнем <code>else</code> не нужно писать <code>if (score &lt; 60)</code>:
+                                        если программа дошла до этого места, значит, все верхние условия уже
+                                        оказались ложными, и балл автоматически меньше 60.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Введи количество баллов: ");</span><span class="code-row">int score = int.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">if (score &gt;= 90)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Отлично");</span><span class="code-row">}</span><span class="code-row">else if (score &gt;= 75)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Хорошо");</span><span class="code-row">}</span><span class="code-row">else if (score &gt;= 60)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Удовлетворительно");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Надо ещё поработать");</span><span class="code-row">}</span></code></pre>
+                                    <p>Проверьте на числах 95, 80, 65 и 40 - программа должна выдать «Отлично»,
+                                        «Хорошо», «Удовлетворительно» и «Надо ещё поработать». Если запустить на
+                                        100 - тоже «Отлично», потому что верхняя граница не ограничена.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Логин и пароль</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя логин и пароль. Пустите его дальше, только
+                                если логин - <code>admin</code>, а пароль - <code>1234</code>. Иначе выведите «Неверный
+                                логин или пароль».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Здесь два условия, и оба должны быть выполнены одновременно. Используйте
+                                        оператор <code>&amp;&amp;</code> («И»). Сравнение строк делается так же, как
+                                        сравнение чисел - через <code>==</code>. Только не забудьте: значения в
+                                        кавычках.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Логин: ");</span><span class="code-row">string login = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">Console.Write("Пароль: ");</span><span class="code-row">string password = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">if (login == "admin" &amp;&amp; password == "1234")</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Добро пожаловать!");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Неверный логин или пароль");</span><span class="code-row">}</span></code></pre>
+                                    <p>Программа пустит внутрь, только если <strong>оба</strong> условия истинны:
+                                        логин «admin» <em>и</em> пароль «1234». Если написать <code>||</code> вместо
+                                        <code>&amp;&amp;</code>, пустит при любом совпадении - а это уже дыра в
+                                        безопасности.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня программы научились главному - принимать решения. Мы разобрались с операторами сравнения,
+                    конструкциями <code>if</code>, <code>else</code> и <code>else if</code>, а ещё с логическими
+                    операторами <code>&amp;&amp;</code> и <code>||</code>. Теперь программа может вести себя по-разному
+                    в зависимости от данных, которые в неё попадают.</p>
+
+                <p>В следующем уроке мы познакомимся с <strong>циклами</strong>. Это способ заставить программу
+                    повторять одно и то же действие много раз, не переписывая код снова и снова. Например, напечатать
+                    числа от 1 до 100 - или спрашивать пароль, пока пользователь его не угадает.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-03.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-05.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

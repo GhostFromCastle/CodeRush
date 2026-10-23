@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Классы и объекты - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="intermediate" data-lesson-id="lesson-15">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 15</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson active" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Классы и объекты</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Это очень важный урок. Если до этого мы работали с отдельными переменными (числами, строками,
+                    массивами), то сейчас мы научимся создавать <strong>свои собственные типы данных</strong>. Это
+                    называется объектно-ориентированным программированием, и без этого не обходится ни один серьёзный
+                    проект.</p>
+
+                <h2>Проблема, которую нужно решить</h2>
+
+                <p>Представьте, что мы пишем программу для университета. Нам нужно хранить данные о студентах. У каждого
+                    студента есть имя, возраст и средний балл.</p>
+
+                <p>Давайте попробуем сделать это теми инструментами, что у нас уже есть. Первое, что приходит в голову -
+                    три отдельных переменных на одного студента:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string student1Name = "Алексей";</span><span class="code-row">int student1Age = 20;</span><span class="code-row">double student1Gpa = 4.5;</span></code></pre>
+
+                <p>Работает. Но если студентов станет десять? Придётся создавать тридцать переменных с именами
+                    <code>student1Name</code>, <code>student2Name</code> и так далее. А если сто?
+                </p>
+
+                <p>Можно попробовать параллельные массивы: один для имён, один для возрастов, один для баллов. Уже
+                    лучше, но сложно гарантировать, что <code>names[3]</code> и <code>ages[3]</code> относятся к одному
+                    и тому же студенту. Один неверный индекс - и данные перепутаются.</p>
+
+                <p>И самое главное: <strong>нет ощущения, что все три значения принадлежат одному студенту</strong>. Они
+                    просто лежат рядом, но никак не связаны.</p>
+
+                <p>Именно для таких случаев придумали классы. <strong>Класс позволяет собрать связанные данные в одну
+                        коробку</strong> и дать этой коробке имя.</p>
+
+                <h2>Что такое класс и объект</h2>
+
+                <p>Аналогия простая. Представьте анкету. Обычная бумажная анкета с полями: имя, возраст, средний балл.
+                    Анкета - это <strong>шаблон</strong>, по которому мы заполняем данные о конкретном студенте.</p>
+
+                <p>В C# <strong>класс</strong> - это как пустая анкета. Она описывает, какие поля будут у каждого
+                    студента. Но сама по себе она ничего не хранит.</p>
+
+                <p><strong>Объект</strong> - это уже заполненная анкета. Конкретный студент с конкретным именем,
+                    возрастом и баллом.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Класс - это чертёж. Объект - это построенный по чертежу дом. По одному чертежу можно построить
+                        тысячу домов, и каждый будет отдельным объектом со своими жильцами. Точно так же по одному
+                        классу можно создать тысячу объектов, и у каждого будут свои значения в полях.</p>
+                </div>
+
+                <h2>Первый класс</h2>
+
+                <p>Давайте опишем класс <code>Student</code> - шаблон для студента. Вот как это выглядит:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Student</span><span class="code-row">{</span><span class="code-row">    public string Name;</span><span class="code-row">    public int Age;</span><span class="code-row">    public double Gpa;</span><span class="code-row">}</span></code></pre>
+
+                <p>Разберём по частям:</p>
+
+                <ul>
+                    <li><code>class Student</code> - "создаю новый класс с именем <code>Student</code>". По стилю C#
+                        имена классов пишутся с большой буквы.</li>
+                    <li><code>{ ... }</code> - тело класса, где перечисляются его поля.</li>
+                    <li><code>public string Name;</code> - поле имени. Тип <code>string</code>, имя <code>Name</code>.
+                    </li>
+                    <li><code>public int Age;</code> - поле возраста. Тип <code>int</code>.</li>
+                    <li><code>public double Gpa;</code> - поле среднего балла. Тип <code>double</code>.</li>
+                </ul>
+
+                <p>Слово <code>public</code> означает "публичный". Пока просто запомните: для полей класса нужно писать
+                    <code>public</code>, чтобы мы могли обращаться к ним из <code>Main</code>.
+                </p>
+
+                <h3>Где писать класс</h3>
+
+                <p>Класс <code>Student</code> нужно объявить внутри класса <code>Program</code>, но за пределами
+                    <code>Main</code>. Проще всего - сразу после <code>Main</code>, перед закрывающей скобкой класса
+                    <code>Program</code>.
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">using System;</span><span class="code-row"></span><span class="code-row">namespace ConsoleApp1</span><span class="code-row">{</span><span class="code-row">    internal class Program</span><span class="code-row">    {</span><span class="code-row">        static void Main(string[] args)</span><span class="code-row">        {</span><span class="code-row">            ...</span><span class="code-row">        }</span><span class="code-row"></span><span class="code-row">        class Student</span><span class="code-row">        {</span><span class="code-row">            public string Name;</span><span class="code-row">            public int Age;</span><span class="code-row">            public double Gpa;</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <h2>Создаём первый объект</h2>
+
+                <p>Класс <code>Student</code> - это только шаблон. Чтобы создать конкретного студента, нужно написать в
+                    <code>Main</code> вот такую строку:
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Student alexey = new Student();</span></code></pre>
+
+                <p>Разберём:</p>
+
+                <ul>
+                    <li><code>Student</code> слева - тип переменной. То есть <code>alexey</code> будет объектом типа
+                        <code>Student</code>.
+                    </li>
+                    <li><code>alexey</code> - имя переменной.</li>
+                    <li><code>new Student()</code> - команда "создай новый объект по шаблону Student".</li>
+                </ul>
+
+                <p>После этой строки у нас есть объект <code>alexey</code>. Все его поля пока пустые: имя
+                    <code>null</code>, возраст <code>0</code>, средний балл <code>0</code>.
+                </p>
+
+                <h3>Заполняем поля объекта</h3>
+
+                <p>Теперь нужно положить в поля конкретные значения. Обращаемся к ним через точку:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Student alexey = new Student();</span><span class="code-row"></span><span class="code-row">alexey.Name = "Алексей";</span><span class="code-row">alexey.Age = 20;</span><span class="code-row">alexey.Gpa = 4.5;</span></code></pre>
+
+                <p>Точка работает как "принадлежность". <code>alexey.Name</code> читается как "имя Алексея". Мы говорим
+                    компьютеру: "возьми поле <code>Name</code> у объекта <code>alexey</code> и положи туда строку".</p>
+
+                <h3>Читаем поля объекта</h3>
+
+                <p>Читается так же - через точку:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.WriteLine(alexey.Name);</span><span class="code-row">Console.WriteLine(alexey.Age);</span><span class="code-row">Console.WriteLine(alexey.Gpa);</span></code></pre>
+
+                <h2>Создаём нескольких студентов</h2>
+
+                <p>А вот где классы раскрываются во всей красе. Давайте создадим трёх студентов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Student alexey = new Student();</span><span class="code-row">alexey.Name = "Алексей";</span><span class="code-row">alexey.Age = 20;</span><span class="code-row">alexey.Gpa = 4.5;</span><span class="code-row"></span><span class="code-row">Student maria = new Student();</span><span class="code-row">maria.Name = "Мария";</span><span class="code-row">maria.Age = 19;</span><span class="code-row">maria.Gpa = 4.8;</span></code></pre>
+
+                <p>Два объекта - два отдельных студента. У каждого свои значения в полях. Они не мешают друг другу.
+                    Изменение <code>maria.Age</code> никак не влияет на <code>alexey.Age</code>.</p>
+
+                <p>А теперь - самое интересное. Объекты можно складывать в коллекции, как мы делали с числами и
+                    строками. Вот массив студентов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Student[] group = { alexey, maria };</span><span class="code-row"></span><span class="code-row">foreach (Student student in group)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"{student.Name}, {student.Age} лет");</span><span class="code-row">}</span></code></pre>
+
+                <p>Представьте, что теперь у нас сто студентов. Мы просто создаём сто объектов и складываем их в список.
+                    Кода - пять строк, а порядок идеальный: каждый студент вместе со всеми своими данными.</p>
+
+                <h2>Методы внутри класса</h2>
+
+                <p>Поля - это данные. Но класс может не только хранить данные, но и <strong>делать что-то</strong>. Для
+                    этого внутри класса описывают методы.</p>
+
+                <p>Давайте добавим нашему студенту метод, который печатает о нём информацию:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Student</span><span class="code-row">{</span><span class="code-row">    public string Name;</span><span class="code-row">    public int Age;</span><span class="code-row">    public double Gpa;</span><span class="code-row"></span><span class="code-row">    public void Print()</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine($"{Name}, {Age} лет, средний балл {Gpa}");</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Внутри метода <code>Print</code> мы используем поля <code>Name</code>, <code>Age</code> и
+                    <code>Gpa</code> <strong>без указания объекта</strong>. Это работает потому, что метод находится
+                    внутри класса - он как бы "знает" про свои поля.
+                </p>
+
+                <p>А вызывается метод через точку, как и поля:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">alexey.Print();</span><span class="code-row">maria.Print();</span></code></pre>
+
+                <p>Каждый объект печатает про себя. И если завтра мы решим поменять формат вывода - правим только внутри
+                    метода, а не в каждом месте программы.</p>
+
+                <h3>Метод, который меняет поля</h3>
+
+                <p>Метод может не только читать поля, но и менять их. Добавим студенту метод "отметить день рождения":
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">public void CelebrateBirthday()</span><span class="code-row">{</span><span class="code-row">    Age++;</span><span class="code-row">    Console.WriteLine($"{Name} отмечает день рождения. Теперь ему {Age}.");</span><span class="code-row">}</span></code></pre>
+
+                <p>Теперь можно делать так:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">alexey.CelebrateBirthday();</span></code></pre>
+
+                <p>Возраст объекта <code>alexey</code> увеличится на 1. У <code>maria</code> возраст не изменится - у
+                    неё свой день рождения.</p>
+
+                <h2>Конструктор</h2>
+
+                <p>Создавать объект и потом отдельно заполнять поля через точку - неудобно. Если у нас двадцать полей,
+                    придётся написать двадцать строк. А если забудем заполнить одно - получим ошибку в самый
+                    неподходящий момент.</p>
+
+                <p>Решить эту проблему помогает <strong>конструктор</strong>. Это специальный метод, который вызывается
+                    автоматически при создании объекта. Его задача - сразу заполнить все важные поля.</p>
+
+                <p>Вот как выглядит класс <code>Student</code> с конструктором:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Student</span><span class="code-row">{</span><span class="code-row">    public string Name;</span><span class="code-row">    public int Age;</span><span class="code-row">    public double Gpa;</span><span class="code-row"></span><span class="code-row">    public Student(string name, int age, double gpa)</span><span class="code-row">    {</span><span class="code-row">        Name = name;</span><span class="code-row">        Age = age;</span><span class="code-row">        Gpa = gpa;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    public void Print()</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine($"{Name}, {Age} лет, средний балл {Gpa}");</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Обратите внимание:</p>
+
+                <ul>
+                    <li><strong>Имя совпадает с именем класса</strong> - <code>Student</code>. Это обязательное правило.
+                    </li>
+                    <li><strong>Нет типа возврата</strong>, даже <code>void</code> не пишется.</li>
+                    <li><strong>Внутри - присваивание параметров полям</strong>. Параметр <code>name</code> (с маленькой
+                        буквы) кладём в поле <code>Name</code> (с большой).</li>
+                </ul>
+
+                <p>Теперь создавать студентов стало проще:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Student alexey = new Student("Алексей", 20, 4.5);</span><span class="code-row">Student maria = new Student("Мария", 19, 4.8);</span></code></pre>
+
+                <p>Одна строка на студента. Все поля заполнены сразу. Ничего не забудем.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия
+                    </div>
+                    <p>Конструктор - это как заполнение анкеты прямо при рождении. Вы не выдаёте человеку пустой бланк и
+                        не просите заполнить позже. Вы сразу говорите: "Вот его имя, возраст и балл". Анкета заполнена с
+                        первой секунды.</p>
+                </div>
+
+                <h3>Конструктор по умолчанию</h3>
+
+                <p>Заметили, что раньше мы писали <code>new Student()</code> без аргументов, и это работало? Дело в том,
+                    что C# автоматически создаёт конструктор без параметров, если вы не написали свой.</p>
+                <p>Но как только вы написали свой конструктор (с параметрами), C# перестаёт создавать автоматический.
+                    Теперь <code>new Student()</code> без аргументов перестанет работать.</p>
+
+                <h2>Собираем всё вместе</h2>
+
+                <p>Давайте посмотрим на полную программу.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">using System;</span><span class="code-row"></span><span class="code-row">namespace ConsoleApp1</span><span class="code-row">{</span><span class="code-row">    internal class Program</span><span class="code-row">    {</span><span class="code-row">        static void Main(string[] args)</span><span class="code-row">        {</span><span class="code-row">            Student alexey = new Student("Алексей", 20, 4.5);</span><span class="code-row">            Student maria = new Student("Мария", 19, 4.8);</span><span class="code-row"></span><span class="code-row">            alexey.Print();</span><span class="code-row">            maria.Print();</span><span class="code-row"></span><span class="code-row">            alexey.CelebrateBirthday();</span><span class="code-row">            alexey.Print();</span><span class="code-row">        }</span><span class="code-row"></span><span class="code-row">        class Student</span><span class="code-row">        {</span><span class="code-row">            public string Name;</span><span class="code-row">            public int Age;</span><span class="code-row">            public double Gpa;</span><span class="code-row"></span><span class="code-row">            public Student(string name, int age, double gpa)</span><span class="code-row">            {</span><span class="code-row">                Name = name;</span><span class="code-row">                Age = age;</span><span class="code-row">                Gpa = gpa;</span><span class="code-row">            }</span><span class="code-row"></span><span class="code-row">            public void Print()</span><span class="code-row">            {</span><span class="code-row">                Console.WriteLine($"{Name}, {Age} лет, средний балл {Gpa}");</span><span class="code-row">            }</span><span class="code-row"></span><span class="code-row">            public void CelebrateBirthday()</span><span class="code-row">            {</span><span class="code-row">                Age++;</span><span class="code-row">                Console.WriteLine($"{Name} отмечает день рождения. Теперь ему {Age}.");</span><span class="code-row">            }</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Это уже настоящая маленькая программа со своей структурой. Данные о студентах хранятся в одном месте,
+                    действия над ними - тоже. Всё логично и связано.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>class Name { }</code>
+                        <span>объявление класса</span>
+                    </li>
+                    <li>
+                        <code>new Name()</code>
+                        <span>создание объекта</span>
+                    </li>
+                    <li>
+                        <code>obj.Field</code>
+                        <span>обращение к полю</span>
+                    </li>
+                    <li>
+                        <code>obj.Method()</code>
+                        <span>вызов метода объекта</span>
+                    </li>
+                    <li>
+                        <code>public Name(...)</code>
+                        <span>конструктор</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Классы - тема, где легко запутаться в самых разных мелочах. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>"An object reference is required for the non-static field, method, or
+                            property".</strong> Вы пытаетесь обратиться к обычному методу или полю класса, не создав
+                        объект. Например, пишете <code>Print()</code> вместо <code>alexey.Print()</code>. Создайте
+                        объект через <code>new</code>.</li>
+                    <li><strong>"'Student' does not contain a constructor that takes 0 arguments".</strong> Вы написали
+                        свой конструктор с параметрами, а теперь пытаетесь вызвать <code>new Student()</code> без
+                        аргументов. C# не создаёт автоматический конструктор, если вы написали свой. Либо добавьте свой
+                        конструктор без параметров, либо всегда передавайте аргументы.</li>
+                    <li><strong>"A namespace cannot directly contain members such as fields or methods".</strong> Скорее
+                        всего, класс <code>Student</code> случайно объявлен вне класса <code>Program</code>, прямо в
+                        <code>namespace</code>.
+                    </li>
+                    <li><strong>"Cannot access private member".</strong> Поле или метод помечены как
+                        <code>private</code>, а вы пытаетесь к ним обратиться снаружи. Проверьте, что нужное поле или
+                        метод имеют <code>public</code>.
+                    </li>
+                    <li><strong>Ошибка в конструкторе: параметр и поле имеют одно имя.</strong> Такое
+                        <code>public Student(string Name) { Name = Name; }</code> не работает так, как вы думаете.
+                        Параметр с именем <code>Name</code> "закрывает" поле с тем же именем. Назовите параметр
+                        по-другому (<code>name</code> с маленькой буквы).
+                    </li>
+                    <li><strong>Один объект изменяется, а ожидаете, что изменятся все.</strong> Каждый объект -
+                        отдельная коробка со своими значениями. Изменение одного не влияет на другие.</li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Класс Book</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте класс <code>Book</code> с полями <code>Title</code>,
+                                <code>Author</code> и <code>Year</code>. Создайте два объекта с разными книгами и
+                                выведите их на экран.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Типы полей: <code>Title</code> и <code>Author</code> - <code>string</code>,
+                                        <code>Year</code> - <code>int</code>. Все три - с <code>public</code>. Класс
+                                        создавайте после <code>Main</code>, внутри <code>Program</code>. Объект
+                                        создаётся через <code>new</code>, поля заполняются через точку.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Book</span><span class="code-row">{</span><span class="code-row">    public string Title;</span><span class="code-row">    public string Author;</span><span class="code-row">    public int Year;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    Book first = new Book();</span><span class="code-row">    first.Title = "Мастер и Маргарита";</span><span class="code-row">    first.Author = "Михаил Булгаков";</span><span class="code-row">    first.Year = 1967;</span><span class="code-row"></span><span class="code-row">    Book second = new Book();</span><span class="code-row">    second.Title = "Преступление и наказание";</span><span class="code-row">    second.Author = "Фёдор Достоевский";</span><span class="code-row">    second.Year = 1866;</span><span class="code-row"></span><span class="code-row">    Console.WriteLine($"{first.Title} - {first.Author}, {first.Year}");</span><span class="code-row">    Console.WriteLine($"{second.Title} - {second.Author}, {second.Year}");</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Метод внутри класса</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Добавьте в класс <code>Book</code> из прошлой задачи метод
+                                <code>Print</code>, который печатает информацию о книге в формате "Автор, "Название"
+                                (год)". Вызовите метод для обеих книг.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Метод возвращает <code>void</code>, без параметров. Внутри - один
+                                        <code>Console.WriteLine</code> с интерполяцией. Кавычки внутри строки можно
+                                        поставить как символы <code>\"</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Book</span><span class="code-row">{</span><span class="code-row">    public string Title;</span><span class="code-row">    public string Author;</span><span class="code-row">    public int Year;</span><span class="code-row"></span><span class="code-row">    public void Print()</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine($"{Author}, \"{Title}\" ({Year})");</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    Book first = new Book();</span><span class="code-row">    first.Title = "Мастер и Маргарита";</span><span class="code-row">    first.Author = "Михаил Булгаков";</span><span class="code-row">    first.Year = 1967;</span><span class="code-row"></span><span class="code-row">    Book second = new Book();</span><span class="code-row">    second.Title = "Преступление и наказание";</span><span class="code-row">    second.Author = "Фёдор Достоевский";</span><span class="code-row">    second.Year = 1866;</span><span class="code-row"></span><span class="code-row">    first.Print();</span><span class="code-row">    second.Print();</span><span class="code-row">}</span></code></pre>
+                                    <p>Обратите внимание на <code>\"</code> внутри строки - так в C# записываются
+                                        кавычки внутри строки.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Конструктор для книги</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Добавьте в класс <code>Book</code> конструктор, который принимает
+                                название, автора и год. Создайте три книги одной строкой каждая. Выведите их через метод
+                                <code>Print</code>.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Конструктор называется <code>Book</code> (как класс), без типа возврата.
+                                        Параметры: <code>string title</code>, <code>string author</code>,
+                                        <code>int year</code>. Внутри - присваивания вида <code>Title = title;</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Book</span><span class="code-row">{</span><span class="code-row">    public string Title;</span><span class="code-row">    public string Author;</span><span class="code-row">    public int Year;</span><span class="code-row"></span><span class="code-row">    public Book(string title, string author, int year)</span><span class="code-row">    {</span><span class="code-row">        Title = title;</span><span class="code-row">        Author = author;</span><span class="code-row">        Year = year;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    public void Print()</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine($"{Author}, \"{Title}\" ({Year})");</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    Book first = new Book("Мастер и Маргарита", "Михаил Булгаков", 1967);</span><span class="code-row">    Book second = new Book("Преступление и наказание", "Фёдор Достоевский", 1866);</span><span class="code-row">    Book third = new Book("Война и мир", "Лев Толстой", 1869);</span><span class="code-row"></span><span class="code-row">    first.Print();</span><span class="code-row">    second.Print();</span><span class="code-row">    third.Print();</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Список книг</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте <code>List&lt;Book&gt;</code> с пятью книгами. Выведите их
+                                через <code>foreach</code>. Затем найдите самую старую книгу и выведите её отдельно.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Список создаётся как <code>new List&lt;Book&gt;()</code>. Добавляйте книги через
+                                        <code>.Add(...)</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Поиск самой старой книги делается так же, как поиск максимума в уроке 14 - только
+                                        теперь сравниваем не числа, а поля <code>Year</code>. Начинаем с первой книги и
+                                        обновляем при нахождении меньшего года.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    var books = new List&lt;Book&gt;();</span><span class="code-row"></span><span class="code-row">    books.Add(new Book("Мастер и Маргарита", "Михаил Булгаков", 1967));</span><span class="code-row">    books.Add(new Book("Преступление и наказание", "Фёдор Достоевский", 1866));</span><span class="code-row">    books.Add(new Book("Война и мир", "Лев Толстой", 1869));</span><span class="code-row">    books.Add(new Book("Отцы и дети", "Иван Тургенев", 1862));</span><span class="code-row">    books.Add(new Book("Мёртвые души", "Николай Гоголь", 1842));</span><span class="code-row"></span><span class="code-row">    foreach (Book book in books)</span><span class="code-row">    {</span><span class="code-row">        book.Print();</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    Book oldest = books[0];</span><span class="code-row"></span><span class="code-row">    foreach (Book book in books)</span><span class="code-row">    {</span><span class="code-row">        if (book.Year &lt; oldest.Year)</span><span class="code-row">        {</span><span class="code-row">            oldest = book;</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    Console.WriteLine();</span><span class="code-row">    Console.WriteLine("Самая старая книга:");</span><span class="code-row">    oldest.Print();</span><span class="code-row">}</span></code></pre>
+                                    <p>Алгоритм поиска точно такой же, как в уроке про массивы - просто теперь мы
+                                        сравниваем не числа, а одно из полей объекта.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы сделали огромный шаг. Научились создавать собственные типы данных - классы. Разобрались,
+                    что класс - это чертёж, а объект - конкретная вещь, сделанная по этому чертежу. Научились объявлять
+                    поля, методы и конструкторы.</p>
+
+                <p>Теперь мы можем описывать в коде не только отдельные числа и строки, но <strong>целые
+                        сущности</strong>: студента, книгу, товар, персонажа игры. Каждая такая сущность хранит все свои
+                    данные в одном месте и умеет делать то, что ей положено. Это и есть настоящий
+                    объектно-ориентированный подход.</p>
+
+                <p>В следующем уроке мы разберём <strong>инкапсуляцию</strong>. Это способ защитить данные объекта от
+                    случайных изменений снаружи. Мы узнаем, зачем нужны свойства (<code>get</code> и <code>set</code>),
+                    и почему делать все поля публичными (<code>public</code>) - не самая лучшая идея.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-14.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-16.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

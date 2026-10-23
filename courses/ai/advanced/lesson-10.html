@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Локальные модели - Нейросети и вайбкодинг - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="ai" data-level="advanced" data-lesson-id="lesson-10">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Нейросети и вайбкодинг</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 10</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое нейросети</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Основы промптинга</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ограничения и галлюцинации</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Нейросети в жизни</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Вайбкодинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Нейросети для текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Генеративные изображения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Автоматизация рутины</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>API нейросетей</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson active" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Локальные модели</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Продвинутый промптинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Этика и будущее ИИ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Локальные модели: ИИ на вашем компьютере</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились общаться с нейросетями через API. Это открывает огромные
+                    возможности, но есть нюанс: каждый запрос уходит на серверы компании (OpenAI, Google,
+                    Yandex). Вы платите за токены, а ваши данные (промпты) передаются третьим лицам.</p>
+
+                <p>А что, если вы работаете с конфиденциальной информацией? Или у вас нет денег на оплату
+                    API? Или просто нет интернета? На помощь приходят <strong>локальные модели</strong>.
+                    Это нейросети, которые работают прямо на вашем компьютере. В этом уроке разберёмся,
+                    как это устроено и как запустить свой личный ИИ.</p>
+
+                <h2>Локально или в облаке: в чём разница</h2>
+
+                <p>Аналогия простая. Облачные модели (ChatGPT) - это как <strong>ресторан</strong>. Вы
+                    приходите, заказываете еду, вам её готовят профессионалы на мощном оборудовании.
+                    Вкусно, удобно, но вы платите за каждое блюдо и не знаете, что происходит на кухне.</p>
+
+                <p>Локальная модель - это <strong>домашняя кухня</strong>. Вы покупаете продукты
+                    (скачиваете модель), готовите сами на своей плите (компьютере). Это требует времени
+                    и навыков, зато вы точно знаете, из чего сделано блюдо, и можете готовить сколько
+                    угодно бесплатно.</p>
+
+                <p>Технически локальная модель - это файл (или набор файлов) с весами нейросети. Вы
+                    скачиваете его, загружаете в специальную программу, и она начинает генерировать
+                    текст, используя ресурсы вашего процессора (CPU) или видеокарты (GPU).</p>
+
+                <h2>Зачем запускать ИИ локально</h2>
+
+                <p>Есть три главные причины, почему люди выбирают локальные модели.</p>
+
+                <h3>1. Абсолютная приватность</h3>
+
+                <p>Это главный аргумент. Когда вы отправляете запрос в ChatGPT, ваш текст проходит через
+                    серверы OpenAI. Если вы вставляете туда медицинские данные, коммерческую тайну или
+                    личную переписку, это риск.</p>
+
+                <p>Локальная модель работает <strong>полностью офлайн</strong>. Она даже не подключается
+                    к интернету. Всё, что вы ей пишете, остаётся на вашем жестком диске. Это критически
+                    важно для юристов, врачей, программистов, работающих над закрытыми проектами.</p>
+
+                <h3>2. Бесплатно (после покупки железа)</h3>
+
+                <p>Облачные API стоят денег за каждый токен. Локальная модель, однажды скачанная, работает
+                    бесплатно. Вы можете генерировать хоть миллион слов в день, и ваш счет в банке не
+                    изменится. Единственное ограничение - скорость работы вашего компьютера.</p>
+
+                <h3>3. Свобода и отсутствие цензуры</h3>
+
+                <p>Облачные модели (особенно ChatGPT и Claude) имеют строгие фильтры безопасности. Они
+                    откажутся отвечать на некоторые вопросы. Локальные модели (особенно без дообучения)
+                    обычно не имеют встроенных фильтров. Они ответят на всё, что вы спросите. Это палка
+                    о двух концах: вы получаете свободу, но и ответственность за результат лежит
+                    полностью на вас.</p>
+
+                <h2>Минусы: о чём нужно знать</h2>
+
+                <p>Локальные модели - это не волшебная таблетка. У них есть серьезные ограничения.</p>
+
+                <ul>
+                    <li><strong>Требования к железу.</strong> Чтобы модель работала быстро, нужна мощная
+                        видеокарта (от 8 ГБ видеопамяти). На слабом ноутбуке она будет думать минутами.</li>
+                    <li><strong>Меньший интеллект.</strong> Модели, которые помещаются на домашний
+                        компьютер (например, Llama 3 8B), слабее топовых облачных гигантов (GPT-4o).
+                        Они чаще ошибаются и хуже справляются со сложной логикой.</li>
+                    <li><strong>Сложность настройки.</strong> Облачный сервис работает из коробки.
+                        Локальную модель нужно скачать, установить программу, настроить параметры.</li>
+                </ul>
+
+                <h2>Популярные модели и их размеры</h2>
+
+                <p>Модели отличаются количеством параметров. Чем больше параметров, тем модель умнее,
+                    но тем больше ресурсов ей нужно. Названия моделей обычно содержат количество
+                    параметров в миллиардах (B - billions).</p>
+
+                <ul>
+                    <li><strong>7B-8B (например, Llama 3 8B, Mistral 7B).</strong> Отлично работают
+                        на обычных ноутбуках с 8-16 ГБ ОЗУ. Подходят для простых задач: генерация
+                        текста, перевод, суммаризация.</li>
+                    <li><strong>13B-14B.</strong> Требуют видеокарты от 10-12 ГБ. Умнее, лучше
+                        держат контекст.</li>
+                    <li><strong>70B и выше.</strong> Это монстры, которые требуют серверного железа
+                        или очень дорогих видеокарт (RTX 4090).</li>
+                </ul>
+
+                <h2>Магия квантования</h2>
+
+                <p>Вы можете удивиться: как модель с 8 миллиардами параметров помещается на обычный
+                    ноутбук? Ведь если каждый параметр занимает 2 байта, это уже 16 гигабайт памяти.</p>
+
+                <p>Секрет в <strong>квантовании</strong> (сжатии). Разработчики научились «ужимать»
+                    веса модели с потерей минимальной точности. Вместо 16 бит на параметр используется
+                    4 бита (формат GGUF). Модель занимает в 4 раза меньше места, работает быстрее,
+                    а качество ответов падает незначительно (на несколько процентов).</p>
+
+                <p>Именно поэтому локальные модели стали массовыми: появились удобные форматы сжатия,
+                    которые позволяют запускать ИИ на обычных пользовательских компьютерах.</p>
+
+                <h2>Инструменты для запуска</h2>
+
+                <p>Чтобы не возиться с кодом и компиляцией, используйте готовые программы.</p>
+
+                <h3>Ollama (для программистов)</h3>
+
+                <p>Это консольная утилита (как Docker для нейросетей). Вы вводите команду
+                    <code>ollama run llama3</code>, и она сама скачивает модель и запускает чат прямо
+                    в терминале. Идеально для тех, кто хочет потом интегрировать модель в свои скрипты.
+                </p>
+
+                <h3>LM Studio (для всех)</h3>
+
+                <p>Программа с графическим интерфейсом. Вы открываете окно, как в обычном мессенджере,
+                    выбираете модель из каталога, скачиваете и общаетесь. Под капотом она использует
+                    стандартные форматы и даже может поднять локальный API для ваших программ.</p>
+
+                <h3>GPT4All</h3>
+
+                <p>Более простая программа, которая фокусируется на работе с документами. Вы можете
+                    загрузить свои PDF-файлы, и модель будет отвечать на вопросы по их содержимому
+                    (локальный RAG).</p>
+
+                <h2>Код для работы с локальной моделью</h2>
+
+                <p>Если вы используете Ollama, она поднимает локальный сервер на вашем компьютере.
+                    К нему можно обращаться через код почти так же, как к API OpenAI.</p>
+
+                <div class="code-examples code-examples-single">
+
+                    <div class="code-example-card">
+                        <div class="code-example-header">
+                            <i class="ph ph-file-py code-example-icon"></i>
+                            <span>local_ai.py</span>
+                        </div>
+                        <pre class="code-example-body"><code>import requests
+
+response = requests.post(
+    "http://localhost:11434/api/generate",
+    json={
+        "model": "llama3",
+        "prompt": "Почему небо голубое?",
+        "stream": False
+    }
+)
+
+data = response.json()
+print(data["response"])</code></pre>
+                    </div>
+
+                </div>
+
+                <p>Обратите внимание на URL: <code>localhost</code> означает ваш собственный компьютер.
+                    Ни один байт данных не уходит в интернет. Ответ приходит мгновенно, без задержек
+                    сети.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Локальные модели и закон
+                    </div>
+                    <p>Поскольку локальные модели не имеют встроенной цензуры, вы можете случайно
+                        сгенерировать вредоносный код или оскорбительный текст. Помните, что
+                        ответственность за использование таких инструментов лежит на вас.
+                        Не используйте локальные модели для создания запрещенного контента.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Локальная модель</code>
+                        <span>ИИ, работающий на вашем ПК</span>
+                    </li>
+                    <li>
+                        <code>Приватность</code>
+                        <span>данные не уходят в интернет</span>
+                    </li>
+                    <li>
+                        <code>Квантование</code>
+                        <span>сжатие модели (GGUF) для экономии памяти</span>
+                    </li>
+                    <li>
+                        <code>7B / 8B</code>
+                        <span>размер модели (миллиарды параметров)</span>
+                    </li>
+                    <li>
+                        <code>Ollama</code>
+                        <span>консольный инструмент для запуска</span>
+                    </li>
+                    <li>
+                        <code>LM Studio</code>
+                        <span>инструмент с графическим интерфейсом</span>
+                    </li>
+                    <li>
+                        <code>localhost</code>
+                        <span>локальный адрес вашего компьютера</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при запуске локальных моделей.</p>
+
+                <ul>
+                    <li><strong>«Модель работает очень медленно, слова появляются по букве».</strong>
+                        Скорее всего, модель запустилась на процессоре (CPU), а не на видеокарте (GPU),
+                        либо видеокарта слабая. Попробуйте скачать модель с меньшим количеством параметров
+                        (например, 3B вместо 8B) или формат квантования с меньшим числом бит (Q4 вместо Q8).</li>
+                    <li><strong>«Выдается ошибка нехватки памяти (Out of Memory)».</strong> Модель слишком
+                        большая для вашей видеокарты или оперативной памяти. Решение: скачать более
+                        компактную версию (с квантованием) или закрыть другие тяжелые приложения.</li>
+                    <li><strong>«Модель пишет бред, путается в простых вопросах».</strong> Маленькие
+                        модели (до 8B) действительно глупее GPT-4. Они хуже справляются с логикой.
+                        Используйте их для простых задач: переписать текст, извлечь данные,
+                        ответить на вопрос по факту. Для сложных задач лучше использовать облачные API.</li>
+                    <li><strong>«Где скачать модели?»</strong> В LM Studio есть встроенный каталог.
+                        Для Ollama - официальный сайт или HuggingFace. Ищите файлы формата GGUF.
+                        Осторожно с файлами от неизвестных авторов: они могут содержать вредоносный код
+                        (хотя формат GGUF относительно безопасен, лучше качать из проверенных
+                        репозиториев).</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи для закрепления материала.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Локально или облако</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой ситуации определите, что лучше
+                                использовать: облачную модель (ChatGPT/GPT-4) или локальную (Llama 3).</p>
+                            <ol>
+                                <li>Вам нужно написать сложный юридический договор с нюансами.</li>
+                                <li>Вы работаете с медицинскими картами пациентов и не можете
+                                    передавать их третьим лицам.</li>
+                                <li>Вам нужно сгенерировать 1000 постов для соцсетей, а бюджет
+                                    нулевой.</li>
+                                <li>Вы находитесь в поезде без интернета и хотите перевести
+                                    текст.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Оценивайте сложность задачи (нужен ли высокий интеллект),
+                                        приватность данных и наличие интернета/денег.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Облачная.</strong> Для сложных юридических
+                                            текстов нужен мощный интеллект (GPT-4). Локальная
+                                            модель может упустить важные нюансы.</li>
+                                        <li><strong>Локальная.</strong> Приватность превыше всего.
+                                            Данные пациентов нельзя отправлять в облако.</li>
+                                        <li><strong>Локальная.</strong> Бюджет нулевой, а генерация
+                                            тысяч постов через API обойдется в круглую сумму.
+                                            Локальная модель справится с такой рутиной бесплатно.</li>
+                                        <li><strong>Локальная.</strong> Нет интернета, значит
+                                            облачная модель недоступна.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Что такое квантование</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Объясните своими словами, зачем нужно квантование
+                                моделей (сжатие) и как оно позволяет запускать ИИ на обычных
+                                ноутбуках. В чём компромисс?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте о размере файла и количестве вычислений.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Нейросеть состоит из миллиардов чисел (весов). В оригинале
+                                        каждое число занимает много памяти (например, 16 или 32 бита).</p>
+                                    <p>Квантование позволяет «округлить» эти числа до 4-8 бит.
+                                        Файл модели становится в 4 раза меньше, и для его работы
+                                        нужно меньше оперативной памяти и вычислений.</p>
+                                    <p>Компромисс: модель сжимается, и её ответы становятся чуть
+                                        менее точными. Однако для большинства повседневных задач
+                                        эта потеря точности незаметна.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Подготовка к запуску</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы решили запустить локальную модель на своем
+                                компьютере с 16 ГБ оперативной памяти и видеокартой на 8 ГБ. Какую
+                                модель (по размеру параметров) вы выберете и почему?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Модели на 70B точно не поместятся. Выбирайте из 7B или 8B.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Оптимальный выбор - модель с 7B или 8B параметрами
+                                        (например, Llama 3 8B или Mistral 7B) в формате
+                                        квантования Q4.</p>
+                                    <p>Почему: оригинальная 8B модель весит около 16 ГБ.
+                                        Видеокарта на 8 ГБ не сможет загрузить её целиком.
+                                        Но версия Q4 (4-битное квантование) весит около
+                                        4-5 ГБ. Она легко поместится в видеопамять (8 ГБ)
+                                        и будет работать быстро.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Безопасность при скачивании</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы ищете модель для скачивания. На незнакомом
+                                форуме видите ссылку на файл <code>super_puper_ai.exe</code> от
+                                пользователя "Hacker228", который обещает "самую умную модель
+                                без цензуры". Скачивать ли его и почему?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Что обычно скрывается в файлах .exe и почему не стоит
+                                        доверять анонимным авторам?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p><strong>Категорически нет.</strong></p>
+                                    <p>Во-первых, модели обычно распространяются в формате
+                                        <code>.gguf</code> (веса) или через официальные
+                                        инструменты вроде Ollama. Файл <code>.exe</code> -
+                                        это исполняемая программа. Под видом "установщика ИИ"
+                                        вам могут подсунуть троян, майнер или вирус-шифровальщик.
+                                    </p>
+                                    <p>Во-вторых, "Hacker228" - это аноним, который может
+                                        собрать модель с вредоносным кодом (хотя современные
+                                        форматы моделей стараются исключать исполнение кода,
+                                        риск заражения через фейковый установщик огромен).</p>
+                                    <p>Скачивайте модели только из официальных источников:
+                                        сайт Meta (для Llama), HuggingFace (проверенные
+                                        репозитории) или через встроенные каталоги LM Studio
+                                        и Ollama.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с локальными моделями. Узнали, что такое приватный ИИ, работающий без
+                    интернета. Поняли главные преимущества (конфиденциальность, бесплатность) и
+                    недостатки (требования к железу, меньший интеллект). Разобрались с понятием
+                    квантования, которое позволяет запускать нейросети на обычных компьютерах.</p>
+
+                <p>Теперь вы знаете, как запустить своего личного ассистента через Ollama или
+                    LM Studio, и как написать скрипт для работы с ним. Это дает вам полный контроль
+                    над данными и независимость от крупных корпораций.</p>
+
+                <p>В следующем уроке мы вернёмся к работе с текстом и разберём <strong>продвинутые
+                        техники промптинга</strong>. Узнаем, что такое Few-shot, Chain of Thought,
+                    ReAct и как строить сложные системы из нескольких нейросетей.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-09.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-11.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

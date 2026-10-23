@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Двухфакторная аутентификация - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="beginner" data-lesson-id="lesson-03">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 03</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson active" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Двухфакторная аутентификация</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы сделали пароли длинными, уникальными и запомнили их через менеджер.
+                    Казалось бы, что ещё нужно? Однако пароль - это только <strong>один слой</strong> защиты.
+                    И у этого слоя есть проблема: если пароль как-то утечёт (а мы уже знаем, что утечки случаются
+                    регулярно), злоумышленник получит доступ к аккаунту. Ничего больше не остановит его.</p>
+
+                <p>Именно для таких случаев придумали <strong>двухфакторную аутентификацию</strong> - второй
+                    слой защиты, который срабатывает, даже если пароль уже утёк. Сегодня мы разберёмся, как это
+                    работает, какие виды 2FA бывают и почему один из них в разы надёжнее других.</p>
+
+                <h2>Почему одного пароля недостаточно</h2>
+
+                <p>Давайте честно: пароль - это довольно слабая защита. Даже хороший. Смотрите, сколько способов
+                    его украсть существует:</p>
+
+                <ul>
+                    <li><strong>Утечка на сервисе.</strong> Вы сделали уникальный пароль, но сервис его хранил
+                        плохо - и он попал в открытый доступ. Вы об этом даже не узнаете.</li>
+                    <li><strong>Фишинг.</strong> Вас обманом привели на поддельный сайт, и вы сами ввели пароль.
+                        Классика жанра, об этом подробно поговорим в следующем уроке.</li>
+                    <li><strong>Вредоносное ПО.</strong> На компьютере завёлся вирус-кейлоггер, который
+                        записывает всё, что вы печатаете.</li>
+                    <li><strong>Перехват на публичном Wi-Fi.</strong> Если сайт работает без шифрования -
+                        пароль можно «подслушать» из трафика.</li>
+                    <li><strong>Подбор.</strong> Если пароль слабый или короткий - его рано или поздно
+                        подберут автоматические сканеры.</li>
+                </ul>
+
+                <p>Заметьте: почти все эти способы так или иначе связаны с <em>паролем</em>. Если злоумышленник
+                    получил пароль - он может войти под вашим именем и сделать что угодно. Пока не появится
+                    второй слой защиты.</p>
+
+                <h2>Что такое двухфакторная аутентификация</h2>
+
+                <p>Идея очень простая. Пусть для входа нужны <strong>два разных подтверждения</strong>, причём
+                    из разных категорий. Тогда даже если злоумышленник украл одно - второе у него всё равно
+                    не окажется, и войти он не сможет.</p>
+
+                <p>В аутентификации есть три классические категории того, чем можно подтвердить свою личность:</p>
+
+                <h3>1. То, что вы знаете</h3>
+
+                <p>Пароль, PIN-код, ответ на секретный вопрос. Всё, что хранится у вас в голове. Именно эту
+                    категорию мы разбирали в прошлом уроке.</p>
+
+                <h3>2. То, чем вы владеете</h3>
+
+                <p>Телефон, на который приходит SMS. Приложение-аутентификатор на смартфоне. Аппаратный
+                    USB-ключ. Физическое устройство, которое есть только у вас.</p>
+
+                <h3>3. То, чем вы являетесь</h3>
+
+                <p>Отпечаток пальца, распознавание лица, сканирование сетчатки. Биометрия. Её вы уже используете,
+                    когда разблокируете смартфон прикосновением или взглядом.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Двухфакторная аутентификация (2FA) - это когда для входа нужно подтверждение из
+                        <strong>двух разных категорий</strong>. Пароль + код из SMS. Пароль + отпечаток.
+                        Пароль + аппаратный ключ. Если оба подтверждения из одной категории - это уже не 2FA,
+                        а просто два пароля.</p>
+                </div>
+
+                <p>В быту «двухфакторную аутентификацию» часто сокращают до <strong>2FA</strong> (от английского
+                    <em>two-factor authentication</em>). А если факторов больше двух - говорят
+                    <strong>MFA</strong> (<em>multi-factor authentication</em>). Для наших целей это одно и то
+                    же - речь идёт о том, что одного пароля мало.
+                </p>
+
+                <h2>Виды второй фактор-защиты</h2>
+
+                <p>Способов подтвердить личность много, но в реальной жизни используются четыре основных. Разберём
+                    каждый - с плюсами и минусами.</p>
+
+                <h3>SMS-коды</h3>
+
+                <p>Самый распространённый вариант. После ввода пароля сервис отправляет на ваш номер телефона
+                    короткое сообщение с кодом из 4-8 цифр. Код нужно ввести в течение пары минут.</p>
+
+                <p><strong>Плюсы:</strong> знакомо всем, ничего не надо устанавливать, работает даже на
+                    кнопочном телефоне.</p>
+
+                <p><strong>Минусы:</strong> SMS можно перехватить. Есть техника под названием «SIM-swap»: мошенник
+                    приходит в салон связи с поддельными документами, получает вашу SIM-карту и все SMS приходят
+                    уже ему. Также SMS плохо работают в роуминге и без сети.</p>
+
+                <h3>Приложения-аутентификаторы (TOTP)</h3>
+
+                <p>На смартфон устанавливается приложение - Google Authenticator, Authy, 1Password, Microsoft
+                    Authenticator и другие. При настройке 2FA на сервисе вы сканируете QR-код, и приложение
+                    начинает генерировать шестизначные коды каждые 30 секунд. Код нигде не передаётся по сети -
+                    он вычисляется прямо на телефоне.</p>
+
+                <p><strong>Плюсы:</strong> работает без интернета и без сети. Коды невозможно перехватить через
+                    SMS. Не привязано к номеру телефона, так что SIM-swap не страшен.</p>
+
+                <p><strong>Минусы:</strong> нужно установить приложение. Если потеряете телефон и не сохраните
+                    запасные коды - можно потерять доступ к аккаунту.</p>
+
+                <h3>Push-уведомления</h3>
+
+                <p>Разновидность приложения-аутентификатора. Вместо ввода кода вам на телефон приходит
+                    уведомление: «Пытаетесь войти? Подтвердите». Вы нажимаете «Да» - и вход разрешён.</p>
+
+                <p><strong>Плюсы:</strong> очень удобно, ничего вводить не надо. Часто показывает, откуда
+                    попытка входа - если это не вы, сразу видно.</p>
+
+                <p><strong>Минусы:</strong> работает только при наличии интернета. Уставший или невнимательный
+                    пользователь может нажать «Да» на мошенническое уведомление - такие атаки называются
+                    «MFA fatigue» (усталость от MFA).</p>
+
+                <h3>Аппаратные ключи</h3>
+
+                <p>Физическое устройство, похожее на маленькую USB-флешку. Самое известное - YubiKey. Вы
+                    вставляете ключ в компьютер (или прикладываете к телефону) и нажимаете кнопку на нём.
+                    Всё, вход разрешён.</p>
+
+                <p><strong>Плюсы:</strong> самый надёжный способ из существующих. Ключ невозможно удалённо
+                    перехватить - он физически должен быть у вас в руках.</p>
+
+                <p><strong>Минусы:</strong> стоит денег (от 30 до 100 долларов). Нужно носить с собой. Не все
+                    сервисы поддерживают.</p>
+
+                <h2>Сравнение методов</h2>
+
+                <p>Собрали всё в таблицу, чтобы было проще ориентироваться:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Метод</th>
+                            <th>Надёжность</th>
+                            <th>Удобство</th>
+                            <th>Где использовать</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SMS-код</td>
+                            <td>Средняя</td>
+                            <td>Высокое</td>
+                            <td>Везде, если ничего другого нет</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>TOTP-приложение</td>
+                            <td>Высокая</td>
+                            <td>Среднее</td>
+                            <td><strong>Рекомендуется по умолчанию</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Push-уведомления</td>
+                            <td>Высокая</td>
+                            <td>Очень высокое</td>
+                            <td>Банки, крупные сервисы</td>
+                        </tr>
+                        <tr>
+                            <td>Аппаратный ключ</td>
+                            <td>Максимальная</td>
+                            <td>Ниже среднего</td>
+                            <td>Почта, критичные аккаунты</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Идеальный набор для большинства людей: <strong>TOTP-приложение на важных аккаунтах</strong>
+                    (почта, банк, госуслуги, менеджер паролей) и <strong>SMS там, где приложение не
+                    поддерживается</strong>. Аппаратный ключ имеет смысл, если вы готовы потратить деньги и
+                    время на максимальную защиту.</p>
+
+                <h2>Как работает TOTP изнутри</h2>
+
+                <p>Любопытно, как приложение-аутентификатор умудряется генерировать коды, которые сервер
+                    «узнаёт», не получая никаких данных из сети? Всё дело в общей формуле, известной и приложению,
+                    и серверу.</p>
+
+                <p>Схема такая:</p>
+
+                <ol>
+                    <li>При настройке 2FA сервер генерирует <strong>секретный ключ</strong> (большое случайное
+                        число, обычно закодированное в base32).</li>
+                    <li>Этот ключ записывается на сервере и у вас в приложении - обычно через QR-код.</li>
+                    <li>Теперь и у сервера, и у вас есть <em>одно и то же число</em>, но больше никто его не
+                        знает.</li>
+                    <li>Обе стороны считают: <code>код = HMAC(секрет, текущее_время / 30)</code>. Получается
+                        шестизначное число.</li>
+                    <li>Каждые 30 секунд меняется «окно времени» - и код пересчитывается заново. Синхронно
+                        с обеих сторон.</li>
+                </ol>
+
+                <p>Проще говоря, TOTP - это «умные часы», которые у вас и у сервера показывают одно и то же
+                    время, и на основе этого времени генерируют код. Никаких SMS, никакой сети - только общий
+                    секрет и текущая секунда.</p>
+
+                <p>Вот как это выглядит на Python - коротенький пример, который демонстрирует принцип:</p>
+
+                <div class="code-examples code-examples-single">
+
+                    <div class="code-example-card">
+                        <div class="code-example-header">
+                            <i class="ph ph-file-py code-example-icon"></i>
+                            <span>Python</span>
+                        </div>
+                        <pre class="code-example-body"><code>import hmac
+import hashlib
+import time
+import struct
+
+def totp(secret: bytes, length: int = 6) -> str:
+    # Сколько 30-секундных окон прошло
+    counter = int(time.time()) // 30
+
+    # Упаковываем счётчик в байты
+    msg = struct.pack("&gt;Q", counter)
+
+    # Считаем HMAC-SHA1
+    digest = hmac.new(secret, msg,
+                      hashlib.sha1).digest()
+
+    # Динамическое усечение
+    offset = digest[-1] &amp; 0x0F
+    code = struct.unpack("&gt;I",
+        digest[offset:offset + 4])[0]
+
+    # Берём последние N цифр
+    return str(code % (10 ** length)).zfill(length)
+
+# В реальности секрет - base32-строка,
+# здесь для примера обычные байты
+print(totp(b"my-secret-key", 6))</code></pre>
+                    </div>
+
+                </div>
+
+                <p>Это упрощённая реализация - в настоящем RFC 6238 (стандарт TOTP) есть ещё пара деталей.
+                    Но основная логика здесь: общий секрет + текущее время + хеш-функция = шестизначный код,
+                    который меняется каждые 30 секунд.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Почему это безопасно
+                    </div>
+                    <p>Злоумышленник не может вычислить код, потому что не знает <em>секретный ключ</em>.
+                        Перехватить код из сети тоже нельзя - он никуда не передаётся, а генерируется прямо на
+                        телефоне. Именно поэтому TOTP надёжнее SMS.</p>
+                </div>
+
+                <h2>Запасные коды</h2>
+
+                <p>Вот сценарий, который ломает всю защиту: у вас включена 2FA через приложение, вы потеряли
+                    телефон. Или уронили его в воду. Или он просто перестал работать. Войти никуда нельзя -
+                    второй фактор недоступен.</p>
+
+                <p>Чтобы спастись от такой ситуации, при настройке 2FA сервисы выдают <strong>запасные
+                    коды</strong> (backup codes). Это список из 8-10 одноразовых кодов на бумаге или в виде
+                    файла. Каждый код можно использовать один раз - если основной второй фактор недоступен.</p>
+
+                <p>Как обращаться с запасными кодами:</p>
+
+                <ul>
+                    <li><strong>Распечатайте и положите в надёжное место.</strong> В сейф, в запертый ящик
+                        стола дома, в банковскую ячейку. Только не в заметки на телефоне, который вы
+                        потеряете.</li>
+                    <li><strong>Используйте по одному.</strong> После входа через запасной код - сразу
+                        заходите в настройки и генерируете новые. Старые уже скомпрометированы.</li>
+                    <li><strong>Проверьте, что они есть.</strong> Некоторые сервисы выдают их только в момент
+                        включения 2FA. Если пропустили - придётся переключать 2FA заново, чтобы получить
+                        свежие коды.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Если у вас нет запасных кодов
+                    </div>
+                    <p>Срочно зайдите в настройки 2FA на важных сервисах и проверьте, что они выданы. Если
+                        сервис не даёт запасные коды - это плохой сервис. Можно рассмотреть вариант со
+                        «второй почтой»: она используется только для восстановления доступа. Но по-хорошему -
+                        запасные коды должны быть везде.</p>
+                </div>
+
+                <h2>Как включить 2FA на практике</h2>
+
+                <p>Общая схема одинакова для всех сервисов. Вот что нужно сделать по шагам.</p>
+
+                <h3>Шаг 1. Установите приложение-аутентификатор</h3>
+
+                <p>Если вы будете использовать TOTP, для начала нужен сам инструмент. Популярные варианты:</p>
+
+                <ul>
+                    <li><strong>Google Authenticator</strong> - простой, бесплатный, есть везде.</li>
+                    <li><strong>Authy</strong> - умеет синхронизировать между устройствами, есть резервные
+                        копии.</li>
+                    <li><strong>1Password</strong> и другие менеджеры паролей - часто включают TOTP прямо
+                        внутри.</li>
+                    <li><strong>Microsoft Authenticator</strong> - хороший вариант, если вы в экосистеме
+                        Microsoft.</li>
+                </ul>
+
+                <h3>Шаг 2. Зайдите в настройки безопасности сервиса</h3>
+
+                <p>В каждом сервисе путь немного отличается, но ищите раздел с названием «Безопасность»,
+                    «Two-factor authentication», «Двухфакторная аутентификация». Обычно там есть кнопка
+                    «Включить».</p>
+
+                <h3>Шаг 3. Отсканируйте QR-код</h3>
+
+                <p>Сервис покажет QR-код. Откройте приложение-аутентификатор, нажмите «+» и отсканируйте
+                    код. Приложение сразу добавит новую запись и начнёт генерировать шестизначные коды.</p>
+
+                <h3>Шаг 4. Подтвердите, что всё работает</h3>
+
+                <p>Сервис попросит ввести код из приложения - чтобы убедиться, что вы действительно его
+                    настроили и приложение работает. Введите код. Готово.</p>
+
+                <h3>Шаг 5. Сохраните запасные коды</h3>
+
+                <p>Сервис покажет список запасных кодов. Скачайте их или распечатайте. Положите в надёжное
+                    место. Это ваш «запасной ключ» от аккаунта.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        С чего начать
+                    </div>
+                    <p>Если будете включать 2FA впервые, начните с одного аккаунта - <strong>почты</strong>.
+                        Через почту можно сбросить пароли почти от всех остальных сервисов, так что это
+                        самый ценный аккаунт. После того как разберётесь с почтой, добавьте 2FA на банк,
+                        госуслуги и менеджер паролей. Остальные - по мере возможностей.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>2FA</code>
+                        <span>два подтверждения из разных категорий</span>
+                    </li>
+                    <li>
+                        <code>MFA</code>
+                        <span>то же самое, но факторов может быть больше двух</span>
+                    </li>
+                    <li>
+                        <code>Знаю / Имею / Есть</code>
+                        <span>три категории факторов</span>
+                    </li>
+                    <li>
+                        <code>Секретный ключ</code>
+                        <span>общая основа для генерации кодов</span>
+                    </li>
+                    <li>
+                        <code>TOTP</code>
+                        <span>коды в приложении каждые 30 сек</span>
+                    </li>
+                    <li>
+                        <code>SMS-код</code>
+                        <span>лучше, чем ничего, но слабее TOTP</span>
+                    </li>
+                    <li>
+                        <code>Запасные коды</code>
+                        <span>спасение при потере телефона</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Как всегда, вместо ошибок компилятора - типичные проблемы с 2FA и способы их решить.</p>
+
+                <ul>
+                    <li><strong>«Не приходит SMS-код».</strong> Возможные причины: нет сети у телефона,
+                        оператор задерживает доставку, номер устарел в настройках. Попробуйте подождать,
+                        проверить сигнал, перезагрузить телефон. Если совсем никак - используйте запасные
+                        коды или восстановление через почту.</li>
+                    <li><strong>«Код из приложения не подходит».</strong> Скорее всего, сбилось время на
+                        смартфоне. TOTP привязан к текущему времени, и если часы телефона отстают или спешат
+                        больше чем на минуту - код не совпадёт. Проверьте в настройках телефона, чтобы
+                        время было автоматическим.</li>
+                    <li><strong>«Потерял телефон, не могу войти».</strong> Используйте запасные коды. Если
+                        их нет - придётся проходить процедуру восстановления доступа через поддержку сервиса.
+                        Это долго, муторно и не всегда возможно. Отсюда правило: <strong>запасные коды
+                            обязательны</strong>.</li>
+                    <li><strong>«Установил 2FA, а теперь код из приложения не приходит на новом
+                        устройстве».</strong> Многие приложения-аутентификаторы не синхронизируются между
+                        устройствами. Если перенесли только приложение, но не сами записи - их придётся
+                        добавлять заново через QR-коды (или использовать запасные коды, чтобы войти, а
+                        потом перенастроить).</li>
+                    <li><strong>«Слышал, что 2FA взламывают».</strong> Взламывают, но не саму 2FA, а её
+                        слабое звено. Например, перехватывают SMS через SIM-swap или обманывают
+                        пользователя через фальшивое push-уведомление. Сам принцип двухфакторной
+                        аутентификации - очень надёжная вещь. Просто не все её виды одинаково хороши.</li>
+                    <li><strong>«Включать ли 2FA на неважных аккаунтах?»</strong> Да, если это просто.
+                        Неважных аккаунтов не бывает - помните урок про пароли. Даже от игрового аккаунта
+                        можно навредить. Плюс на многих сервисах 2FA включается один раз в пару кликов
+                        и больше не мешает.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на размышление, вторые две - на практику с вашими аккаунтами.
+                    У каждой есть подсказка и разбор.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Какие факторы</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Определите, к какой категории относится каждый способ
+                                подтверждения личности - «знаю», «имею» или «есть».</p>
+                            <ol>
+                                <li>PIN-код от банковской карты.</li>
+                                <li>Отпечаток пальца на смартфоне.</li>
+                                <li>Код из SMS.</li>
+                                <li>Ответ на секретный вопрос.</li>
+                                <li>USB-ключ YubiKey.</li>
+                                <li>Распознавание лица Face ID.</li>
+                                <li>Пароль от почты.</li>
+                                <li>Код из приложения-аутентификатора.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Категория «знаю» - что-то, что вы помните. «Имею» - что-то, что вы
+                                        физически носите с собой (или имеете на устройстве). «Есть» - часть
+                                        вашего тела. Ключевое слово - «часть тела».</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ul>
+                                        <li>PIN-код - <strong>знаю</strong> (храните в голове).</li>
+                                        <li>Отпечаток пальца - <strong>есть</strong> (часть вас).</li>
+                                        <li>Код из SMS - <strong>имею</strong> (SMS приходят на ваш телефон).</li>
+                                        <li>Секретный вопрос - <strong>знаю</strong>.</li>
+                                        <li>USB-ключ - <strong>имею</strong> (физическое устройство у вас).</li>
+                                        <li>Face ID - <strong>есть</strong> (ваше лицо).</li>
+                                        <li>Пароль - <strong>знаю</strong>.</li>
+                                        <li>Код из приложения - <strong>имею</strong> (приложение на вашем
+                                            телефоне; само устройство - это то, чем вы владеете).</li>
+                                    </ul>
+                                    <p>Получается, что «пароль + код из приложения» - это «знаю + имею». Разные
+                                        категории - значит, это настоящая 2FA. А вот «пароль + ответ на секретный
+                                        вопрос» - это «знаю + знаю». Обе части - из головы. Такой подход
+                                        формально называют 2FA, но защита слабее: если утекло одно, скорее всего
+                                        утечёт и второе (например, через тот же фишинг).</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Какой метод выбрать</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой ситуации подберите оптимальный метод 2FA и
+                                объясните, почему.</p>
+                            <ol>
+                                <li>У вас есть смартфон, но нет денег на аппаратные ключи.</li>
+                                <li>Вы работаете в банке и защищаете корпоративные данные.</li>
+                                <li>У вас пожилая мама, которая плохо разбирается в технологиях.</li>
+                                <li>Вы часто путешествуете и не всегда ловите сеть.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте о двух вещах: насколько важны данные, и насколько человек
+                                        готов возиться с настройкой. Иногда «простой, но слабее» лучше, чем
+                                        «надёжный, но забросят через неделю».</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ul>
+                                        <li><strong>Смартфон без денег на ключи</strong> - TOTP-приложение.
+                                            Бесплатно, надёжно, никаких SMS. Идеальный выбор.</li>
+                                        <li><strong>Корпоративная защита</strong> - аппаратный ключ.
+                                            Банки и крупные компании обычно выдают их сотрудникам. Максимальная
+                                            защита, физический контроль.</li>
+                                        <li><strong>Пожилая мама</strong> - SMS. Пусть слабее TOTP, но она
+                                            справится. Если попробовать приложение - велик риск, что она
+                                            забудет пароль и останется без доступа. А «неудобно и бросили» -
+                                            хуже, чем «просто и работает».</li>
+                                        <li><strong>Путешествия без сети</strong> - TOTP. SMS в роуминге могут
+                                            не дойти. А TOTP работает без интернета - только текущее время на
+                                            телефоне. Главное, чтобы часы были правильные.</li>
+                                    </ul>
+                                    <p>Общий принцип: выбирайте метод не по максимальной надёжности, а по
+                                        <strong>разумному балансу</strong> между безопасностью и удобством. Если
+                                        пользователь не сможет пользоваться защитой, он её отключит.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Включите 2FA на своей почте</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Зайдите в настройки безопасности своей почты и проверьте, включена
+                                ли там двухфакторная аутентификация. Если нет - включите прямо сейчас. Если
+                                да - проверьте, какой метод используется и есть ли у вас запасные коды.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Где искать:</p>
+                                    <ul>
+                                        <li><strong>Gmail</strong>: аккаунт Google → Безопасность → Двухэтапная
+                                            аутентификация.</li>
+                                        <li><strong>Яндекс.Почта</strong>: Яндекс ID → Безопасность → Двухфакторная
+                                            аутентификация.</li>
+                                        <li><strong>Mail.ru</strong>: Настройки → Безопасность → Двухфакторная
+                                            аутентификация.</li>
+                                        <li><strong>Outlook</strong>: Безопасность → Дополнительные параметры
+                                            безопасности.</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Здесь нет «правильного» или «неправильного» ответа - это практическая
+                                        задача. Но вот что стоит проверить:</p>
+                                    <ul>
+                                        <li>Если 2FA уже включена через SMS - подумайте, не переключиться ли
+                                            на TOTP-приложение. Займёт минут 10, а защита заметно выше.</li>
+                                        <li>Если у вас несколько почт - начните с главной, к которой привязаны
+                                            остальные сервисы.</li>
+                                        <li>Обязательно проверьте, выданы ли запасные коды. Если нет -
+                                            перевыпустите 2FA, чтобы получить свежие.</li>
+                                    </ul>
+                                    <p>Задача считается выполненной, если вы зашли в настройки и увидели
+                                        состояние 2FA. Даже если ничего менять не стали - уже хорошо: значит,
+                                        вы теперь знаете, что там.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Ревизия аккаунтов</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Составьте список пяти самых важных ваших аккаунтов. Напротив
+                                каждого отметьте: включена ли там 2FA, какой метод, есть ли запасные коды.
+                                Определите, что нужно доработать в первую очередь.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Важными обычно считаются: почта, банк, госуслуги, менеджер паролей,
+                                        соцсети, рабочие аккаунты. Что из этого у вас есть? Выпишите.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный план</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>У каждого свой список, но вот пример того, как это выглядит у многих:</p>
+                                    <ul>
+                                        <li><strong>Почта</strong> - 2FA включена (SMS). Запасные коды есть.
+                                            Действие: переключить на TOTP.</li>
+                                        <li><strong>Банк</strong> - 2FA включена (приложение банка). Отдельных
+                                            запасных кодов нет, но есть восстановление через отделение.
+                                            Оставляем как есть.</li>
+                                        <li><strong>Госуслуги</strong> - 2FA не включена. Действие: включить
+                                            срочно.</li>
+                                        <li><strong>Менеджер паролей</strong> - 2FA включена (TOTP). Запасные
+                                            коды есть. Всё в порядке.</li>
+                                        <li><strong>Соцсеть</strong> - 2FA не включена. Действие: включить,
+                                            но менее срочно.</li>
+                                    </ul>
+                                    <p>Приоритет - сверху вниз. Если у вас несколько недоделанных аккаунтов,
+                                        начинайте с почты. После неё - банк и госуслуги. Остальное - постепенно.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались со вторым слоем защиты - двухфакторной аутентификацией. Узнали, что одного
+                    пароля недостаточно и почему. Познакомились с тремя категориями факторов (знаю, имею,
+                    есть) и поняли, что 2FA - это когда подтверждения берутся из <strong>разных</strong>
+                    категорий. Разобрали четыре основных метода второй фактор-защиты: SMS, TOTP-приложения,
+                    push-уведомления и аппаратные ключи. Увидели, как работает TOTP изнутри, и убедились,
+                    что запасные коды - это не «на всякий случай», а обязательная часть настройки.</p>
+
+                <p>Теперь у ваших аккаунтов два слоя защиты. Если пароль утечёт - второй фактор спасёт.
+                    Это огромный шаг вперёд по сравнению с одним паролем. Не забудьте пройти задачу 3 и
+                    включить 2FA на почте, если ещё не сделали - это буквально минутное дело, которое
+                    спасёт вас от многих проблем в будущем.</p>
+
+                <p>Но даже с двумя слоями защиты остаётся дыра, через которую пробивают чаще всего - это
+                    <strong>сам человек</strong>. Даже самый надёжный второй фактор можно обойти, если
+                    обмануть пользователя и заставить его <em>самому</em> отдать доступ. В следующем уроке
+                    мы разберём фишинг и социальную инженерию - как мошенники обманывают людей через
+                    письма, звонки и сообщения, и как это распознать. Это самая частая атака в мире, и
+                    именно она ломает аккаунты даже с самой лучшей 2FA.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-02.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-04.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

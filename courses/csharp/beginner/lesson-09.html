@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все типы данных под капотом - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="beginner" data-lesson-id="lesson-09">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 09</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson active" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Все типы данных под капотом</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория</span>
+                </div>
+
+                <p>Мы прошли почти весь начальный уровень, но до сих пор использовали всего четыре типа:
+                    <code>int</code>, <code>double</code>, <code>string</code>, <code>bool</code> и один раз -
+                    <code>char</code>. На самом деле в C# их гораздо больше. И это не «для галочки»: разница между
+                    ними реальна и важна. Если выбрать неверный тип - программа может выдать неправильный результат
+                    или вообще упасть с ошибкой.
+                </p>
+
+                <p>Сегодня мы заглянем «под капот» и разберёмся, сколько в C# основных типов, чем они отличаются
+                    и когда какой использовать. Постараемся разложить всё по полочкам - с таблицами, чтобы можно
+                    было возвращаться к этому уроку как к справочнику.</p>
+
+                <h2>Зачем вообще нужны разные типы</h2>
+
+                <p>Компьютер хранит данные в ячейках памяти, и у каждой ячейки есть <strong>размер</strong>. Один
+                    тип занимает 1 байт, другой - 4, третий - 8. Если нам нужно хранить число от 0 до 255 (например,
+                    возраст человека), глупо выделять под него 8 байт - хватит и одного. А если нужно хранить
+                    население Земли - 8 миллиардов - то один байт не подойдёт: в него влезает максимум 255.</p>
+
+                <p>Поэтому в C# существует много числовых типов: для каждого диапазона свой. Плюс отдельные типы
+                    для текста, символов, дробных чисел и логических значений.</p>
+
+                <p>Понимание типов - это как понимание размеров коробок на складе. Можно, конечно, всё сваливать
+                    в один большой ящик. Но лучше подобрать подходящий под каждую задачу.</p>
+
+                <h2>Целые числа</h2>
+
+                <p>Начнём с целых чисел - тех, что без дробной части. Это самая большая группа типов. Все они
+                    отличаются друг от друга <strong>размером</strong> и <strong>диапазоном</strong>. Есть знаковые
+                    (могут быть отрицательными) и беззнаковые (только положительные).</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Тип</th>
+                            <th>Размер</th>
+                            <th>Диапазон</th>
+                            <th>Когда использовать</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>byte</code></td>
+                            <td>1 байт</td>
+                            <td>0 … 255</td>
+                            <td>Возраст, счётчики, мелкие числа</td>
+                        </tr>
+                        <tr>
+                            <td><code>sbyte</code></td>
+                            <td>1 байт</td>
+                            <td>−128 … 127</td>
+                            <td>Редко используется</td>
+                        </tr>
+                        <tr>
+                            <td><code>short</code></td>
+                            <td>2 байта</td>
+                            <td>−32 768 … 32 767</td>
+                            <td>Когда byte не хватает, но int - избыточен</td>
+                        </tr>
+                        <tr>
+                            <td><code>ushort</code></td>
+                            <td>2 байта</td>
+                            <td>0 … 65 535</td>
+                            <td>Редко используется</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td><code>int</code></td>
+                            <td>4 байта</td>
+                            <td>−2 147 483 648 … 2 147 483 647</td>
+                            <td><strong>По умолчанию для целых чисел</strong></td>
+                        </tr>
+                        <tr>
+                            <td><code>uint</code></td>
+                            <td>4 байта</td>
+                            <td>0 … 4 294 967 295</td>
+                            <td>Когда нужны только положительные</td>
+                        </tr>
+                        <tr>
+                            <td><code>long</code></td>
+                            <td>8 байт</td>
+                            <td>±9 223 372 036 854 775 807</td>
+                            <td>Очень большие числа: банковские счета, население</td>
+                        </tr>
+                        <tr>
+                            <td><code>ulong</code></td>
+                            <td>8 байт</td>
+                            <td>0 … 18 446 744 073 709 551 615</td>
+                            <td>Редко используется</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Скорее всего, вы будете использовать только два из них - <code>int</code> и <code>long</code>.
+                    Остальные встречаются редко, но знать о них полезно: вы точно увидите их в чужом коде.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Знаковый и беззнаковый
+                    </div>
+                    <p>Буква <code>u</code> в начале названия (<code>uint</code>, <code>ulong</code>,
+                        <code>ushort</code>) означает <em>unsigned</em> - «беззнаковый». Такие типы не могут быть
+                        отрицательными, зато влезает вдвое больше положительных чисел. То есть у <code>uint</code>
+                        верхняя граница примерно в два раза выше, чем у <code>int</code>.
+                    </p>
+                </div>
+
+                <h3>Что делать, если число не влезает в int</h3>
+
+                <p>Есть простой способ проверить максимальное значение любого типа - обратиться к константе
+                    <code>MaxValue</code>. Например:
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Console.WriteLine(int.MaxValue);</span><span class="code-row">Console.WriteLine(long.MaxValue);</span></code></pre>
+
+                <p>Программа выведет:</p>
+
+                <pre><code>2147483647
+9223372036854775807</code></pre>
+
+                <p>Если вам нужно хранить очень большое число, а <code>int</code> не хватает - используйте
+                    <code>long</code>. У него верхняя граница в 4 миллиарда раз выше. Если совсем не хватает -
+                    придётся работать со специальным типом <code>BigInteger</code> из пространства имён
+                    <code>System.Numerics</code>. Это уже тема не начального уровня, но знать о его существовании
+                    полезно.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Про BigInteger
+                    </div>
+                    <p><code>BigInteger</code> - это тип без ограничений по размеру: он может хранить числа
+                        хоть в тысячу цифр. Но он живёт в отдельной библиотеке. Чтобы им пользоваться, в начало
+                        файла придётся добавить строку <code>using System.Numerics;</code>. В большинстве версий
+                        Visual Studio она добавляется автоматически, но если вдруг увидите ошибку «The type or
+                        namespace 'BigInteger' could not be found» - вспомните про эту строку.</p>
+                </div>
+
+                <h2>Дробные числа</h2>
+
+                <p>С дробными числами (их ещё называют «числа с плавающей точкой») ситуация интереснее. Их всего
+                    три, но выбрать между ними важно - особенно когда речь идёт о деньгах.</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Тип</th>
+                            <th>Размер</th>
+                            <th>Точность</th>
+                            <th>Когда использовать</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>float</code></td>
+                            <td>4 байта</td>
+                            <td>~7 знаков</td>
+                            <td>Игры, физика - где точность не критична</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td><code>double</code></td>
+                            <td>8 байт</td>
+                            <td>~15–17 знаков</td>
+                            <td><strong>По умолчанию для дробных</strong></td>
+                        </tr>
+                        <tr>
+                            <td><code>decimal</code></td>
+                            <td>16 байт</td>
+                            <td>28–29 знаков</td>
+                            <td>Деньги, финансы - где важна точность</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Названия говорят сами за себя: <em>float</em> - «одинарная точность», <em>double</em> -
+                    «двойная точность» (вдвое точнее), <em>decimal</em> - «десятичное», специально для денег.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Почему для денег не используют double
+                    </div>
+                    <p><code>double</code> - это числа с <em>плавающей</em> точностью. У них есть неприятное
+                        свойство: некоторые десятичные дроби нельзя представить точно. Например, 0.1 в
+                        <code>double</code> хранится как очень близкое, но не равное число. Если сложить
+                        0.1 + 0.2 - можно получить не 0.3, а 0.30000000000000004. Для физики это незаметно, а для
+                        бухгалтерии - катастрофа. Поэтому для денег используют <code>decimal</code>.
+                    </p>
+                </div>
+
+                <h3>Как пишутся литералы</h3>
+
+                <p>По умолчанию любое дробное число в коде C# воспринимает как <code>double</code>. Если нужен
+                    <code>float</code> или <code>decimal</code> - добавляем специальную букву в конце:
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">double pi = 3.14;</span><span class="code-row">float piShort = 3.14f;</span><span class="code-row">decimal price = 19.99m;</span></code></pre>
+
+                <p>Первая строка - обычный <code>double</code>, он используется по умолчанию. Вторая - тип
+                    <code>float</code>, о чём говорит буква <code>f</code> в конце. Третья - <code>decimal</code>
+                    с буквой <code>m</code>. Эти буквы - не для красоты. Без них компилятор не поймёт, что мы
+                    хотим другой тип, и подчеркнёт строку красным.
+                </p>
+
+                <h2>Логический тип</h2>
+
+                <p>Всего один тип, зато незаменимый:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Тип</th>
+                            <th>Размер</th>
+                            <th>Значения</th>
+                            <th>Когда использовать</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>bool</code></td>
+                            <td>1 байт</td>
+                            <td><code>true</code> / <code>false</code></td>
+                            <td>Флаги, проверки, условия</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Мы уже знакомы с ним с самого начала курса - во втором уроке и во всех условиях.
+                    <code>bool</code> - это ответ «да» или «нет». Больше о нём сказать особо нечего.
+                </p>
+
+                <h2>Текст и символы</h2>
+
+                <p>Два типа для работы с текстом:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Тип</th>
+                            <th>Размер</th>
+                            <th>Что хранит</th>
+                            <th>Пример</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>char</code></td>
+                            <td>2 байта</td>
+                            <td>Один символ</td>
+                            <td><code>'A'</code>, <code>'7'</code>, <code>'!'</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>string</code></td>
+                            <td>зависит от длины</td>
+                            <td>Набор символов</td>
+                            <td><code>"Привет, мир!"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Про <code>char</code> и <code>string</code> мы подробно говорили в шестом уроке. Разница
+                    простая: <code>char</code> - один символ в одинарных кавычках, <code>string</code> - строка
+                    в двойных кавычках. <code>string</code> занимает столько памяти, сколько в нём символов
+                    (плюс немного служебных данных), поэтому фиксированного размера у него нет.</p>
+
+                <h2>Тип string: ссылочный, а не значимый</h2>
+
+                <p>Здесь мы выходим на важную концепцию. Все типы, которые мы разбирали выше - <code>int</code>,
+                    <code>long</code>, <code>double</code>, <code>bool</code>, <code>char</code> - это
+                    <strong>значимые типы</strong> (value types). Они хранят <em>само значение</em> прямо в
+                    переменной.
+                </p>
+
+                <p>А <code>string</code> - <strong>ссылочный тип</strong> (reference type). Переменная
+                    <code>string</code> хранит не сам текст, а <em>ссылку</em> на него - что-то вроде адреса в
+                    памяти. Это тонкая, но важная разница, которая объясняет много поведения C#.
+                </p>
+
+                <p>Практическое следствие: если вы передаёте <code>int</code> в метод, копируется само число.
+                    Если передаёте <code>string</code> - копируется ссылка, и метод работает с той же строкой.
+                    Впрочем, для начального уровня это скорее интересный факт, чем что-то, что нужно срочно
+                    применять. Подробнее поговорим на среднем уровне.</p>
+
+                <h2>Сводная таблица</h2>
+
+                <p>Соберём самое важное в одном месте - для быстрого напоминания:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Категория</th>
+                            <th>Тип</th>
+                            <th>Используйте, когда…</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">Целые</td>
+                            <td><code>int</code></td>
+                            <td>по умолчанию для целых чисел</td>
+                        </tr>
+                        <tr>
+                            <td><code>long</code></td>
+                            <td>число больше 2 миллиардов</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Дробные</td>
+                            <td><code>double</code></td>
+                            <td>по умолчанию для дробных</td>
+                        </tr>
+                        <tr>
+                            <td><code>decimal</code></td>
+                            <td>деньги, финансы</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Текст</td>
+                            <td><code>char</code></td>
+                            <td>один символ</td>
+                        </tr>
+                        <tr>
+                            <td><code>string</code></td>
+                            <td>любой текст</td>
+                        </tr>
+                        <tr>
+                            <td>Логика</td>
+                            <td><code>bool</code></td>
+                            <td>да / нет, проверки</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Если запомнить только эти семь строк - уже можно смело писать код. Остальные типы вы будете
+                    встречать редко и постепенно их запомните.</p>
+
+                <h2>Ключевое слово var</h2>
+
+                <p>А теперь - небольшое отступление от типов, которое, впрочем, тесно связано с ними. В C# есть
+                    специальное ключевое слово <code>var</code>, которое встречается настолько часто, что без него
+                    ваш код будет выглядеть странно для других программистов. Давайте разберёмся, что это такое.</p>
+
+                <p>Когда мы объявляем переменную, мы обычно пишем тип слева и значение справа:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string name = "Алексей";</span><span class="code-row">int age = 25;</span><span class="code-row">double price = 199.9;</span></code></pre>
+
+                <p>Но компилятор C# и так видит, что справа стоит строка, число или дробное. Он может сам
+                    догадаться о типе. И вот тут приходит на помощь <code>var</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var name = "Алексей";</span><span class="code-row">var age = 25;</span><span class="code-row">var price = 199.9;</span></code></pre>
+
+                <p>Результат абсолютно тот же. Компилятор смотрит на правую часть, определяет, что это за тип,
+                    и подставляет его автоматически. Слово <code>var</code> - это как сказать: «выведи тип сам,
+                    мне лень писать».</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        var - это не тип
+                    </div>
+                    <p>Важно понимать: <code>var</code> - не новый тип данных. Это <strong>сокращённая запись
+                            объявления</strong>. После компиляции <code>var name = "Алексей"</code> превращается в
+                        <code>string name = "Алексей"</code>. Никакого «типа var» не существует. Это просто
+                        способ не писать тип вручную, когда он и так очевиден.
+                    </p>
+                </div>
+
+                <h3>Тип всё равно фиксируется</h3>
+
+                <p>Есть искушение подумать: «раз <code>var</code> - это универсально, значит переменная может
+                    менять тип на ходу». Нет, это не так. Тип определяется <strong>один раз</strong>, при создании,
+                    и после этого изменить его нельзя. Ровно как если бы вы написали тип явно.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var number = 10;</span><span class="code-row">number = 20;</span><span class="code-row">number = "текст";</span></code></pre>
+
+                <p>Первая строка создаст переменную типа <code>int</code>. Вторая - сработает, потому что 20 тоже
+                    целое число. А вот третья строка вызовет ошибку: мы пытаемся положить строку в переменную,
+                    которая уже объявлена как <code>int</code>. Компилятор остановит нас и подчеркнёт строку
+                    красным.</p>
+
+                <h3>Когда var удобен, а когда мешает</h3>
+
+                <p>Хорошее правило: <strong>используйте <code>var</code>, когда тип очевиден из правой части</strong>.
+                    Тогда код становится чище и короче, а читаемость не страдает.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var name = "Алексей";</span><span class="code-row">var count = 42;</span><span class="code-row">var price = 199.99m;</span><span class="code-row">var isStudent = true;</span></code></pre>
+
+                <p>В каждой строке сразу видно, что за тип получится. Строка справа, число, дробное, логическое
+                    значение - всё понятно без дополнительных пояснений.</p>
+
+                <p>А вот случай, когда <code>var</code> только запутает. Представьте, что у нас есть метод,
+                    который возвращает какое-то значение. Мы не знаем, что именно он возвращает, и с
+                    <code>var</code> код становится загадочным:
+                </p>
+
+                <pre class="code-numbered"><code><span class="code-row">var result = GetValue();</span></code></pre>
+
+                <p>Что внутри <code>result</code>? Число? Строка? Непонятно. Если вместо <code>var</code>
+                    написать тип явно - код становится читаемым сразу:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">int result = GetValue();</span></code></pre>
+
+                <p>Теперь ясно, что метод вернул число. Поэтому правило простое: <strong>тип виден из правой
+                        части - используйте <code>var</code>; не виден - пишите тип явно</strong>. Опытные
+                    программисты интуитивно чувствуют эту грань, вы тоже научитесь.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Дальше в курсе
+                    </div>
+                    <p>С этого момента мы будем иногда использовать <code>var</code> - когда тип очевиден.
+                        Это не правило языка, а стиль написания кода. Если вам удобнее всегда писать тип явно -
+                        тоже правильно. Главное - чтобы код читался легко.</p>
+                </div>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разные типы - место, где легко ошибиться по невнимательности. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>«Cannot implicitly convert type 'double' to 'decimal'».</strong> Забыли букву
+                        <code>m</code> в конце дробного числа для <code>decimal</code>. Пишите
+                        <code>19.99m</code>, а не <code>19.99</code>.
+                    </li>
+                    <li><strong>«Literal of type double cannot be implicitly converted to type 'float'».</strong>
+                        Забыли букву <code>f</code> для <code>float</code>. Пишите <code>3.14f</code>.</li>
+                    <li><strong>«Cannot implicitly convert type 'string' to 'int'».</strong> Пытаетесь положить
+                        текст в переменную для чисел или наоборот. Проверьте, что тип соответствует тому, что
+                        вы присваиваете.</li>
+                    <li><strong>Число «не влезает» и превращается во что-то странное.</strong> Например, вместо
+                        большого числа выводится отрицательное. Это переполнение: число вышло за границы
+                        диапазона. Проверьте, какой тип вы используете - возможно, нужен <code>long</code>, а не
+                        <code>int</code>.
+                    </li>
+                    <li><strong>«The type or namespace name 'BigInteger' could not be found».</strong> Используете
+                        <code>BigInteger</code>, но не подключили <code>using System.Numerics;</code>. Добавьте
+                        эту строку в начало файла.
+                    </li>
+                    <li><strong>Дробное число выводится с кучей нулей.</strong> Это нормальное поведение
+                        <code>double</code> - он хранит приближённое значение. Если нужна точность до копейки -
+                        используйте <code>decimal</code>.
+                    </li>
+                    <li><strong><code>var</code> не даёт поменять тип.</strong> Это не ошибка, а особенность:
+                        тип фиксируется при создании переменной и изменить его нельзя. Если нужен другой тип -
+                        создайте новую переменную.</li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Три задачи. У каждой - подсказка и решение. Сначала попробуйте сами.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Информация о типах</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выведите на экран максимальное и минимальное значение для типов
+                                <code>int</code>, <code>long</code> и <code>double</code>. Подпишите каждое значение.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>У каждого числового типа есть константы <code>MaxValue</code> и
+                                        <code>MinValue</code>. Пишутся так: <code>int.MaxValue</code>.
+                                        Используйте интерполяцию, чтобы подписать каждое значение.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.WriteLine($"int:    {int.MinValue} … {int.MaxValue}");</span><span class="code-row">Console.WriteLine($"long:   {long.MinValue} … {long.MaxValue}");</span><span class="code-row">Console.WriteLine($"double: {double.MinValue} … {double.MaxValue}");</span></code></pre>
+                                    <p>Вы увидите те самые числа, которые мы разбирали в таблицах. Например,
+                                        <code>int.MaxValue</code> - 2 147 483 647. Константы <code>MinValue</code> и
+                                        <code>MaxValue</code> полезны, когда нужно понять, влезет ли число в тип.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Деньги</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте переменную типа <code>decimal</code> со значением
+                                <code>1999.99</code>. Выведите её на экран. Обратите внимание, что нужна буква
+                                <code>m</code> в конце числа.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Объявление выглядит так: <code>decimal price = 1999.99m;</code>. Без буквы
+                                        <code>m</code> компилятор подумает, что это <code>double</code> - и не даст
+                                        присвоить значение переменной типа <code>decimal</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">decimal price = 1999.99m;</span><span class="code-row">Console.WriteLine($"Цена: {price} руб.");</span></code></pre>
+                                    <p>Программа выведет «Цена: 1999.99 руб.». Если убрать букву <code>m</code> -
+                                        Visual Studio сразу подчеркнёт строку и покажет ошибку. Это её способ
+                                        сказать: «я не уверена, что ты хочешь именно decimal».</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Выбор типа</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой ситуации выберите подходящий тип и обоснуйте свой выбор:</p>
+                            <ul>
+                                <li>Количество учеников в классе.</li>
+                                <li>Возраст человека.</li>
+                                <li>Цена товара в магазине.</li>
+                                <li>Название города.</li>
+                                <li>Ответ на вопрос «Согласны?».</li>
+                                <li>Население страны.</li>
+                                <li>Температура тела человека.</li>
+                            </ul>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Задайте себе три вопроса: число или текст? Если число - целое или дробное?
+                                        Если целое - может ли оно быть очень большим или отрицательным? Если
+                                        дробное - это деньги или обычное измерение?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ul>
+                                        <li>Учеников в классе - <code>int</code> (до 40, всегда положительное).</li>
+                                        <li>Возраст - <code>int</code> (до 120, положительное).</li>
+                                        <li>Цена товара - <code>decimal</code> (деньги, точность важна).</li>
+                                        <li>Название города - <code>string</code> (текст).</li>
+                                        <li>Ответ «Согласны?» - <code>bool</code> (да или нет).</li>
+                                        <li>Население страны - <code>long</code> (миллиарды - не влезет в int).
+                                        </li>
+                                        <li>Температура тела - <code>double</code> (дробное, не деньги).</li>
+                                    </ul>
+                                    <p>Заметьте: для цены - именно <code>decimal</code>, потому что 1 копейка разницы
+                                        в бухгалтерии - это уже проблема. А для температуры - <code>double</code>,
+                                        потому что точность до 15 знаков там избыточна, но денежной точности тоже
+                                        не нужно.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы заглянули под капот C# и разобрались со всеми основными типами данных. Их не так
+                    много, как кажется: несколько целочисленных, три дробных, один логический, два для текста.
+                    Плюс важная концепция значимых и ссылочных типов. И познакомились с ключевым словом
+                    <code>var</code>, которое позволяет не писать тип вручную, когда он и так очевиден.
+                </p>
+
+                <p>Самый главный вывод: <strong>при выборе типа не надо усложнять</strong>. По умолчанию -
+                    <code>int</code> для целых, <code>double</code> для дробных, <code>string</code> для текста,
+                    <code>bool</code> для «да/нет». Меняем тип только тогда, когда есть конкретная причина:
+                    число не влезает в <code>int</code> или речь идёт о деньгах.
+                </p>
+
+                <p>А теперь - самое интересное. До этого момента у нас в переменной всегда хранилось <em>одно</em>
+                    значение: одно число, одна строка, один флаг. Но что делать, если нужно хранить 30 оценок
+                    ученика? Заводить 30 переменных? Конечно же нет. В следующем уроке мы познакомимся с
+                    <strong>массивами</strong> - способом хранить целую коллекцию однотипных данных под одним
+                    именем. Это следующий большой шаг в программировании.
+                </p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-08.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-10.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

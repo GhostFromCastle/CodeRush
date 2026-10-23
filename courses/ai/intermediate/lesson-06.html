@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нейросети для текста - Нейросети и вайбкодинг - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="ai" data-level="intermediate" data-lesson-id="lesson-06">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Нейросети и вайбкодинг</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 06</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое нейросети</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Основы промптинга</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ограничения и галлюцинации</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Нейросети в жизни</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Вайбкодинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson active" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Нейросети для текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Генеративные изображения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Автоматизация рутины</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>API нейросетей</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Локальные модели</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Продвинутый промптинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Этика и будущее ИИ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Нейросети для текста: как писать, редактировать и не звучать как робот</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~15 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы разобрались с вайбкодингом и заставили ИИ писать программы. Но самая
+                    популярная задача для нейросетей - это работа с текстом. Люди используют их для написания
+                    статей, постов в соцсетях, коммерческих предложений, студенческих эссе и даже
+                    любовных писем.</p>
+
+                <p>Однако здесь новичков ждет разочарование. Сгенерированный текст часто получается
+                    <strong>бездушным, водянистым и шаблонным</strong>. Он полон клише вроде «в современном
+                    мире трудно переоценить» или «данный продукт является высококачественным решением».
+                    Читать такое скучно, а иногда и противно.
+                </p>
+
+                <p>В этом уроке мы научимся приручать нейросеть. Разберёмся, как заставить её писать живым
+                    языком, как задавать нужный стиль и как использовать ИИ в качестве умного редактора,
+                    а не генератора мусора.</p>
+
+                <h2>Почему ИИ пишет как робот</h2>
+
+                <p>Вспомните первый урок: модель предсказывает следующее слово на основе статистики. Она
+                    обучена на миллионах текстов: от Википедии до официальных документов. Поэтому её
+                    «среднестатистический» ответ - это сухой, формальный, энциклопедический стиль.</p>
+
+                <p>Если вы просто скажете: <em>«Напиши статью о пользе спорта»</em>, модель выдаст текст,
+                    который видели сотни раз. В нём не будет вашей личности, вашего юмора или вашей
+                    аудитории.</p>
+
+                <p>Чтобы получить хороший текст, нужно <strong>сузить рамки</strong>. Вы должны сказать
+                    модели, <em>для кого</em> она пишет, <em>зачем</em> и в <em>каком стиле</em>.</p>
+
+                <h2>Инструменты управления стилем</h2>
+
+                <p>Есть четыре главных рычага, которые превращают робота в хорошего копирайтера.</p>
+
+                <h3>1. Tone of Voice (Тональность)</h3>
+
+                <p>Тональность - это эмоциональная окраска текста. Вы можете попросить модель быть
+                    дерзкой, вежливой, ироничной, строгой или вдохновляющей.</p>
+
+                <ul>
+                    <li><em>«Пиши в стиле стендап-комика, используй самоиронию»</em>.</li>
+                    <li><em>«Пиши в стиле строгого корпоративного отчета, без эмоций»</em>.</li>
+                    <li><em>«Пиши дружелюбно, как будто объясняешь другу за чашкой кофе»</em>.</li>
+                </ul>
+
+                <h3>2. Целевая аудитория</h3>
+
+                <p>Кому адресован текст? От этого зависит лексика.</p>
+
+                <ul>
+                    <li><em>«Объясни это для детей 8 лет»</em> - модель уберет сложные термины.</li>
+                    <li><em>«Напиши для профессиональных программистов»</em> - модель будет использовать
+                        технический сленг.</li>
+                </ul>
+
+                <h3>3. Ограничения (Constraints)</h3>
+
+                <p>Самый мощный инструмент. Запретите модели использовать клише и «воду».</p>
+
+                <p>Добавьте в промпт фразу: <em>«Не используй вводные слова, канцеляризмы и клише.
+                        Избегай слов "является", "данный", "в современном мире". Пиши максимально коротко
+                        и по делу»</em>.</p>
+
+                <h3>4. Обучение на примерах (Few-shot)</h3>
+
+                <p>Если вам нужен специфический стиль, покажите модели пример. Дайте ей 2-3 абзаца
+                    текста, который вам нравится, и скажите: <em>«Напиши следующий раздел в точно
+                        таком же стиле»</em>.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Нейросеть - это хамелеон. По умолчанию она принимает защитную окраску (скучный
+                        энциклопедический стиль). Ваша задача - дать ей четкие инструкции, чтобы она
+                        перекрасилась в нужный вам цвет.</p>
+                </div>
+
+                <h2>Редактирование текста с помощью ИИ</h2>
+
+                <p>Использовать нейросеть для написания текста с нуля - это только половина дела. Второй,
+                    а часто и главный сценарий - это <strong>редактура</strong>.</p>
+
+                <p>Написать текст самому, а потом попросить ИИ улучшить его - это лучший способ сохранить
+                    свой уникальный голос. Вот несколько промптов для редактуры.</p>
+
+                <h3>Удаление «воды»</h3>
+
+                <p><em>«Выступи в роли строгого редактора. Сократи этот текст на 30%, убрав все
+                        вводные конструкции и "воду". Оставь только суть: [текст]»</em>.</p>
+
+                <h3>Упрощение сложного текста</h3>
+
+                <p><em>«Перепиши этот технический текст так, чтобы он был понятен человеку без
+                        IT-образования. Замени сложные термины на простые аналогии: [текст]»</em>.</p>
+
+                <h3>Проверка стиля и грамматики</h3>
+
+                <p><em>«Проверь этот текст на орфографические и пунктуационные ошибки. Также
+                        убедись, что в нём соблюдается единый стиль повествования: [текст]»</em>.</p>
+
+                <h2>Опасность: как не потерять свой голос</h2>
+
+                <p>Если вы постоянно генерируете тексты через ИИ, есть риск, что ваши собственные навыки
+                    письма начнут атрофироваться. Более того, тексты разных людей, сгенерированные одной
+                    моделью с похожими промптами, становятся похожими друг на друга.</p>
+
+                <p>Чтобы этого избежать, используйте принцип «человек-в-центре»:</p>
+
+                <ul>
+                    <li><strong>Сначала пишите сами.</strong> Сделайте черновик своими руками.</li>
+                    <li><strong>Используйте ИИ для точечных правок.</strong> Попросите улучшить структуру,
+                        сократить или исправить ошибки.</li>
+                    <li><strong>Всегда переписывайте финал.</strong> Внесите в текст свои шутки, личные
+                        истории и уникальные детали, которые нейросеть придумать не могла.</li>
+                </ul>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Тональность</code>
+                        <span>эмоциональная окраска текста</span>
+                    </li>
+                    <li>
+                        <code>Аудитория</code>
+                        <span>для кого пишем</span>
+                    </li>
+                    <li>
+                        <code>Ограничения</code>
+                        <span>запрет на клише и "воду"</span>
+                    </li>
+                    <li>
+                        <code>Few-shot</code>
+                        <span>обучение стилю на примере</span>
+                    </li>
+                    <li>
+                        <code>Редактура</code>
+                        <span>лучший способ применения ИИ</span>
+                    </li>
+                    <li>
+                        <code>Свой голос</code>
+                        <span>не отдавайте весь текст ИИ</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы, с которыми сталкиваются при работе с текстом.</p>
+
+                <ul>
+                    <li><strong>«Текст всё равно звучит как нейросеть».</strong> Используйте более
+                        жесткие ограничения. Скажите: «Пиши так, чтобы читатель не догадался, что
+                        текст написан ИИ. Используй короткие предложения. Избегай слов "в заключение",
+                        "таким образом", "стоит отметить"».</li>
+                    <li><strong>«Она выдумывает факты в статье».</strong> Это галлюцинации (урок 3).
+                        Никогда не просите ИИ написать статью с фактами, если вы не дали ей исходные
+                        материалы. Сначала найдите факты сами, вставьте их в промпт и попросите
+                        «упаковать» их в текст.</li>
+                    <li><strong>«Нейросеть сократила текст, но потерялся смысл».</strong> В промпте
+                        укажите: «Сохрани все ключевые смыслы и выводы. Убери только слова-паразиты».</li>
+                    <li><strong>«Я прошу её писать в моем стиле, но она не может».</strong> Дайте ей
+                        больше примеров. Вставьте 3-4 ваших текста и попросите проанализировать
+                        особенности вашего стиля (длина предложений, любимые слова, шутки) перед
+                        тем, как писать.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи на работу с текстом.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Перепишите промпт</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами скучный промпт: <em>«Напиши пост в
+                                    Instagram про новую кофейню»</em>. Перепишите его так, чтобы
+                                нейросеть создала живой, вовлекающий текст.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Добавьте роль, тональность, аудиторию и конкретные детали
+                                        (например, что в кофейне есть розетки и она работает
+                                        до полуночи).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный ответ</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Ты SMM-специалист с отличным чувством юмора.</span><span class="code-row">Напиши пост в Instagram про открытие новой кофейни.</span><span class="code-row">Контекст: кофейня работает до полуночи, там есть</span><span class="code-row">много розеток, быстрый Wi-Fi и очень вкусный раф.</span><span class="code-row">Целевая аудитория: студенты и фрилансеры.</span><span class="code-row">Тональность: дружелюбная, немного дерзкая.</span><span class="code-row">Добавь призыв к действию и 3 хештега.</span><span class="code-row">Избегай клише вроде "уютная атмосфера" и "лучшие цены".</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Удаление воды</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Нейросеть сгенерировала такой абзац. Напишите промпт,
+                                который заставит её сократить текст и убрать «воду», сохранив суть.</p>
+                            <p><em>«В современном мире информационные технологии играют крайне важную
+                                    роль. Стоит отметить, что каждый день появляются новые инструменты,
+                                    которые могут помочь людям в их повседневной жизни. Одним из таких
+                                    инструментов является искусственный интеллект, который способен
+                                    значительно оптимизировать рабочие процессы и повысить
+                                    эффективность труда».</em></p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Попросите модель выступить в роли редактора и убрать вводные
+                                        конструкции.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Промпт:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Ты строгий редактор. Сократи этот текст на 50%.</span><span class="code-row">Убери все вводные слова ("в современном мире",</span><span class="code-row">"стоит отметить", "одним из таких"). Оставь только</span><span class="code-row">суть. Текст: [вставить текст]</span></code></pre>
+                                    <p>Результат должен быть примерно таким: <em>«Искусственный интеллект
+                                            оптимизирует рабочие процессы и повышает эффективность труда»</em>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Адаптация под аудиторию</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">У вас есть сложный текст про блокчейн. Напишите промпт,
+                                который попросит нейросеть переписать его для двух разных аудиторий:
+                                для детей и для инвесторов.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте роли и разные уровни сложности языка.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный ответ</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Ты опытный учитель и бизнес-аналитик одновременно.</span><span class="code-row">Перепиши этот текст про блокчейн в двух вариантах:</span><span class="code-row">1. Для 10-летнего ребенка (используй аналогию с</span><span class="code-row">тетрадкой или игрой).</span><span class="code-row">2. Для инвестора (используй профессиональные термины,</span><span class="code-row">сделай акцент на надежности и безопасности).</span><span class="code-row">Текст: [вставить текст]</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Свой голос</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Как вы думаете, почему для личного блога или
+                                авторской колонки опасно использовать текст, полностью
+                                сгенерированный нейросетью? Назовите минимум две причины и
+                                предложите, как этого избежать.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте об уникальности, доверии читателей и
+                                        мотивации писать.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Причины:</p>
+                                    <ul>
+                                        <li><strong>Потеря уникальности.</strong> Читатели
+                                            чувствуют фальшь. Если текст написан роботом,
+                                            он звучит обобщенно, в нем нет ваших личных
+                                            историй и переживаний.</li>
+                                        <li><strong>Одинаковость.</strong> Если все блогеры
+                                            начнут генерировать тексты, лента превратится
+                                            в поток одинаковых мыслей с одинаковыми
+                                            речевыми оборотами.</li>
+                                        <li><strong>Потеря навыка.</strong> Если вы
+                                            перестаете писать руками, вы теряете
+                                            способность формулировать мысли.</li>
+                                    </ul>
+                                    <p>Как избежать:</p>
+                                    <ul>
+                                        <li>Используйте ИИ только для <strong>черновиков</strong>
+                                            и плана статьи.</li>
+                                        <li>Пишите основной текст сами.</li>
+                                        <li>Просите ИИ <strong>отредактировать</strong> ваш
+                                            текст, но не писать его с нуля.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с тем, как работать с текстом. Узнали, что по умолчанию нейросеть пишет
+                    скучно и формально. Научились управлять её стилем с помощью тональности, аудитории
+                    и ограничений. Поняли, что лучший способ использования ИИ - это редактура вашего
+                    черновика, а не полная генерация с нуля. Это помогает сохранить ваш уникальный
+                    голос.</p>
+
+                <p>В следующем уроке мы перейдём от текста к визуалу. Разберёмся, как работают
+                    генеративные изображения (Midjourney, DALL-E, Kandinsky). Узнаем, как писать
+                    промпты для картинок и как ИИ понимает, что мы хотим от него получить.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-05.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-07.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

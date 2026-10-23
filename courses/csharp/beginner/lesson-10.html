@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Массивы - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="beginner" data-lesson-id="lesson-10">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 10</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson active" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Массивы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Все переменные, которые мы создавали до этого, хранили <strong>одно</strong> значение: одно число,
+                    одну строку, один флаг. Это удобно для небольших задач, но представьте, что вам нужно сохранить
+                    оценки тридцати учеников класса. Создавать тридцать переменных <code>score1</code>,
+                    <code>score2</code>, <code>score3</code> и так далее - это безумие.
+                </p>
+
+                <p>Для таких случаев в программировании есть <strong>массивы</strong>. Это одна переменная,
+                    внутри которой хранится целая коллекция значений. Сегодня мы научимся их создавать, заполнять
+                    и перебирать.</p>
+
+                <h2>Что такое массив</h2>
+
+                <p>Представьте себе коробку для яиц. В ней десять ячеек, и в каждую можно положить что-то
+                    одинаковое - например, яйцо. Массив - это точно такая же коробка, только для чисел, строк
+                    или любых других данных.</p>
+
+                <p>У массива есть три главные характеристики:</p>
+
+                <ul>
+                    <li><strong>Тип.</strong> Все элементы массива - одного типа. Либо все <code>int</code>,
+                        либо все <code>string</code>, либо все <code>double</code>. Смешивать нельзя.</li>
+                    <li><strong>Длина.</strong> Сколько ячеек внутри. Задаётся один раз при создании и не меняется.</li>
+                    <li><strong>Индексы.</strong> Номера ячеек. Начинаются с 0, а не с 1 - как и у строк.</li>
+                </ul>
+
+                <p>Если у нас массив из пяти чисел, то у него пять ячеек с индексами 0, 1, 2, 3, 4. Последний
+                    индекс всегда на единицу меньше длины. Это правило мы уже видели в строках - здесь оно
+                    работает точно так же.</p>
+
+                <h2>Создание массива</h2>
+
+                <p>Массив создаётся почти как обычная переменная, но с квадратными скобками после типа:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">int[] numbers = new int[5];</span></code></pre>
+
+                <p>Разберём эту строку по частям:</p>
+
+                <ul>
+                    <li><code>int[]</code> - тип «массив целых чисел». Квадратные скобки здесь означают
+                        «это не одно число, а целая коллекция чисел».</li>
+                    <li><code>numbers</code> - имя массива.</li>
+                    <li><code>new int[5]</code> - команда «создай массив из пяти ячеек типа int».</li>
+                </ul>
+
+                <p>После этой строки у нас есть коробка на пять ячеек. Все они пока заполнены нулями - это
+                    значение по умолчанию для типа <code>int</code>. Для <code>string</code> по умолчанию будет
+                    <code>null</code> (пустое значение), для <code>bool</code> - <code>false</code>. Об этом
+                    мы поговорим чуть позже.
+                </p>
+
+                <h2>Заполняем массив</h2>
+
+                <p>Заполнить массив можно двумя способами: по одному элементу или сразу всё вместе.</p>
+
+                <h3>Способ 1: по одному элементу</h3>
+
+                <p>Обращаемся к каждой ячейке по её индексу и кладём туда значение:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[] numbers = new int[5];</span><span class="code-row"></span><span class="code-row">numbers[0] = 10;</span><span class="code-row">numbers[1] = 20;</span><span class="code-row">numbers[2] = 30;</span><span class="code-row">numbers[3] = 40;</span><span class="code-row">numbers[4] = 50;</span></code></pre>
+
+                <p>Синтаксис такой же, как при обращении к символу строки: имя массива и индекс в квадратных
+                    скобках. Если написать <code>numbers[2] = 30</code>, то в третью ячейку (помним - индексы
+                    с нуля!) мы положили тридцать.</p>
+
+                <h3>Способ 2: сразу с инициализацией</h3>
+
+                <p>Если значения уже известны, можно записать их в одну строку, через запятую:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[] numbers = { 10, 20, 30, 40, 50 };</span></code></pre>
+
+                <p>Здесь мы не указываем длину явно - C# сам её посчитает: видит пять чисел, значит, длина массива
+                    пять. Такой способ часто используется, когда данные заданы заранее. Обратите внимание:
+                    фигурные скобки <code>{ }</code> - это не блок кода, как в <code>if</code>, а список значений.</p>
+
+                <h2>Читаем значения из массива</h2>
+
+                <p>Прочитать элемент массива можно тем же способом - по индексу. И дальше делать с ним что угодно:
+                    выводить, складывать, сравнивать.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[] numbers = { 10, 20, 30, 40, 50 };</span><span class="code-row"></span><span class="code-row">Console.WriteLine(numbers[0]);</span><span class="code-row">Console.WriteLine(numbers[4]);</span><span class="code-row">Console.WriteLine(numbers[1] + numbers[2]);</span></code></pre>
+
+                <p>Программа выведет:</p>
+
+                <pre><code>10
+50
+50</code></pre>
+
+                <p>Третья строка складывает 20 и 30 и получает 50. Как видите, с элементами массива можно
+                    работать точно так же, как с обычными переменными - просто обращаться к ним чуть длиннее.</p>
+
+                <h2>Длина массива: .Length</h2>
+
+                <p>Как и у строки, у массива есть свойство <code>.Length</code>, которое показывает количество
+                    ячеек:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[] numbers = { 10, 20, 30, 40, 50 };</span><span class="code-row">Console.WriteLine(numbers.Length);</span></code></pre>
+
+                <p>Программа выведет <code>5</code>. Свойство <code>.Length</code> доступно только для чтения -
+                    длину массива нельзя изменить после создания. Если нужно больше ячеек - придётся создать
+                    новый массив.</p>
+
+                <h2>Перебираем массив циклом for</h2>
+
+                <p>Заполнять и читать массив по одному элементу удобно, когда их мало. Но если у нас массив из
+                    ста чисел - это уже не вариант. Здесь на помощь приходит цикл <code>for</code> из пятого урока:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[] numbers = { 10, 20, 30, 40, 50 };</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; numbers.Length; i++)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(numbers[i]);</span><span class="code-row">}</span></code></pre>
+
+                <p>Разберём логику:</p>
+
+                <ul>
+                    <li>Счётчик <code>i</code> идёт от 0. Это индекс элемента массива.</li>
+                    <li>Условие <code>i &lt; numbers.Length</code> - «пока не дошли до конца массива».</li>
+                    <li>На каждом шаге мы берём <code>numbers[i]</code> - элемент под номером <code>i</code>.</li>
+                </ul>
+
+                <p>Обратите внимание: <strong>мы не пишем число 5 напрямую</strong>. Используем
+                    <code>numbers.Length</code>. Это важно: если завтра массив станет больше, код продолжит
+                    работать без изменений. Такой стиль называется «код, устойчивый к изменениям».
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Не путайте длину и последний индекс
+                    </div>
+                    <p>Частая ошибка: написать <code>i &lt;= numbers.Length</code> (со знаком «меньше или равно»).
+                        Кажется логичным: «до последнего элемента включительно». Но это неверно! Если длина 5,
+                        последний индекс - 4. Условие <code>i &lt;= 5</code> пропустит <code>i = 5</code>, а
+                        элемента с индексом 5 в массиве нет - программа упадёт с ошибкой «индекс вне границ».
+                        Всегда используйте <code>&lt;</code>, а не <code>&lt;=</code>.</p>
+                </div>
+
+                <h2>Заполняем массив с клавиатуры</h2>
+
+                <p>Один из самых частых сценариев: пользователь вводит данные, а мы складываем их в массив.
+                    Например, попросим ввести пять чисел и посчитаем их сумму:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[] numbers = new int[5];</span><span class="code-row">int sum = 0;</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; numbers.Length; i++)</span><span class="code-row">{</span><span class="code-row">    Console.Write($"Введи число {i + 1}: ");</span><span class="code-row">    numbers[i] = int.Parse(Console.ReadLine());</span><span class="code-row">    sum += numbers[i];</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Сумма всех чисел: {sum}");</span></code></pre>
+
+                <p>Здесь всё логично: цикл идёт по всем индексам, на каждой итерации мы просим число и сразу
+                    кладём его в соответствующую ячейку. В <code>i + 1</code> при выводе - простая косметика,
+                    чтобы пользователь видел «число 1» вместо «число 0».</p>
+
+                <h2>Поиск максимума в массиве</h2>
+
+                <p>Ещё одна классическая задача - найти наибольшее значение. Идея простая: запоминаем первый
+                    элемент как «пока что максимум», а потом сравниваем его с остальными.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[] numbers = { 15, 42, 8, 99, 23 };</span><span class="code-row">int max = numbers[0];</span><span class="code-row"></span><span class="code-row">for (int i = 1; i &lt; numbers.Length; i++)</span><span class="code-row">{</span><span class="code-row">    if (numbers[i] &gt; max)</span><span class="code-row">    {</span><span class="code-row">        max = numbers[i];</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Максимум: {max}");</span></code></pre>
+
+                <p>Обратите внимание: цикл начинается с <code>i = 1</code>, а не с нуля. Почему? Потому что
+                    нулевой элемент мы уже взяли как стартовое значение. Сравнивать его с самим собой смысла нет.
+                    Такой приём - «начальное значение из первого элемента» - используется очень часто.</p>
+
+                <h2>Работа с массивом строк</h2>
+
+                <p>Массивы бывают не только из чисел. Вот массив из строк - например, список покупок:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string[] shopping = { "Хлеб", "Молоко", "Сыр", "Яйца" };</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; shopping.Length; i++)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"{i + 1}. {shopping[i]}");</span><span class="code-row">}</span></code></pre>
+
+                <p>Программа выведет пронумерованный список:</p>
+
+                <pre><code>1. Хлеб
+2. Молоко
+3. Сыр
+4. Яйца</code></pre>
+
+                <p>С массивами строк работают точно так же, как с массивами чисел - разницы в синтаксисе нет.
+                    Только вместо <code>int[]</code> пишем <code>string[]</code>.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Что внутри нового массива
+                    </div>
+                    <p>Если создать массив и не заполнить его, все ячейки получат «значение по умолчанию».
+                        Для чисел это <code>0</code>, для <code>bool</code> - <code>false</code>, а вот для
+                        <code>string</code> - <code>null</code>, то есть «ничего». Кстати, если попытаться вывести
+                        <code>null</code> на экран, программа ничего не покажет - просто пустую строку.
+                    </p>
+                </div>
+
+                <h2>Шпаргалка по массивам</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>int[] arr = new int[5];</code>
+                        <span>создать пустой массив</span>
+                    </li>
+                    <li>
+                        <code>int[] arr = { 1, 2, 3 };</code>
+                        <span>создать и сразу заполнить</span>
+                    </li>
+                    <li>
+                        <code>arr[i]</code>
+                        <span>элемент по индексу</span>
+                    </li>
+                    <li>
+                        <code>arr[i] = 5;</code>
+                        <span>записать значение</span>
+                    </li>
+                    <li>
+                        <code>arr.Length</code>
+                        <span>длина массива</span>
+                    </li>
+                    <li>
+                        <code>for (int i = 0; i &lt; arr.Length; i++)</code>
+                        <span>перебор всех элементов</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Массивы - тема, где ошибки чаще всего связаны с индексами и границами. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>«IndexOutOfRangeException».</strong> Вы обратились к элементу, которого в массиве
+                        нет. Если массив из 5 элементов, индексы идут от 0 до 4. Последний индекс - это
+                        <code>.Length - 1</code>, а не <code>.Length</code>.
+                    </li>
+                    <li><strong>Цикл пропускает последний элемент или падает на нём.</strong> Классическая
+                        ошибка: <code>i &lt;= numbers.Length</code> вместо <code>i &lt; numbers.Length</code>.
+                        Запомните: <code>&lt; Length</code> - правильно, <code>&lt;= Length</code> - ошибка.</li>
+                    <li><strong>Массив создан, но при выводе все значения нули.</strong> Это нормально: если не
+                        заполнить массив, все ячейки получают значение по умолчанию. Для <code>int</code> это
+                        <code>0</code>, для <code>bool</code> - <code>false</code>, для <code>string</code> -
+                        <code>null</code>.
+                    </li>
+                    <li><strong>«Use of unassigned local variable».</strong> Переменная объявлена, но не заполнена.
+                        Проверьте, что массив создан через <code>new</code> или через <code>{ ... }</code>, и что
+                        все элементы, к которым вы обращаетесь, уже имеют значения.</li>
+                    <li><strong>Попытка изменить <code>.Length</code>.</strong> Длину массива после создания
+                        изменить нельзя. Если нужно больше ячеек - создавайте новый массив. Для гибких коллекций
+                        используйте <code>List</code>, о котором поговорим в следующем уроке.</li>
+                    <li><strong>Смешивание типов в массиве.</strong> Массив может хранить только элементы одного
+                        типа: либо все <code>int</code>, либо все <code>string</code>. Попытка положить строку в
+                        массив чисел вызовет ошибку компиляции.</li>
+                    <li><strong>Поиск максимума возвращает 0.</strong> Если массив из отрицательных чисел, а вы
+                        начали с <code>max = 0</code> - получите неверный результат. Правильно:
+                        <code>max = numbers[0]</code>, то есть первый элемент массива как стартовое значение.
+                    </li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой - подсказка и решение учителя. Сначала
+                    обязательно попробуйте сами.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Простой массив</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте массив из пяти чисел и выведите все его элементы на
+                                экран - каждое на новой строке.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте массив через <code>int[] numbers = { ... };</code> и пройдитесь
+                                        по нему циклом <code>for</code>. Условие цикла -
+                                        <code>i &lt; numbers.Length</code>.
+                                        Внутри - <code>Console.WriteLine(numbers[i])</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">int[] numbers = { 10, 25, 30, 47, 52 };</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; numbers.Length; i++)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(numbers[i]);</span><span class="code-row">}</span></code></pre>
+                                    <p>Числа можно взять любые - важно понять структуру цикла. Мы уже видели это
+                                        в теории, теперь закрепим на практике.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Сумма и среднее</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Дан массив чисел. Посчитайте их сумму и среднее арифметическое.
+                                Выведите оба результата.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сумма считается через аккумулятор - как в пятом уроке. Создайте
+                                        <code>int sum = 0</code> перед циклом и прибавляйте каждый элемент внутри.
+                                        Среднее - это <code>sum</code>, поделённое на длину.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Среднее арифметическое - это дробное число. Чтобы C# не потерял точность,
+                                        используйте <code>double</code> для результата и приведите хотя бы одно из
+                                        чисел к <code>double</code> через <code>(double)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">int[] numbers = { 10, 20, 30, 40, 50 };</span><span class="code-row">int sum = 0;</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; numbers.Length; i++)</span><span class="code-row">{</span><span class="code-row">    sum += numbers[i];</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">double average = (double)sum / numbers.Length;</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Сумма: {sum}");</span><span class="code-row">Console.WriteLine($"Среднее: {average}");</span></code></pre>
+                                    <p>Если бы мы написали <code>sum / numbers.Length</code> без приведения к
+                                        <code>double</code> - C# отбросил бы дробную часть и выдал бы «30» вместо
+                                        «30.0». Приведение <code>(double)</code> заставляет его работать с
+                                        дробными. Это стандартный приём - запомните.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Ввод с клавиатуры</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя пять чисел и сохраните их в массив. Затем
+                                выведите массив на экран в обратном порядке (последний элемент - первым).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Первый цикл - обычный: от 0 до конца, читаем число в <code>numbers[i]</code>.
+                                        Второй цикл - от <code>numbers.Length - 1</code> вниз до 0 включительно.
+                                        Шаг - <code>i--</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Во втором цикле условие нужно записать как <code>i &gt;= 0</code>. Обратите
+                                        внимание: если использовать <code>i &gt; 0</code>, то нулевой элемент не
+                                        выведется.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">int[] numbers = new int[5];</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; numbers.Length; i++)</span><span class="code-row">{</span><span class="code-row">    Console.Write($"Число {i + 1}: ");</span><span class="code-row">    numbers[i] = int.Parse(Console.ReadLine());</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.WriteLine("В обратном порядке:");</span><span class="code-row"></span><span class="code-row">for (int i = numbers.Length - 1; i &gt;= 0; i--)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(numbers[i]);</span><span class="code-row">}</span></code></pre>
+                                    <p>Второй цикл - новый для нас. Здесь счётчик идёт не вверх, а вниз: начинаем
+                                        с последнего индекса и доходим до нуля. Условие <code>i &gt;= 0</code> -
+                                        включая ноль. Как только <code>i</code> станет −1, цикл завершится.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Сколько чётных</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Дан массив чисел. Посчитайте, сколько из них чётные, и выведите
+                                результат.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте счётчик <code>int count = 0</code>. Пройдитесь циклом по массиву.
+                                        Внутри проверьте, чётное ли число.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Чётное число делится на 2 без остатка. В C# остаток от деления считается
+                                        оператором <code>%</code>. Если <code>numbers[i] % 2 == 0</code> - число
+                                        чётное, увеличивайте счётчик.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">int[] numbers = { 7, 12, 5, 8, 20, 33, 42 };</span><span class="code-row">int count = 0;</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; numbers.Length; i++)</span><span class="code-row">{</span><span class="code-row">    if (numbers[i] % 2 == 0)</span><span class="code-row">    {</span><span class="code-row">        count++;</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Чётных чисел: {count}");</span></code></pre>
+                                    <p>Оператор <code>%</code> называется «остаток от деления». Например,
+                                        <code>7 % 2 = 1</code>, а <code>8 % 2 = 0</code>. Если остаток ноль -
+                                        число делится на 2 нацело, значит, оно чётное. Этот приём используется
+                                        постоянно, запомните его.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня в нашем арсенале появилась первая настоящая коллекция - массив. Мы научились его
+                    создавать двумя способами, читать и записывать элементы по индексу, узнавать длину через
+                    <code>.Length</code> и перебирать все элементы циклом <code>for</code>. А ещё разобрали
+                    несколько классических приёмов: поиск максимума, подсчёт суммы, обход массива в обратном
+                    порядке, поиск чётных чисел.
+                </p>
+
+                <p>Массивы - это фундамент для всего, что связано с хранением данных. Большая часть задач в
+                    программировании сводится к тому, чтобы «пройти по коллекции и что-то с ней сделать». Мы
+                    разобрали самый базовый способ - через <code>for</code> и индексы.</p>
+
+                <p>Но у массивов есть один недостаток - их размер нельзя менять. Если мы создали массив на пять
+                    элементов, то добавить шестой уже не получится. Именно поэтому в C# есть другие коллекции,
+                    более гибкие. В следующем уроке мы познакомимся с двумя самыми используемыми:</p>
+
+                <ul>
+                    <li><strong>List&lt;T&gt;</strong> - «резиновый массив», в который можно добавлять и удалять
+                        элементы на ходу.</li>
+                    <li><strong>Dictionary&lt;TKey, TValue&gt;</strong> - «словарь», который хранит пары «ключ →
+                        значение» и мгновенно находит данные по ключу.</li>
+                </ul>
+
+                <p>В следующих уроках мы закроем последние темы начального уровня: подробно разберём
+                    <code>List</code> и <code>Dictionary</code> с циклом <code>foreach</code>, а затем -
+                    оператор <code>switch</code>, тернарный оператор и ещё пару конструкций. А уже после
+                    этого двинемся в средний уровень, где будем писать более серьёзные проекты.
+                </p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-09.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-11.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

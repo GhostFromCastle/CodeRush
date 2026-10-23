@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Криптография глубоко - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="advanced" data-lesson-id="lesson-16">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 16</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson active" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Криптография глубоко: режимы шифрования и атаки на реализацию</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~50 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В уроке 7 мы разобрались с основами шифрования: симметричное, асимметричное,
+                    гибридное. Узнали, что AES - это хорошо, RSA - тоже неплохо, а вместе они
+                    образуют защиту современного интернета. Но мы почти не касались того,
+                    <strong>как именно</strong> эти алгоритмы работают и где в их реализации
+                    возникают ошибки.
+                </p>
+
+                <p>Сегодня заглянем глубже. Оказывается, просто «использовать AES» -
+                    недостаточно. Нужно ещё правильно выбрать <strong>режим работы</strong>,
+                    корректно генерировать <strong>векторы инициализации</strong> и следить
+                    за тем, чтобы <strong>реализация не утекала секреты через побочные
+                        каналы</strong>. Именно на этих деталях ломаются реальные системы - даже
+                    когда базовый алгоритм формально «стойкий».</p>
+
+                <h2>Почему «использовать AES» - недостаточно</h2>
+
+                <p>AES - это <strong>блочный шифр</strong>. Он принимает на вход фиксированный
+                    блок данных (128 бит = 16 байт) и ключ, а на выходе даёт блок
+                    зашифрованных данных той же длины. И всё.</p>
+
+                <p>Но в реальности нам нужно шифровать данные произвольной длины: файлы,
+                    сообщения, видеопотоки. Как из «шифруем 16 байт» получить «шифруем что
+                    угодно»? Ответ: <strong>режимы работы</strong> (modes of operation).
+                    Это правила, описывающие, как применять блочный шифр к данным больше
+                    одного блока.</p>
+
+                <p>И вот здесь начинаются проблемы. Разные режимы дают разную безопасность.
+                    Некоторые исторические режимы оказались катастрофически небезопасными.
+                    А некоторые современные режимы требуют строгого соблюдения правил -
+                    иначе защита рушится.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>AES - это как двигатель. Режим работы - это как коробка передач.
+                        Хороший двигатель с плохой коробкой не поедет. Так и здесь:
+                        стойкий алгоритм с неправильным режимом превращается в
+                        бесполезную игрушку.</p>
+                </div>
+
+                <h2>Режим ECB: почему его нельзя использовать</h2>
+
+                <p>Самый простой режим - <strong>ECB</strong> (Electronic Codebook). Идея
+                    примитивная: каждый блок данных шифруется <em>независимо</em> и
+                    <em>одним и тем же ключом</em>.
+                </p>
+
+                <p>Схема такая:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Блок 1 + Ключ → AES → Зашифрованный блок 1</span><span class="code-row">Блок 2 + Ключ → AES → Зашифрованный блок 2</span><span class="code-row">Блок 3 + Ключ → AES → Зашифрованный блок 3</span></code></pre>
+
+                <p>Проблема очевидна: <strong>одинаковые блоки данных дают одинаковый
+                        шифротекст</strong>. Если в вашем файле встречается одна и та же
+                    последовательность из 16 байт (например, много нулей или повторяющийся
+                    текст) - в зашифрованном виде она тоже будет повторяться.</p>
+
+                <h3>Классический пример: зашифрованная картинка</h3>
+
+                <p>Самый знаменитый способ показать проблему ECB - зашифровать
+                    изображение. Возьмём картинку, где много однотонных участков
+                    (например, логотип или фотографию с большим количеством
+                    однотонного фона), и зашифруем её AES в режиме ECB.</p>
+
+                <p>Результат обескураживает: <strong>на зашифрованной картинке всё
+                        ещё видно контуры исходного изображения</strong>. Однотонные
+                    участки остались однотонными, только цвет изменился. Атакующий
+                    может разглядеть форму, контуры, очертания. Никакой
+                    секретности.</p>
+
+                <p>Именно поэтому <strong>ECB категорически нельзя использовать</strong>
+                    для данных размером больше одного блока. Он годится только для
+                    шифрования отдельных, независимых значений (например, ключей),
+                    где нет повторов.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Правило
+                    </div>
+                    <p>Если вы видите <code>AES/ECB</code> в чужом коде - это красный
+                        флаг. Скорее всего, разработчик не очень понимает
+                        криптографию. Такая реализация требует срочного
+                        исправления.</p>
+                </div>
+
+                <h2>Режимы CBC, CFB, OFB: следующий шаг</h2>
+
+                <p>Чтобы избежать проблемы ECB, придумали режимы, в которых каждый блок
+                    данных <strong>зависит от предыдущего</strong>. Тогда одинаковые блоки
+                    дают разный шифротекст.</p>
+
+                <h3>CBC (Cipher Block Chaining)</h3>
+
+                <p>Самый распространённый из «классических» режимов. Идея: перед
+                    шифрованием очередного блока данных XOR-им его с
+                    <em>предыдущим зашифрованным блоком</em>. Для первого блока
+                    используется специальное значение - <strong>IV</strong>
+                    (Initialization Vector, вектор инициализации).
+                </p>
+
+                <p>Схема:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Блок 1 XOR IV         → AES → Зашифрованный 1</span><span class="code-row">Блок 2 XOR Зашифрованный 1 → AES → Зашифрованный 2</span><span class="code-row">Блок 3 XOR Зашифрованный 2 → AES → Зашифрованный 3</span></code></pre>
+
+                <p>Теперь одинаковые блоки данных дают разный шифротекст: ведь
+                    каждый раз мы XOR-им с разным предыдущим блоком. Проблема
+                    ECB решена.</p>
+
+                <h3>Правила использования CBC</h3>
+
+                <p>Но CBC работает корректно только если соблюдать правила.</p>
+
+                <p><strong>1. IV должен быть случайным.</strong> Не «12345678»,
+                    не нули, не фиксированный. Для каждого шифрования - новый
+                    случайный IV. Если IV предсказуем - атакующий может
+                    восстановить первый блок данных.</p>
+
+                <p><strong>2. IV не секретный, но уникальный.</strong> Его можно
+                    передавать открыто вместе с шифротекстом. Но каждый раз -
+                    новый. Повторное использование IV с тем же ключом
+                    обесценивает защиту.</p>
+
+                <p><strong>3. CBC уязвим к padding oracle атакам.</strong>
+                    Об этом чуть ниже.</p>
+
+                <p>Из-за этих сложностей CBC сегодня считается устаревшим. Он
+                    всё ещё встречается в старых системах, но для новых
+                    проектов не рекомендуется.</p>
+
+                <h3>CFB и OFB</h3>
+
+                <p>CFB (Cipher Feedback) и OFB (Output Feedback) - это
+                    <strong>потоковые</strong> режимы на базе блочного шифра.
+                    Они превращают AES в потоковый шифр: генерируют
+                    псевдослучайный поток, который XOR-ится с данными.
+                </p>
+
+                <p>Основное преимущество: не нужен padding (дополнение до
+                    размера блока). Можно шифровать данные побайтово или
+                    побитово. Удобно для потоковой передачи.</p>
+
+                <p>Но у них тоже есть свои тонкости с IV, и в целом они
+                    вытеснены современными AEAD-режимами (см. ниже).</p>
+
+                <h2>Современный стандарт: AEAD и GCM</h2>
+
+                <p>Все описанные выше режимы шифруют данные, но не проверяют их
+                    <strong>целостность</strong>. Атакующий может незаметно изменить
+                    байт в шифротексте - и получатель не узнает, что данные
+                    подменены.
+                </p>
+
+                <p>Чтобы решить эту проблему, придумали <strong>AEAD</strong>
+                    (Authenticated Encryption with Associated Data) - режимы,
+                    которые одновременно шифруют данные и подтверждают их
+                    подлинность.</p>
+
+                <h3>GCM (Galois/Counter Mode)</h3>
+
+                <p>Самый популярный AEAD-режим сегодня. Используется в TLS 1.3,
+                    IPsec, SSH и множестве других протоколов.</p>
+
+                <p>GCM работает так:</p>
+
+                <ul>
+                    <li>Шифрует данные с помощью Counter Mode (CTR).</li>
+                    <li>Вычисляет <strong>тег аутентификации</strong> - короткое
+                        значение, подтверждающее целостность.</li>
+                    <li>Тег прикрепляется к шифротексту.</li>
+                </ul>
+
+                <p>Получатель расшифровывает данные и проверяет тег. Если тег
+                    не совпадает - данные были изменены, и расшифровка
+                    отклоняется.</p>
+
+                <h3>Правило: никогда не повторяйте nonce</h3>
+
+                <p>Критическое правило GCM: <strong>nonce (аналог IV) никогда
+                        не должен повторяться с одним и тем же ключом</strong>.</p>
+
+                <p>Если nonce повторится:</p>
+
+                <ul>
+                    <li>Атакующий может восстановить XOR двух сообщений.</li>
+                    <li>Если одно из сообщений известно - можно восстановить
+                        второе.</li>
+                    <li>Тег аутентификации тоже можно подделать.</li>
+                </ul>
+
+                <p>Это не «теоретическая уязвимость». Реальные системы
+                    ломались именно на повторном использовании nonce. Например,
+                    в некоторых реализациях VPN и в старых версиях
+                    протоколов.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        AEAD и ChaCha20-Poly1305
+                    </div>
+                    <p>Кроме GCM существует ещё один популярный AEAD-режим:
+                        <strong>ChaCha20-Poly1305</strong>. Он построен на
+                        потоковом шифре ChaCha20 и алгоритме аутентификации
+                        Poly1305. Быстрее на устройствах без аппаратного
+                        ускорения AES (например, на старых смартфонах).
+                        Используется в TLS 1.3, WireGuard, Signal.
+                    </p>
+                </div>
+
+                <h2>Padding Oracle: как ломается CBC</h2>
+
+                <p>Отдельная важная тема. <strong>Padding Oracle Attack</strong> -
+                    это атака на режим CBC, которая позволяет расшифровать данные
+                    <em>без знания ключа</em>, только по ответам сервера об
+                    ошибках.
+                </p>
+
+                <p>Проблема в том, что блочные шифры работают с фиксированным
+                    размером блока (16 байт для AES). Если данные не кратны 16 -
+                    их дополняют специальными байтами (padding). Например,
+                    если не хватает 5 байт, добавляют пять байт со значением
+                    <code>05</code>. Если не хватает одного - добавляют один
+                    байт <code>01</code>.
+                </p>
+
+                <p>При расшифровке сервер проверяет: корректен ли padding?
+                    Если нет - возвращает ошибку. Если да - пытается
+                    расшифровать дальше.</p>
+
+                <p>Атакующий может это использовать. Он отправляет
+                    изменённые шифротексты, смотрит на ответы сервера
+                    («ошибка padding» или «ошибка расшифровки») и
+                    <strong>постепенно восстанавливает байт за байтом
+                        исходные данные</strong>.
+                </p>
+
+                <p>Эта атака ломала:</p>
+
+                <ul>
+                    <li>Некоторые реализации ASP.NET.</li>
+                    <li>Java Server Faces (JSF).</li>
+                    <li>Различные веб-фреймворки, которые возвращали
+                        разные сообщения об ошибках в разных случаях.</li>
+                </ul>
+
+                <p>Защита: <strong>использовать AEAD-режимы</strong>
+                    (GCM или ChaCha20-Poly1305) вместо CBC. Если CBC
+                    необходим - возвращать единое сообщение об ошибке
+                    во всех случаях и не давать атакующему никакой
+                    информации о причине сбоя.</p>
+
+                <h2>Атаки по побочным каналам (side-channel)</h2>
+
+                <p>Отдельная категория атак. Они не пытаются взломать
+                    математику алгоритма, а используют <strong>физические
+                        особенности реализации</strong>:</p>
+
+                <ul>
+                    <li><strong>Время выполнения.</strong> Если операция
+                        занимает разное время в зависимости от данных -
+                        можно восстановить эти данные по замерам.</li>
+                    <li><strong>Энергопотребление.</strong> Разные операции
+                        потребляют разное количество энергии. По графику
+                        потребления можно восстановить ключ.</li>
+                    <li><strong>Электромагнитное излучение.</strong> Работающий
+                        процессор излучает. Это излучение можно перехватить
+                        и проанализировать.</li>
+                    <li><strong>Кэш-атаки.</strong> Время доступа к памяти
+                        зависит от того, что в кэше. По этим задержкам
+                        можно узнать, к каким адресам обращался
+                        процесс.</li>
+                </ul>
+
+                <p>Классический пример: <strong>Meltdown и Spectre</strong>
+                    (2018). Это уязвимости в процессорах, которые позволяли
+                    читать память других процессов через спекулятивное
+                    исполнение и кэш-тайминги. Затронули почти все
+                    процессоры Intel, AMD и ARM.</p>
+
+                <h3>Timing-атака на сравнение строк</h3>
+
+                <p>Простой, но показательный пример. Многие языки
+                    программирования сравнивают строки так: если символы
+                    не совпадают - сразу возвращают «не равно».
+                    Это значит, что время сравнения зависит от того,
+                    <strong>сколько первых символов совпало</strong>.
+                </p>
+
+                <p>Если это сравнение используется для проверки HMAC или
+                    токена - атакующий может подобрать значение
+                    побайтово. Он замеряет время ответа и по нему
+                    понимает, сколько символов угадано.</p>
+
+                <p>Защита: использовать <strong>constant-time
+                        сравнение</strong> - функцию, которая всегда
+                    выполняется за одинаковое время независимо от данных.
+                    В каждом языке есть специальная функция для этого
+                    (например, <code>hmac.compare_digest</code> в Python,
+                    <code>crypto.timingSafeEqual</code> в Node.js).
+                </p>
+
+                <h3>Атака на реализацию AES</h3>
+
+                <p>Реализации AES тоже уязвимы к side-channel. Классическая
+                    реализация через <strong>таблицы подстановок
+                        (S-box)</strong> имеет разное время доступа к памяти
+                    в зависимости от данных. По этим задержкам можно
+                    восстановить ключ.</p>
+
+                <p>Защита: <strong>AES-NI</strong> - специальные инструкции
+                    в современных процессорах, которые выполняют AES
+                    аппаратно. Они защищены от большинства side-channel
+                    атак. Все современные библиотеки (OpenSSL,
+                    crypto в Node.js) автоматически используют AES-NI,
+                    если он доступен.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Почему нельзя писать свою криптографию
+                    </div>
+                    <p>Именно из-за таких атак. Даже если вы правильно
+                        реализуете сам алгоритм - вы почти наверняка
+                        допустите ошибку в обработке IV, или в сравнении
+                        тегов, или в защите от side-channel. <strong>Не
+                            изобретайте свою криптографию</strong>. Используйте
+                        проверенные библиотеки: libsodium, Web Crypto API,
+                        crypto в стандартной библиотеке языка.</p>
+                </div>
+
+                <h2>Правила безопасного использования шифрования</h2>
+
+                <p>Соберём в одном месте практические правила, которые
+                    помогут избежать типичных ошибок.</p>
+
+                <h3>1. Не используйте ECB</h3>
+
+                <p>Никогда. Ни для чего, кроме шифрования отдельных
+                    независимых значений.</p>
+
+                <h3>2. Используйте AEAD-режимы</h3>
+
+                <p>GCM или ChaCha20-Poly1305. Они одновременно шифруют
+                    и обеспечивают целостность. Это современный
+                    стандарт.</p>
+
+                <h3>3. Генерируйте случайный IV/nonce</h3>
+
+                <p>Для каждого шифрования - новый. Из криптографически
+                    стойкого источника (<code>crypto.getRandomValues</code>
+                    или аналог). Никогда не повторяйте с одним
+                    ключом.</p>
+
+                <h3>4. Не пишите свою криптографию</h3>
+
+                <p>Используйте проверенные библиотеки. libsodium,
+                    Web Crypto, встроенные криптографические модули.
+                    Не изобретайте свои схемы.</p>
+
+                <h3>5. Constant-time сравнение</h3>
+
+                <p>Для сравнения секретов (тегов, HMAC, токенов)
+                    используйте специальные функции. Обычное
+                    <code>==</code> не подходит.
+                </p>
+
+                <h3>6. Управляйте ключами правильно</h3>
+
+                <p>Не храните ключи в коде. Не логируйте их.
+                    Используйте специализированные сервисы
+                    (KMS, vault) для управления ключами.</p>
+
+                <h3>7. Обновляйте зависимости</h3>
+
+                <p>В криптографических библиотеках периодически
+                    находят уязвимости. Следите за обновлениями.</p>
+
+                <h3>8. Не полагайтесь на «security by obscurity»</h3>
+
+                <p>Секретность алгоритма не защищает. Стойкость
+                    должна быть в ключе, а не в том, что «никто
+                    не знает, как мы шифруем».</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>ECB</code>
+                        <span>не использовать никогда</span>
+                    </li>
+                    <li>
+                        <code>CBC</code>
+                        <span>устарел, уязвим к padding oracle</span>
+                    </li>
+                    <li>
+                        <code>GCM</code>
+                        <span>современный AEAD-режим</span>
+                    </li>
+                    <li>
+                        <code>ChaCha20-Poly1305</code>
+                        <span>AEAD для мобильных устройств</span>
+                    </li>
+                    <li>
+                        <code>IV / Nonce</code>
+                        <span>уникальный, случайный, для каждого шифрования</span>
+                    </li>
+                    <li>
+                        <code>AEAD</code>
+                        <span>шифрование + целостность</span>
+                    </li>
+                    <li>
+                        <code>Constant-time</code>
+                        <span>сравнение секретов</span>
+                    </li>
+                    <li>
+                        <code>AES-NI</code>
+                        <span>аппаратное ускорение + защита от side-channel</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные заблуждения и ошибки по теме.</p>
+
+                <ul>
+                    <li><strong>«AES-256 настолько стоек, что детали
+                            не важны».</strong> Нет. Именно детали реализации
+                        и режим работы определяют реальную стойкость.
+                        AES в режиме ECB с фиксированным IV - это
+                        фактически не шифрование, а обфускация.</li>
+                    <li><strong>«Я слышал, что CBC устарел - но он же
+                            всё ещё используется».</strong> Используется,
+                        потому что старые системы сложно переделать.
+                        Но для новых проектов CBC не рекомендуется.
+                        Используйте GCM или ChaCha20-Poly1305.</li>
+                    <li><strong>«Я сам напишу свою криптосхему - она
+                            будет уникальной и потому более безопасной».</strong>
+                        Наоборот. Криптографические схемы проверяются
+                        годами тысячами специалистов. Ваша уникальная
+                        схема с огромной вероятностью содержит ошибки,
+                        которых не будет в проверенных решениях.</li>
+                    <li><strong>«IV можно передавать по открытому
+                            каналу».</strong> Да, можно. IV не секретный.
+                        Но он должен быть уникальным для каждого
+                        шифрования с данным ключом. Если IV
+                        предсказуем - это проблема.</li>
+                    <li><strong>«GCM безопасен, если использовать его
+                            правильно».</strong> Да. Но «правильно» здесь
+                        означает соблюдение строгих правил:
+                        уникальный nonce, случайный, никогда не
+                        повторяющийся с одним ключом. Одна ошибка -
+                        и вся защита рушится.</li>
+                    <li><strong>«Side-channel - это для параноиков».</strong>
+                        Нет. Meltdown и Spectre показали, что side-channel
+                        атаки реальны, работают на массовом железе и
+                        затрагивают миллиарды устройств. Игнорировать
+                        их - значит оставлять дыры в защите.</li>
+                    <li><strong>«Я использую готовую библиотеку - значит
+                            всё безопасно».</strong> Готовая библиотека
+                        безопасна, если её правильно использовать.
+                        Можно использовать OpenSSL и всё равно
+                        допустить ошибку - выбрать неправильный режим,
+                        перепутать IV, использовать
+                        <code>==</code> для сравнения тегов.
+                    </li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание режимов,
+                    вторые две - на разбор реальных ситуаций.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Какой режим выбрать</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой задачи выберите
+                                подходящий режим шифрования и обоснуйте.
+                                Варианты: ECB, CBC, GCM, ChaCha20-Poly1305.</p>
+                            <ol>
+                                <li>Шифрование конфиденциального сообщения
+                                    в мессенджере.</li>
+                                <li>Шифрование пароля перед сохранением
+                                    в базе данных.</li>
+                                <li>Шифрование файла на диске.</li>
+                                <li>Шифрование трафика мобильного
+                                    приложения на старом Android-устройстве
+                                    без AES-NI.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Помните: пароли не шифруют, а хешируют.
+                                        Для всего остального - используйте
+                                        AEAD-режимы (GCM или ChaCha20-Poly1305).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>GCM или ChaCha20-Poly1305.</strong>
+                                            Для мессенджеров нужна не только
+                                            секретность, но и целостность.
+                                            AEAD-режимы - идеальный выбор.</li>
+                                        <li><strong>Ничего из перечисленного.</strong>
+                                            Пароли не шифруют, а
+                                            <em>хешируют</em> (см. урок 8).
+                                            Используйте Argon2 или bcrypt.
+                                            Шифрование пароля бессмысленно:
+                                            его всё равно нужно только
+                                            проверять, а не восстанавливать.
+                                        </li>
+                                        <li><strong>GCM или ChaCha20-Poly1305.</strong>
+                                            Для шифрования файлов тоже
+                                            нужна целостность. AEAD
+                                            защищает и от чтения,
+                                            и от подмены содержимого.</li>
+                                        <li><strong>ChaCha20-Poly1305.</strong>
+                                            На устройствах без AES-NI
+                                            аппаратное ускорение AES
+                                            недоступно, и ChaCha20
+                                            работает быстрее. Плюс он
+                                            защищён от side-channel
+                                            по дизайну.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Что не так с кодом</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Разработчик написал такой
+                                код шифрования. Найдите минимум три
+                                проблемы.</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">from Crypto.Cipher import AES</span><span class="code-row"></span><span class="code-row">key = b"0123456789abcdef"</span><span class="code-row">iv  = b"abcdefghijklmnop"</span><span class="code-row"></span><span class="code-row">def encrypt(data):</span><span class="code-row">    cipher = AES.new(key, AES.MODE_CBC, iv)</span><span class="code-row">    return cipher.encrypt(data)</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Обратите внимание на: длину ключа,
+                                        значение IV, режим работы и
+                                        обработку данных произвольной
+                                        длины.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проблемы этого кода:</p>
+                                    <ol>
+                                        <li><strong>Фиксированный IV.</strong>
+                                            Один и тот же IV для всех
+                                            вызовов encrypt. Это
+                                            полностью ломает CBC -
+                                            одинаковые первые блоки данных
+                                            дадут одинаковый шифротекст.
+                                            Правильно: генерировать
+                                            случайный IV для каждого
+                                            шифрования.</li>
+                                        <li><strong>Режим CBC без
+                                                аутентификации.</strong>
+                                            CBC не проверяет целостность.
+                                            Атакующий может подменить
+                                            данные. Нужен AEAD-режим
+                                            (GCM) или CBC + отдельный HMAC.</li>
+                                        <li><strong>Нет padding.</strong>
+                                            AES работает с блоками по
+                                            16 байт. Если данные
+                                            не кратны 16 - нужен padding.
+                                            Здесь его нет, код упадёт
+                                            на данных неправильной длины.</li>
+                                        <li><strong>Ключ хранится в коде.</strong>
+                                            Секретный ключ в исходниках -
+                                            это катастрофа. Любой, кто
+                                            получит доступ к коду, получит
+                                            ключ. Ключи должны храниться
+                                            отдельно (переменные окружения,
+                                            KMS, vault).</li>
+                                        <li><strong>Слабый ключ.</strong>
+                                            Ключ из ASCII-символов
+                                            «0123456789abcdef» имеет
+                                            ограниченную энтропию. Ключи
+                                            должны быть криптографически
+                                            случайными.</li>
+                                    </ol>
+                                    <p>Правильный код должен:</p>
+                                    <ul>
+                                        <li>Использовать GCM.</li>
+                                        <li>Генерировать случайный nonce
+                                            для каждого шифрования.</li>
+                                        <li>Брать ключ из защищённого
+                                            хранилища.</li>
+                                        <li>Возвращать nonce вместе
+                                            с шифротекстом.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Расшифруйте ECB</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Студент зашифровал текст
+                                в режиме ECB и получил такой шифротекст
+                                (в шестнадцатеричном виде, по блокам
+                                по 16 байт):</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">a1b2c3d4e5f67890a1b2c3d4e5f67890</span><span class="code-row">f0e1d2c3b4a5968778695a4b3c2d1e0f</span><span class="code-row">a1b2c3d4e5f67890a1b2c3d4e5f67890</span><span class="code-row">f0e1d2c3b4a5968778695a4b3c2d1e0f</span></code></pre>
+                            <p>Что можно сказать об исходных данных?
+                                Какие выводы нужно сделать разработчику?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Посмотрите внимательно на блоки.
+                                        Есть ли среди них одинаковые?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Что можно увидеть:</p>
+                                    <ul>
+                                        <li>Первый и третий блоки
+                                            <strong>идентичны</strong>
+                                            (<code>a1b2c3d4...</code>).
+                                        </li>
+                                        <li>Второй и четвёртый блоки тоже
+                                            <strong>идентичны</strong>
+                                            (<code>f0e1d2c3...</code>).
+                                        </li>
+                                    </ul>
+                                    <p>Значит, исходные данные тоже
+                                        состоят из двух повторяющихся
+                                        блоков: например, «ABCDEFGHIJKLMNOP»
+                                        дважды, или что-то подобное.
+                                        Криптоаналитик может использовать
+                                        этот факт, чтобы угадать структуру
+                                        данных.</p>
+                                    <p>Выводы для разработчика:</p>
+                                    <ol>
+                                        <li><strong>Никогда не использовать
+                                                ECB</strong> для данных,
+                                            в которых могут быть повторы.</li>
+                                        <li>Если паттерны видны в
+                                            шифротексте - это огромная
+                                            утечка информации.</li>
+                                        <li>Перейти на GCM или
+                                            ChaCha20-Poly1305 с
+                                            уникальным nonce для
+                                            каждого шифрования.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Разбор инцидента</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Компания потеряла данные
+                                клиентов, хотя использовала AES-256.
+                                При расследовании выяснилось, что
+                                шифрование применялось правильно, ключ
+                                был достаточно длинным, но всё равно
+                                произошла утечка. Назовите минимум
+                                три возможные причины.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проблема не в самом AES, а в том,
+                                        как его использовали. Подумайте
+                                        про режим работы, управление
+                                        ключами и побочные каналы.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Возможные причины (нужно минимум три):</p>
+                                    <ol>
+                                        <li><strong>Режим ECB.</strong>
+                                            Если данные шифровались в ECB,
+                                            паттерны сохраняются. Даже
+                                            AES-256 не спасёт, если
+                                            режим работы неверный.</li>
+                                        <li><strong>Повторное использование
+                                                IV/nonce.</strong> В CBC или GCM
+                                            это критическая ошибка,
+                                            позволяющая восстановить
+                                            данные.</li>
+                                        <li><strong>Ключ хранился рядом
+                                                с данными.</strong> Если ключ
+                                            и зашифрованные данные были
+                                            на одном сервере - злоумышленник
+                                            получил и то, и другое.</li>
+                                        <li><strong>Ключ утёк через
+                                                логирование.</strong> Если
+                                            приложение логировало
+                                            переменные - ключ мог попасть
+                                            в логи, а потом в чужие руки.</li>
+                                        <li><strong>Side-channel атака.</strong>
+                                            Если шифрование выполнялось
+                                            на устройстве, к которому
+                                            у атакующего был физический
+                                            доступ - возможна атака
+                                            по времени или
+                                            энергопотреблению.</li>
+                                        <li><strong>Слабый источник
+                                                случайности.</strong> Если
+                                            IV генерировался из
+                                            предсказуемого источника,
+                                            злоумышленник мог его
+                                            предсказать и расшифровать
+                                            данные.</li>
+                                        <li><strong>Утечка через
+                                                padding oracle.</strong>
+                                            Если приложение возвращало
+                                            разные ошибки для разных
+                                            случаев - это позволяло
+                                            расшифровать данные.</li>
+                                    </ol>
+                                    <p>Главный вывод: <strong>«использовать
+                                            AES-256» - это только начало</strong>.
+                                        Реальная безопасность зависит от
+                                        десятков деталей реализации.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Заглянули глубоко в криптографию и разобрались с тем, что «использовать
+                    AES» - недостаточно. Узнали, что такое <strong>режимы работы</strong>
+                    и почему они критичны для реальной безопасности.</p>
+
+                <p>Разобрали, почему <strong>ECB</strong> нельзя использовать никогда:
+                    одинаковые блоки данных дают одинаковый шифротекст, паттерны видны
+                    даже на зашифрованных картинках. Познакомились с <strong>CBC</strong>,
+                    его правилами и уязвимостью к <strong>padding oracle</strong>.
+                    Узнали про современные <strong>AEAD-режимы</strong> - GCM и
+                    ChaCha20-Poly1305 - которые одновременно шифруют и подтверждают
+                    целостность.</p>
+
+                <p>Разобрались с <strong>side-channel атаками</strong>: timing-атаки,
+                    энергопотребление, кэш-атаки. Поняли, почему Meltdown и Spectre
+                    стали возможны и как с ними борются. Узнали про
+                    <strong>constant-time сравнение</strong> и защиту через
+                    <strong>AES-NI</strong>.
+                </p>
+
+                <p>И сформулировали восемь практических правил безопасного
+                    использования шифрования. Главное из них: <strong>не изобретайте
+                        свою криптографию</strong>. Используйте проверенные библиотеки
+                    и не забывайте про детали реализации.</p>
+
+                <p>В следующем уроке мы займёмся <strong>безопасностью облаков и
+                        управлением доступом (IAM)</strong>. Разберём модель разделения
+                    ответственности, работу с секретами, публичные S3-бакеты и
+                    специфику защиты в AWS, Azure и GCP. Облака - это огромная часть
+                    современной инфраструктуры, и их безопасность требует особого
+                    подхода.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-15.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-17.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

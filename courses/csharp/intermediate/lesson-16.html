@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инкапсуляция - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="intermediate" data-lesson-id="lesson-16">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 16</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson active" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Инкапсуляция</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились создавать классы и объекты. У нашего студента появились поля
+                    <code>Name</code>, <code>Age</code> и <code>Gpa</code>, а также конструктор для их заполнения. Но мы
+                    оставили одну важную проблему.
+                </p>
+
+                <p>Сейчас все поля нашего класса объявлены как <code>public</code>. Это значит, что любой код снаружи
+                    может их изменить. Случайно или намеренно.</p>
+
+                <p>Например, мы можем написать в <code>Main</code> вот такую строку:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">alexey.Age = -100;</span></code></pre>
+
+                <p>Программа скомпилируется и запустится. Но возраст в минус сто лет - это бессмыслица. В реальной жизни
+                    мы бы такого не допустили, но наш код позволяет это сделать.</p>
+
+                <p>Сегодня мы научимся защищать данные объекта от таких ошибок. Этот механизм называется
+                    <strong>инкапсуляцией</strong>.
+                </p>
+
+                <h2>Что такое инкапсуляция</h2>
+
+                <p>Слово «инкапсуляция» происходит от латинского <em>capsula</em> - «коробочка». Смысл простой:
+                    <strong>мы прячем внутреннее устройство объекта и предоставляем безопасный интерфейс для работы с
+                        ним</strong>.
+                </p>
+
+                <p>Представьте телевизор. Внутри него сотни микросхем, проводов и сложных механизмов. Но вам не нужно
+                    знать, как они устроены, чтобы посмотреть новости. Вы просто нажимаете кнопку на пульте. Кнопка -
+                    это и есть «безопасный интерфейс». А микросхемы - «внутреннее устройство», спрятанное от вас.</p>
+
+                <p>В программировании то же самое. Мы прячем поля объекта, чтобы никто не мог положить в них
+                    некорректные данные, а доступ предоставляем через специальные «кнопки» - свойства и методы.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Инкапсуляция - это не просто «сделать поля приватными». Это принцип: <strong>никто снаружи не
+                            должен иметь возможности сломать объект</strong>. Все изменения проходят через
+                        контролируемые двери.</p>
+                </div>
+
+                <h2>Модификаторы доступа</h2>
+
+                <p>Чтобы прятать данные, в C# есть <strong>модификаторы доступа</strong>. Нам пока нужны только два:</p>
+
+                <ul>
+                    <li><code>public</code> - «публичный». Доступен всем. Снаружи класса можно свободно читать и менять.
+                    </li>
+                    <li><code>private</code> - «приватный». Доступен <strong>только внутри этого класса</strong>.
+                        Снаружи даже не видно, что такое поле существует.</li>
+                </ul>
+
+                <p>По умолчанию, если не писать ничего, в C# поля считаются приватными. Но лучше писать
+                    <code>private</code> явно - так код понятнее.
+                </p>
+
+                <p>Давайте посмотрим, что будет, если сделать поле <code>Age</code> приватным:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Student</span><span class="code-row">{</span><span class="code-row">    public string Name;</span><span class="code-row">    private int Age;</span><span class="code-row">    public double Gpa;</span><span class="code-row">}</span></code></pre>
+
+                <p>Теперь если в <code>Main</code> написать <code>alexey.Age = 20;</code>, Visual Studio подчеркнет эту
+                    строку красным и скажет: «Age is inaccessible due to its protection level» (поле недоступно из-за
+                    уровня защиты).</p>
+
+                <p>Мы защитили поле. Но теперь мы не можем ни прочитать возраст, ни задать его. Получилась коробка без
+                    крышки и без дна. Как быть?</p>
+
+                <h2>Свойства (Properties)</h2>
+
+                <p>На помощь приходят <strong>свойства</strong>. Это специальный механизм C#, который позволяет
+                    безопасно читать и записывать приватные поля.</p>
+
+                <p>Свойство выглядит как поле, но внутри содержит логику. Вот как это делается:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Student</span><span class="code-row">{</span><span class="code-row">    private int age;</span><span class="code-row"></span><span class="code-row">    public int Age</span><span class="code-row">    {</span><span class="code-row">        get { return age; }</span><span class="code-row">        set</span><span class="code-row">        {</span><span class="code-row">            if (value >= 0)</span><span class="code-row">            {</span><span class="code-row">                age = value;</span><span class="code-row">            }</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Давайте разберем эту конструкцию по частям:</p>
+
+                <ul>
+                    <li><code>private int age;</code> - настоящее хранилище данных. Оно спрятано от всех.</li>
+                    <li><code>public int Age</code> - «дверь», через которую можно попасть к <code>age</code>.</li>
+                    <li><code>get { return age; }</code> - блок <em>геттер</em>. Срабатывает, когда мы
+                        <strong>читаем</strong> значение. Возвращает то, что лежит в приватном поле.
+                    </li>
+                    <li><code>set { ... }</code> - блок <em>сеттер</em>. Срабатывает, когда мы
+                        <strong>записываем</strong> значение.
+                    </li>
+                    <li><code>value</code> - ключевое слово. Это то значение, которое мы пытаемся присвоить.</li>
+                </ul>
+
+                <p>Самое интересное здесь - это проверка <code>if (value >= 0)</code>. Если кто-то попытается записать
+                    отрицательный возраст, сеттер просто проигнорирует это. Данные не изменятся, и объект останется в
+                    целости.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия с банкоматом
+                    </div>
+                    <p>Свойство - это как банкомат. Вы не можете просто залезть в сейф банка и взять деньги. Вы
+                        вставляете карту, вводите пин-код, и банкомат (свойство <code>set</code>) проверяет, можно ли
+                        вам снять деньги. Если баланс отрицательный - операция не пройдет. Так и свойства защищают
+                        данные от некорректных операций.</p>
+                </div>
+
+                <h3>Зачем это нужно</h3>
+
+                <p>Может показаться, что мы просто усложняем код. Вместо одной строки объявления поля пишем десять. Но
+                    на самом деле это дает огромные преимущества:</p>
+                <ul>
+                    <li><strong>Валидация данных.</strong> Мы можем проверять, что возраст не отрицательный, имя не
+                        пустое, а оценка не больше пяти.</li>
+                    <li><strong>Гибкость.</strong> Завтра мы решим, что при изменении возраста нужно записывать это в
+                        лог. Мы просто добавим строчку в сеттер, и ничего не сломается снаружи.</li>
+                    <li><strong>Безопасность.</strong> Мы контролируем, какие данные попадают в наш объект.</li>
+                </ul>
+
+                <h2>Автосвойства</h2>
+
+                <p>Писать столько кода ради одного поля быстро надоедает. Если нам не нужна валидация, а нужно просто
+                    дать доступ к полю, в C# есть короткая форма записи:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">public string Name { get; set; }</span></code></pre>
+
+                <p>Эта строка означает: «Создай скрытое приватное поле и автоматически сделай для него геттер и сеттер».
+                    Мы не видим, как называется это скрытое поле, но можем читать и писать через свойство.</p>
+
+                <p>Это называется <strong>автосвойством</strong>. Оно используется в реальном коде в 90% случаев, когда
+                    сложная логика не нужна.</p>
+
+                <p>Если мы хотим, чтобы снаружи можно было только читать, но не записывать, мы оставляем только геттер:
+                </p>
+
+                <pre class="code-numbered"><code><span class="code-row">public string Name { get; }</span></code></pre>
+
+                <p>Такое свойство можно заполнить только внутри конструктора. После создания объекта изменить имя
+                    нельзя. Это называется «свойство только для чтения» и отлично подходит для данных, которые не должны
+                    меняться (например, ID пользователя или дата создания).</p>
+
+                <h2>Собираем всё вместе</h2>
+
+                <p>Давайте перепишем нашего студента из прошлого урока, применяя инкапсуляцию:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Student</span><span class="code-row">{</span><span class="code-row">    public string Name { get; set; }</span><span class="code-row"></span><span class="code-row">    private int age;</span><span class="code-row">    public int Age</span><span class="code-row">    {</span><span class="code-row">        get { return age; }</span><span class="code-row">        set</span><span class="code-row">        {</span><span class="code-row">            if (value >= 0)</span><span class="code-row">            {</span><span class="code-row">                age = value;</span><span class="code-row">            }</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    public double Gpa { get; set; }</span><span class="code-row"></span><span class="code-row">    public Student(string name, int age, double gpa)</span><span class="code-row">    {</span><span class="code-row">        Name = name;</span><span class="code-row">        Age = age;</span><span class="code-row">        Gpa = gpa;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    public void Print()</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine($"{Name}, {Age} лет, средний балл {Gpa}");</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Теперь:</p>
+                <ul>
+                    <li><code>Name</code> и <code>Gpa</code> - автосвойства. Снаружи выглядят как обычные поля, но на
+                        самом деле защищены.</li>
+                    <li><code>Age</code> - свойство с логикой. Не даст записать отрицательное число.</li>
+                </ul>
+
+                <p>В конструкторе мы присваиваем <code>Age = age;</code>. Здесь срабатывает сеттер свойства
+                    <code>Age</code>. То есть при создании объекта тоже проходит проверка. Если передать в конструктор
+                    <code>-5</code>, возраст просто не запишется и останется <code>0</code>.
+                </p>
+
+                <h2>Итоговая программа</h2>
+
+                <p>Посмотрим, как это работает в деле:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    Student alexey = new Student("Алексей", 20, 4.5);</span><span class="code-row">    alexey.Print();</span><span class="code-row"></span><span class="code-row">    alexey.Age = 21;</span><span class="code-row">    alexey.Print();</span><span class="code-row"></span><span class="code-row">    alexey.Age = -100;</span><span class="code-row">    alexey.Print();</span><span class="code-row">}</span></code></pre>
+
+                <p>Программа выведет:</p>
+                <pre><code>Алексей, 20 лет, средний балл 4.5
+Алексей, 21 лет, средний балл 4.5
+Алексей, 21 лет, средний балл 4.5</code></pre>
+
+                <p>В третьем случае мы попытались записать отрицательный возраст. Но свойство <code>Age</code>
+                    заблокировало это изменение. Значение осталось прежним (21), и программа продолжила работать
+                    корректно.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>private</code>
+                        <span>доступно только внутри класса</span>
+                    </li>
+                    <li>
+                        <code>public</code>
+                        <span>доступно всем</span>
+                    </li>
+                    <li>
+                        <code>{ get; set; }</code>
+                        <span>автосвойство для чтения и записи</span>
+                    </li>
+                    <li>
+                        <code>{ get; }</code>
+                        <span>свойство только для чтения</span>
+                    </li>
+                    <li>
+                        <code>get { return x; }</code>
+                        <span>блок чтения</span>
+                    </li>
+                    <li>
+                        <code>set { x = value; }</code>
+                        <span>блок записи</span>
+                    </li>
+                    <li>
+                        <code>value</code>
+                        <span>входящее значение</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Свойства и инкапсуляция - место, где легко запутаться в мелочах. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>«The name 'age' does not exist».</strong> Вы случайно написали <code>age</code> с
+                        маленькой буквы в блоке <code>Main</code>. Помните: снаружи доступно только свойство
+                        <code>Age</code> (с большой буквы). Приватное поле <code>age</code> снаружи не видно.
+                    </li>
+                    <li><strong>«Property or indexer must have at least one accessor».</strong> У свойства нет ни
+                        <code>get</code>, ни <code>set</code>. Например, вы написали <code>public int Age { }</code>.
+                        Нужно добавить хотя бы один блок.
+                    </li>
+                    <li><strong>«Cannot assign to 'Name' because it is read-only».</strong> Вы пытаетесь изменить
+                        свойство, у которого есть только геттер (<code>get;</code>). Такие свойства можно заполнять
+                        только в конструкторе.</li>
+                    <li><strong>«Use of unassigned local variable».</strong> Если у вас есть свойство только для чтения
+                        (<code>{ get; }</code>) и вы не заполнили его в конструкторе, компилятор подскажет, что значение
+                        не задано.</li>
+                    <li><strong>Свойство не работает так, как вы ожидали.</strong> Помните, что внутри блока
+                        <code>set</code> вы работаете с ключевым словом <code>value</code>. Нельзя написать
+                        <code>Age = Age;</code> - получится рекурсия. Правильно: <code>age = value;</code>.
+                    </li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Переделайте Book</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Возьмите класс <code>Book</code> из прошлого урока. Замените все три
+                                публичных поля на автосвойства (<code>{ get; set; }</code>). Проверьте, что код
+                                продолжает работать.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вместо <code>public string Title;</code> напишите
+                                        <code>public string Title { get; set; }</code>. Сделайте так для всех трёх
+                                        полей. Остальной код (конструктор, метод <code>Print</code>, <code>Main</code>)
+                                        менять не нужно.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Book</span><span class="code-row">{</span><span class="code-row">    public string Title { get; set; }</span><span class="code-row">    public string Author { get; set; }</span><span class="code-row">    public int Year { get; set; }</span><span class="code-row"></span><span class="code-row">    public Book(string title, string author, int year)</span><span class="code-row">    {</span><span class="code-row">        Title = title;</span><span class="code-row">        Author = author;</span><span class="code-row">        Year = year;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    public void Print()</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine($"{Author}, \"{Title}\" ({Year})");</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                                    <p>Для внешнего кода ничего не изменилось. Мы по-прежнему можем читать и записывать
+                                        <code>Title</code>, <code>Author</code> и <code>Year</code>. Но теперь внутри
+                                        класса у этих данных есть скрытая защита.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Валидация оценки</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте класс <code>Review</code> с полем <code>Rating</code>
+                                (оценка). Сделайте свойство так, чтобы оценка могла быть только от 1 до 5. Если передать
+                                число вне диапазона - оно не сохраняется (оценка остается прежней или 0).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вам понадобится приватное поле <code>private int rating;</code> и публичное
+                                        свойство <code>Rating</code> с полным блоком <code>get</code> и
+                                        <code>set</code>. В <code>set</code> проверяйте условие
+                                        <code>value >= 1 && value <= 5</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Review</span><span class="code-row">{</span><span class="code-row">    private int rating;</span><span class="code-row"></span><span class="code-row">    public int Rating</span><span class="code-row">    {</span><span class="code-row">        get { return rating; }</span><span class="code-row">        set</span><span class="code-row">        {</span><span class="code-row">            if (value >= 1 && value <= 5)</span><span class="code-row">            {</span><span class="code-row">                rating = value;</span><span class="code-row">            }</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                                    <p>Теперь <code>review.Rating = 10;</code> не сработает. Оценка не изменится.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Свойство только для чтения</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте класс <code>User</code> с полями <code>Id</code> и
+                                <code>Name</code>. Сделайте так, чтобы <code>Id</code> задавался только при создании
+                                объекта через конструктор и больше никогда не мог измениться. <code>Name</code> должен
+                                быть доступен для изменения.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для <code>Id</code> используйте автосвойство с геттером:
+                                        <code>public int Id { get; }</code>. Для <code>Name</code> - обычное
+                                        автосвойство: <code>public string Name { get; set; }</code>. Не забудьте задать
+                                        <code>Id</code> в конструкторе.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class User</span><span class="code-row">{</span><span class="code-row">    public int Id { get; }</span><span class="code-row">    public string Name { get; set; }</span><span class="code-row"></span><span class="code-row">    public User(int id, string name)</span><span class="code-row">    {</span><span class="code-row">        Id = id;</span><span class="code-row">        Name = name;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                                    <p>Теперь <code>user.Id = 10;</code> вызовет ошибку компиляции. А
+                                        <code>user.Name = "Новое имя";</code> сработает без проблем.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Банковский счёт</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте класс <code>BankAccount</code> с приватным полем
+                                <code>balance</code> (баланс). Сделайте свойство <code>Balance</code> доступным только
+                                для чтения (без сеттера). Добавьте методы <code>Deposit(amount)</code> (пополнить) и
+                                <code>Withdraw(amount)</code> (снять). Снятие не должно проходить, если на счёте
+                                недостаточно денег.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Поле <code>balance</code> сделайте приватным. Свойство:
+                                        <code>public double Balance { get { return balance; } }</code> - без сеттера. В
+                                        методах <code>Deposit</code> и <code>Withdraw</code> меняйте значение
+                                        <code>balance</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В методе <code>Withdraw</code> сначала проверьте условие
+                                        <code>if (amount <= balance)</code>. Если денег хватает - вычитайте, иначе
+                                        выведите сообщение об ошибке.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class BankAccount</span><span class="code-row">{</span><span class="code-row">    private double balance;</span><span class="code-row"></span><span class="code-row">    public double Balance</span><span class="code-row">    {</span><span class="code-row">        get { return balance; }</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    public void Deposit(double amount)</span><span class="code-row">    {</span><span class="code-row">        if (amount > 0)</span><span class="code-row">        {</span><span class="code-row">            balance += amount;</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    public void Withdraw(double amount)</span><span class="code-row">    {</span><span class="code-row">        if (amount > 0 && amount &lt;= balance)</span><span class="code-row">        {</span><span class="code-row">            balance -= amount;</span><span class="code-row">        }</span><span class="code-row">        else</span><span class="code-row">        {</span><span class="code-row">            Console.WriteLine("Недостаточно средств");</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                                    <p>Снаружи нельзя напрямую изменить <code>balance</code>. Можно только прочитать его
+                                        через свойство <code>Balance</code>. А все изменения происходят через методы,
+                                        которые контролируют логику.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы освоили <strong>инкапсуляцию</strong> - один из трех главных принципов ООП. Научились
+                    прятать поля с помощью <code>private</code> и открывать к ним безопасный доступ через
+                    <code>public</code>-свойства с блоками <code>get</code> и <code>set</code>. Узнали, как валидировать
+                    данные прямо в момент записи и как делать свойства, доступные только для чтения.
+                </p>
+
+                <p>Теперь наши объекты не просто хранят данные, они <strong>защищают</strong> их от некорректных
+                    изменений. Код стал надежнее и безопаснее.</p>
+
+                <p>В следующем уроке мы разберемся с <strong>исключениями</strong>. Это механизм, который позволяет
+                    программе не «падать» с красной ошибкой при встрече с чем-то неожиданным (например, когда
+                    пользователь ввел текст вместо числа), а красиво обрабатывать такие ситуации и продолжать работу.
+                </p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-15.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-17.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

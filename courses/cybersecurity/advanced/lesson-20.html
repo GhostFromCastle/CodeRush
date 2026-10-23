@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Intelligence и MITRE ATT&CK - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="advanced" data-lesson-id="lesson-20">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 20</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson active" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Threat Intelligence и MITRE ATT&CK</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~50 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Это финальный урок всего курса. Мы прошли долгий путь: от базовых паролей
+                    и фишинга через шифрование и веб-уязвимости к облакам, управлению
+                    уязвимостями и реагированию на инциденты. Осталось разобраться с тем,
+                    что объединяет все эти темы в одно целое - с <strong>аналитикой
+                        угроз</strong>.</p>
+
+                <p>Чтобы защищаться от атак, нужно понимать, <strong>кто атакует</strong>,
+                    <strong>как</strong> и <strong>зачем</strong>. Именно этим занимается
+                    <strong>Threat Intelligence</strong> - дисциплина, которая собирает
+                    и анализирует данные об угрозах. А её главный инструмент - матрица
+                    <strong>MITRE ATT&CK</strong>, которая систематизирует все известные
+                    техники атакующих.
+                </p>
+
+                <h2>Что такое Threat Intelligence</h2>
+
+                <p><strong>Threat Intelligence</strong> (TI, «аналитика угроз») - это
+                    процесс сбора, обработки и анализа информации об угрозах, чтобы
+                    принимать обоснованные решения по защите.</p>
+
+                <p>Ключевое слово - <strong>обоснованные</strong>. Это не просто «новости
+                    о хакерах». Это структурированные данные, которые помогают:</p>
+
+                <ul>
+                    <li>Понять, какие угрозы актуальны <em>для вашей</em> отрасли
+                        и компании.</li>
+                    <li>Предвидеть действия атакующих на основе их предыдущего
+                        поведения.</li>
+                    <li>Приоритизировать защиту там, где она нужнее всего.</li>
+                    <li>Быстрее реагировать на инциденты, зная типичные сценарии
+                        атак.</li>
+                </ul>
+
+                <p>Без Threat Intelligence команда безопасности работает вслепую:
+                    реагирует на то, что случилось, и не готовится к тому, что
+                    может случиться. С Threat Intelligence - понимает ландшафт
+                    угроз и готовится заранее.</p>
+
+                <h3>Три уровня Threat Intelligence</h3>
+
+                <p>Threat Intelligence бывает трёх видов - в зависимости от того,
+                    на каком уровне она используется.</p>
+
+                <h4>Стратегический (Strategic)</h4>
+
+                <p>Для руководства и совета директоров. Отвечает на вопросы
+                    «какие угрозы нам важны» и «какие риски мы принимаем».
+                    Не содержит технических деталей - это анализ трендов,
+                    геополитики, отраслевых угроз.</p>
+
+                <p>Пример: «Активность группировки X против нашей отрасли
+                    выросла на 40% за квартал. Рекомендуем увеличить бюджет
+                    на защиту от целенаправленных атак».</p>
+
+                <h4>Операционный (Operational)</h4>
+
+                <p>Для менеджеров по безопасности. Кампании конкретных
+                    группировок, их цели, тактики. Помогает планировать
+                    защиту на среднесрочную перспективу.</p>
+
+                <p>Пример: «Группировка APT29 использует фишинг с темой
+                    COVID-19 для атак на фармацевтические компании.
+                    Рекомендуем усилить фильтрацию почты и обучение
+                    сотрудников».</p>
+
+                <h4>Тактический (Tactical)</h4>
+
+                <p>Для аналитиков SOC и IR-команд. Конкретные технические
+                    данные: индикаторы компрометации (IOC), TTP, правила
+                    обнаружения. Используется в реальном времени.</p>
+
+                <p>Пример: «Обнаружен новый C2-сервер по IP 203.0.113.5,
+                    использует домен evil.example. Добавьте в блок-лист
+                    и создайте правило в SIEM».</p>
+
+                <h2>Ключевые понятия TI</h2>
+
+                <p>Разберём термины, без которых невозможно работать
+                    в этой области.</p>
+
+                <h3>IOC (Indicator of Compromise)</h3>
+
+                <p><strong>Индикаторы компрометации</strong> - это «отпечатки»,
+                    которые оставляет атакующий. Признаки того, что система
+                    могла быть скомпрометирована.</p>
+
+                <p>Типичные IOC:</p>
+
+                <ul>
+                    <li><strong>IP-адреса</strong> C2-серверов (Command and Control).</li>
+                    <li><strong>Доменные имена</strong>, используемые для атак.</li>
+                    <li><strong>Хеши файлов</strong> вредоносного ПО (MD5, SHA-256).</li>
+                    <li><strong>URL</strong> фишинговых сайтов и ресурсов.</li>
+                    <li><strong>Email-адреса</strong> отправителей фишинга.</li>
+                    <li><strong>Строки и паттерны</strong> в файлах, реестре,
+                        логах.</li>
+                </ul>
+
+                <p>Важно понимать: IOC - это <em>артефакты</em>. Они быстро
+                    устаревают: атакующие часто меняют IP, домены, хеши.
+                    IOC полезны для обнаружения уже известных атак, но
+                    не защищают от новых.</p>
+
+                <h3>TTP (Tactics, Techniques, Procedures)</h3>
+
+                <p>Это более высокий уровень понимания атакующего. Не «какие
+                    IP он использует», а «<strong>как он действует</strong>».</p>
+
+                <ul>
+                    <li><strong>Tactics</strong> (тактики) - зачем атакующий
+                        делает то или иное. Его цель на каждом этапе:
+                        получить доступ, закрепиться, украсть данные.</li>
+                    <li><strong>Techniques</strong> (техники) - как он
+                        этого добивается. Конкретные методы: фишинг,
+                        эксплуатация уязвимости, внедрение в процесс.</li>
+                    <li><strong>Procedures</strong> (процедуры) - конкретные
+                        шаги, специфичные для конкретной группировки.</li>
+                </ul>
+
+                <p>TTP сложнее менять, чем IOC. Если группировка перешла на
+                    новый IP - это не меняет её поведение. Но если менять
+                    TTP - придётся перестраивать всю инфраструктуру атаки.
+                    Именно поэтому TTP ценнее для защиты, чем IOC.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Пирамида боли
+                    </div>
+                    <p>Есть известная модель <strong>Pyramid of Pain</strong>
+                        (пирамида боли), которая показывает, насколько
+                        «больно» атакующему, когда вы детектируете
+                        различные артефакты:</p>
+                    <ul>
+                        <li><strong>Внизу</strong> - хеши файлов. Легко
+                            поменять - защита мало что даёт.</li>
+                        <li><strong>Далее</strong> - IP-адреса, домены.
+                            Менять чуть сложнее.</li>
+                        <li><strong>Выше</strong> - инструменты, которые
+                            использует атакующий.</li>
+                        <li><strong>Ещё выше</strong> - TTP (техники
+                            и процедуры). Менять очень сложно.</li>
+                        <li><strong>На вершине</strong> - сам атакующий
+                            (конкретный человек или группировка).
+                            Заставить его измениться практически
+                            невозможно.</li>
+                    </ul>
+                    <p>Вывод: чем выше уровень детекта, тем сильнее
+                        вы затрудняете жизнь атакующему. Не
+                        ограничивайтесь IOC - изучайте TTP.</p>
+                </div>
+
+                <h3>APT (Advanced Persistent Threat)</h3>
+
+                <p><strong>APT</strong> - это группировки, которые ведут
+                    длительные, целенаправленные атаки. Их характеристики:</p>
+
+                <ul>
+                    <li><strong>Advanced</strong> - используют сложные техники,
+                        собственные инструменты, эксплойты нулевого дня.</li>
+                    <li><strong>Persistent</strong> - могут месяцами
+                        находиться в системе незамеченными, постепенно
+                        расширяя доступ.</li>
+                    <li><strong>Threat</strong> - имеют конкретную цель:
+                        украсть данные, саботировать, шпионить.</li>
+                </ul>
+
+                <p>APT обычно связывают с государствами или организованными
+                    группировками. Их цели - не быстрая нажива, а
+                    долгосрочное присутствие.</p>
+
+                <p>Известные APT-группировки:</p>
+
+                <ul>
+                    <li><strong>APT28 (Fancy Bear)</strong> - связывают
+                        с Россией. Атаки на политические организации,
+                        выборы.</li>
+                    <li><strong>APT29 (Cozy Bear)</strong> - тоже связывают
+                        с Россией. Атака на SolarWinds в 2020 году.</li>
+                    <li><strong>APT41</strong> - связывают с Китаем.
+                        Совмещает шпионаж и финансовую мотивацию.</li>
+                    <li><strong>Lazarus Group</strong> - связывают с
+                        Северной Кореей. Атаки на банки и криптобиржи.</li>
+                    <li><strong>Equation Group</strong> - связывают с АНБ.
+                        Одна из самых продвинутых группировок.</li>
+                </ul>
+
+                <p>Большинство организаций никогда не столкнутся с APT
+                    напрямую. Но понимание их методов помогает защищаться
+                    и от менее продвинутых атакующих.</p>
+
+                <h2>MITRE ATT&CK</h2>
+
+                <p>Теперь перейдём к главному инструменту современного
+                    специалиста по безопасности - матрице <strong>MITRE
+                        ATT&CK</strong>.</p>
+
+                <p><strong>MITRE ATT&CK</strong> (Adversarial Tactics,
+                    Techniques & Common Knowledge) - это открытая база
+                    знаний о техниках, которые используют реальные
+                    атакующие. Она собирается и обновляется организацией
+                    MITRE на основе анализа тысяч реальных инцидентов.</p>
+
+                <p>Матрица обновляется регулярно. Актуальная версия -
+                    <strong>ATT&CK v17</strong> (апрель 2025 года).
+                    В ней:
+                </p>
+
+                <ul>
+                    <li>14 тактик (категорий целей атакующего).</li>
+                    <li>Сотни техник и подтехник.</li>
+                    <li>Профили десятков известных APT-группировок.</li>
+                    <li>Мэппинг инструментов и вредоносного ПО.</li>
+                </ul>
+
+                <h3>Три матрицы ATT&CK</h3>
+
+                <p>ATT&CK не одна - это три матрицы для разных сред:</p>
+
+                <ul>
+                    <li><strong>Enterprise</strong> - для корпоративных
+                        сетей и облаков. Самая большая матрица, включает
+                        Windows, Linux, macOS, облака, сети.</li>
+                    <li><strong>Mobile</strong> - для iOS и Android.</li>
+                    <li><strong>ICS</strong> - для промышленных систем
+                        управления (SCADA, промышленные контроллеры).</li>
+                </ul>
+
+                <p>Мы разберём Enterprise-матрицу - самую используемую.</p>
+
+                <h3>14 тактик Enterprise-матрицы</h3>
+
+                <p>Тактики в ATT&CK идут в хронологическом порядке атаки.
+                    Каждая - это этап, который проходит атакующий.</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Тактика</th>
+                            <th>Цель атакующего</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Reconnaissance</td>
+                            <td>Собрать информацию о цели</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Resource Development</td>
+                            <td>Подготовить инфраструктуру для атаки</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>3</td>
+                            <td>Initial Access</td>
+                            <td><strong>Получить первый доступ</strong></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Execution</td>
+                            <td>Запустить вредоносный код</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Persistence</td>
+                            <td>Закрепиться в системе</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Privilege Escalation</td>
+                            <td>Повысить привилегии</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Defense Evasion</td>
+                            <td>Обойти средства защиты</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Credential Access</td>
+                            <td>Украсть учётные данные</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Discovery</td>
+                            <td>Изучить систему и сеть</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Lateral Movement</td>
+                            <td>Переместиться по сети</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Collection</td>
+                            <td>Собрать целевые данные</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Command and Control</td>
+                            <td>Управлять заражёнными системами</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>13</td>
+                            <td>Exfiltration</td>
+                            <td><strong>Вывести данные</strong></td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Impact</td>
+                            <td>Нарушить работу или уничтожить данные</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Внутри каждой тактики - десятки техник. Например,
+                    в Initial Access есть:</p>
+
+                <ul>
+                    <li>Phishing (фишинг) с подтехниками: Spearphishing
+                        Attachment, Spearphishing Link, Spearphishing
+                        via Service.</li>
+                    <li>Exploit Public-Facing Application (эксплуатация
+                        публичных приложений).</li>
+                    <li>Valid Accounts (использование легитимных
+                        учётных записей).</li>
+                    <li>Trusted Relationship (атака через доверенные
+                        отношения - например, через подрядчика).</li>
+                </ul>
+
+                <p>Каждая техника имеет уникальный ID вида
+                    <code>T1566</code>. Подтехники - <code>T1566.001</code>.
+                </p>
+
+                <h3>Профили групп</h3>
+
+                <p>У каждой известной APT-группировки в ATT&CK есть свой
+                    профиль - какие техники она использует. Например,
+                    для APT29 указаны конкретные техники во всех
+                    четырнадцати тактиках.</p>
+
+                <p>Это позволяет:</p>
+
+                <ul>
+                    <li><strong>Моделировать атаки</strong>: пентестеры
+                        имитируют конкретные техники известных групп.</li>
+                    <li><strong>Приоритизировать защиту</strong>: если
+                        вашу отрасль атакует определённая группировка -
+                        сфокусируйтесь на её техниках.</li>
+                    <li><strong>Строить детекты</strong>: SOC создаёт
+                        правила обнаружения под конкретные техники.</li>
+                </ul>
+
+                <h2>Как использовать MITRE ATT&CK</h2>
+
+                <p>Матрица ATT&CK - не просто справочник. Это практический
+                    инструмент, который используется в разных сценариях.</p>
+
+                <h3>1. Threat Modeling и оценка покрытия</h3>
+
+                <p>Компания берёт свою текущую защиту и накладывает
+                    на матрицу: от каких техник она защищена, какие
+                    детектирует, а какие пропускает. Так выявляются
+                    пробелы.</p>
+
+                <p>Например: «У нас есть EDR, он детектирует Execution
+                    и Persistence на Windows. Но у нас нет мониторинга
+                    облачных сервисов - техники Cloud Discovery
+                    остаются незамеченными».</p>
+
+                <h3>2. Purple Team Exercises</h3>
+
+                <p>Вспомните урок 19 про Purple Team. Именно ATT&CK
+                    используется как основа для совместных учений:</p>
+
+                <ul>
+                    <li>Red Team выбирает технику из матрицы,
+                        выполняет её.</li>
+                    <li>Blue Team смотрит, сработала ли защита.</li>
+                    <li>Вместе улучшают детект или закрывают
+                        пробел.</li>
+                </ul>
+
+                <h3>3. Построение детектов</h3>
+
+                <p>Каждая техника ATT&CK имеет описание и часто
+                    примеры артефактов. Это основа для создания
+                    правил в SIEM, EDR, IDS.</p>
+
+                <p>Например, для техники «T1059.001 - PowerShell»
+                    можно создать правило: логировать все запуски
+                    PowerShell с обфусцированными командами.</p>
+
+                <h3>4. Threat Hunting</h3>
+
+                <p>Проактивный поиск угроз. Аналитик берёт технику
+                    из ATT&CK и проверяет: «Есть ли следы этой техники
+                    в нашей инфраструктуре за последние 90 дней?».
+                    Если нет - отлично. Если есть - нужно разбираться.</p>
+
+                <h3>5. Мэппинг инцидентов</h3>
+
+                <p>Когда происходит инцидент, аналитики мэппят
+                    действия атакующего на матрицу. Это помогает
+                    понять:</p>
+
+                <ul>
+                    <li>На каком этапе удалось остановить атаку.</li>
+                    <li>Какие техники использовала группировка.</li>
+                    <li>Похоже ли это на известную APT.</li>
+                </ul>
+
+                <h2>Инструменты и источники TI</h2>
+
+                <p>Работа с Threat Intelligence требует данных.
+                    Откуда их берут.</p>
+
+                <h3>Открытые источники (OSINT)</h3>
+
+                <ul>
+                    <li><strong>MITRE ATT&CK</strong> - базовая матрица
+                        техник.</li>
+                    <li><strong>NVD</strong> - база уязвимостей (CVE).</li>
+                    <li><strong>CISA KEV</strong> - каталог
+                        эксплуатируемых уязвимостей (урок 18).</li>
+                    <li><strong>AlienVault OTX</strong> - открытая
+                        платформа обмена IOC.</li>
+                    <li><strong>MISP</strong> - открытая платформа
+                        для обмена threat intelligence.</li>
+                    <li><strong>VirusTotal</strong> - анализ файлов
+                        и URL.</li>
+                    <li><strong>Shodan</strong> - поисковик
+                        по интернет-устройствам.</li>
+                </ul>
+
+                <h3>Коммерческие платформы</h3>
+
+                <ul>
+                    <li><strong>Recorded Future</strong> - одна из
+                        крупнейших коммерческих TI-платформ.</li>
+                    <li><strong>Mandiant Threat Intelligence</strong> -
+                        от компании, которая расследовала
+                        множество APT-атак.</li>
+                    <li><strong>CrowdStrike Falcon Intelligence</strong>.</li>
+                    <li><strong>Flashpoint</strong>, <strong>Intel 471</strong>,
+                        <strong>Kaspersky Threat Intelligence</strong>.
+                    </li>
+                </ul>
+
+                <h3>Стандарты обмена</h3>
+
+                <p>Чтобы разные системы могли обмениваться данными,
+                    существуют стандарты:</p>
+
+                <ul>
+                    <li><strong>STIX</strong> - язык описания
+                        threat intelligence.</li>
+                    <li><strong>TAXII</strong> - протокол передачи
+                        данных TI.</li>
+                    <li><strong>OpenIOC</strong> - старый формат
+                        от Mandiant.</li>
+                    <li><strong>YARA</strong> - правила для
+                        идентификации вредоносных файлов.</li>
+                </ul>
+
+                <h2>Kill Chain: предшественник ATT&CK</h2>
+
+                <p>Стоит упомянуть модель <strong>Cyber Kill Chain</strong>
+                    от Lockheed Martin (2011). Это более простая,
+                    линейная модель из семи этапов:</p>
+
+                <ol>
+                    <li><strong>Reconnaissance</strong> - разведка.</li>
+                    <li><strong>Weaponization</strong> - создание
+                        вредоносного инструмента.</li>
+                    <li><strong>Delivery</strong> - доставка
+                        (например, письмо).</li>
+                    <li><strong>Exploitation</strong> - эксплуатация
+                        уязвимости.</li>
+                    <li><strong>Installation</strong> - установка
+                        вредоносного ПО.</li>
+                    <li><strong>Command and Control</strong> -
+                        установка связи с сервером.</li>
+                    <li><strong>Actions on Objectives</strong> -
+                        достижение цели.</li>
+                </ol>
+
+                <p>Kill Chain проще и используется для быстрого
+                    описания атаки. ATT&CK - детальнее и используется
+                    для глубокого анализа и построения защиты.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>TI</code>
+                        <span>аналитика угроз</span>
+                    </li>
+                    <li>
+                        <code>IOC</code>
+                        <span>индикаторы компрометации</span>
+                    </li>
+                    <li>
+                        <code>TTP</code>
+                        <span>тактики, техники, процедуры</span>
+                    </li>
+                    <li>
+                        <code>APT</code>
+                        <span>целенаправленные группировки</span>
+                    </li>
+                    <li>
+                        <code>MITRE ATT&CK</code>
+                        <span>матрица техник атакующих</span>
+                    </li>
+                    <li>
+                        <code>Pyramid of Pain</code>
+                        <span>что больнее менять атакующему</span>
+                    </li>
+                    <li>
+                        <code>Kill Chain</code>
+                        <span>7 этапов атаки</span>
+                    </li>
+                    <li>
+                        <code>STIX / TAXII</code>
+                        <span>стандарты обмена TI</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные заблуждения, связанные с Threat
+                    Intelligence и ATT&CK.</p>
+
+                <ul>
+                    <li><strong>«Threat Intelligence - это список
+                            плохих IP».</strong> Это лишь один из самых
+                        низких уровней - IOC. Настоящая TI работает
+                        с TTP и пониманием контекста, а не только
+                        с блок-листами.</li>
+                    <li><strong>«Мы купили коммерческую TI - теперь
+                            мы защищены».</strong> Купить данные - не то же
+                        самое, что использовать их. Нужны процессы:
+                        как данные попадают в SIEM, кто их обрабатывает,
+                        как на них реагировать.</li>
+                    <li><strong>«ATT&CK - это чек-лист».</strong>
+                        Нет. Это база знаний и язык описания атак.
+                        Нельзя «выполнить все техники» - их сотни.
+                        Задача - понимать покрытие и закрывать
+                        пробелы в приоритетных областях.</li>
+                    <li><strong>«Мы детектируем все IOC из фида -
+                            значит, мы в безопасности».</strong> IOC быстро
+                        устаревают. Атакующий меняет IP и хеши
+                        за минуты. Нужно строить детекты на TTP,
+                        а не только на IOC.</li>
+                    <li><strong>«Мы не крупная цель, TI нам не
+                            нужна».</strong> Наоборот. Большинство атак -
+                        не целевые APT, а массовые. TI помогает
+                        фильтровать общий шум и понимать, что
+                        актуально для вашей отрасли и размера.</li>
+                    <li><strong>«MITRE ATT&CK - только для
+                            пентестеров».</strong> Нет. Это инструмент для
+                        всех: SOC строит детекты, Blue Team
+                        оценивает покрытие, Red Team имитирует
+                        атаки, менеджмент понимает ландшафт
+                        угроз.</li>
+                    <li><strong>«Нам нужен свой отдел Threat
+                            Intelligence».</strong> Не обязательно. Для
+                        большинства компаний хватает потребления
+                        готовой TI от сообщества (OTX, MISP) и
+                        крупных вендоров. Свой отдел - для очень
+                        крупных организаций.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание концепций,
+                    вторые две - на применение знаний. Последняя задача
+                    также итоговая по всему курсу.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Что выше по пирамиде боли</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Расположите следующие
+                                артефакты по пирамиде боли - от самых
+                                «низких» (легко менять) до самых
+                                «высоких» (сложно менять).</p>
+                            <ul>
+                                <li>Хеш файла вредоносного ПО</li>
+                                <li>Техника атакующего (например, использование
+                                    PowerShell для выполнения кода)</li>
+                                <li>IP-адрес C2-сервера</li>
+                                <li>Сам атакующий (конкретная
+                                    группировка)</li>
+                                <li>Инструмент (например, Cobalt Strike)</li>
+                                <li>Доменное имя фишингового сайта</li>
+                            </ul>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Снизу вверх: артефакты, которые
+                                        легко поменять, → артефакты,
+                                        которые трудно поменять, → то,
+                                        что практически невозможно
+                                        поменять.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Снизу вверх (от лёгкого к сложному):</p>
+                                    <ol>
+                                        <li><strong>Хеш файла.</strong>
+                                            Легче всего поменять -
+                                            изменил один байт,
+                                            хеш другой.</li>
+                                        <li><strong>IP-адрес C2.</strong>
+                                            Можно быстро сменить
+                                            сервер.</li>
+                                        <li><strong>Доменное имя.</strong>
+                                            Тоже можно сменить, но
+                                            требует регистрации
+                                            и настройки.</li>
+                                        <li><strong>Инструмент
+                                                (Cobalt Strike).</strong>
+                                            Менять сложнее - нужны
+                                            новые лицензии, обучение,
+                                            инфраструктура.</li>
+                                        <li><strong>Техника.</strong>
+                                            Менять очень сложно -
+                                            нужно перестраивать все
+                                            процессы атаки.</li>
+                                        <li><strong>Сам атакующий.</strong>
+                                            Практически невозможно
+                                            изменить - это конкретный
+                                            человек или группа
+                                            с определёнными
+                                            навыками и мотивами.</li>
+                                    </ol>
+                                    <p>Вывод: детектировать нужно на
+                                        как можно более высоком
+                                        уровне. Хеши бесполезны
+                                        против нового варианта
+                                        малвари. А техники и
+                                        поведение - устойчивые
+                                        индикаторы.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Определите тактику ATT&CK</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждого действия
+                                атакующего определите тактику из
+                                MITRE ATT&CK.</p>
+                            <ol>
+                                <li>Атакующий отправил фишинговое
+                                    письмо сотруднику компании.</li>
+                                <li>После получения доступа он
+                                    создал нового администратора
+                                    в системе.</li>
+                                <li>Он скачал все документы из
+                                    корпоративного хранилища.</li>
+                                <li>Атакующий отключил антивирус
+                                    на заражённой машине.</li>
+                                <li>Он использовал уязвимость
+                                    в публичном веб-приложении,
+                                    чтобы получить доступ.</li>
+                                <li>Атакующий отправляет данные
+                                    на свой внешний сервер.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните 14 тактик: Reconnaissance,
+                                        Resource Development, Initial
+                                        Access, Execution, Persistence,
+                                        Privilege Escalation, Defense
+                                        Evasion, Credential Access,
+                                        Discovery, Lateral Movement,
+                                        Collection, Command and Control,
+                                        Exfiltration, Impact.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Initial Access.</strong>
+                                            Фишинг - один из способов
+                                            получить первый доступ
+                                            к системе.</li>
+                                        <li><strong>Persistence</strong>
+                                            (создание учётки) -
+                                            закрепление в системе.
+                                            Также может быть
+                                            Privilege Escalation,
+                                            если используется
+                                            для повышения прав.</li>
+                                        <li><strong>Collection.</strong>
+                                            Сбор целевых данных
+                                            перед выводом.</li>
+                                        <li><strong>Defense Evasion.</strong>
+                                            Отключение защитных
+                                            механизмов - способ
+                                            обойти защиту.</li>
+                                        <li><strong>Initial Access.</strong>
+                                            Эксплуатация публичного
+                                            приложения - ещё один
+                                            способ получить
+                                            доступ.</li>
+                                        <li><strong>Exfiltration.</strong>
+                                            Вывод данных из сети
+                                            наружу.</li>
+                                    </ol>
+                                    <p>Обратите внимание: одно
+                                        действие может относиться
+                                        к нескольким тактикам.
+                                        Например, создание
+                                        администратора - это и
+                                        Persistence, и Privilege
+                                        Escalation. В ATT&CK
+                                        техники часто
+                                        переиспользуются между
+                                        тактиками.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Оцените покрытие</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы отвечаете за безопасность
+                                в компании. Сейчас у вас есть: EDR
+                                на всех рабочих станциях, SIEM
+                                с логами Windows и Linux, WAF
+                                перед веб-приложением. Нет: мониторинга
+                                облака, EDR на серверах, анализа
+                                сетевого трафика. Используя
+                                MITRE ATT&CK, определите, какие
+                                тактики покрыты плохо и что
+                                стоит улучшить в первую очередь.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте: где атакующий
+                                        может пройти незамеченным,
+                                        если у вас нет
+                                        соответствующих
+                                        инструментов?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Анализ по тактикам:</p>
+                                    <ul>
+                                        <li><strong>Execution, Persistence,
+                                                Privilege Escalation</strong> -
+                                            хорошо покрыты на рабочих
+                                            станциях (EDR) и частично
+                                            на серверах (логи).</li>
+                                        <li><strong>Defense Evasion</strong> -
+                                            частично, зависит от
+                                            инструментов EDR.</li>
+                                        <li><strong>Credential Access</strong> -
+                                            плохо - нет мониторинга
+                                            активности на серверах
+                                            и в облаке.</li>
+                                        <li><strong>Discovery</strong> -
+                                            плохо - нет анализа
+                                            сетевого трафика.</li>
+                                        <li><strong>Lateral Movement</strong> -
+                                            плохо - без сетевого
+                                            анализа не увидите
+                                            внутреннее
+                                            перемещение.</li>
+                                        <li><strong>Collection, Exfiltration</strong> -
+                                            плохо в облаке - данные
+                                            могут утечь через
+                                            облачные сервисы
+                                            незамеченными.</li>
+                                    </ul>
+                                    <p>Приоритеты улучшения:</p>
+                                    <ol>
+                                        <li><strong>Мониторинг облака</strong> -
+                                            сейчас полностью
+                                            слепая зона, а большинство
+                                            данных именно там.</li>
+                                        <li><strong>Network Detection
+                                                and Response (NDR)</strong> -
+                                            для обнаружения
+                                            Lateral Movement
+                                            и Exfiltration.</li>
+                                        <li><strong>EDR на серверах</strong> -
+                                            критичные системы
+                                            должны быть
+                                            защищены.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Итоговая по всему курсу</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы прошли весь курс
+                                «Кибербезопасность» - от базовых паролей
+                                до Threat Intelligence. Опишите, что
+                                изменилось в вашем понимании безопасности.
+                                Назовите минимум пять вещей, которые
+                                вы теперь делаете или думаете иначе,
+                                чем до курса.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните уроки: пароли и 2FA,
+                                        фишинг и браузер, шифрование
+                                        и TLS, SQL-инъекции, аутентификация,
+                                        облака, безопасная разработка,
+                                        управление уязвимостями,
+                                        реагирование на инциденты.
+                                        Что из этого заставило
+                                        вас что-то изменить?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный ответ</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>У каждого свой список, но вот
+                                        пример того, что часто
+                                        называют:</p>
+                                    <ul>
+                                        <li><strong>Пароли.</strong>
+                                            Менеджер паролей, уникальные
+                                            пароли для каждого сервиса,
+                                            длинные фразы.</li>
+                                        <li><strong>2FA.</strong>
+                                            Включил на всех важных
+                                            аккаунтах, осознанно
+                                            выбрал приложение вместо
+                                            SMS.</li>
+                                        <li><strong>Фишинг.</strong>
+                                            Стал внимательнее проверять
+                                            адреса отправителей
+                                            и ссылки, не давлю на
+                                            «срочно».</li>
+                                        <li><strong>Обновления.</strong>
+                                            Включил автоматические
+                                            обновления везде.</li>
+                                        <li><strong>Бэкапы.</strong>
+                                            Настроил резервное
+                                            копирование по
+                                            правилу 3-2-1.</li>
+                                        <li><strong>Разработка.</strong>
+                                            Если пишу код - использую
+                                            параметризованные
+                                            запросы, экранирую
+                                            вывод, не храню секреты
+                                            в коде.</li>
+                                        <li><strong>Понимание.</strong>
+                                            Начал видеть связи:
+                                            как фишинг связан с
+                                            угоном сессии, как одна
+                                            уязвимость превращается
+                                            в полную компрометацию.</li>
+                                        <li><strong>Отношение.</strong>
+                                            Перестал думать «это меня
+                                            не касается». Осознал, что
+                                            безопасность - это
+                                            ответственность
+                                            каждого.</li>
+                                    </ul>
+                                    <p>Главное - не просто «знать», а
+                                        <strong>применять</strong>.
+                                        Знание без действия не
+                                        защищает. Надеюсь, курс
+                                        помог не только понять,
+                                        но и изменить привычки.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с <strong>Threat Intelligence</strong> -
+                    дисциплиной, которая помогает понять, кто и как атакует.
+                    Узнали три уровня TI: стратегический (для руководства),
+                    операционный (для менеджеров по безопасности),
+                    тактический (для аналитиков SOC).</p>
+
+                <p>Познакомились с ключевыми понятиями: <strong>IOC</strong>
+                    (индикаторы компрометации), <strong>TTP</strong>
+                    (тактики, техники, процедуры) и <strong>APT</strong>
+                    (целенаправленные группировки). Узнали про
+                    <strong>Pyramid of Pain</strong> - почему TTP
+                    ценнее для защиты, чем IOC.
+                </p>
+
+                <p>Разобрали главный инструмент современного безопасника -
+                    матрицу <strong>MITRE ATT&CK</strong>. Узнали про её
+                    три версии (Enterprise, Mobile, ICS) и 14 тактик
+                    Enterprise-матрицы - от Reconnaissance до Impact.
+                    Поняли, как использовать ATT&CK для threat modeling,
+                    Purple Team exercises, построения детектов, threat
+                    hunting и мэппинга инцидентов.</p>
+
+                <p>Изучили источники и инструменты TI: открытые
+                    (OTX, MISP, AlienVault) и коммерческие
+                    (Recorded Future, Mandiant). Плюс стандарты обмена:
+                    STIX, TAXII, YARA. И упомянули <strong>Kill Chain</strong>
+                    от Lockheed Martin как более простую модель
+                    описания атак.</p>
+
+                <h3>Курс завершён</h3>
+
+                <p>Это был финальный урок всего курса «Кибербезопасность».
+                    Давайте оглянемся на путь, который мы прошли -
+                    все 20 уроков.</p>
+
+                <p><strong>Начальный уровень (6 уроков)</strong> дал базу
+                    для каждого пользователя интернета: пароли, 2FA,
+                    фишинг, безопасность браузера и устройств.</p>
+
+                <p><strong>Средний уровень (6 уроков)</strong> показал,
+                    как устроена безопасность изнутри: шифрование,
+                    хеширование, HTTPS, SQL-инъекции, XSS, DDoS,
+                    аутентификация и сессии.</p>
+
+                <p><strong>Продвинутый уровень (8 уроков)</strong> -
+                    это взгляд профессионала: сетевая безопасность,
+                    пентест, безопасная разработка, глубокая
+                    криптография, безопасность облаков, управление
+                    уязвимостями, реагирование на инциденты
+                    и Threat Intelligence.</p>
+
+                <p>Вместе это <strong>полный набор знаний</strong>
+                    о современной кибербезопасности. Вы прошли огромный
+                    путь. Но главное - не останавливайтесь. Безопасность -
+                    это область, которая меняется каждый день.
+                    Новые уязвимости, новые техники атакующих,
+                    новые методы защиты.</p>
+
+                <h3>Что делать дальше</h3>
+
+                <p>Если хотите развиваться в безопасности, вот
+                    несколько направлений:</p>
+
+                <ul>
+                    <li><strong>Практика в лабораториях.</strong>
+                        TryHackMe, Hack The Box, PentesterLab -
+                        тренажёры для отработки навыков в безопасной
+                        среде.</li>
+                    <li><strong>CTF-соревнования.</strong>
+                        Capture The Flag - соревнования по
+                        безопасности. Отличный способ учиться
+                        на практике.</li>
+                    <li><strong>Баг-баунти.</strong> HackerOne,
+                        Bugcrowd - легальный способ искать уязвимости
+                        и получать за это вознаграждение.</li>
+                    <li><strong>Сертификации.</strong> CompTIA
+                        Security+, OSCP, CISSP, GIAC - в зависимости
+                        от направления.</li>
+                    <li><strong>Сообщество.</strong> Конференции
+                        (DEF CON, Black Hat, PHDays), митапы,
+                        локальные группы.</li>
+                    <li><strong>Чтение.</strong> Блоги исследователей,
+                        отчёты об инцидентах (Mandiant, CrowdStrike,
+                        Kaspersky GReAT), научные статьи.</li>
+                </ul>
+
+                <p>Безопасность - это не «выучить и забыть».
+                    Это постоянное обучение. Но с базой, которую вы
+                    получили в этом курсе, вы готовы двигаться
+                    дальше.</p>
+
+                <p>Продолжайте читать, экспериментировать, следить
+                    за обновлениями ATT&CK и OWASP. И применяйте
+                    то, что знаете - и в работе, и в жизни.</p>
+
+                <p>Спасибо, что были с нами все 20 уроков.
+                    Удачи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-19.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <span></span>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

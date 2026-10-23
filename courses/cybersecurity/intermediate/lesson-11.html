@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDoS-атаки - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="intermediate" data-lesson-id="lesson-11">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 11</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson active" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>DDoS-атаки: как работает отказ в обслуживании</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы разобрали уязвимости, которые позволяют злоумышленнику украсть
+                    данные или внедрить вредоносный код. Но есть атаки с совсем другой целью: не
+                    украсть, не изменить, а <strong>просто остановить работу</strong> сайта или сервиса.
+                    Это <strong>DDoS-атаки</strong> - распределённые атаки на отказ в обслуживании.</p>
+
+                <p>Они бьют по третьей цели триады CIA - <strong>доступности</strong>, которую мы
+                    разбирали в первом уроке. Если сайт лежит, никто не может им воспользоваться:
+                    ни покупатели, ни пользователи, ни сотрудники. И это делает DDoS одним из самых
+                    разрушительных типов атак.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-shield-check"></i>
+                        Важное предупреждение
+                    </div>
+                    <p>Все примеры и объяснения в этом уроке приведены <strong>исключительно в
+                            образовательных целях</strong>. Мы ни к чему не призываем и не даём инструкций
+                        для проведения атак.</p>
+                    <p>Цель урока прямо противоположная: <strong>чтобы вы понимали, как работают
+                            DDoS-атаки, и могли от них защищаться</strong>. Если администратор или
+                        инженер знает механику атаки - он сможет выстроить защиту. Если нет -
+                        окажется беспомощным перед лицом угрозы.</p>
+                    <p>Организация DDoS-атаки - <strong>уголовное преступление</strong>. Мы
+                        учимся защищать, а не атаковать.</p>
+                </div>
+
+                <h2>Что такое DDoS-атака</h2>
+
+                <p>Расшифруем название. <strong>DDoS</strong> - Distributed Denial of Service,
+                    «распределённый отказ в обслуживании».</p>
+
+                <ul>
+                    <li><strong>Denial of Service</strong> - «отказ в обслуживании». Цель атаки -
+                        сделать так, чтобы сервис перестал отвечать на запросы пользователей.</li>
+                    <li><strong>Distributed</strong> - «распределённый». Атака идёт не с одного
+                        компьютера, а одновременно с <strong>тысяч и миллионов устройств</strong>
+                        по всему миру.</li>
+                </ul>
+
+                <p>Аналогия простая. Представьте магазин с одной кассой. Обычный покупатель
+                    подходит, платит, уходит. Но если сто человек одновременно встанут в очередь
+                    и будут стоять, ничего не покупая - настоящие покупатели не смогут пройти.
+                    Кассир занят, но не продаёт - он просто отвечает на бессмысленные действия.</p>
+
+                <p>Именно это и происходит при DDoS. Сервер получает миллионы запросов
+                    одновременно. Каждый запрос сам по себе может быть «легальным», но их
+                    количество превышает возможности сервера. Он захлёбывается и перестаёт
+                    отвечать даже обычным пользователям.</p>
+
+                <h3>Чем DDoS отличается от DoS</h3>
+
+                <p>Есть ещё понятие <strong>DoS</strong> (Denial of Service) - атака с одного
+                    источника. Она слабее и легче отражается: можно просто заблокировать
+                    IP-адрес атакующего. DDoS же идёт с тысяч разных адресов одновременно -
+                    блокировать их все невозможно, потому что среди них могут быть реальные
+                    пользователи.</p>
+
+                <p>Именно распределённость делает DDoS такой опасной и такой сложной для
+                    защиты.</p>
+
+                <h2>Как устроена DDoS-атака: ботнеты</h2>
+
+                <p>Откуда берутся тысячи устройств для атаки? Их не покупают специально.
+                    Злоумышленники <strong>заражают</strong> обычные устройства - компьютеры,
+                    телефоны, роутеры, камеры, «умные» телевизоры - и объединяют их в
+                    <strong>ботнет</strong>.
+                </p>
+
+                <p>Ботнет - это сеть заражённых устройств, которыми удалённо управляет
+                    злоумышленник. Владельцы этих устройств даже не подозревают, что их
+                    техника участвует в атаках.</p>
+
+                <p>Как это работает по шагам:</p>
+
+                <ol>
+                    <li><strong>Заражение.</strong> Злоумышленник находит устройства с
+                        уязвимостями - например, роутеры со стандартным паролем или камеры
+                        без обновлений. Устанавливает на них вредоносное ПО.</li>
+                    <li><strong>Управление.</strong> Заражённые устройства подключаются к
+                        серверу управления (C2, command and control) и ждут команд.</li>
+                    <li><strong>Команда.</strong> Злоумышленник отправляет команду: «Атакуйте
+                        вот этот сайт прямо сейчас».</li>
+                    <li><strong>Атака.</strong> Все заражённые устройства одновременно
+                        начинают отправлять запросы на цель.</li>
+                </ol>
+
+                <p>Самые крупные ботнеты состоят из миллионов устройств. Ботнет Mirai в
+                    2016 году собрал более 600 000 устройств и устроил рекордную по тем
+                    временам атаку. Современный ботнет Aisuru объединяет сотни тысяч
+                    устройств - в основном заражённые Android-телевизоры и роутеры.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Почему устройства заражаются
+                    </div>
+                    <p>Причины банальны: заводские пароли, которые никто не сменил; устаревшие
+                        прошивки без обновлений; открытые порты; уязвимости, о которых производитель
+                        знает, но пользователь не обновил устройство. Именно поэтому в уроках 5 и 6
+                        мы так настойчиво повторяли: обновления и смена паролей - это не «для
+                        галочки».</p>
+                </div>
+
+                <h2>Три категории DDoS-атак</h2>
+
+                <p>DDoS-атаки делятся на три большие категории - в зависимости от того, какой
+                    уровень системы они атакуют и как именно перегружают цель.</p>
+
+                <h3>1. Объёмные атаки (Volumetric)</h3>
+
+                <p>Самая простая и «грубая» категория. Цель - <strong>забить весь интернет-канал
+                        жертвы</strong> мусорным трафиком. Если у сайта канал на 10 Гбит/с, а атакующие
+                    отправляют 100 Гбит/с - настоящие пользователи не пролезут.</p>
+
+                <p>Технически это выглядит как поток огромных пакетов через UDP или ICMP -
+                    протоколы, которые не требуют установки соединения. Сервер просто
+                    захлёбывается входящими данными.</p>
+
+                <p>Объёмные атаки измеряются в <strong>гигабитах или терабитах в секунду</strong>
+                    (Gbps, Tbps). Именно здесь ставятся рекорды: в 2025 году Cloudflare
+                    отразила атаку мощностью <strong>31,4 Тбит/с</strong> - это в 220 раз больше
+                    типичного DDoS-а.</p>
+
+                <h4>Атаки с усилением (amplification)</h4>
+
+                <p>Отдельный подвид объёмных атак. Злоумышленник отправляет маленький запрос
+                    на открытый сервер (например, DNS-сервер), но с подменённым адресом
+                    отправителя - адресом жертвы. Сервер отвечает <em>жертве</em>, причём ответ
+                    в десятки раз больше запроса. Один запрос в 60 байт может превратиться в
+                    ответ в 3000 байт - усиление в 50 раз.</p>
+
+                <p>Такой множитель называется <strong>коэффициентом усиления</strong>. Чем
+                    больше открытых серверов в интернете, тем мощнее может быть атака при
+                    минимальных затратах со стороны атакующего.</p>
+
+                <h3>2. Протокольные атаки (Protocol)</h3>
+
+                <p>Второй тип работает не на объём, а на <strong>исчерпание ресурсов сетевого
+                        оборудования</strong>. Цель - заставить сервер, firewall или балансировщик
+                    потратить все свои ресурсы на обработку «полуоткрытых» соединений.</p>
+
+                <p>Классический пример - <strong>SYN Flood</strong>. В обычной работе клиент
+                    отправляет серверу пакет SYN («хочу соединиться»), сервер отвечает SYN-ACK
+                    («согласен»), клиент подтверждает ACK («подтверждаю»), и соединение
+                    установлено. При SYN Flood атакующий отправляет миллионы SYN-пакетов, но
+                    никогда не завершает рукопожатие. Сервер выделяет ресурсы под каждое
+                    соединение и ждёт подтверждения, которого не будет. Когда таблица соединений
+                    заполнена - новые подключения не принимаются.</p>
+
+                <h3>3. Атаки прикладного уровня (Application Layer, L7)</h3>
+
+                <p>Самые коварные. Они не давят объёмом и не ломают протоколы. Они
+                    <strong>имитируют поведение обычных пользователей</strong>, но делают это
+                    в огромных масштабах.
+                </p>
+
+                <p>Пример: сайт с поиском, где каждый запрос заставляет сервер обратиться к
+                    базе данных. Обычный пользователь делает пару запросов в минуту. Атакующий
+                    через ботнет заставляет миллионы устройств делать по 100 запросов в секунду
+                    каждое. Каждый запрос выглядит легально, но база данных не выдерживает
+                    нагрузку и сервер падает.</p>
+
+                <p>Особенность L7-атак в том, что они могут быть <strong>малозаметными по
+                        объёму</strong>. Трафика может быть совсем немного - но если он бьёт в
+                    «тяжёлое» место приложения (сложный поиск, генерация отчётов), сервер
+                    умирает. Именно поэтому такие атаки сложнее всего отфильтровать: они
+                    выглядят как обычный пользовательский трафик.</p>
+
+                <p>Примеры L7-атак:</p>
+
+                <ul>
+                    <li><strong>HTTP Flood</strong> - массовые GET/POST-запросы к сайту.</li>
+                    <li><strong>Slowloris</strong> - медленное открытие множества соединений
+                        и удержание их открытыми без завершения.</li>
+                    <li><strong>Атака на API</strong> - массовые вызовы дорогих эндпоинтов.</li>
+                </ul>
+
+                <h2>Реальные случаи: рекорды последних лет</h2>
+
+                <p>DDoS-атаки растут взрывными темпами. Вот несколько цифр, которые показывают
+                    масштаб проблемы.</p>
+
+                <h3>KrebsOnSecurity (2016)</h3>
+
+                <p>Один из первых громких случаев. Сайт журналиста Брайана Кребса, который
+                    расследовал киберпреступления, был атакован ботнетом Mirai с мощностью
+                    <strong>623 Гбит/с</strong>. На тот момент это был рекорд, и сайт не
+                    выдержал - пришлось обращаться за защитой к Akamai, а потом к Google
+                    Project Shield.
+                </p>
+
+                <h3>KrebsOnSecurity (2025)</h3>
+
+                <p>Через девять лет тот же сайт снова попал под удар. В мае 2025 года
+                    мощность атаки составила <strong>6,3 Тбит/с</strong> - в <strong>десять
+                        раз больше</strong>, чем в 2016 году. Атака длилась всего 40-45 секунд,
+                    но этого хватило, чтобы стать крупнейшей на тот момент. Сайт был защищён
+                    Google Project Shield, и именно эта инфраструктура выдержала удар.</p>
+
+                <h3>Рекорды 2024-2025 годов</h3>
+
+                <p>Динамика роста просто ошеломляет:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Мощность</th>
+                            <th>Комментарий</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Октябрь 2024</td>
+                            <td>3,8 Тбит/с</td>
+                            <td>Бывший рекорд Cloudflare</td>
+                        </tr>
+                        <tr>
+                            <td>Февраль 2025</td>
+                            <td>6,5 Тбит/с</td>
+                            <td>Ботнет Eleven11bot - 30 000 веб-камер</td>
+                        </tr>
+                        <tr>
+                            <td>Май 2025</td>
+                            <td>7,3 Тбит/с</td>
+                            <td>37,4 ТБ за 45 секунд - крупнейшая утечка данных</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Ноябрь 2025</td>
+                            <td><strong>31,4 Тбит/с</strong></td>
+                            <td>Рекорд Cloudflare, ботнет Aisuru</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Атака на 31,4 Тбит/с длилась всего <strong>35 секунд</strong>. Для сравнения:
+                    такой объём данных эквивалентен одновременному стримингу миллиона
+                    4K-видео. Чтобы вывести из строя значительную часть сетевой инфраструктуры,
+                    и этого хватило бы.</p>
+
+                <p>За 2025 год Cloudflare отразила <strong>47,1 миллиона DDoS-атак</strong> -
+                    это на 121% больше, чем в 2024 году. В среднем компания блокировала
+                    <strong>5 376 атак каждый час</strong>.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Aisuru-Kimwolf: новый лидер
+                    </div>
+                    <p>Ботнет <strong>Aisuru</strong> (также известный как Kimwolf) - главная
+                        угроза 2025 года. В отличие от классических ботнетов, которые собирались
+                        из простых IoT-устройств с заводскими паролями, Aisuru использует более
+                        сложные эксплойты для роутеров, DVR-устройств и сетевого оборудования
+                        корпоративного класса. По разным оценкам, в его составе от 1 до 4
+                        миллионов заражённых устройств, преимущественно Android-телевизоров.</p>
+                </div>
+
+                <h2>Кто и зачем атакует</h2>
+
+                <p>Причины DDoS-атак бывают разными:</p>
+
+                <ul>
+                    <li><strong>Вымогательство.</strong> Злоумышленник атакует сайт и требует
+                        деньги, чтобы остановить атаку. «Заплати - и сайт снова заработает».</li>
+                    <li><strong>Конкурентная борьба.</strong> Заказные атаки на сайты конкурентов
+                        в дни распродаж, важных событий, запусков продуктов.</li>
+                    <li><strong>Идеологические мотивы.</strong> Хактивистские группы атакуют
+                        сайты по политическим причинам.</li>
+                    <li><strong>Проверка сил.</strong> Некоторые атаки проводятся «на пробу» -
+                        чтобы оценить мощность ботнета или проверить защиту цели.</li>
+                    <li><strong>Отвлечение внимания.</strong> DDoS-атака может быть ширмой,
+                        за которой проводится другая атака - например, внедрение в систему.</li>
+                </ul>
+
+                <h2>Как защищаться от DDoS</h2>
+
+                <p>Хорошая новость: защита от DDoS отработана и работает. Плохая: полностью
+                    защититься самостоятельно, без внешних сервисов, практически невозможно,
+                    если атака достаточно мощная.</p>
+
+                <p>Вот основные уровни защиты.</p>
+
+                <h3>1. Избыточная ёмкость</h3>
+
+                <p>Первый принцип - иметь больше ресурсов, чем может понадобиться. Широкий
+                    интернет-канал, мощные серверы, распределённая инфраструктура. Если
+                    у вас десять серверов и атака вырубает пять - оставшиеся пять продолжат
+                    работу.</p>
+
+                <h3>2. CDN и распределение трафика</h3>
+
+                <p>CDN (Content Delivery Network) - сеть серверов по всему миру, которые
+                    кэшируют контент и принимают трафик на себя. Если сайт за CDN, атака
+                    приходит на CDN-серверы, а не на ваш основной. Это снижает нагрузку
+                    и распределяет её по десяткам точек.</p>
+
+                <h3>3. Scrubbing Center (центры очистки трафика)</h3>
+
+                <p>Специализированные сервисы, которые <strong>анализируют весь входящий
+                        трафик</strong> и отделяют легитимные запросы от атакующих. Работает
+                    так:</p>
+
+                <ol>
+                    <li>Трафик направляется не напрямую на ваш сервер, а на scrubbing center
+                        через BGP-маршрутизацию.</li>
+                    <li>Центр очистки анализирует каждый пакет: сигнатуры, поведение,
+                        аномалии.</li>
+                    <li>Легитимный трафик возвращается на ваш сервер. Атакующий -
+                        отбрасывается.</li>
+                </ol>
+
+                <p>Крупные провайдеры (Cloudflare, Akamai, AWS Shield, Google Cloud Armor)
+                    имеют огромные scrubbing-центры, способные поглощать атаки в сотни
+                    гигабит и терабит в секунду.</p>
+
+                <h3>4. Rate Limiting</h3>
+
+                <p>Ограничение скорости запросов. Простое, но эффективное: если с одного
+                    IP-адреса приходит больше N запросов в секунду - он блокируется.
+                    Работает против простых атак, но не против распределённых (где каждый
+                    IP отправляет по чуть-чуть).</p>
+
+                <h3>5. Фильтрация на уровне приложения</h3>
+
+                <p>Для L7-атак, которые выглядят как обычные пользователи, используют
+                    поведенческий анализ: CAPTCHA, проверка JavaScript, анализ паттернов
+                    запросов. Это позволяет отличить бота от живого человека, даже если
+                    запросы выглядят одинаково.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Стоит ли защищаться самому?
+                    </div>
+                    <p>Для небольшого сайта - обычно нет. Гораздо эффективнее подключить
+                        готовый сервис защиты (Cloudflare, DDoS-Guard, Qrator и другие).
+                        Они имеют инфраструктуру, которая физически способна поглотить
+                        атаки в терабиты в секунду. Самостоятельно построить такое - задача
+                        для крупных компаний.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>DDoS</code>
+                        <span>распределённая атака на доступность</span>
+                    </li>
+                    <li>
+                        <code>Ботнет</code>
+                        <span>сеть заражённых устройств</span>
+                    </li>
+                    <li>
+                        <code>Volumetric</code>
+                        <span>перегрузка канала объёмом</span>
+                    </li>
+                    <li>
+                        <code>Protocol</code>
+                        <span>исчерпание ресурсов сетевого оборудования</span>
+                    </li>
+                    <li>
+                        <code>L7 / Application</code>
+                        <span>имитация обычных пользователей</span>
+                    </li>
+                    <li>
+                        <code>Scrubbing Center</code>
+                        <span>центр очистки трафика</span>
+                    </li>
+                    <li>
+                        <code>Rate Limiting</code>
+                        <span>ограничение скорости запросов</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ситуации и заблуждения, связанные с DDoS.</p>
+
+                <ul>
+                    <li><strong>«Меня это не касается, у меня маленький сайт».</strong>
+                        Именно маленькие сайты часто атакуют «на пробу» - у них слабая защита,
+                        и можно проверить, работает ли ботнет. Плюс автоматические сканеры
+                        ищут уязвимые цели по всему интернету.</li>
+                    <li><strong>«У меня мощный сервер, справится».</strong> Против атаки в
+                        10 Гбит/с нужен канал не меньше 10 Гбит/с. Против 100 Гбит/с - уже
+                        дата-центр. Мощность сервера тут ни при чём - упор идёт на канал
+                        и сетевую инфраструктуру.</li>
+                    <li><strong>«Поставлю антивирус и всё будет в порядке».</strong>
+                        Антивирус на сервере не защитит от DDoS. Он для другого: он ищет
+                        вирусы, а не фильтрует миллионы сетевых запросов. Нужны
+                        специализированные решения.</li>
+                    <li><strong>«DDoS - это когда сайт ломают».</strong> Не ломают, а
+                        перегружают. Данные не крадут, код не меняют. Просто сервис
+                        перестаёт отвечать на запросы. Хотя иногда DDoS используют как
+                        отвлекающий манёвр, во время которого проводят реальную атаку.</li>
+                    <li><strong>«Заблокирую всех атакующих по IP».</strong> Проблема в том,
+                        что атакующие IP меняются - их миллионы. И среди них могут быть
+                        реальные пользователи. Блокировка по IP работает только против
+                        самых простых атак с одного источника.</li>
+                    <li><strong>«Мой сайт на хостинге, хостинг защитит».</strong>
+                        Хостинг может дать базовую защиту, но обычно её недостаточно против
+                        серьёзных атак. Крупные атаки требуют подключения внешних
+                        scrubbing-сервисов.</li>
+                    <li><strong>«DDoS - это незаконно, значит, меня не тронут».</strong>
+                        Незаконно. Но злоумышленников это не останавливает. Плюс атаки часто
+                        проводятся с чужих устройств (ботнет), и отследить реального
+                        заказчика очень сложно.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание концепций, вторые две - на размышление
+                    и применение знаний.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Определите тип DDoS-атаки</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой ситуации определите тип DDoS-атаки:
+                                объёмная, протокольная или прикладного уровня.</p>
+                            <ol>
+                                <li>Сайт заваливают миллионами SYN-пакетов, ни один из которых
+                                    не завершается полным рукопожатием.</li>
+                                <li>Сотни тысяч устройств одновременно отправляют запросы
+                                    на страницу поиска, нагружая базу данных.</li>
+                                <li>Открытые DNS-серверы отражают огромные ответы на адрес
+                                    жертвы, забивая её интернет-канал.</li>
+                                <li>Ботнет медленно открывает тысячи соединений и держит
+                                    их открытыми, не отправляя данные.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Объёмные атаки забивают канал (терабиты в секунду).
+                                        Протокольные исчерпывают таблицы соединений.
+                                        Прикладные имитируют обычных пользователей.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Протокольная атака (SYN Flood).</strong>
+                                            Сервер выделяет ресурсы под каждое соединение и
+                                            ждёт подтверждения, которого не будет. Таблица
+                                            соединений заполняется, новые подключения
+                                            не принимаются.</li>
+                                        <li><strong>Прикладного уровня (L7).</strong>
+                                            Каждый запрос выглядит легально, но бьёт в
+                                            «тяжёлое» место - базу данных. Трафик может
+                                            быть небольшим по объёму, но убийственным
+                                            для приложения.</li>
+                                        <li><strong>Объёмная (amplification).</strong>
+                                            Маленький запрос к DNS-серверу вызывает
+                                            огромный ответ на адрес жертвы. Коэффициент
+                                            усиления может достигать 50 раз.</li>
+                                        <li><strong>Прикладного уровня
+                                                (Slowloris).</strong> Классический пример
+                                            L7-атаки: медленное открытие соединений
+                                            и удержание их без завершения. Сервер
+                                            держит их открытыми и не может принять
+                                            новых.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Почему DDoS сложно отразить</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Объясните, почему DDoS-атаку сложнее отразить,
+                                чем обычную DoS-атаку с одного источника. Назовите минимум две
+                                причины.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте, откуда идёт трафик, сколько источников
+                                        и как их отличить от настоящих пользователей.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Причины две:</p>
+                                    <ol>
+                                        <li><strong>Много источников.</strong> Блокировать
+                                            один IP легко. Блокировать миллион IP-адресов
+                                            невозможно: среди них реальные пользователи
+                                            из разных сетей, стран, регионов.</li>
+                                        <li><strong>Трафик выглядит легально.</strong>
+                                            Особенно у L7-атак. Запросы к сайту идут
+                                            обычные - неотличимые от действий реальных
+                                            людей. Отфильтровать их, не заблокировав
+                                            настоящих пользователей, - сложнейшая
+                                            задача.</li>
+                                    </ol>
+                                    <p>Плюс к этому: атакующие могут подделывать
+                                        IP-адреса (spoofing), что ещё больше
+                                        запутывает картину.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Защита для маленького сайта</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы владелец небольшого интернет-магазина на
+                                самописной платформе. Бюджет на безопасность ограничен.
+                                Какие шаги по защите от DDoS вы предпримете? Расставьте
+                                приоритеты.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте, что можно сделать бесплатно или за небольшие
+                                        деньги. Начните с базовых сервисов, потом усложняйте.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Разумный порядок действий для маленького магазина:</p>
+                                    <ol>
+                                        <li><strong>Подключить Cloudflare Free.</strong>
+                                            Бесплатный тариф Cloudflare включает базовую
+                                            защиту от DDoS, CDN и скрытие реального
+                                            IP-адреса сервера. Это самый эффективный
+                                            шаг за ноль рублей.</li>
+                                        <li><strong>Настроить rate limiting</strong>
+                                            на уровне веб-сервера (nginx, Apache). Это
+                                            бесплатно и отсекает простые атаки.</li>
+                                        <li><strong>Включить кэширование.</strong>
+                                            Если страницы кэшируются, большинство
+                                            запросов не доходят до базы данных. Это
+                                            снижает нагрузку на бэкенд.</li>
+                                        <li><strong>Мониторинг.</strong> Настроить
+                                            оповещения о нетипичном росте трафика,
+                                            чтобы вовремя замечать атаки.</li>
+                                        <li><strong>План на случай атаки.</strong>
+                                            Знать, как быстро переключиться в режим
+                                            «Under Attack» в Cloudflare или
+                                            подключить платный scrubbing-сервис.</li>
+                                    </ol>
+                                    <p>Для очень серьёзных атак есть платные тарифы
+                                        Cloudflare (Pro, Business, Enterprise), но
+                                        для небольшого магазина бесплатного уровня
+                                        обычно хватает с запасом.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Этическая дилемма</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы узнали, что кто-то из знакомых
+                                использует ботнет для DDoS-атак на конкурентов. Как вы
+                                поступите? Опишите правильный порядок действий и
+                                обоснуйте.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>DDoS - это не «шалость», а уголовное преступление.
+                                        Подумайте, кто страдает от таких атак и какую
+                                        ответственность несёт организатор.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>DDoS-атака - это:</p>
+                                    <ul>
+                                        <li><strong>Уголовное преступление.</strong>
+                                            В России - статья 272 УК РФ (неправомерный
+                                            доступ к компьютерной информации) и
+                                            статья 273 (создание и использование
+                                            вредоносных программ). Наказание - вплоть
+                                            до лишения свободы.</li>
+                                        <li><strong>Ущерб реальным людям.</strong>
+                                            Если атакуют конкурента - страдают его
+                                            сотрудники, клиенты, партнёры. Могут быть
+                                            потеряны деньги, данные, репутация.</li>
+                                        <li><strong>Заражение чужих устройств.</strong>
+                                            Ботнеты состоят из заражённых устройств -
+                                            компьютеров, телефонов, телевизоров
+                                            обычных людей, которые ни о чём не
+                                            подозревают.</li>
+                                    </ul>
+                                    <p>Правильные действия:</p>
+                                    <ol>
+                                        <li><strong>Не участвовать и не помогать.</strong>
+                                            Даже если это «просто посмотреть» или
+                                            «поддержать друга».</li>
+                                        <li><strong>Объяснить знакомому</strong>,
+                                            что он совершает преступление и
+                                            рискует сроком.</li>
+                                        <li><strong>Если атаки продолжаются</strong> -
+                                            сообщить в правоохранительные органы.
+                                            Это не «стукачество», а предотвращение
+                                            реального ущерба.</li>
+                                    </ol>
+                                    <p>Знания по безопасности нужны для защиты,
+                                        а не для атак. Мы учимся понимать угрозы,
+                                        чтобы противодействовать им, а не
+                                        участвовать.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с DDoS-атаками - угрозой, которая бьёт по доступности сервисов.
+                    Узнали, что такое <strong>ботнеты</strong> и как они собираются из
+                    заражённых устройств. Разобрали три категории атак: <strong>объёмные</strong>
+                    (забивают канал терабитами), <strong>протокольные</strong> (исчерпывают
+                    таблицы соединений) и <strong>прикладного уровня</strong> (имитируют
+                    пользователей, но бьют в тяжёлые места приложений).</p>
+
+                <p>Посмотрели на реальные масштабы: от 623 Гбит/с в 2016 году до
+                    <strong>31,4 Тбит/с</strong> в 2025-м. Убедились, что динамика роста
+                    экспоненциальная, и что даже несколько секунд атаки могут быть критичны.
+                    Разобрали, кто и зачем атакует: вымогательство, конкурентная борьба,
+                    хактивизм.
+                </p>
+
+                <p>Изучили методы защиты: избыточная ёмкость, CDN, <strong>scrubbing-центры</strong>,
+                    rate limiting, фильтрация на уровне приложения. И поняли, что для
+                    большинства сайтов лучший вариант - подключить готовый сервис защиты
+                    вроде Cloudflare, а не строить инфраструктуру самостоятельно.</p>
+
+                <p>В следующем, финальном уроке среднего уровня мы займёмся
+                    <strong>аутентификацией и сессиями</strong>. Разберёмся, что
+                    происходит, когда вы «входите в аккаунт», как сервер запоминает, что
+                    это вы, и почему управление сессиями - один из самых критичных аспектов
+                    безопасности веб-приложений.
+                </p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-10.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-12.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

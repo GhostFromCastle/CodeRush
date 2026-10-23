@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API нейросетей - Нейросети и вайбкодинг - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="ai" data-level="advanced" data-lesson-id="lesson-09">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Нейросети и вайбкодинг</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 09</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое нейросети</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Основы промптинга</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ограничения и галлюцинации</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Нейросети в жизни</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Вайбкодинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Нейросети для текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Генеративные изображения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Автоматизация рутины</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-09.html" class="sidebar-lesson active" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>API нейросетей</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Локальные модели</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Продвинутый промптинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Этика и будущее ИИ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>API нейросетей: как подружить ИИ с вашим кодом</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Добро пожаловать на продвинутый уровень. До этого момента мы общались с нейросетями
+                    через веб-интерфейс: открывали ChatGPT или Claude, вводили промпт, получали ответ.
+                    Это удобно для ручной работы, но что, если вы хотите, чтобы ИИ автоматически
+                    обрабатывал отзывы на вашем сайте или отвечал клиентам в Telegram-боте?</p>
+
+                <p>Копировать и вставлять текст вручную - не вариант. Для этого существует
+                    <strong>API</strong> (Application Programming Interface). В этом уроке мы разберёмся,
+                    что это такое, как устроены запросы к нейросетям и как написать свой первый
+                    скрипт, который общается с ИИ.
+                </p>
+
+                <h2>Что такое API: аналогия с рестораном</h2>
+
+                <p>Представьте, что вы пришли в ресторан. Вы не заходите на кухню, не открываете
+                    холодильник и не готовите еду сами. Вы садитесь за столик, смотрите меню,
+                    делаете заказ <strong>официанту</strong>. Официант передает заказ на кухню,
+                    повара готовят блюдо, и официант приносит его вам.</p>
+
+                <p>В мире программирования <strong>API - это официант</strong>. Ваша программа
+                    (клиент) не имеет прямого доступа к мощным серверам OpenAI или Yandex. Вместо
+                    этого она отправляет специальный запрос (заказ) по интернету. Сервер компании
+                    (кухня) обрабатывает его и возвращает готовый ответ.</p>
+
+                <p>API - это набор правил, по которым ваш код общается с чужим сервисом. Вы говорите:
+                    «Дай мне ответ на такой-то промпт», и сервер понимает вас.</p>
+
+                <h2>Как устроен запрос к LLM</h2>
+
+                <p>Технически общение происходит через <strong>HTTP-запросы</strong>. Чаще всего
+                    используется метод <code>POST</code>. Вы отправляете на сервер JSON-файл с
+                    параметрами, а сервер возвращает JSON с ответом.</p>
+
+                <p>Вот как примерно выглядит запрос к API:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">POST https://api.openai.com/v1/chat/completions</span><span class="code-row">Content-Type: application/json</span><span class="code-row">Authorization: Bearer ВАШ_СЕКРЕТНЫЙ_КЛЮЧ</span><span class="code-row"></span><span class="code-row">{</span><span class="code-row">  "model": "gpt-4o",</span><span class="code-row">  "messages": [</span><span class="code-row">    {"role": "user", "content": "Привет! Как дела?"}</span><span class="code-row">  ]</span><span class="code-row">}</span></code></pre>
+
+                <p>Что здесь происходит:</p>
+                <ul>
+                    <li><strong>URL</strong> - адрес «кухни» (сервера).</li>
+                    <li><strong>Authorization</strong> - пропуск. Это ваш <strong>API-ключ</strong>,
+                        который доказывает, что вы имеете право делать заказ.</li>
+                    <li><strong>model</strong> - какая именно модель должна отвечать (gpt-4o, gpt-3.5
+                        и т.д.).</li>
+                    <li><strong>messages</strong> - само сообщение. Здесь можно передать контекст
+                        (роль системы) и историю диалога.</li>
+                </ul>
+
+                <h2>Ключи API и безопасность</h2>
+
+                <p>API-ключ - это ваш пароль от сервиса. Он привязан к вашему аккаунту и вашей
+                    банковской карте (если сервис платный). Если кто-то украдет ваш ключ, он
+                    сможет тратить ваши деньги.</p>
+
+                <p>Поэтому существуют железные правила безопасности:</p>
+
+                <ul>
+                    <li><strong>Никогда не публикуйте ключ в открытом доступе</strong> (на форумах,
+                        в GitHub, в скриншотах).</li>
+                    <li><strong>Не храните ключ прямо в коде</strong>. Если вы выложите код на
+                        GitHub, злоумышленники найдут ключ за секунды.</li>
+                    <li><strong>Используйте переменные окружения</strong> (файл <code>.env</code>)
+                        для хранения ключей на вашем компьютере или сервере.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Осторожно: платность
+                    </div>
+                    <p>В отличие от бесплатного веб-интерфейса, API почти всегда платный. Вы
+                        платите за количество отправленных и полученных токенов. Поэтому при
+                        тестировании скриптов следите за лимитами, чтобы случайно не потратить
+                        лишние деньги.</p>
+                </div>
+
+                <h2>Пишем первый скрипт на Python</h2>
+
+                <p>Чтобы не писать сложные HTTP-запросы вручную, разработчики используют библиотеки.
+                    Для Python существует официальная библиотека <code>openai</code>, которая делает
+                    всё за вас.</p>
+
+                <p>Сначала её нужно установить. В терминале выполните:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">pip install openai python-dotenv</span></code></pre>
+
+                <p>Теперь создадим скрипт. Он берет промпт, отправляет его в модель и выводит ответ
+                    в консоль.</p>
+
+                <div class="code-examples code-examples-single">
+
+                    <div class="code-example-card">
+                        <div class="code-example-header">
+                            <i class="ph ph-file-py code-example-icon"></i>
+                            <span>main.py</span>
+                        </div>
+                        <pre class="code-example-body"><code>import os
+from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "Ты ассистент."},
+        {
+            "role": "user", 
+            "content": "Напиши стих про код."
+        }
+    ]
+)
+
+print(response.choices[0].message.content)</code></pre>
+                    </div>
+
+                </div>
+
+                <p>Обратите внимание на строку <code>os.getenv("OPENAI_API_KEY")</code>. Это и есть
+                    безопасный способ: ключ хранится в файле <code>.env</code>, который не попадает
+                    в код.</p>
+
+                <h2>Токены и стоимость</h2>
+
+                <p>При работе через API вы платите за <strong>токены</strong>. Вспомните первый
+                    урок: токен - это кусочек текста. Один токен - это примерно 4 символа английского
+                    текста или 2-3 символа русского.</p>
+
+                <p>Цена зависит от модели. Младшие модели (например, gpt-3.5-turbo) стоят копейки.
+                    Старшие (gpt-4o) стоят значительно дороже. Кроме того, входные токены (ваш промпт)
+                    стоят дешевле, чем выходные (ответ модели).</p>
+
+                <p>Поэтому в промптах для API часто просят: <em>«Отвечай кратко, не более 100 слов»</em>,
+                    чтобы сэкономить бюджет.</p>
+
+                <h2>Ограничения API (Rate Limits)</h2>
+
+                <p>Серверы не любят, когда их перегружают. Для каждого ключа действует ограничение
+                    по количеству запросов в минуту (Rate Limit). Если ваш скрипт отправит слишком
+                    много запросов одновременно, сервер вернет ошибку <code>429 Too Many Requests</code>.</p>
+
+                <p>В коде нужно предусматривать обработку таких ошибок и делать паузу перед
+                    повторной отправкой.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>API</code>
+                        <span>интерфейс для общения программ</span>
+                    </li>
+                    <li>
+                        <code>Официант</code>
+                        <span>аналогия API, передающего заказ на кухню</span>
+                    </li>
+                    <li>
+                        <code>API-ключ</code>
+                        <span>секретный пароль для доступа</span>
+                    </li>
+                    <li>
+                        <code>JSON</code>
+                        <span>формат передачи данных</span>
+                    </li>
+                    <li>
+                        <code>Токены</code>
+                        <span>валюта, которой вы платите за API</span>
+                    </li>
+                    <li>
+                        <code>Rate Limit</code>
+                        <span>лимит на количество запросов</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при работе с API.</p>
+
+                <ul>
+                    <li><strong>«Ошибка 401 Unauthorized».</strong> Проблема с ключом. Либо вы
+                        неправильно его скопировали, либо не передали в заголовке <code>Authorization</code>.
+                        Проверьте, что ключ актуален и в переменной окружения нет лишних пробелов.</li>
+                    <li><strong>«Ошибка 429 Too Many Requests».</strong> Вы превысили лимит
+                        запросов. Добавьте в код паузу (<code>time.sleep(1)</code>) или изучите
+                        документацию сервиса, чтобы узнать актуальные лимиты.</li>
+                    <li><strong>«Ошибка 400 Bad Request».</strong> Часто возникает, если вы
+                        передали слишком длинный текст, превысив контекстное окно модели, или
+                        ошиблись в структуре JSON.</li>
+                    <li><strong>«Скрипт работает, но деньги на карте кончились».</strong> Вы не
+                        установили лимиты в личном кабинете разработчика. В OpenAI и других сервисах
+                        можно (и нужно) ставить <em>hard limit</em> на месячные траты.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи для закрепления материала.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Роль API</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В чём главное преимущество использования API
+                                нейросети перед использованием обычного веб-интерфейса (чата)?
+                                Опишите два сценария, где API незаменим.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте о масштабе (количество запросов) и автоматизации.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Главное преимущество - <strong>автоматизация</strong>. Веб-интерфейс
+                                        требует участия человека, а API позволяет программе делать запросы
+                                        самой.</p>
+                                    <p>Сценарии:</p>
+                                    <ul>
+                                        <li><strong>Масштабная обработка.</strong> Вам нужно перевести
+                                            и проанализировать 10 000 отзывов клиентов. Вручную это
+                                            займет недели. Скрипт с API сделает это за пару часов.</li>
+                                        <li><strong>Интеграция в продукт.</strong> Вы создаете
+                                            Telegram-бота, который отвечает на вопросы клиентов.
+                                            Бот не может открывать сайт ChatGPT, он должен
+                                            отправлять запросы к API.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Безопасность ключа</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Разработчик написал скрипт и загрузил его на GitHub
+                                (публичный репозиторий). В коде была строка:
+                                <code>api_key = "sk-proj-1234567890abcdef..."</code>.
+                                Какая проблема возникнет и что нужно было сделать иначе?
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Кто угодно может увидеть этот код. Что произойдет, если
+                                        злоумышленник найдет ключ?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Ключ утечет. Боты-сканеры (например, TruffleHog) постоянно
+                                        мониторят GitHub. Они найдут ключ за минуты и используют
+                                        его для своих целей (например, для генерации спама),
+                                        а счет придет вам.</p>
+                                    <p>Как надо: использовать файл <code>.env</code> и
+                                        библиотеку <code>python-dotenv</code>. Файл
+                                        <code>.env</code> нужно добавить в
+                                        <code>.gitignore</code>, чтобы он не попадал в
+                                        репозиторий.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Экономия токенов</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы пишете скрипт, который отправляет в API
+                                OpenAI один и тот же длинный системный промпт (описание роли) и
+                                короткий вопрос пользователя. Как можно сэкономить деньги при
+                                работе такого скрипта?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните, что входные токены тоже платные. Можно ли
+                                        кэшировать данные?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Есть два способа:</p>
+                                    <ul>
+                                        <li><strong>Кэширование промптов (Prompt Caching).</strong>
+                                            Некоторые провайдеры (включая OpenAI и Anthropic)
+                                            позволяют кэшировать неизменяемую часть промпта
+                                            (системный контекст). Если промпт длинный и
+                                            часто повторяется, это сэкономит до 50-90% денег
+                                            на входных токенах.</li>
+                                        <li><strong>Сокращение промпта.</strong> Перепишите
+                                            системный промпт максимально коротко, убрав
+                                            «воду». Чем меньше токенов, тем дешевле.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Промпт для API-запроса</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы пишете скрипт, который должен анализировать
+                                отзывы клиентов и возвращать JSON с оценкой (от 1 до 5) и
+                                кратким комментарием. Составьте системный промпт для API,
+                                который заставит модель отвечать строго в нужном формате.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Четко опишите структуру JSON и дайте пример. Модели
+                                        лучше понимают формат, если видят образец.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный ответ</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Ты анализатор отзывов. Проанализируй текст</span><span class="code-row">пользователя и верни ответ строго в формате JSON.</span><span class="code-row">JSON должен содержать два ключа:</span><span class="code-row">"rating" (целое число от 1 до 5) и "summary"</span><span class="code-row">(краткое резюме отзыва до 10 слов).</span><span class="code-row">Не добавляй никакого другого текста, только валидный JSON.</span><span class="code-row">Пример: {"rating": 4, "summary": "Хороший товар, но долгая доставка"}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с API нейросетей. Узнали, что API - это «официант», который передает
+                    ваши запросы на сервер и возвращает ответ. Поняли, как устроены HTTP-запросы
+                    и почему для них используется JSON. Разобрали правила безопасности при работе
+                    с API-ключами (использование <code>.env</code>) и принципы тарификации по
+                    токенам.</p>
+
+                <p>Теперь вы можете писать программы, которые используют мощь больших языковых моделей
+                    для автоматизации процессов. Это шаг от простого пользователя к создателю
+                    ИИ-инструментов.</p>
+
+                <p>В следующем уроке мы продолжим тему независимости от облачных сервисов. Разберёмся,
+                    что такое <strong>локальные модели</strong> (например, Llama или Mistral), как
+                    запустить нейросеть прямо на своем компьютере и зачем это нужно (спойлер:
+                    для полной приватности).</p>
+
+                <div class="lesson-actions">
+                    <a href="../intermediate/lesson-08.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-10.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивность и медиазапросы - Вёрстка сайтов - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="html-css" data-level="intermediate" data-lesson-id="lesson-12">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Вёрстка сайтов</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 12</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Настройка окружения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Структура HTML</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Текст и списки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Ссылки и изображения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Семантическая разметка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Введение в CSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Блочная модель</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Собираем первую страницу</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Flexbox</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CSS Grid</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Позиционирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson active" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Адаптивность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Псевдоклассы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Переходы и анимации</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Формы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Таблицы и медиа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Фоны и градиенты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>CSS-переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Современный CSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Методология БЭМ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Доступность (a11y)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Оптимизация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Препроцессоры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Адаптивность и медиазапросы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Представьте, что вы сверстали идеальный сайт на большом мониторе. Всё стоит ровно, текст
+                    читается, картинки на месте. Вы открываете его на смартфоне и ужасаетесь: элементы
+                    наезжают друг на друга, появляется горизонтальная прокрутка, а шрифт приходится
+                    увеличивать лупой.</p>
+
+                <p>Знакомо? Это происходит потому, что веб не имеет фиксированного размера. Ваш сайт будут
+                    смотреть на экранах от 4 до 32 дюймов. <strong>Адаптивность</strong> - это способность
+                    сайта подстраиваться под эти размеры, сохраняя удобство чтения и использования.</p>
+
+                <p>Сегодня мы разберём, как делать это не «на костылях», а с помощью правильных подходов,
+                    которыми пользуются в топовых IT-компаниях.</p>
+
+                <h2>Главный секрет: тег meta viewport</h2>
+
+                <p>Прежде чем писать медиазапросы, нужно сделать одну вещь. Без неё мобильные браузеры будут
+                    думать, что ваш сайт свёрстан для десктопа, и просто уменьшат его, чтобы он влез
+                    в экран.</p>
+
+                <p>Внутри тега <code>&lt;head&gt;</code> обязательно должен быть этот код:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></code></pre>
+
+                <p>Он говорит браузеру: «Ширина страницы должна быть равна ширине экрана устройства, и
+                    масштаб должен быть 1:1 (без зума)». Мы уже добавляли его в первом уроке, но сейчас
+                    вы понимаете, зачем он нужен.</p>
+
+                <h2>Mobile-First: правильный подход</h2>
+
+                <p>Большинство новичков (и некоторые опытные разработчики) верстают так: пишут стили для
+                    десктопа, а потом добавляют медиазапросы, чтобы «подправить» сайт на мобильных. Это
+                    называется Desktop-First. Этот подход плох тем, что на мобильных устройствах часто
+                    грузится лишний код и сложные элементы, которые потом приходится скрывать.</p>
+
+                <p>Профессиональный подход - <strong>Mobile-First</strong> (мобильный в первую очередь).</p>
+
+                <p>Его суть проста:</p>
+                <ol>
+                    <li>Вы пишете базовые стили для самых маленьких экранов (смартфоны).</li>
+                    <li>Затем добавляете медиазапросы, которые <strong>усложняют</strong> дизайн по мере
+                        увеличения экрана.</li>
+                </ol>
+
+                <p>Это как сборка конструктора: сначала строите фундамент (мобильная версия), а потом
+                    добавляете этажи (планшет, десктоп). Это гораздо проще и логичнее.</p>
+
+                <h2>Синтаксис медиазапросов</h2>
+
+                <p>Медиазапрос (media query) - это условие. Если условие истинно (например, ширина экрана
+                    больше 768 пикселей), применяется блок CSS-кода.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">/* Базовые стили (мобильные) */</span><span class="code-row">.container {</span><span class="code-row">    padding: 10px;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">/* Если ширина экрана 768px и больше */</span><span class="code-row">@media (min-width: 768px) {</span><span class="code-row">    .container {</span><span class="code-row">        padding: 20px;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Для Mobile-First мы всегда используем <code>min-width</code>. Это значит: «от этого
+                    размера и шире». Если мы используем <code>max-width</code>, это значит «до этого
+                    размера включительно» (что больше подходит для Desktop-First).</p>
+
+                <h2>Точки перелома (Breakpoints)</h2>
+
+                <p>Многие новички ищут «стандартные» размеры экранов iPhone или iPad и делают медиазапросы
+                    под них. Это <strong>ошибка</strong>. Устройств миллионы, а разрешений сотни.
+                    Ориентироваться нужно не на устройства, а на <strong>контент</strong>.</p>
+
+                <p>Как правильно выбрать точку перелома:</p>
+                <ol>
+                    <li>Откройте ваш сайт в браузере.</li>
+                    <li>Начните медленно уменьшать окно.</li>
+                    <li>Как только дизайн начнёт визуально «ломаться» (текст слипается, кнопки наезжают) -
+                        это и есть ваша точка перелома. Зафиксируйте её ширину.</li>
+                </ol>
+
+                <p>Обычно выделяют несколько примерных диапазонов для удобства:</p>
+                <ul>
+                    <li><strong>Мобильные:</strong> до 480px (базовые стили).</li>
+                    <li><strong>Планшеты:</strong> от 768px.</li>
+                    <li><strong>Ноутбуки:</strong> от 1024px.</li>
+                    <li><strong>Большие мониторы:</strong> от 1280px или 1440px.</li>
+                </ul>
+
+                <h2>Гибкие элементы: Flexbox и Grid</h2>
+
+                <p>Правильная адаптивность начинается не с медиазапросов, а с использования гибких
+                    инструментов, которые мы прошли ранее.</p>
+
+                <p>Например, вместо того чтобы писать <code>width: 300px</code>, напишите
+                    <code>width: 100%; max-width: 300px;</code>. Элемент будет растягиваться на мобильном, но
+                    не станет огромным на десктопе.</p>
+
+                <p>Для сеток используйте автоматические свойства Grid:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">.grid {</span><span class="code-row">    display: grid;</span><span class="code-row">    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));</span><span class="code-row">}</span></code></pre>
+
+                <p>Эта магическая строчка автоматически создаст столько колонок, сколько поместится, при
+                    условии, что каждая будет не меньше 250px. Вам даже не понадобятся медиазапросы для
+                    такой сетки.</p>
+
+                <h2>Гибкие изображения</h2>
+
+                <p>Изображения - главная причина появления горизонтальной прокрутки на мобильных. Чтобы
+                    этого избежать, добавьте в свой CSS глобальное правило:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">img {</span><span class="code-row">    max-width: 100%;</span><span class="code-row">    height: auto;</span><span class="code-row">    display: block;</span><span class="code-row">}</span></code></pre>
+
+                <p>Это гарантирует, что картинка никогда не будет шире своего контейнера и сохранит свои
+                    пропорции.</p>
+
+                <h2>Современная адаптивность: функция clamp()</h2>
+
+                <p>Раньше для того, чтобы шрифт плавно уменьшался на мобильных, приходилось писать кучу
+                    медиазапросов. Сейчас есть функция <code>clamp()</code>, которая задаёт минимальное,
+                    предпочтительное и максимальное значение.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">h1 {</span><span class="code-row">    /* Минимум 24px, предпочтительно 5vw, максимум 48px */</span><span class="code-row">    font-size: clamp(24px, 5vw, 48px);</span><span class="code-row">}</span></code></pre>
+
+                <p>На маленьком экране шрифт будет 24px, на огромном - 48px, а между ними он будет плавно
+                    масштабироваться. Это позволяет вообще избежать медиазапросов для типографики.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>meta viewport</code>
+                        <span>обязательный тег для мобильных</span>
+                    </li>
+                    <li>
+                        <code>Mobile-First</code>
+                        <span>сначала мобильные стили, потом десктоп</span>
+                    </li>
+                    <li>
+                        <code>min-width</code>
+                        <span>медиазапрос «от и шире»</span>
+                    </li>
+                    <li>
+                        <code>max-width: 100%</code>
+                        <span>для гибких картинок</span>
+                    </li>
+                    <li>
+                        <code>auto-fit + minmax</code>
+                        <span>адаптивная сетка без медиазапросов</span>
+                    </li>
+                    <li>
+                        <code>clamp()</code>
+                        <span>плавное изменение размера шрифта</span>
+                    </li>
+                    <li>
+                        <code>Breakpoints</code>
+                        <span>выбираем по контенту, а не по устройствам</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы адаптивной вёрстки.</p>
+
+                <ul>
+                    <li><strong>«Появился горизонтальный скролл на телефоне».</strong> Скорее всего, какой-то
+                        элемент вылезает за пределы экрана. Проверьте: 1) Нет ли фиксированной ширины (например,
+                        <code>width: 500px</code>) у блоков; 2) Добавлен ли <code>max-width: 100%</code> для
+                        картинок; 3) Не вылезает ли длинное слово или ссылка (используйте
+                        <code>overflow-wrap: break-word;</code>).</li>
+                    <li><strong>«Я использую Desktop-First (max-width), но на мобильных всё равно плохо».</strong>
+                        Это одна из причин, почему Mobile-First лучше. Переписать сайт с Desktop-First на
+                        Mobile-First сложно, но это правильный путь. Начните с базовых стилей для мобилок и
+                        используйте <code>min-width</code>.</li>
+                    <li><strong>«Медиазапросы не срабатывают».</strong> Проверьте синтаксис. Часто забывают
+                        написать <code>@media</code>, забывают скобки <code>{}</code> или пишут медиазапрос
+                        не в том месте файла (он должен быть после базовых стилей).</li>
+                    <li><strong>«Шрифт на мобильном слишком мелкий».</strong> По умолчанию браузеры на мобильных
+                        могут увеличивать размер шрифта для читаемости. Задавайте базовый размер шрифта в
+                        <code>rem</code> или используйте <code>clamp()</code>.</li>
+                    <li><strong>«Я использую <code>vw</code> для шрифта, и он становится огромным».</strong>
+                        <code>vw</code> (1% от ширины окна) - коварная единица. На больших экранах шрифт
+                        может стать нечитаемо огромным. Всегда ограничивайте его через <code>clamp()</code>.
+                    </li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание теории, вторые две - на практическое применение.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Какой подход использовать</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой ситуации выберите, какой подход использовать:
+                                Mobile-First (min-width) или Desktop-First (max-width).</p>
+                            <ol>
+                                <li>Вы пишете новый сайт с нуля.</li>
+                                <li>Вы поддерживаете старый проект, где уже есть стили для десктопа.</li>
+                                <li>Вы хотите, чтобы на мобильных грузилось как можно меньше лишнего кода.</li>
+                                <li>Вы пишете медиазапрос, который должен применить стили только к экранам
+                                    шире 1024px.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Mobile-First - это современный стандарт для новых проектов. Он использует
+                                        <code>min-width</code> и пишется «от меньшего к большему».</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Mobile-First.</strong> Всегда пишите новые проекты так.</li>
+                                        <li><strong>Desktop-First.</strong> Переписывать всё с нуля дорого, поэтому
+                                            используем <code>max-width</code>.</li>
+                                        <li><strong>Mobile-First.</strong> Базовые стили самые лёгкие, мы не грузим
+                                            десктопный код на телефоны.</li>
+                                        <li><strong>Mobile-First (min-width).</strong> Запрос
+                                            <code>@media (min-width: 1024px)</code> применит стили от 1024px
+                                            и шире.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Расшифруйте код</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Объясните, что произойдёт с контейнером на разных экранах:</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">.box {</span><span class="code-row">    padding: 10px;</span><span class="code-row">    background: red;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">@media (min-width: 768px) {</span><span class="code-row">    .box {</span><span class="code-row">        padding: 20px;</span><span class="code-row">        background: blue;</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">@media (min-width: 1200px) {</span><span class="code-row">    .box {</span><span class="code-row">        padding: 40px;</span><span class="code-row">        background: green;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Медиазапросы применяются каскадно. Если срабатывает один, а потом другой,
+                                        то сработает тот, который написан ниже (если они пересекаются).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ul>
+                                        <li><strong>От 0 до 767px:</strong> блок красный, отступ 10px
+                                            (базовые стили).</li>
+                                        <li><strong>От 768px до 1199px:</strong> блок синий, отступ 20px.</li>
+                                        <li><strong>От 1200px и больше:</strong> блок зелёный, отступ 40px.
+                                            Медиазапрос на 1200px переопределяет 768px, потому что написан
+                                            ниже в коде.</li>
+                                    </ul>
+                                    <p>Это классический пример подхода Mobile-First.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Сделайте карточки адаптивными</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Возьмите галерею карточек из урока 9 (или создайте новую).
+                                Сейчас карточки стоят в ряд и сжимаются на маленьком экране. Сделайте так,
+                                чтобы на мобильных они стояли в один столбец, а на экранах от 768px -
+                                в два столбца. Используйте Grid.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Базово задайте <code>grid-template-columns: 1fr;</code>. А внутри
+                                        медиазапроса <code>@media (min-width: 768px)</code> измените
+                                        на <code>repeat(2, 1fr)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>CSS:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">.gallery {</span><span class="code-row">    display: grid;</span><span class="code-row">    grid-template-columns: 1fr;</span><span class="code-row">    gap: 20px;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">@media (min-width: 768px) {</span><span class="code-row">    .gallery {</span><span class="code-row">        grid-template-columns: repeat(2, 1fr);</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Адаптивный шрифт</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">У вас есть заголовок <code>&lt;h1&gt;</code>. Сделайте так,
+                                чтобы его размер шрифта был минимум 24px на мобильных, максимум 56px на больших
+                                экранах, а между ними плавно масштабировался. Используйте функцию
+                                <code>clamp()</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Синтаксис: <code>clamp(минимум, предпочтительное_значение, максимум)</code>.
+                                        Для предпочтительного используйте <code>vw</code> (например, 5vw).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>CSS:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">h1 {</span><span class="code-row">    font-size: clamp(24px, 5vw, 56px);</span><span class="code-row">}</span></code></pre>
+                                    <p>Теперь размер шрифта будет автоматически подстраиваться под ширину экрана,
+                                        но никогда не станет меньше 24px или больше 56px.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Адаптивность - это не просто добавление медиазапросов в конце CSS. Это образ мышления.
+                    Теперь вы знаете правильный путь: <strong>Mobile-First</strong>, использование гибких
+                    единиц, <code>auto-fit</code> в Grid и современные функции вроде <code>clamp()</code>.</p>
+
+                <p>Вы научились:</p>
+                <ul>
+                    <li>Подключать `meta viewport`.</li>
+                    <li>Писать медиазапросы с <code>min-width</code>.</li>
+                    <li>Выбирать точки перелома по контенту.</li>
+                    <li>Делать картинки гибкими.</li>
+                    <li>Использовать <code>clamp()</code> для плавной типографики.</li>
+                </ul>
+
+                <p>Теперь ваш сайт будет отлично выглядеть на любом устройстве, от старого смартфона до
+                    огромного 4K-монитора. В следующем уроке мы займёмся <strong>псевдоклассами и
+                        псевдоэлементами</strong>. Вы узнаете, как добавить сайту интерактивности (эффекты
+                    при наведении) и как создавать декоративные элементы без лишних HTML-тегов.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-11.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-13.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

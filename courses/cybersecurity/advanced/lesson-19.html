@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реагирование на инциденты и форензика - Кибербезопасность - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="cybersecurity" data-level="advanced" data-lesson-id="lesson-19">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Кибербезопасность</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 19</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое кибербезопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Пароли</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Двухфакторная аутентификация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Фишинг и соц. инженерия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Безопасность в браузере</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Защита устройств</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы шифрования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Хеширование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>HTTPS и TLS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>SQL-инъекции и XSS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>DDoS-атаки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Аутентификация и сессии</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Сетевая безопасность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Основы пентеста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Безопасная разработка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Криптография глубоко</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Безопасность облаков</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Управление уязвимостями</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson active" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Реагирование на инциденты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Threat Intelligence</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Реагирование на инциденты и цифровая форензика</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~50 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Мы прошли долгий путь: разобрали, как защищать сети, писать безопасный код,
+                    управлять уязвимостями и облачной инфраструктурой. Но есть одна тема,
+                    которая стоит особняком. Она про то, <strong>что делать, когда защита
+                        не сработала</strong> и атака уже произошла.</p>
+
+                <p>Можно вложить миллионы в превентивные меры, но рано или поздно что-то
+                    случится. Вопрос не в том, «если» атака произойдёт, а в том, «когда».
+                    Именно поэтому существует отдельная дисциплина - <strong>реагирование
+                        на инциденты</strong> (Incident Response, IR) и <strong>цифровая
+                        форензика</strong> (Digital Forensics). Сегодня разберёмся, как
+                    работает эта область, кто в ней участвует, какие инструменты
+                    используются и как превратить хаос атаки в структурированный
+                    процесс.</p>
+
+                <h2>Что такое инцидент и реагирование на него</h2>
+
+                <p><strong>Инцидент</strong> - это событие, которое нарушает или угрожает
+                    нарушить политику безопасности, нормальную работу системы или
+                    конфиденциальность данных. Не всякое подозрительное событие является
+                    инцидентом, но каждое требует анализа.</p>
+
+                <p><strong>Реагирование на инциденты</strong> - это структурированный
+                    процесс, который помогает организации:</p>
+
+                <ul>
+                    <li><strong>Обнаружить</strong> атаку как можно раньше.</li>
+                    <li><strong>Остановить</strong> её распространение.</li>
+                    <li><strong>Восстановить</strong> нормальную работу.</li>
+                    <li><strong>Извлечь уроки</strong> и улучшить защиту на будущее.</li>
+                </ul>
+
+                <p>Без структурированного подхода компания в момент атаки действует хаотично:
+                    кто-то отключает серверы, кто-то ищет вирус, кто-то звонит начальству,
+                    а злоумышленник в это время спокойно копирует данные. Именно для
+                    предотвращения такого хаоса существуют методологии и планы.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Пожарная команда для кибербезопасности
+                    </div>
+                    <p>Реагирование на инциденты - это как пожарная команда. Пока
+                        пожара нет, она тренируется, проверяет оборудование и
+                        разрабатывает планы. Когда пожар начался - действует
+                        по чёткому алгоритму, чтобы потушить его максимально
+                        быстро и с минимальным ущербом.</p>
+                </div>
+
+                <h2>Жизненный цикл реагирования: NIST SP 800-61</h2>
+
+                <p>Самый авторитетный стандарт в этой области - <strong>NIST Special
+                        Publication 800-61</strong>, «Computer Security Incident Handling
+                    Guide». В апреле 2025 года вышла третья редакция документа, которая
+                    переработала старую четырёхфазную модель в свете Cybersecurity
+                    Framework 2.0, но классическая модель всё ещё используется в
+                    большинстве организаций.</p>
+
+                <p>Стандарт описывает <strong>четыре фазы</strong> жизненного цикла
+                    реагирования:</p>
+
+                <h3>Фаза 1: Подготовка (Preparation)</h3>
+
+                <p>Всё, что делается <strong>до</strong> инцидента:</p>
+
+                <ul>
+                    <li>Разработка политики и процедур реагирования.</li>
+                    <li>Формирование команды реагирования (CSIRT или IR-команда).</li>
+                    <li>Настройка средств обнаружения: SIEM, EDR, системы логирования.</li>
+                    <li>Обучение сотрудников: как распознать атаку, куда сообщить.</li>
+                    <li>Проведение учений (tabletop exercises) и симуляций.</li>
+                    <li>Установление контактов с юристами, PR-службой, правоохранительными
+                        органами.</li>
+                </ul>
+
+                <p>Подготовка - самая важная фаза. Если к моменту атаки у команды нет
+                    плана, инструментов и контактов - реагирование превратится
+                    в импровизацию. А импровизация в условиях атаки - это потери
+                    данных, денег и репутации.</p>
+
+                <h3>Фаза 2: Обнаружение и анализ (Detection and Analysis)</h3>
+
+                <p>На этой фазе команда:</p>
+
+                <ul>
+                    <li>Отслеживает события безопасности в SIEM и других системах.</li>
+                    <li>Проверяет алерты от EDR, IDS, антивирусов.</li>
+                    <li>Анализирует логи: что происходило, когда и как.</li>
+                    <li>Определяет, является ли событие инцидентом.</li>
+                    <li>Классифицирует инцидент по типу и критичности.</li>
+                </ul>
+
+                <p>Ключевые метрики на этой фазе:</p>
+
+                <ul>
+                    <li><strong>MTTD</strong> (Mean Time to Detect) - среднее время
+                        от начала атаки до её обнаружения. Чем меньше, тем лучше.</li>
+                    <li><strong>False Positive Rate</strong> - доля ложных срабатываний.
+                        Слишком высокая выматывает команду и снижает бдительность.</li>
+                </ul>
+
+                <h3>Фаза 3: Локализация, ликвидация и восстановление
+                    (Containment, Eradication, Recovery)</h3>
+
+                <p>Самая активная фаза. Действия зависят от типа инцидента:</p>
+
+                <ul>
+                    <li><strong>Локализация.</strong> Остановить распространение
+                        атаки: изолировать заражённые системы, заблокировать
+                        учётные записи, закрыть порты.</li>
+                    <li><strong>Ликвидация.</strong> Удалить угрозу: очистить
+                        заражённые машины, закрыть уязвимость, сменить
+                        скомпрометированные учётные данные.</li>
+                    <li><strong>Восстановление.</strong> Вернуть системы в работу:
+                        восстановить из бэкапов, применить патчи, вернуть
+                        пользователей.</li>
+                </ul>
+
+                <p>Здесь важно соблюдать баланс: слишком агрессивные действия могут
+                    уничтожить доказательства и усложнить расследование. Слишком
+                    осторожные - дать злоумышленнику время для новых атак.</p>
+
+                <h3>Фаза 4: Пост-инцидентная активность (Post-Incident Activity)</h3>
+
+                <p>После того как инцидент закрыт, начинается самое важное - разбор
+                    полётов. Что произошло? Как атака стала возможной? Что сработало
+                    хорошо, а что плохо? Что нужно изменить?</p>
+
+                <p>Пост-инцидентный разбор (post-mortem) должен быть:</p>
+
+                <ul>
+                    <li><strong>Без поиска виноватых.</strong> Цель - улучшить
+                        процессы, а не наказать людей.</li>
+                    <li><strong>С фактами.</strong> Таймлайн событий, логи,
+                        результаты форензики.</li>
+                    <li><strong>С конкретными действиями.</strong> План изменений:
+                        что и кто будет делать, к какому сроку.</li>
+                </ul>
+
+                <p>Именно на этой фазе организация становится сильнее. Каждый инцидент -
+                    это урок, который помогает закрыть слабые места.</p>
+
+                <h2>Команды реагирования: Blue Team, Red Team, Purple Team</h2>
+
+                <p>В современной кибербезопасности есть три ключевые роли, которые
+                    дополняют друг друга.</p>
+
+                <h3>Blue Team (Синяя команда)</h3>
+
+                <p>Защитники. Они отвечают за <strong>обнаружение, реагирование
+                        и восстановление</strong>. Это аналитики SOC, инженеры
+                    по безопасности, специалисты по форензике. Blue Team следит
+                    за алертами, разбирает инциденты, настраивает защиту.</p>
+
+                <p>Их главная метрика - <strong>MTTR</strong> (Mean Time to
+                    Respond), среднее время реагирования на инцидент.</p>
+
+                <h3>Red Team (Красная команда)</h3>
+
+                <p>Атакующие. Это пентестеры и специалисты по этичному хакингу.
+                    Они <strong>имитируют атаки</strong>, чтобы найти слабые
+                    места в защите. Их цель - не навредить, а показать, где
+                    Blue Team может пропустить реального злоумышленника.</p>
+
+                <p>Работа Red Team подробно разбиралась в уроке 14 про пентест.
+                    Именно они проводят симуляции сложных атак (Red Team
+                    Exercises), включая социальную инженерию.</p>
+
+                <h3>Purple Team (Фиолетовая команда)</h3>
+
+                <p>Относительно новая концепция. <strong>Purple Team</strong> -
+                    это не отдельная команда, а <strong>процесс взаимодействия
+                        между Red и Blue</strong>. Идея: вместо того чтобы Red Team
+                    просто «ломала» и уходила, а Blue Team читала отчёт, они
+                    работают вместе.</p>
+
+                <p>Формат:</p>
+
+                <ul>
+                    <li>Red Team проводит атаку.</li>
+                    <li>Blue Team видит её в реальном времени.</li>
+                    <li>Обе команды разбирают, что сработало в защите,
+                        а что нет.</li>
+                    <li>Вместе улучшают правила обнаружения и защиты.</li>
+                </ul>
+
+                <p>Это более эффективный подход: защитники учатся прямо
+                    на реальных атаках, а не на устаревших отчётах.</p>
+
+                <h2>Цифровая форензика: наука о расследовании</h2>
+
+                <p><strong>Цифровая форензика</strong> (Digital Forensics) - это
+                    дисциплина, которая занимается <strong>сбором, сохранением
+                        и анализом цифровых доказательств</strong>. Когда произошёл
+                    инцидент, нужно понять: что случилось, как злоумышленник
+                    попал в систему, что он сделал, какие данные украл.</p>
+
+                <p>Форензика работает с разными типами данных:</p>
+
+                <ul>
+                    <li><strong>Диски</strong> - файлы, история браузера, логи,
+                        следы программ.</li>
+                    <li><strong>Память (RAM)</strong> - запущенные процессы,
+                        сетевые соединения, расшифрованные данные.</li>
+                    <li><strong>Сетевой трафик</strong> - пакеты, соединения,
+                        передаваемые данные.</li>
+                    <li><strong>Мобильные устройства</strong> - сообщения,
+                        геолокация, приложения.</li>
+                    <li><strong>Облачные сервисы</strong> - логи CloudTrail,
+                        Active Directory, Kubernetes.</li>
+                </ul>
+
+                <h3>Порядок летучести (Order of Volatility)</h3>
+
+                <p>Ключевой принцип форензики: <strong>собирай данные в порядке
+                        от самых «летучих» к самым «стабильным»</strong>. Потому
+                    что некоторые данные исчезают навсегда, если их не собрать
+                    вовремя.</p>
+
+                <p>Порядок сбора:</p>
+
+                <ol>
+                    <li><strong>Память (RAM).</strong> Самый летучий источник.
+                        При выключении компьютера данные из памяти теряются
+                        навсегда. А там - запущенные процессы, пароли,
+                        расшифрованные файлы.</li>
+                    <li><strong>Сетевые соединения.</strong> Активные
+                        соединения, ARP-таблицы, кэш DNS.</li>
+                    <li><strong>Временные файлы и swap.</strong> Могут
+                        содержать ценные артефакты.</li>
+                    <li><strong>Диски.</strong> Более стабильны, но всё
+                        ещё могут меняться (логи пишутся постоянно).</li>
+                    <li><strong>Резервные копии, архивы, внешние носители.</strong>
+                        Самые «стабильные» - сохраняются месяцами.</li>
+                </ol>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Не выключайте компьютер!
+                    </div>
+                    <p>Одна из самых частых ошибок при реагировании - выключить
+                        заражённый компьютер. Это кажется логичным: «остановить
+                        вирус». Но это уничтожает все данные в оперативной
+                        памяти - а там могут быть следы атаки, пароли,
+                        расшифрованные файлы. Правильно: изолировать
+                        компьютер от сети, но <strong>не выключать</strong>,
+                        пока не снят дамп памяти.</p>
+                </div>
+
+                <h3>Цепочка хранения доказательств (Chain of Custody)</h3>
+
+                <p>Ещё один критичный принцип. <strong>Chain of Custody</strong> -
+                    это документированная история того, кто, когда и зачем
+                    взаимодействовал с доказательством. Без неё доказательства
+                    могут быть признаны недействительными в суде.</p>
+
+                <p>Что фиксируется:</p>
+
+                <ul>
+                    <li>Кто обнаружил доказательство.</li>
+                    <li>Когда и где оно было изъято.</li>
+                    <li>Кто и как его транспортировал.</li>
+                    <li>Кто и когда его анализировал.</li>
+                    <li>Как оно хранилось (условия, доступ).</li>
+                </ul>
+
+                <p>Для каждого доказательства создаётся <strong>хеш</strong>
+                    (SHA-256) в момент изъятия. При любой передаче хеш
+                    проверяется - это гарантирует, что данные не были
+                    изменены.</p>
+
+                <h3>Криминалистические копии (Forensic Images)</h3>
+
+                <p>Никогда не работайте с оригинальным диском. Вместо этого
+                    создаётся <strong>побитовая копия</strong> (forensic image) -
+                    точная копия всего содержимого диска, включая удалённые
+                    файлы и свободное пространство. Работа ведётся с копией,
+                    а оригинал хранится в защищённом месте.</p>
+
+                <p>Инструменты для создания образов:</p>
+
+                <ul>
+                    <li><strong>FTK Imager</strong> - бесплатный, популярный.</li>
+                    <li><strong>dd</strong> - встроен в Linux, простой
+                        и надёжный.</li>
+                    <li><strong>Guymager</strong> - открытый, работает
+                        на Linux.</li>
+                </ul>
+
+                <h2>Инструменты реагирования и форензики</h2>
+
+                <p>Для каждой фазы реагирования есть свой класс инструментов.</p>
+
+                <h3>SIEM (Security Information and Event Management)</h3>
+
+                <p>Центральная система сбора и анализа логов. Собирает данные
+                    со всех источников, коррелирует события, генерирует алерты.</p>
+
+                <ul>
+                    <li><strong>Splunk</strong> - коммерческий лидер,
+                        мощный, дорогой.</li>
+                    <li><strong>IBM QRadar</strong> - корпоративное решение,
+                        сейчас объединяется с XDR и SOAR.</li>
+                    <li><strong>Elastic Security</strong> - открытый, объединяет
+                        SIEM и EDR.</li>
+                    <li><strong>Wazuh</strong> - открытый, хорош для небольших
+                        организаций.</li>
+                </ul>
+
+                <h3>EDR (Endpoint Detection and Response)</h3>
+
+                <p>Агенты на конечных устройствах (рабочие станции, серверы),
+                    которые следят за процессами, файлами, сетевой активностью
+                    и позволяют реагировать в реальном времени.</p>
+
+                <ul>
+                    <li><strong>CrowdStrike Falcon</strong> - лидер рынка.</li>
+                    <li><strong>SentinelOne</strong> - сильный конкурент.</li>
+                    <li><strong>Microsoft Defender for Endpoint</strong> -
+                        встроен в Windows.</li>
+                    <li><strong>Wazuh</strong> - открытый вариант.</li>
+                </ul>
+
+                <h3>SOAR (Security Orchestration, Automation and Response)</h3>
+
+                <p>Платформы, которые автоматизируют реагирование: по алерту
+                    автоматически изолируют хост, блокируют IP, создают тикет,
+                    уведомляют команду.</p>
+
+                <ul>
+                    <li><strong>Splunk SOAR</strong>.</li>
+                    <li><strong>Cortex XSOAR</strong> (Palo Alto).</li>
+                    <li><strong>TheHive</strong> - открытый вариант.</li>
+                </ul>
+
+                <h3>Форензические инструменты</h3>
+
+                <ul>
+                    <li><strong>Volatility</strong> - анализ дампов памяти.
+                        Извлекает процессы, сетевые соединения, команды,
+                        ключи.</li>
+                    <li><strong>Autopsy</strong> - анализ дисковых образов.
+                        Восстанавливает удалённые файлы, строит таймлайн.</li>
+                    <li><strong>Wireshark</strong> - анализ сетевого трафика.</li>
+                    <li><strong>KAPE</strong> - сбор и анализ артефактов
+                        на Windows.</li>
+                    <li><strong>Velociraptor</strong> - сбор данных
+                        в масштабе (много хостов одновременно).</li>
+                    <li><strong>Timesketch</strong> - построение таймлайна
+                        событий из разных источников.</li>
+                </ul>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>IR Lifecycle</code>
+                        <span>подготовка → обнаружение → локализация → разбор</span>
+                    </li>
+                    <li>
+                        <code>Blue Team</code>
+                        <span>защитники</span>
+                    </li>
+                    <li>
+                        <code>Red Team</code>
+                        <span>атакующие (пентестеры)</span>
+                    </li>
+                    <li>
+                        <code>Purple Team</code>
+                        <span>совместная работа Red и Blue</span>
+                    </li>
+                    <li>
+                        <code>Order of Volatility</code>
+                        <span>RAM → сеть → диск → бэкапы</span>
+                    </li>
+                    <li>
+                        <code>Chain of Custody</code>
+                        <span>документирование доказательств</span>
+                    </li>
+                    <li>
+                        <code>MTTD / MTTR</code>
+                        <span>время обнаружения / реагирования</span>
+                    </li>
+                    <li>
+                        <code>SIEM / EDR / SOAR</code>
+                        <span>ключевые инструменты</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки и заблуждения в реагировании
+                    на инциденты.</p>
+
+                <ul>
+                    <li><strong>«Мы выключили заражённый компьютер, чтобы
+                            остановить вирус».</strong> Это уничтожило все данные
+                        в оперативной памяти. Нужно было сначала снять дамп
+                        памяти, потом изолировать систему от сети, но не
+                        выключать.</li>
+                    <li><strong>«У нас нет плана реагирования, будем
+                            действовать по ситуации».</strong> В момент атаки
+                        действовать по ситуации - значит терять время,
+                        данные и деньги. План должен быть до инцидента,
+                        и его нужно регулярно тренировать.</li>
+                    <li><strong>«Мы не хотим никого расстраивать, поэтому
+                            не скажем о проблеме».</strong> Скрытие инцидентов
+                        опасно и незаконно во многих юрисдикциях. О
+                        серьёзных утечках нужно сообщать регуляторам
+                        и клиентам. Плюс сокрытие мешает улучшениям.</li>
+                    <li><strong>«Один специалист справится со всем
+                            сам».</strong> Реагирование - командная работа.
+                        Нужны аналитики, инженеры, юристы, PR, менеджмент.
+                        Один человек выгорит и пропустит важное.</li>
+                    <li><strong>«Мы сохранили только логи с сервера,
+                            этого достаточно».</strong> Для полной картины
+                        нужны данные с разных источников: сеть, эндпоинты,
+                        облако, аутентификация. Только комбинация источников
+                        даёт полный таймлайн.</li>
+                    <li><strong>«После инцидента мы просто
+                            восстановили систему и забыли».</strong> Без
+                        post-mortem инцидент может повториться. Разбор
+                        - самая ценная часть реагирования.</li>
+                    <li><strong>«Форензика нужна только для суда».</strong>
+                        Даже без суда форензика помогает понять, что
+                        произошло, закрыть уязвимость и предотвратить
+                        повторение.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на понимание фаз и команд,
+                    вторые две - на разбор реальных ситуаций.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Определите фазу</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Определите, к какой фазе
+                                жизненного цикла реагирования относится
+                                каждое действие.</p>
+                            <ol>
+                                <li>Настройка SIEM и EDR в компании.</li>
+                                <li>Аналитик замечает необычный трафик
+                                    на сервер в 3 часа ночи.</li>
+                                <li>Изоляция заражённого ноутбука
+                                    от сети.</li>
+                                <li>Проведение учений с командой
+                                    реагирования.</li>
+                                <li>Разбор инцидента и составление
+                                    плана улучшений.</li>
+                                <li>Восстановление данных из резервной
+                                    копии.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните четыре фазы: Preparation,
+                                        Detection & Analysis, Containment/
+                                        Eradication/Recovery, Post-Incident.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Подготовка.</strong>
+                                            Настройка инструментов до
+                                            инцидента.</li>
+                                        <li><strong>Обнаружение и
+                                                анализ.</strong> Аналитик
+                                            видит подозрительную
+                                            активность.</li>
+                                        <li><strong>Локализация.</strong>
+                                            Изоляция системы, чтобы
+                                            остановить распространение.</li>
+                                        <li><strong>Подготовка.</strong>
+                                            Учения проводятся до
+                                            реального инцидента.</li>
+                                        <li><strong>Пост-инцидентная
+                                                активность.</strong> Разбор
+                                            и улучшения после закрытия.</li>
+                                        <li><strong>Восстановление.</strong>
+                                            Возврат к нормальной
+                                            работе.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Порядок сбора доказательств</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы приехали на место
+                                инцидента. На заражённом компьютере
+                                нужно собрать доказательства.
+                                Расставьте источники данных в правильном
+                                порядке сбора (от самых летучих к самым
+                                стабильным).</p>
+                            <ul>
+                                <li>Жёсткий диск</li>
+                                <li>Оперативная память (RAM)</li>
+                                <li>Активные сетевые соединения</li>
+                                <li>Резервные копии на внешнем диске</li>
+                                <li>Временные файлы и swap-файл</li>
+                            </ul>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните Order of Volatility:
+                                        от самого быстро исчезающего
+                                        к самому долго хранящемуся.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Правильный порядок:</p>
+                                    <ol>
+                                        <li><strong>Оперативная
+                                                память (RAM).</strong>
+                                            Самый летучий источник.
+                                            Исчезает при выключении.
+                                            Содержит процессы,
+                                            пароли, расшифрованные
+                                            данные.</li>
+                                        <li><strong>Активные сетевые
+                                                соединения.</strong> Могут
+                                            исчезнуть при разрыве
+                                            соединения. Показывают,
+                                            с кем общается система.</li>
+                                        <li><strong>Временные файлы
+                                                и swap.</strong> Могут
+                                            быть очищены или
+                                            перезаписаны.</li>
+                                        <li><strong>Жёсткий диск.</strong>
+                                            Данные сохраняются, но
+                                            логи пишутся постоянно,
+                                            файлы меняются.</li>
+                                        <li><strong>Резервные копии
+                                                на внешнем диске.</strong>
+                                            Самые стабильные - не
+                                            меняются со временем.</li>
+                                    </ol>
+                                    <p>Нарушение порядка может
+                                        привести к потере критичных
+                                        доказательств.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Разбор инцидента с шифровальщиком</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В понедельник утром
+                                сотрудники приходят на работу и видят
+                                на экранах требование выкупа. Файлы
+                                зашифрованы. Вы - руководитель IR-команды.
+                                Опишите ваши действия по шагам.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Начните с локализации, потом
+                                        форензика, потом восстановление.
+                                        Не платите выкуп.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Пошаговый план:</p>
+                                    <ol>
+                                        <li><strong>Локализация (немедленно).</strong>
+                                            Отключить заражённые машины
+                                            от сети. Но не выключать -
+                                            снять дампы памяти. Заблокировать
+                                            учётные записи, которые могли
+                                            быть скомпрометированы.</li>
+                                        <li><strong>Оценка масштаба.</strong>
+                                            Сколько машин заражено?
+                                            Как распространяется?
+                                            Есть ли резервные копии,
+                                            которые не зашифрованы?</li>
+                                        <li><strong>Форензика.</strong>
+                                            Собрать дампы памяти и образы
+                                            дисков. Определить, как
+                                            злоумышленники попали в сеть.
+                                            Найти точку входа (фишинг?
+                                            уязвимость? RDP?).</li>
+                                        <li><strong>Ликвидация.</strong>
+                                            Удалить вредоносное ПО со
+                                            всех заражённых систем.
+                                            Закрыть уязвимость, через
+                                            которую проникли. Сменить
+                                            все пароли.</li>
+                                        <li><strong>Восстановление.</strong>
+                                            Восстановить данные из
+                                            резервных копий. Если бэкапы
+                                            есть - не платить выкуп.
+                                            Проверить целостность
+                                            восстановленных данных.</li>
+                                        <li><strong>Коммуникации.</strong>
+                                            Уведомить руководство,
+                                            юристов, при необходимости -
+                                            регуляторов и клиентов.
+                                            Не скрывать инцидент.</li>
+                                        <li><strong>Пост-инцидентный
+                                                разбор.</strong> Понять, почему
+                                            атака стала возможной.
+                                            Улучшить защиту: обучение
+                                            сотрудников, сегментация
+                                            сети, усиление бэкапов.</li>
+                                    </ol>
+                                    <p>Ключевое: <strong>не платить
+                                            выкуп</strong>. Это не гарантирует
+                                        восстановление данных и
+                                        финансирует преступников.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Постройте IR-план</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы отвечаете за безопасность
+                                в компании среднего размера (300 сотрудников,
+                                облачная инфраструктура, веб-приложение).
+                                Составьте минимальный план реагирования
+                                на инциденты: что должно быть в документе,
+                                какие роли, какие контакты.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Начните с ролей. Кто главный?
+                                        Кто отвечает за коммуникации?
+                                        Кто за форензику? Потом добавьте
+                                        процедуры и контакты.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Минимальный IR-план должен включать:</p>
+                                    <ol>
+                                        <li><strong>Роли и ответственность.</strong>
+                                            <ul>
+                                                <li><strong>IR Lead</strong> -
+                                                    руководит реагированием.</li>
+                                                <li><strong>Аналитики SOC</strong> -
+                                                    обнаружение и анализ.</li>
+                                                <li><strong>Форензик-специалист</strong> -
+                                                    сбор и анализ
+                                                    доказательств.</li>
+                                                <li><strong>IT-инженеры</strong> -
+                                                    изоляция, восстановление.</li>
+                                                <li><strong>Юрист</strong> -
+                                                    правовые вопросы,
+                                                    уведомления.</li>
+                                                <li><strong>PR / Коммуникации</strong> -
+                                                    общение с прессой,
+                                                    клиентами.</li>
+                                                <li><strong>Менеджмент</strong> -
+                                                    решения о приоритетах,
+                                                    бюджете.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Контактные данные.</strong>
+                                            Все роли с телефонами,
+                                            email, резервные контакты.
+                                            Плюс внешние: юрфирма,
+                                            IR-подрядчик, правоохранители,
+                                            страховщик.</li>
+                                        <li><strong>Классификация инцидентов.</strong>
+                                            Что считается критичным,
+                                            что средним, что низким.
+                                            От этого зависит скорость
+                                            реакции.</li>
+                                        <li><strong>Процедуры по фазам.</strong>
+                                            Что делать на каждой
+                                            фазе для типичных типов
+                                            инцидентов: фишинг,
+                                            шифровальщик, утечка данных.</li>
+                                        <li><strong>Инструменты.</strong>
+                                            Какие системы используются
+                                            для обнаружения и реагирования.
+                                            Где хранятся логи. Как
+                                            изолировать хост.</li>
+                                        <li><strong>Каналы коммуникации.</strong>
+                                            Где обсуждается инцидент
+                                            (защищённый чат, не email,
+                                            который может быть
+                                            скомпрометирован).</li>
+                                        <li><strong>Требования к документированию.</strong>
+                                            Как ведётся таймлайн, кто
+                                            пишет отчёты, где хранятся.</li>
+                                    </ol>
+                                    <p>План должен обновляться минимум
+                                        раз в год и после каждого
+                                        крупного инцидента. Также
+                                        нужны учения - хотя бы раз
+                                        в полгода.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с реагированием на инциденты и цифровой форензикой -
+                    дисциплиной, которая отвечает на вопрос «что делать, когда
+                    защита не сработала». Узнали про <strong>жизненный цикл
+                        реагирования по NIST SP 800-61</strong>: подготовка, обнаружение
+                    и анализ, локализация/ликвидация/восстановление, пост-инцидентная
+                    активность.</p>
+
+                <p>Познакомились с ролями: <strong>Blue Team</strong> (защитники),
+                    <strong>Red Team</strong> (атакующие) и <strong>Purple
+                        Team</strong> (совместная работа). Разобрали, что делает
+                    каждая команда и как они взаимодействуют.
+                </p>
+
+                <p>Изучили основы цифровой форензики: <strong>порядок
+                        летучести</strong> (почему важно снимать память первым делом),
+                    <strong>chain of custody</strong> (документирование
+                    доказательств для суда) и <strong>криминалистические
+                        копии</strong> (работа с образами, а не оригиналами).
+                </p>
+
+                <p>Разобрали ключевые инструменты: SIEM (Splunk, QRadar,
+                    Elastic), EDR (CrowdStrike, SentinelOne), SOAR
+                    (автоматизация реагирования), форензические утилиты
+                    (Volatility, Autopsy, Wireshark, KAPE, Velociraptor).</p>
+
+                <p>И главное - поняли, что реагирование на инциденты -
+                    это <strong>командная работа, требующая подготовки</strong>.
+                    Без плана, инструментов и тренировок команда в момент
+                    атаки будет действовать хаотично. С планом - сможет
+                    быстро локализовать угрозу, восстановить работу и
+                    извлечь уроки на будущее.</p>
+
+                <p>В следующем, финальном уроке курса мы займёмся
+                    <strong>Threat Intelligence</strong> и
+                    <strong>MITRE ATT&CK</strong>. Разберёмся, как работают
+                    команды, которые отслеживают APT-группы, что такое
+                    IOC, TTP, kill chain, и как использовать матрицу
+                    ATT&CK для защиты. Это последний урок курса -
+                    после него у вас будет полная картина современной
+                    кибербезопасности.
+                </p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-18.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-20.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

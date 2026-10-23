@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Случайные числа и Random - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="beginner" data-lesson-id="lesson-07">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Начальный</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 07</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson active" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Случайные числа и Random</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~20 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Все программы, которые мы писали до этого, были абсолютно предсказуемы: одни и те же данные
+                    на входе - один и тот же результат на выходе. Но многие вещи в реальном мире непредсказуемы:
+                    бросок кубика, выпадение монетки, выбор случайной карты. Игры, лотереи, генераторы паролей -
+                    всё это использует случайные числа.</p>
+
+                <p>Сегодня мы научим программы бросать кубик и «загадывать» числа. Это последний новый инструмент
+                    перед тем, как мы соберём настоящую игру.</p>
+
+                <h2>Где нужны случайные числа</h2>
+
+                <p>Пара примеров, чтобы понять, зачем это вообще:</p>
+
+                <ul>
+                    <li><strong>Игры.</strong> Компьютерный противник должен вести себя непредсказуемо. Монстр
+                        атакует с силой от 5 до 10 - берём случайное число из этого диапазона.</li>
+                    <li><strong>Лотереи и розыгрыши.</strong> Нужно выбрать победителя случайно, чтобы никто не мог
+                        предсказать результат.</li>
+                    <li><strong>Тесты.</strong> Если программе нужно показать 10 случайных вопросов из ста - тоже
+                        случайные числа.</li>
+                    <li><strong>Генерация паролей и кодов.</strong> Чтобы пароль был стойким, его символы выбираются
+                        случайно.</li>
+                </ul>
+
+                <p>В C# за случайность отвечает специальный инструмент - класс <code>Random</code>. Это как ящик,
+                    из которого можно вытянуть случайное число.</p>
+
+                <h2>Создаём генератор случайных чисел</h2>
+
+                <p>Прежде чем получить первое случайное число, нужно создать <strong>объект</strong> генератора.
+                    Звучит сложно, но на практике это одна строка:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span></code></pre>
+
+                <p>Давайте разберём, что здесь происходит:</p>
+
+                <ul>
+                    <li><code>Random</code> - это тип. Так же, как <code>int</code> - тип для целых чисел,
+                        <code>Random</code> - тип для генератора случайных чисел.
+                    </li>
+                    <li><code>rnd</code> - имя переменной. Можно назвать как угодно, но обычно пишут
+                        <code>rnd</code>, <code>random</code> или <code>rand</code>.
+                    </li>
+                    <li><code>new Random()</code> - команда «создай новый генератор». Ключевое слово
+                        <code>new</code> означает «создать».
+                    </li>
+                </ul>
+
+                <p>Получается, что <code>rnd</code> - это коробка, внутри которой лежит готовый генератор. И у этого
+                    генератора мы будем просить случайные числа.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Создаём один раз
+                    </div>
+                    <p>Генератор создаётся <strong>один раз</strong> в начале программы. Не нужно создавать
+                        <code>new Random()</code> перед каждым вызовом - это, наоборот, приводит к ошибкам.
+                        Создали один раз, сохранили в переменную, дальше только просим числа.
+                    </p>
+                </div>
+
+                <h2>Метод Next() - случайное целое число</h2>
+
+                <p>Самый часто используемый метод у генератора - <code>Next()</code> («следующее»). Он возвращает
+                    случайное целое число. У него есть три формы записи, и все они полезны.</p>
+
+                <h3>Форма 1: Next() без параметров</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row">int number = rnd.Next();</span><span class="code-row">Console.WriteLine(number);</span></code></pre>
+
+                <p>Этот вариант вернёт случайное число в диапазоне от 0 до 2 147 483 647 - то есть почти любое
+                    положительное целое. На практике это используется редко, потому что обычно нужен конкретный
+                    диапазон.</p>
+
+                <h3>Форма 2: Next(max) - от 0 до max (не включая max)</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row"></span><span class="code-row">int dice = rnd.Next(6);</span><span class="code-row">Console.WriteLine(dice);</span></code></pre>
+
+                <p>Число в скобках - это <strong>верхняя граница, не включая её</strong>. То есть
+                    <code>rnd.Next(6)</code>
+                    вернёт одно из чисел: 0, 1, 2, 3, 4 или 5. Шестёрка не выпадет никогда.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Верхняя граница не входит в диапазон
+                    </div>
+                    <p>Это самая частая ошибка новичков. Если вы хотите получить число от 1 до 6 (как на кубике) -
+                        <code>rnd.Next(6)</code> не подойдёт, потому что он выдаёт от 0 до 5. Об этом - в следующем
+                        пункте.
+                    </p>
+                </div>
+
+                <h3>Форма 3: Next(min, max) - от min до max (не включая max)</h3>
+
+                <p>Самый удобный вариант. Можно задать <strong>оба</strong> конца диапазона:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row"></span><span class="code-row">int dice = rnd.Next(1, 7);</span><span class="code-row">Console.WriteLine($"Выпало: {dice}");</span></code></pre>
+
+                <p>Здесь <code>1</code> - нижняя граница (включается), <code>7</code> - верхняя (не включается).
+                    Значит, программа выдаст число от 1 до 6. Это в точности бросок кубика.</p>
+
+                <p>Запомните правило: <strong>минимум включается, максимум - нет</strong>. Чтобы получить число
+                    от 0 до 9 включительно - пишем <code>rnd.Next(0, 10)</code>. От 1 до 100 -
+                    <code>rnd.Next(1, 101)</code>.
+                    Всегда прибавляйте единицу к желаемому максимуму.
+                </p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Как это запомнить
+                    </div>
+                    <p>Представьте, что второй параметр - это «сколько чисел можно выдать». <code>Next(1, 7)</code>
+                        выдаёт 6 чисел: 1, 2, 3, 4, 5, 6. А <code>Next(1, 101)</code> - ровно 100 чисел:
+                        от 1 до 100. То есть «max − min» и есть количество вариантов.</p>
+                </div>
+
+                <h2>Собираем несколько случайных чисел</h2>
+
+                <p>Если нужно несколько случайных чисел - просто вызываем метод несколько раз. Генератор создаём
+                    один, а <code>Next()</code> - сколько угодно раз:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row"></span><span class="code-row">int a = rnd.Next(1, 7);</span><span class="code-row">int b = rnd.Next(1, 7);</span><span class="code-row">int c = rnd.Next(1, 7);</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Три броска кубика: {a}, {b}, {c}");</span></code></pre>
+
+                <p>Каждый вызов <code>Next()</code> выдаёт новое число. Запустите программу несколько раз -
+                    результаты будут разными.</p>
+
+                <h2>Случайные числа в цикле</h2>
+
+                <p>А вот где начинается настоящая магия. Соединяем случайные числа с циклами из прошлого урока и
+                    получаем десять случайных бросков одной строчкой:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; 10; i++)</span><span class="code-row">{</span><span class="code-row">    int dice = rnd.Next(1, 7);</span><span class="code-row">    Console.WriteLine($"Бросок {i + 1}: {dice}");</span><span class="code-row">}</span></code></pre>
+
+                <p>Цикл выполнится 10 раз, каждый раз получая новое случайное число от 1 до 6. Обратите внимание
+                    на <code>i + 1</code> в интерполяции: счётчик идёт от 0 до 9, а нам нужно показать «Бросок 1»
+                    вместо «Бросок 0».</p>
+
+                <h2>Случайные числа в условиях</h2>
+
+                <p>Ещё интереснее - соединить <code>Random</code> с условиями из урока 4. Например, смоделируем
+                    бросок монетки:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row"></span><span class="code-row">int coin = rnd.Next(0, 2);</span><span class="code-row"></span><span class="code-row">if (coin == 0)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Орёл");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Решка");</span><span class="code-row">}</span></code></pre>
+
+                <p><code>rnd.Next(0, 2)</code> выдаёт 0 или 1. Если 0 - «Орёл», если 1 - «Решка». Классический
+                    пример случайного выбора между двумя вариантами.</p>
+
+                <h2>Дробные случайные числа: NextDouble()</h2>
+
+                <p>Иногда нужны не целые, а дробные случайные числа. Например, случайная температура от 36.0
+                    до 37.5. Для этого есть отдельный метод <code>NextDouble()</code>. Он всегда возвращает число
+                    от 0.0 до 1.0 (не включая 1.0).</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row"></span><span class="code-row">double x = rnd.NextDouble();</span><span class="code-row">Console.WriteLine(x);</span></code></pre>
+
+                <p>Получится что-то вроде <code>0.7234...</code> или <code>0.1589...</code>. Чтобы получить число
+                    в другом диапазоне, нужно умножить и прибавить. Например, случайное от 0 до 100:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">double x = rnd.NextDouble() * 100;</span></code></pre>
+
+                <p>Если нужно от 36.0 до 37.5 - умножаем на разницу (1.5) и прибавляем минимум (36.0):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">double temp = 36.0 + rnd.NextDouble() * 1.5;</span></code></pre>
+
+                <p>Такая арифметика нужна редко, но её полезно знать - вы точно встретите её в реальном коде.</p>
+
+                <h2>Шпаргалка по Random</h2>
+
+                <p>Соберём всё в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>new Random()</code>
+                        <span>создать генератор</span>
+                    </li>
+                    <li>
+                        <code>rnd.Next()</code>
+                        <span>от 0 до 2 147 483 647</span>
+                    </li>
+                    <li>
+                        <code>rnd.Next(max)</code>
+                        <span>от 0 до max − 1</span>
+                    </li>
+                    <li>
+                        <code>rnd.Next(min, max)</code>
+                        <span>от min до max − 1</span>
+                    </li>
+                    <li>
+                        <code>rnd.NextDouble()</code>
+                        <span>дробное от 0.0 до 1.0</span>
+                    </li>
+                </ul>
+
+                <p>Главное правило: <strong>min включается, max - никогда</strong>. Хотите от 1 до 100 -
+                    <code>Next(1, 101)</code>.
+                </p>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Случайные числа - тема, где ошибки бывают особенно незаметными: код работает, но результат
+                    не тот, который вы ожидали. Проверьте по списку:</p>
+
+                <ul>
+                    <li><strong>Все броски выпадают одинаковыми.</strong> Скорее всего, генератор создаётся
+                        <strong>внутри</strong> цикла или метода, который вызывается много раз.
+                        <code>new Random()</code>
+                        должен быть создан один раз, до цикла.
+                    </li>
+                    <li><strong><code>rnd.Next(1, 6)</code> никогда не выдаёт 6.</strong> Это не ошибка, это правило:
+                        верхняя граница не включается. Чтобы получить от 1 до 6, пишите
+                        <code>rnd.Next(1, 7)</code>.
+                    </li>
+                    <li><strong><code>rnd.Next()</code> выдаёт огромные числа.</strong> Без параметров метод
+                        возвращает любое число от 0 до 2 147 483 647. Если нужен конкретный диапазон - указывайте
+                        границы: <code>rnd.Next(1, 101)</code>.</li>
+                    <li><strong>«Cannot convert type 'double' to 'int'».</strong> <code>NextDouble()</code>
+                        возвращает <code>double</code>, а не <code>int</code>. Присваивайте его в переменную типа
+                        <code>double</code>, либо явно преобразуйте: <code>(int)rnd.NextDouble()</code>.
+                    </li>
+                    <li><strong>Хотите получить одинаковые числа при каждом запуске.</strong> Это возможно, но
+                        потребует seed-параметра - <code>new Random(42)</code>. Это уже тема среднего уровня, здесь
+                        только упомянем, что такое существует.</li>
+                </ul>
+
+                <p>Если ничего не помогло - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя. Сначала
+                    обязательно попробуйте сами.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Бросок кубика</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая имитирует бросок игрального кубика
+                                (число от 1 до 6) и выводит результат.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте генератор <code>Random rnd = new Random();</code>. Затем получите
+                                        число через <code>rnd.Next(1, 7)</code>. Второй параметр - это 7, а не 6,
+                                        потому что максимум не включается.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row"></span><span class="code-row">int dice = rnd.Next(1, 7);</span><span class="code-row">Console.WriteLine($"Выпало: {dice}");</span></code></pre>
+                                    <p>Запустите программу несколько раз - числа будут разными. Иногда выпадет 1,
+                                        иногда 6, иногда что-то посередине. Если бы мы написали <code>Next(1, 6)</code>,
+                                        шестёрка никогда бы не выпала - это была бы распространённая ошибка.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Десять бросков</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Смоделируйте 10 бросков кубика и выведите каждый результат на
+                                отдельной строке.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте цикл <code>for</code> от 0 до 9. Внутри цикла получайте число
+                                        через <code>rnd.Next(1, 7)</code> и выводите его. Не создавайте
+                                        <code>new Random()</code> внутри цикла - генератор должен быть один на всю
+                                        программу.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row"></span><span class="code-row">for (int i = 0; i &lt; 10; i++)</span><span class="code-row">{</span><span class="code-row">    int dice = rnd.Next(1, 7);</span><span class="code-row">    Console.WriteLine($"Бросок {i + 1}: {dice}");</span><span class="code-row">}</span></code></pre>
+                                    <p>Каждый запуск программы будет давать новую последовательность. Если хотите
+                                        посчитать сумму всех десяти бросков - добавьте аккумулятор, как в уроке
+                                        про циклы.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Орёл или решка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Программа имитирует бросок монетки. С вероятностью 50% выпадает
+                                «Орёл», с вероятностью 50% - «Решка». Выведите результат.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сгенерируйте число через <code>rnd.Next(0, 2)</code> - оно будет равно
+                                        либо 0, либо 1. Затем проверьте через <code>if / else</code>, что именно
+                                        выпало.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row"></span><span class="code-row">int coin = rnd.Next(0, 2);</span><span class="code-row"></span><span class="code-row">if (coin == 0)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Орёл");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Решка");</span><span class="code-row">}</span></code></pre>
+                                    <p>Шансы действительно 50 на 50 - потому что <code>Next(0, 2)</code> равновероятно
+                                        выдаёт 0 или 1. Если запустить программу сто раз, примерно в половине случаев
+                                        выпадет «Орёл».</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Угадай направление</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Программа случайно выбирает одно из четырёх направлений:
+                                «Север», «Юг», «Запад», «Восток». Пользователь вводит своё предположение, а программа
+                                сообщает, угадал он или нет.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 1</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сначала сгенерируйте число от 0 до 3 (то есть <code>rnd.Next(0, 4)</code>).
+                                        Затем через <code>if / else if</code> превратите его в строку с направлением
+                                        и сохраните в переменную <code>secret</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка 2</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Потом попросите пользователя ввести направление через
+                                        <code>Console.ReadLine()</code>. Чтобы не зависеть от регистра, примените
+                                        <code>.ToLower()</code> и к ответу пользователя, и к загаданному слову.
+                                        Сравните через <code>==</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row">int pick = rnd.Next(0, 4);</span><span class="code-row"></span><span class="code-row">string secret;</span><span class="code-row">if (pick == 0)</span><span class="code-row">{</span><span class="code-row">    secret = "Север";</span><span class="code-row">}</span><span class="code-row">else if (pick == 1)</span><span class="code-row">{</span><span class="code-row">    secret = "Юг";</span><span class="code-row">}</span><span class="code-row">else if (pick == 2)</span><span class="code-row">{</span><span class="code-row">    secret = "Запад";</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    secret = "Восток";</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.Write("Куда идём? ");</span><span class="code-row">string answer = Console.ReadLine().ToLower();</span><span class="code-row"></span><span class="code-row">if (answer == secret.ToLower())</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Угадал!");</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Не угадал. Было загадано: {secret}");</span><span class="code-row">}</span></code></pre>
+                                    <p>Ключевой момент - строка <code>if (answer == secret.ToLower())</code>. Мы
+                                        приводим к нижнему регистру и ответ пользователя (сразу при вводе), и
+                                        загаданное слово (в момент сравнения). Благодаря этому «Север», «СЕВЕР» и
+                                        «север» для программы одинаковы. Если убрать <code>.ToLower()</code> - пришлось
+                                        бы писать три отдельные проверки на каждый вариант.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня наши программы научились быть непредсказуемыми. Мы познакомились с генератором
+                    <code>Random</code>, разобрались с методом <code>Next()</code> в трёх формах и запомнили
+                    главное правило: минимум включается, максимум - нет. Плюс узнали про <code>NextDouble()</code>
+                    для дробных чисел.
+                </p>
+
+                <p>И сразу же применили всё это вместе - с условиями, циклами и строками. Задача про направление
+                    соединила почти все темы начального уровня в одной программе.</p>
+
+                <p>В следующем уроке начального уровня мы соберём всё, чему научились, в настоящую
+                    игру: «Угадай число». Программа загадает случайное число, а вы будете его отгадывать, получая
+                    подсказки «больше» или «меньше». Это будет первый полноценный проект курса.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-06.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-08.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math и Random - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="intermediate" data-lesson-id="lesson-19">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 19</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson active" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Math и Random</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~20 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В начале курса мы познакомились с базовой арифметикой: сложением, вычитанием, умножением и делением.
+                    Этого хватает для простых задач. Но что, если нужно посчитать квадратный корень, возвести число в
+                    степень или найти синус угла? Писать эти формулы вручную с нуля - долго и сложно.</p>
+
+                <p>К счастью, в C# есть специальный класс <code>Math</code> - это как большой ящик с готовыми
+                    математическими инструментами. Мы уже пользовались одним из них (<code>Math.Abs</code>) в уроке 8.
+                    Сегодня заглянем в этот ящик целиком.</p>
+
+                <p>А во второй половине урока мы узнаем, как генерировать случайные дробные числа и делать случайный
+                    выбор из списка.</p>
+
+                <h2>Класс Math</h2>
+
+                <p><code>Math</code> - это статический класс. Это значит, что нам не нужно создавать объект
+                    (<code>new Math()</code>), а можно просто обращаться к его методам напрямую. Все инструменты уже
+                    лежат внутри.</p>
+
+                <h3>Степень и корень</h3>
+
+                <p>Самые частые операции - это возведение в степень и извлечение корня.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">double square = Math.Pow(5, 2);</span><span class="code-row">double cube = Math.Pow(2, 3);</span><span class="code-row"></span><span class="code-row">double root = Math.Sqrt(16);</span></code></pre>
+
+                <p>Разберём:</p>
+                <ul>
+                    <li><code>Math.Pow(число, степень)</code> - возводит число в указанную степень.
+                        <code>Math.Pow(5, 2)</code> - это 5 в квадрате, результат 25. <code>Math.Pow(2, 3)</code> - это
+                        2 в кубе, результат 8.
+                    </li>
+                    <li><code>Math.Sqrt(число)</code> - извлекает квадратный корень (<em>square root</em>).
+                        <code>Math.Sqrt(16)</code> вернёт 4.
+                    </li>
+                </ul>
+
+                <p>Обратите внимание, что эти методы всегда возвращают тип <code>double</code> (дробное число), даже
+                    если результат целый. Это связано с тем, что корень или степень могут быть дробными.</p>
+
+                <h3>Модуль числа (напоминание)</h3>
+
+                <p>В уроке 8 мы использовали <code>Math.Abs</code> для подсказок «горячо-холодно». Он возвращает число
+                    без знака:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int diff = Math.Abs(10 - 25);</span></code></pre>
+
+                <p>Результат будет 15. Минус отбрасывается.</p>
+
+                <h3>Округление</h3>
+
+                <p>Часто при работе с дробными числами нужно их округлить. В C# есть три способа это сделать, и они
+                    ведут себя по-разному:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">double a = 4.3;</span><span class="code-row">double b = 4.5;</span><span class="code-row">double c = 4.7;</span><span class="code-row"></span><span class="code-row">double roundA = Math.Round(a);</span><span class="code-row">double floorA = Math.Floor(c);</span><span class="code-row">double ceilA = Math.Ceiling(a);</span></code></pre>
+
+                <ul>
+                    <li><code>Math.Round()</code> - математическое округление до ближайшего целого. <code>4.3</code>
+                        станет <code>4</code>, <code>4.7</code> станет <code>5</code>, а <code>4.5</code> по умолчанию
+                        округлится до <code>4</code> (правило «банковского округления»).</li>
+                    <li><code>Math.Floor()</code> - «пол» (floor). Округляет <strong>вниз</strong> до ближайшего целого.
+                        <code>4.7</code> станет <code>4</code>, <code>-4.3</code> станет <code>-5</code>.
+                    </li>
+                    <li><code>Math.Ceiling()</code> - «потолок» (ceiling). Округляет <strong>вверх</strong>.
+                        <code>4.1</code> станет <code>5</code>, <code>-4.9</code> станет <code>-4</code>.
+                    </li>
+                </ul>
+
+                <h3>Минимум, максимум и число Пи</h3>
+
+                <p>Вместо того чтобы писать условия <code>if (a > b)</code>, можно использовать готовые методы:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int min = Math.Min(10, 20);</span><span class="code-row">int max = Math.Max(10, 20);</span><span class="code-row"></span><span class="code-row">double circleArea = Math.PI * Math.Pow(5, 2);</span></code></pre>
+
+                <p><code>Math.Min</code> и <code>Math.Max</code> принимают два числа и возвращают меньшее или большее. А
+                    <code>Math.PI</code> - это встроенная константа, хранящая число Пи (3.14159...).
+                </p>
+
+                <h2>Продвинутый Random</h2>
+
+                <p>В уроке 7 мы научились генерировать случайные целые числа: <code>rnd.Next(1, 7)</code> для кубика. Но
+                    что, если нужна случайная дробь? Например, случайное число от 0.0 до 1.0 или от 5.5 до 10.5.</p>
+
+                <h3>NextDouble()</h3>
+
+                <p>У генератора <code>Random</code> есть метод <code>NextDouble()</code>. Он всегда возвращает дробное
+                    число от 0.0 до 1.0 (не включая 1.0).</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row">double x = rnd.NextDouble();</span></code></pre>
+
+                <p>Результат будет что-то вроде <code>0.72345...</code> или <code>0.15892...</code>.</p>
+
+                <h3>Как получить случайное число в диапазоне</h3>
+
+                <p>Допустим, нам нужно случайное дробное число от 5 до 10. Для этого используется формула:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">double min = 5.0;</span><span class="code-row">double max = 10.0;</span><span class="code-row"></span><span class="code-row">double randomValue = min + rnd.NextDouble() * (max - min);</span></code></pre>
+
+                <p>Давайте разберём логику. <code>NextDouble()</code> даёт нам число от 0 до 1. Мы умножаем его на
+                    разницу между максимумом и минимумом (в данном случае на 5). Получаем число от 0 до 5. А затем
+                    прибавляем минимум (5). В итоге получаем число от 5 до 10.</p>
+
+                <h3>Случайный выбор из списка</h3>
+
+                <p>Очень частая задача: выбрать случайный элемент из массива или списка. Для этого мы генерируем
+                    случайный индекс от 0 до длины коллекции - 1.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string[] names = { "Алексей", "Мария", "Иван", "Ольга" };</span><span class="code-row"></span><span class="code-row">int index = rnd.Next(0, names.Length);</span><span class="code-row">string randomName = names[index];</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Победитель: {randomName}");</span></code></pre>
+
+                <p>Помните правило <code>Next</code>: верхняя граница не включается. Поэтому мы пишем
+                    <code>names.Length</code>, чтобы индекс мог быть от 0 до 3 (для массива из 4 элементов).
+                </p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Math.Pow(x, y)</code>
+                        <span>x в степени y</span>
+                    </li>
+                    <li>
+                        <code>Math.Sqrt(x)</code>
+                        <span>квадратный корень</span>
+                    </li>
+                    <li>
+                        <code>Math.Abs(x)</code>
+                        <span>модуль числа</span>
+                    </li>
+                    <li>
+                        <code>Math.Round(x)</code>
+                        <span>математическое округление</span>
+                    </li>
+                    <li>
+                        <code>Math.Min / Max</code>
+                        <span>минимум и максимум из двух</span>
+                    </li>
+                    <li>
+                        <code>rnd.NextDouble()</code>
+                        <span>случайное от 0.0 до 1.0</span>
+                    </li>
+                    <li>
+                        <code>min + rnd.NextDouble() * (max - min)</code>
+                        <span>случайное в диапазоне</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с математикой и случайными числами.</p>
+
+                <ul>
+                    <li><strong>«Cannot implicitly convert type 'double' to 'int'».</strong> Методы
+                        <code>Math.Pow</code>, <code>Math.Sqrt</code>, <code>Math.Round</code> и <code>Math.Floor</code>
+                        возвращают <code>double</code>. Если вам нужен <code>int</code>, используйте явное приведение:
+                        <code>int result = (int)Math.Sqrt(16);</code>.
+                    </li>
+                    <li><strong>Результат деления получается неточным.</strong> Помните урок 9? Если вы делите два
+                        <code>int</code>, дробная часть отбрасывается. Чтобы этого избежать, приводите одно из чисел к
+                        <code>double</code>.
+                    </li>
+                    <li><strong><code>Math.Round(2.5)</code> возвращает 2, а не 3.</strong> Это не баг, а особенность
+                        «банковского округления» в C#. Если нужно классическое округление (0.5 вверх), используйте
+                        <code>Math.Round(2.5, MidpointRounding.AwayFromZero)</code>.
+                    </li>
+                    <li><strong>Случайные числа всегда одинаковые при перезапуске.</strong> Если вы создаёте
+                        <code>new Random()</code> внутри быстрого цикла, он может выдавать одинаковые значения.
+                        Создавайте генератор один раз.
+                    </li>
+                    <li><strong>«IndexOutOfRangeException» при выборе из списка.</strong> Убедитесь, что верхняя граница
+                        в <code>rnd.Next</code> равна <code>list.Count</code> (или <code>array.Length</code>), а не
+                        <code>Count - 1</code>.
+                    </li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    поможем разобраться.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Гипотенуза</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Попросите пользователя ввести длины двух катетов прямоугольного
+                                треугольника. Найдите и выведите длину гипотенузы.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте теорему Пифагора: квадрат гипотенузы равен сумме квадратов катетов.
+                                        <code>Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2))</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Введите катет a: ");</span><span class="code-row">double a = double.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">Console.Write("Введите катет b: ");</span><span class="code-row">double b = double.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">double hypotenuse = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));</span><span class="code-row">Console.WriteLine($"Гипотенуза: {hypotenuse}");</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Площадь круга</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Попросите у пользователя радиус круга. Вычислите и выведите площадь.
+                                Используйте константу <code>Math.PI</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Формула площади круга: <code>π * r²</code>. То есть
+                                        <code>Math.PI * Math.Pow(r, 2)</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Console.Write("Введите радиус: ");</span><span class="code-row">double r = double.Parse(Console.ReadLine());</span><span class="code-row"></span><span class="code-row">double area = Math.PI * Math.Pow(r, 2);</span><span class="code-row">Console.WriteLine($"Площадь круга: {area}");</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Случайная температура</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Сымитируйте случайное измерение температуры тела человека. Она должна
+                                быть в диапазоне от 36.0 до 37.5 градусов. Округлите результат до одного знака после
+                                запятой с помощью <code>Math.Round</code> и выведите.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте формулу случайного числа в диапазоне:
+                                        <code>min + rnd.NextDouble() * (max - min)</code>. Для округления до одного
+                                        знака используйте <code>Math.Round(value, 1)</code>.
+                                    </p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row"></span><span class="code-row">double min = 36.0;</span><span class="code-row">double max = 37.5;</span><span class="code-row"></span><span class="code-row">double temp = min + rnd.NextDouble() * (max - min);</span><span class="code-row">temp = Math.Round(temp, 1);</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Температура: {temp}°C");</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Случайный выбор</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте массив из пяти любимых фильмов. Сымитируйте «рулетку»:
+                                выберите случайный фильм из этого массива и выведите его на экран с фразой «Сегодня
+                                смотрим: ...».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сгенерируйте индекс через <code>rnd.Next(0, movies.Length)</code>. Затем
+                                        обратитесь к элементу массива по этому индексу.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Random rnd = new Random();</span><span class="code-row">string[] movies = { "Матрица", "Начало", "Интерстеллар", "Форрест Гамп", "Крестный отец" };</span><span class="code-row"></span><span class="code-row">int index = rnd.Next(0, movies.Length);</span><span class="code-row">Console.WriteLine($"Сегодня смотрим: {movies[index]}");</span></code></pre>
+                                    <p>Обратите внимание, что <code>movies.Length</code> равно 5.
+                                        <code>rnd.Next(0, 5)</code> выдаст индекс от 0 до 4, что идеально подходит для
+                                        нашего массива.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы освоили математический арсенал C#. Научились работать со степенями, корнями и округлением,
+                    а также генерировать случайные дробные числа и делать случайный выбор из коллекций.</p>
+
+                <p>В следующем уроке мы займёмся оптимизацией работы со строками. Вы узнаете, почему склеивать строки
+                    через <code>+</code> в цикле - плохая идея, и познакомитесь с волшебным классом
+                    <code>StringBuilder</code>.
+                </p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-18.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-20.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

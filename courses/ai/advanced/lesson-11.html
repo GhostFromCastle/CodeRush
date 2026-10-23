@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Продвинутый промптинг - Нейросети и вайбкодинг - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="ai" data-level="advanced" data-lesson-id="lesson-11">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Нейросети и вайбкодинг</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 11</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое нейросети</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Основы промптинга</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ограничения и галлюцинации</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Нейросети в жизни</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Вайбкодинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Нейросети для текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Генеративные изображения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Автоматизация рутины</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>API нейросетей</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Локальные модели</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson active" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Продвинутый промптинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Этика и будущее ИИ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Продвинутый промптинг: за пределами основ</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~10 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В уроке 2 мы разобрали базу: как использовать роли, контекст и ограничения. Этого
+                    достаточно для 80% повседневных задач. Но если вы хотите создавать сложные
+                    приложения, писать надежные скрипты или решать нестандартные логические задачи,
+                    обычных промптов может не хватить.</p>
+
+                <p>В этом уроке мы разберём <strong>продвинутые техники промптинга</strong>. Это набор
+                    приемов, которые заставляют нейросеть «думать» более структурированно, использовать
+                    внешние инструменты и выдавать стабильно высокий результат даже на сложных задачах.</p>
+
+                <h2>1. Few-Shot Prompting (Обучение на примерах)</h2>
+
+                <p>Обычный промпт (Zero-Shot) - это когда вы просто даете инструкцию. Few-Shot - это
+                    когда вы показываете модели несколько примеров того, как нужно выполнять задачу.</p>
+
+                <p>Модели отлично умеют находить паттерны. Если вы покажете ей 2-3 примера, она поймет
+                    не только саму задачу, но и <strong>формат</strong>, <strong>стиль</strong> и
+                    <strong>логику</strong> ответа.
+                </p>
+
+                <p>Допустим, вы хотите, чтобы ИИ определял тональность отзывов.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Твоя задача - определять тональность текста.</span><span class="code-row">Отвечай одним словом: Позитив, Негатив или Нейтрально.</span><span class="code-row"></span><span class="code-row">Пример 1:</span><span class="code-row">Текст: "Отличный товар, пришел быстро!"</span><span class="code-row">Ответ: Позитив</span><span class="code-row"></span><span class="code-row">Пример 2:</span><span class="code-row">Текст: "Сломался через день, деньги на ветер."</span><span class="code-row">Ответ: Негатив</span><span class="code-row"></span><span class="code-row">Пример 3:</span><span class="code-row">Текст: "Коробка помята, но внутри все целое."</span><span class="code-row">Ответ: Нейтрально</span><span class="code-row"></span><span class="code-row">Текст: "Доставка заняла 3 недели, но сам товар неплохой."</span><span class="code-row">Ответ:</span></code></pre>
+
+                <p>Модель, увидев три примера, с высокой вероятностью выдаст правильный ответ (в данном
+                    случае - Нейтрально), потому что она поняла логику классификации.</p>
+
+                <h2>2. Chain of Thought (Цепочка рассуждений)</h2>
+
+                <p>Нейросети плохо справляются с математикой и сложной логикой, когда пытаются выдать
+                    ответ мгновенно. Они предсказывают следующее слово, и если сразу нужно написать
+                    финальную цифру, они часто ошибаются.</p>
+
+                <p>Техника <strong>Chain of Thought (CoT)</strong> заставляет модель сначала выстроить
+                    цепочку рассуждений, а потом дать ответ. Вы как бы просите её «решить задачу
+                    на черновике».</p>
+
+                <p>Как это сделать? Добавьте в промпт фразу: <strong>«Давай порассуждаем по шагам»</em>
+                        или <strong>«Сначала напиши план решения, потом выполни его»</strong>.</p>
+
+                <p>Сравните:</p>
+                <ul>
+                    <li><em>Плохо:</em> «Сколько будет 15% от 340?» (Модель может попытаться
+                        угадать ответ и ошибиться).</li>
+                    <li><em>Хорошо:</em> «Сколько будет 15% от 340? Давай порассуждаем по шагам».
+                        (Модель сначала напишет: «10% - это 34. 5% - это 17. 34+17 = 51», и выдаст
+                        правильный ответ).</li>
+                </ul>
+
+                <h2>3. Self-Consistency (Самосогласованность)</h2>
+
+                <p>Что делать, если задача настолько сложная, что даже Chain of Thought иногда дает
+                    сбой? Использовать самосогласованность. Это техника, при которой вы просите
+                    модель решить одну и ту же задачу несколько раз (например, 3 или 5 раз).</p>
+
+                <p>Поскольку настройки генерации каждый раз немного различаются, модель может пойти
+                    разными путями к решению. В конце вы смотрите на все ответы и выбираете тот,
+                    который встретился чаще всего (мажоритарное голосование). Это работает как
+                    «мудрость толпы», только толпа - это несколько запусков одной модели.</p>
+
+                <h2>4. ReAct (Reasoning and Acting)</h2>
+
+                <p>Очень важная концепция, на которой строятся современные ИИ-агенты. ReAct - это
+                    сочетание <strong>рассуждения</strong> (Reasoning) и <strong>действия</strong> (Acting).</p>
+
+                <p>Обычная LLM просто генерирует текст. Но что, если ей нужно узнать погоду на завтра?
+                    У неё нет этих данных. В парадигме ReAct модель должна:</p>
+                <ol>
+                    <li><strong>Подумать (Thought):</strong> «Мне нужно узнать погоду в Москве на завтра.
+                        У меня нет этих данных».</li>
+                    <li><strong>Действовать (Action):</strong> Написать код запроса к API погоды.</li>
+                    <li><strong>Наблюдать (Observation):</strong> Получить результат от API.</li>
+                    <li><strong>Ответить (Answer):</strong> На основе полученных данных сформировать
+                        финальный ответ пользователю.</li>
+                </ol>
+
+                <p>Вы можете имитировать этот подход в промпте, дав модели инструменты (например, доступ
+                    к поиску в интернете) и разрешив ей использовать их по шагам.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Продвинутый промптинг - это не про то, чтобы написать «волшебное слово». Это
+                        про то, чтобы разбить сложную задачу на понятные этапы и объяснить модели,
+                        как именно вы хотите, чтобы она решала эту задачу. Чем сложнее задача - тем
+                        важнее структура.</p>
+                </div>
+
+                <h2>5. Структурирование промптов (XML и Markdown)</h2>
+
+                <p>Когда ваш промпт разрастается до сотен строк, модель может запутаться, где инструкции,
+                    а где данные для обработки. В таких случаях используют разделители.</p>
+
+                <p>Самый надежный способ - использовать XML-теги или Markdown. Это помогает модели
+                    лучше понять структуру.</p>
+
+                <p>Пример структуры:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">&lt;role&gt;</span><span class="code-row">Ты опытный бизнес-аналитик.</span><span class="code-row">&lt;/role&gt;</span><span class="code-row"></span><span class="code-row">&lt;task&gt;</span><span class="code-row">Выдели ключевые риски из предоставленного текста.</span><span class="code-row">&lt;/task&gt;</span><span class="code-row"></span><span class="code-row">&lt;rules&gt;</span><span class="code-row">- Выведи не более 3 рисков</span><span class="code-row">- Для каждого риска предложи решение</span><span class="code-row">&lt;/rules&gt;</span><span class="code-row"></span><span class="code-row">&lt;text&gt;</span><span class="code-row">[Здесь очень длинный текст отчета, в котором модели нужно</span><span class="code-row">найти риски]</span><span class="code-row">&lt;/text&gt;</span></code></pre>
+
+                <p>Такая структура делает промпт строгим и понятным для нейросети, снижая риск того,
+                    что она проигнорирует правила.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Few-Shot</code>
+                        <span>покажи 2-3 примера, чтобы задать паттерн</span>
+                    </li>
+                    <li>
+                        <code>Chain of Thought</code>
+                        <span>«давай порассуждаем по шагам»</span>
+                    </li>
+                    <li>
+                        <code>Self-Consistency</code>
+                        <span>реши задачу несколько раз, выбери частый ответ</span>
+                    </li>
+                    <li>
+                        <code>ReAct</code>
+                        <span>мысль -> действие -> наблюдение -> ответ</span>
+                    </li>
+                    <li>
+                        <code>XML-теги</code>
+                        <span>разделяй инструкции и данные</span>
+                    </li>
+                    <li>
+                        <code>Структура</code>
+                        <span>чем сложнее задача, тем строже формат</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при использовании продвинутых техник.</p>
+
+                <ul>
+                    <li><strong>«Я использую Few-Shot, но модель просто копирует мои примеры».</strong>
+                        Уберите из примеров данные, ответ на которые вы хотите получить. Примеры должны
+                        показывать <em>логику</em> решения, но не содержать сам финальный вопрос.</li>
+                    <li><strong>«Chain of Thought не помогает, модель всё равно ошибается в математике».</strong>
+                        Мелкие модели (до 7B) всё равно могут ошибаться даже с CoT. Для сложной
+                        математики лучше использовать облачные модели (GPT-4) или давать им в помощь
+                        инструменты (калькулятор/код).</li>
+                    <li><strong>«Промпт получился очень длинным и сложным».</strong> Это нормально для
+                        сложных задач. Но иногда лучше разбить задачу на несколько отдельных запросов
+                        (цепочка промптов). Сделал шаг 1 -> передал результат в шаг 2 -> получил ответ.</li>
+                    <li><strong>«Модель игнорирует инструкции в середине промпта».</strong> Это
+                        проблема «потери в середине» (Lost in the Middle), характерная для многих LLM.
+                        Всегда ставьте самые важные инструкции и ограничения в начало или в самый
+                        конец промпта.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи для закрепления материала.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Примените Few-Shot</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы хотите, чтобы ИИ переводил технические термины
+                                с английского на русский, но оставлял некоторые из них на английском
+                                (например, API, middleware). Напишите промпт с использованием
+                                техники Few-Shot.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Дайте 2-3 примера, где показано, какие слова переводятся,
+                                        а какие остаются.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный ответ</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Ты переводчик IT-текстов. Переводи текст на русский,</span><span class="code-row">но оставляй термины API и middleware без перевода.</span><span class="code-row"></span><span class="code-row">Пример 1:</span><span class="code-row">Англ: The API is down.</span><span class="code-row">Рус: API не работает.</span><span class="code-row"></span><span class="code-row">Пример 2:</span><span class="code-row">Англ: Configure the middleware.</span><span class="code-row">Рус: Настрой middleware.</span><span class="code-row"></span><span class="code-row">Англ: We need to secure the API with middleware.</span><span class="code-row">Рус:</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Используйте Chain of Thought</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вам нужно решить логическую задачу: «В корзине
+                                лежат яблоки и груши. Известно, что все яблоки красные,
+                                а все груши зеленые. Я достал из корзины зеленый фрукт.
+                                Могу ли я утверждать, что это груша?». Напишите промпт,
+                                который заставит ИИ рассуждать пошагово.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте фразу «Давай порассуждаем по шагам» и попросите
+                                        проверить все возможные варианты.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Реши логическую задачу. Давай порассуждаем по шагам.</span><span class="code-row">Задача: В корзине лежат яблоки и груши. Все яблоки</span><span class="code-row">красные, а все груши зеленые. Я достал зеленый фрукт.</span><span class="code-row">Могу ли я утверждать, что это груша?</span><span class="code-row">Сначала распиши логические предпосылки, затем сделай вывод.</span></code></pre>
+                                    <p>Благодаря CoT модель не просто скажет «Да», а объяснит,
+                                        что в корзине есть только яблоки и груши, яблоки красные,
+                                        значит, зеленый фрукт не может быть яблоком. Вывод: это груша.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Структурирование</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перепишите следующий промпт, используя XML-теги
+                                для разделения роли, задачи, правил и данных.</p>
+                            <p><em>«Ты редактор. Сократи этот текст в два раза, сохранив смысл.
+                                    Не используй слова-паразиты. Вот текст: В современном мире
+                                    нейросети играют огромную роль...»</em></p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Примерный ответ</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">&lt;role&gt;</span><span class="code-row">Ты профессиональный редактор.</span><span class="code-row">&lt;/role&gt;</span><span class="code-row"></span><span class="code-row">&lt;task&gt;</span><span class="code-row">Сократи текст в два раза, сохранив основной смысл.</span><span class="code-row">&lt;/task&gt;</span><span class="code-row"></span><span class="code-row">&lt;rules&gt;</span><span class="code-row">- Убери слова-паразиты и "воду"</span><span class="code-row">- Оставь только факты</span><span class="code-row">&lt;/rules&gt;</span><span class="code-row"></span><span class="code-row">&lt;text&gt;</span><span class="code-row">В современном мире нейросети играют огромную роль...</span><span class="code-row">&lt;/text&gt;</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Концепция ReAct</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Представьте, что вы создаете ИИ-агента, который
+                                должен помочь пользователю забронировать столик в ресторане.
+                                Опишите, как будет выглядеть цикл ReAct (Мысль -> Действие ->
+                                Наблюдение) для этого агента.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Подумайте, какие шаги нужно сделать: узнать предпочтения,
+                                        проверить наличие мест, совершить бронь.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Примерный цикл:</p>
+                                    <ol>
+                                        <li><strong>Мысль:</strong> Пользователь хочет
+                                            итальянский ресторан на 19:00. Мне нужно проверить
+                                            наличие мест в базе.</li>
+                                        <li><strong>Действие:</strong> Вызов функции
+                                            <code>check_availability(cuisine="italian", time="19:00")</code>.
+                                        </li>
+                                        <li><strong>Наблюдение:</strong> Система вернула ответ:
+                                            "Свободных столиков нет".</li>
+                                        <li><strong>Мысль:</strong> Нужно предложить
+                                            альтернативу. Поищу другие рестораны или время.</li>
+                                        <li><strong>Действие:</strong> Вызов функции
+                                            <code>search_restaurants(cuisine="italian", time_range="19:00-20:00")</code>.
+                                        </li>
+                                        <li><strong>Наблюдение:</strong> Есть свободный столик
+                                            в 19:30 в ресторане "Паста".</li>
+                                        <li><strong>Ответ:</strong> «В 19:00 мест нет, но
+                                            могу забронировать итальянский ресторан на 19:30.
+                                            Подходит?».</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с продвинутыми техниками промптинга. Узнали, как использовать
+                    <strong>Few-Shot</strong> для задания паттернов, <strong>Chain of Thought</strong>
+                    для сложных логических задач и <strong>Self-Consistency</strong> для повышения
+                    надежности. Поняли концепцию <strong>ReAct</strong>, на которой строятся
+                    современные ИИ-агенты, и научились структурировать промпты с помощью XML-тегов.
+                </p>
+
+                <p>Теперь вы можете управлять нейросетью на профессиональном уровне, создавая
+                    сложные и надежные системы. Это арсенал настоящего промпт-инженера.</p>
+
+                <p>В следующем, финальном уроке курса мы выйдем за рамки технологий и поговорим
+                    об <strong>этике, рисках и будущем искусственного интеллекта</strong>.
+                    Обсудим предвзятость моделей, авторские права, угрозу потери рабочих мест
+                    и то, как нам жить и работать в мире, где ИИ становится всё умнее.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-10.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-12.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>
