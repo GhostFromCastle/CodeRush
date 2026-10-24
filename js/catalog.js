@@ -1,15 +1,15 @@
 import { escapeHtml, debounce } from './utils.js';
 
-const COURSES_URL = 'data/courses.json';
+const COURSES_URL = '../data/courses.json';
 const DEFAULT_LIMIT = 4;
 const SKELETON_COUNT = 4;
 
 const FALLBACK_DATA = {
     courses: [
-        { id: 'csharp', title: 'C# с нуля до профи', description: 'От первого Console.WriteLine до ООП, LINQ и асинхронности. Основной язык .NET-разработки.', icon: 'ph-code', gradient: 'purple-gradient', tags: ['3 уровня', '18 уроков'], category: 'backend', level: 'beginner-friendly' },
-        { id: 'python', title: 'Python для начинающих', description: 'Самый дружелюбный язык для старта в программировании. Синтаксис, структуры данных, ООП.', icon: 'ph-terminal-window', gradient: 'blue-gradient', tags: ['3 уровня', '15 уроков'], category: 'backend', level: 'beginner-friendly' },
-        { id: 'javascript', title: 'JavaScript в браузере', description: 'Язык веба: от переменных до асинхронности, DOM и работы с API.', icon: 'ph-brackets-curly', gradient: 'orange-gradient', tags: ['3 уровня', '16 уроков'], category: 'frontend', level: 'beginner-friendly' },
-        { id: 'algorithms', title: 'Алгоритмы и структуры данных', description: 'Сортировки, поиск, деревья, графы. То, что спрашивают на собеседованиях.', icon: 'ph-graph', gradient: 'green-gradient', tags: ['3 уровня', '14 уроков'], category: 'fundamentals', level: 'intermediate' }
+        { id: 'csharp', title: 'C# с нуля до профи', description: 'От первого Console.WriteLine до ООП, LINQ и асинхронности. Основной язык .NET-разработки.', icon: 'devicon-csharp-plain', gradient: 'purple-gradient', tags: ['3 уровня', '18 уроков'], category: 'backend', level: 'beginner-friendly' },
+        { id: 'python', title: 'Python для начинающих', description: 'Самый дружелюбный язык для старта в программировании. Синтаксис, структуры данных, ООП.', icon: 'devicon-python-plain', gradient: 'blue-gradient', tags: ['3 уровня', '15 уроков'], category: 'backend', level: 'beginner-friendly' },
+        { id: 'javascript', title: 'JavaScript в браузере', description: 'Язык веба: от переменных до асинхронности, DOM и работы с API.', icon: 'devicon-javascript-plain', gradient: 'orange-gradient', tags: ['3 уровня', '16 уроков'], category: 'frontend', level: 'beginner-friendly' },
+        { id: 'algorithms', title: 'Алгоритмы и структуры данных', description: 'Сортировки, поиск, деревья, графы. То, что спрашивают на собеседованиях.', icon: 'ph ph-graph', gradient: 'green-gradient', tags: ['3 уровня', '14 уроков'], category: 'fundamentals', level: 'intermediate' }
     ],
     filters: {
         categories: [
@@ -75,7 +75,7 @@ function renderCourses(grid, courses, animate = true) {
         return `
             <a href="courses/${encodeURIComponent(course.id)}/index.html" class="catalog-card">
                 <div class="catalog-card-visual ${escapeHtml(course.gradient)}">
-                    <i class="ph ${escapeHtml(course.icon)}"></i>
+                    <i class="${escapeHtml(course.icon)}"></i>
                 </div>
                 <div class="catalog-card-body">
                     <div class="card-tags">${tags}</div>

@@ -11,7 +11,7 @@ function renderTrainers(grid, trainers) {
         return `
             <a href="${escapeHtml(trainer.href || `courses/simulators/${encodeURIComponent(trainer.id)}.html`)}" class="catalog-card">
                 <div class="catalog-card-visual ${escapeHtml(trainer.gradient)}">
-                    <i class="ph ${escapeHtml(trainer.icon)}"></i>
+                    <i class="${escapeHtml(trainer.icon)}"></i>
                 </div>
                 <div class="catalog-card-body">
                     <div class="card-tags">${tags}</div>
