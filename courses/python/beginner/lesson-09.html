@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все типы данных под капотом - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="beginner" data-lesson-id="lesson-09">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 09</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson active" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Все типы данных под капотом</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория</span>
+                </div>
+
+                <p>Мы уже знакомы с переменными и базовыми типами: числами, строками, логическими
+                    значениями. До этого момента мы использовали их как «чёрные ящики»: положили
+                    значение, достали значение, вроде всё работает.</p>
+
+                <p>Но чтобы двигаться дальше и в следующем уроке разобраться со списками, нам нужно
+                    заглянуть «под капот». Понять, как Python на самом деле хранит данные в памяти.
+                    И самое главное - узнать про <strong>изменяемые</strong> и
+                    <strong>неизменяемые</strong> типы. Это одна из тех концепций, которая
+                    отличает новичка от понимающего разработчика.</p>
+
+                <h2>Всё есть объект</h2>
+
+                <p>В Python работает известный принцип: <strong>всё является объектом</strong>.
+                    Число <code>42</code> - объект. Строка <code>"Привет"</code> - объект.
+                    Даже сама функция <code>print</code> - объект.</p>
+
+                <p>У каждого объекта в Python есть три важные характеристики:</p>
+                <ul>
+                    <li><strong>Значение</strong> - то, что в нём хранится (например, число 42).</li>
+                    <li><strong>Тип</strong> - к какому классу он относится (например, <code>int</code>).</li>
+                    <li><strong>Идентификатор (id)</strong> - уникальный номер, который
+                        показывает, где объект лежит в памяти компьютера.</li>
+                </ul>
+
+                <p>Именно идентификатор помогает нам понять, что происходит «под капотом»,
+                    когда мы меняем переменную. Посмотреть его можно с помощью встроенной
+                    функции <code>id()</code>. Она возвращает длинное число - адрес объекта.</p>
+
+                <h2>Неизменяемые типы (Immutable)</h2>
+
+                <p>Сначала разберём типы, которые нельзя изменить после создания. К ним относятся
+                    все те, с которыми мы работали до сих пор:</p>
+
+                <ul>
+                    <li><strong>int</strong> (целые числа)</li>
+                    <li><strong>float</strong> (дробные числа)</li>
+                    <li><strong>str</strong> (строки)</li>
+                    <li><strong>bool</strong> (True/False)</li>
+                    <li><strong>tuple</strong> (кортежи, о них в уроке 11)</li>
+                </ul>
+
+                <p>Что значит «неизменяемый»? Это значит, что если объект создан, вы не можете
+                    изменить его содержимое. Вы можете только создать <em>новый</em> объект.</p>
+
+                <p>Давайте посмотрим на примере строки:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">text = "Python"</span><span class="code-row">print(id(text))   # например, 140234...</span><span class="code-row"></span><span class="code-row">text = text.upper()</span><span class="code-row">print(id(text))   # адрес изменился!</span><span class="code-row">print(text)       # PYTHON</span></code></pre>
+
+                <p>Когда мы вызвали <code>.upper()</code>, старая строка <code>"Python"</code>
+                    никуда не делась. Она просто осталась в памяти (пока её не удалит
+                    сборщик мусора). А переменная <code>text</code> теперь указывает на
+                    <em>новую</em> строку <code>"PYTHON"</code>, которая лежит по другому адресу.</p>
+
+                <p>Числа работают так же. Когда мы делаем <code>x = x + 1</code>, мы не меняем
+                    число 5 на 6. Мы создаём новый объект «6» и перенаправляем переменную на него.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия с камнем
+                    </div>
+                    <p>Неизменяемый тип - это как высеченная надпись на камне. Чтобы получить
+                        другую надпись, вы не можете стереть старую. Вы должны взять новый
+                        камень и высечь на нём новое слово. Старый камень при этом остаётся
+                        нетронутым.</p>
+                </div>
+
+                <h2>Изменяемые типы (Mutable)</h2>
+
+                <p>Совсем по-другому работают изменяемые типы. Вы можете менять их содержимое,
+                    не создавая новый объект. К таким типам относятся:</p>
+
+                <ul>
+                    <li><strong>list</strong> (списки, урок 10)</li>
+                    <li><strong>dict</strong> (словари, урок 11)</li>
+                    <li><strong>set</strong> (множества, урок 11)</li>
+                </ul>
+
+                <p>Мы ещё не проходили списки, но для понимания сути можно представить их
+                    как контейнер с ячейками. Давайте посмотрим на примере списка (просто
+                    запомните синтаксис квадратных скобок):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">my_list = [1, 2, 3]</span><span class="code-row">print(id(my_list))   # например, 200456...</span><span class="code-row"></span><span class="code-row">my_list.append(4)</span><span class="code-row">print(id(my_list))   # адрес тот же самый!</span><span class="code-row">print(my_list)       # [1, 2, 3, 4]</span></code></pre>
+
+                <p>Обратите внимание: идентификатор <code>id</code> не изменился, хотя мы добавили
+                    новый элемент. Это значит, что мы изменили сам объект «на месте», а не
+                    создали новый. Именно поэтому списки называются изменяемыми.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия с маркерной доской
+                    </div>
+                    <p>Изменяемый тип - это как маркерная доска. Вы можете стереть на ней
+                        старую надпись и написать новую, используя ту же самую доску.
+                        Сама доска (объект в памяти) при этом не меняется.</p>
+                </div>
+
+                <h2>Зачем это знать?</h2>
+
+                <p>Может показаться, что это просто скучная теория. Но на самом деле понимание
+                    этой разницы спасёт вас от очень коварных багов в будущем.</p>
+
+                <p>Представьте, что у вас есть изменяемый объект, и вы передали его в функцию
+                    или присвоили другой переменной. Так как объект один и тот же (по одному
+                    адресу в памяти), любые изменения через одну переменную сразу отразятся
+                    на другой. Иногда это то, что нужно. А иногда - источник многочасовой
+                    отладки.</p>
+
+                <p>С неизменяемыми типами такого не бывает: если вы «меняете» строку или число,
+                    создаётся новый объект, а старая переменная продолжает указывать на старый
+                    (и неизменный) объект. Это безопаснее.</p>
+
+                <p>Пока просто держите в голове: <strong>строки и числа - неизменяемые, списки
+                    и словари - изменяемые</strong>. А в следующих уроках вы своими глазами
+                    увидите, как это работает.</p>
+
+                <h2>Функции для работы с типами</h2>
+
+                <p>В Python есть два отличных инструмента для работы с типами данных.</p>
+
+                <h3>type()</h3>
+
+                <p>Мы уже знакомы с функцией <code>type()</code> из урока 2. Она возвращает
+                    точный тип объекта:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(type(42))          # &lt;class 'int'&gt;</span><span class="code-row">print(type("Привет"))    # &lt;class 'str'&gt;</span><span class="code-row">print(type(3.14))        # &lt;class 'float'&gt;</span></code></pre>
+
+                <h3>isinstance()</h3>
+
+                <p>Функция <code>isinstance()</code> делает почти то же самое, но возвращает
+                    логическое значение <code>True</code> или <code>False</code>. Она
+                    проверяет, принадлежит ли объект к указанному типу:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">x = 42</span><span class="code-row"></span><span class="code-row">print(isinstance(x, int))    # True</span><span class="code-row">print(isinstance(x, str))    # False</span><span class="code-row">print(isinstance(x, float))  # False</span></code></pre>
+
+                <p>В чём разница? <code>type(x) == int</code> тоже работает, но <code>isinstance</code>
+                    считается более «питоновским» (правильным) способом. В будущем, когда
+                    мы дойдём до ООП (Объектно-ориентированного программирования), вы узнаете,
+                    что <code>isinstance</code> умеет работать с наследованием классов. А ещё
+                    он позволяет проверить сразу несколько типов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">x = 42</span><span class="code-row">print(isinstance(x, (int, float)))   # True, потому что 42 - это int</span></code></pre>
+
+                <h2>Приведение типов и «ложные» значения</h2>
+
+                <p>Мы уже знаем, как приводить типы: <code>int()</code>, <code>str()</code>,
+                    <code>float()</code>. Но давайте посмотрим на <code>bool()</code>. 
+                    Какие значения при превращении в логический тип дают <code>False</code>?</p>
+
+                <p>В Python есть понятие <strong>«ложных» (falsy) значений</strong>. К ним относятся:</p>
+
+                <ul>
+                    <li><code>False</code> (само собой)</li>
+                    <li><code>0</code> и <code>0.0</code> (ноль)</li>
+                    <li><code>""</code> (пустая строка)</li>
+                    <li><code>None</code> (специальное значение «ничего»)</li>
+                    <li>Пустые коллекции (пустой список <code>[]</code>, пустой словарь <code>{}</code>)</li>
+                </ul>
+
+                <p>Всё остальное считается «истинным» (truthy).</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(bool(0))         # False</span><span class="code-row">print(bool(42))        # True</span><span class="code-row">print(bool(""))        # False</span><span class="code-row">print(bool("Python"))  # True</span></code></pre>
+
+                <p>Это очень часто используется в условиях. Вместо того чтобы писать
+                    <code>if len(text) > 0:</code>, опытные программисты пишут просто
+                    <code>if text:</code> (если строка не пустая - выполнить код).</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>id(obj)</code>
+                        <span>адрес объекта в памяти</span>
+                    </li>
+                    <li>
+                        <code>type(obj)</code>
+                        <span>точный тип объекта</span>
+                    </li>
+                    <li>
+                        <code>isinstance(obj, тип)</code>
+                        <span>проверка на принадлежность к типу</span>
+                    </li>
+                    <li>
+                        <code>Неизменяемые</code>
+                        <span>int, float, str, bool, tuple</span>
+                    </li>
+                    <li>
+                        <code>Изменяемые</code>
+                        <span>list, dict, set</span>
+                    </li>
+                    <li>
+                        <code>Falsy</code>
+                        <span>0, "", None, [], {}</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные заблуждения, связанные с типами данных.</p>
+
+                <ul>
+                    <li><strong>«Я изменил строку, но старая переменная осталась прежней»</strong>.
+                        Строки неизменяемы. Методы вроде <code>.upper()</code> не меняют
+                        строку, а возвращают новую. Нужно перезаписать переменную:
+                        <code>text = text.upper()</code>.</li>
+                    <li><strong>«При сравнении <code>type(x) == int</code> всё работает, зачем
+                        нужен <code>isinstance</code>?»</strong>. Для простых случаев
+                        разницы нет. Но <code>isinstance</code> лучше, потому что он
+                        корректно работает с подклассами (например, <code>True</code> - это
+                        <code>bool</code>, но он также является подклассом <code>int</code>).
+                        Привыкайте использовать <code>isinstance</code>.</li>
+                    <li><strong>«Почему <code>0</code> в условии <code>if</code> ведёт себя
+                        как False?»</strong>. Потому что ноль - это «ложное» значение
+                        в Python. Если нужна строгая проверка на <code>None</code>
+                        (а не на ноль), используйте <code>if x is None:</code>.</li>
+                    <li><strong>«Хочу изменить символ в строке через индекс»</strong>.
+                        Это невозможно. Строки неизменяемы. Нужно собирать новую строку
+                        через срезы и сложение, как мы делали в уроке 6.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Проверка типов</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте три переменные: число, строку и
+                                логическое значение. С помощью <code>isinstance</code>
+                                проверьте каждую из них на соответствие своему типу и выведите
+                                результат.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте конструкцию вида
+                                        <code>isinstance(age, int)</code>. Результат сразу можно
+                                        передать в <code>print</code> - он выведет
+                                        <code>True</code> или <code>False</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">age = 25</span><span class="code-row">name = "Алексей"</span><span class="code-row">is_student = True</span><span class="code-row"></span><span class="code-row">print(isinstance(age, int))</span><span class="code-row">print(isinstance(name, str))</span><span class="code-row">print(isinstance(is_student, bool))</span></code></pre>
+                                    <p>Все три строки выведут <code>True</code>. Если попробовать
+                                        проверить <code>age</code> на тип <code>str</code> -
+                                        получим <code>False</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. id() для строк</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте строку, выведите её <code>id</code>.
+                                Затем «измените» строку (например, переведя её в верхний
+                                регистр). Снова выведите <code>id</code>. Объясните в
+                                комментарии или текстом, почему <code>id</code> изменился.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Строки неизменяемы. При вызове метода <code>.upper()</code>
+                                        создаётся новый объект в памяти, а переменная начинает
+                                        указывать на него. Поэтому <code>id</code> меняется.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">text = "python"</span><span class="code-row">print(id(text))</span><span class="code-row"></span><span class="code-row">text = text.upper()</span><span class="code-row">print(id(text))</span></code></pre>
+                                    <p>Вы увидите два разных числа. Это доказывает, что строка
+                                        в памяти не изменилась - просто переменная <code>text</code>
+                                        теперь указывает на новую строку <code>"PYTHON"</code>,
+                                        созданную методом <code>.upper()</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Falsy-значения</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Что выведет каждая из этих строк? Сначала
+                                подумайте сами, потом проверьте в Python.</p>
+                            <ol>
+                                <li><code>print(bool(0))</code></li>
+                                <li><code>print(bool(0.0))</code></li>
+                                <li><code>print(bool("0"))</code></li>
+                                <li><code>print(bool(" "))</code></li>
+                                <li><code>print(bool(-1))</code></li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Помните список «ложных» значений: <code>0</code>,
+                                        <code>0.0</code>, <code>""</code>, <code>None</code>.
+                                        Всё, что не входит в этот список, даёт <code>True</code>.
+                                        Обратите внимание на строки: <code>"0"</code> - это
+                                        строка, а не число.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><code>False</code>. Ноль - это ложное значение.</li>
+                                        <li><code>False</code>. Ноль с точкой тоже.</li>
+                                        <li><code>True</code>. Это строка, и она не пустая. Для
+                                            Python неважно, что в ней символ нуля.</li>
+                                        <li><code>True</code>. Строка с одним пробелом тоже
+                                            не пустая.</li>
+                                        <li><code>True</code>. Любое число, кроме нуля, - истина.
+                                            Даже отрицательное.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Безопасный ввод</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая просит у
+                                пользователя ввести число. Если он ввёл пустую строку (просто
+                                нажал Enter) - программа должна вывести «Вы ничего не ввели»
+                                и завершиться, не пытаясь преобразовать пустоту в число.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сначала запросите строку через <code>input()</code>.
+                                        Затем проверьте её на «ложность»: <code>if not user_input:</code>.
+                                        Если строка пустая - эта проверка сработает (потому что пустая
+                                        строка - это Falsy). Если не пустая - преобразуйте в число
+                                        через <code>int()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">user_input = input("Введите число: ")</span><span class="code-row"></span><span class="code-row">if not user_input:</span><span class="code-row">    print("Вы ничего не ввели")</span><span class="code-row">else:</span><span class="code-row">    number = int(user_input)</span><span class="code-row">    print(f"Вы ввели число {number}")</span></code></pre>
+                                    <p>Проверка <code>if not user_input:</code> читается как
+                                        «если ввод ложный» (пустой). Если пользователь всё-таки
+                                        что-то ввёл - идём в <code>else</code> и безопасно
+                                        преобразуем строку в число.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы заглянули под капот Python и разобрались, как он на самом деле
+                    работает с данными. Теперь вы знаете:</p>
+
+                <ul>
+                    <li>Что каждый объект в Python имеет значение, тип и адрес в памяти.</li>
+                    <li>Что строки и числа - <strong>неизменяемые</strong>: мы не меняем их,
+                        а создаём новые.</li>
+                    <li>Что существуют <strong>изменяемые</strong> типы (например, списки),
+                        которые можно менять на месте.</li>
+                    <li>Как использовать <code>id()</code>, <code>type()</code> и
+                        <code>isinstance()</code>.</li>
+                    <li>Какие значения считаются «ложными» (falsy) и как это использовать
+                        в условиях.</li>
+                </ul>
+
+                <p>Этот урок был полностью теоретическим, но он даёт прочный фундамент.
+                    Понимание изменяемости и falsy-значений сделает ваш код чище и защитит
+                    от багов в будущем.</p>
+
+                <p>В следующем уроке мы наконец-то перейдём к <strong>спискам</strong>.
+                    Это первый изменяемый тип данных, с которым вы познакомитесь поближе.
+                    Мы научимся создавать списки, добавлять и удалять элементы, сортировать
+                    и перебирать их. Списки - это рабочая лошадка Python, без них не обходится
+                    ни одна серьёзная программа. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-08.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-10.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

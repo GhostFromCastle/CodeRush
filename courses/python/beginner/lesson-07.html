@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Случайные числа и модуль random - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="beginner" data-lesson-id="lesson-07">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 07</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson active" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Случайные числа и модуль random</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Представьте игральный кубик, который всегда выпадает на 6. Или карточную игру, где
+                    карты каждый раз раздаются в одном и том же порядке. Или компьютерного врага,
+                    который ходит по строго заданному маршруту. Скучно, предсказуемо и неинтересно.</p>
+
+                <p>Именно <strong>случайность</strong> делает игры живыми, генераторы паролей -
+                    надёжными, а симуляции - реалистичными. И сегодня мы научимся добавлять
+                    случайность в наши программы. Для этого в Python есть встроенный
+                    <strong>модуль random</strong>.</p>
+
+                <h2>Что такое модуль</h2>
+
+                <p>До этого момента мы использовали только то, что Python даёт «из коробки»:
+                    <code>print</code>, <code>input</code>, <code>len</code>. Но язык программирования
+                    - это не только базовые функции. В нём есть огромная библиотека готовых
+                    инструментов, организованных в <strong>модули</strong>.</p>
+
+                <p>Аналогия: Python - это большой ящик с инструментами. Базовые функции -
+                    это молоток и отвёртка, которые всегда под рукой. А модули - это
+                    специализированные ящики: один с инструментами для математики, другой
+                    для работы с файлами, третий для случайных чисел. Вы берёте нужный ящик,
+                    только когда он вам понадобится.</p>
+
+                <p>Чтобы начать использовать модуль, его нужно <strong>импортировать</strong>
+                    (от английского <em>import</em> - «ввозить»). Это делается одной строкой
+                    в начале программы:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import random</span></code></pre>
+
+                <p>После этого все функции модуля <code>random</code> становятся доступны через
+                    точку: <code>random.имя_функции()</code>.</p>
+
+                <h2>Случайное целое число: randint()</h2>
+
+                <p>Самая полезная функция для начала - <code>random.randint(a, b)</code>.
+                    Она возвращает случайное целое число в диапазоне от <code>a</code> до
+                    <code>b</code> <strong>включительно</strong>.</p>
+
+                <p>Сразу обратите внимание: в отличие от <code>range()</code>, здесь
+                    <strong>обе границы включаются</strong>. <code>random.randint(1, 6)</code>
+                    может вернуть 1, 2, 3, 4, 5 или 6 - как настоящий кубик.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">dice = random.randint(1, 6)</span><span class="code-row">print(f"Выпало: {dice}")</span></code></pre>
+
+                <p>Если запустить эту программу несколько раз - каждый раз будет новое число.
+                    Иногда 4, иногда 1, иногда 6. Это и есть случайность.</p>
+
+                <h2>Случайное дробное число: random()</h2>
+
+                <p>Функция <code>random.random()</code> (без аргументов) возвращает случайное
+                    дробное число от <code>0.0</code> до <code>1.0</code>, причём <code>1.0</code>
+                    <strong>не включается</strong>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">number = random.random()</span><span class="code-row">print(number)   # например, 0.732391...</span></code></pre>
+
+                <p>Это число часто используется для вероятностей. Например, если нужно,
+                    чтобы что-то произошло с вероятностью 30%:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">if random.random() &lt; 0.3:</span><span class="code-row">    print("Событие произошло!")</span></code></pre>
+
+                <p>Потому что <code>random.random()</code> с равной вероятностью вернёт любое
+                    число от 0 до 1. А 30% чисел из этого диапазона меньше 0.3 - значит,
+                    условие сработает примерно в 30% случаев.</p>
+
+                <h2>Случайный выбор из коллекции: choice()</h2>
+
+                <p>А что если нужно выбрать случайный элемент из какого-то набора? Например,
+                    случайное слово из списка или случайную букву из строки? Для этого есть
+                    <code>random.choice()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">word = random.choice("Python")</span><span class="code-row">print(word)   # одна из букв: P, y, t, h, o или n</span><span class="code-row"></span><span class="code-row">fruits = random.choice(["яблоко", "банан", "вишня"])</span><span class="code-row">print(fruits)</span></code></pre>
+
+                <p>В первом примере функция выбирает случайный символ из строки. Во втором -
+                    случайный элемент из списка (списки мы будем разбирать в уроке 10,
+                    но базовая идея понятна: набор значений в квадратных скобках).</p>
+
+                <h2>Перемешивание: shuffle()</h2>
+
+                <p>Иногда нужно не просто выбрать один элемент, а перемешать весь набор.
+                    Например, чтобы раздать карты в случайном порядке. Для этого есть
+                    <code>random.shuffle()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">cards = ["6", "7", "8", "9", "10", "J", "Q", "K", "A"]</span><span class="code-row">random.shuffle(cards)</span><span class="code-row"></span><span class="code-row">print(cards)   # например, ['A', '8', 'Q', '6', '10', 'K', 'J', '7', '9']</span></code></pre>
+
+                <p>Важно: <code>shuffle</code> <strong>меняет список на месте</strong> и
+                    ничего не возвращает. То есть нельзя написать
+                    <code>new_cards = random.shuffle(cards)</code> - вы получите
+                    <code>None</code>. Просто вызывайте функцию, и список
+                    <code>cards</code> изменится сам.</p>
+
+                <h2>Можно ли доверять случайности?</h2>
+
+                <p>В компьютере не бывает «настоящей» случайности. Процессор работает по строгим
+                    алгоритмам, и если запустить программу дважды с одинаковыми начальными
+                    условиями - получится одинаковый результат.</p>
+
+                <p>Поэтому то, что делает модуль <code>random</code>, называется
+                    <strong>псевдослучайными числами</strong>. Они выглядят случайными,
+                    ведут себя как случайные, но на самом деле вычисляются по хитрой формуле.
+                    Для игр, генерации паролей и большинства повседневных задач этого
+                    достаточно.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Настоящая случайность для безопасности
+                    </div>
+                    <p>Если вы когда-нибудь будете писать что-то, связанное с безопасностью
+                        (генерация криптографических ключей, токенов, паролей для банка) -
+                        использовать <code>random</code> нельзя. Для таких задач есть
+                        отдельный модуль <code>secrets</code>, который использует
+                        аппаратный генератор случайности. Но это тема далёкого будущего.
+                        Сейчас нам хватит и <code>random</code>.</p>
+                </div>
+
+                <h2>Функция seed(): управляемая случайность</h2>
+
+                <p>Иногда нужно, чтобы случайность была воспроизводимой. Например, если вы
+                    тестируете игру, и хотите, чтобы при каждом запуске карты раздавались
+                    одинаково. Для этого используют функцию <code>random.seed()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">random.seed(42)</span><span class="code-row">print(random.randint(1, 100))   # всегда одно и то же число</span><span class="code-row">print(random.randint(1, 100))   # всегда одно и то же число</span></code></pre>
+
+                <p>С одинаковым seed последовательность «случайных» чисел всегда будет одинаковой.
+                    Если не задавать seed - Python берёт его из системного времени, и каждый
+                    запуск даёт новую последовательность.</p>
+
+                <p>Для игр и обычных программ <code>seed()</code> обычно не нужен. Но полезно
+                    знать, что такая функция существует.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>import random</code>
+                        <span>подключить модуль</span>
+                    </li>
+                    <li>
+                        <code>randint(a, b)</code>
+                        <span>случайное целое от a до b включительно</span>
+                    </li>
+                    <li>
+                        <code>random()</code>
+                        <span>случайное дробное от 0.0 до 1.0</span>
+                    </li>
+                    <li>
+                        <code>choice(seq)</code>
+                        <span>случайный элемент из коллекции</span>
+                    </li>
+                    <li>
+                        <code>shuffle(seq)</code>
+                        <span>перемешать коллекцию на месте</span>
+                    </li>
+                    <li>
+                        <code>seed(n)</code>
+                        <span>фиксированная последовательность</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе со случайными числами.</p>
+
+                <ul>
+                    <li><strong>«NameError: name 'random' is not defined»</strong>. Забыли
+                        строку <code>import random</code> в начале файла. Без неё Python
+                        не знает, что такое <code>random</code>.</li>
+                    <li><strong>«NameError: name 'randint' is not defined»</strong>. Вы
+                        написали <code>randint(1, 6)</code> вместо
+                        <code>random.randint(1, 6)</code>. При импорте
+                        <code>import random</code> функции вызываются через точку
+                        с именем модуля.</li>
+                    <li><strong>Одно и то же число при каждом запуске</strong>. Проверьте,
+                        не вызываете ли вы <code>random.seed()</code> с одинаковым аргументом
+                        в начале программы. Если seed фиксирован - числа всегда будут
+                        одинаковыми.</li>
+                    <li><strong>«IndexError» при использовании <code>choice</code></strong>.
+                        Скорее всего, вы передали пустую строку или пустой список.
+                        <code>choice</code> не может выбрать элемент из ничего.</li>
+                    <li><strong>«TypeError» при вызове <code>shuffle</code></strong>. Строки
+                        перемешать нельзя - они неизменяемы. <code>shuffle</code>
+                        работает только с изменяемыми коллекциями, например списками.</li>
+                    <li><strong><code>shuffle</code> вернул None</strong>. Это нормальное
+                        поведение. <code>shuffle</code> меняет список на месте и ничего
+                        не возвращает. Не нужно записывать результат в новую переменную.</li>
+                    <li><strong>«randint(1, 6) даёт 6, а range(1, 6) - нет»</strong>. Да,
+                        это важное отличие. <code>randint</code> включает правую границу,
+                        <code>range</code> - нет. Так задумано, потому что <code>randint</code>
+                        - это как кубик: от 1 до 6 включительно.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Игральный кубик</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Сымитируйте бросок игрального кубика:
+                                выведите случайное целое число от 1 до 6.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>random.randint(1, 6)</code>. Не забудьте
+                                        <code>import random</code> в начале программы.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">dice = random.randint(1, 6)</span><span class="code-row">print(f"Выпало: {dice}")</span></code></pre>
+                                    <p>Запустите программу несколько раз - каждый раз будет новое
+                                        число. Если хотите имитировать бросок двух кубиков - просто
+                                        вызовите <code>randint</code> дважды и сложите результаты.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Генератор цвета</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте программу, которая выводит случайный
+                                цвет из списка: «красный», «жёлтый», «зелёный», «синий»,
+                                «белый», «чёрный».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте переменную со списком цветов в квадратных
+                                        скобках и передайте её в <code>random.choice()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">colors = ["красный", "жёлтый", "зелёный", "синий", "белый", "чёрный"]</span><span class="code-row">color = random.choice(colors)</span><span class="code-row"></span><span class="code-row">print(f"Ваш цвет: {color}")</span></code></pre>
+                                    <p>Метод <code>choice</code> выбирает один элемент из списка
+                                        с одинаковой вероятностью. Если запустить программу
+                                        несколько раз, будут появляться разные цвета.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Генератор пароля</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте простой генератор пароля: программа
+                                должна собрать пароль из 8 случайных символов. Используйте
+                                строку с доступными символами (буквы и цифры) и цикл
+                                <code>for</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте строку символов, например
+                                        <code>"abcdefghijklmnopqrstuvwxyz0123456789"</code>.
+                                        Заведите пустую переменную для пароля. В цикле
+                                        <code>for i in range(8):</code> выбирайте случайный
+                                        символ через <code>random.choice(chars)</code> и
+                                        добавляйте его к паролю через <code>+=</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">chars = "abcdefghijklmnopqrstuvwxyz0123456789"</span><span class="code-row">password = ""</span><span class="code-row"></span><span class="code-row">for i in range(8):</span><span class="code-row">    password += random.choice(chars)</span><span class="code-row"></span><span class="code-row">print(f"Ваш пароль: {password}")</span></code></pre>
+                                    <p>Цикл выполняется 8 раз. На каждом шаге выбирается случайный
+                                        символ и добавляется к строке пароля. Обратите внимание
+                                        на <code>password += ...</code> - это короткая запись
+                                        <code>password = password + ...</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Угадай число (заготовка)</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая загадывает
+                                случайное число от 1 до 100 и просит пользователя его
+                                угадать. В цикле <code>while</code> спрашивайте число, пока
+                                пользователь не угадает. На каждой попытке подсказывайте:
+                                «Загаданное число больше» или «Загаданное число меньше».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Загадайте число через <code>random.randint(1, 100)</code>.
+                                        Внутри цикла <code>while True:</code> спрашивайте ввод
+                                        через <code>int(input(...))</code>. Сравнивайте через
+                                        <code>if / elif / else</code>. Если угадал - выводите
+                                        поздравление и делайте <code>break</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">secret = random.randint(1, 100)</span><span class="code-row">attempts = 0</span><span class="code-row"></span><span class="code-row">while True:</span><span class="code-row">    guess = int(input("Угадайте число от 1 до 100: "))</span><span class="code-row">    attempts += 1</span><span class="code-row"></span><span class="code-row">    if guess &lt; secret:</span><span class="code-row">        print("Загаданное число больше")</span><span class="code-row">    elif guess &gt; secret:</span><span class="code-row">        print("Загаданное число меньше")</span><span class="code-row">    else:</span><span class="code-row">        print(f"Поздравляю! Вы угадали за {attempts} попыток.")</span><span class="code-row">        break</span></code></pre>
+                                    <p>Это классическая игра, которая объединяет всё, что
+                                        мы прошли: случайные числа, ввод данных, условия,
+                                        циклы и f-строки. В следующем уроке мы сделаем
+                                        похожую игру, но уже полноценную - «Орёл или
+                                        Решка».</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы добавили в наш арсенал случайность. Теперь ваши программы
+                    могут вести себя непредсказуемо - как настоящие игры и симуляции.
+                    Вы узнали:</p>
+
+                <ul>
+                    <li>Что такое модули и как их подключать через <code>import</code>.</li>
+                    <li>Как получить случайное целое число через <code>random.randint()</code>.</li>
+                    <li>Как получить случайное дробное число через <code>random.random()</code>.</li>
+                    <li>Как выбрать случайный элемент через <code>random.choice()</code>.</li>
+                    <li>Как перемешать коллекцию через <code>random.shuffle()</code>.</li>
+                    <li>Почему числа «псевдослучайные» и что такое <code>seed()</code>.</li>
+                </ul>
+
+                <p>С этими инструментами можно писать карточные игры, генераторы паролей,
+                    симуляции броска кубика, случайные викторины. Случайность - это то,
+                    что превращает программу из «калькулятора» в нечто живое.</p>
+
+                <p>В следующем уроке мы закрепим эти знания на практике. Соберём первую
+                    настоящую игру - <strong>«Орёл или Решка»</strong>. А заодно
+                    познакомимся с модулем <code>math</code> и его полезными
+                    математическими функциями: округление, корень, модуль числа. Это
+                    будет большой практический урок, где мы соединим случайность,
+                    циклы, условия и подсчёт очков. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-06.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-08.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

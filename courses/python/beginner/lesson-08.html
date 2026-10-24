@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика: Орёл или Решка и модуль math - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="beginner" data-lesson-id="lesson-08">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 08</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson active" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Практика: игра «Орёл или Решка» и модуль math</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Мы прошли большой путь. Вы уже умеете работать с числами, строками, условиями,
+                    циклами и случайными числами. Пришло время собрать всё это вместе и написать
+                    первую настоящую игру, в которую можно играть с компьютером.</p>
+
+                <p>А во второй части урока мы познакомимся с модулем <code>math</code> - верным
+                    помощником для любых математических вычислений: от квадратного корня до
+                    округления чисел.</p>
+
+                <h2>Часть 1: Игра «Орёл или Решка»</h2>
+
+                <p>Правила простые. Компьютер «подбрасывает монету» - загадывает «Орёл» или
+                    «Решка». Игрок должен угадать, что выпало. Если угадал - ему зачисляется
+                    очко. Если нет - очко получает компьютер.</p>
+
+                <p>Чтобы игра была интересной, мы сделаем её бесконечной: после каждого броска
+                    спрашиваем игрока, хочет ли он сыграть ещё раз.</p>
+
+                <h3>Шаг 1. Подготовка</h3>
+
+                <p>Подключим модуль случайных чисел и создадим переменные для счёта:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">player_score = 0</span><span class="code-row">computer_score = 0</span></code></pre>
+
+                <h3>Шаг 2. Игровой цикл</h3>
+
+                <p>Наш основной цикл будет выглядеть так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">while True:</span><span class="code-row">    # 1. Компьютер загадывает сторону монеты</span><span class="code-row">    # 2. Игрок делает ставку</span><span class="code-row">    # 3. Сравниваем результаты и начисляем очки</span><span class="code-row">    # 4. Спрашиваем, хочет ли игрок продолжить</span></code></pre>
+
+                <h3>Шаг 3. Логика одного раунда</h3>
+
+                <p>В Python можно использовать <code>random.choice</code> для выбора из списка
+                    вариантов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">    coin = random.choice(["Орёл", "Решка"])</span><span class="code-row">    print(f"\nМонета подброшена...")</span><span class="code-row"></span><span class="code-row">    guess = input("Ваша ставка (Орёл/Решка): ").capitalize()</span></code></pre>
+
+                <p>Обратите внимание на <code>.capitalize()</code>. Если игрок введёт «орёл» с
+                    маленькой буквы, метод сделает первую букву заглавной («Орёл»). Это
+                    спасёт нас от ситуации, когда программа не узнаёт правильный ответ
+                    из-за регистра.</p>
+
+                <h3>Шаг 4. Проверка результата</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">    if guess not in ["Орёл", "Решка"]:</span><span class="code-row">        print("Неверный ввод! Введите 'Орёл' или 'Решка'.")</span><span class="code-row">        continue</span><span class="code-row"></span><span class="code-row">    if guess == coin:</span><span class="code-row">        print("Вы угадали!")</span><span class="code-row">        player_score += 1</span><span class="code-row">    else:</span><span class="code-row">        print(f"Вы не угадали. Выпал {coin}.")</span><span class="code-row">        computer_score += 1</span><span class="code-row"></span><span class="code-row">    print(f"Счёт: Вы {player_score} : {computer_score} Компьютер")</span></code></pre>
+
+                <p>Если игрок введёт что-то непонятное (например, «123» или «Питон»), мы
+                    используем <code>continue</code>, чтобы пропустить остаток раунда и
+                    спросить заново, не засчитывая это как поражение.</p>
+
+                <h3>Шаг 5. Продолжение игры</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">    play_again = input("\nСыграть ещё раз? (да/нет): ").lower()</span><span class="code-row">    if play_again != "да":</span><span class="code-row">        print("\nСпасибо за игру!")</span><span class="code-row">        break</span></code></pre>
+
+                <p>Мы используем <code>.lower()</code>, чтобы принимать и «да», и «ДА», и «Да».
+                    Всё, что не является «да» - завершает игру.</p>
+
+                <h3>Полный код игры</h3>
+
+                <p>Соберём всё вместе:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">player_score = 0</span><span class="code-row">computer_score = 0</span><span class="code-row"></span><span class="code-row">print("Добро пожаловать в игру 'Орёл или Решка'!")</span><span class="code-row"></span><span class="code-row">while True:</span><span class="code-row">    coin = random.choice(["Орёл", "Решка"])</span><span class="code-row">    print("\nМонета подброшена...")</span><span class="code-row"></span><span class="code-row">    guess = input("Ваша ставка (Орёл/Решка): ").capitalize()</span><span class="code-row"></span><span class="code-row">    if guess not in ["Орёл", "Решка"]:</span><span class="code-row">        print("Неверный ввод! Введите 'Орёл' или 'Решка'.")</span><span class="code-row">        continue</span><span class="code-row"></span><span class="code-row">    if guess == coin:</span><span class="code-row">        print("Вы угадали!")</span><span class="code-row">        player_score += 1</span><span class="code-row">    else:</span><span class="code-row">        print(f"Вы не угадали. Выпал {coin}.")</span><span class="code-row">        computer_score += 1</span><span class="code-row"></span><span class="code-row">    print(f"Текущий счёт: Вы {player_score} : {computer_score} Компьютер")</span><span class="code-row"></span><span class="code-row">    play_again = input("\nСыграть ещё раз? (да/нет): ").lower()</span><span class="code-row">    if play_again != "да":</span><span class="code-row">        print("\nСпасибо за игру!")</span><span class="code-row">        break</span></code></pre>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Как улучшить игру
+                    </div>
+                    <p>Эту игру можно улучшать до бесконечности. Например, добавить ограничение:
+                        «играем до 5 побед». Или считать процент побед. Или сделать так, чтобы
+                        монета выпадала не 50/50, а с разной вероятностью (например, Орёл
+                        выпадает в 30% случаев). Идей для практики - масса!</p>
+                </div>
+
+                <h2>Часть 2: Модуль math</h2>
+
+                <p>Теперь переключимся с игр на математику. Python не был бы языком
+                    программирования, если бы не умел хорошо считать. Для сложных вычислений
+                    есть модуль <code>math</code>. Подключается он так же, как и
+                    <code>random</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">import math</span></code></pre>
+
+                <h3>Округление: ceil() и floor()</h3>
+
+                <p>Обычная функция <code>round()</code> округляет по правилам математики
+                    (0.5 и выше - вверх, меньше - вниз). Но иногда нужно строго принудительное
+                    округление:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import math</span><span class="code-row"></span><span class="code-row">print(math.ceil(3.1))    # 4 (всегда вверх)</span><span class="code-row">print(math.ceil(3.9))    # 4 (всегда вверх)</span><span class="code-row">print(math.floor(3.1))   # 3 (всегда вниз)</span><span class="code-row">print(math.floor(3.9))   # 3 (всегда вниз)</span></code></pre>
+
+                <ul>
+                    <li><strong><code>math.ceil()</code></strong> (от <em>ceiling</em> - «потолок»)
+                        всегда округляет вверх, до ближайшего целого.</li>
+                    <li><strong><code>math.floor()</code></strong> (от <em>floor</em> - «пол»)
+                        всегда округляет вниз.</li>
+                </ul>
+
+                <p>Где это нужно? Например, если вы делите пиццу на куски и хотите узнать,
+                    сколько коробок нужно, чтобы упаковать всё. Округлять вниз нельзя -
+                    часть пиццы останется на улице. Нужен <code>ceil</code>.</p>
+
+                <h3>Квадратный корень: sqrt()</h3>
+
+                <p>Функция <code>math.sqrt()</code> извлекает квадратный корень:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import math</span><span class="code-row"></span><span class="code-row">print(math.sqrt(25))     # 5.0</span><span class="code-row">print(math.sqrt(144))    # 12.0</span><span class="code-row">print(math.sqrt(2))      # 1.41421356...</span></code></pre>
+
+                <p>Корень часто нужен в геометрии, физике, графике. Например, расстояние
+                    между двумя точками на плоскости считается через корень из суммы
+                    квадратов.</p>
+
+                <h3>Число Пи: math.pi</h3>
+
+                <p><code>math.pi</code> - это константа, равная числу Пи (3.14159...).
+                    Она хранится с высокой точностью и пригодится в любых вычислениях
+                    с кругами:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import math</span><span class="code-row"></span><span class="code-row">radius = 5</span><span class="code-row">area = math.pi * radius ** 2</span><span class="code-row">print(f"Площадь круга: {area:.2f}")   # 78.54</span></code></pre>
+
+                <h3>Модуль числа: fabs()</h3>
+
+                <p>Иногда нужно узнать, насколько число далеко от нуля (модуль числа).
+                    Стандартная функция <code>abs()</code> делает это и без модуля math,
+                    но <code>math.fabs()</code> всегда возвращает результат в виде
+                    <code>float</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import math</span><span class="code-row"></span><span class="code-row">print(math.fabs(-10))   # 10.0</span><span class="code-row">print(abs(-10))         # 10</span></code></pre>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>import math</code>
+                        <span>подключить математический модуль</span>
+                    </li>
+                    <li>
+                        <code>math.ceil(x)</code>
+                        <span>округление вверх</span>
+                    </li>
+                    <li>
+                        <code>math.floor(x)</code>
+                        <span>округление вниз</span>
+                    </li>
+                    <li>
+                        <code>math.sqrt(x)</code>
+                        <span>квадратный корень</span>
+                    </li>
+                    <li>
+                        <code>math.pi</code>
+                        <span>число Пи</span>
+                    </li>
+                    <li>
+                        <code>.capitalize()</code>
+                        <span>первая буква заглавная</span>
+                    </li>
+                    <li>
+                        <code>.lower()</code>
+                        <span>всё в нижний регистр</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при создании игр и использовании math.</p>
+
+                <ul>
+                    <li><strong>«NameError: name 'math' is not defined»</strong>. Забыли
+                        подключить модуль через <code>import math</code> в начале файла.</li>
+                    <li><strong>«Программа не узнаёт правильный ответ»</strong>. Возможно,
+                        пользователь ввёл «орёл» с маленькой буквы, а программа сравнивает
+                        с «Орёл». Используйте <code>.capitalize()</code> или
+                        <code>.lower()</code>, чтобы привести ввод к единому виду.</li>
+                    <li><strong>«Игра зациклилась и не завершается»</strong>. Проверьте,
+                        есть ли <code>break</code> в нужном месте. Если его нет в ветке
+                        выхода, цикл <code>while True</code> будет крутиться вечно.</li>
+                    <li><strong>«math.sqrt() выдаёт ошибку»</strong>. Скорее всего, вы
+                        пытаетесь найти корень из отрицательного числа. В обычной математике
+                        такого не бывает, поэтому Python выбрасывает
+                        <code>ValueError: math domain error</code>.</li>
+                    <li><strong>«Ошибка с math.ceil()»</strong>. Функция ожидает число.
+                        Если передать строку (например, забыли преобразовать ввод через
+                        <code>int()</code> или <code>float()</code>) - получите
+                        <code>TypeError</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Улучшенная игра</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Измените игру «Орёл или Решка» так, чтобы
+                                игра заканчивалась, когда один из игроков наберёт 3 победы.
+                                В конце выведите победителя.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вместо <code>while True:</code> используйте условие
+                                        <code>while player_score &lt; 3 and computer_score &lt; 3:</code>.
+                                        После цикла проверьте, у кого больше очков, и выведите
+                                        победителя.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">player_score = 0</span><span class="code-row">computer_score = 0</span><span class="code-row"></span><span class="code-row">while player_score &lt; 3 and computer_score &lt; 3:</span><span class="code-row">    coin = random.choice(["Орёл", "Решка"])</span><span class="code-row">    guess = input("Ваша ставка (Орёл/Решка): ").capitalize()</span><span class="code-row"></span><span class="code-row">    if guess not in ["Орёл", "Решка"]:</span><span class="code-row">        print("Неверный ввод!")</span><span class="code-row">        continue</span><span class="code-row"></span><span class="code-row">    if guess == coin:</span><span class="code-row">        player_score += 1</span><span class="code-row">        print("Вы угадали!")</span><span class="code-row">    else:</span><span class="code-row">        computer_score += 1</span><span class="code-row">        print(f"Вы не угадали. Выпал {coin}.")</span><span class="code-row"></span><span class="code-row">    print(f"Счёт: Вы {player_score} : {computer_score} Компьютер\n")</span><span class="code-row"></span><span class="code-row">if player_score &gt; computer_score:</span><span class="code-row">    print("Вы победили!")</span><span class="code-row">else:</span><span class="code-row">    print("Победил компьютер!")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Калькулятор круга</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая спрашивает
+                                радиус круга и выводит его площадь и длину окружности.
+                                Используйте константу <code>math.pi</code>. Формулы:
+                                площадь = <code>π * r²</code>, длина = <code>2 * π * r</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Радиус получайте через <code>float(input(...))</code>,
+                                        потому что радиус может быть дробным. Возведение в
+                                        квадрат в Python записывается как <code>** 2</code>.
+                                        Для красоты вывода используйте <code>:.2f</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import math</span><span class="code-row"></span><span class="code-row">radius = float(input("Введите радиус: "))</span><span class="code-row"></span><span class="code-row">area = math.pi * (radius ** 2)</span><span class="code-row">circumference = 2 * math.pi * radius</span><span class="code-row"></span><span class="code-row">print(f"Площадь: {area:.2f}")</span><span class="code-row">print(f"Длина окружности: {circumference:.2f}")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Гипотенуза</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">По теореме Пифагора гипотенуза прямоугольного
+                                треугольника равна корню из суммы квадратов катетов.
+                                Спросите у пользователя два катета и вычислите гипотенузу
+                                с помощью <code>math.sqrt</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Формула: <code>c = math.sqrt(a**2 + b**2)</code>.
+                                        Катеты вводите через <code>float()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import math</span><span class="code-row"></span><span class="code-row">a = float(input("Первый катет: "))</span><span class="code-row">b = float(input("Второй катет: "))</span><span class="code-row"></span><span class="code-row">c = math.sqrt(a ** 2 + b ** 2)</span><span class="code-row"></span><span class="code-row">print(f"Гипотенуза: {c:.2f}")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Упаковка коробок</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В магазине есть 45 товаров. В одну коробку
+                                помещается 8 товаров. Сколько коробок понадобится, чтобы
+                                упаковать все товары? Используйте <code>math.ceil</code>.
+                                Выведите результат.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Количество коробок - это <code>45 / 8</code>, что равно
+                                        5.625. Простое деление не подходит - нельзя взять
+                                        «половину коробки». Используйте
+                                        <code>math.ceil(45 / 8)</code>, и получите 6 коробок.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import math</span><span class="code-row"></span><span class="code-row">total_items = 45</span><span class="code-row">items_per_box = 8</span><span class="code-row"></span><span class="code-row">boxes = math.ceil(total_items / items_per_box)</span><span class="code-row"></span><span class="code-row">print(f"Понадобится коробок: {boxes}")</span></code></pre>
+                                    <p>Если бы мы использовали обычное деление и отбросили
+                                        дробную часть, мы бы получили 5 коробок. Но 5 * 8 = 40,
+                                        а у нас 45 товаров. Пять товаров остались бы на улице.
+                                        Округление вверх решает проблему.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Это был очень насыщенный практический урок. Мы написали первую настоящую
+                    игру с подсчётом очков, а также познакомились с математическим модулем.
+                    Теперь вы знаете:</p>
+
+                <ul>
+                    <li>Как создать игру, в которой есть состояние (счёт) и цикл.</li>
+                    <li>Как использовать <code>.capitalize()</code> и <code>.lower()</code>
+                        для нормализации пользовательского ввода.</li>
+                    <li>Как работает модуль <code>math</code>: <code>ceil</code>,
+                        <code>floor</code>, <code>sqrt</code>, <code>pi</code>.</li>
+                    <li>Как применять математику к реальным задачам (упаковка, геометрия).</li>
+                </ul>
+
+                <p>С этого момента вы можете писать игры, в которые действительно интересно
+                    играть. Пока они текстовые и в консоли, но это только начало.</p>
+
+                <p>В следующем уроке мы вернёмся к теории и разберём <strong>типы данных
+                    «под капотом»</strong>. Вы узнаете, что такое изменяемые и неизменяемые
+                типы, как Python хранит данные в памяти, и почему это важно знать. Это
+                будет фундамент для понимания списков, которые мы разберём в уроке 10.
+                До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-07.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-09.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

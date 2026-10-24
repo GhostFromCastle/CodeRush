@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коллекции: кортежи, множества и словари - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="beginner" data-lesson-id="lesson-11">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 11</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson active" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Коллекции: кортежи, множества и словари</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Это финальный урок начального уровня. Мы уже отлично знакомы со списками -
+                    они универсальны и подходят для большинства задач. Но иногда списки -
+                    не самый лучший выбор.</p>
+
+                <p>Например, координаты точки на карте <code>(x, y)</code> вряд ли должны
+                    меняться. Список имён гостей не должен содержать дубликатов. А телефонную
+                    книгу удобнее хранить не как список имён и список номеров, а как пары
+                    «Имя - Номер». Для всех этих случаев в Python есть другие коллекции:
+                    <strong>кортежи</strong>, <strong>множества</strong> и
+                    <strong>словари</strong>.</p>
+
+                <h2>Кортежи (tuple): неизменяемые списки</h2>
+
+                <p>Кортеж - это очень похоже на список, но с одним важным отличием:
+                    его <strong>нельзя изменить</strong> после создания. Мы уже
+                    знаем из урока 9, что такие данные называются неизменяемыми.</p>
+
+                <p>Создаётся кортеж с помощью круглых скобок <code>()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">point = (10, 20)</span><span class="code-row">rgb = (255, 128, 0)</span><span class="code-row">person = ("Алексей", 25)</span></code></pre>
+
+                <p>Работа с индексами точно такая же, как у списков:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(point[0])    # 10</span><span class="code-row">print(point[-1])   # 20</span></code></pre>
+
+                <p>Но если попытаться изменить элемент - получим ошибку:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">point[0] = 5   # TypeError!</span></code></pre>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Зачем нужны кортежи?
+                    </div>
+                    <p>Если данные не должны меняться, кортеж защищает их от случайной
+                        порчи. Это как запечатанный конверт: внутри лежит важное, но
+                        изменить содержимое, не порвав конверт, нельзя. Плюс кортежи
+                        работают чуть быстрее списков и могут использоваться там, где
+                        списки запрещены (например, в качестве ключей словаря).</p>
+                </div>
+
+                <h3>Распаковка кортежа</h3>
+
+                <p>Очень удобная фишка Python - можно сразу разложить элементы кортежа
+                    по отдельным переменным:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">point = (10, 20)</span><span class="code-row">x, y = point</span><span class="code-row"></span><span class="code-row">print(x)   # 10</span><span class="code-row">print(y)   # 20</span></code></pre>
+
+                <p>Это часто используется при возврате нескольких значений из функции
+                    (о функциях поговорим на среднем уровне).</p>
+
+                <h2>Множества (set): только уникальные элементы</h2>
+
+                <p>Множество - это коллекция, которая хранит только <strong>уникальные</strong>
+                    элементы и не имеет порядка. Если вы добавите дубликат - он просто
+                    проигнорируется.</p>
+
+                <p>Создаётся с помощью фигурных скобок <code>{}</code> или функции
+                    <code>set()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">numbers = {1, 2, 3, 3, 3}</span><span class="code-row">print(numbers)   # {1, 2, 3} - дубликаты исчезли</span></code></pre>
+
+                <p>Из-за отсутствия порядка нельзя обратиться к элементу по индексу -
+                    <code>numbers[0]</code> вызовет ошибку. Зато можно проверять наличие
+                    элемента через <code>in</code> (и это работает очень быстро):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">if 2 in numbers:</span><span class="code-row">    print("Двойка есть в множестве")</span></code></pre>
+
+                <h3>Главное применение: удаление дубликатов</h3>
+
+                <p>Самый частый способ использования множеств - превратить список с
+                    дубликатами в список без них. Делается это одной строкой:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">my_list = [1, 2, 2, 3, 3, 3, 4]</span><span class="code-row">unique = list(set(my_list))</span><span class="code-row">print(unique)   # [1, 2, 3, 4] (порядок может отличаться)</span></code></pre>
+
+                <h3>Операции над множествами</h3>
+
+                <p>Множества в Python поддерживают математические операции:</p>
+
+                <ul>
+                    <li><strong>Объединение <code>|</code></strong> - все элементы из обоих множеств.</li>
+                    <li><strong>Пересечение <code>&amp;</code></strong> - только те элементы, которые есть в обоих.</li>
+                    <li><strong>Разность <code>-</code></strong> - элементы первого, которых нет во втором.</li>
+                </ul>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">a = {1, 2, 3}</span><span class="code-row">b = {3, 4, 5}</span><span class="code-row"></span><span class="code-row">print(a | b)   # {1, 2, 3, 4, 5} (объединение)</span><span class="code-row">print(a &amp; b)   # {3} (пересечение)</span><span class="code-row">print(a - b)   # {1, 2} (разность)</span></code></pre>
+
+                <h2>Словари (dict): ключ - значение</h2>
+
+                <p>Словарь - это самая мощная и самая часто используемая коллекция после
+                    списка. Он хранит данные в виде пар <strong>«ключ: значение»</strong>.</p>
+
+                <p>Аналогия: обычный толковый словарь. У вас есть слово (ключ), и есть его
+                    определение (значение). Зная слово, вы мгновенно находите определение.</p>
+
+                <p>Создаётся словарь тоже с помощью фигурных скобок, но с двоеточиями:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">person = {</span><span class="code-row">    "name": "Алексей",</span><span class="code-row">    "age": 25,</span><span class="code-row">    "city": "Москва"</span><span class="code-row">}</span></code></pre>
+
+                <h3>Доступ и изменение</h3>
+
+                <p>Чтобы получить значение, используется ключ в квадратных скобках:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(person["name"])   # Алексей</span><span class="code-row">print(person["age"])    # 25</span></code></pre>
+
+                <p>Если обратиться к несуществующему ключу - будет ошибка <code>KeyError</code>.
+                    Чтобы избежать этого, можно использовать метод <code>get()</code>, который
+                    вернёт <code>None</code> (или указанное значение по умолчанию), если ключа нет:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(person.get("email"))              # None</span><span class="code-row">print(person.get("email", "не указан")) # не указан</span></code></pre>
+
+                <p>Добавление и изменение значений происходит одинаково - по ключу:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">person["age"] = 26            # изменили</span><span class="code-row">person["email"] = "a@mail.ru" # добавили</span></code></pre>
+
+                <h3>Перебор словаря</h3>
+
+                <p>Пройтись по словарю можно тремя способами:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">for key in person.keys():</span><span class="code-row">    print(key)              # имена ключей</span><span class="code-row"></span><span class="code-row">for value in person.values():</span><span class="code-row">    print(value)            # значения</span><span class="code-row"></span><span class="code-row">for key, value in person.items():</span><span class="code-row">    print(f"{key}: {value}") # пары ключ-значение</span></code></pre>
+
+                <p>Последний вариант используется чаще всего. Метод <code>.items()</code>
+                    возвращает пары «ключ-значение», которые сразу можно распаковывать
+                    в две переменные.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Ключи должны быть неизменяемыми
+                    </div>
+                    <p>В качестве ключей словаря можно использовать только неизменяемые
+                        типы: строки, числа, кортежи. Списки использовать нельзя - они
+                        изменяемые, а значит, могут сломать структуру словаря. Если
+                        попробуете, получите ошибку <code>TypeError: unhashable type</code>.</p>
+                </div>
+
+                <h2>Когда что использовать</h2>
+
+                <p>У нас теперь четыре вида коллекций. Как выбрать нужную?</p>
+
+                <ul>
+                    <li><strong>Список (list)</strong> - когда важен порядок, элементы
+                        могут повторяться, и вы планируете их менять. <em>Покупки в корзине,
+                            список студентов.</em></li>
+                    <li><strong>Кортеж (tuple)</strong> - когда данные не должны меняться.
+                        <em>Координаты, дата рождения, настройки, которые нельзя редактировать.</em></li>
+                    <li><strong>Множество (set)</strong> - когда нужна уникальность
+                        и порядок неважен. <em>Уникальные теги, ID посетителей, удаление дубликатов.</em></li>
+                    <li><strong>Словарь (dict)</strong> - когда данные связаны как
+                        «ключ - значение». <em>Телефонная книга, JSON-подобные данные,
+                            настройки приложения.</em></li>
+                </ul>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>()</code>
+                        <span>кортеж (неизменяемый)</span>
+                    </li>
+                    <li>
+                        <code>{}</code>
+                        <span>множество или словарь</span>
+                    </li>
+                    <li>
+                        <code>{"key": "value"}</code>
+                        <span>словарь</span>
+                    </li>
+                    <li>
+                        <code>set()</code>
+                        <span>удалить дубликаты</span>
+                    </li>
+                    <li>
+                        <code>a | b, a &amp; b</code>
+                        <span>объединение, пересечение</span>
+                    </li>
+                    <li>
+                        <code>dict["key"]</code>
+                        <span>доступ к значению</span>
+                    </li>
+                    <li>
+                        <code>.get(key)</code>
+                        <span>безопасный доступ</span>
+                    </li>
+                    <li>
+                        <code>.items()</code>
+                        <span>перебор пар</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с новыми коллекциями.</p>
+
+                <ul>
+                    <li><strong>«TypeError: 'tuple' object does not support item assignment»</strong>.
+                        Вы пытаетесь изменить элемент кортежа. Кортежи неизменяемы.
+                        Если нужно изменить - придётся создавать новый кортеж.</li>
+                    <li><strong>«TypeError: 'set' object is not subscriptable»</strong>.
+                        Вы пытаетесь обратиться к элементу множества по индексу
+                        (<code>my_set[0]</code>). У множеств нет индексов. Если нужен
+                        конкретный элемент - используйте цикл или преобразуйте во
+                        временный список.</li>
+                    <li><strong>«KeyError»</strong> при работе со словарём. Вы обращаетесь
+                        к ключу, которого нет. Проверьте через <code>if key in my_dict:</code>
+                        или используйте <code>my_dict.get(key)</code>.</li>
+                    <li><strong>«TypeError: unhashable type: 'list'»</strong>. Вы пытаетесь
+                        использовать список как ключ словаря или добавить его в множество.
+                        Списки изменяемы, а значит, не могут быть ключами. Используйте
+                        кортежи (<code>tuple</code>), если нужно несколько значений в ключе.</li>
+                    <li><strong>Пустые фигурные скобки создают словарь</strong>. Если написать
+                        <code>my_collection = {}</code>, это будет пустой <em>словарь</em>,
+                        а не множество. Для пустого множества нужно использовать
+                        <code>set()</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. Это последние задачи начального
+                    уровня, поэтому они объединяют несколько тем.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Координаты</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте кортеж <code>point</code> с
+                                двумя числами (координатами x и y). С помощью распаковки
+                                сохраните их в переменные <code>x</code> и <code>y</code>.
+                                Выведите на экран фразу: «Координата X: 10, координата Y: 20».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте кортеж: <code>point = (10, 20)</code>. Для
+                                        распаковки напишите <code>x, y = point</code>. Вывод
+                                        сделайте через f-строку.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">point = (10, 20)</span><span class="code-row">x, y = point</span><span class="code-row"></span><span class="code-row">print(f"Координата X: {x}, координата Y: {y}")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Уникальные слова</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Дан список слов с повторениями:
+                                <code>["яблоко", "банан", "яблоко", "вишня", "банан", "арбуз"]</code>.
+                                Получите список только уникальных слов и выведите его.
+                                Используйте множества.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Преобразуйте список во множество через <code>set(words)</code>,
+                                        чтобы убрать дубликаты. Затем преобразуйте обратно в
+                                        список через <code>list()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">words = ["яблоко", "банан", "яблоко", "вишня", "банан", "арбуз"]</span><span class="code-row">unique_words = list(set(words))</span><span class="code-row"></span><span class="code-row">print(unique_words)</span></code></pre>
+                                    <p>Порядок элементов в множестве не сохраняется, поэтому
+                                        итоговый список может выглядеть в любом порядке. Если
+                                        порядок важен, лучше использовать цикл с проверкой
+                                        <code>if word not in unique_words:</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Телефонная книга</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте словарь с телефонами трёх друзей.
+                                Спросите у пользователя имя и выведите его номер. Если
+                                такого имени нет в словаре - вежливо сообщите об этом.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для безопасного поиска используйте метод <code>.get()</code>.
+                                        Если он вернёт <code>None</code> - значит, имени нет.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">phones = {</span><span class="code-row">    "Иван": "+7-900-123-45-67",</span><span class="code-row">    "Мария": "+7-900-765-43-21",</span><span class="code-row">    "Алексей": "+7-900-555-55-55"</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">name = input("Введите имя: ")</span><span class="code-row">phone = phones.get(name)</span><span class="code-row"></span><span class="code-row">if phone:</span><span class="code-row">    print(f"Номер {name}: {phone}")</span><span class="code-row">else:</span><span class="code-row">    print("Такого контакта нет.")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Анализ текста</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя предложение.
+                                Разбейте его на слова через <code>split()</code>. Подсчитайте,
+                                сколько раз встречается каждое слово. Выведите результат в
+                                формате «Слово: количество». Используйте словарь.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте пустой словарь <code>counts = {}</code>. В цикле
+                                        по словам проверяйте, есть ли уже слово в словаре.
+                                        Если есть - увеличивайте счётчик. Если нет - создавайте
+                                        новый ключ со значением 1.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">text = input("Введите предложение: ")</span><span class="code-row">words = text.split()</span><span class="code-row"></span><span class="code-row">counts = {}</span><span class="code-row"></span><span class="code-row">for word in words:</span><span class="code-row">    if word in counts:</span><span class="code-row">        counts[word] += 1</span><span class="code-row">    else:</span><span class="code-row">        counts[word] = 1</span><span class="code-row"></span><span class="code-row">for word, count in counts.items():</span><span class="code-row">    print(f"{word}: {count}")</span></code></pre>
+                                    <p>Это классический алгоритм частотного анализа. Позже вы
+                                        узнаете, что его можно записать короче с помощью метода
+                                        <code>.get(word, 0) + 1</code>, но для понимания
+                                        базовой логики полезно начать с явного условия.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Начальный уровень завершён</h2>
+
+                <p>Поздравляем! Вы прошли все 11 уроков начального уровня. Это огромный
+                    шаг: ещё недавно вы не знали, что такое переменная, а теперь умеете
+                    писать игры, работать с текстом, списками, кортежами, множествами и
+                    словарями. Вы понимаете, как устроены циклы, условия и как управлять
+                    случайностями.</p>
+
+                <p>Давайте вспомним, что вы освоили:</p>
+
+                <ul>
+                    <li>Установка Python и работа в VS Code.</li>
+                    <li>Переменные, типы данных (int, float, str, bool).</li>
+                    <li>Ввод данных и f-строки.</li>
+                    <li>Условия (if, elif, else) и логические операторы.</li>
+                    <li>Циклы (while, for), break и continue.</li>
+                    <li>Работа со строками: индексы, срезы, методы.</li>
+                    <li>Случайные числа и модуль random.</li>
+                    <li>Модуль math и математические вычисления.</li>
+                    <li>Понимание изменяемых и неизменяемых типов.</li>
+                    <li>Списки (Lists) и их методы.</li>
+                    <li>Кортежи, множества и словари.</li>
+                </ul>
+
+                <p>На этом начальный уровень завершён. Впереди - <strong>средний
+                        уровень</strong>, где мы будем учиться писать настоящие функции,
+                    работать с файлами, обрабатывать ошибки и создавать собственные классы.
+                    Это будет новый уровень сложности, но вы уже готовы к нему.</p>
+
+                <p>Отдохните, отпразднуйте победу, а потом переходите на средний уровень.
+                    До встречи в следующем уроке «Функции: основы»!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-10.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../intermediate/lesson-12.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

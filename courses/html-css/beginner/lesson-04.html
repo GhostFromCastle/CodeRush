@@ -260,14 +260,32 @@
                 <pre
                     class="code-numbered"><code><span class="code-row">&lt;a href="https://google.com" target="_blank" rel="noopener noreferrer"&gt;</span><span class="code-row">    Перейти на Google</span><span class="code-row">&lt;/a&gt;</span></code></pre>
 
-                <h3>Ссылки-якоря</h3>
+                <h3>Якорные ссылки (навигация внутри страницы)</h3>
 
-                <p>Ссылку можно сделать не на другую страницу, а на конкретный блок на этой же странице. Для
-                    этого блоку нужно задать уникальный идентификатор через атрибут <code>id</code>, а в ссылке
-                    указать его через решётку <code>#</code>.</p>
+                <p>Ссылку можно сделать не на другую страницу, а на конкретный блок <strong>внутри этой же
+                    страницы</strong>. Такие ссылки называются «якорями» (anchors). Они очень часто используются
+                    в меню одностраничных сайтов (лендингов), чтобы быстро перейти к нужной секции.</p>
+
+                <p>Чтобы это сработало, нужно сделать две вещи:</p>
+                <ol>
+                    <li>Задать целевому блоку уникальный идентификатор через атрибут <code>id</code>.</li>
+                    <li>В ссылке указать этот идентификатор через решётку <code>#</code>.</li>
+                </ol>
 
                 <pre
-                    class="code-numbered"><code><span class="code-row">&lt;a href="#footer"&gt;Перейти к подвалу сайта&lt;/a&gt;</span><span class="code-row"></span><span class="code-row">&lt;!-- Где-то ниже в коде --&gt;</span><span class="code-row">&lt;footer id="footer"&gt;...&lt;/footer&gt;</span></code></pre>
+                    class="code-numbered"><code><span class="code-row">&lt;!-- Ссылка в меню --&gt;</span><span class="code-row">&lt;a href="#features"&gt;Перейти к возможностям&lt;/a&gt;</span><span class="code-row"></span><span class="code-row">&lt;!-- Целевой блок ниже по странице --&gt;</span><span class="code-row">&lt;section id="features"&gt;</span><span class="code-row">    &lt;h2&gt;Наши возможности&lt;/h2&gt;</span><span class="code-row">&lt;/section&gt;</span></code></pre>
+
+                <p>При клике на такую ссылку браузер мгновенно прокрутит страницу так, чтобы блок с
+                    <code>id="features"</code> оказался вверху экрана.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Плавный скролл
+                    </div>
+                    <p>По умолчанию прокрутка происходит резко. Чтобы страница прокручивалась плавно, в CSS
+                        можно добавить всего одну строчку: <code>html { scroll-behavior: smooth; }</code>.</p>
+                </div>
 
                 <h2>Изображения: делаем страницу живой</h2>
 
@@ -352,6 +370,10 @@
                         <span>безопасность для новых вкладок</span>
                     </li>
                     <li>
+                        <code>#id</code>
+                        <span>якорная ссылка на блок на этой же странице</span>
+                    </li>
+                    <li>
                         <code>&lt;img&gt;</code>
                         <span>тег для изображения (одиночный)</span>
                     </li>
@@ -377,6 +399,10 @@
                     <li><strong>«Ссылка не работает, ничего не происходит».</strong> Проверьте атрибут
                         <code>href</code>. Возможно, вы забыли его написать, или указали неверный адрес.
                         Убедитесь, что у ссылки есть текст, по которому можно кликнуть.</li>
+                    <li><strong>«Якорная ссылка не работает».</strong> Проверьте, что <code>id</code> у целевого
+                        блока написано без решётки (просто <code>features</code>), а в ссылке — с решёткой
+                        (<code>href="#features"</code>). Также <code>id</code> не должен повторяться на странице.
+                    </li>
                     <li><strong>«Вместо картинки — иконка сломанной картинки».</strong> Скорее всего,
                         неверный путь в атрибуте <code>src</code>. Проверьте:
                         <ul>
@@ -452,7 +478,42 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 2. Добавьте изображение</span>
+                            <span>Задача 2. Сделайте якорь</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте на странице две секции: <code>&lt;section id="top"&gt;</code>
+                                и <code>&lt;section id="bottom"&gt;</code>. В первой разместите ссылку «Вниз», а во
+                                второй — ссылку «Наверх». Свяжите их так, чтобы клик прокручивал страницу.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Ссылка «Вниз» должна вести на <code>#bottom</code>, а «Наверх» — на
+                                        <code>#top</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">&lt;section id="top" style="height: 100vh;"&gt;</span><span class="code-row">    &lt;a href="#bottom"&gt;Вниз&lt;/a&gt;</span><span class="code-row">&lt;/section&gt;</span><span class="code-row">&lt;section id="bottom" style="height: 100vh;"&gt;</span><span class="code-row">    &lt;a href="#top"&gt;Наверх&lt;/a&gt;</span><span class="code-row">&lt;/section&gt;</span></code></pre>
+                                    <p>Если вы добавите в CSS <code>html { scroll-behavior: smooth; }</code>,
+                                        переход будет плавным.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Добавьте изображение</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
@@ -490,7 +551,7 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Создайте figure</span>
+                            <span>Задача 4. Создайте figure</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
@@ -518,50 +579,6 @@
                                 <div class="faq-answer">
                                     <p>Пример:</p>
                                     <pre class="code-numbered"><code><span class="code-row">&lt;figure&gt;</span><span class="code-row">    &lt;img src="https://picsum.photos/400/300" alt="Пейзаж"&gt;</span><span class="code-row">    &lt;figcaption&gt;Случайный пейзаж из сети&lt;/figcaption&gt;</span><span class="code-row">&lt;/figure&gt;</span></code></pre>
-                                </div>
-                            </details>
-                        </div>
-                    </details>
-
-                    <details class="faq-item task-item">
-                        <summary>
-                            <span>Задача 4. Найдите ошибки</span>
-                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
-                        </summary>
-                        <div class="faq-answer">
-                            <p class="task-desc">Посмотрите на код. Здесь три ошибки, связанные с темой урока.
-                                Найдите и исправьте их.</p>
-                            <pre
-                                class="code-numbered"><code><span class="code-row">&lt;!-- Ссылка --&gt;</span><span class="code-row">&lt;a&gt;Перейти на сайт&lt;/a&gt;</span><span class="code-row"></span><span class="code-row">&lt;!-- Картинка --&gt;</span><span class="code-row">&lt;img src="cat.jpg"&gt;</span><span class="code-row"></span><span class="code-row">&lt;!-- Новая вкладка --&gt;</span><span class="code-row">&lt;a href="https://example.com" target="_blank"&gt;Пример&lt;/a&gt;</span></code></pre>
-
-                            <details class="faq-item task-nested">
-                                <summary>
-                                    <span>Подсказка</span>
-                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
-                                </summary>
-                                <div class="faq-answer">
-                                    <p>Вспомните, какие атрибуты обязательны для ссылок и картинок, и что
-                                        нужно добавить при открытии в новой вкладке.</p>
-                                </div>
-                            </details>
-
-                            <details class="faq-item task-nested">
-                                <summary>
-                                    <span>Разбор</span>
-                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
-                                </summary>
-                                <div class="faq-answer">
-                                    <p>Ошибки:</p>
-                                    <ol>
-                                        <li><strong>У ссылки нет href.</strong> Браузер не знает, куда вести.
-                                            Должно быть: <code>&lt;a href="URL"&gt;...&lt;/a&gt;</code>.</li>
-                                        <li><strong>У картинки нет alt.</strong> Это плохо для доступности
-                                            и SEO. Должно быть: <code>&lt;img src="cat.jpg" alt="Кот"&gt;</code>.</li>
-                                        <li><strong>Нет rel="noopener noreferrer" при target="_blank".</strong>
-                                            Это угроза безопасности. Правильно:
-                                            <code>&lt;a href="URL" target="_blank" rel="noopener noreferrer"&gt;</code>.
-                                        </li>
-                                    </ol>
                                 </div>
                             </details>
                         </div>
