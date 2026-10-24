@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рефакторинг - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="advanced" data-lesson-id="lesson-27">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 27</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson active" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Рефакторинг</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы разобрали паттерны проектирования. Сегодня поговорим о навыке, который
+                    отличает хорошего разработчика от отличного - об умении <strong>улучшать код</strong>.
+                    Программа может работать без ошибок, но при этом быть нечитаемой, запутанной и сложной
+                    в поддержке. Процесс улучшения внутренней структуры кода без изменения его внешнего
+                    поведения называется <strong>рефакторингом</strong>.</p>
+
+                <p>Представьте, что вы переехали в новую квартиру. Вещи распакованы, мебель стоит, жить
+                    можно. Но провода от компьютера тянутся через всю комнату, вещи в шкафу лежат
+                    вперемешку, а на кухне ничего не найти. Рефакторинг - это генеральная уборка и
+                    перестановка. Квартира та же, функции те же, но жить в ней становится в разы приятнее.</p>
+
+                <h2>Зачем нужен рефакторинг</h2>
+
+                <p>Код пишется один раз, а читается и изменяется сотни раз. Если через полгода вам нужно
+                    будет добавить новую функцию, плохо написанный код превратит эту задачу в кошмар.
+                    Рефакторинг решает несколько проблем:</p>
+
+                <ul>
+                    <li><strong>Читаемость.</strong> Понятные имена переменных и короткие методы
+                        экономят часы разработки.</li>
+                    <li><strong>Поддерживаемость.</strong> В коде без дублирования легче найти ошибку
+                        и исправить её в одном месте, а не в пяти.</li>
+                    <li><strong>Масштабируемость.</strong> Хорошо структурированный код проще расширять
+                        новыми функциями.</li>
+                    <li><strong>Снижение технического долга.</strong> Чем дольше вы откладываете
+                        рефакторинг, тем дороже он становится.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Золотое правило
+                    </div>
+                    <p>Рефакторинг <strong>не меняет поведение программы</strong>. Если после ваших
+                        изменений пользователь увидел новые кнопки или изменилась логика работы - это
+                        не рефакторинг, а переписывание. Для проверки неизменности поведения идеально
+                        подходят автоматические тесты, но о них мы поговорим в уроке 30.</p>
+                </div>
+
+                <h2>Признаки плохого кода</h2>
+
+                <p>Прежде чем что-то улучшать, нужно научиться замечать проблемы. Вот самые частые
+                    «запахи кода» (code smells), которые сигналят о необходимости рефакторинга.</p>
+
+                <h3>1. Магические числа</h3>
+
+                <p>Это числа, смысл которых непонятен без контекста. Например:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">if (user.Age &gt; 18)</span><span class="code-row">{</span><span class="code-row">    discount = price * 0.85;</span><span class="code-row">}</span></code></pre>
+
+                <p>Что такое <code>0.85</code>? Скидка 15%? Коэффициент налога? Через месяц вы сами
+                    забудете, откуда взялось это число. Решение - вынести в константу с понятным
+                    именем:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">const decimal ADULT_DISCOUNT = 0.85m;</span><span class="code-row"></span><span class="code-row">if (user.Age &gt; 18)</span><span class="code-row">{</span><span class="code-row">    discount = price * ADULT_DISCOUNT;</span><span class="code-row">}</span></code></pre>
+
+                <h3>2. Дублирование кода (копипаста)</h3>
+
+                <p>Главный враг программиста. Если вы скопировали кусок кода и вставили его в другое
+                    место - при следующем изменении логики вам придётся править его в двух местах.
+                    И обязательно где-то забудете.</p>
+
+                <p>Решение - вынести повторяющуюся логику в отдельный метод.</p>
+
+                <h3>3. Длинные методы</h3>
+
+                <p>Метод, который занимает 100 строк, делает слишком много. Его сложно читать и
+                    тестировать. Хороший метод должен решать <strong>одну задачу</strong> и обычно
+                    занимать не больше 10-20 строк. Если больше - разбивайте на подметоды.</p>
+
+                <h3>4. Плохие имена</h3>
+
+                <p>Переменные <code>a</code>, <code>b</code>, <code>data1</code>, <code>temp</code>
+                    или методы <code>DoIt()</code>, <code>Process()</code> не несут никакой информации.
+                    Имена должны отвечать на вопрос «что здесь лежит» или «что делает этот метод».
+                    <code>userAge</code> лучше, чем <code>x</code>. <code>CalculateTotalPrice()</code>
+                    лучше, чем <code>DoMath()</code>.</p>
+
+                <h3>5. Глубокие вложенности</h3>
+
+                <p>Когда внутри <code>if</code> находится ещё один <code>if</code>, а в нём - третий,
+                    читать код становится очень сложно. Часто вложенность можно убрать с помощью
+                    <strong>раннего возврата</strong> (guard clauses).</p>
+
+                <h2>Пример: рефакторинг «до и после»</h2>
+
+                <p>Давайте посмотрим на реальный пример плохого кода и постепенно его улучшим.</p>
+
+                <h3>Исходный код (плохо)</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">public void ProcessOrder(Order order)</span><span class="code-row">{</span><span class="code-row">    if (order != null)</span><span class="code-row">    {</span><span class="code-row">        if (order.Items.Count &gt; 0)</span><span class="code-row">        {</span><span class="code-row">            decimal total = 0;</span><span class="code-row">            foreach (var item in order.Items)</span><span class="code-row">            {</span><span class="code-row">                total += item.Price * item.Quantity;</span><span class="code-row">            }</span><span class="code-row">            if (order.Customer.IsVip)</span><span class="code-row">            {</span><span class="code-row">                total = total * 0.9m;</span><span class="code-row">            }</span><span class="code-row">            Console.WriteLine($"Итог: {total}");</span><span class="code-row">        }</span><span class="code-row">        else</span><span class="code-row">        {</span><span class="code-row">            Console.WriteLine("Пустой заказ");</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Что здесь не так? Глубокая вложенность, магическое число <code>0.9</code>, смешение
+                    разных задач в одном методе (проверка, расчёт, вывод).</p>
+
+                <h3>Шаг 1: ранний возврат</h3>
+
+                <p>Избавимся от вложенности, проверяя плохие условия в начале и сразу выходя из метода.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">public void ProcessOrder(Order order)</span><span class="code-row">{</span><span class="code-row">    if (order == null) return;</span><span class="code-row">    if (order.Items.Count == 0)</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine("Пустой заказ");</span><span class="code-row">        return;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    decimal total = 0;</span><span class="code-row">    foreach (var item in order.Items)</span><span class="code-row">    {</span><span class="code-row">        total += item.Price * item.Quantity;</span><span class="code-row">    }</span><span class="code-row">    if (order.Customer.IsVip)</span><span class="code-row">    {</span><span class="code-row">        total = total * 0.9m;</span><span class="code-row">    }</span><span class="code-row">    Console.WriteLine($"Итог: {total}");</span><span class="code-row">}</span></code></pre>
+
+                <p>Уже легче читать: сначала отсекаем плохие сценарии, потом идёт основная логика.</p>
+
+                <h3>Шаг 2: вынос константы и расчёта в отдельный метод</h3>
+
+                <p>Уберём магическое число и разделим ответственность. Метод
+                    <code>CalculateTotal</code> будет только считать сумму, а <code>ProcessOrder</code> -
+                    управлять процессом.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">private const decimal VIP_DISCOUNT = 0.9m;</span><span class="code-row"></span><span class="code-row">public void ProcessOrder(Order order)</span><span class="code-row">{</span><span class="code-row">    if (order == null) return;</span><span class="code-row">    if (order.Items.Count == 0)</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine("Пустой заказ");</span><span class="code-row">        return;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    decimal total = CalculateTotal(order);</span><span class="code-row">    Console.WriteLine($"Итог: {total}");</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">private decimal CalculateTotal(Order order)</span><span class="code-row">{</span><span class="code-row">    decimal sum = 0;</span><span class="code-row">    foreach (var item in order.Items)</span><span class="code-row">    {</span><span class="code-row">        sum += item.Price * item.Quantity;</span><span class="code-row">    }</span><span class="code-row">    return order.Customer.IsVip ? sum * VIP_DISCOUNT : sum;</span><span class="code-row">}</span></code></pre>
+
+                <p>Теперь код читается как книга: «Если заказ пустой - выведи сообщение и выйди.
+                    Иначе посчитай итог и выведи его». Логика расчёта спрятана в отдельном методе,
+                    который легко протестировать.</p>
+
+                <h2>Когда заниматься рефакторингом</h2>
+
+                <p>Есть популярное правило: <strong>правило скаута</strong>. Оно звучит так: «Оставляй
+                    место стоянки чище, чем оно было до тебя». В программировании это значит: если
+                    вы зашли в файл, чтобы добавить функцию или исправить баг - заодно поправьте
+                    то, что явно бросается в глаза.</p>
+
+                <p>Однако не стоит устраивать рефакторинг ради рефакторинга. Если код работает и
+                    понятен - не трогайте его. Особенно опасен масштабный рефакторинг перед дедлайном,
+                    когда нужно выпустить новую функцию. Лучший подход - <strong>маленькие
+                        постоянные улучшения</strong>.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Рефакторинг</code>
+                        <span>улучшение кода без изменения поведения</span>
+                    </li>
+                    <li>
+                        <code>DRY</code>
+                        <span>не повторяйся</span>
+                    </li>
+                    <li>
+                        <code>Guard clauses</code>
+                        <span>ранние возвраты вместо вложенности</span>
+                    </li>
+                    <li>
+                        <code>Магические числа</code>
+                        <span>заменить на константы</span>
+                    </li>
+                    <li>
+                        <code>Короткие методы</code>
+                        <span>одна задача - один метод</span>
+                    </li>
+                    <li>
+                        <code>Понятные имена</code>
+                        <span>переменные и методы говорят сами за себя</span>
+                    </li>
+                    <li>
+                        <code>Правило скаута</code>
+                        <span>оставляй код чище, чем он был</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные заблуждения и проблемы, связанные с рефакторингом.</p>
+
+                <ul>
+                    <li><strong>«Если код работает - не трогай его».</strong> Это правда, если код
+                        действительно понятен и прост. Но если вы с трудом понимаете свой же код
+                        недельной давности - рефакторинг необходим. Иначе через месяц вы потратите
+                        на новую функцию в три раза больше времени.</li>
+                    <li><strong>«Рефакторинг и оптимизация - это одно и то же».</strong> Нет.
+                        Оптимизация делает программу быстрее. Рефакторинг делает код чище. Часто
+                        после рефакторинга программа даже замедляется (например, если разбить
+                        один большой цикл на несколько маленьких методов). Это нормально: сначала
+                        чистый код, потом - при необходимости - оптимизация.</li>
+                    <li><strong>«Я перепишу всё с нуля, так быстрее».</strong> Полное переписывание -
+                        очень рискованно. Вы можете упустить неочевидные детали, забыть про граничные
+                        случаи, которые обрабатывал старый код. Постепенный рефакторинг безопаснее
+                        и почти всегда быстрее.</li>
+                    <li><strong>«Рефакторинг нужен только для старых проектов».</strong> Нет.
+                        Рефакторинг - это привычка, которую нужно применять постоянно, пока код
+                        свежий. Если запустить проект и не следить за качеством кода - через полгода
+                        он превратится в тот самый «старый проект».</li>
+                    <li><strong>«Имена переменных неважны, главное - чтобы работало».</strong>
+                        Имена - это документация, которая всегда с вами. Хорошее имя
+                        <code>totalPrice</code> избавляет от необходимости писать комментарий
+                        «здесь лежит общая стоимость». Плохое имя <code>t</code> заставляет
+                        каждого читателя кода напрягать мозг.</li>
+                    <li><strong>«Комментарии заменяют плохие имена».</strong> Комментарии - это
+                        «запах кода». Хороший код понятен без комментариев. Если вам нужно
+                        объяснить, что делает переменная или метод - проще переименовать их,
+                        чем писать комментарий. А те комментарии, которые всё же нужны, должны
+                        объяснять <em>почему</em> сделано именно так, а не <em>что</em> делает код.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Магические числа</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами метод, который проверяет, может ли пользователь
+                                получить кредит. В нём есть несколько магических чисел. Замените их
+                                на понятные константы.</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">public bool CanGetCredit(User user, decimal amount)</span><span class="code-row">{</span><span class="code-row">    if (user.Age &lt; 21) return false;</span><span class="code-row">    if (user.Age &gt; 65) return false;</span><span class="code-row">    if (amount &gt; 5000000) return false;</span><span class="code-row">    return true;</span><span class="code-row">}</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Числа 21, 65 и 5000000 несут конкретный бизнес-смысл. Вынесите
+                                        каждое в отдельную <code>const</code> или <code>static readonly</code>
+                                        переменную с говорящим именем. Например,
+                                        <code>MIN_CREDIT_AGE</code>, <code>MAX_CREDIT_AGE</code>,
+                                        <code>MAX_CREDIT_AMOUNT</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">private const int MIN_CREDIT_AGE = 21;</span><span class="code-row">private const int MAX_CREDIT_AGE = 65;</span><span class="code-row">private const decimal MAX_CREDIT_AMOUNT = 5_000_000m;</span><span class="code-row"></span><span class="code-row">public bool CanGetCredit(User user, decimal amount)</span><span class="code-row">{</span><span class="code-row">    if (user.Age &lt; MIN_CREDIT_AGE) return false;</span><span class="code-row">    if (user.Age &gt; MAX_CREDIT_AGE) return false;</span><span class="code-row">    if (amount &gt; MAX_CREDIT_AMOUNT) return false;</span><span class="code-row">    return true;</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Убираем дублирование</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В коде есть два метода, которые выводят приветствие
+                                для разных ролей. Найдите в них дублирующийся код и вынесите его
+                                в отдельный метод.</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">public void GreetAdmin(string name)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("=================");</span><span class="code-row">    Console.WriteLine($"Добро пожаловать, {name}!");</span><span class="code-row">    Console.WriteLine("Вы вошли как администратор");</span><span class="code-row">    Console.WriteLine("=================");</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">public void GreetUser(string name)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("=================");</span><span class="code-row">    Console.WriteLine($"Добро пожаловать, {name}!");</span><span class="code-row">    Console.WriteLine("Вы вошли как пользователь");</span><span class="code-row">    Console.WriteLine("=================");</span><span class="code-row">}</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Обратите внимание: единственное отличие - это строка с ролью.
+                                        Всё остальное (рамка и приветствие) повторяется. Создайте
+                                        метод <code>PrintGreeting(string name, string role)</code>
+                                        и вызывайте его из обоих мест.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">public void GreetAdmin(string name)</span><span class="code-row">{</span><span class="code-row">    PrintGreeting(name, "администратор");</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">public void GreetUser(string name)</span><span class="code-row">{</span><span class="code-row">    PrintGreeting(name, "пользователь");</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">private void PrintGreeting(string name, string role)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("=================");</span><span class="code-row">    Console.WriteLine($"Добро пожаловать, {name}!");</span><span class="code-row">    Console.WriteLine($"Вы вошли как {role}");</span><span class="code-row">    Console.WriteLine("=================");</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Ранний возврат</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Метод ниже проверяет данные пользователя перед
+                                сохранением. Упростите его с помощью ранних возвратов
+                                (guard clauses), убрав вложенность.</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">public bool ValidateUser(User user)</span><span class="code-row">{</span><span class="code-row">    if (user != null)</span><span class="code-row">    {</span><span class="code-row">        if (!string.IsNullOrEmpty(user.Name))</span><span class="code-row">        {</span><span class="code-row">            if (user.Age &gt;= 18)</span><span class="code-row">            {</span><span class="code-row">                if (user.Email.Contains("@"))</span><span class="code-row">                {</span><span class="code-row">                    return true;</span><span class="code-row">                }</span><span class="code-row">            }</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">    return false;</span><span class="code-row">}</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вместо того чтобы проверять хорошие условия и вкладывать их друг
+                                        в друга, проверяйте плохие. Если что-то не так - сразу
+                                        <code>return false</code>. В конце метода - <code>return true</code>,
+                                        потому что все проверки пройдены.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">public bool ValidateUser(User user)</span><span class="code-row">{</span><span class="code-row">    if (user == null) return false;</span><span class="code-row">    if (string.IsNullOrEmpty(user.Name)) return false;</span><span class="code-row">    if (user.Age &lt; 18) return false;</span><span class="code-row">    if (!user.Email.Contains("@")) return false;</span><span class="code-row">    return true;</span><span class="code-row">}</span></code></pre>
+                                    <p>Код стал линейным, плоским и читается сверху вниз, как список
+                                        требований к пользователю.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Большой рефакторинг</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами метод, который обрабатывает заказ. В нём
+                                смешаны проверка, расчёт скидки, расчёт налога и вывод на экран.
+                                Разбейте его на несколько маленьких методов с говорящими
+                                именами.</p>
+                            <pre
+                                class="code-numbered"><code><span class="code-row">public void HandleOrder(Order order)</span><span class="code-row">{</span><span class="code-row">    if (order == null) return;</span><span class="code-row">    decimal subtotal = 0;</span><span class="code-row">    foreach (var item in order.Items)</span><span class="code-row">    {</span><span class="code-row">        subtotal += item.Price * item.Quantity;</span><span class="code-row">    }</span><span class="code-row">    decimal discount = 0;</span><span class="code-row">    if (subtotal &gt; 10000)</span><span class="code-row">    {</span><span class="code-row">        discount = subtotal * 0.1m;</span><span class="code-row">    }</span><span class="code-row">    decimal tax = (subtotal - discount) * 0.2m;</span><span class="code-row">    decimal total = subtotal - discount + tax;</span><span class="code-row">    Console.WriteLine($"Подытог: {subtotal}");</span><span class="code-row">    Console.WriteLine($"Скидка: {discount}");</span><span class="code-row">    Console.WriteLine($"Налог: {tax}");</span><span class="code-row">    Console.WriteLine($"Итого: {total}");</span><span class="code-row">}</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Разделите ответственность. Один метод - расчёт подытога.
+                                        Второй - расчёт скидки. Третий - расчёт налога. Четвёртый -
+                                        вывод результатов. Пятый (<code>HandleOrder</code>) -
+                                        оркестратор, который вызывает остальные в правильном
+                                        порядке.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">public void HandleOrder(Order order)</span><span class="code-row">{</span><span class="code-row">    if (order == null) return;</span><span class="code-row"></span><span class="code-row">    decimal subtotal = CalculateSubtotal(order);</span><span class="code-row">    decimal discount = CalculateDiscount(subtotal);</span><span class="code-row">    decimal tax = CalculateTax(subtotal - discount);</span><span class="code-row">    decimal total = subtotal - discount + tax;</span><span class="code-row"></span><span class="code-row">    PrintReceipt(subtotal, discount, tax, total);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">private decimal CalculateSubtotal(Order order)</span><span class="code-row">{</span><span class="code-row">    decimal sum = 0;</span><span class="code-row">    foreach (var item in order.Items)</span><span class="code-row">    {</span><span class="code-row">        sum += item.Price * item.Quantity;</span><span class="code-row">    }</span><span class="code-row">    return sum;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">private decimal CalculateDiscount(decimal subtotal)</span><span class="code-row">{</span><span class="code-row">    return subtotal &gt; 10000 ? subtotal * 0.1m : 0;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">private decimal CalculateTax(decimal amount)</span><span class="code-row">{</span><span class="code-row">    return amount * 0.2m;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">private void PrintReceipt(decimal subtotal, decimal discount, decimal tax, decimal total)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Подытог: {subtotal}");</span><span class="code-row">    Console.WriteLine($"Скидка: {discount}");</span><span class="code-row">    Console.WriteLine($"Налог: {tax}");</span><span class="code-row">    Console.WriteLine($"Итого: {total}");</span><span class="code-row">}</span></code></pre>
+                                    <p>Теперь каждый метод делает одну вещь. Если изменится формула
+                                        расчёта скидки - вы откроете <code>CalculateDiscount</code> и
+                                        поменяете только её. Остальной код не тронете.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы разобрались с рефакторингом - навыком, который делает код не просто рабочим,
+                    а удобным для жизни. Узнали, что такое «запахи кода»: магические числа, дублирование,
+                    длинные методы, плохие имена и глубокая вложенность. И самое главное - научились
+                    с ними бороться.</p>
+
+                <p>На примерах разобрали, как выносить константы, убирать дублирование через новые
+                    методы, использовать ранние возвраты для упрощения условий и разбивать большие
+                    методы на маленькие, каждый из которых решает одну задачу.</p>
+
+                <p>Запомните главное правило: <strong>рефакторинг не меняет поведение программы</strong>.
+                    Если после ваших изменений пользователь заметил что-то новое - это уже не рефакторинг.
+                    Поэтому так важно делать маленькие шаги и проверять, что всё работает.</p>
+
+                <p>В следующем уроке мы займёмся <strong>работой с файлами</strong>. Узнаем, как читать
+                    текстовые файлы, записывать в них данные, работать с директориями и путями. Это
+                    первый шаг к тому, чтобы ваши программы могли сохранять состояние между запусками
+                    и обмениваться данными с другими приложениями.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-26.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-28.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

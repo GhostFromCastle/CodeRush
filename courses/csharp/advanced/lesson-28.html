@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Работа с файлами - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="advanced" data-lesson-id="lesson-28">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 28</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-28.html" class="sidebar-lesson active" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Работа с файлами</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>До этого момента все наши программы жили только в оперативной памяти. Запустили программу,
+                    ввели данные, посмотрели результат, закрыли - и всё, что было, исчезло. Как будто
+                    записали что-то мелом на доске, а потом её протёрли.</p>
+
+                <p>Но реальным приложениям нужно <strong>запоминать</strong> состояние. Настройки пользователя,
+                    логи, сохранённые игры, историю операций, списки задач - всё это должно где-то храниться
+                    между запусками. И самое простое, самое универсальное хранилище - это <strong>файлы</strong>.</p>
+
+                <p>Сегодня разберёмся, как читать и записывать файлы, как работать с директориями и путями,
+                    и как делать это безопасно - так, чтобы программа не падала при малейшей проблеме
+                    с диском.</p>
+
+                <h2>Файл как блокнот</h2>
+
+                <p>Прежде чем говорить о коде, давайте разберёмся, что такое файл в понимании программы.
+                    Представьте <strong>блокнот</strong>. В нём есть текст, он лежит на полке (на диске),
+                    и у него есть название (имя файла). Всё.</p>
+
+                <p>У файла есть три ключевые характеристики:</p>
+
+                <ul>
+                    <li><strong>Имя</strong> - например, <code>data.txt</code>.</li>
+                    <li><strong>Путь</strong> - где именно на диске он лежит.</li>
+                    <li><strong>Содержимое</strong> - байты, которые в нём записаны (текст, картинка,
+                        что угодно).</li>
+                </ul>
+
+                <p>С точки зрения программы нет никакой разницы между текстовым файлом, картинкой
+                    или видео. Везде - просто последовательность байтов. Различие в том, <strong>как мы
+                        эти байты интерпретируем</strong>: читаем как текст, показываем как изображение
+                    или воспроизводим как звук.</p>
+
+                <h2>Класс File: простые операции</h2>
+
+                <p>В C# для работы с файлами есть несколько инструментов. Самый простой и удобный -
+                    <strong>класс <code>File</code></strong>. Это набор статических методов, которые
+                    выполняют базовые операции за одну строку кода.
+                </p>
+
+                <h3>Запись текста</h3>
+
+                <p>Самый простой способ записать текст в файл - метод <code>File.WriteAllText</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string text = "Привет, файл!";</span><span class="code-row">File.WriteAllText("hello.txt", text);</span></code></pre>
+
+                <p>Что произошло?</p>
+
+                <ul>
+                    <li>Если файла <code>hello.txt</code> не было - он создан.</li>
+                    <li>Если файл был - его старое содержимое <strong>стёрто</strong>, записано новое.</li>
+                    <li>Файл появился в папке с программой (рядом с <code>.exe</code>).</li>
+                </ul>
+
+                <p>Если файл нужно не перезаписать, а <strong>дополнить</strong>, используют
+                    <code>File.AppendAllText</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">File.AppendAllText("log.txt", "Строка 1\n");</span><span class="code-row">File.AppendAllText("log.txt", "Строка 2\n");</span><span class="code-row">File.AppendAllText("log.txt", "Строка 3\n");</span></code></pre>
+
+                <p>После этих трёх строк в файле <code>log.txt</code> будет три строки, а не одна
+                    последняя. Именно так пишут логгеры: каждый раз добавляют новую запись в конец
+                    файла, не трогая предыдущие.</p>
+
+                <h3>Чтение текста</h3>
+
+                <p>Обратная операция - <code>File.ReadAllText</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string content = File.ReadAllText("hello.txt");</span><span class="code-row">Console.WriteLine(content);</span></code></pre>
+
+                <p>Метод читает весь файл целиком и возвращает строку. Если файла нет - будет выброшено
+                    исключение <code>FileNotFoundException</code>.</p>
+
+                <h3>Чтение построчно</h3>
+
+                <p>Если файл большой (например, лог на миллион строк), читать его целиком в память
+                    - плохая идея. Используйте <code>File.ReadLines</code> - он возвращает строки
+                    <strong>по одной</strong>, не загружая всё сразу:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">foreach (string line in File.ReadLines("log.txt"))</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(line);</span><span class="code-row">}</span></code></pre>
+
+                <p>Аналогия: вместо того чтобы тащить домой весь мешок картошки, вы берёте из него
+                    по одной картофелине. Память не забивается, а результат тот же.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Асинхронные версии
+                    </div>
+                    <p>Помните урок 25 про асинхронность? У всех методов чтения и записи есть
+                        асинхронные версии с суффиксом <code>Async</code>:
+                        <code>File.ReadAllTextAsync</code>, <code>File.WriteAllTextAsync</code>,
+                        <code>File.AppendAllTextAsync</code>. В реальных приложениях (особенно в
+                        ASP.NET и десктопных приложениях с интерфейсом) <strong>всегда
+                            используйте асинхронные версии</strong>. Диск может тормозить, а
+                        синхронные операции блокируют поток, делая интерфейс «замороженным».</p>
+                </div>
+
+                <h2>Классы FileInfo и DirectoryInfo</h2>
+
+                <p>Статические методы <code>File</code> удобны для одноразовых операций. Но когда
+                    нужно работать с файлом многократно (проверить, есть ли, узнать размер, потом
+                    прочитать, потом скопировать), удобнее использовать объект <code>FileInfo</code>.</p>
+
+                <p>Аналогия: <code>File.ReadAllText</code> - это как попросить библиотекаря
+                    «принеси мне вон ту книгу». А <code>FileInfo</code> - это как взять в руки
+                    карточку из каталога, где написано всё о книге: год издания, количество страниц,
+                    полка, где она стоит.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">FileInfo info = new FileInfo("data.txt");</span><span class="code-row"></span><span class="code-row">if (info.Exists)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Размер: {info.Length} байт");</span><span class="code-row">    Console.WriteLine($"Создан: {info.CreationTime}");</span><span class="code-row">    Console.WriteLine($"Изменён: {info.LastWriteTime}");</span><span class="code-row">}</span></code></pre>
+
+                <p>Свойство <code>Exists</code> проверяет, существует ли файл. Свойство
+                    <code>Length</code> возвращает размер в байтах. <code>CreationTime</code> и
+                    <code>LastWriteTime</code> - даты создания и изменения.</p>
+
+                <p>У <code>FileInfo</code> есть и методы для действий:</p>
+
+                <ul>
+                    <li><code>Create()</code> - создаёт пустой файл.</li>
+                    <li><code>Delete()</code> - удаляет.</li>
+                    <li><code>CopyTo(path)</code> - копирует.</li>
+                    <li><code>MoveTo(path)</code> - перемещает (или переименовывает).</li>
+                </ul>
+
+                <p>Аналогично для папок есть <strong>класс <code>DirectoryInfo</code></strong>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">DirectoryInfo dir = new DirectoryInfo("logs");</span><span class="code-row"></span><span class="code-row">if (!dir.Exists)</span><span class="code-row">{</span><span class="code-row">    dir.Create();</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">FileInfo[] files = dir.GetFiles("*.txt");</span><span class="code-row">foreach (var f in files)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine(f.Name);</span><span class="code-row">}</span></code></pre>
+
+                <p>Здесь мы создаём папку <code>logs</code>, если её нет, а потом ищем в ней все файлы
+                    с расширением <code>.txt</code>.</p>
+
+                <h2>Класс Path: работа с путями</h2>
+
+                <p>Путь к файлу - это строка, но не простая. Windows использует обратные слеши
+                    (<code>C:\folder\file.txt</code>), Linux и macOS - прямые (<code>/folder/file.txt</code>).
+                    Склеивать пути вручную через плюс или <code>+</code> - плохая идея, потому что
+                    можно легко ошибиться с разделителем.</p>
+
+                <p>Для этого есть класс <strong><code>Path</code></strong>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string fullPath = Path.Combine("data", "users", "list.txt");</span><span class="code-row"></span><span class="code-row">string fileName = Path.GetFileName(fullPath);</span><span class="code-row">string extension = Path.GetExtension(fullPath);</span><span class="code-row">string directory = Path.GetDirectoryName(fullPath);</span></code></pre>
+
+                <p>Что делает каждая строка:</p>
+
+                <ul>
+                    <li><code>Combine</code> - склеивает части пути, автоматически подставляя
+                        правильный разделитель под операционную систему.</li>
+                    <li><code>GetFileName</code> - возвращает имя файла (<code>list.txt</code>).</li>
+                    <li><code>GetExtension</code> - возвращает расширение (<code>.txt</code>).</li>
+                    <li><code>GetDirectoryName</code> - возвращает папку, в которой лежит файл.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Текущая папка программы
+                    </div>
+                    <p>Если вы не указали полный путь, файл создастся в <strong>рабочей директории</strong>
+                        программы. Это папка, откуда запущено приложение, и она может отличаться от
+                        папки, где лежит <code>.exe</code>. Проверить её можно через
+                        <code>Directory.GetCurrentDirectory()</code>.</p>
+                </div>
+
+                <h2>Что может пойти не так</h2>
+
+                <p>Работа с файлами - это всегда работа с чем-то внешним. Диск может быть переполнен,
+                        файл может быть занят другой программой, у пользователя может не быть прав.
+                    Поэтому практически всегда операции с файлами нужно оборачивать в
+                    <code>try / catch</code>.</p>
+
+                <p>Основные исключения:</p>
+
+                <ul>
+                    <li><strong><code>FileNotFoundException</code></strong> - файла нет по указанному
+                        пути.</li>
+                    <li><strong><code>DirectoryNotFoundException</code></strong> - папки нет.</li>
+                    <li><strong><code>UnauthorizedAccessException</code></strong> - нет прав на
+                        чтение или запись.</li>
+                    <li><strong><code>IOException</code></strong> - общая ошибка ввода-вывода (например,
+                        файл занят другой программой).</li>
+                </ul>
+
+                <p>Пример правильной обработки:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">try</span><span class="code-row">{</span><span class="code-row">    string content = File.ReadAllText("config.txt");</span><span class="code-row">    Console.WriteLine(content);</span><span class="code-row">}</span><span class="code-row">catch (FileNotFoundException)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Файл не найден, используем настройки по умолчанию");</span><span class="code-row">}</span><span class="code-row">catch (UnauthorizedAccessException)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine("Нет прав на чтение файла");</span><span class="code-row">}</span><span class="code-row">catch (IOException ex)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Ошибка чтения: {ex.Message}");</span><span class="code-row">}</span></code></pre>
+
+                <p>Обратите внимание: разные типы исключений обрабатываются по-разному. «Файла нет» -
+                    это нормальная ситуация, можно просто использовать дефолтные значения. «Нет прав» -
+                    уже проблема, о ней стоит сообщить. «Файл занят» - возможно, стоит попробовать
+                    ещё раз через секунду.</p>
+
+                <h2>Пример: простой дневник</h2>
+
+                <p>Соберём всё вместе в маленькой программе - дневнике. Она спрашивает у пользователя
+                    заметку и дописывает её в файл с датой.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    string path = Path.Combine("diary", "notes.txt");</span><span class="code-row"></span><span class="code-row">    Directory.CreateDirectory("diary");</span><span class="code-row"></span><span class="code-row">    while (true)</span><span class="code-row">    {</span><span class="code-row">        Console.Write("Заметка (или exit): ");</span><span class="code-row">        string input = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">        if (input == "exit") break;</span><span class="code-row"></span><span class="code-row">        string entry = $"[{DateTime.Now:yyyy-MM-dd HH:mm}] {input}\n";</span><span class="code-row">        File.AppendAllText(path, entry);</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    Console.WriteLine("\nВаш дневник:");</span><span class="code-row">    foreach (string line in File.ReadLines(path))</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine(line);</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Разберём шаги:</p>
+
+                <ul>
+                    <li><code>Path.Combine</code> - собираем путь до файла <code>diary/notes.txt</code>.</li>
+                    <li><code>Directory.CreateDirectory("diary")</code> - создаём папку, если её нет
+                        (если есть - ничего не произойдёт, метод не выдаёт ошибку).</li>
+                    <li>В цикле спрашиваем заметку, добавляем дату и дописываем в файл через
+                        <code>AppendAllText</code>.</li>
+                    <li>После выхода из цикла читаем весь файл построчно и выводим на экран.</li>
+                </ul>
+
+                <p>Всего 20 строк - а получилось настоящее приложение, которое сохраняет данные между
+                    запусками.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>File.ReadAllText</code>
+                        <span>прочитать файл целиком</span>
+                    </li>
+                    <li>
+                        <code>File.ReadLines</code>
+                        <span>читать построчно</span>
+                    </li>
+                    <li>
+                        <code>File.WriteAllText</code>
+                        <span>записать (перезаписать)</span>
+                    </li>
+                    <li>
+                        <code>File.AppendAllText</code>
+                        <span>дописать в конец</span>
+                    </li>
+                    <li>
+                        <code>FileInfo / DirectoryInfo</code>
+                        <span>информация о файле или папке</span>
+                    </li>
+                    <li>
+                        <code>Path.Combine</code>
+                        <span>склеить путь</span>
+                    </li>
+                    <li>
+                        <code>try / catch</code>
+                        <span>обязательно вокруг операций с файлами</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки и заблуждения при работе с файлами.</p>
+
+                <ul>
+                    <li><strong>«Программа работает, но файла не видно».</strong> Скорее всего, файл
+                        создан в рабочей директории программы, а не там, где вы его ищете. Проверьте
+                        <code>Directory.GetCurrentDirectory()</code> - там точно есть ваш файл. Или
+                        используйте полный путь через <code>Path.Combine</code>.</li>
+                    <li><strong>«Файл занят другим процессом».</strong> Классика: вы открыли файл в
+                        блокноте, а программа пытается в него записать. Windows блокирует файл,
+                        пока его кто-то держит открытым. Закройте блокнот или используйте
+                        <code>FileShare.ReadWrite</code> через <code>FileStream</code> (но это уже
+                        сложнее).</li>
+                    <li><strong>«Я прочитал файл - и получил кракозябры».</strong> Проблема с
+                        кодировкой. По умолчанию <code>File.ReadAllText</code> использует UTF-8, но
+                        если файл сохранён в другой кодировке (например, Windows-1251), символы
+                        отобразятся неправильно. Решение - явно указать кодировку:
+                        <code>File.ReadAllText(path, Encoding.GetEncoding(1251))</code>.</li>
+                    <li><strong>«Файл создаётся, но пустой».</strong> Проверьте, что вы точно
+                        вызываете <code>WriteAllText</code> или <code>AppendAllText</code> - иногда
+                        забывают вызвать саму запись, а только создают <code>FileInfo</code> или
+                        открывают <code>StreamWriter</code>, но не пишут в него.</li>
+                    <li><strong>«Программа падает на <code>File.ReadAllText</code>».</strong> Файла
+                        нет. Всегда оборачивайте чтение в <code>try / catch</code> или предварительно
+                        проверяйте <code>File.Exists(path)</code>.</li>
+                    <li><strong>«Не работает на Linux / Mac».</strong> Обратные слеши в путях
+                        (<code>C:\folder\file.txt</code>) - это Windows-специфика. Используйте
+                        <code>Path.Combine</code> - он автоматически подставит правильный
+                        разделитель под систему.</li>
+                    <li><strong>«Можно ли писать в файлы рядом с <code>.exe</code>?»</strong> Обычно
+                        да, но если программа установлена в <code>Program Files</code> - система
+                        может запретить запись. Лучше писать в специальные папки для данных
+                        приложения (<code>Environment.GetFolderPath(SpecialFolder.ApplicationData)</code>).</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Запись и чтение</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая:
+                            <ol>
+                                <li>Спрашивает у пользователя три строки.</li>
+                                <li>Записывает их в файл <code>notes.txt</code>, каждую с новой
+                                    строки.</li>
+                                <li>Читает файл обратно и выводит содержимое на экран.</li>
+                            </ol>
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>Console.ReadLine()</code> в цикле или трижды.
+                                        Для записи - <code>File.WriteAllText</code> или
+                                        <code>File.AppendAllText</code>. Для чтения -
+                                        <code>File.ReadAllText</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    string path = "notes.txt";</span><span class="code-row"></span><span class="code-row">    Console.WriteLine("Введите три строки:");</span><span class="code-row">    string s1 = Console.ReadLine();</span><span class="code-row">    string s2 = Console.ReadLine();</span><span class="code-row">    string s3 = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">    File.WriteAllText(path, $"{s1}\n{s2}\n{s3}\n");</span><span class="code-row"></span><span class="code-row">    Console.WriteLine("\nСодержимое файла:");</span><span class="code-row">    Console.WriteLine(File.ReadAllText(path));</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Счётчик запусков</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая считает, сколько раз её
+                                запускали. При каждом запуске она должна выводить «Это запуск номер N»
+                                и увеличивать счётчик. Храните число в файле <code>counter.txt</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проверьте через <code>File.Exists</code>, есть ли файл. Если нет -
+                                        счётчик равен 0. Если есть - прочитайте число через
+                                        <code>int.Parse</code>. Увеличьте на 1 и запишите обратно
+                                        через <code>File.WriteAllText</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    string path = "counter.txt";</span><span class="code-row">    int count = 0;</span><span class="code-row"></span><span class="code-row">    if (File.Exists(path))</span><span class="code-row">    {</span><span class="code-row">        string content = File.ReadAllText(path);</span><span class="code-row">        int.TryParse(content, out count);</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    count++;</span><span class="code-row">    File.WriteAllText(path, count.ToString());</span><span class="code-row"></span><span class="code-row">    Console.WriteLine($"Это запуск номер {count}");</span><span class="code-row">}</span></code></pre>
+                                    <p>Обратите внимание на <code>int.TryParse</code> вместо
+                                        <code>int.Parse</code>. Если файл повреждён (например, кто-то
+                                        вписал туда буквы), <code>Parse</code> выбросит исключение,
+                                        а <code>TryParse</code> просто вернёт 0. Надёжнее.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Поиск в логе</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Дан файл <code>log.txt</code>, в котором каждая
+                                строка начинается с даты в формате <code>yyyy-MM-dd</code> (например,
+                                <code>2025-03-15 Ошибка подключения</code>). Напишите программу,
+                                которая просит у пользователя дату и выводит все строки за эту дату.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>File.ReadLines</code> - он читает файл построчно
+                                        и не загружает всё в память. Внутри цикла проверяйте, начинается
+                                        ли строка с введённой даты через <code>StartsWith</code>. Не
+                                        забудьте проверить <code>File.Exists</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    string path = "log.txt";</span><span class="code-row"></span><span class="code-row">    if (!File.Exists(path))</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine("Файл лога не найден");</span><span class="code-row">        return;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    Console.Write("Введите дату (yyyy-MM-dd): ");</span><span class="code-row">    string date = Console.ReadLine();</span><span class="code-row"></span><span class="code-row">    Console.WriteLine($"\nСтроки за {date}:");</span><span class="code-row">    foreach (string line in File.ReadLines(path))</span><span class="code-row">    {</span><span class="code-row">        if (line.StartsWith(date))</span><span class="code-row">        {</span><span class="code-row">            Console.WriteLine(line);</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                                    <p>Здесь важно, что мы не читаем весь файл в память через
+                                        <code>ReadAllText</code>. Если лог на гигабайт -
+                                        <code>ReadLines</code> справится, а <code>ReadAllText</code>
+                                        положит программу.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Резервная копия</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите метод
+                                <code>BackupFile(string source, string backupFolder)</code>,
+                                который копирует указанный файл в папку <code>backupFolder</code>,
+                                добавляя к имени текущую дату. Например, файл <code>data.txt</code>
+                                превращается в <code>backup/data_2025-03-15.txt</code>. Обработайте
+                                случай, когда исходного файла нет, и случай, когда папки для бэкапа
+                                ещё не существует.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>File.Exists</code> для проверки исходного
+                                        файла. <code>Directory.CreateDirectory</code> создаст папку,
+                                        если её нет (и не выдаст ошибку, если уже есть). Для
+                                        формирования нового имени - <code>Path.GetFileNameWithoutExtension</code>,
+                                        <code>Path.GetExtension</code> и <code>DateTime.Now</code>.
+                                        Для копирования - <code>File.Copy</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">static void BackupFile(string source, string backupFolder)</span><span class="code-row">{</span><span class="code-row">    if (!File.Exists(source))</span><span class="code-row">    {</span><span class="code-row">        Console.WriteLine($"Файл {source} не найден");</span><span class="code-row">        return;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    Directory.CreateDirectory(backupFolder);</span><span class="code-row"></span><span class="code-row">    string name = Path.GetFileNameWithoutExtension(source);</span><span class="code-row">    string ext = Path.GetExtension(source);</span><span class="code-row">    string date = DateTime.Now.ToString("yyyy-MM-dd");</span><span class="code-row"></span><span class="code-row">    string target = Path.Combine(backupFolder, $"{name}_{date}{ext}");</span><span class="code-row"></span><span class="code-row">    File.Copy(source, target, overwrite: true);</span><span class="code-row">    Console.WriteLine($"Копия создана: {target}");</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">static void Main(string[] args)</span><span class="code-row">{</span><span class="code-row">    BackupFile("data.txt", "backup");</span><span class="code-row">}</span></code></pre>
+                                    <p>Параметр <code>overwrite: true</code> в <code>File.Copy</code>
+                                        означает, что если копия за сегодня уже есть - она будет
+                                        перезаписана. Если не хотите перезаписывать - уберите
+                                        параметр, и при попытке копирования поверх существующего
+                                        файла <code>File.Copy</code> выбросит исключение.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы научились работать с файлами - одним из самых базовых и самых нужных
+                    инструментов любого разработчика. Разобрали:</p>
+
+                <ul>
+                    <li>Простые операции через класс <code>File</code>: <code>ReadAllText</code>,
+                        <code>WriteAllText</code>, <code>AppendAllText</code>.</li>
+                    <li>Чтение больших файлов построчно через <code>File.ReadLines</code>.</li>
+                    <li>Информацию о файлах и папках через <code>FileInfo</code> и
+                        <code>DirectoryInfo</code>.</li>
+                    <li>Работу с путями через класс <code>Path</code> - чтобы код работал
+                        и на Windows, и на Linux, и на macOS.</li>
+                    <li>Обработку ошибок: <code>FileNotFoundException</code>,
+                        <code>UnauthorizedAccessException</code>, <code>IOException</code>.</li>
+                </ul>
+
+                <p>Теперь ваши программы умеют сохранять состояние между запусками. Это огромный шаг:
+                    любое серьёзное приложение - от простого блокнота до крупного сервиса - что-то
+                    хранит на диске.</p>
+
+                <p>Но текстовый формат - не всегда удобен. Если нужно сохранить сложный объект
+                    с десятками полей (пользователя, заказ, настройки), писать парсеры вручную -
+                    это боль. К счастью, для этого есть <strong>JSON</strong> - универсальный
+                    формат данных, который понимают все языки программирования. О нём и поговорим
+                    в следующем уроке: научимся превращать объекты C# в JSON и обратно одной
+                    строкой кода.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-27.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-29.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>
