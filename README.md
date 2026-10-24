@@ -20,8 +20,6 @@
 
 ---
 
-# 🚀 CodeRush - Free educational platform
-
 ## 🇬🇧 About the project
 
 **CodeRush** is a completely free platform for learning programming from scratch to a job-ready level. No paid subscriptions, no deadlines, and no complex registration. Learn at your own pace!
@@ -45,3 +43,17 @@ The project is built with pure **HTML, CSS, and JavaScript** without any build t
 *   Vanilla CSS3 (Flexbox, Grid, Variables, Animations)
 *   Vanilla JavaScript (ES6 Modules)
 *   Phosphor Icons
+
+---
+
+## 📄 Лицензия и авторские права / License & Copyright
+
+### 🇷🇺 Русская версия
+
+*   **Исходный код:** Весь программный код проекта распространяется по лицензии [MIT License](LICENSE). Вы можете свободно использовать его в своих проектах.
+*   **Образовательный контент:** Тексты уроков, статьи в словаре и дизайн защищены авторским правом и регулируются нашими [Правилами использования](https://ghostfromcastle.github.io/CodeRush/terms.html). Копирование, перепродажа или выдача материалов за свои без письменного разрешения запрещены.
+
+### 🇬🇧 English version
+
+*   **Source Code:** The source code of this project is licensed under the [MIT License](LICENSE). You are free to use it in your own projects.
+*   **Educational Content:** The educational content (lesson texts, dictionary definitions, design) is protected by copyright and is subject to our [Terms of Use](https://ghostfromcastle.github.io/CodeRush/terms.html). You may not copy, redistribute, or sell the educational materials without explicit permission.
