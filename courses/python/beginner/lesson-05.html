@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Циклы: while, for - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="beginner" data-lesson-id="lesson-05">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 05</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson active" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Циклы: while, for</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Представьте, что вам нужно вывести на экран числа от 1 до 100. Как вы это сделаете?
+                    Можно написать сто строк <code>print</code> - но это же безумие. А если вам нужно
+                    попросить пользователя ввести пароль и повторять запрос, пока он не введёт
+                    правильный? Здесь никакого терпения не хватит.</p>
+
+                <p>Именно для таких случаев существуют <strong>циклы</strong> - конструкции, которые
+                    позволяют выполнять один и тот же код много раз. Как конвейер на заводе:
+                    детали разные, но действие повторяется одно и то же. Сегодня мы разберём два
+                    вида циклов: <code>while</code> и <code>for</code>.</p>
+
+                <h2>Зачем нужны циклы</h2>
+
+                <p>Вот простая задача: вывести «Привет» пять раз. Без циклов это выглядит так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print("Привет")</span><span class="code-row">print("Привет")</span><span class="code-row">print("Привет")</span><span class="code-row">print("Привет")</span><span class="code-row">print("Привет")</span></code></pre>
+
+                <p>Работает, но занимает пять строк. А если «Привет» нужно вывести тысячу раз?
+                    С циклом - всего две строчки:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">for i in range(5):</span><span class="code-row">    print("Привет")</span></code></pre>
+
+                <p>Аналогия: цикл - это как сказать другу «Повтори за мной "Привет" пять раз»,
+                    вместо того чтобы пять раз самому прокричать это ему в ухо. Одна команда -
+                    много действий.</p>
+
+                <h2>Цикл while</h2>
+
+                <p><code>while</code> переводится как «пока». И работает он буквально так:
+                    <strong>«Пока условие истинно, выполняй код»</strong>. Как только условие стало
+                    ложным - цикл завершается и программа идёт дальше.</p>
+
+                <p>Аналогия: <em>«Пока в кастрюле есть вода - помешивай суп»</em>. Как только вода
+                    выкипела (условие стало ложным) - помешивать больше не нужно, переходим
+                    к следующему действию.</p>
+
+                <p>Простейший пример - счётчик:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">i = 1</span><span class="code-row">while i &lt;= 5:</span><span class="code-row">    print(i)</span><span class="code-row">    i = i + 1</span></code></pre>
+
+                <p>Что здесь происходит:</p>
+                <ul>
+                    <li>Сначала <code>i = 1</code>. Переменная-счётчик.</li>
+                    <li>Проверяется условие <code>i &lt;= 5</code>. Сейчас <code>1 &lt;= 5</code> -
+                        истина. Значит, выполняем код внутри.</li>
+                    <li>Печатается <code>1</code>, потом <code>i</code> увеличивается до <code>2</code>.</li>
+                    <li>Возвращаемся к проверке условия. <code>2 &lt;= 5</code> - истина. Снова
+                        выполняем код, печатается <code>2</code>, <code>i</code> становится <code>3</code>.</li>
+                    <li>... и так до тех пор, пока <code>i</code> не станет <code>6</code>.
+                        Тогда условие <code>6 &lt;= 5</code> ложно, и цикл завершается.</li>
+                </ul>
+
+                <p>На экране появится <code>1 2 3 4 5</code> - каждое число на новой строке.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Не забудьте изменить условие!
+                    </div>
+                    <p>Если внутри цикла <code>while</code> ничего не меняется так, чтобы условие
+                        стало ложным рано или поздно, - цикл никогда не завершится. Это называется
+                        <strong>бесконечный цикл</strong>. Например, если убрать строку
+                        <code>i = i + 1</code>, то <code>i</code> всегда будет равен 1, условие
+                        всегда будет истинно, и программа зависнет навсегда.</p>
+                </div>
+
+                <h3>Условие с самого начала может быть ложным</h3>
+
+                <p>Если условие в <code>while</code> изначально ложно - цикл не выполнится ни разу:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">i = 10</span><span class="code-row">while i &lt; 5:</span><span class="code-row">    print(i)</span><span class="code-row">    i = i + 1</span><span class="code-row"></span><span class="code-row">print("Готово")</span></code></pre>
+
+                <p>Здесь <code>10 &lt; 5</code> - ложь. Поэтому программа сразу перейдёт к строке
+                    <code>print("Готово")</code>, и на экране появится только «Готово». Это нормально -
+                    цикл просто «не понадобился».</p>
+
+                <h2>Цикл for</h2>
+
+                <p><code>for</code> используется, когда мы знаем, <strong>сколько раз нужно что-то
+                        повторить</strong>, или когда мы хотим пройти по элементам какой-то
+                    последовательности.</p>
+
+                <p>В Python цикл <code>for</code> обычно работает вместе с функцией <code>range()</code>.
+                    Она создаёт последовательность чисел.</p>
+
+                <h3>Функция range()</h3>
+
+                <p><code>range()</code> может принимать от одного до трёх аргументов:</p>
+
+                <ul>
+                    <li><strong><code>range(5)</code></strong> - числа от <code>0</code> до
+                        <code>4</code> (всего 5 чисел, но не включая 5!).</li>
+                    <li><strong><code>range(1, 6)</code></strong> - числа от <code>1</code> до
+                        <code>5</code> (включая 1, не включая 6).</li>
+                    <li><strong><code>range(0, 10, 2)</code></strong> - числа от 0 до 10
+                        с шагом 2: <code>0, 2, 4, 6, 8</code>.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Правая граница не включается
+                    </div>
+                    <p>Запомните: <code>range()</code> никогда не включает последнее число.
+                        <code>range(5)</code> даёт <code>0, 1, 2, 3, 4</code>, но не 5.
+                        <code>range(1, 6)</code> даёт <code>1, 2, 3, 4, 5</code>, но не 6.
+                        Это сделано для удобства: если нужно 5 чисел, пишите <code>range(5)</code>,
+                        если от 1 до 5 - <code>range(1, 6)</code>.</p>
+                </div>
+
+                <h3>Базовое использование for</h3>
+
+                <p>Пример - вывести числа от 1 до 5:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">for i in range(1, 6):</span><span class="code-row">    print(i)</span></code></pre>
+
+                <p>Как это читается: <em>«Для каждого значения <code>i</code> в последовательности
+                        <code>range(1, 6)</code> - выполни <code>print(i)</code>»</em>.</p>
+
+                <p>Python возьмёт первое число из <code>range</code> (это <code>1</code>), положит
+                    его в переменную <code>i</code>, выполнит тело цикла. Потом возьмёт второе
+                    число (<code>2</code>), снова выполнит тело... И так до конца последовательности.</p>
+
+                <p>Переменную <code>i</code> можно называть как угодно, но по традиции используют
+                    именно <code>i</code> (от <em>iterator</em> или <em>index</em>).</p>
+
+                <h2>while vs for: когда что использовать</h2>
+
+                <p>Оба цикла работают с повторениями, но подходят для разных задач:</p>
+
+                <ul>
+                    <li><strong><code>for</code></strong> - когда известно <em>количество</em>
+                        повторений или есть готовая последовательность. «Выведи 10 строк»,
+                        «пройди по всем элементам списка».</li>
+                    <li><strong><code>while</code></strong> - когда количество повторений
+                        <em>неизвестно</em> и зависит от условия. «Спрашивай пароль, пока он
+                        неверный», «играй, пока игрок не скажет "хватит"».</li>
+                </ul>
+
+                <p>Простая аналогия: <code>for</code> - это «съешь ровно 10 конфет». <code>while</code>
+                    - это «ешь конфеты, пока не кончатся». В первом случае мы знаем количество
+                    заранее, во втором - проверяем условие.</p>
+
+                <h2>break: выйти из цикла досрочно</h2>
+
+                <p>Иногда нужно прервать цикл, не дожидаясь его естественного завершения.
+                    Например, искать число в списке, и как только нашли - сразу остановиться.
+                    Для этого есть оператор <code>break</code>.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">for i in range(1, 100):</span><span class="code-row">    if i == 5:</span><span class="code-row">        break</span><span class="code-row">    print(i)</span></code></pre>
+
+                <p>Программа выведет <code>1 2 3 4</code> и остановится. Как только <code>i</code>
+                    стало равно 5, сработало условие <code>if i == 5</code>, выполнился
+                    <code>break</code> - и цикл завершился. Числа от 5 до 99 не будут напечатаны.</p>
+
+                <h2>continue: пропустить шаг</h2>
+
+                <p>А что если не нужно прерывать весь цикл, а хочется пропустить только
+                    <em>один шаг</em>? Для этого есть <code>continue</code>.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">for i in range(1, 6):</span><span class="code-row">    if i == 3:</span><span class="code-row">        continue</span><span class="code-row">    print(i)</span></code></pre>
+
+                <p>Вывод: <code>1 2 4 5</code>. Число 3 пропущено - когда <code>i == 3</code>,
+                    срабатывает <code>continue</code>, и Python переходит к следующей итерации,
+                    не выполняя <code>print(i)</code>. Но цикл не завершается - он продолжается
+                    со следующего значения.</p>
+
+                <p>Аналогия: <code>break</code> - это «сойти с поезда на этой станции».
+                    <code>continue</code> - это «пропустить остановку, но продолжить путь».</p>
+
+                <h2>Вложенные циклы</h2>
+
+                <p>Один цикл может быть вложен в другой. Это нужно, когда каждое «внешнее»
+                    действие требует нескольких «внутренних». Например, чтобы напечатать таблицу
+                    умножения, нужны два цикла: один по строкам, второй - по столбцам.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">for i in range(1, 4):</span><span class="code-row">    for j in range(1, 4):</span><span class="code-row">        print(f"{i} * {j} = {i * j}")</span><span class="code-row">    print("---")</span></code></pre>
+
+                <p>Что происходит: внешний цикл берёт <code>i = 1</code> и запускает внутренний
+                    цикл, который трижды проходит с <code>j = 1, 2, 3</code>. Потом внешний
+                    цикл берёт <code>i = 2</code>, снова три прохода внутреннего. И так далее.</p>
+
+                <p>Итого 9 строк с примерами умножения и три разделителя «---».
+                    Общее количество итераций = произведение: 3 × 3 = 9.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>while условие:</code>
+                        <span>цикл, пока условие истинно</span>
+                    </li>
+                    <li>
+                        <code>for i in range(n):</code>
+                        <span>цикл по числам от 0 до n-1</span>
+                    </li>
+                    <li>
+                        <code>range(1, 6)</code>
+                        <span>числа 1, 2, 3, 4, 5</span>
+                    </li>
+                    <li>
+                        <code>range(0, 10, 2)</code>
+                        <span>числа 0, 2, 4, 6, 8</span>
+                    </li>
+                    <li>
+                        <code>break</code>
+                        <span>выйти из цикла</span>
+                    </li>
+                    <li>
+                        <code>continue</code>
+                        <span>пропустить шаг</span>
+                    </li>
+                    <li>
+                        <code>i += 1</code>
+                        <span>короткая запись i = i + 1</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при работе с циклами.</p>
+
+                <ul>
+                    <li><strong>«Программа зависла и не отвечает»</strong>. Скорее всего, у вас
+                        бесконечный цикл. Проверьте: меняется ли что-то внутри <code>while</code>
+                        так, чтобы условие рано или поздно стало ложным? Если нет - добавьте
+                        изменение счётчика. Если совсем зависло - закройте терминал
+                        (Ctrl+C или кнопка «Стоп» в VS Code) и запустите заново.</li>
+                    <li><strong>«Цикл выполняется на один раз больше или меньше»</strong>.
+                        Проблема с границами. Помните: <code>range(5)</code> даёт 0-4, а
+                        <code>range(1, 6)</code> даёт 1-5. Правая граница <strong>не включается</strong>.
+                        Если нужно от 1 до 10 включительно - пишите <code>range(1, 11)</code>.</li>
+                    <li><strong>«Счётчик увеличивается, но цикл всё равно не завершается»</strong>.
+                        Проверьте, не пересоздаёте ли вы счётчик внутри цикла.
+                        Например: <code>while i &lt; 10:</code>, а внутри
+                        <code>i = 1</code> - тогда <code>i</code> каждый раз сбрасывается,
+                        и условие всегда истинно.</li>
+                    <li><strong>«Синтаксическая ошибка на while»</strong>. Забыли двоеточие
+                        после условия. Правильно: <code>while i &lt; 10:</code>,
+                        не <code>while i &lt; 10</code>.</li>
+                    <li><strong>«IndentationError внутри цикла»</strong>. Код внутри цикла
+                        должен быть с отступом (4 пробела). Если отступа нет - Python
+                        считает, что этот код не относится к циклу.</li>
+                    <li><strong>«for i in range(...) ничего не выводит»</strong>. Проверьте,
+                        есть ли внутри цикла какой-то код. Если тело пустое - нужен
+                        <code>pass</code> (заглушка): <code>for i in range(5): pass</code>.
+                        Но обычно это опечатка.</li>
+                    <li><strong>«break не работает внутри if внутри цикла»</strong>. Работает!
+                        Просто убедитесь, что <code>break</code> действительно внутри
+                        цикла, а не вне его. И что до него доходит выполнение.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. От 1 до 10</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выведите на экран все числа от 1 до 10,
+                                каждое с новой строки. Используйте цикл <code>for</code>
+                                и функцию <code>range()</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Помните, что правая граница <code>range</code>
+                                        не включается. Чтобы получить числа от 1 до 10,
+                                        нужно написать <code>range(1, 11)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">for i in range(1, 11):</span><span class="code-row">    print(i)</span></code></pre>
+                                    <p>Если написать <code>range(1, 10)</code> - последним
+                                        будет 9, потому что 10 не включается. Это самая
+                                        частая ошибка при работе с <code>range</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Сумма чисел от 1 до N</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя число N и посчитайте
+                                сумму всех чисел от 1 до N включительно. Например, для N=5
+                                сумма равна 1+2+3+4+5 = 15.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Заведите переменную <code>total = 0</code> до цикла.
+                                        Внутри цикла прибавляйте к ней каждое число:
+                                        <code>total += i</code>. После цикла выведите результат.
+                                        Не забудьте <code>int(input())</code> - N должно быть
+                                        числом.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">n = int(input("Введите N: "))</span><span class="code-row"></span><span class="code-row">total = 0</span><span class="code-row">for i in range(1, n + 1):</span><span class="code-row">    total += i</span><span class="code-row"></span><span class="code-row">print(f"Сумма от 1 до {n}: {total}")</span></code></pre>
+                                    <p>Обратите внимание на <code>range(1, n + 1)</code> - если
+                                        пользователь введёт 5, то будет
+                                        <code>range(1, 6)</code> и цикл пройдёт по
+                                        1, 2, 3, 4, 5. Без <code>+1</code> последнее
+                                        число не вошло бы.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Копилка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу-копилку. Пользователь
+                                вводит числа - сколько рублей он кладёт в копилку. Когда
+                                он введёт 0 - программа останавливается и выводит общую
+                                сумму и количество монет (сколько раз он положил деньги).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Здесь нужен <code>while</code>, потому что мы не знаем
+                                        заранее, сколько раз пользователь положит деньги.
+                                        Условие: <code>while True:</code> (бесконечный цикл),
+                                        а выходить будем через <code>break</code>, когда
+                                        пользователь введёт 0.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">total = 0</span><span class="code-row">count = 0</span><span class="code-row"></span><span class="code-row">while True:</span><span class="code-row">    amount = int(input("Сколько положить? (0 - выйти): "))</span><span class="code-row"></span><span class="code-row">    if amount == 0:</span><span class="code-row">        break</span><span class="code-row"></span><span class="code-row">    total += amount</span><span class="code-row">    count += 1</span><span class="code-row"></span><span class="code-row">print(f"В копилке {total} рублей, монет: {count}")</span></code></pre>
+                                    <p>Конструкция <code>while True:</code> с выходом через
+                                        <code>break</code> - классический паттерн. Цикл
+                                        «бесконечный» только формально: на самом деле
+                                        мы сами решаем, когда выйти.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Таблица умножения</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выведите таблицу умножения от 1 до 5.
+                                То есть для каждого числа от 1 до 5 выведите пять
+                                строк: <code>1*1=1</code>, <code>1*2=2</code> и так далее.
+                                Между блоками для разных чисел поставьте пустую строку.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Нужны два вложенных цикла: внешний <code>for i in
+                                        range(1, 6)</code> и внутренний <code>for j in range(1, 6)</code>.
+                                        Внутри выводите через f-строку. Пустую строку между
+                                        блоками можно вывести через <code>print()</code>
+                                        после внутреннего цикла.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">for i in range(1, 6):</span><span class="code-row">    for j in range(1, 6):</span><span class="code-row">        print(f"{i} * {j} = {i * j}")</span><span class="code-row">    print()</span></code></pre>
+                                    <p>Внешний цикл отвечает за первое число (от 1 до 5),
+                                        внутренний - за второе. Всего получится 25 строк
+                                        умножения и 5 пустых строк-разделителей.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы освоили вторую по важности тему после условий - циклы. Теперь
+                    ваши программы могут повторять действия, перебирать числа, вести диалог
+                    до какого-то события. Вы узнали:</p>
+
+                <ul>
+                    <li>Что такое циклы и зачем они нужны.</li>
+                    <li>Как работает цикл <code>while</code> - «пока условие истинно».</li>
+                    <li>Как работает цикл <code>for</code> вместе с <code>range()</code>.</li>
+                    <li>Что <code>range()</code> не включает правую границу.</li>
+                    <li>Как управлять циклом через <code>break</code> и <code>continue</code>.</li>
+                    <li>Что такое вложенные циклы.</li>
+                </ul>
+
+                <p>Теперь, соединив условия и циклы, вы можете писать самые настоящие программы:
+                    калькуляторы с повторным вводом, игры, обработчики списков (когда до них
+                    доберёмся), подсчёт статистики. Фактически, 90% всей логики в реальных
+                    приложениях - это комбинация условий и циклов.</p>
+
+                <p>В следующем уроке мы займёмся <strong>строками</strong>. Вы узнаете, что
+                    строки - это не просто «текст в кавычках», а целая коллекция символов
+                    с индексами. Мы научимся брать отдельные буквы, делать срезы (например,
+                    «первые 5 символов»), искать подстроки, менять регистр, разбивать
+                    предложения на слова. Это откроет дорогу к обработке текста, а значит -
+                    к чат-ботам, анализаторам, парсерам. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-04.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-06.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

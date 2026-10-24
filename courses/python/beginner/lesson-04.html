@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Условия: if, elif, else - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="beginner" data-lesson-id="lesson-04">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 04</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson active" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Условия: if, elif, else</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научили программы спрашивать у пользователя данные. Но пока
+                    они ведут себя как попугаи: что бы пользователь ни ввёл, программа просто
+                    повторяет это или выводит заготовленный текст.</p>
+
+                <p>Настоящая программа должна <strong>принимать решения</strong>. Если пользователь
+                    ввёл возраст меньше 18 - одно сообщение, если больше - другое. Если ввёл
+                    правильный пароль - пустить в систему, если нет - отказать. Если число
+                    чётное - одно действие, нечётное - другое.</p>
+
+                <p>Для этого в Python есть <strong>условия</strong> - <code>if</code>, <code>elif</code>
+                    и <code>else</code>. Сегодня мы разберёмся, как они работают, и научим программы
+                    думать.</p>
+
+                <h2>Логика на примере из жизни</h2>
+
+                <p>Представьте охранника на входе в клуб. У него есть правило:
+                    <em>«Если человеку есть 18 лет - пропустить. Иначе - сказать "Приходите позже"»</em>.
+                </p>
+
+                <p>Обратите внимание на структуру правила:</p>
+                <ul>
+                    <li><strong>Условие</strong> - «человеку есть 18 лет». Может быть истинным или ложным.</li>
+                    <li><strong>Действие при истине</strong> - «пропустить».</li>
+                    <li><strong>Действие при лжи</strong> - «сказать приходите позже».</li>
+                </ul>
+
+                <p>Именно так работает и <code>if / else</code> в Python. Вы пишете условие, и
+                    программа выбирает, какой код выполнить.</p>
+
+                <h2>Операторы сравнения</h2>
+
+                <p>Чтобы написать условие, нужно сравнить что-то с чем-то. Для этого есть
+                    <strong>операторы сравнения</strong>:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>==</code>
+                        <span>равно (два знака!)</span>
+                    </li>
+                    <li>
+                        <code>!=</code>
+                        <span>не равно</span>
+                    </li>
+                    <li>
+                        <code>&gt;</code>
+                        <span>больше</span>
+                    </li>
+                    <li>
+                        <code>&lt;</code>
+                        <span>меньше</span>
+                    </li>
+                    <li>
+                        <code>&gt;=</code>
+                        <span>больше или равно</span>
+                    </li>
+                    <li>
+                        <code>&lt;=</code>
+                        <span>меньше или равно</span>
+                    </li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Составные операторы - это два символа подряд
+                    </div>
+                    <p>В математике «больше или равно» пишется одним символом <code>≥</code>, а
+                        «меньше или равно» - <code>≤</code>. В Python таких символов нет. Вместо
+                        них используются <strong>два обычных символа подряд</strong>:</p>
+                    <ul>
+                        <li><code>&gt;=</code> - это сначала знак «больше», потом знак «равно»,
+                            без пробела между ними.</li>
+                        <li><code>&lt;=</code> - это сначала знак «меньше», потом знак «равно»,
+                            без пробела между ними.</li>
+                    </ul>
+                    <p>Если попробовать ввести символ <code>≥</code> с клавиатуры (или скопировать
+                        из статьи в интернете), Python выдаст ошибку <code>SyntaxError: invalid
+                            character</code> - он просто не знает такого символа.</p>
+                </div>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Один знак или два?
+                    </div>
+                    <p>Очень частая ошибка новичков: писать <code>if x = 5:</code> вместо
+                        <code>if x == 5:</code>. Один знак <code>=</code> - это <strong>присваивание</strong>
+                        (положить значение). Два знака <code>==</code> - это <strong>сравнение</strong>
+                        (проверить, равно ли). В условиях всегда используется <code>==</code>.</p>
+                </div>
+
+                <p>Результат сравнения всегда логический тип <code>bool</code>: либо <code>True</code>,
+                    либо <code>False</code>. Это то, что мы разбирали в уроке 2.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(5 &gt; 3)       # True</span><span class="code-row">print(5 &lt; 3)       # False</span><span class="code-row">print(10 == 10)   # True</span><span class="code-row">print("a" == "b") # False</span></code></pre>
+
+                <h2>Базовый if</h2>
+
+                <p>Самый простой вариант - выполнить что-то, <em>только если</em> условие истинно:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">age = 20</span><span class="code-row"></span><span class="code-row">if age &gt;= 18:</span><span class="code-row">    print("Вы совершеннолетний")</span></code></pre>
+
+                <p>Что здесь важно:</p>
+
+                <ul>
+                    <li><strong><code>if</code></strong> - ключевое слово, начало условия.</li>
+                    <li><strong><code>age &gt;= 18</code></strong> - само условие. В данном случае -
+                        «возраст больше или равен 18».</li>
+                    <li><strong><code>:</code></strong> - двоеточие в конце строки. <strong>Оно
+                            обязательно!</strong> Python по нему понимает, что дальше начинается
+                        блок кода.</li>
+                    <li><strong>Отступ в 4 пробела</strong> на следующей строке. Это критично -
+                        отступ показывает Python, что код относится к условию.</li>
+                </ul>
+
+                <p>Читается так: «Если возраст больше или равен 18 - выполнить код с отступом».
+                    Если возраст 16, программа просто пропустит строку с <code>print</code>
+                    и пойдёт дальше.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Отступы в Python - это не стиль, а синтаксис
+                    </div>
+                    <p>В большинстве языков блок кода обрамляется фигурными скобками
+                        <code>{}</code>. В Python вместо скобок - <strong>отступы</strong>.
+                        Если отступ неправильный, программа не запустится. VS Code обычно
+                        сам делает правильный отступ по нажатию Tab или при нажатии Enter
+                        после двоеточия.</p>
+                </div>
+
+                <h2>if / else: две ветки</h2>
+
+                <p>А если мы хотим, чтобы что-то произошло <em>и в случае лжи</em>? Для этого
+                    есть <code>else</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">age = 16</span><span class="code-row"></span><span class="code-row">if age &gt;= 18:</span><span class="code-row">    print("Проходите")</span><span class="code-row">else:</span><span class="code-row">    print("Извините, вам ещё нет 18")</span></code></pre>
+
+                <p>Теперь у нас две ветки:</p>
+                <ul>
+                    <li>Если <code>age &gt;= 18</code> истинно - выполнится первая ветка.</li>
+                    <li>Иначе (<code>else</code>) - вторая.</li>
+                </ul>
+
+                <p>Всегда выполняется <strong>только одна</strong> из них. Программа как будто
+                    стоит на развилке: пошла налево - направо уже не попадёт.</p>
+
+                <h2>elif: цепочка проверок</h2>
+
+                <p>А что если вариантов больше двух? Например, программа ставит оценку по
+                    количеству баллов:</p>
+                <ul>
+                    <li>90 и выше - отлично (5).</li>
+                    <li>70-89 - хорошо (4).</li>
+                    <li>50-69 - удовлетворительно (3).</li>
+                    <li>Меньше 50 - не сдал (2).</li>
+                </ul>
+
+                <p>Для таких случаев используется <code>elif</code> (сокращение от
+                    <em>else if</em>, «иначе если»):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">score = 85</span><span class="code-row"></span><span class="code-row">if score &gt;= 90:</span><span class="code-row">    print("Отлично")</span><span class="code-row">elif score &gt;= 70:</span><span class="code-row">    print("Хорошо")</span><span class="code-row">elif score &gt;= 50:</span><span class="code-row">    print("Удовлетворительно")</span><span class="code-row">else:</span><span class="code-row">    print("Не сдал")</span></code></pre>
+
+                <p>Как это работает:</p>
+                <ul>
+                    <li>Python проверяет условия <strong>сверху вниз</strong>.</li>
+                    <li>Как только нашёл первое истинное - выполнил его блок и <strong>вышел</strong>
+                        из всей цепочки. Остальные варианты даже не проверяются.</li>
+                    <li>Если ни одно условие не сработало - выполнится <code>else</code>.</li>
+                </ul>
+
+                <p>В нашем примере <code>score = 85</code>. Первое условие
+                    (<code>90</code>) ложное, второе (<code>70</code>) - истинное. Программа
+                    выведет «Хорошо» и на этом остановится. До проверки третьего условия
+                    дело не дойдёт.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Важен порядок
+                    </div>
+                    <p>Порядок <code>elif</code> имеет значение. Если написать первым условие
+                        <code>score &gt;= 50</code>, то оно сработает даже для оценки 95 -
+                        и программа ответит «Удовлетворительно». Условия нужно располагать
+                        от самого строгого к самому мягкому.</p>
+                </div>
+
+                <h2>Логические операторы</h2>
+
+                <p>Иногда одного условия недостаточно. Например, для получения прав нужно, чтобы
+                    человек был совершеннолетним <strong>и</strong> сдал экзамен. Здесь на помощь
+                    приходят <strong>логические операторы</strong>:</p>
+
+                <ul>
+                    <li><strong><code>and</code></strong> - «и». Истинно, только если
+                        <em>оба</em> условия истинны.</li>
+                    <li><strong><code>or</code></strong> - «или». Истинно, если хотя бы
+                        <em>одно</em> из условий истинно.</li>
+                    <li><strong><code>not</code></strong> - «не». Меняет значение на
+                        противоположное.</li>
+                </ul>
+
+                <p>Примеры:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">age = 20</span><span class="code-row">passed_exam = True</span><span class="code-row"></span><span class="code-row">if age &gt;= 18 and passed_exam:</span><span class="code-row">    print("Можно получить права")</span></code></pre>
+
+                <p>Здесь оба условия должны быть истинными. Если хотя бы одно ложно -
+                    программа не сработает.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">day = "суббота"</span><span class="code-row"></span><span class="code-row">if day == "суббота" or day == "воскресенье":</span><span class="code-row">    print("Выходной!")</span></code></pre>
+
+                <p>Здесь достаточно одного совпадения. Подходит и суббота, и воскресенье.</p>
+
+                <h2>Проверка на принадлежность: in и not in</h2>
+
+                <p>Иногда нужно проверить, входит ли значение в какой-то набор. Для этого есть
+                    оператор <code>in</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">role = "admin"</span><span class="code-row"></span><span class="code-row">if role in ["admin", "moderator"]:</span><span class="code-row">    print("У вас есть доступ")</span></code></pre>
+
+                <p>Это удобнее, чем писать длинную цепочку через <code>or</code>. А ещё
+                    <code>in</code> работает со строками - проверяет, входит ли подстрока:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">text = "Привет, мир!"</span><span class="code-row"></span><span class="code-row">if "мир" in text:</span><span class="code-row">    print("Нашли слово")</span></code></pre>
+
+                <h2>Вложенные условия</h2>
+
+                <p>Одно условие может быть вложено в другое. Например, сначала проверим,
+                    вошёл ли пользователь, а потом - есть ли у него права администратора:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">is_logged_in = True</span><span class="code-row">is_admin = False</span><span class="code-row"></span><span class="code-row">if is_logged_in:</span><span class="code-row">    if is_admin:</span><span class="code-row">        print("Привет, администратор!")</span><span class="code-row">    else:</span><span class="code-row">        print("Привет, пользователь!")</span><span class="code-row">else:</span><span class="code-row">    print("Пожалуйста, войдите в систему")</span></code></pre>
+
+                <p>Обратите внимание на отступы: чем глубже вложенность, тем больше отступов.
+                    Обычно стараются не делать больше 2-3 уровней вложенности, иначе код
+                    становится сложно читать.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>if условие:</code>
+                        <span>выполнить, если истинно</span>
+                    </li>
+                    <li>
+                        <code>elif условие:</code>
+                        <span>иначе проверить другое</span>
+                    </li>
+                    <li>
+                        <code>else:</code>
+                        <span>иначе (без условия)</span>
+                    </li>
+                    <li>
+                        <code>==</code>
+                        <span>равно (два знака!)</span>
+                    </li>
+                    <li>
+                        <code>!=</code>
+                        <span>не равно</span>
+                    </li>
+                    <li>
+                        <code>and / or / not</code>
+                        <span>логические операторы</span>
+                    </li>
+                    <li>
+                        <code>in</code>
+                        <span>проверка вхождения</span>
+                    </li>
+                    <li>
+                        <code>:</code> + отступ
+                        <span>обязательная часть блока</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с условиями.</p>
+
+                <ul>
+                    <li><strong>«SyntaxError: invalid character '≥'»</strong> или
+                        <strong>«invalid character '≤'»</strong>. Скорее всего, вы ввели
+                        математический символ «больше или равно» или «меньше или равно» одним
+                        знаком. В Python таких символов нет. Нужно писать два обычных символа
+                        подряд: <code>&gt;=</code> (сначала <code>&gt;</code>, потом
+                        <code>=</code>) или <code>&lt;=</code> (сначала <code>&lt;</code>,
+                        потом <code>=</code>). Без пробела между ними.</li>
+                    <li><strong>«SyntaxError: invalid syntax»</strong> рядом с <code>if</code>.
+                        Три частые причины: забыли двоеточие в конце условия; использовали
+                        один знак <code>=</code> вместо <code>==</code>; в условии
+                        незакрытая скобка или кавычка.</li>
+                    <li><strong>«IndentationError: expected an indented block»</strong>.
+                        Забыли отступ на следующей строке после <code>if</code>. Python
+                        ожидает, что код внутри условия будет сдвинут вправо.</li>
+                    <li><strong>«IndentationError: unexpected indent»</strong>. Наоборот,
+                        лишний отступ там, где не нужно. Например, вы отступили код,
+                        который должен быть вне условия.</li>
+                    <li><strong>Условие срабатывает всегда, хотя не должно</strong>. Проверьте
+                        порядок <code>elif</code>. Если самое «слабое» условие стоит первым,
+                        оно «перехватит» все случаи. Условия всегда идут от строгого к мягкому.</li>
+                    <li><strong>«Программа ничего не выводит»</strong>. Скорее всего, условие
+                        ложное. Попробуйте временно вывести <code>print(условие)</code>
+                        перед <code>if</code>, чтобы увидеть, <code>True</code> там или
+                        <code>False</code>. Или добавьте <code>else</code> с сообщением -
+                        тогда при любом исходе что-то будет видно.</li>
+                    <li><strong>Сравнение строк и чисел</strong>. <code>5 == "5"</code>
+                        вернёт <code>False</code>, потому что это разные типы. Если
+                        пользователь ввёл число, а вы его не преобразовали через
+                        <code>int()</code>, сравнение с числом не сработает. Всегда
+                        преобразуйте <code>input()</code> в нужный тип.</li>
+                    <li><strong>«Слишком много условий»</strong>. Если у вас 10 вложенных
+                        <code>if</code> - это сигнал, что логику пора разбить на функции.
+                        Но об этом в следующих уроках.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Чётное или нечётное</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя целое число и выведите,
+                                чётное оно или нечётное. Используйте остаток от деления
+                                (оператор <code>%</code>).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Остаток от деления на 2 равен 0 для чётных чисел.
+                                        Условие: <code>if number % 2 == 0:</code>. Не забудьте
+                                        преобразовать <code>input()</code> в <code>int()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">number = int(input("Введите число: "))</span><span class="code-row"></span><span class="code-row">if number % 2 == 0:</span><span class="code-row">    print("Чётное")</span><span class="code-row">else:</span><span class="code-row">    print("Нечётное")</span></code></pre>
+                                    <p>Оператор <code>%</code> возвращает остаток от деления.
+                                        Например, <code>10 % 2</code> даёт <code>0</code>,
+                                        а <code>7 % 2</code> - <code>1</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Проверка пароля</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая спрашивает пароль
+                                и сравнивает с заранее заданным (<code>"qwerty123"</code>).
+                                Если пароль правильный - вывести «Доступ разрешён», иначе -
+                                «Неверный пароль».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сохраните правильный пароль в переменную в начале. Потом
+                                        спросите у пользователя. Сравните через <code>==</code>.
+                                        Обратите внимание: сравнение строк чувствительно к регистру
+                                        - <code>"Qwerty"</code> и <code>"qwerty"</code> не равны.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">correct_password = "qwerty123"</span><span class="code-row"></span><span class="code-row">password = input("Введите пароль: ")</span><span class="code-row"></span><span class="code-row">if password == correct_password:</span><span class="code-row">    print("Доступ разрешён")</span><span class="code-row">else:</span><span class="code-row">    print("Неверный пароль")</span></code></pre>
+                                    <p>В реальной программе пароль никогда не хранят в открытом
+                                        виде. Но для учебного примера подойдёт. Как правильно
+                                        хранить пароли - поговорим в курсе по кибербезопасности.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Оценка по баллам</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая по введённому
+                                количеству баллов (от 0 до 100) ставит оценку. Правила:
+                                90-100 - «Отлично», 70-89 - «Хорошо», 50-69 -
+                                «Удовлетворительно», меньше 50 - «Не сдал». Используйте
+                                <code>if / elif / else</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проверяйте от большего к меньшему. Первое условие:
+                                        <code>if score &gt;= 90:</code>. Второе:
+                                        <code>elif score &gt;= 70:</code>. И так далее.
+                                        Обратите внимание, что для второго условия не нужно
+                                        писать <code>score &lt; 90</code> - до него дойдут
+                                        только те, у кого первое условие оказалось ложным.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">score = int(input("Введите баллы (0-100): "))</span><span class="code-row"></span><span class="code-row">if score &gt;= 90:</span><span class="code-row">    print("Отлично")</span><span class="code-row">elif score &gt;= 70:</span><span class="code-row">    print("Хорошо")</span><span class="code-row">elif score &gt;= 50:</span><span class="code-row">    print("Удовлетворительно")</span><span class="code-row">else:</span><span class="code-row">    print("Не сдал")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Високосный год</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Високосный год - это год, который делится на 4
+                                без остатка, но при этом не делится на 100 (кроме тех лет,
+                                что делятся на 400). Напишите программу, которая по
+                                введённому году определяет, високосный он или нет.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Условие сложное, но его можно записать одной строкой:
+                                        <code>(year % 4 == 0 and year % 100 != 0) or year % 400 == 0</code>.
+                                        Обратите внимание на скобки - они задают приоритет:
+                                        сначала проверяется «делится на 4 и не делится на 100»,
+                                        потом «или делится на 400».</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">year = int(input("Введите год: "))</span><span class="code-row"></span><span class="code-row">if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:</span><span class="code-row">    print(f"{year} - високосный год")</span><span class="code-row">else:</span><span class="code-row">    print(f"{year} - не високосный год")</span></code></pre>
+                                    <p>Проверьте на разных годах: 2024 - високосный (делится
+                                        на 4), 2023 - нет, 2000 - високосный (делится на 400),
+                                        1900 - нет (делится на 100, но не на 400).</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня программы научились главному - <strong>принимать решения</strong>.
+                    Это тот самый момент, когда код из «линейного сценария» превращается
+                    в настоящую логику. Теперь вы знаете:</p>
+
+                <ul>
+                    <li>Что такое условия и зачем они нужны.</li>
+                    <li>Операторы сравнения: <code>==</code>, <code>!=</code>, <code>&gt;</code>,
+                        <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>.</li>
+                    <li>Конструкции <code>if</code>, <code>elif</code>, <code>else</code>.</li>
+                    <li>Логические операторы <code>and</code>, <code>or</code>, <code>not</code>.</li>
+                    <li>Проверку вхождения через <code>in</code>.</li>
+                    <li>Вложенные условия и важность отступов.</li>
+                </ul>
+
+                <p>Теперь ваши программы могут различать ситуации. Пароль верный - пустить,
+                    возраст маленький - не пустить. Оценка хорошая - похвалить, плохая -
+                    пожурить. Это огромный шаг вперёд.</p>
+
+                <p>Но всё это пока работает один раз. Программа спросила, ответила и
+                    завершилась. А что если пользователь хочет сыграть ещё партию? Или
+                    ввести пароль три раза? Или перебрать все числа от 1 до 100?</p>
+
+                <p>В следующем уроке мы разберём <strong>циклы</strong> - <code>while</code>
+                    и <code>for</code>. Они позволяют повторять один и тот же код много
+                    раз, пока выполняется какое-то условие. Это откроет дорогу к настоящим
+                    играм, перебору, работе с коллекциями. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-03.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-05.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

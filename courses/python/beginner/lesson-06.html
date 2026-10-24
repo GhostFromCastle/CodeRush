@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Работа со строками (str) - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="beginner" data-lesson-id="lesson-06">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 06</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson active" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Работа со строками (str)</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>До этого момента мы работали со строками как с чем-то единым: напечатать текст,
+                    спросить имя, склеить два слова. Но строка - это не «неделимый кусок текста».
+                    Это <strong>последовательность символов</strong>, где у каждого символа есть
+                    свой номер. И с этой последовательностью можно делать очень много всего
+                    полезного.</p>
+
+                <p>Представьте строку как <strong>поезд с вагонами</strong>. У каждого вагона
+                    есть номер, по которому его можно найти. Можно взять отдельный вагон
+                    (один символ), можно взять несколько подряд (срез), можно переставить
+                    вагоны, заменить один на другой. Сегодня мы научимся со строками делать
+                    всё это и ещё много чего.</p>
+
+                <p>Этот урок особенно важен: реальные программы очень часто работают именно с
+                    текстом. Валидация email, поиск по сайту, разбор логов, чат-боты, обработка
+                    CSV, генерация отчётов - всё это работа со строками. Поэтому стоит
+                    разобраться как следует.</p>
+
+                <h2>Что такое строка изнутри</h2>
+
+                <p>Строка - это <strong>последовательность символов</strong>. Слово
+                    <code>"Привет"</code> - это последовательность из 6 символов:
+                    <code>П</code>, <code>р</code>, <code>и</code>, <code>в</code>,
+                    <code>е</code>, <code>т</code>. У каждого из них есть свой индекс
+                    (порядковый номер).</p>
+
+                <p>Важно запомнить: в Python <strong>индексация начинается с нуля</strong>.
+                    То есть первый символ имеет индекс <code>0</code>, второй - <code>1</code>,
+                    третий - <code>2</code> и так далее. Это часто сбивает с толку новичков,
+                    но к этому быстро привыкаешь.</p>
+
+                <p>Вот как выглядит слово <code>"Python"</code> с точки зрения индексов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">P  y  t  h  o  n</span><span class="code-row">0  1  2  3  4  5</span></code></pre>
+
+                <p>Почему с нуля? Так сложилось исторически почти во всех языках программирования.
+                    Причина в том, что индекс - это <strong>смещение от начала строки</strong>.
+                    Первый символ находится в самом начале, то есть со смещением 0. Так что
+                    всё логично.</p>
+
+                <h2>Длина строки и функция len()</h2>
+
+                <p>Чтобы узнать, сколько символов в строке, используют функцию <code>len()</code>
+                    (от английского <em>length</em> - «длина»):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">text = "Привет"</span><span class="code-row">print(len(text))   # 6</span></code></pre>
+
+                <p>Это число полезно помнить: последний символ строки имеет индекс
+                    <code>len(text) - 1</code>. Для <code>"Привет"</code> длина 6, значит
+                    последний индекс - 5.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Пробелы тоже считаются
+                    </div>
+                    <p>Пробел - это такой же символ, как и буква. Строка <code>"Привет мир"</code>
+                        имеет длину 10: 6 букв + 1 пробел + 3 буквы. Об этом легко забыть,
+                        когда считаешь длину «на глаз».</p>
+                </div>
+
+                <h2>Доступ к отдельным символам</h2>
+
+                <p>Чтобы получить конкретный символ, используют квадратные скобки
+                    <code>[]</code> и индекс:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">word = "Python"</span><span class="code-row"></span><span class="code-row">print(word[0])   # P</span><span class="code-row">print(word[1])   # y</span><span class="code-row">print(word[5])   # n</span></code></pre>
+
+                <p>А если попробовать взять индекс, которого не существует?</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(word[10])   # IndexError!</span></code></pre>
+
+                <p>Программа упадёт с ошибкой <code>IndexError: string index out of range</code>
+                    («индекс за пределами строки»). Это логично: в слове «Python» всего 6 символов,
+                    индексы с 0 до 5, а вы просите десятый.</p>
+
+                <h2>Отрицательные индексы</h2>
+
+                <p>В Python есть удобная фишка - <strong>отрицательные индексы</strong>. Они
+                    считаются с конца строки. <code>-1</code> - это последний символ,
+                    <code>-2</code> - предпоследний, и так далее:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">word = "Python"</span><span class="code-row"></span><span class="code-row">print(word[-1])   # n (последний)</span><span class="code-row">print(word[-2])   # o (предпоследний)</span><span class="code-row">print(word[-6])   # P (первый, как word[0])</span></code></pre>
+
+                <p>Это очень удобно, когда нужно взять последний символ, но не хочется
+                    высчитывать <code>len(word) - 1</code>. Просто <code>word[-1]</code> - и готово.</p>
+
+                <h2>Срезы (slices)</h2>
+
+                <p>Самый мощный инструмент для работы со строками - это <strong>срезы</strong>.
+                    Они позволяют взять не один символ, а <em>несколько подряд</em>. Синтаксис
+                    такой:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">строка[начало:конец:шаг]</span></code></pre>
+
+                <p>Все три части - опциональные. Разберём по порядку.</p>
+
+                <h3>Простой срез: [начало:конец]</h3>
+
+                <p>Возвращает символы с индекса <code>начало</code> до индекса <code>конец</code>,
+                    <strong>не включая</strong> <code>конец</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">word = "Python"</span><span class="code-row"></span><span class="code-row">print(word[0:2])   # Py</span><span class="code-row">print(word[2:5])   # tho</span><span class="code-row">print(word[0:6])   # Python (вся строка)</span></code></pre>
+
+                <p>Помните правило: <strong>правая граница не включается</strong>. То есть
+                    <code>word[2:5]</code> берёт символы с индексами 2, 3, 4 - но не 5.
+                    Это та же логика, что и в <code>range()</code> из прошлого урока.</p>
+
+                <h3>Пропущенные границы</h3>
+
+                <p>Если не указать начало - срез начнётся с самого начала строки. Если
+                    не указать конец - закончится последним символом:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">word = "Python"</span><span class="code-row"></span><span class="code-row">print(word[:3])    # Pyt (с начала до индекса 3)</span><span class="code-row">print(word[3:])    # hon (с индекса 3 до конца)</span><span class="code-row">print(word[:])     # Python (вся строка)</span></code></pre>
+
+                <h3>Срез с шагом</h3>
+
+                <p>Третья часть среза - шаг. По умолчанию он равен 1 (каждый символ). Но можно
+                    задать любое число:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">word = "Programming"</span><span class="code-row"></span><span class="code-row">print(word[0:11:2])    # Pormig (каждый второй)</span><span class="code-row">print(word[::2])       # Pormig (то же самое)</span><span class="code-row">print(word[::3])       # Prmn (каждый третий)</span></code></pre>
+
+                <h3>Разворот строки</h3>
+
+                <p>А вот классический трюк: если шаг отрицательный, строка идёт в обратном
+                    порядке. И самый частый вариант - <code>[::-1]</code> - разворачивает
+                    строку полностью:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">word = "Python"</span><span class="code-row"></span><span class="code-row">print(word[::-1])   # nohtyP</span></code></pre>
+
+                <p>Запомните этот трюк - он пригодится в задачах на палиндромы.</p>
+
+                <h2>Строки неизменяемы</h2>
+
+                <p>Это важно понять с самого начала: <strong>строки в Python неизменяемы</strong>.
+                    То есть после создания строки вы не можете изменить отдельный её символ:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">word = "Python"</span><span class="code-row">word[0] = "J"   # Ошибка!</span></code></pre>
+
+                <p>Это вызовет <code>TypeError: 'str' object does not support item assignment</code>.
+                    Почему так? Потому что строка - это как высеченная в камне надпись. Вы можете
+                    создать новую надпись (новую строку), но изменить старую - нельзя.</p>
+
+                <p>Если нужно «изменить» строку, на самом деле создаётся новая:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">word = "Python"</span><span class="code-row">new_word = "J" + word[1:]</span><span class="code-row">print(new_word)   # Jython</span></code></pre>
+
+                <p>Здесь мы «склеили» букву <code>J</code> с остатком строки, начиная с индекса 1.
+                    Старая переменная <code>word</code> не изменилась, но мы записали результат
+                    в новую переменную.</p>
+
+                <h2>Методы строк</h2>
+
+                <p>У строк в Python есть десятки встроенных <strong>методов</strong> - готовых
+                    функций, которые делают что-то полезное с этой строкой. Вызываются они через
+                    точку: <code>строка.метод()</code>.</p>
+
+                <p>Разберём самые важные. Все примеры работают со строкой
+                    <code>text = "Hello, World"</code>.</p>
+
+                <h3>Изменение регистра</h3>
+
+                <p>Четыре метода для работы с регистром символов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">text = "Hello, World"</span><span class="code-row"></span><span class="code-row">print(text.upper())        # HELLO, WORLD</span><span class="code-row">print(text.lower())        # hello, world</span><span class="code-row">print(text.capitalize())   # Hello, world</span><span class="code-row">print(text.title())        # Hello, World</span></code></pre>
+
+                <ul>
+                    <li><strong><code>upper()</code></strong> - всё в верхний регистр.</li>
+                    <li><strong><code>lower()</code></strong> - всё в нижний регистр.</li>
+                    <li><strong><code>capitalize()</code></strong> - только первая буква
+                        заглавная, остальные строчные.</li>
+                    <li><strong><code>title()</code></strong> - каждое слово с большой буквы.</li>
+                </ul>
+
+                <p>Эти методы возвращают <strong>новую строку</strong>, а не меняют исходную.
+                    Не забывайте сохранять результат, если он нужен:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">text = "hello"</span><span class="code-row">text.upper()         # результат потерялся!</span><span class="code-row">print(text)          # всё ещё "hello"</span><span class="code-row"></span><span class="code-row">text = text.upper()  # теперь сохранили</span><span class="code-row">print(text)          # HELLO</span></code></pre>
+
+                <h3>Удаление пробелов</h3>
+
+                <p>Три метода для очистки строки от лишних пробелов по краям:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">text = "   привет   "</span><span class="code-row"></span><span class="code-row">print(text.strip())    # "привет" (с обеих сторон)</span><span class="code-row">print(text.lstrip())   # "привет   " (слева)</span><span class="code-row">print(text.rstrip())   # "   привет" (справа)</span></code></pre>
+
+                <p><code>strip()</code> особенно полезен при работе с <code>input()</code> -
+                    пользователь может случайно поставить лишний пробел в конце, а вы этого
+                    не заметите.</p>
+
+                <h3>Замена и поиск</h3>
+
+                <p>Методы для изменения содержимого и поиска подстрок:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">text = "Hello, World"</span><span class="code-row"></span><span class="code-row">print(text.replace("World", "Python"))   # Hello, Python</span><span class="code-row">print(text.find("World"))                # 7</span><span class="code-row">print(text.find("xyz"))                  # -1 (не найдено)</span><span class="code-row">print(text.count("l"))                   # 3</span></code></pre>
+
+                <ul>
+                    <li><strong><code>replace(old, new)</code></strong> - заменяет все вхождения
+                        подстроки <code>old</code> на <code>new</code>.</li>
+                    <li><strong><code>find(sub)</code></strong> - возвращает индекс первого
+                        вхождения подстроки или <code>-1</code>, если не найдено.</li>
+                    <li><strong><code>count(sub)</code></strong> - сколько раз подстрока
+                        встречается в строке.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Не путайте find и index
+                    </div>
+                    <p>Оба ищут подстроку. Но <code>find()</code> возвращает <code>-1</code>,
+                        если ничего не нашёл. А <code>index()</code> в той же ситуации выбрасывает
+                        ошибку <code>ValueError</code>. Если не уверены, что подстрока точно есть -
+                        используйте <code>find()</code>, он безопаснее.</p>
+                </div>
+
+                <h3>Разбиение и склейка</h3>
+
+                <p>Мощная пара методов для работы с текстом как со списком слов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">text = "яблоко банан вишня"</span><span class="code-row"></span><span class="code-row">fruits = text.split()</span><span class="code-row">print(fruits)   # ['яблоко', 'банан', 'вишня']</span><span class="code-row"></span><span class="code-row">joined = ", ".join(fruits)</span><span class="code-row">print(joined)   # яблоко, банан, вишня</span></code></pre>
+
+                <ul>
+                    <li><strong><code>split(sep)</code></strong> - разбивает строку на список
+                        по разделителю. По умолчанию делит по пробелам.</li>
+                    <li><strong><code>join(iterable)</code></strong> - склеивает элементы
+                        коллекции в одну строку через разделитель.</li>
+                </ul>
+
+                <p>Пример с явным разделителем:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">csv = "Иван,25,Москва"</span><span class="code-row">parts = csv.split(",")</span><span class="code-row">print(parts)   # ['Иван', '25', 'Москва']</span></code></pre>
+
+                <p>Именно так разбирают CSV-файлы - данные, разделённые запятыми.</p>
+
+                <h3>Проверки: начало, конец, содержание</h3>
+
+                <p>Полезные методы для проверки строки:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">text = "Hello, World"</span><span class="code-row"></span><span class="code-row">print(text.startswith("Hello"))   # True</span><span class="code-row">print(text.endswith("!"))         # False</span><span class="code-row">print("World" in text)            # True</span></code></pre>
+
+                <ul>
+                    <li><strong><code>startswith(prefix)</code></strong> - начинается ли строка
+                        с указанной подстроки.</li>
+                    <li><strong><code>endswith(suffix)</code></strong> - заканчивается ли.</li>
+                    <li><strong><code>in</code></strong> - содержится ли подстрока внутри.</li>
+                </ul>
+
+                <p>Всё это возвращает <code>True</code> или <code>False</code> - идеально для
+                    использования в условиях <code>if</code>.</p>
+
+                <h2>Перебор символов через for</h2>
+
+                <p>Строку можно перебрать циклом <code>for</code> - как и список. Python
+                    даст вам по одному символу за раз:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">word = "Python"</span><span class="code-row"></span><span class="code-row">for letter in word:</span><span class="code-row">    print(letter)</span></code></pre>
+
+                <p>Выведет: <code>P</code>, <code>y</code>, <code>t</code>, <code>h</code>,
+                    <code>o</code>, <code>n</code> - по одному на строку.</p>
+
+                <p>А если нужны и индексы? Можно использовать функцию <code>enumerate()</code>,
+                    но она чаще применяется к спискам, о которых мы поговорим в уроке 10.</p>
+
+                <h2>Сложение и умножение строк</h2>
+
+                <p>Строки можно «складывать» (склеивать) оператором <code>+</code> и
+                    «умножать» (повторять) оператором <code>*</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">a = "Hello"</span><span class="code-row">b = "World"</span><span class="code-row"></span><span class="code-row">print(a + ", " + b + "!")   # Hello, World!</span><span class="code-row">print("-" * 20)             # --------------------</span><span class="code-row">print("=" * 5)              # =====</span></code></pre>
+
+                <p>Умножение строк часто используется для визуального оформления -
+                    разделителей, рамок, отступов.</p>
+
+                <p>И ещё раз напомню: <code>"5" + 5</code> - это ошибка, нельзя складывать строку
+                    с числом. Нужно сначала привести число к строке: <code>"5" + str(5)</code>.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>len(s)</code>
+                        <span>длина строки</span>
+                    </li>
+                    <li>
+                        <code>s[0], s[-1]</code>
+                        <span>первый и последний символ</span>
+                    </li>
+                    <li>
+                        <code>s[1:4]</code>
+                        <span>срез (не включая 4)</span>
+                    </li>
+                    <li>
+                        <code>s[::-1]</code>
+                        <span>развернуть строку</span>
+                    </li>
+                    <li>
+                        <code>.upper() / .lower()</code>
+                        <span>регистр</span>
+                    </li>
+                    <li>
+                        <code>.strip()</code>
+                        <span>убрать пробелы по краям</span>
+                    </li>
+                    <li>
+                        <code>.replace(a, b)</code>
+                        <span>заменить подстроку</span>
+                    </li>
+                    <li>
+                        <code>.find(sub)</code>
+                        <span>найти (-1 если нет)</span>
+                    </li>
+                    <li>
+                        <code>.split(sep)</code>
+                        <span>разбить на список</span>
+                    </li>
+                    <li>
+                        <code>sep.join(list)</code>
+                        <span>склеить из списка</span>
+                    </li>
+                    <li>
+                        <code>in</code>
+                        <span>проверить наличие</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе со строками.</p>
+
+                <ul>
+                    <li><strong>«IndexError: string index out of range»</strong>. Вы пытаетесь
+                        взять символ по индексу, которого нет. Помните: последний допустимый
+                        индекс - это <code>len(s) - 1</code>. Для <code>"Python"</code> это 5,
+                        а не 6.</li>
+                    <li><strong>«TypeError: 'str' object does not support item assignment»</strong>.
+                        Вы пытаетесь изменить отдельный символ: <code>word[0] = "X"</code>.
+                        Строки неизменяемы. Создайте новую строку через срез и сложение.</li>
+                    <li><strong>«AttributeError: 'str' object has no attribute 'upper'»</strong>
+                        (или другой метод). Возможные причины: опечатка в названии метода
+                        (<code>uper</code> вместо <code>upper</code>), неправильный регистр
+                        (<code>Upper</code> вместо <code>upper</code>), или вы вызываете метод
+                        не на строке.</li>
+                    <li><strong>Метод сработал, но ничего не изменилось</strong>. Строки
+                        неизменяемы - все методы возвращают <strong>новую</strong> строку,
+                        а не меняют старую. Нужно сохранить результат:
+                        <code>text = text.upper()</code>, а не просто
+                        <code>text.upper()</code>.</li>
+                    <li><strong>«TypeError: can only concatenate str (not "int") to str»</strong>.
+                        Склеиваете строку с числом через <code>+</code>. Используйте
+                        <code>str()</code> для преобразования или f-строки:
+                        <code>f"Возраст: {age}"</code>.</li>
+                    <li><strong>«Срез [1:3] даёт только 2 символа вместо 3»</strong>.
+                        Правая граница среза <strong>не включается</strong>. Если нужны
+                        индексы 1, 2, 3 - пишите <code>[1:4]</code>.</li>
+                    <li><strong>Русские буквы не находятся через find</strong>. Убедитесь,
+                        что и строка, и подстрока набраны в одинаковом регистре. <code>find</code>
+                        чувствителен к регистру: <code>"Привет".find("привет")</code> вернёт
+                        <code>-1</code>. Используйте <code>lower()</code> с обеих сторон,
+                        если нужно искать без учёта регистра.</li>
+                    <li><strong>Не совпадают строки, хотя «выглядят одинаково»</strong>.
+                        Скорее всего, есть невидимые пробелы или разные типы кавычек (например,
+                        «умные» кавычки из Word). Используйте <code>strip()</code> и проверяйте
+                        строки через <code>repr()</code> - он показывает невидимые символы.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Последняя буква</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя слово и выведите:
+                                его длину, первую букву и последнюю букву. Используйте
+                                <code>len()</code> и отрицательный индекс для последней
+                                буквы.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Первая буква - <code>word[0]</code>. Последняя -
+                                        <code>word[-1]</code>. Длина - <code>len(word)</code>.
+                                        Не забудьте сохранить ввод в переменную, чтобы не
+                                        вызывать <code>input()</code> несколько раз.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">word = input("Введите слово: ")</span><span class="code-row"></span><span class="code-row">print(f"Длина: {len(word)}")</span><span class="code-row">print(f"Первая буква: {word[0]}")</span><span class="code-row">print(f"Последняя буква: {word[-1]}")</span></code></pre>
+                                    <p>Использование <code>word[-1]</code> удобнее, чем
+                                        <code>word[len(word) - 1]</code> - короче и не надо
+                                        высчитывать индекс вручную.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Сокращение имени</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя имя и фамилию
+                                одной строкой (например, «Иван Петров»). Выведите сокращённый
+                                вариант в формате «И. Петров» - первая буква имени,
+                                точка, пробел, фамилия.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Разделите строку на две части через <code>split()</code>:
+                                        <code>parts = full_name.split()</code>. Тогда
+                                        <code>parts[0]</code> - это имя, <code>parts[1]</code> -
+                                        фамилия. Из имени берите первую букву через
+                                        <code>parts[0][0]</code>. Результат склейте через
+                                        f-строку.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">full_name = input("Введите имя и фамилию: ")</span><span class="code-row"></span><span class="code-row">parts = full_name.split()</span><span class="code-row">first_name = parts[0]</span><span class="code-row">last_name = parts[1]</span><span class="code-row"></span><span class="code-row">short = f"{first_name[0]}. {last_name}"</span><span class="code-row">print(short)</span></code></pre>
+                                    <p>Обратите внимание: <code>parts[0][0]</code> - это
+                                        первый символ первого слова. Двойные квадратные скобки
+                                        читаются справа налево: сначала берём первый элемент
+                                        списка, потом первый символ этой строки.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Проверка палиндрома</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Палиндром - это слово, которое читается
+                                одинаково в обе стороны: «шалаш», «топот», «level». Спросите
+                                у пользователя слово и определите, является ли оно палиндромом.
+                                Используйте срез для разворота строки.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Развернуть строку можно через срез <code>[::-1]</code>.
+                                        Палиндром - это когда исходная строка равна развёрнутой.
+                                        Для дополнительной надёжности приведите всё к нижнему
+                                        регистру через <code>lower()</code>: «Шалаш» и «шалаш»
+                                        должны считаться одинаковыми.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">word = input("Введите слово: ").lower()</span><span class="code-row"></span><span class="code-row">if word == word[::-1]:</span><span class="code-row">    print("Это палиндром!")</span><span class="code-row">else:</span><span class="code-row">    print("Это не палиндром")</span></code></pre>
+                                    <p>Метод <code>.lower()</code> сразу после <code>input()</code>
+                                        приводит строку к нижнему регистру, чтобы «Шалаш» тоже
+                                        считался палиндромом. <code>word[::-1]</code> - это
+                                        развёрнутая версия строки.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Анализ текста</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя предложение и выведите
+                                статистику: количество символов, количество слов, количество
+                                гласных букв (а, е, ё, и, о, у, ы, э, ю, я). Используйте
+                                методы строк и цикл.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Длина строки - <code>len(text)</code>. Количество слов -
+                                        <code>len(text.split())</code>. Гласные считайте циклом
+                                        <code>for</code>: для каждого символа проверяйте, входит
+                                        ли он в строку <code>"аеёиоуыэюя"</code> через
+                                        <code>in</code>. Не забудьте привести текст к нижнему
+                                        регистру через <code>lower()</code>, чтобы заглавные
+                                        тоже считались.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">text = input("Введите предложение: ")</span><span class="code-row">text_lower = text.lower()</span><span class="code-row"></span><span class="code-row">vowels = "аеёиоуыэюя"</span><span class="code-row">vowel_count = 0</span><span class="code-row"></span><span class="code-row">for char in text_lower:</span><span class="code-row">    if char in vowels:</span><span class="code-row">        vowel_count += 1</span><span class="code-row"></span><span class="code-row">print(f"Символов: {len(text)}")</span><span class="code-row">print(f"Слов: {len(text.split())}")</span><span class="code-row">print(f"Гласных: {vowel_count}")</span></code></pre>
+                                    <p>Обратите внимание на переменную <code>text_lower</code> -
+                                        мы сохранили приведённую к нижнему регистру версию,
+                                        чтобы не вызывать <code>lower()</code> в каждой итерации
+                                        цикла. Это небольшая, но полезная оптимизация.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы разобрались со строками как следует. Это был большой, но очень
+                    важный урок - со строками вы будете работать постоянно. Теперь вы знаете:</p>
+
+                <ul>
+                    <li>Что строка - это последовательность символов с индексами от нуля.</li>
+                    <li>Как брать отдельные символы (<code>s[0]</code>, <code>s[-1]</code>).</li>
+                    <li>Как брать срезы (<code>s[1:5]</code>, <code>s[::2]</code>,
+                        <code>s[::-1]</code>).</li>
+                    <li>Что строки <strong>неизменяемы</strong>, но все методы возвращают
+                        новые строки.</li>
+                    <li>Основные методы: <code>upper</code>, <code>lower</code>,
+                        <code>strip</code>, <code>replace</code>, <code>find</code>,
+                        <code>split</code>, <code>join</code>.</li>
+                    <li>Как перебирать строку циклом <code>for</code>.</li>
+                    <li>Как склеивать (<code>+</code>) и повторять (<code>*</code>) строки.</li>
+                </ul>
+
+                <p>На самом деле это только верхушка айсберга. У строк в Python десятки методов,
+                    но те, что мы разобрали, покрывают 90% повседневных задач. Дальше - практика
+                    и постепенное знакомство с новыми инструментами по мере необходимости.</p>
+
+                <p>В следующем уроке мы займёмся <strong>случайными числами</strong>. Научимся
+                    подключать модуль <code>random</code> и использовать его функции
+                    <code>randint</code>, <code>choice</code>, <code>shuffle</code>. Это откроет
+                    дорогу к играм, генераторам паролей, случайным выборкам и вообще любым
+                    программам с элементом неожиданности. А в следующем за ним уроке мы
+                    соберём первую настоящую игру - «Орёл или Решка». До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-05.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-07.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переменные и типы данных - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="beginner" data-lesson-id="lesson-02">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 02</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson active" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Переменные и типы данных</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы написали первую программу, которая вывела на экран «Hello, World!».
+                    Но это был просто текст, который мы написали заранее. Настоящие программы умеют
+                    <strong>хранить данные, изменять их и работать с ними</strong>. Например, калькулятор
+                    должен помнить числа, с которыми работает, а игра - счёт игрока.</p>
+
+                <p>Сегодня мы познакомимся с главными инструментами для этого: <strong>переменными</strong>
+                    и <strong>типами данных</strong>. Именно на них строится всё программирование.
+                    Без них вы не сможете написать ни одной осмысленной программы.</p>
+
+                <h2>Что такое переменная</h2>
+
+                <p>Представьте, что у вас есть <strong>коробки с наклейками</strong>. В одну вы кладёте
+                    числа, в другую - слова, в третью - что-то логическое. Каждая коробка имеет
+                    своё имя, чтобы вы могли легко её найти и достать нужное содержимое.</p>
+
+                <p><strong>Переменная</strong> - это именно такая коробка. Это именованная область памяти,
+                    в которой хранится какое-то значение. Вы даёте ей имя один раз - и потом можете
+                    обращаться к ней по этому имени, читать и менять содержимое.</p>
+
+                <p>В Python переменная создаётся очень просто:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">name = "Алексей"</span></code></pre>
+
+                <p>Что здесь произошло:</p>
+                <ul>
+                    <li><strong><code>name</code></strong> - это имя переменной. Так мы будем обращаться
+                        к «коробке».</li>
+                    <li><strong><code>=</code></strong> - это знак присваивания. Читается как «положить
+                        в коробку». Не путайте с математическим «равно».</li>
+                    <li><strong><code>"Алексей"</code></strong> - это значение, которое мы кладём в коробку.</li>
+                </ul>
+
+                <p>После этого мы можем использовать переменную в программе:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">name = "Алексей"</span><span class="code-row">print(name)</span></code></pre>
+
+                <p>Программа выведет <code>Алексей</code>. Функция <code>print</code> посмотрела
+                    в коробку с именем <code>name</code>, достала оттуда значение и показала на экране.</p>
+
+                <h2>Как менять переменные</h2>
+
+                <p>Главное удобство переменных в том, что их содержимое можно <strong>менять</strong>.
+                    Возьмём ту же переменную <code>name</code> и положим в неё новое значение:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">name = "Алексей"</span><span class="code-row">print(name)</span><span class="code-row"></span><span class="code-row">name = "Мария"</span><span class="code-row">print(name)</span></code></pre>
+
+                <p>Первая печать выведет <code>Алексей</code>, вторая - <code>Мария</code>. Мы буквально
+                    «вытряхнули» старое значение и положили новое. Старое пропадает - переменная хранит
+                    только <em>одно</em> значение в каждый момент времени.</p>
+
+                <p>А вот так можно увеличить число на единицу:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">score = 0</span><span class="code-row">print(score)</span><span class="code-row"></span><span class="code-row">score = score + 10</span><span class="code-row">print(score)</span></code></pre>
+
+                <p>Программа сначала выведет <code>0</code>, а потом <code>10</code>. Строка
+                    <code>score = score + 10</code> читается так: «Возьми текущее значение из
+                    <code>score</code>, прибавь к нему 10 и положи обратно в <code>score</code>».</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Знак равенства в программировании
+                    </div>
+                    <p>В математике <code>x = 5</code> означает «x равен пяти». В программировании
+                        это команда «положи в x значение 5». Поэтому запись <code>x = x + 1</code>
+                        в математике бессмысленна, а в программировании - абсолютно нормальна: «возьми
+                        старое x, прибавь 1, положи обратно».</p>
+                </div>
+
+                <h2>Правила именования</h2>
+
+                <p>Имя переменной - это не просто произвольный текст. Есть несколько правил, которые
+                    нужно соблюдать, иначе Python не поймёт, что вы имеете в виду:</p>
+
+                <ul>
+                    <li><strong>Начинается с буквы или подчёркивания.</strong> Имя
+                        <code>name</code> или <code>_name</code> работает, а <code>1name</code> -
+                        нет, потому что начинается с цифры.</li>
+                    <li><strong>Может содержать буквы, цифры и подчёркивания.</strong>
+                        <code>user_name2</code> - можно, <code>user-name</code> - нельзя (дефис
+                        запрещён, он воспринимается как знак вычитания).</li>
+                    <li><strong>Чувствительно к регистру.</strong> <code>Name</code> и
+                        <code>name</code> - это <em>две разные</em> переменные. Python различает
+                        строчные и заглавные буквы.</li>
+                    <li><strong>Нельзя использовать зарезервированные слова.</strong> Есть слова
+                        вроде <code>if</code>, <code>for</code>, <code>print</code>, <code>class</code>,
+                        которые «заняты» языком. Если попробуете назвать переменную <code>if</code> -
+                        получите ошибку.</li>
+                </ul>
+
+                <p>Помимо обязательных правил, есть соглашения о том, как писать красиво:</p>
+
+                <ul>
+                    <li><strong>Осмысленные имена.</strong> <code>user_age</code> понятнее, чем
+                        <code>x</code> или <code>a1</code>.</li>
+                    <li><strong>Стиль snake_case.</strong> В Python принято писать имена переменных
+                        строчными буквами, а слова разделять подчёркиванием:
+                        <code>first_name</code>, <code>total_price</code>, <code>is_active</code>.
+                    </li>
+                    <li><strong>Коротко, но понятно.</strong> <code>price</code> - хорошо,
+                        <code>p</code> - плохо, но <code>total_price_after_discount</code> -
+                        слишком длинно.</li>
+                </ul>
+
+                <h2>Основные типы данных</h2>
+
+                <p>Каждое значение в Python имеет свой <strong>тип</strong>. Это как категория содержимого
+                    в коробке: число - это число, текст - это текст, истина - это истина. Самые важные
+                    типы, с которыми вы будете работать каждый день:</p>
+
+                <h3>int - целые числа</h3>
+
+                <p>Это числа без дробной части: <code>1</code>, <code>-5</code>, <code>100</code>,
+                    <code>0</code>. Могут быть отрицательными и положительными:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">age = 25</span><span class="code-row">temperature = -10</span><span class="code-row">year = 2026</span></code></pre>
+
+                <h3>float - числа с плавающей точкой</h3>
+
+                <p>Это числа с дробной частью. В Python они пишутся через <strong>точку</strong>,
+                    а не запятую (это важно!):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">height = 1.75</span><span class="code-row">pi = 3.14159</span><span class="code-row">temperature = -3.5</span></code></pre>
+
+                <p>Если написать <code>height = 1,75</code> с запятой - Python воспримет это
+                    как два отдельных числа, а не одно. Запятая в Python используется для
+                    других целей (перечисление аргументов, кортежи).</p>
+
+                <h3>str - строки</h3>
+
+                <p>Это текст в кавычках. Мы уже работали со строками в первом уроке:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">name = "Алексей"</span><span class="code-row">city = 'Москва'</span><span class="code-row">message = "Привет, мир!"</span></code></pre>
+
+                <p>Строкой может быть одно слово, предложение, абзац, цифры в кавычках
+                    (<code>"123"</code> - это строка, а не число).</p>
+
+                <h3>bool - логический тип</h3>
+
+                <p>Это либо <code>True</code> (истина), либо <code>False</code> (ложь). Всего два
+                    значения. Используется для условий и проверок:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">is_student = True</span><span class="code-row">has_license = False</span></code></pre>
+
+                <p>Обратите внимание: <code>True</code> и <code>False</code> пишутся с
+                    <strong>большой буквы</strong>. Это часть синтаксиса Python.</p>
+
+                <h2>Функция type(): как узнать тип</h2>
+
+                <p>Иногда нужно узнать, что за тип у переменной. Для этого есть функция
+                    <code>type()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(type(25))         # &lt;class 'int'&gt;</span><span class="code-row">print(type(3.14))       # &lt;class 'float'&gt;</span><span class="code-row">print(type("hello"))    # &lt;class 'str'&gt;</span><span class="code-row">print(type(True))       # &lt;class 'bool'&gt;</span></code></pre>
+
+                <p>Функция <code>type</code> возвращает тип значения. Это полезно, когда вы не уверены,
+                    что именно лежит в переменной.</p>
+
+                <h2>Динамическая типизация</h2>
+
+                <p>В Python одна и та же переменная может менять тип в процессе работы программы.
+                    Это называется <strong>динамической типизацией</strong>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">x = 10</span><span class="code-row">print(type(x))   # int</span><span class="code-row"></span><span class="code-row">x = "теперь строка"</span><span class="code-row">print(type(x))   # str</span><span class="code-row"></span><span class="code-row">x = 3.14</span><span class="code-row">print(type(x))   # float</span></code></pre>
+
+                <p>В других языках (например, в C#) пришлось бы объявлять новую переменную другого типа.
+                    Python более гибкий. Правда, с гибкостью приходит и ответственность: иногда легко
+                    забыть, что там лежит, и получить ошибку.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Хорошая практика
+                    </div>
+                    <p>Даже если Python позволяет менять тип, лучше этого не делать без необходимости.
+                        Если переменная называется <code>age</code> - пусть там всегда будет число.
+                        Это делает код понятнее и помогает избежать багов.</p>
+                </div>
+
+                <h2>Преобразование типов</h2>
+
+                <p>Иногда нужно превратить один тип в другой. Например, пользователь ввёл число
+                    как текст (так работает <code>input()</code>, но об этом в следующем уроке) -
+                    а нам нужно с ним что-то посчитать. Для этого есть функции преобразования:</p>
+
+                <ul>
+                    <li><strong><code>int(x)</code></strong> - превращает в целое число.</li>
+                    <li><strong><code>float(x)</code></strong> - превращает в число с точкой.</li>
+                    <li><strong><code>str(x)</code></strong> - превращает в строку.</li>
+                    <li><strong><code>bool(x)</code></strong> - превращает в <code>True</code> или
+                        <code>False</code>.</li>
+                </ul>
+
+                <p>Примеры:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">a = int("42")       # строка -&gt; число 42</span><span class="code-row">b = float("3.14")   # строка -&gt; число 3.14</span><span class="code-row">c = str(100)        # число -&gt; строка "100"</span><span class="code-row">d = int(3.99)       # float -&gt; int, дробная часть отбрасывается</span></code></pre>
+
+                <p>Обратите внимание на последний пример: <code>int(3.99)</code> вернёт
+                    <code>3</code>, а не <code>4</code>. Python не округляет, а просто отбрасывает
+                    дробную часть.</p>
+
+                <p>Если попробовать преобразовать что-то неподходящее - получим ошибку:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int("привет")   # ошибка! Нельзя превратить текст в число</span></code></pre>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>имя = значение</code>
+                        <span>создать переменную</span>
+                    </li>
+                    <li>
+                        <code>int</code>
+                        <span>целое число</span>
+                    </li>
+                    <li>
+                        <code>float</code>
+                        <span>число с точкой</span>
+                    </li>
+                    <li>
+                        <code>str</code>
+                        <span>строка</span>
+                    </li>
+                    <li>
+                        <code>bool</code>
+                        <span>True или False</span>
+                    </li>
+                    <li>
+                        <code>type(x)</code>
+                        <span>узнать тип</span>
+                    </li>
+                    <li>
+                        <code>int(), str(), float()</code>
+                        <span>преобразование типов</span>
+                    </li>
+                    <li>
+                        <code>snake_case</code>
+                        <span>стиль именования переменных</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с переменными и типами.</p>
+
+                <ul>
+                    <li><strong>«SyntaxError: invalid syntax»</strong> рядом с именем переменной.
+                        Скорее всего, имя начинается с цифры (<code>1name = 5</code>) или содержит
+                        запрещённый символ (дефис, пробел). Имя должно начинаться с буквы или
+                        подчёркивания.</li>
+                    <li><strong>«NameError: name 'x' is not defined»</strong>. Вы используете
+                        переменную <code>x</code>, но нигде её не создали. Или создали в другом месте
+                        программы, куда отсюда не видно. Проверьте, что строка
+                        <code>x = ...</code> выполнилась раньше, чем <code>print(x)</code>.</li>
+                    <li><strong>«TypeError: can only concatenate str (not "int") to str»</strong>.
+                        Вы пытаетесь сложить строку и число через <code>+</code>:
+                        <code>"Возраст: " + 25</code>. Python не умеет склеивать разные типы.
+                        Решение - привести число к строке: <code>"Возраст: " + str(25)</code>.
+                        Или использовать f-строки (о них в следующем уроке).</li>
+                    <li><strong>«ValueError: invalid literal for int() with base 10: 'привет'»</strong>.
+                        Вы пытаетесь преобразовать текст в число, но в тексте нет числа.
+                        <code>int("привет")</code> не работает. Проверьте, что строка
+                        содержит только цифры.</li>
+                    <li><strong>Путаница с запятой и точкой в <code>float</code></strong>. В Python
+                        дробные числа пишутся через <strong>точку</strong>: <code>3.14</code>,
+                        а не <code>3,14</code>. С запятой Python воспримет это как два числа.</li>
+                    <li><strong>«Переменная меняет значение сама»</strong>. Такого в Python не бывает.
+                        Если <code>print</code> показывает не то, что вы ожидали - проверьте, не
+                        перезаписываете ли вы переменную где-то выше по коду. Возможно, у вас
+                        две переменные с одинаковыми именами.</li>
+                    <li><strong>Имена <code>Name</code> и <code>name</code></strong>. Python
+                        различает регистр. Если вы создали <code>name</code>, а обращаетесь к
+                        <code>Name</code> - получите <code>NameError</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Визитная карточка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте четыре переменные: <code>name</code> (ваше имя),
+                                <code>age</code> (ваш возраст), <code>city</code> (город, в котором
+                                живёте) и <code>is_student</code> (True, если учитесь, иначе False).
+                                Выведите все четыре значения через <code>print</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Строки - в кавычках, число - без кавычек, логическое значение -
+                                        <code>True</code> или <code>False</code> с большой буквы.
+                                        Вывести можно как четыре отдельных <code>print</code>,
+                                        так и в одну строку через запятую.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">name = "Алексей"</span><span class="code-row">age = 25</span><span class="code-row">city = "Москва"</span><span class="code-row">is_student = True</span><span class="code-row"></span><span class="code-row">print(name, age, city, is_student)</span></code></pre>
+                                    <p>Python автоматически добавит пробелы между значениями. Вывод
+                                        получится примерно такой:
+                                        <code>Алексей 25 Москва True</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Калькулятор покупки</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В магазине вы купили: хлеб за 45 рублей, молоко за
+                                89.5 рубля и сыр за 320 рублей. Создайте три переменные с ценами,
+                                посчитайте общую сумму и выведите её на экран.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте три переменные: например, <code>bread</code>,
+                                        <code>milk</code>, <code>cheese</code>. Сумму можно сохранить
+                                        в отдельной переменной <code>total</code> или посчитать
+                                        прямо в <code>print</code>. Не забудьте про точку в
+                                        <code>89.5</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">bread = 45</span><span class="code-row">milk = 89.5</span><span class="code-row">cheese = 320</span><span class="code-row"></span><span class="code-row">total = bread + milk + cheese</span><span class="code-row">print("Общая сумма:", total)</span></code></pre>
+                                    <p>Программа выведет <code>Общая сумма: 454.5</code>.
+                                        Обратите внимание, что <code>total</code> получается типа
+                                        <code>float</code>, потому что среди слагаемых есть
+                                        <code>89.5</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Что за тип</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждого значения определите его тип (<code>int</code>,
+                                <code>float</code>, <code>str</code> или <code>bool</code>).
+                                Проверьте себя, запустив <code>print(type(...))</code> в Python.</p>
+                            <ol>
+                                <li><code>42</code></li>
+                                <li><code>"42"</code></li>
+                                <li><code>3.14</code></li>
+                                <li><code>True</code></li>
+                                <li><code>"True"</code></li>
+                                <li><code>-7.5</code></li>
+                                <li><code>0</code></li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Смотрите на кавычки и наличие точки. Если есть кавычки -
+                                        это <code>str</code>. Если есть точка (и нет кавычек) -
+                                        <code>float</code>. Если True/False без кавычек -
+                                        <code>bool</code>. Всё остальное - <code>int</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><code>42</code> - <strong>int</strong>. Целое число
+                                            без кавычек и без точки.</li>
+                                        <li><code>"42"</code> - <strong>str</strong>. Число в кавычках
+                                            - это текст.</li>
+                                        <li><code>3.14</code> - <strong>float</strong>. Есть точка -
+                                            значит, дробное число.</li>
+                                        <li><code>True</code> - <strong>bool</strong>. Логическое
+                                            значение.</li>
+                                        <li><code>"True"</code> - <strong>str</strong>. В кавычках -
+                                            это строка «True», а не логическое значение.</li>
+                                        <li><code>-7.5</code> - <strong>float</strong>. Отрицательное,
+                                            но с точкой - всё равно float.</li>
+                                        <li><code>0</code> - <strong>int</strong>. Ноль - это целое
+                                            число.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Преобразование типов</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Что выведет каждая из этих строк? Сначала подумайте
+                                сами, потом проверьте в Python.</p>
+                            <ol>
+                                <li><code>print(int("100") + 50)</code></li>
+                                <li><code>print(str(100) + "50")</code></li>
+                                <li><code>print(int(3.99))</code></li>
+                                <li><code>print(float("2.5") * 2)</code></li>
+                                <li><code>print(type(str(42)))</code></li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Внимательно смотрите на типы после преобразования. Если после
+                                        <code>str()</code> - это строка, и <code>+</code> будет
+                                        склеивать. Если после <code>int()</code> - это число,
+                                        и <code>+</code> будет складывать.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><code>150</code>. Строка <code>"100"</code> превращается
+                                            в число 100, потом к нему прибавляется 50.</li>
+                                        <li><code>10050</code>. Число 100 превращается в строку,
+                                            а потом две строки склеиваются.</li>
+                                        <li><code>3</code>. Дробная часть отбрасывается (не округляется!).</li>
+                                        <li><code>5.0</code>. Строка превращается в 2.5, умножается
+                                            на 2 = 5.0 (это float).</li>
+                                        <li><code>&lt;class 'str'&gt;</code>. Число 42 становится
+                                            строкой.</li>
+                                    </ol>
+                                    <p>Особенно коварна вторая строка. Многие ожидают
+                                        <code>150</code>, но получают <code>10050</code>, потому что
+                                        после <code>str()</code> это уже не число, а текст.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы разобрались с фундаментом программирования - переменными и типами данных.
+                    Теперь вы знаете:</p>
+                <ul>
+                    <li>Что такое переменная и как её создать (имя = значение).</li>
+                    <li>Что такое типы данных: <code>int</code>, <code>float</code>, <code>str</code>,
+                        <code>bool</code>.</li>
+                    <li>Как узнать тип через <code>type()</code>.</li>
+                    <li>Как преобразовать один тип в другой: <code>int()</code>, <code>str()</code>,
+                        <code>float()</code>.</li>
+                    <li>Как правильно именовать переменные: snake_case, осмысленные имена, не начинать
+                        с цифры.</li>
+                </ul>
+
+                <p>Этого уже достаточно, чтобы писать простые программы, которые хранят числа и
+                    что-то с ними делают. Но пока наши программы не могут общаться с пользователем:
+                    все данные задаются прямо в коде. А что если мы хотим спросить у пользователя
+                    его имя или число? Об этом - в следующем уроке.</p>
+
+                <p>Мы разберём функцию <code>input()</code>, научимся запрашивать данные у пользователя
+                    и делать с ними что-то полезное. А ещё познакомимся с <strong>f-строками</strong> -
+                    красивым способом вставлять значения переменных в текст. Это будет первый урок,
+                    где ваши программы начнут по-настоящему взаимодействовать с человеком. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-01.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-03.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>
