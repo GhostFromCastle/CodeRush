@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аргументы и lambda - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="intermediate" data-lesson-id="lesson-13">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 13</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson active" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Аргументы и lambda</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились создавать функции и передавать в них аргументы.
+                    Но Python - язык с огромными возможностями, и способов передать данные
+                    в функцию у него гораздо больше, чем может показаться на первый взгляд.</p>
+
+                <p>Сегодня мы разберём продвинутые приёмы: аргументы по умолчанию, именованные
+                    аргументы, а также загадочные <code>*args</code> и <code>**kwargs</code>.
+                    А в конце познакомимся с <strong>лямбда-функциями</strong> - короткими
+                    анонимными функциями, которые делают код невероятно элегантным.</p>
+
+                <h2>Аргументы по умолчанию</h2>
+
+                <p>Представьте, что вы пишете функцию для приветствия. Обычно она здоровается
+                    по-русски, но иногда нужно поздороваться на другом языке. Можно сделать
+                    так, чтобы язык был <strong>по умолчанию</strong>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def greet(name, language="ru"):</span><span class="code-row">    if language == "ru":</span><span class="code-row">        print(f"Привет, {name}!")</span><span class="code-row">    elif language == "en":</span><span class="code-row">        print(f"Hello, {name}!")</span><span class="code-row"></span><span class="code-row">greet("Алексей")          # Привет, Алексей!</span><span class="code-row">greet("John", "en")       # Hello, John!</span></code></pre>
+
+                <p>Если при вызове не передать <code>language</code>, функция возьмёт значение
+                    по умолчанию <code>"ru"</code>. Если передать - использует его.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Опасная ловушка: изменяемые значения по умолчанию
+                    </div>
+                    <p>Никогда не используйте списки, словари или множества в качестве значений
+                        по умолчанию! Вот классическая ошибка:</p>
+                    <pre
+                        class="code-numbered"><code><span class="code-row">def add_item(item, my_list=[]):</span><span class="code-row">    my_list.append(item)</span><span class="code-row">    return my_list</span><span class="code-row"></span><span class="code-row">print(add_item(1))  # [1]</span><span class="code-row">print(add_item(2))  # [1, 2] - почему?!</span></code></pre>
+                    <p>Значение по умолчанию создаётся <strong>один раз</strong> при объявлении
+                        функции. Все вызовы используют один и тот же список. Если нужно
+                        изменяемое значение по умолчанию, используйте <code>None</code>:</p>
+                    <pre
+                        class="code-numbered"><code><span class="code-row">def add_item(item, my_list=None):</span><span class="code-row">    if my_list is None:</span><span class="code-row">        my_list = []</span><span class="code-row">    my_list.append(item)</span><span class="code-row">    return my_list</span></code></pre>
+                </div>
+
+                <h2>Именованные аргументы (Keyword Arguments)</h2>
+
+                <p>При вызове функции можно указывать, какому параметру соответствует
+                    значение. Это называется <strong>именованными аргументами</strong>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def create_profile(name, age, city):</span><span class="code-row">    print(f"{name}, {age} лет, город {city}")</span><span class="code-row"></span><span class="code-row">create_profile(age=25, name="Алексей", city="Москва")</span></code></pre>
+
+                <p>Благодаря именам порядок аргументов больше не важен. Это делает код
+                    гораздо понятнее, особенно если у функции много параметров.</p>
+
+                <h2>Магия *args и **kwargs</h2>
+
+                <p>Иногда мы не знаем заранее, сколько аргументов передаст пользователь.
+                    Например, функция, которая считает сумму. Сегодня ей передают два числа,
+                    завтра - пять, послезавтра - десять.</p>
+
+                <p>Для этого в Python есть <strong><code>*args</code></strong>. Звёздочка
+                    говорит: «Собери все позиционные аргументы в один кортеж»:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def sum_all(*args):</span><span class="code-row">    print(args)   # (1, 2, 3, 4)</span><span class="code-row">    return sum(args)</span><span class="code-row"></span><span class="code-row">print(sum_all(1, 2, 3, 4))   # 10</span></code></pre>
+
+                <p>А <strong><code>**kwargs</code></strong> (от <em>keyword arguments</em>)
+                    собирает все именованные аргументы в словарь:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def print_info(**kwargs):</span><span class="code-row">    for key, value in kwargs.items():</span><span class="code-row">        print(f"{key}: {value}")</span><span class="code-row"></span><span class="code-row">print_info(name="Алексей", age=25)</span></code></pre>
+
+                <p>Названия <code>args</code> и <code>kwargs</code> - это просто традиция.
+                    Важны именно звёздочки. Можно назвать <code>*numbers</code> и
+                    <code>**params</code> - работать будет так же.</p>
+
+                <h2>Лямбда-функции</h2>
+
+                <p>Бывают ситуации, когда функция нужна всего на один раз и на одну строчку.
+                    Например, чтобы указать правило сортировки. Писать для этого целую
+                    конструкцию <code>def</code> - громоздко. Для таких случаев есть
+                    <strong>лямбда-функции</strong>.</p>
+
+                <p>Синтаксис такой: <code>lambda аргументы: выражение</code>.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">square = lambda x: x ** 2</span><span class="code-row">print(square(5))   # 25</span></code></pre>
+
+                <p>Это то же самое, что и:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def square(x):</span><span class="code-row">    return x ** 2</span></code></pre>
+
+                <p>Но записано в одну строку и без имени. Можно передавать несколько аргументов:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">add = lambda a, b: a + b</span></code></pre>
+
+                <h3>Где использовать лямбды?</h3>
+
+                <p>Чаще всего лямбды применяются внутри других функций. Например, для сортировки
+                    списка словарей по определённому ключу:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">users = [</span><span class="code-row">    {"name": "Иван", "age": 30},</span><span class="code-row">    {"name": "Мария", "age": 25},</span><span class="code-row">    {"name": "Алексей", "age": 35}</span><span class="code-row">]</span><span class="code-row"></span><span class="code-row">users.sort(key=lambda user: user["age"])</span></code></pre>
+
+                <p>Или для применения какой-то операции ко всем элементам списка (функция
+                    <code>map</code>):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">numbers = [1, 2, 3, 4]</span><span class="code-row">doubled = list(map(lambda x: x * 2, numbers))</span><span class="code-row">print(doubled)   # [2, 4, 6, 8]</span></code></pre>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Не увлекайтесь
+                    </div>
+                    <p>Лямбды хороши для простых операций в одну строку. Если логика сложнее
+                        (несколько условий, циклы, многострочные вычисления) - используйте
+                        обычную функцию через <code>def</code>. Читаемость кода важнее
+                        краткости.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>def f(x=10):</code>
+                        <span>аргумент по умолчанию</span>
+                    </li>
+                    <li>
+                        <code>f(y=5, x=1)</code>
+                        <span>именованные аргументы</span>
+                    </li>
+                    <li>
+                        <code>*args</code>
+                        <span>кортеж позиционных аргументов</span>
+                    </li>
+                    <li>
+                        <code>**kwargs</code>
+                        <span>словарь именованных аргументов</span>
+                    </li>
+                    <li>
+                        <code>lambda x: x + 1</code>
+                        <span>анонимная функция</span>
+                    </li>
+                    <li>
+                        <code>key=lambda ...</code>
+                        <span>лямбда для сортировки</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с аргументами.</p>
+
+                <ul>
+                    <li><strong>«SyntaxError: non-default argument follows default argument»</strong>.
+                        В функции нельзя ставить обязательный аргумент после аргумента по умолчанию.
+                        Неправильно: <code>def f(a=1, b):</code>. Правильно: <code>def f(a, b=1):</code>.</li>
+                    <li><strong>Значение по умолчанию «запоминается» между вызовами</strong>.
+                        Это та самая ловушка с изменяемыми типами (списками, словарями).
+                        Используйте <code>None</code> и создавайте объект внутри функции.</li>
+                    <li><strong>«TypeError: f() got an unexpected keyword argument»</strong>.
+                        Вы передали именованный аргумент, которого нет в объявлении функции.
+                        Проверьте, как названы параметры в <code>def</code>.</li>
+                    <li><strong>«Я передал список в *args, а получил ошибку»</strong>.
+                        <code>*args</code> собирает аргументы в кортеж. Если вы передали список,
+                        он станет первым элементом кортежа. Если хотите распаковать список в
+                        аргументы - используйте звёздочку при вызове:
+                        <code>my_func(*my_list)</code>.</li>
+                    <li><strong>Лямбда возвращает «function object»</strong>. Вы забыли её
+                        вызвать. <code>square = lambda x: x ** 2</code> создаёт функцию.
+                        Чтобы получить результат, нужно вызвать: <code>square(5)</code>.</li>
+                    <li><strong>«Lambda не может содержать условия»</strong>. Может!
+                        Тернарный оператор работает: <code>lambda x: "да" if x > 0 else "нет"</code>.
+                        А вот многострочные конструкции или циклы - нельзя.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Степень с умолчанием</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите функцию <code>power(number, exponent=2)</code>,
+                                которая возводит число в степень. По умолчанию степень равна 2
+                                (квадрат). Проверьте на <code>power(5)</code> и
+                                <code>power(2, 3)</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте оператор <code>**</code> для возведения в степень:
+                                        <code>return number ** exponent</code>. Значение по умолчанию
+                                        задаётся прямо в скобках: <code>exponent=2</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">def power(number, exponent=2):</span><span class="code-row">    return number ** exponent</span><span class="code-row"></span><span class="code-row">print(power(5))     # 25</span><span class="code-row">print(power(2, 3))  # 8</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Сумма всего</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите функцию <code>sum_all(*args)</code>,
+                                которая принимает любое количество чисел и возвращает их сумму.
+                                Проверьте работу на 3 числах и на 5 числах.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Внутри функции <code>args</code> - это кортеж. Можно
+                                        применить встроенную функцию <code>sum(args)</code>.
+                                        Не забудьте звёздочку в объявлении: <code>*args</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">def sum_all(*args):</span><span class="code-row">    return sum(args)</span><span class="code-row"></span><span class="code-row">print(sum_all(1, 2, 3))          # 6</span><span class="code-row">print(sum_all(10, 20, 30, 40, 50)) # 150</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Профиль пользователя</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите функцию <code>build_profile(**kwargs)</code>,
+                                которая принимает любые именованные аргументы (имя, возраст, город
+                                и т.д.) и выводит их на экран в формате «Ключ: Значение».
+                                Вызовите функцию с тремя разными параметрами.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Переберите словарь <code>kwargs</code> через
+                                        <code>.items()</code>. В цикле выводите пару через
+                                        f-строку. Вызов функции: <code>build_profile(name="Алексей", age=25, city="Москва")</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">def build_profile(**kwargs):</span><span class="code-row">    for key, value in kwargs.items():</span><span class="code-row">        print(f"{key}: {value}")</span><span class="code-row"></span><span class="code-row">build_profile(name="Алексей", age=25, city="Москва")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Сортировка по возрасту</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Дан список словарей (пользователей):
+                                <code>[{"name": "Иван", "age": 30}, {"name": "Мария", "age": 20}, {"name": "Пётр", "age": 25}]</code>.
+                                Отсортируйте его по возрасту (по возрастанию) с помощью
+                                лямбда-функции и выведите результат.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте метод <code>sort()</code> с параметром <code>key</code>.
+                                        В качестве ключа передайте лямбду, которая берёт возраст из
+                                        словаря: <code>key=lambda user: user["age"]</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">users = [</span><span class="code-row">    {"name": "Иван", "age": 30},</span><span class="code-row">    {"name": "Мария", "age": 20},</span><span class="code-row">    {"name": "Пётр", "age": 25}</span><span class="code-row">]</span><span class="code-row"></span><span class="code-row">users.sort(key=lambda user: user["age"])</span><span class="code-row"></span><span class="code-row">for user in users:</span><span class="code-row">    print(user["name"], "-", user["age"], "лет")</span></code></pre>
+                                    <p>Теперь пользователи идут по возрасту: Мария (20),
+                                        Пётр (25), Иван (30). Лямбда позволяет легко
+                                        указать, по какому именно полю сортировать.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Мы расширили наши знания о функциях. Теперь вы знаете:</p>
+
+                <ul>
+                    <li>Как задавать аргументы по умолчанию и какие ловушки с ними связаны.</li>
+                    <li>Как передавать именованные аргументы и почему это удобно.</li>
+                    <li>Как принимать переменное число аргументов через <code>*args</code>
+                        и <code>**kwargs</code>.</li>
+                    <li>Как создавать короткие анонимные функции через <code>lambda</code>.</li>
+                </ul>
+
+                <p>Эти приёмы делают функции невероятно гибкими. В реальной разработке
+                    вы будете встречать <code>*args</code> и <code>**kwargs</code> повсюду,
+                    особенно во фреймворках и библиотеках. А лямбды - незаменимый инструмент
+                    при работе с сортировкой и коллекциями.</p>
+
+                <p>В следующем уроке мы выйдем за пределы одного файла. Поговорим про
+                    <strong>модули и пакеты</strong>. Вы узнаете, как разбивать код на
+                    отдельные файлы, как подключать чужие библиотеки (и зачем для этого
+                    нужен <code>pip</code>), и как создавать виртуальные окружения,
+                    чтобы проекты не мешали друг другу. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-12.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-14.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООП: наследование - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="intermediate" data-lesson-id="lesson-18">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 18</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson active" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>ООП: наследование</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились создавать классы и объекты. Мы сделали класс <code>Dog</code> с именем, возрастом и методом лая. Это было здорово, но давайте представим, что нам нужно добавить ещё классы <code>Cat</code>, <code>Cow</code> и <code>Horse</code>.</p>
+
+                <p>У всех этих животных будут общие черты: имя, возраст, метод <code>eat()</code> (кушать), метод <code>sleep()</code> (спать). Если мы будем копировать код из класса <code>Dog</code> в класс <code>Cat</code>, а потом в <code>Cow</code>, мы нарушим главное правило программиста - DRY (Don't Repeat Yourself - не повторяйся).</p>
+
+                <p>К счастью, в ООП есть механизм, который позволяет не копировать код, а брать его из другого класса и расширять. Этот механизм называется <strong>наследование</strong>.</p>
+
+                <h2>Суть наследования</h2>
+
+                <p>Аналогия: представьте биологическую классификацию. Есть общее понятие «Животное». У всех животных есть общие свойства (они дышат, едят, спят). А потом уже идут подвиды: Млекопитающие, Птицы, Рыбы. Млекопитающие унаследовали от Животных умение дышать и есть, но добавили своё - умение выкармливать детёнышей молоком.</p>
+
+                <p>В программировании то же самое. Есть <strong>родительский класс</strong> (или базовый, суперкласс) с общими свойствами. И есть <strong>дочерние классы</strong> (подклассы), которые забирают всё от родителя и добавляют что-то своё.</p>
+
+                <h2>Создание базового класса</h2>
+
+                <p>Давайте создадим класс <code>Animal</code> (Животное) с общими данными и действиями:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Animal:</span><span class="code-row">    def __init__(self, name, age):</span><span class="code-row">        self.name = name</span><span class="code-row">        self.age = age</span><span class="code-row"></span><span class="code-row">    def eat(self):</span><span class="code-row">        print(f"{self.name} кушает")</span><span class="code-row"></span><span class="code-row">    def sleep(self):</span><span class="code-row">        print(f"{self.name} спит")</span></code></pre>
+
+                <p>Теперь создадим дочерний класс <code>Dog</code>. Для этого в скобках после имени класса указываем, от кого он наследуется:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Dog(Animal):</span><span class="code-row">    def bark(self):</span><span class="code-row">        print(f"{self.name} говорит: Гав!")</span></code></pre>
+
+                <p>И всё! Класс <code>Dog</code> автоматически получил конструктор <code>__init__</code>, методы <code>eat()</code> и <code>sleep()</code> от класса <code>Animal</code>. Нам не нужно их переписывать. Мы добавили только уникальный метод <code>bark()</code>.</p>
+
+                <p>Проверим:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">my_dog = Dog("Бадди", 3)</span><span class="code-row"></span><span class="code-row">my_dog.eat()    # Бадди кушает (метод родителя)</span><span class="code-row">my_dog.sleep()  # Бадди спит (метод родителя)</span><span class="code-row">my_dog.bark()   # Бадди говорит: Гав! (свой метод)</span></code></pre>
+
+                <h2>Функция super()</h2>
+
+                <p>Что делать, если дочернему классу нужны <strong>свои</strong> дополнительные атрибуты? Например, у собаки есть порода (<code>breed</code>), а у кошки - количество жизней (<code>lives</code>).</p>
+
+                <p>В этом случае нам нужно написать в дочернем классе свой метод <code>__init__</code>. Но как не потерять при этом <code>name</code> и <code>age</code>? Для этого используется функция <strong><code>super()</code></strong>. Она вызывает метод родительского класса:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Dog(Animal):</span><span class="code-row">    def __init__(self, name, age, breed):</span><span class="code-row">        super().__init__(name, age)</span><span class="code-row">        self.breed = breed</span><span class="code-row"></span><span class="code-row">    def bark(self):</span><span class="code-row">        print(f"{self.name} ({self.breed}) говорит: Гав!")</span></code></pre>
+
+                <p>Строка <code>super().__init__(name, age)</code> означает: «Обратись к родительскому классу (<code>Animal</code>) и выполни его инициализатор с этими аргументами». Так родитель создаст атрибуты <code>name</code> и <code>age</code>, а мы после этого добавим <code>breed</code>.</p>
+
+                <h2>Переопределение методов</h2>
+
+                <p>Иногда поведение родителя нас не устраивает. Например, метод <code>eat()</code> у животного просто пишет «кушает». А мы хотим, чтобы кошка ела рыбу, а собака - косточку.</p>
+
+                <p>Мы можем <strong>переопределить</strong> метод в дочернем классе. То есть написать метод с тем же именем, и Python будет использовать версию из дочернего класса:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Cat(Animal):</span><span class="code-row">    def eat(self):</span><span class="code-row">        print(f"{self.name} ест рыбу")</span></code></pre>
+
+                <p>Если мы вызовем <code>eat()</code> у кошки, сработает переопределённый метод. А если у собаки - останется метод родителя (раз мы его не меняли).</p>
+
+                <h2>Полиморфизм</h2>
+
+                <p>Это сложное слово означает простую вещь: <strong>объекты разных классов могут иметь одинаковый интерфейс (одинаковые методы), но вести себя по-разному</strong>.</p>
+
+                <p>Представьте, что у нас есть список самых разных животных: собака, кошка, корова. У каждого из них мы можем вызвать метод <code>speak()</code> (голос). Но каждая скажет что-то своё.</p>
+
+                <p>Добавим метод <code>speak()</code> в базовый класс <code>Animal</code> и переопределим его в каждом дочернем:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Animal:</span><span class="code-row">    # ... (конструктор пропущен для краткости)</span><span class="code-row">    def speak(self):</span><span class="code-row">        print("Издаёт звук")</span><span class="code-row"></span><span class="code-row">class Dog(Animal):</span><span class="code-row">    def speak(self):</span><span class="code-row">        print("Гав!")</span><span class="code-row"></span><span class="code-row">class Cat(Animal):</span><span class="code-row">    def speak(self):</span><span class="code-row">        print("Мяу!")</span><span class="code-row"></span><span class="code-row">class Cow(Animal):</span><span class="code-row">    def speak(self):</span><span class="code-row">        print("Му!")</span></code></pre>
+
+                <p>Теперь магия полиморфизма:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">animals = [Dog("Бадди", 3), Cat("Мурка", 2), Cow("Зорька", 4)]</span><span class="code-row"></span><span class="code-row">for animal in animals:</span><span class="code-row">    animal.speak()</span></code></pre>
+
+                <p>На экране появится:</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">Гав!</span><span class="code-row">Мяу!</span><span class="code-row">Му!</span></code></pre>
+
+                <p>Обратите внимание на цикл <code>for</code>. Мы не проверяем <code>if isinstance(animal, Dog)</code>. Мы просто вызываем <code>speak()</code> у каждого объекта. Python сам знает, какой именно метод нужно выполнить. Это и есть полиморфизм - один вызов, разное поведение.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>class Child(Parent):</code>
+                        <span>наследование</span>
+                    </li>
+                    <li>
+                        <code>super().__init__()</code>
+                        <span>вызов родительского конструктора</span>
+                    </li>
+                    <li>
+                        <code>Переопределение</code>
+                        <span>замена метода родителя</span>
+                    </li>
+                    <li>
+                        <code>Полиморфизм</code>
+                        <span>один метод, разное поведение</span>
+                    </li>
+                    <li>
+                        <code>isinstance()</code>
+                        <span>проверка типа объекта</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при наследовании.</p>
+
+                <ul>
+                    <li><strong>«TypeError: __init__() missing...» в дочернем классе</strong>. Вы создали в дочернем классе свой <code>__init__</code>, но забыли вызвать <code>super().__init__(...)</code>. Без этого родительские атрибуты не создадутся.</li>
+                    <li><strong>Изменения в родителе не применяются к дочернему классу</strong>. Такое бывает, если вы перезапутались в иерархии классов или случайно переопределили метод, который не хотели. Всегда проверяйте, в каком классе находится метод.</li>
+                    <li><strong>«AttributeError: 'Child' object has no attribute...»</strong>. Вы пытаетесь обратиться к атрибуту в дочернем классе, который был создан в родительском, но конструктор родителя не был вызван.</li>
+                    <li><strong>Путаница в порядке аргументов</strong>. При вызове <code>super().__init__()</code> нужно передавать аргументы в том же порядке, в каком они объявлены в родительском классе.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Транспорт</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте базовый класс <code>Vehicle</code>
+                                (Транспорт) с атрибутом <code>speed</code> и методом
+                                <code>move()</code>, который выводит «Транспорт движется
+                                со скоростью [speed] км/ч». Создайте дочерний класс
+                                <code>Car</code> и добавьте в него метод <code>honk()</code>,
+                                который выводит «Би-бип!».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте класс <code>Vehicle</code> с <code>__init__</code>.
+                                        Создайте <code>class Car(Vehicle):</code>. В классе
+                                        <code>Car</code> определите только метод <code>honk</code>.
+                                        Не забудьте вызвать <code>super().__init__(speed)</code>,
+                                        если переопределяете конструктор (или не переопределяйте его).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Vehicle:</span><span class="code-row">    def __init__(self, speed):</span><span class="code-row">        self.speed = speed</span><span class="code-row"></span><span class="code-row">    def move(self):</span><span class="code-row">        print(f"Транспорт движется со скоростью {self.speed} км/ч")</span><span class="code-row"></span><span class="code-row">class Car(Vehicle):</span><span class="code-row">    def honk(self):</span><span class="code-row">        print("Би-бип!")</span><span class="code-row"></span><span class="code-row">car = Car(60)</span><span class="code-row">car.move()</span><span class="code-row">car.honk()</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Переопределение</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Используйте классы из прошлой задачи. Переопределите
+                                метод <code>move()</code> в классе <code>Car</code>, чтобы он
+                                выводил «Машина едет со скоростью [speed] км/ч». Проверьте,
+                                что у объекта <code>Car</code> вызывается новый метод.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Внутри класса <code>Car</code> просто создайте метод
+                                        <code>def move(self):</code> и напишите там нужный
+                                        <code>print</code>. Python автоматически выберет
+                                        метод из дочернего класса.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Car(Vehicle):</span><span class="code-row">    def move(self):</span><span class="code-row">        print(f"Машина едет со скоростью {self.speed} км/ч")</span><span class="code-row"></span><span class="code-row">    def honk(self):</span><span class="code-row">        print("Би-бип!")</span><span class="code-row"></span><span class="code-row">car = Car(80)</span><span class="code-row">car.move()</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Использование super()</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте базовый класс <code>Employee</code>
+                                (Сотрудник) с именем и зарплатой. Создайте дочерний класс
+                                <code>Manager</code> (Менеджер), который дополнительно
+                                принимает количество подчинённых. Используйте
+                                <code>super()</code> для инициализации общих полей.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В классе <code>Manager</code> создайте
+                                        <code>__init__(self, name, salary, team_size)</code>.
+                                        Первой строкой вызовите
+                                        <code>super().__init__(name, salary)</code>. Затем
+                                        сохраните <code>self.team_size = team_size</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Employee:</span><span class="code-row">    def __init__(self, name, salary):</span><span class="code-row">        self.name = name</span><span class="code-row">        self.salary = salary</span><span class="code-row"></span><span class="code-row">class Manager(Employee):</span><span class="code-row">    def __init__(self, name, salary, team_size):</span><span class="code-row">        super().__init__(name, salary)</span><span class="code-row">        self.team_size = team_size</span><span class="code-row"></span><span class="code-row">m = Manager("Иван", 100000, 5)</span><span class="code-row">print(f"{m.name}, зарплата {m.salary}, команда {m.team_size} чел.")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Полиморфизм на практике</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте базовый класс <code>Shape</code>
+                                (Фигура) с методом <code>area()</code>, который возвращает 0.
+                                Создайте дочерние классы <code>Square</code> (квадрат со
+                                стороной) и <code>Circle</code> (круг с радиусом). Переопределите
+                                метод <code>area()</code> в каждом из них для правильного расчёта
+                                площади. Создайте список из разных фигур и в цикле выведите
+                                их площади.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для круга используйте <code>import math</code> и формулу
+                                        <code>math.pi * self.radius ** 2</code>. В цикле просто
+                                        вызывайте <code>shape.area()</code> для каждого элемента
+                                        списка.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import math</span><span class="code-row"></span><span class="code-row">class Shape:</span><span class="code-row">    def area(self):</span><span class="code-row">        return 0</span><span class="code-row"></span><span class="code-row">class Square(Shape):</span><span class="code-row">    def __init__(self, side):</span><span class="code-row">        self.side = side</span><span class="code-row"></span><span class="code-row">    def area(self):</span><span class="code-row">        return self.side ** 2</span><span class="code-row"></span><span class="code-row">class Circle(Shape):</span><span class="code-row">    def __init__(self, radius):</span><span class="code-row">        self.radius = radius</span><span class="code-row"></span><span class="code-row">    def area(self):</span><span class="code-row">        return math.pi * self.radius ** 2</span><span class="code-row"></span><span class="code-row">shapes = [Square(5), Circle(3), Square(10)]</span><span class="code-row"></span><span class="code-row">for shape in shapes:</span><span class="code-row">    print(f"Площадь: {shape.area():.2f}")</span></code></pre>
+                                    <p>Обратите внимание: в цикле мы не знаем, какая именно фигура
+                                        лежит в переменной <code>shape</code>. Но благодаря
+                                        полиморфизму, вызов <code>area()</code> сработает
+                                        правильно для каждой.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Наследование - это мощнейший инструмент ООП. Он позволяет строить иерархии
+                    классов, переиспользовать код и избегать дублирования. Теперь вы знаете:</p>
+
+                <ul>
+                    <li>Как создавать дочерние классы на основе родительских.</li>
+                    <li>Как вызывать родительский конструктор через <code>super()</code>.</li>
+                    <li>Как переопределять методы родителя.</li>
+                    <li>Что такое полиморфизм и как он работает в циклах.</li>
+                </ul>
+
+                <p>В следующем уроке мы разберём ещё одну важную концепцию ООП - <strong>свойства</strong>
+                    (properties). Вы узнаете, как сделать атрибуты объекта защищёнными от
+                    случайного изменения извне, и как использовать декоратор <code>@property</code>
+                    для создания умных геттеров и сеттеров. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-17.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-19.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

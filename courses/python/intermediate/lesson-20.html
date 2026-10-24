@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генераторы и итераторы - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="intermediate" data-lesson-id="lesson-20">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 20</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson active" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Генераторы и итераторы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Представьте, что вам нужно обработать файл размером в 50 гигабайт. Если
+                    вы попытаетесь прочитать его целиком через <code>read()</code> или
+                    загрузить все строки в список, ваш компьютер просто зависнет из-за
+                    нехватки оперативной памяти. А что если нужно сгенерировать
+                    бесконечную последовательность чисел (например, для игрового цикла
+                    или генератора ID)? Список бесконечной длины создать невозможно.</p>
+
+                <p>Для решения таких задач в Python придумали <strong>итераторы</strong> и
+                    <strong>генераторы</strong>. Они позволяют обрабатывать данные по одному
+                    элементу за раз, не загружая всю последовательность в память. Это как
+                    пить воду из крана по глотку, а не пытаться выпить сразу весь бассейн.</p>
+
+                <h2>Что такое итератор</h2>
+
+                <p>Вы уже давно пользуетесь итераторами, даже не подозревая об этом. Когда
+                    вы пишете <code>for item in my_list:</code>, Python создаёт итератор
+                    и по очереди достаёт из него элементы.</p>
+
+                <p><strong>Итератор</strong> - это объект, который умеет возвращать свои
+                    элементы по одному. У него есть специальный метод <code>__next__</code>,
+                    который достаёт следующий элемент. Когда элементы заканчиваются,
+                    он выбрасывает исключение <code>StopIteration</code>, и цикл
+                    <code>for</code> понимает, что пора остановиться.</p>
+
+                <p>Посмотрим, как это работает вручную с помощью функций <code>iter()</code>
+                    и <code>next()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">numbers = [10, 20, 30]</span><span class="code-row"></span><span class="code-row">my_iterator = iter(numbers)</span><span class="code-row"></span><span class="code-row">print(next(my_iterator))   # 10</span><span class="code-row">print(next(my_iterator))   # 20</span><span class="code-row">print(next(my_iterator))   # 30</span></code></pre>
+
+                <p>Если вызвать <code>next()</code> четвёртый раз, мы получим ошибку
+                    <code>StopIteration</code>. Цикл <code>for</code> внутри себя как раз
+                    перехватывает эту ошибку и завершает работу.</p>
+
+                <h2>Что такое генератор</h2>
+
+                <p>Создавать итераторы вручную (через классы с методами <code>__iter__</code>
+                    и <code>__next__</code>) довольно громоздко. К счастью, в Python есть
+                    <strong>генераторы</strong> - простой способ создавать итераторы.</p>
+
+                <p>Генератор - это функция, которая вместо <code>return</code> использует
+                    ключевое слово <strong><code>yield</code></strong>. Когда Python
+                    встречает <code>yield</code>, он «засыпает», запоминая своё состояние,
+                    и возвращает значение. При следующем вызове <code>next()</code> он
+                    просыпается и продолжает с того же места.</p>
+
+                <p>Аналогия: обычная функция с <code>return</code> - это как повар, который
+                    приготовил всё блюдо сразу и отдал его вам целиком. Функция с
+                    <code>yield</code> - это как конвейер на кухне: повар выдаёт по одной
+                    котлете каждый раз, когда вы подходите с тарелкой.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def countdown(n):</span><span class="code-row">    while n &gt; 0:</span><span class="code-row">        yield n</span><span class="code-row">        n -= 1</span><span class="code-row"></span><span class="code-row">for num in countdown(3):</span><span class="code-row">    print(num)</span></code></pre>
+
+                <p>Программа выведет <code>3</code>, <code>2</code>, <code>1</code>. Функция
+                    <code>countdown</code> не вычисляет всё сразу, она «выдаёт» числа по
+                    одному по мере необходимости.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная выгода
+                    </div>
+                    <p>Генераторы <strong>не хранят в памяти все значения</strong>. Если
+                        ваш генератор возвращает миллиард чисел, он займёт ровно столько
+                        памяти, сколько нужно для хранения текущего числа и переменной
+                        <code>n</code>. Обычный список из миллиарда чисел сразу исчерпал
+                        бы всю оперативную память.</p>
+                </div>
+
+                <h2>Генераторные выражения</h2>
+
+                <p>В уроке 10 мы говорили про списковые включения (list comprehension):
+                    <code>[x * 2 for x in numbers]</code>. Если заменить квадратные скобки
+                    на круглые, получится <strong>генераторное выражение</strong>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">numbers = [1, 2, 3, 4, 5]</span><span class="code-row"></span><span class="code-row">gen = (x * 2 for x in numbers)</span><span class="code-row"></span><span class="code-row">print(next(gen))   # 2</span><span class="code-row">print(next(gen))   # 4</span></code></pre>
+
+                <p>Разница в том, что список вычисляется сразу и занимает память, а
+                    генераторное выражение вычисляет элементы лениво, по мере
+                    запроса.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>iter()</code>
+                        <span>получить итератор</span>
+                    </li>
+                    <li>
+                        <code>next()</code>
+                        <span>достать следующий элемент</span>
+                    </li>
+                    <li>
+                        <code>StopIteration</code>
+                        <span>элементы закончились</span>
+                    </li>
+                    <li>
+                        <code>yield</code>
+                        <span>создать генератор</span>
+                    </li>
+                    <li>
+                        <code>(x for x in ...)</code>
+                        <span>генераторное выражение</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с генераторами.</p>
+
+                <ul>
+                    <li><strong>«StopIteration»</strong>. Вы вызвали <code>next()</code>
+                        больше раз, чем есть элементов. В циклах <code>for</code> эта
+                        ошибка обрабатывается автоматически, но при ручном вызове
+                        <code>next()</code> её нужно обрабатывать или использовать
+                        <code>next(iterator, default_value)</code>.</li>
+                    <li><strong>«Функция с <code>yield</code> вернула None»</strong>. Если
+                        вы забыли поставить <code>yield</code> и использовали
+                        <code>return</code>, функция отработает как обычная и вернёт
+                        результат (или <code>None</code>). Чтобы получить генератор,
+                        обязательно используйте <code>yield</code>.</li>
+                    <li><strong>«Генератор можно перебрать только один раз»</strong>. Это
+                        правда. После того как генератор исчерпан, он пуст. Если нужно
+                        перебрать данные повторно - создайте генератор заново. Именно
+                        поэтому списки иногда удобнее: их можно перебирать сколько
+                        угодно раз.</li>
+                    <li><strong>«TypeError: 'generator' object is not subscriptable»</strong>.
+                        К генератору нельзя обратиться по индексу (<code>gen[0]</code>).
+                        Генераторы не поддерживают индексацию, потому что они не хранят
+                        все элементы в памяти. Если нужен индекс - преобразуйте в
+                        список: <code>list(gen)[0]</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Генератор чисел</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите функцию-генератор
+                                <code>count_up_to(n)</code>, которая выдаёт числа от 1 до n
+                                включительно. Вызовите её для <code>n=5</code> и выведите
+                                все числа через цикл <code>for</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте цикл <code>for i in range(1, n + 1):</code>
+                                        и внутри него напишите <code>yield i</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">def count_up_to(n):</span><span class="code-row">    for i in range(1, n + 1):</span><span class="code-row">        yield i</span><span class="code-row"></span><span class="code-row">for num in count_up_to(5):</span><span class="code-row">    print(num)</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Генератор чётных чисел</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите генератор <code>even_numbers(limit)</code>,
+                                который бесконечно выдаёт чётные числа (2, 4, 6, 8...).
+                                Используйте <code>next()</code>, чтобы вывести первые
+                                5 чисел вручную.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>while True:</code> и переменную-
+                                        счётчик. Если число чётное - делайте <code>yield</code>.
+                                        Не забудьте увеличивать счётчик. Для вывода
+                                        используйте <code>next(gen)</code> в цикле
+                                        <code>for _ in range(5):</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">def even_numbers():</span><span class="code-row">    num = 0</span><span class="code-row">    while True:</span><span class="code-row">        num += 2</span><span class="code-row">        yield num</span><span class="code-row"></span><span class="code-row">gen = even_numbers()</span><span class="code-row">for _ in range(5):</span><span class="code-row">    print(next(gen))</span></code></pre>
+                                    <p>Функция бесконечная, но благодаря тому, что это
+                                        генератор, программа не зависнет и не съест всю
+                                        память. Она выдаёт числа строго по запросу.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Генераторное выражение</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Дан список чисел:
+                                <code>[1, 2, 3, 4, 5]</code>. Создайте генераторное
+                                выражение, которое возвращает квадраты этих чисел.
+                                Преобразуйте генератор в список и выведите его.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Синтаксис: <code>(x ** 2 for x in numbers)</code>.
+                                        Для преобразования в список используйте
+                                        <code>list(gen)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">numbers = [1, 2, 3, 4, 5]</span><span class="code-row"></span><span class="code-row">squares_gen = (x ** 2 for x in numbers)</span><span class="code-row">result = list(squares_gen)</span><span class="code-row"></span><span class="code-row">print(result)   # [1, 4, 9, 16, 25]</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Чтение файла генератором</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите генератор <code>read_lines(filepath)</code>,
+                                который открывает файл и по одной строке выдаёт его
+                                содержимое через <code>yield</code> (без символа переноса
+                                строки). Используйте его для вывода файла <code>test.txt</code>,
+                                если он существует.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Внутри функции используйте
+                                        <code>with open(...) as f:</code> и цикл
+                                        <code>for line in f:</code>. Внутри цикла пишите
+                                        <code>yield line.strip()</code>. Так файл будет
+                                        читаться по одной строке, не загружая его целиком.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">def read_lines(filepath):</span><span class="code-row">    with open(filepath, "r", encoding="utf-8") as f:</span><span class="code-row">        for line in f:</span><span class="code-row">            yield line.strip()</span><span class="code-row"></span><span class="code-row">try:</span><span class="code-row">    for text in read_lines("test.txt"):</span><span class="code-row">        print(text)</span><span class="code-row">except FileNotFoundError:</span><span class="code-row">    print("Файл не найден")</span></code></pre>
+                                    <p>Этот подход идеален для чтения огромных логов:
+                                        программа будет держать в памяти только одну строку
+                                        за раз.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы прикоснулись к одной из самых эффективных концепций Python.
+                    Генераторы и итераторы позволяют работать с данными рационально,
+                    экономя оперативную память. Вы узнали:</p>
+
+                <ul>
+                    <li>Что такое итератор и как работают <code>iter()</code> и <code>next()</code>.</li>
+                    <li>Что такое исключение <code>StopIteration</code>.</li>
+                    <li>Как создавать генераторы через ключевое слово <code>yield</code>.</li>
+                    <li>Как работают генераторные выражения.</li>
+                    <li>Как читать большие файлы, не загружая их целиком в память.</li>
+                </ul>
+
+                <p>В следующем уроке мы продолжим тему функций и разберём <strong>декораторы</strong>.
+                    Вы узнаете, как «оборачивать» функции в другие функции, чтобы добавлять
+                    им новое поведение (например, логирование или замер времени выполнения)
+                    без изменения исходного кода. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-19.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-21.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

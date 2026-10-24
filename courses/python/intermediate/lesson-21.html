@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Декораторы - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="intermediate" data-lesson-id="lesson-21">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 21</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson active" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Декораторы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Представьте, что у вас есть десять разных функций. И внезапно вам понадобилось, чтобы каждая из них перед запуском выводила в консоль сообщение «Функция начала работу». Можно, конечно, открыть каждую из десяти функций и добавить туда <code>print()</code>. А если через неделю нужно будет это убрать? Придётся снова лезть во все функции.</p>
+
+                <p>Или другой пример: вы хотите замерять время выполнения разных функций, чтобы найти узкие места в программе. Писать код замера времени в начале и в конце каждой функции - утомительно и засоряет логику.</p>
+
+                <p>В Python для таких задач есть элегантное решение - <strong>декораторы</strong>. Это функции, которые «оборачивают» другие функции, добавляя им новое поведение без изменения их исходного кода.</p>
+
+                <h2>Функции - это объекты</h2>
+
+                <p>Чтобы понять декораторы, нужно вспомнить одну важную вещь из урока 9: в Python <strong>всё является объектом</strong>. И функции - не исключение. Это значит, что функцию можно:</p>
+
+                <ul>
+                    <li>Присвоить переменной.</li>
+                    <li>Передать в другую функцию как аргумент.</li>
+                    <li>Вернуть из другой функции как результат.</li>
+                </ul>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def say_hello():</span><span class="code-row">    print("Привет!")</span><span class="code-row"></span><span class="code-row">my_func = say_hello</span><span class="code-row">my_func()   # Привет! (работает, потому что my_func теперь ссылается на функцию)</span></code></pre>
+
+                <p>Именно на этом свойстве и строятся декораторы.</p>
+
+                <h2>Как написать свой декоратор</h2>
+
+                <p>Декоратор - это функция, которая принимает другую функцию и возвращает новую (обёрнутую) функцию. Давайте напишем простой декоратор, который выводит сообщение до и после вызова функции.</p>
+
+                <p>Шаг 1. Создаём внешнюю функцию-декоратор, которая принимает <code>func</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def my_decorator(func):</span><span class="code-row">    def wrapper():</span><span class="code-row">        print("До вызова функции")</span><span class="code-row">        func()</span><span class="code-row">        print("После вызова функции")</span><span class="code-row">    return wrapper</span></code></pre>
+
+                <p>Шаг 2. Применяем декоратор к нашей функции. Самый простой способ - вручную:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def say_hello():</span><span class="code-row">    print("Привет!")</span><span class="code-row"></span><span class="code-row">decorated_hello = my_decorator(say_hello)</span><span class="code-row">decorated_hello()</span></code></pre>
+
+                <p>Результат:</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">До вызова функции</span><span class="code-row">Привет!</span><span class="code-row">После вызова функции</span></code></pre>
+
+                <h2>Синтаксический сахар: @</h2>
+
+                <p>Записывать <code>decorated_hello = my_decorator(say_hello)</code> неудобно. Поэтому в Python придумали специальный синтаксис с символом <strong><code>@</code></strong>. Он ставится прямо перед объявлением функции:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">@my_decorator</span><span class="code-row">def say_hello():</span><span class="code-row">    print("Привет!")</span><span class="code-row"></span><span class="code-row">say_hello()</span></code></pre>
+
+                <p>Эта запись полностью эквивалентна предыдущей, но выглядит гораздо чище. Читается так: «Вызови функцию <code>say_hello</code> и передай её в <code>my_decorator</code>».</p>
+
+                <h2>Декоратор для функции с аргументами</h2>
+
+                <p>В примере выше функция <code>say_hello</code> не принимала аргументов. А что если принимает? Например, функция сложения:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">def add(a, b):</span><span class="code-row">    return a + b</span></code></pre>
+
+                <p>Если мы применим к ней наш простой декоратор <code>@my_decorator</code>, при вызове <code>add(2, 3)</code> возникнет ошибка, потому что внутренняя функция <code>wrapper()</code> не принимает аргументов.</p>
+
+                <p>Чтобы декоратор был универсальным, внутренняя функция должна принимать любое количество аргументов. Помните <code>*args</code> и <code>**kwargs</code> из урока 13? Вот они и пригодятся:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def my_decorator(func):</span><span class="code-row">    def wrapper(*args, **kwargs):</span><span class="code-row">        print("До вызова")</span><span class="code-row">        result = func(*args, **kwargs)</span><span class="code-row">        print("После вызова")</span><span class="code-row">        return result</span><span class="code-row">    return wrapper</span></code></pre>
+
+                <p>Обратите внимание: мы не только передаём аргументы дальше через <code>*args, **kwargs</code>, но и <strong>сохраняем результат</strong> функции в переменную <code>result</code> и возвращаем его. Если бы мы этого не сделали, функция <code>add</code> возвращала бы <code>None</code>, потому что <code>wrapper</code> по умолчанию возвращает <code>None</code>.</p>
+
+                <h2>Сохранение имени функции: functools.wraps</h2>
+
+                <p>Есть одна проблема с нашим декоратором. Если мы посмотрим на имя функции после декорирования, мы увидим имя <code>wrapper</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">@my_decorator</span><span class="code-row">def say_hello():</span><span class="code-row">    print("Привет!")</span><span class="code-row"></span><span class="code-row">print(say_hello.__name__)   # выведет "wrapper", а не "say_hello"</span></code></pre>
+
+                <p>Это может сломать код, который полагается на имена функций (например, фреймворки или отладчики). Чтобы сохранить оригинальные метаданные функции (имя, документацию), используют декоратор <code>@functools.wraps</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import functools</span><span class="code-row"></span><span class="code-row">def my_decorator(func):</span><span class="code-row">    @functools.wraps(func)</span><span class="code-row">    def wrapper(*args, **kwargs):</span><span class="code-row">        print("До вызова")</span><span class="code-row">        result = func(*args, **kwargs)</span><span class="code-row">        print("После вызова")</span><span class="code-row">        return result</span><span class="code-row">    return wrapper</span></code></pre>
+
+                <p>Теперь <code>say_hello.__name__</code> останется <code>"say_hello"</code>. Считайте это правилом хорошего тона: <strong>всегда используйте <code>@functools.wraps</code> при создании декораторов</strong>.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>@decorator</code>
+                        <span>синтаксис применения</span>
+                    </li>
+                    <li>
+                        <code>def decorator(func):</code>
+                        <span>внешняя функция</span>
+                    </li>
+                    <li>
+                        <code>def wrapper(*args, **kwargs):</code>
+                        <span>внутренняя функция</span>
+                    </li>
+                    <li>
+                        <code>return wrapper</code>
+                        <span>возврат обёртки</span>
+                    </li>
+                    <li>
+                        <code>@functools.wraps(func)</code>
+                        <span>сохранение имени функции</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при создании декораторов.</p>
+
+                <ul>
+                    <li><strong>«TypeError: wrapper() takes 0 positional arguments but 2 were given»</strong>. Вы забыли добавить <code>*args, **kwargs</code> во внутреннюю функцию <code>wrapper</code>, когда декорировали функцию с аргументами.</li>
+                    <li><strong>Декорированная функция возвращает <code>None</code></strong>. Внутри <code>wrapper</code> вы вызвали <code>func()</code>, но забыли написать <code>return func()</code> или сохранить результат и вернуть его.</li>
+                    <li><strong>«AttributeError»</strong> при обращении к <code>__name__</code> или <code>__doc__</code>. Вы не использовали <code>@functools.wraps</code>.</li>
+                    <li><strong>«TypeError: my_decorator() missing 1 required positional argument»</strong>. Вы забыли вернуть <code>wrapper</code> из внешней функции-декоратора. Декоратор должен возвращать функцию, а не результат её вызова.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Простой декоратор</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите декоратор <code>log_calls</code>,
+                                который выводит сообщение «Вызов функции...» перед
+                                выполнением любой функции. Примените его к функции
+                                <code>say_hello()</code>, которая просто печатает «Привет!».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте функцию <code>log_calls(func)</code>. Внутри
+                                        определите <code>wrapper()</code>, которая печатает текст
+                                        и вызывает <code>func()</code>. Не забудьте вернуть
+                                        <code>wrapper</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">def log_calls(func):</span><span class="code-row">    def wrapper():</span><span class="code-row">        print("Вызов функции...")</span><span class="code-row">        func()</span><span class="code-row">    return wrapper</span><span class="code-row"></span><span class="code-row">@log_calls</span><span class="code-row">def say_hello():</span><span class="code-row">    print("Привет!")</span><span class="code-row"></span><span class="code-row">say_hello()</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Декоратор с аргументами</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Усовершенствуйте декоратор из первой
+                                задачи, чтобы он мог оборачивать функции с любыми
+                                аргументами и возвращать их результат. Проверьте на
+                                функции <code>add(a, b)</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Измените <code>def wrapper():</code> на
+                                        <code>def wrapper(*args, **kwargs):</code>. Внутри
+                                        верните результат: <code>return func(*args, **kwargs)</code>.
+                                        Не забудьте про <code>@functools.wraps</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import functools</span><span class="code-row"></span><span class="code-row">def log_calls(func):</span><span class="code-row">    @functools.wraps(func)</span><span class="code-row">    def wrapper(*args, **kwargs):</span><span class="code-row">        print("Вызов функции...")</span><span class="code-row">        return func(*args, **kwargs)</span><span class="code-row">    return wrapper</span><span class="code-row"></span><span class="code-row">@log_calls</span><span class="code-row">def add(a, b):</span><span class="code-row">    return a + b</span><span class="code-row"></span><span class="code-row">print(add(2, 3))</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Декоратор времени</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите декоратор <code>timer</code>,
+                                который замеряет время выполнения функции и выводит его
+                                в секундах (например, «Функция выполнялась 0.523 сек»).
+                                Для замера используйте модуль <code>time</code> и функцию
+                                <code>time.time()</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Внутри <code>wrapper</code> сохраните
+                                        <code>start = time.time()</code>, вызовите функцию,
+                                        затем сохраните <code>end = time.time()</code>.
+                                        Разница <code>end - start</code> - это время
+                                        выполнения.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import time</span><span class="code-row">import functools</span><span class="code-row"></span><span class="code-row">def timer(func):</span><span class="code-row">    @functools.wraps(func)</span><span class="code-row">    def wrapper(*args, **kwargs):</span><span class="code-row">        start = time.time()</span><span class="code-row">        result = func(*args, **kwargs)</span><span class="code-row">        end = time.time()</span><span class="code-row">        print(f"Функция выполнялась {end - start:.3f} сек")</span><span class="code-row">        return result</span><span class="code-row">    return wrapper</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Защита паролем</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Представьте, что у вас есть важная
+                                функция, которую нельзя запускать без пароля. Напишите
+                                декоратор <code>require_password</code>, который
+                                спрашивает у пользователя пароль перед вызовом функции.
+                                Если пароль неверный (например, не «1234»), функция не
+                                выполняется, а выводится сообщение об отказе.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Внутри <code>wrapper</code> спросите пароль через
+                                        <code>input()</code>. Если он не равен <code>"1234"</code>,
+                                        выведите «Доступ запрещён» и сделайте
+                                        <code>return</code> (не вызывайте функцию). Иначе
+                                        вызывайте <code>func()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">import functools</span><span class="code-row"></span><span class="code-row">def require_password(func):</span><span class="code-row">    @functools.wraps(func)</span><span class="code-row">    def wrapper(*args, **kwargs):</span><span class="code-row">        pwd = input("Введите пароль: ")</span><span class="code-row">        if pwd != "1234":</span><span class="code-row">            print("Доступ запрещён")</span><span class="code-row">            return</span><span class="code-row">        return func(*args, **kwargs)</span><span class="code-row">    return wrapper</span><span class="code-row"></span><span class="code-row">@require_password</span><span class="code-row">def delete_database():</span><span class="code-row">    print("База данных удалена")</span><span class="code-row"></span><span class="code-row">delete_database()</span></code></pre>
+                                    <p>Это простой пример того, как декораторы могут
+                                        использоваться для контроля доступа (в реальных
+                                        системах пароли проверяются иначе, но суть та же).</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Декораторы - это мощнейший инструмент Python, который позволяет изменять поведение функций, не трогая их код. Они широко используются в веб-фреймворках (например, Flask или Django), в тестировании и во многих библиотеках. Вы узнали:</p>
+
+                <ul>
+                    <li>Что функции в Python являются объектами.</li>
+                    <li>Как устроен декоратор изнутри (внешняя функция, внутренняя функция-обертка).</li>
+                    <li>Как применять декораторы через синтаксис <code>@</code>.</li>
+                    <li>Как передавать аргументы через <code>*args, **kwargs</code>.</li>
+                    <li>Зачем нужен <code>@functools.wraps</code>.</li>
+                </ul>
+
+                <p>В следующем уроке нас ждет большой и интересный проект. Мы объединим все знания о файлах, ООП и JSON, чтобы создать полноценный <strong>Менеджер задач</strong> с сохранением данных на диск. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-20.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-22.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

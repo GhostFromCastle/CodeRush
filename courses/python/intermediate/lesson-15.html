@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Работа с файлами - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="intermediate" data-lesson-id="lesson-15">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 15</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson active" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Работа с файлами</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>До этого момента все наши программы были как старые консольные игры без
+                    сохранений. Вы запускали программу, вводили данные, получали результат,
+                    закрывали окно - и всё исчезало навсегда. Как только переменные
+                    уничтожались, информация терялась.</p>
+
+                <p>Представьте, что вы пишете игру, и хотите сохранить рекорд игрока. Или
+                    делаете менеджер задач, где список дел не должен пропадать после выключения
+                    компьютера. Для этого нужно научиться сохранять данные на жёсткий диск.
+                    И сегодня мы разберёмся, как Python работает с <strong>файлами</strong>.</p>
+
+                <h2>Открытие файла: open()</h2>
+
+                <p>Чтобы начать работать с файлом, его нужно открыть. Для этого в Python есть
+                    встроенная функция <code>open()</code>. Она принимает два главных
+                    аргумента: имя файла и режим работы.</p>
+
+                <p>Аналогия: файл - это тетрадь. Режим работы - это то, зачем вы её открыли:
+                    чтобы почитать (чтение), чтобы начать писать с чистого листа (запись) или
+                    чтобы дописать что-то в конец (добавление).</p>
+
+                <h3>Режимы работы</h3>
+
+                <p>Самые важные режимы:</p>
+
+                <ul>
+                    <li><strong><code>"r"</code></strong> (read) - чтение. Открывает файл только
+                        для чтения. Если файла нет - программа выдаст ошибку. Это режим
+                        по умолчанию.</li>
+                    <li><strong><code>"w"</code></strong> (write) - запись. Создаёт файл, если
+                        его нет. <strong>Если файл есть - он полностью стирается</strong>,
+                        и запись начинается с пустого листа.</li>
+                    <li><strong><code>"a"</code></strong> (append) - добавление. Открывает
+                        файл для записи в конец. Старое содержимое сохраняется, новые
+                        данные дописываются после них.</li>
+                </ul>
+
+                <h2>Конструкция with</h2>
+
+                <p>Прежде чем начать читать и писать, давайте разберём важнейшую конструкцию
+                    <code>with</code>. В старых языках программирования после работы с файлом
+                    нужно было вручную вызывать метод <code>.close()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">f = open("file.txt", "w")</span><span class="code-row">f.write("Привет")</span><span class="code-row">f.close()</span></code></pre>
+
+                <p>Проблема в том, что если во время записи произойдёт ошибка, до строки
+                    <code>close()</code> программа не дойдёт. Файл останется открытым,
+                    что может привести к повреждению данных или блокировке файла системой.</p>
+
+                <p>Современный и правильный способ - использовать <strong>менеджер контекста</strong>
+                    <code>with</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">with open("file.txt", "w") as f:</span><span class="code-row">    f.write("Привет")</span></code></pre>
+
+                <p>Всё, что внутри блока <code>with</code>, выполняется при открытом файле.
+                    Как только блок заканчивается (или происходит ошибка), Python
+                    <strong>автоматически</strong> закрывает файл. Это гарантирует безопасность.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Всегда используйте with
+                    </div>
+                    <p>Никогда не используйте <code>open()</code> без <code>with</code>,
+                        если только у вас нет очень веской причины. Конструкция <code>with</code>
+                        - это стандарт написания кода на Python, который делает код
+                        безопасным и чистым.</p>
+                </div>
+
+                <h2>Запись в файл</h2>
+
+                <p>Теперь, когда мы умеем безопасно открывать файлы, давайте что-нибудь запишем:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">with open("example.txt", "w", encoding="utf-8") as f:</span><span class="code-row">    f.write("Первая строка\n")</span><span class="code-row">    f.write("Вторая строка\n")</span></code></pre>
+
+                <p>Обратите внимание на три вещи:</p>
+                <ul>
+                    <li><strong><code>encoding="utf-8"</code></strong> - мы явно указываем
+                        кодировку. Это критически важно для русского языка (кириллицы),
+                        иначе на Windows вместо букв могут появиться «кракозябры».</li>
+                    <li><strong><code>f.write()</code></strong> - метод для записи строки.</li>
+                    <li><strong><code>\n</code></strong> - символ переноса строки.
+                        Метод <code>write</code> <strong>не добавляет</strong> перенос
+                        автоматически. Если его не указать, обе строки склеятся в одну.</li>
+                </ul>
+
+                <h2>Чтение из файла</h2>
+
+                <p>Читать файл можно несколькими способами.</p>
+
+                <h3>Прочитать всё целиком: read()</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">with open("example.txt", "r", encoding="utf-8") as f:</span><span class="code-row">    content = f.read()</span><span class="code-row">    print(content)</span></code></pre>
+
+                <p>Метод <code>read()</code> возвращает весь текст файла одной большой строкой.
+                    Подходит для небольших файлов.</p>
+
+                <h3>Читать построчно: цикл for</h3>
+
+                <p>Если файл большой (например, лог на гигабайт), читать его целиком в память -
+                    плохая идея. Лучше читать по одной строке в цикле:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">with open("example.txt", "r", encoding="utf-8") as f:</span><span class="code-row">    for line in f:</span><span class="code-row">        print(line.strip())</span></code></pre>
+
+                <p>Конструкция <code>for line in f:</code> автоматически берёт по одной строке
+                    за раз. Метод <code>.strip()</code> удаляет невидимый символ переноса
+                    строки (<code>\n</code>) в конце, чтобы <code>print</code> не делал
+                    двойных пробелов.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>with open() as f:</code>
+                        <span>безопасное открытие файла</span>
+                    </li>
+                    <li>
+                        <code>"r"</code>
+                        <span>чтение (по умолчанию)</span>
+                    </li>
+                    <li>
+                        <code>"w"</code>
+                        <span>запись (стирает старое)</span>
+                    </li>
+                    <li>
+                        <code>"a"</code>
+                        <span>добавление в конец</span>
+                    </li>
+                    <li>
+                        <code>encoding="utf-8"</code>
+                        <span>правильная кодировка</span>
+                    </li>
+                    <li>
+                        <code>f.write(text)</code>
+                        <span>записать строку</span>
+                    </li>
+                    <li>
+                        <code>f.read()</code>
+                        <span>прочитать всё</span>
+                    </li>
+                    <li>
+                        <code>for line in f:</code>
+                        <span>читать построчно</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при работе с файлами.</p>
+
+                <ul>
+                    <li><strong>«FileNotFoundError: No such file or directory»</strong>.
+                        Вы пытаетесь открыть на чтение файл, которого нет. Проверьте имя
+                        и расширение. Помните, что файл должен лежать в той же папке,
+                        откуда вы запускаете скрипт (или указывайте полный путь).</li>
+                    <li><strong>Все русские буквы превратились в «кракозябры»</strong>.
+                        Проблема с кодировкой. Всегда добавляйте <code>encoding="utf-8"</code>
+                        при открытии файла. Это спасёт вас от проблем с кириллицей.</li>
+                    <li><strong>Файл создаётся, но он пустой</strong>. Вы открыли его в режиме
+                        <code>"w"</code>, но забыли вызвать <code>f.write()</code>.
+                        Открытие файла само по себе не пишет в него данные.</li>
+                    <li><strong>Каждая новая запись стирает предыдущую</strong>. Вы используете
+                        режим <code>"w"</code> (write), который перезаписывает файл с нуля.
+                        Если нужно добавлять данные, сохраняя старые, используйте
+                        режим <code>"a"</code> (append).</li>
+                    <li><strong>Весь текст слипся в одну строку</strong>. Метод <code>write()</code>
+                        не добавляет перенос автоматически. В конце строки нужно явно
+                        указывать <code>\n</code>: <code>f.write("Текст\n")</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Первая запись</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая спрашивает
+                                у пользователя его имя и записывает его в файл
+                                <code>name.txt</code>. Используйте режим <code>"w"</code>
+                                и <code>encoding="utf-8"</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сначала получите ввод через <code>input()</code>.
+                                        Затем откройте файл:
+                                        <code>with open("name.txt", "w", encoding="utf-8") as f:</code>
+                                        и запишите туда имя через <code>f.write()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">name = input("Введите имя: ")</span><span class="code-row"></span><span class="code-row">with open("name.txt", "w", encoding="utf-8") as f:</span><span class="code-row">    f.write(name)</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Дневник</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Программа должна спросить три заметки
+                                и добавить их в файл <code>diary.txt</code> с новой строки.
+                                Используйте режим <code>"a"</code> (добавление), чтобы
+                                не стирать предыдущие записи, если запустить программу
+                                несколько раз.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Спросите три заметки (можно через цикл
+                                        <code>for i in range(3):</code>). Внутри
+                                        <code>with open(..., "a")</code> используйте
+                                        <code>f.write(заметка + "\n")</code>. Не забудьте
+                                        про символ переноса строки.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">with open("diary.txt", "a", encoding="utf-8") as f:</span><span class="code-row">    for i in range(3):</span><span class="code-row">        note = input(f"Заметка {i + 1}: ")</span><span class="code-row">        f.write(note + "\n")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Чтение файла</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Откройте файл <code>diary.txt</code>
+                                (который вы сделали в прошлой задаче) и прочитайте его
+                                построчно в цикле. Выведите каждую строку на экран,
+                                предваряя её номером: «1. Текст».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>enumerate()</code> для
+                                        нумерации строк: <code>for index, line in enumerate(f):</code>.
+                                        Не забудьте <code>line.strip()</code>, чтобы убрать
+                                        лишние переносы.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">with open("diary.txt", "r", encoding="utf-8") as f:</span><span class="code-row">    for index, line in enumerate(f, start=1):</span><span class="code-row">        print(f"{index}. {line.strip()}")</span></code></pre>
+                                    <p>Параметр <code>start=1</code> в <code>enumerate</code>
+                                        делает так, что нумерация начинается с единицы,
+                                        а не с нуля.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Копирование файла</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая копирует
+                                содержимое одного файла в другой. Спросите у пользователя
+                                имена исходного и нового файлов. Прочитайте исходный
+                                и запишите всё в новый.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вам понадобятся два блока <code>with</code>.
+                                        В первом откройте исходный файл на чтение
+                                        (<code>"r"</code>) и сохраните текст в переменную
+                                        через <code>f.read()</code>. Во втором откройте
+                                        новый файл на запись (<code>"w"</code>) и запишите
+                                        туда эту переменную.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">source = input("Исходный файл: ")</span><span class="code-row">target = input("Новый файл: ")</span><span class="code-row"></span><span class="code-row">with open(source, "r", encoding="utf-8") as f:</span><span class="code-row">    content = f.read()</span><span class="code-row"></span><span class="code-row">with open(target, "w", encoding="utf-8") as f:</span><span class="code-row">    f.write(content)</span><span class="code-row"></span><span class="code-row">print("Файл скопирован!")</span></code></pre>
+                                    <p>Обратите внимание: мы сначала полностью прочитали
+                                        файл, закрыли его (блок <code>with</code>
+                                        закончился), и только потом открыли новый.
+                                        Это безопасный подход.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы преодолели важнейший барьер - научились сохранять данные на
+                    диск. Теперь ваши программы могут не просто работать в моменте, но и
+                    накапливать информацию, сохранять прогресс и обмениваться данными.
+                    Вы узнали:</p>
+
+                <ul>
+                    <li>Зачем нужны файлы и какие бывают режимы открытия (<code>r</code>,
+                        <code>w</code>, <code>a</code>).</li>
+                    <li>Почему конструкция <code>with</code> лучше ручного
+                        <code>close()</code>.</li>
+                    <li>Как записывать данные через <code>write()</code> и добавлять
+                        перенос строки <code>\n</code>.</li>
+                    <li>Как читать файлы целиком через <code>read()</code> и
+                        построчно через <code>for line in f:</code>.</li>
+                    <li>Почему так важно указывать <code>encoding="utf-8"</code>.</li>
+                </ul>
+
+                <p>Теперь у вас есть фундамент для создания реальных проектов, которым есть
+                    что запомнить. В следующем уроке мы разберём <strong>исключения</strong>.
+                    Вы узнаете, как ловить ошибки вроде «файл не найден», чтобы программа
+                    не падала с ужасными красными сообщениями, а элегантно продолжала
+                    работу. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-14.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-16.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

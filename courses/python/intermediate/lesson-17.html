@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООП: классы и объекты - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="intermediate" data-lesson-id="lesson-17">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 17</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson active" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>ООП: классы и объекты</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>До этого момента мы писали программы, используя функции и базовые типы данных:
+                    числа, строки, списки, словари. Такой подход называется <strong>процедурным
+                        программированием</strong>. Он отлично работает для небольших скриптов.</p>
+
+                <p>Но представьте, что вы пишете игру. У вас есть игрок, враги, оружие, карта.
+                    Как описать игрока? У него есть имя, уровень здоровья, координаты на карте,
+                    инвентарь. И он умеет двигаться, атаковать, получать урон.</p>
+
+                <p>Мы могли бы хранить данные игрока в словаре, а действия - в отдельных функциях.
+                    Но это неудобно: данные отдельно, функции отдельно. Настоящие программы
+                    используют другой подход - <strong>объектно-ориентированное программирование
+                        (ООП)</strong>. Оно позволяет объединить данные и действия над ними в
+                    единое целое.</p>
+
+                <h2>Класс и объект: чертёж и здание</h2>
+
+                <p>В основе ООП лежат два понятия: <strong>класс</strong> и <strong>объект</strong>.</p>
+
+                <ul>
+                    <li><strong>Класс</strong> - это шаблон, чертёж, описание того, какими
+                        свойствами и поведением будут обладать объекты.</li>
+                    <li><strong>Объект (экземпляр)</strong> - это конкретная вещь, созданная по
+                        этому чертежу.</li>
+                </ul>
+
+                <p>Аналогия: <strong>класс</strong> - это архитектурный чертёж дома. На нём
+                    указано, где будут стены, двери, окна. Но по этому чертежу самому по себе
+                    жить нельзя. А <strong>объект</strong> - это конкретный построенный дом
+                    по этому чертежу. Можно построить десять домов по одному чертежу - они
+                    будут разными (разные адреса, жильцы), но структура у них будет одинаковая.</p>
+
+                <h2>Создание класса</h2>
+
+                <p>Класс в Python создаётся с помощью ключевого слова <code>class</code>.
+                    Названия классов принято писать с большой буквы:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Dog:</span><span class="code-row">    pass</span></code></pre>
+
+                <p>Мы создали класс <code>Dog</code> (Собака). Пока он пустой (внутри стоит
+                    <code>pass</code> - заглушка). Но теперь мы можем создать сколько угодно
+                    объектов (собак) по этому чертежу:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">my_dog = Dog()</span><span class="code-row">your_dog = Dog()</span></code></pre>
+
+                <p>С точки зрения Python, <code>my_dog</code> и <code>your_dog</code> - это два
+                    разных объекта одного класса. Пока они абсолютно пустые и одинаковые, но это
+                    уже настоящие сущности в памяти.</p>
+
+                <h2>Атрибуты: данные объекта</h2>
+
+                <p>Пустая собака - это скучно. Давайте дадим нашим объектам свойства
+                    (характеристики). В ООП такие свойства называются <strong>атрибутами</strong>.</p>
+
+                <p>Самый простой способ задать атрибуты - присвоить их объекту напрямую:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">my_dog = Dog()</span><span class="code-row">my_dog.name = "Бадди"</span><span class="code-row">my_dog.age = 3</span><span class="code-row"></span><span class="code-row">print(my_dog.name)   # Бадди</span><span class="code-row">print(my_dog.age)    # 3</span></code></pre>
+
+                <p>Мы создали атрибуты <code>name</code> и <code>age</code> прямо на лету.
+                    Но это работает только для <code>my_dog</code>. У <code>your_dog</code>
+                    этих атрибутов пока нет. Так делать неудобно.</p>
+
+                <h2>Метод __init__: конструктор</h2>
+
+                <p>Чтобы каждый объект создавался уже с нужными данными, используют специальный
+                    метод <strong><code>__init__</code></strong> (конструктор). Он автоматически
+                    вызывается при создании объекта:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Dog:</span><span class="code-row">    def __init__(self, name, age):</span><span class="code-row">        self.name = name</span><span class="code-row">        self.age = age</span></code></pre>
+
+                <p>Обратите внимание на параметр <strong><code>self</code></strong>. Это
+                    обязательный первый параметр в методах класса. Когда мы создаём объект,
+                    <code>self</code> автоматически указывает на этот конкретный объект.
+                    Читается как «эта конкретная собака».</p>
+
+                <p>Строки <code>self.name = name</code> означают: «Возьми переданное имя
+                    и сохрани его как атрибут <code>name</code> у этого конкретного объекта».</p>
+
+                <p>Теперь при создании объекта мы <strong>обязаны</strong> передать аргументы:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">dog1 = Dog("Бадди", 3)</span><span class="code-row">dog2 = Dog("Рекс", 5)</span><span class="code-row"></span><span class="code-row">print(dog1.name)   # Бадди</span><span class="code-row">print(dog2.name)   # Рекс</span></code></pre>
+
+                <h2>Методы: поведение объекта</h2>
+
+                <p>Кроме данных, объекты умеют что-то делать. Действия объекта называются
+                    <strong>методами</strong>. Это обычные функции, объявленные внутри класса,
+                    но первым аргументом они всегда принимают <code>self</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">class Dog:</span><span class="code-row">    def __init__(self, name, age):</span><span class="code-row">        self.name = name</span><span class="code-row">        self.age = age</span><span class="code-row"></span><span class="code-row">    def bark(self):</span><span class="code-row">        print(f"{self.name} говорит: Гав!")</span><span class="code-row"></span><span class="code-row">    def get_human_age(self):</span><span class="code-row">        return self.age * 7</span></code></pre>
+
+                <p>Теперь наши собаки умеют лаять и узнавать свой возраст по человеческим меркам:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">dog = Dog("Бадди", 3)</span><span class="code-row"></span><span class="code-row">dog.bark()                     # Бадди говорит: Гав!</span><span class="code-row">print(dog.get_human_age())     # 21</span></code></pre>
+
+                <p>Обратите внимание: при вызове метода мы не передаём <code>self</code>.
+                    Python делает это автоматически. Мы просто вызываем <code>dog.bark()</code>.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Всё есть объект
+                    </div>
+                    <p>Помните, в уроке 9 мы говорили, что в Python всё является объектом? Теперь
+                        вы понимаете, почему. Строки, числа и списки - это тоже экземпляры своих
+                        классов. Например, строка - это объект класса <code>str</code>, у неё есть
+                        методы <code>.upper()</code>, <code>.split()</code> и другие. Просто
+                        их классы написали разработчики Python, а свои классы вы теперь пишете сами.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>class Name:</code>
+                        <span>создать класс</span>
+                    </li>
+                    <li>
+                        <code>obj = Name()</code>
+                        <span>создать объект</span>
+                    </li>
+                    <li>
+                        <code>def __init__(self, ...):</code>
+                        <span>конструктор</span>
+                    </li>
+                    <li>
+                        <code>self</code>
+                        <span>ссылка на текущий объект</span>
+                    </li>
+                    <li>
+                        <code>obj.attr</code>
+                        <span>доступ к атрибуту</span>
+                    </li>
+                    <li>
+                        <code>obj.method()</code>
+                        <span>вызов метода</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки новичков при работе с классами.</p>
+
+                <ul>
+                    <li><strong>Забыли <code>self</code> в параметрах метода</strong>. Если вы
+                        напишете <code>def bark():</code> вместо <code>def bark(self):</code>,
+                        при вызове <code>dog.bark()</code> Python попытается передать объект
+                        как аргумент, но не найдёт для него места и выдаст
+                        <code>TypeError</code>.</li>
+                    <li><strong>«TypeError: __init__() missing 1 required positional argument»</strong>.
+                        Вы создаёте объект <code>Dog()</code>, но не передали обязательные
+                        аргументы <code>name</code> и <code>age</code>. Если в <code>__init__</code>
+                        есть параметры, при создании их нужно передать.</li>
+                    <li><strong>«AttributeError: 'Dog' object has no attribute 'name'»</strong>.
+                        Вы пытаетесь обратиться к атрибуту, который не был создан в
+                        <code>__init__</code>. Проверьте, что вы задали его через
+                        <code>self.name = ...</code>.</li>
+                    <li><strong>Забыли <code>self.</code> при обращении к атрибуту внутри
+                            метода</strong>. Если вы напишете <code>print(name)</code> вместо
+                        <code>print(self.name)</code>, Python будет искать локальную переменную
+                        <code>name</code> и выдаст ошибку <code>NameError</code>.</li>
+                    <li><strong>Путаница между классом и объектом</strong>. Если написать
+                        <code>Dog.name</code>, Python попытается найти атрибут <code>name</code>
+                        у самого класса, а не у конкретной собаки. Это сработает, если у класса
+                        есть атрибуты, но атрибуты объектов доступны только через
+                        <code>dog.name</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Книга</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте класс <code>Book</code> с
+                                конструктором <code>__init__</code>, который принимает
+                                название книги и автора. Создайте два объекта этого класса
+                                и выведите их атрибуты на экран.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Класс: <code>class Book:</code>. Внутри
+                                        <code>def __init__(self, title, author):</code>.
+                                        Сохраните атрибуты через <code>self.title</code> и
+                                        <code>self.author</code>. Создайте объекты:
+                                        <code>book1 = Book("Война и мир", "Толстой")</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Book:</span><span class="code-row">    def __init__(self, title, author):</span><span class="code-row">        self.title = title</span><span class="code-row">        self.author = author</span><span class="code-row"></span><span class="code-row">book1 = Book("Война и мир", "Лев Толстой")</span><span class="code-row">book2 = Book("Мастер и Маргарита", "Михаил Булгаков")</span><span class="code-row"></span><span class="code-row">print(f"{book1.title} - {book1.author}")</span><span class="code-row">print(f"{book2.title} - {book2.author}")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Прямоугольник</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте класс <code>Rectangle</code>
+                                с шириной и высотой. Добавьте методы <code>area()</code>
+                                (площадь) и <code>perimeter()</code> (периметр). Создайте
+                                прямоугольник 5 на 10 и выведите его площадь и периметр.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В конструкторе сохраните <code>self.width</code> и
+                                        <code>self.height</code>. Метод площади:
+                                        <code>return self.width * self.height</code>.
+                                        Метод периметра:
+                                        <code>return 2 * (self.width + self.height)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Rectangle:</span><span class="code-row">    def __init__(self, width, height):</span><span class="code-row">        self.width = width</span><span class="code-row">        self.height = height</span><span class="code-row"></span><span class="code-row">    def area(self):</span><span class="code-row">        return self.width * self.height</span><span class="code-row"></span><span class="code-row">    def perimeter(self):</span><span class="code-row">        return 2 * (self.width + self.height)</span><span class="code-row"></span><span class="code-row">rect = Rectangle(5, 10)</span><span class="code-row">print(f"Площадь: {rect.area()}")</span><span class="code-row">print(f"Периметр: {rect.perimeter()}")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Банковский счёт</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте класс <code>BankAccount</code>
+                                с балансом (начинается с 0). Добавьте метод
+                                <code>deposit(amount)</code>, который увеличивает баланс,
+                                и метод <code>withdraw(amount)</code>, который уменьшает
+                                баланс, но не позволяет уйти в минус.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В методе <code>withdraw</code> используйте
+                                        <code>if amount &lt;= self.balance:</code>.
+                                        Если денег достаточно - вычитайте, иначе выводите
+                                        сообщение «Недостаточно средств».</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class BankAccount:</span><span class="code-row">    def __init__(self):</span><span class="code-row">        self.balance = 0</span><span class="code-row"></span><span class="code-row">    def deposit(self, amount):</span><span class="code-row">        self.balance += amount</span><span class="code-row">        print(f"Пополнение на {amount}. Баланс: {self.balance}")</span><span class="code-row"></span><span class="code-row">    def withdraw(self, amount):</span><span class="code-row">        if amount &lt;= self.balance:</span><span class="code-row">            self.balance -= amount</span><span class="code-row">            print(f"Снятие {amount}. Баланс: {self.balance}")</span><span class="code-row">        else:</span><span class="code-row">            print("Недостаточно средств")</span><span class="code-row"></span><span class="code-row">acc = BankAccount()</span><span class="code-row">acc.deposit(1000)</span><span class="code-row">acc.withdraw(300)</span><span class="code-row">acc.withdraw(1000)</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Студент</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте класс <code>Student</code> с именем
+                                и пустым списком оценок. Добавьте метод <code>add_grade</code>
+                                для добавления оценки, и метод <code>average_grade</code>,
+                                который считает средний балл. Если оценок нет, метод должен
+                                возвращать 0.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Список оценок создавайте в конструкторе:
+                                        <code>self.grades = []</code>. Для среднего балла
+                                        проверьте, пуст ли список. Если нет - используйте
+                                        <code>sum(self.grades) / len(self.grades)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">class Student:</span><span class="code-row">    def __init__(self, name):</span><span class="code-row">        self.name = name</span><span class="code-row">        self.grades = []</span><span class="code-row"></span><span class="code-row">    def add_grade(self, grade):</span><span class="code-row">        self.grades.append(grade)</span><span class="code-row"></span><span class="code-row">    def average_grade(self):</span><span class="code-row">        if not self.grades:</span><span class="code-row">            return 0</span><span class="code-row">        return sum(self.grades) / len(self.grades)</span><span class="code-row"></span><span class="code-row">student = Student("Алексей")</span><span class="code-row">student.add_grade(5)</span><span class="code-row">student.add_grade(4)</span><span class="code-row">student.add_grade(5)</span><span class="code-row"></span><span class="code-row">print(f"{student.name}, средний балл: {student.average_grade():.2f}")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня вы прикоснулись к парадигме, которая лежит в основе 99% современных
+                    программ - объектно-ориентированному программированию. Мы узнали:</p>
+
+                <ul>
+                    <li>Что такое класс (чертёж) и объект (готовое изделие).</li>
+                    <li>Как создавать классы с помощью <code>class</code>.</li>
+                    <li>Что такое конструктор <code>__init__</code> и как он работает.</li>
+                    <li>Зачем нужен параметр <code>self</code> и что он означает.</li>
+                    <li>Как создавать атрибуты (данные) и методы (поведение) объекта.</li>
+                </ul>
+
+                <p>Классы и объекты позволяют моделировать реальный мир в коде. Вместо набора
+                    разрозненных переменных и функций у вас появляются сущности со своим
+                    характером и поведением. Это делает код гораздо понятнее и надёжнее.</p>
+
+                <p>В следующем уроке мы продолжим изучение ООП и разберём <strong>наследование</strong>.
+                    Вы узнаете, как создавать новые классы на основе существующих, чтобы
+                    переиспользовать код, не копируя его. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-16.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-18.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>
