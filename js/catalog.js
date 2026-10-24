@@ -1,6 +1,6 @@
 import { escapeHtml, debounce } from './utils.js';
 
-const COURSES_URL = '../data/courses.json';
+const COURSES_URL = 'data/courses.json';
 const DEFAULT_LIMIT = 4;
 const SKELETON_COUNT = 4;
 
