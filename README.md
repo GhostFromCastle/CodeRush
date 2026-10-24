@@ -11,7 +11,7 @@
 **Что внутри:**
 *   📚 **Курсы:** C#, Python, JavaScript, Кибербезопасность, Вёрстка сайтов, SQL, Нейросети и не только.
 *   🪜 **Три уровня:** В каждом курсе есть начальный, средний и продвинутый уровни.
-*   🎮 **Тренажёры:** Интерактивные инструменты для слепой печати и изучения горячих клавиш IDE.
+*   🎮 **Тренажёры:** Интерактивные инструменты для слепой печати, изучения горячих клавиш IDE, работы с JSON и поиска багов.
 *   📖 **Словарь:** База знаний с понятными объяснениями сложных IT-терминов.
 
 **Ссылка на сайт:** [ghostfromcastle.github.io/CodeRush/](https://ghostfromcastle.github.io/CodeRush/)
@@ -29,7 +29,7 @@ The project is built with pure **HTML, CSS, and JavaScript** without any build t
 **Features:**
 *   📚 **Courses:** C#, Python, JavaScript, Cybersecurity, HTML/CSS, SQL, AI and not only.
 *   🪜 **Three levels:** Each course has beginner, intermediate, and advanced levels.
-*   🎮 **Trainers:** Interactive tools for touch typing and learning IDE hotkeys.
+*   🎮 **Trainers:** Interactive tools for touch typing, IDE hotkeys, JSON rescue, and bug hunting.
 *   📖 **Dictionary:** A knowledge base with clear explanations of complex IT terms.
 
 **Live Demo:** [ghostfromcastle.github.io/CodeRush/](https://ghostfromcastle.github.io/CodeRush/)
@@ -50,10 +50,10 @@ The project is built with pure **HTML, CSS, and JavaScript** without any build t
 
 ### 🇷🇺 Русская версия
 
-*   **Исходный код:** Весь программный код проекта распространяется по лицензии [MIT License](LICENSE). Вы можете свободно использовать его в своих проектах.
-*   **Образовательный контент:** Тексты уроков, статьи в словаре и дизайн защищены авторским правом и регулируются нашими [Правилами использования](https://ghostfromcastle.github.io/CodeRush/terms.html). Копирование, перепродажа или выдача материалов за свои без письменного разрешения запрещены.
+*   **Исходный код:** Весь программный код сайта (HTML, CSS, JavaScript) распространяется по лицензии [MIT License](LICENSE). Вы можете свободно использовать его в своих проектах, модифицировать и распространять.
+*   **Образовательный контент:** Тексты уроков, статьи в словаре, задания и дизайн защищены авторским правом и регулируются нашими [Правилами использования](https://ghostfromcastle.github.io/CodeRush/terms.html). Копирование, перепродажа или выдача текстовых материалов за свои без письменного разрешения запрещены.
 
 ### 🇬🇧 English version
 
-*   **Source Code:** The source code of this project is licensed under the [MIT License](LICENSE). You are free to use it in your own projects.
-*   **Educational Content:** The educational content (lesson texts, dictionary definitions, design) is protected by copyright and is subject to our [Terms of Use](https://ghostfromcastle.github.io/CodeRush/terms.html). You may not copy, redistribute, or sell the educational materials without explicit permission.
+*   **Source Code:** The source code of this project (HTML, CSS, JavaScript) is licensed under the [MIT License](LICENSE). You are free to use it, modify it, and distribute it in your own projects.
+*   **Educational Content:** The educational content (lesson texts, dictionary definitions, tasks, and design) is protected by copyright and is subject to our [Terms of Use](https://ghostfromcastle.github.io/CodeRush/terms.html). You may not copy, redistribute, or sell the educational materials without explicit permission.
