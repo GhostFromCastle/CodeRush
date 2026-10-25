@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Работа с файлами и папками - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="windows" data-lesson-id="lesson-03">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Windows</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 03</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Windows</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация по файловой системе</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson active" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Работа с файлами и папками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Системные команды</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Сетевые утилиты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Введение в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы скриптов в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Работа с файлами и папками</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-windows-logo"></i> Windows</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились перемещаться по файловой системе. Но что, если нам нужно не просто посмотреть, а что-то создать или изменить? Представьте, что вы переехали в новую квартиру. Сначала вы расставляете мебель (создаёте папки), потом раскладываете вещи (копируете файлы), а иногда выбрасываете мусор (удаляете лишнее).</p>
+
+                <p>Сегодня мы научимся делать всё это прямо из терминала.</p>
+
+                <h2>Создание папок: mkdir</h2>
+
+                <p>Команда <code>mkdir</code> (make directory) создаёт новую папку. Это как построить новую комнату в доме.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">mkdir NewProject</span></code></pre>
+
+                <p>Эта команда создаст папку <code>NewProject</code> в текущей директории. Если папка уже существует, терминал выдаст ошибку.</p>
+
+                <p>Можно создать сразу несколько папок через пробел:</p>
+                <pre class="code-numbered"><code><span class="code-row">mkdir folder1 folder2 folder3</span></code></pre>
+
+                <p>А если добавить флаг <code>/p</code>, можно создавать вложенные папки, даже если родительских ещё нет:</p>
+                <pre class="code-numbered"><code><span class="code-row">mkdir /p Projects\CodeRush\Lessons</span></code></pre>
+
+                <h2>Копирование файлов: copy</h2>
+
+                <p>Команда <code>copy</code> копирует файл из одного места в другое. Вы как будто делаете ксерокопию документа.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">copy file.txt D:\Backup\file.txt</span></code></pre>
+
+                <p>Эта команда скопирует файл <code>file.txt</code> в папку <code>D:\Backup</code>. Если папки назначения нет, будет ошибка.</p>
+
+                <p>Также можно копировать файлы по маске (все файлы с расширением .txt):</p>
+                <pre class="code-numbered"><code><span class="code-row">copy *.txt D:\Backup\</span></code></pre>
+
+                <h2>Перемещение файлов: move</h2>
+
+                <p>Команда <code>move</code> не копирует, а перемещает файл. Это как взять вещь и переставить её в другой шкаф. Исходный файл исчезает.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">move file.txt D:\Archive\file.txt</span></code></pre>
+
+                <p>Этой же командой можно переименовать файл:</p>
+                <pre class="code-numbered"><code><span class="code-row">move old_name.txt new_name.txt</span></code></pre>
+
+                <h2>Удаление файлов: del</h2>
+
+                <p>Команда <code>del</code> (delete) удаляет файлы. Будьте осторожны: в терминале нет «Корзины», файлы удаляются безвозвратно.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">del file.txt</span></code></pre>
+
+                <p>Если добавить флаг <code>/f</code>, можно удалить файл, доступный только для чтения.</p>
+                <pre class="code-numbered"><code><span class="code-row">del /f read_only.txt</span></code></pre>
+
+                <h2>Удаление папок: rmdir</h2>
+
+                <p>Для удаления папок используется команда <code>rmdir</code> (remove directory).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">rmdir EmptyFolder</span></code></pre>
+
+                <p>Эта команда удалит папку, только если она <strong>пуста</strong>. Если внутри есть файлы, терминал выдаст ошибку.</p>
+
+                <p>Чтобы удалить папку вместе со всем содержимым, используется флаг <code>/s</code>:</p>
+                <pre class="code-numbered"><code><span class="code-row">rmdir /s OldFolder</span></code></pre>
+
+                <p>Терминал спросит подтверждение. Если добавить флаг <code>/q</code> (quiet), он удалит всё без лишних вопросов:</p>
+                <pre class="code-numbered"><code><span class="code-row">rmdir /s /q OldFolder</span></code></pre>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Будьте осторожны!
+                    </div>
+                    <p>Команда <code>rmdir /s /q</code> удаляет папку со всем содержимым без подтверждения. Внимательно проверяйте путь перед нажатием Enter. Восстановить данные будет крайне сложно.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>mkdir</code>
+                        <span>создать папку</span>
+                    </li>
+                    <li>
+                        <code>copy</code>
+                        <span>копировать файл</span>
+                    </li>
+                    <li>
+                        <code>move</code>
+                        <span>переместить файл</span>
+                    </li>
+                    <li>
+                        <code>del</code>
+                        <span>удалить файл</span>
+                    </li>
+                    <li>
+                        <code>rmdir</code>
+                        <span>удалить папку</span>
+                    </li>
+                    <li>
+                        <code>rmdir /s /q</code>
+                        <span>удалить папку со всем содержимым</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с файлами.</p>
+
+                <ul>
+                    <li><strong>«Файл не найден»</strong>. Вы ошиблись в имени файла или находитесь не в той папке. Используйте <code>dir</code>, чтобы проверить содержимое.</li>
+                    <li><strong>«Отказано в доступе»</strong>. Вы пытаетесь удалить или изменить системный файл. Запустите терминал от имени администратора (правая кнопка мыши -> «Запуск от имени администратора»).</li>
+                    <li><strong>«Папка не пуста»</strong>. Вы используете <code>rmdir</code> без флага <code>/s</code> для папки, в которой есть файлы. Добавьте <code>/s</code>.</li>
+                    <li><strong>«Слишком длинное имя файла»</strong>. Windows имеет ограничение на длину пути (около 260 символов). Попробуйте переместить папку ближе к корню диска.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Стройка века</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте папку с названием <code>TestFolder</code> в вашей текущей директории.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>mkdir</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">mkdir TestFolder</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Бэкап важного</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте текстовый файл <code>important.txt</code> с любым содержимым в текущей папке. Скопируйте его в папку <code>TestFolder</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Файл можно создать командой <code>echo текст &gt; important.txt</code>. Затем используйте <code>copy important.txt TestFolder\</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">echo "Секретные данные" &gt; important.txt</span><span class="code-row">copy important.txt TestFolder\</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Переезд</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Переименуйте файл <code>important.txt</code> в <code>archive.txt</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>move</code>, указав старое и новое имя файла.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">move important.txt archive.txt</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Генеральная уборка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Удалите файл <code>archive.txt</code> и папку <code>TestFolder</code> со всем её содержимым.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для файла используйте <code>del</code>. Для папки - <code>rmdir /s /q</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">del archive.txt</span><span class="code-row">rmdir /s /q TestFolder</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь вы можете управлять файлами так же быстро, как заправский хакер из фильмов. Вы узнали:</p>
+                <ul>
+                    <li>Как создавать папки (<code>mkdir</code>).</li>
+                    <li>Как копировать файлы (<code>copy</code>).</li>
+                    <li>Как перемещать и переименовывать файлы (<code>move</code>).</li>
+                    <li>Как удалять файлы (<code>del</code>) и папки (<code>rmdir</code>).</li>
+                </ul>
+
+                <p>Но терминал умеет работать не только с файлами. Он может управлять программами и процессами, которые запущены в системе. В следующем уроке мы разберём <strong>системные команды</strong>. Вы научитесь смотреть, какие программы сейчас работают, и как их принудительно закрыть, если они зависли. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-02.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-04.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

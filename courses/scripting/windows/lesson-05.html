@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аргументы командной строки - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="windows" data-lesson-id="lesson-05">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Windows</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 05</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Windows (Bat)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в Batch-скрипты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы и метки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson active" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Аргументы командной строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Запуск программ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт бэкапа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Даты, время и очистка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Работа с логами и текстом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик и права админа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Аргументы командной строки</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-windows-logo"></i> Windows</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились использовать циклы, чтобы скрипт мог работать долго и выполнять повторяющиеся действия. Но у наших программ всё ещё есть один недостаток: они просят данные только после запуска.</p>
+
+                <p>Представьте, что вы хотите перетащить файл на батник, чтобы он его обработал. Или запустить скрипт из другого скрипта и сразу передать ему нужные настройки. Для этого существуют <strong>аргументы командной строки</strong>.</p>
+
+                <h2>Что такое аргументы</h2>
+
+                <p>Аналогия: представьте кофейный автомат. Сам автомат - это скрипт. Вы подходите и нажимаете кнопку «Капучино» - это аргумент. Автомат не спрашивает вас «А что вы хотите?», он просто берёт то, что вы передали, и делает работу.</p>
+
+                <p>Аргументы передаются скрипту в момент его запуска. Например, если в командной строке написать:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">my_script.bat Привет 25</span></code></pre>
+
+                <p>То слово <code>Привет</code> станет первым аргументом, а число <code>25</code> - вторым.</p>
+
+                <h2>Как получить аргументы в скрипте</h2>
+
+                <p>В Batch-скриптах аргументы доступны через специальные переменные с процентами и цифрами:</p>
+                <ul>
+                    <li><strong><code>%0</code></strong> - имя самого скрипта.</li>
+                    <li><strong><code>%1</code></strong> - первый аргумент.</li>
+                    <li><strong><code>%2</code></strong> - второй аргумент.</li>
+                    <li>... и так далее до <code>%9</code>.</li>
+                </ul>
+
+                <p>Давайте создадим простой скрипт <code>greet.bat</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Привет, %1!</span><span class="code-row">pause</span></code></pre>
+
+                <p>Если вы запустите его двойным кликом, он выведет «Привет, !». Но если вы откроете командную строку в этой папке и напишете <code>greet.bat Алексей</code>, скрипт выведет «Привет, Алексей!».</p>
+
+                <h2>Передача всех аргументов сразу: %*</h2>
+
+                <p>Если аргументов много, перечислять их по одному неудобно. Для этого есть переменная <code>%*</code>, которая содержит в себе все переданные аргументы через пробел.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Вы передали следующие аргументы: %*</span><span class="code-row">pause</span></code></pre>
+
+                <h2>Кавычки для аргументов с пробелами</h2>
+
+                <p>Что, если мы хотим передать аргумент, который состоит из нескольких слов? Например, имя и фамилия вместе.</p>
+
+                <p>Если написать <code>greet.bat Иван Петров</code>, то скрипт воспримет <code>Иван</code> как <code>%1</code>, а <code>Петров</code> - как <code>%2</code>. Если мы хотим передать «Иван Петров» как один аргумент, его нужно взять в кавычки:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">greet.bat "Иван Петров"</span></code></pre>
+
+                <p>Тогда <code>%1</code> будет содержать всю строку «Иван Петров». Это очень важно при работе с путями к файлам, в которых есть пробелы (например, <code>C:\Program Files</code>).</p>
+
+                <h2>Практический пример: скрипт-калькулятор</h2>
+
+                <p>Давайте создадим скрипт, который принимает два числа и оператор (+, -, *, /) в качестве аргументов.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">set /a result=%1 %2 %3</span><span class="code-row">echo Результат: %result%</span><span class="code-row">pause</span></code></pre>
+
+                <p>Если запустить его командой <code>calc.bat 5 + 3</code>, скрипт выведет «Результат: 8». Здесь <code>%1</code> - это 5, <code>%2</code> - это +, а <code>%3</code> - это 3.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Почему это удобно?
+                    </div>
+                    <p>Представьте, что вы пишете программу для конвертации видео. Вместо того чтобы каждый раз спрашивать пользователя «А какое расширение? А какое качество?», вы просто пишете <code>convert.bat video.mp4 1080p</code>. Программа сразу понимает, что делать.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>%0</code>
+                        <span>имя скрипта</span>
+                    </li>
+                    <li>
+                        <code>%1, %2...</code>
+                        <span>аргументы по порядку</span>
+                    </li>
+                    <li>
+                        <code>%*</code>
+                        <span>все аргументы</span>
+                    </li>
+                    <li>
+                        <code>"два слова"</code>
+                        <span>один аргумент с пробелом</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с аргументами.</p>
+
+                <ul>
+                    <li><strong>«Аргументы пустые»</strong>. Вы запустили скрипт двойным кликом, а не через командную строку с параметрами. Скрипт не может «придумать» аргументы, их нужно передать вручную.</li>
+                    <li><strong>«Скрипт видит только первое слово из фразы»</strong>. Вы забыли взять фразу в кавычки при запуске. Если в аргументе есть пробел, он всегда должен быть в двойных кавычках: <code>"Иван Петров"</code>.</li>
+                    <li><strong>«Скрипт ломается при запуске файла с пробелом в имени»</strong>. Файл <code>C:\My Files\test.txt</code> при передаче разделится на два аргумента. Используйте переменную <code>%*</code> или всегда берите путь в кавычки.</li>
+                    <li><strong>«Как перетащить файл на скрипт?»</strong>. В Windows, если вы перетаскиваете файл на иконку <code>.bat</code>, система автоматически передаёт полный путь к этому файлу как <code>%1</code>. Это очень удобно для конвертеров и обработчиков.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Приветствие по имени</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт, который выводит «Здравствуйте, [Имя]!». Имя должно передаваться первым аргументом.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>%1</code> в команде <code>echo</code>. Не забудьте проверить, что вы передаёте имя при запуске.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Здравствуйте, %1!</span><span class="code-row">pause</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Сумма трех чисел</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте скрипт, который принимает три числа в качестве аргументов и выводит их сумму.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>%1</code>, <code>%2</code> и <code>%3</code> внутри <code>set /a result=...</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">set /a sum=%1 + %2 + %3</span><span class="code-row">echo Сумма: %sum%</span><span class="code-row">pause</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Информатор</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте скрипт, который выводит: «Имя скрипта: [имя]» и «Всего аргументов передано: [количество]». Для подсчёта количества используйте <code>%*</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Имя скрипта хранится в <code>%0</code>. А чтобы вывести все аргументы, используйте <code>%*</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Имя скрипта: %0</span><span class="code-row">echo Вы передали аргументы: %*</span><span class="code-row">pause</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Обработчик файлов</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте скрипт, который проверяет, существует ли файл, путь к которому передан в первом аргументе. Если существует - выводит размер файла (команда <code>%~z1</code> вернёт размер в байтах). Если нет - сообщает об ошибке.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте условие <code>if exist %1</code>. Внутри него выведите <code>%~z1</code> (это специальный модификатор, который берёт размер файла из пути <code>%1</code>).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">if exist %1 (</span><span class="code-row">    echo Файл найден! Размер: %~z1 байт</span><span class="code-row">) else (</span><span class="code-row">    echo Файл не найден по пути: %1</span><span class="code-row">)</span><span class="code-row">pause</span></code></pre>
+                                    <p>Если вы перетащите файл на этот скрипт, он автоматически подставится в <code>%1</code> и скрипт покажет его размер.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь ваши скрипты стали профессиональными инструментами. Они могут принимать параметры прямо при запуске, как настоящие программы в Windows. Вы узнали:</p>
+                <ul>
+                    <li>Что такое аргументы командной строки.</li>
+                    <li>Как получить к ним доступ через <code>%1</code>, <code>%2</code> и т.д.</li>
+                    <li>Как получить имя самого скрипта (<code>%0</code>).</li>
+                    <li>Как передать сразу все аргументы через <code>%*</code>.</li>
+                    <li>Почему важно использовать кавычки для аргументов с пробелами.</li>
+                </ul>
+
+                <p>Но наши скрипты всё ещё работают в чёрном окне консоли. Было бы здорово, если бы скрипт мог открыть браузер, запустить игру или другое приложение.</p>
+
+                <p>В следующем уроке мы разберём <strong>запуск программ</strong>. Вы узнаете, как открывать сайты, калькулятор и другие exe-файлы прямо из вашего скрипта. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-04.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-06.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

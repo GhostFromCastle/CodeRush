@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Планировщик Cron - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="linux" data-lesson-id="lesson-10">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 10</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux (Bash)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение и первый скрипт</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и аргументы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и математика</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Функции в Bash</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт сбора логов</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Обработка текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson active" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик Cron</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Планировщик Cron и финальный проект</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Только практика</span>
+                </div>
+
+                <p>Мы дошли до финала. Вы умеете писать скрипты, работать с файлами, текстом и процессами. Но чтобы скрипт приносил настоящую пользу, он должен работать без вашего участия.</p>
+
+                <p>В Linux для автоматического запуска задач по расписанию есть встроенный демон - <strong>cron</strong>. Сегодня мы научимся настраивать его и напишем финальный проект - скрипт резервного копирования базы данных.</p>
+
+                <h2>Что такое crontab</h2>
+
+                <p>Расписание задач для cron хранится в специальном файле, который называется <code>crontab</code> (cron table). У каждого пользователя есть свой собственный crontab.</p>
+
+                <p>Чтобы открыть его для редактирования, используется команда:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">crontab -e</span></code></pre>
+
+                <p>Обычно при первом запуске система попросит выбрать редактор (например, <code>nano</code> - самый простой).</p>
+
+                <h2>Синтаксис cron</h2>
+
+                <p>Каждая строка в crontab описывает одно задание и выглядит так:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">* * * * * команда_или_путь_к_скрипту</span></code></pre>
+
+                <p>Пять звёздочек означают время запуска. Расшифровка слева направо:</p>
+                <ol>
+                    <li><strong>Минуты</strong> (от 0 до 59)</li>
+                    <li><strong>Часы</strong> (от 0 до 23)</li>
+                    <li><strong>Дни месяца</strong> (от 1 до 31)</li>
+                    <li><strong>Месяцы</strong> (от 1 до 12)</li>
+                    <li><strong>Дни недели</strong> (от 0 до 6, где 0 - воскресенье)</li>
+                </ol>
+
+                <p>Звёздочка означает «любое значение». Примеры:</p>
+                <ul>
+                    <li><code>0 3 * * *</code> - каждый день в 03:00 ночи.</li>
+                    <li><code>*/5 * * * *</code> - каждые 5 минут.</li>
+                    <li><code>0 0 1 * *</code> - первого числа каждого месяца в полночь.</li>
+                    <li><code>0 9 * * 1-5</code> - в 9 утра с понедельника по пятницу.</li>
+                </ul>
+
+                <h2>Финальный проект: скрипт бэкапа БД</h2>
+
+                <p>Напишем скрипт <code>db_backup.sh</code>, который делает резервную копию базы данных MySQL, логирует процесс и удаляет старые бэкапы.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row"></span><span class="code-row">DB_NAME="my_database"</span><span class="code-row">DB_USER="root"</span><span class="code-row">BACKUP_DIR="/var/backups/mysql"</span><span class="code-row">LOG_FILE="/var/log/db_backup.log"</span><span class="code-row"></span><span class="code-row">mkdir -p "$BACKUP_DIR"</span><span class="code-row"></span><span class="code-row">echo "[$(date +'%Y-%m-%d %H:%M:%S')] Начинаю бэкап базы $DB_NAME" >> "$LOG_FILE"</span><span class="code-row"></span><span class="code-row">TODAY=$(date +%Y-%m-%d)</span><span class="code-row">DUMP_FILE="$BACKUP_DIR/${DB_NAME}_$TODAY.sql"</span><span class="code-row"></span><span class="code-row">mysqldump -u "$DB_USER" "$DB_NAME" > "$DUMP_FILE"</span><span class="code-row"></span><span class="code-row">if [ $? -eq 0 ]; then</span><span class="code-row">    echo "[$(date +'%Y-%m-%d %H:%M:%S')] Успех: $DUMP_FILE" >> "$LOG_FILE"</span><span class="code-row">else</span><span class="code-row">    echo "[$(date +'%Y-%m-%d %H:%M:%S')] ОШИБКА при создании дампа!" >> "$LOG_FILE"</span><span class="code-row">    exit 1</span><span class="code-row">fi</span><span class="code-row"></span><span class="code-row">echo "[$(date +'%Y-%m-%d %H:%M:%S')] Удаляю старые бэкапы..." >> "$LOG_FILE"</span><span class="code-row">find "$BACKUP_DIR" -name "*.sql" -mtime +7 -delete</span><span class="code-row"></span><span class="code-row">echo "[$(date +'%Y-%m-%d %H:%M:%S')] Работа завершена." >> "$LOG_FILE"</span></code></pre>
+
+                <p>Теперь, чтобы запускать этот скрипт каждый день в 4 утра, откроем crontab:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">crontab -e</span></code></pre>
+
+                <p>И добавим в конец файла строку:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">0 4 * * * /home/user/scripts/db_backup.sh</span></code></pre>
+
+                <p>Не забудьте сделать скрипт исполняемым (<code>chmod +x db_backup.sh</code>) и указать абсолютный путь к нему.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>crontab -e</code>
+                        <span>редактировать расписание</span>
+                    </li>
+                    <li>
+                        <code>crontab -l</code>
+                        <span>посмотреть задачи</span>
+                    </li>
+                    <li>
+                        <code>* * * * *</code>
+                        <span>мин час день мес нед</span>
+                    </li>
+                    <li>
+                        <code>*/5 * * * *</code>
+                        <span>каждые 5 минут</span>
+                    </li>
+                    <li>
+                        <code>0 3 * * *</code>
+                        <span>каждый день в 3 ночи</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при настройке cron.</p>
+
+                <ul>
+                    <li><strong>«Скрипт работает вручную, но не в cron»</strong>. Самая частая причина - cron не знает о переменных окружения вашей оболочки. Всегда используйте абсолютные пути (<code>/usr/bin/python3</code>) и задавайте переменные (например, <code>PATH</code>) прямо внутри скрипта.</li>
+                    <li><strong>«Ошибка в логах crontab»</strong>. Проверьте, что в конце каждой строки расписания нет лишних пробелов. А также убедитесь, что после последней строки осталась пустая строка.</li>
+                    <li><strong>«Забыл поставить chmod +x»</strong>. Cron не сможет запустить скрипт без прав на исполнение.</li>
+                    <li><strong>«Вывод ошибок не видно»</strong>. Cron не отправляет почту по умолчанию. Перенаправьте вывод в лог-файл внутри самого скрипта (как в нашем примере), чтобы потом понять, что пошло не так.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Каждую минуту</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Настройте cron так, чтобы ваш скрипт (любой) запускался каждую минуту и записывал текущее время в файл.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте скрипт с командой <code>date &gt;&gt; ~/time.log</code>. В crontab добавьте <code>* * * * * /path/to/script.sh</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">crontab -e</span><span class="code-row"># * * * * * /home/user/time_logger.sh</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Перезагрузка сервера</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите cron-задание, которое перезагружает сервер (команда <code>reboot</code>) каждое воскресенье в 4 утра.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Поле дня недели для воскресенья - это <code>0</code> или <code>7</code>. Время: 4 часа, 0 минут.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">0 4 * * 0 reboot</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Логирование в скрипте</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Доработайте скрипт из Задачи 1. Сделайте так, чтобы перед записью времени в лог, скрипт проверял, не превысил ли файл размер в 1 мегабайт. Если превысил - очищал его.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>stat -c %s файл</code>, чтобы получить размер в байтах. 1 мегабайт = 1048576 байт. Если размер больше, используйте <code>&gt;</code> для очистки файла.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">LOG_FILE="$HOME/time.log"</span><span class="code-row">SIZE=$(stat -c %s "$LOG_FILE" 2>/dev/null || echo 0)</span><span class="code-row"></span><span class="code-row">if [ "$SIZE" -gt 1048576 ]; then</span><span class="code-row">    echo "Лог превысил 1МБ, очищаю..." > "$LOG_FILE"</span><span class="code-row">fi</span><span class="code-row"></span><span class="code-row">date >> "$LOG_FILE"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Полный цикл бэкапа</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте скрипт, который архивирует папку <code>~/Documents</code> в <code>~/Backups</code> с текущей датой. Настройте cron на запуск каждый день в полночь.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>tar</code> для архивации и <code>date +%Y-%m-%d</code> для имени файла. В crontab укажите <code>0 0 * * * /path/to/backup.sh</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">DATE=$(date +%Y-%m-%d)</span><span class="code-row">mkdir -p "$HOME/Backups"</span><span class="code-row">tar -czf "$HOME/Backups/docs_$DATE.tar.gz" -C "$HOME" Documents</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Курс завершён!</h2>
+
+                <p>Поздравляем! Вы прошли полный курс по Bash-скриптам в Linux. Это был долгий, но невероятно полезный путь. Теперь вы:</p>
+                <ul>
+                    <li>Умеете писать, запускать и отлаживать скрипты.</li>
+                    <li>Работаете с переменными, циклами, условиями и функциями.</li>
+                    <li>Владеете инструментами обработки текста (grep, sed, awk).</li>
+                    <li>Можете управлять процессами и мониторить систему.</li>
+                    <li>Настраиваете автоматическое выполнение задач через cron.</li>
+                </ul>
+
+                <p>Эти знания открывают двери в мир системного администрирования, DevOps и автоматизации тестирования. Скрипты - это ваш верный инструмент для экономии времени и управления серверами.</p>
+
+                <p>Спасибо, что учились вместе с CodeRush. Удачи вам в мире Linux!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-09.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../index.html" class="btn-secondary">
+                        К списку курсов <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

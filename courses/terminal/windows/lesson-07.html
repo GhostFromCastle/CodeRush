@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы скриптов в PowerShell - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="windows" data-lesson-id="lesson-07">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Windows</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 07</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Windows</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация по файловой системе</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Работа с файлами и папками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Системные команды</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Сетевые утилиты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Введение в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson active" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы скриптов в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Основы скриптов в PowerShell</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-windows-logo"></i> Windows</span>
+                    <span><i class="ph ph-code"></i> Только практика</span>
+                </div>
+
+                <p>Мы подошли к финалу курса по терминалу Windows. Мы научились перемещаться по файлам, управлять процессами и даже проверять сеть. Но настоящая магия начинается, когда вы объединяете эти команды в <strong>скрипты</strong>.</p>
+
+                <p>В PowerShell скрипты сохраняются в файлах с расширением <code>.ps1</code>. В этом уроке мы напишем наш первый скрипт и разберём главные фишки PowerShell: переменные и конвейеры.</p>
+
+                <h2>Политика выполнения (Execution Policy)</h2>
+
+                <p>Windows очень заботится о безопасности. По умолчанию она <strong>запрещает</strong> запускать любые скачанные или созданные вами скрипты <code>.ps1</code>, чтобы вирусы не могли навредить системе.</p>
+
+                <p>Если вы попытаетесь запустить скрипт, то увидите ошибку:</p>
+                <pre class="code-numbered"><code><span class="code-row">... выполнение сценариев отключено в этой системе.</span></code></pre>
+
+                <p>Чтобы разрешить запуск своих скриптов, нужно открыть PowerShell <strong>от имени администратора</strong> и ввести команду:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Set-ExecutionPolicy RemoteSigned</span></code></pre>
+
+                <p>Эта команда разрешает запуск локальных (ваших) скриптов, но требует цифровую подпись для скачанных из интернета. Это безопасный компромисс.</p>
+
+                <h2>Переменные в PowerShell</h2>
+
+                <p>Как и в любом языке программирования, в PowerShell можно хранить данные в переменных. Они всегда начинаются со знака доллара <code>$</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$name = "Алексей"</span><span class="code-row">Write-Host "Привет, $name!"</span></code></pre>
+
+                <p>Команда <code>Write-Host</code> выводит текст на экран (аналог <code>echo</code>). Обратите внимание, что переменная подставляется прямо в строку без дополнительных знаков.</p>
+
+                <h2>Конвейеры и фильтрация</h2>
+
+                <p>Главная сила PowerShell - это конвейеры (pipes, символ <code>|</code>). Они позволяют передавать результат одной команды в другую как объекты.</p>
+
+                <p>В связке с конвейером часто используют команду <code>Where-Object</code> для фильтрации. Внутри фигурных скобок <code>{}</code> пишется условие, где <code>$_</code> означает «текущий объект».</p>
+
+                <p>Пример: найти все процессы, которые потребляют больше 100 мегабайт памяти (колонка <code>WorkingSet</code>).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Where-Object {$_.WorkingSet -gt 100MB}</span></code></pre>
+
+                <h2>Создаём первый скрипт</h2>
+
+                <p>Давайте соберём всё вместе и напишем скрипт, который выводит приветствие и список самых прожорливых по памяти процессов.</p>
+
+                <p><strong>Шаг 1.</strong> Откройте Блокнот (или VS Code).</p>
+                <p><strong>Шаг 2.</strong> Напишите следующий код:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$user = $env:USERNAME</span><span class="code-row">Write-Host "Привет, $user! Запускаю диагностику..."</span><span class="code-row"></span><span class="code-row">$topProcesses = Get-Process | Sort-Object -Property WorkingSet -Descending | Select-Object -First 3</span><span class="code-row"></span><span class="code-row">Write-Host "`nТоп-3 программы по памяти:"</span><span class="code-row">$topProcesses | Format-Table Name, WorkingSet</span></code></pre>
+
+                <p><strong>Шаг 3.</strong> Сохраните файл с именем <code>diag.ps1</code> (обязательно выберите «Тип файла: Все файлы», чтобы не добавилось <code>.txt</code>).</p>
+
+                <p><strong>Шаг 4.</strong> Откройте PowerShell, перейдите в папку с файлом и запустите его:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">.\diag.ps1</span></code></pre>
+
+                <p>Скрипт выведет ваше имя (взятое из переменной окружения <code>$env:USERNAME</code>) и таблицу с тремя самыми тяжёлыми процессами.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>.ps1</code>
+                        <span>расширение скрипта</span>
+                    </li>
+                    <li>
+                        <code>Set-ExecutionPolicy</code>
+                        <span>разрешить скрипты</span>
+                    </li>
+                    <li>
+                        <code>$var = "text"</code>
+                        <span>создать переменную</span>
+                    </li>
+                    <li>
+                        <code>Write-Host</code>
+                        <span>вывести текст</span>
+                    </li>
+                    <li>
+                        <code>|</code>
+                        <span>конвейер (передача данных)</span>
+                    </li>
+                    <li>
+                        <code>Where-Object</code>
+                        <span>фильтрация</span>
+                    </li>
+                    <li>
+                        <code>$_</code>
+                        <span>текущий объект</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при создании скриптов.</p>
+
+                <ul>
+                    <li><strong>«Запуск сценариев отключён»</strong>. Вы не выполнили <code>Set-ExecutionPolicy RemoteSigned</code> или запустили PowerShell не от имени администратора.</li>
+                    <li><strong>«Файл не найден»</strong>. Вы находитесь не в той папке. Используйте <code>cd</code>, чтобы перейти туда, где лежит <code>diag.ps1</code>.</li>
+                    <li><strong>Скрипт открывается в Блокноте, а не запускается</strong>. Вы запускаете его двойным кликом. В PowerShell запускайте файлы через консоль: <code>.\имя_файла.ps1</code>.</li>
+                    <li><strong>Кракозябры вместо русских букв</strong>. В старых версиях PowerShell консоль не понимает кодировку UTF-8 без настройки. Сохраняйте скрипты в кодировке Windows-1251 или добавьте <code>[Console]::OutputEncoding = [System.Text.Encoding]::UTF8</code> в начало скрипта.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Разрешаем скрипты</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Откройте PowerShell от имени администратора и разрешите выполнение локальных скриптов.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>Set-ExecutionPolicy</code> с параметром <code>RemoteSigned</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">Set-ExecutionPolicy RemoteSigned</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Переменные и математика</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте две переменные с числами, сложите их и выведите результат на экран с помощью <code>Write-Host</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте <code>$a = 5</code> и <code>$b = 10</code>. Результат сохраните в <code>$sum = $a + $b</code>. Выведите через <code>Write-Host "Сумма: $sum"</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$a = 5</span><span class="code-row">$b = 10</span><span class="code-row">$sum = $a + $b</span><span class="code-row">Write-Host "Сумма: $sum"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Фильтр служб</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выведите список всех служб Windows (команда <code>Get-Service</code>), но оставьте только те, которые сейчас запущены (статус <code>Running</code>).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте конвейер: <code>Get-Service | Where-Object {$_.Status -eq "Running"}</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">Get-Service | Where-Object {$_.Status -eq "Running"}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Скрипт-отчёт</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт <code>report.ps1</code>, который выводит ваше имя пользователя, текущую дату и количество запущенных процессов. Сохраните и запустите его.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>$env:USERNAME</code> для имени, <code>Get-Date</code> для даты и <code>(Get-Process).Count</code> для количества процессов. Не забудьте про <code>Write-Host</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$user = $env:USERNAME</span><span class="code-row">$date = Get-Date</span><span class="code-row">$procCount = (Get-Process).Count</span><span class="code-row"></span><span class="code-row">Write-Host "Отчёт для: $user"</span><span class="code-row">Write-Host "Дата: $date"</span><span class="code-row">Write-Host "Запущено процессов: $procCount"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Курс завершён!</h2>
+
+                <p>Поздравляем! Вы прошли полный курс по терминалу Windows. Это огромный шаг в освоении компьютера на профессиональном уровне. Теперь вы:</p>
+                <ul>
+                    <li>Свободно перемещаетесь по файловой системе без мышки.</li>
+                    <li>Умеете создавать, копировать и удалять файлы и папки.</li>
+                    <li>Можете управлять процессами и диагностировать сеть.</li>
+                    <li>Знаете, чем отличается cmd от PowerShell.</li>
+                    <li>Умеете писать собственные скрипты на PowerShell для автоматизации.</li>
+                </ul>
+
+                <p>Эти навыки пригодятся вам не только в программировании, но и в повседневной жизни. Вы сможете быстро наводить порядок на диске, находить причины проблем с интернетом или автоматизировать рутинные задачи.</p>
+
+                <p>Спасибо, что учились вместе с CodeRush. Впереди вас ждут новые курсы, в том числе по терминалу Linux! Удачи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-06.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../index.html" class="btn-secondary">
+                        К списку курсов <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

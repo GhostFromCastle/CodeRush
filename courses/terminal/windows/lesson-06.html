@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Введение в PowerShell - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="windows" data-lesson-id="lesson-06">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Windows</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 06</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Windows</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация по файловой системе</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Работа с файлами и папками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Системные команды</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Сетевые утилиты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson active" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Введение в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы скриптов в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Введение в PowerShell</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-windows-logo"></i> Windows</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>До этого момента мы работали с классической командной строкой (cmd). Она появилась ещё в далёких 80-х и с тех пор почти не менялась. Это отличный инструмент, но у него есть ограничения: он работает только с текстом и не умеет обмениваться сложными данными между командами.</p>
+
+                <p>На смену ему пришёл <strong>PowerShell</strong> - современная оболочка от Microsoft. Это не просто улучшенный cmd. Это целый язык программирования и мощнейший инструмент автоматизации, который используют все системные администраторы Windows.</p>
+
+                <h2>Чем PowerShell лучше cmd?</h2>
+
+                <p>Главное отличие в том, что <strong>PowerShell работает с объектами, а не с текстом</strong>.</p>
+
+                <p>Представьте, что вы просите cmd показать список файлов. Он выводит вам текст на экран. Если вы хотите из этого текста вытащить только имена файлов, вам придётся использовать дополнительные команды (вроде <code>findstr</code>) и разбирать текст вручную.</p>
+
+                <p>PowerShell же передаёт данные в виде объектов. Это как если бы вы получили таблицу Excel, где у каждой ячейки есть имя. Вы можете легко сказать: «Возьми все файлы, отсортируй их по размеру и покажи мне только те, что больше 1 мегабайта».</p>
+
+                <h2>Командлеты (Cmdlets)</h2>
+
+                <p>Команды в PowerShell называются <strong>командлетами</strong> (произносится «командлéт»). Они имеют строгий и логичный формат: <strong>Глагол-Существительное</strong>.</p>
+
+                <ul>
+                    <li><strong>Get</strong> (получить) - <code>Get-Process</code> (получить процессы), <code>Get-ChildItem</code> (получить файлы).</li>
+                    <li><strong>Set</strong> (установить) - <code>Set-Location</code> (сменить папку).</li>
+                    <li><strong>Remove</strong> (удалить) - <code>Remove-Item</code> (удалить файл).</li>
+                </ul>
+
+                <p>Это делает команды понятными даже новичку. Название команды само говорит о том, что она делает.</p>
+
+                <h2>Алиасы (Привычные команды)</h2>
+
+                <p>Чтобы вы не скучали по старому cmd, PowerShell поддерживает старые команды. Они называются алиасами (синонимами).</p>
+
+                <p>Например, команда <code>dir</code> работает, но внутри PowerShell она просто вызывает <code>Get-ChildItem</code>. Команда <code>cd</code> вызывает <code>Set-Location</code>.</p>
+
+                <p>Это очень удобно: можно использовать привычные команды, но при этом работать с мощным движком PowerShell.</p>
+
+                <h2>Встроенная справка (Get-Help)</h2>
+
+                <p>Вам не нужно заучивать тысячи команд. В PowerShell есть встроенная справка. Если вы не знаете, как работает команда, просто спросите систему:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Help Get-Process</span></code></pre>
+
+                <p>Вы получите подробное описание команды, всех её параметров и примеры использования. Это как инструкция, встроенная прямо в терминал.</p>
+
+                <h2>Поиск команд (Get-Command)</h2>
+
+                <p>Если вы не знаете, какая команда вам нужна, но примерно представляете, что хотите сделать, используйте поиск. Например, хотите найти все команды, связанные с процессами:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Command *Process*</span></code></pre>
+
+                <p>PowerShell выдаст список всех команд, в названии которых есть слово «Process».</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>powershell</code>
+                        <span>запустить оболочку</span>
+                    </li>
+                    <li>
+                        <code>Get-Process</code>
+                        <span>список процессов</span>
+                    </li>
+                    <li>
+                        <code>Get-ChildItem</code>
+                        <span>список файлов</span>
+                    </li>
+                    <li>
+                        <code>Get-Help</code>
+                        <span>справка по команде</span>
+                    </li>
+                    <li>
+                        <code>Get-Command</code>
+                        <span>поиск команд</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при переходе на PowerShell.</p>
+
+                <ul>
+                    <li><strong>«Команда не распознана»</strong>. Вы используете команду из cmd, которой нет в PowerShell, или опечатались в названии. Введите <code>Get-Command *слово*</code>, чтобы найти правильное название.</li>
+                    <li><strong>«Запуск сценариев отключён»</strong>. Если вы пытаетесь запустить скрипт <code>.ps1</code>, система может выдать ошибку безопасности. В следующем уроке мы научимся это исправлять.</li>
+                    <li><strong>«Вывод команды слишком длинный»</strong>. Используйте конвейер <code>|</code> и команду <code>more</code> (например, <code>Get-Process | more</code>), чтобы листать список постранично.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Список процессов</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Откройте PowerShell и выведите список всех запущенных процессов, используя правильное название командлета (а не tasklist).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните формат «Глагол-Существительное». Глагол для получения - <code>Get</code>, а существительное - <code>Process</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">Get-Process</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Справка по команде</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Узнайте, какие параметры есть у команды <code>Get-Service</code> (получение служб Windows).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>Get-Help</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">Get-Help Get-Service</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Поиск по командам</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Найдите все команды PowerShell, в названии которых есть слово «Date» (дата).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>Get-Command</code> и маску со звёздочками: <code>*Date*</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">Get-Command *Date*</span></code></pre>
+                                    <p>Вы увидите команду <code>Get-Date</code>, которую мы использовали в первом уроке.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Алиасы</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Проверьте, какой настоящей команде PowerShell соответствует привычная команда <code>dir</code>. Используйте <code>Get-Command dir</code> или <code>Get-Alias dir</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Введите <code>Get-Alias dir</code>. В колонке Definition будет указано настоящее имя.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">Get-Alias dir</span></code></pre>
+                                    <p>Вы увидите, что <code>dir</code> - это алиас для <code>Get-ChildItem</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Вы прикоснулись к миру современной автоматизации Windows. Теперь вы знаете:</p>
+                <ul>
+                    <li>Чем PowerShell отличается от cmd.</li>
+                    <li>Что такое командлеты и почему у них формат «Глагол-Существительное».</li>
+                    <li>Как получить справку с помощью <code>Get-Help</code>.</li>
+                    <li>Как искать команды через <code>Get-Command</code>.</li>
+                </ul>
+
+                <p>В следующем, финальном уроке мы научимся писать собственные <strong>скрипты в PowerShell</strong>. Вы узнаете, как создавать переменные, использовать конвейеры и автоматизировать задачи, которые в cmd требовали десятков строк кода. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-05.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-07.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

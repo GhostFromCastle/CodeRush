@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Системы счисления и бинарный код - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/number-systems.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../index.html" class="logo">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../../courses.html">Курсы</a>
+                    <a href="../../simulators.html">Тренажёры</a>
+                    <a href="../../index.html#about">О нас</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../../simulators.html">Тренажёры</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Системы счисления</span>
+        </nav>
+    </div>
+
+    <section class="ns-section">
+        <div class="container">
+            <div class="section-header centered">
+                <div class="section-label">[ Тренажёр ]</div>
+                <h2>Системы <span class="text-orange">счисления</span></h2>
+                <p class="section-desc" style="margin-left: auto; margin-right: auto;">
+                    Инструмент для перевода чисел между различными системами счисления, а также конвертер текста в бинарный код.
+                </p>
+            </div>
+
+            <div class="ns-tabs" role="tablist">
+                <button type="button" class="ns-tab active" data-tab="converter" role="tab">
+                    <i class="ph ph-calculator"></i> Конвертер чисел
+                </button>
+                <button type="button" class="ns-tab" data-tab="text-binary" role="tab">
+                    <i class="ph ph-text-aa"></i> Текст и бинарный код
+                </button>
+            </div>
+
+            <div class="ns-view active" data-view="converter">
+                <div class="ns-converter-card">
+                    <div class="ns-input-group">
+                        <label for="nsInput">Введите число</label>
+                        <input type="text" id="nsInput" class="ns-input" placeholder="Например, 255" autocomplete="off">
+                    </div>
+                    
+                    <div class="ns-base-selector" id="nsBaseSelector">
+                        <button type="button" class="ns-base-btn active" data-base="10">Decimal (10)</button>
+                        <button type="button" class="ns-base-btn" data-base="2">Binary (2)</button>
+                        <button type="button" class="ns-base-btn" data-base="8">Octal (8)</button>
+                        <button type="button" class="ns-base-btn" data-base="16">Hex (16)</button>
+                    </div>
+
+                    <div class="ns-results">
+                        <div class="ns-result-item">
+                            <span class="ns-result-label">Десятичная (10)</span>
+                            <div class="ns-result-value" id="res10">-</div>
+                        </div>
+                        <div class="ns-result-item">
+                            <span class="ns-result-label">Двоичная (2)</span>
+                            <div class="ns-result-value" id="res2">-</div>
+                        </div>
+                        <div class="ns-result-item">
+                            <span class="ns-result-label">Восьмеричная (8)</span>
+                            <div class="ns-result-value" id="res8">-</div>
+                        </div>
+                        <div class="ns-result-item">
+                            <span class="ns-result-label">Шестнадцатеричная (16)</span>
+                            <div class="ns-result-value" id="res16">-</div>
+                        </div>
+                    </div>
+                    <div class="ns-error" id="nsError" hidden>Некорректный ввод для выбранной системы счисления</div>
+                </div>
+
+                <div class="lesson-content ns-theory-content">
+                    <h2>Как переводить числа вручную</h2>
+                    <p>Система счисления - это способ записи чисел с помощью определённого набора символов (цифр). В программировании чаще всего используются:</p>
+                    <ul>
+                        <li><strong>Двоичная (Binary)</strong> - только 0 и 1.</li>
+                        <li><strong>Восьмеричная (Octal)</strong> - цифры от 0 до 7.</li>
+                        <li><strong>Десятичная (Decimal)</strong> - привычные нам цифры от 0 до 9.</li>
+                        <li><strong>Шестнадцатеричная (Hex)</strong> - цифры от 0 до 9 и буквы A, B, C, D, E, F.</li>
+                    </ul>
+
+                    <div class="callout">
+                        <div class="callout-title">
+                            <i class="ph ph-lightbulb"></i>
+                            Аналогия
+                        </div>
+                        <p>Представьте, что у вас есть монеты разного номинала. В десятичной системе номиналы - это степени десятки (1, 10, 100). В двоичной - степени двойки (1, 2, 4, 8, 16). Чтобы собрать число, вы берёте нужные монеты.</p>
+                    </div>
+
+                    <h3>Из десятичной в двоичную (деление на 2)</h3>
+                    <p>Чтобы перевести число из десятичной системы в двоичную, нужно делить его на 2 и записывать остатки, пока не останется 0. Затем читаем остатки снизу вверх.</p>
+                    <pre class="code-numbered"><code><span class="code-row">13 / 2 = 6 (остаток 1)</span><span class="code-row">6 / 2 = 3 (остаток 0)</span><span class="code-row">3 / 2 = 1 (остаток 1)</span><span class="code-row">1 / 2 = 0 (остаток 1)</span></code></pre>
+                    <p>Читаем остатки снизу вверх: <code>1101</code>.</p>
+
+                    <h3>Из двоичной в десятичную (умножение на 2)</h3>
+                    <p>Каждая цифра в двоичном числе умножается на 2 в степени её позиции (считая справа налево, начиная с 0).</p>
+                    <pre class="code-numbered"><code><span class="code-row">1 * 2^3 = 8</span><span class="code-row">1 * 2^2 = 4</span><span class="code-row">0 * 2^1 = 0</span><span class="code-row">1 * 2^0 = 1</span><span class="code-row">Сумма: 8 + 4 + 0 + 1 = 13</span></code></pre>
+                </div>
+            </div>
+
+            <div class="ns-view" data-view="text-binary">
+                <div class="ns-text-card">
+                    <div class="ns-text-input-wrap">
+                        <div class="ns-text-header">
+                            <label for="textInput" id="inputLabel">Введите текст</label>
+                        </div>
+                        <textarea id="textInput" class="ns-textarea" placeholder="Привет, мир!" autocomplete="off"></textarea>
+                    </div>
+                    
+                    <div class="ns-direction-toggle">
+                        <button type="button" class="ns-swap-btn" id="swapBtn" title="Поменять направление">
+                            <i class="ph ph-arrows-left-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="ns-text-output-wrap">
+                        <div class="ns-text-output-header">
+                            <span id="outputLabel">Бинарный код</span>
+                            <button type="button" class="ns-copy-btn" id="copyBinary" title="Скопировать">
+                                <i class="ph ph-copy"></i>
+                            </button>
+                        </div>
+                        <div class="ns-binary-output" id="binaryOutput">Здесь появится результат...</div>
+                    </div>
+                </div>
+
+                <div class="lesson-content ns-theory-content">
+                    <h2>Таблица кодировки (ASCII)</h2>
+                    <p>Каждому символу на клавиатуре соответствует свой числовой код. В двоичной системе этот код занимает 8 бит (или 1 байт). Например, заглавная буква <strong>A</strong> имеет код 65, что в двоичной системе записывается как <code>01000001</code>.</p>
+                    
+                    <table class="type-table">
+                        <thead>
+                            <tr>
+                                <th>Символ</th>
+                                <th>Десятичный код</th>
+                                <th>Двоичный код</th>
+                                <th>Символ</th>
+                                <th>Десятичный код</th>
+                                <th>Двоичный код</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>A</td><td>65</td><td>01000001</td><td>a</td><td>97</td><td>01100001</td></tr>
+                            <tr><td>B</td><td>66</td><td>01000010</td><td>b</td><td>98</td><td>01100010</td></tr>
+                            <tr><td>C</td><td>67</td><td>01000011</td><td>c</td><td>99</td><td>01100011</td></tr>
+                            <tr><td>0</td><td>48</td><td>00110000</td><td>1</td><td>49</td><td>00110001</td></tr>
+                            <tr><td>2</td><td>50</td><td>00110010</td><td>3</td><td>51</td><td>00110011</td></tr>
+                            <tr><td>Пробел</td><td>32</td><td>00100000</td><td>!</td><td>33</td><td>00100001</td></tr>
+                            <tr><td>?</td><td>63</td><td>00111111</td><td>@</td><td>64</td><td>01000000</td></tr>
+                        </tbody>
+                    </table>
+                    <p>Русские буквы кодируются с помощью таблицы Unicode (Windows-1251 или UTF-8), где они занимают больше памяти, но принцип перевода в двоичный код остаётся таким же.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../../index.html" class="logo">
+                        <i class="ph-fill ph-code"></i>
+                        <span>Code<span class="logo-accent">Rush</span></span>
+                    </a>
+                    <p>Бесплатная образовательная платформа по программированию. Учитесь в своём темпе, без подписок и
+                        дедлайнов.</p>
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer"
+                        class="footer-telegram">
+                        <i class="ph-fill ph-telegram-logo"></i>
+                        <span>@GhostFromCastle</span>
+                    </a>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="../../index.html">Главная</a></li>
+                        <li><a href="../../courses.html">Все курсы</a></li>
+                        <li><a href="../../simulators.html">Тренажёры</a></li>
+                        <li><a href="../../index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Курсы</h4>
+                    <ul>
+                        <li><a href="../../courses.html">Все курсы</a></li>
+                        <li><a href="../csharp/index.html">C# с нуля</a></li>
+                        <li><a href="../cybersecurity/index.html">Кибербезопасность</a></li>
+                        <li><a href="../ai/index.html">Нейросети</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Помощь</h4>
+                    <ul>
+                        <li><a href="../../index.html#faq">Частые вопросы</a></li>
+                        <li><a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Связаться с нами</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 CodeRush. Сделано с душой.</span>
+                <div class="footer-bottom-links">
+                    <a href="../../index.html#about">О платформе</a>
+                    <a href="../../terms.html">Правила</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="../../js/number-systems.js"></script>
+    <script type="module" src="../../js/main.js"></script>
+</body>
+
+</html>

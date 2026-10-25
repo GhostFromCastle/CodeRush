@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Введение в Batch-скрипты - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="windows" data-lesson-id="lesson-01">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Windows</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 01</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Windows (Bat)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson active" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в Batch-скрипты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы и метки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Аргументы командной строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Запуск программ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт бэкапа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Даты, время и очистка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Работа с логами и текстом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик и права админа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Введение в Batch-скрипты</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~20 минут</span>
+                    <span><i class="ph ph-windows-logo"></i> Windows</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Добро пожаловать в мир автоматизации Windows! Если вы когда-нибудь ловили себя на мысли: «Я снова открываю эти пять программ вручную» или «Как же надоело каждый раз создавать одни и те же папки для нового проекта» - этот курс для вас.</p>
+
+                <p><strong>Batch-скрипты</strong> (или просто батники) - это текстовые файлы с набором команд, которые компьютер выполняет по очереди. Это ваш первый шаг к тому, чтобы заставить систему работать за вас, пока вы пьёте кофе.</p>
+
+                <h2>Что такое .bat файл?</h2>
+
+                <p>Представьте, что вы даёте инструкции стажёру. Вы пишете ему список: «Открой папку, скопируй файл, создай ярлык». Batch-скрипт - это точно такой же список, только написанный на понятном компьютеру языке.</p>
+
+                <p>В Windows за выполнение таких скриптов отвечает программа <code>cmd.exe</code> (Командная строка). Расширение файла <code>.bat</code> говорит системе: «Эй, это не просто текст, это команды, выполни их!».</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Важно: расширения файлов
+                    </div>
+                    <p>По умолчанию Windows скрывает расширения файлов (например, <code>.txt</code> или <code>.docx</code>). Чтобы создать батник, вам нужно видеть эти расширения. В проводнике откройте вкладку «Вид» -> «Показать» и включите галочку «Расширения имён файлов».</p>
+                </div>
+
+                <h2>Наш первый скрипт: Hello, World!</h2>
+
+                <p>Начнем с классики. Мы создадим файл, который просто выведет на экран приветствие.</p>
+
+                <p><strong>Шаг 1.</strong> Откройте обычный Блокнот (Notepad).</p>
+                <p><strong>Шаг 2.</strong> Напишите следующий код:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">echo Hello, World!</span></code></pre>
+
+                <p><strong>Шаг 3.</strong> Сохраните файл. В меню «Файл» -> «Сохранить как». В поле «Тип файла» выберите «Все файлы» и назовите файл <code>hello.bat</code>. Сохраните его на рабочий стол.</p>
+                <p><strong>Шаг 4.</strong> Дважды кликните по файлу <code>hello.bat</code> на рабочем столе.</p>
+
+                <p>Вы увидите черное окно, которое мигнёт и закроется. Если вы успели заметить, там было написано «Hello, World!». Почему оно закрылось? Потому что скрипт выполнил свою команду и завершил работу.</p>
+
+                <h2>Разбор команд</h2>
+
+                <p>Давайте разберёмся, что произошло.</p>
+
+                <h3>Команда echo</h3>
+                <p><code>echo</code> (от английского «эхо») - это команда, которая выводит текст на экран. Всё, что написано после неё, будет напечатано в консоли.</p>
+
+                <h3>Как не дать окну закрыться: pause</h3>
+                <p>Чтобы окно не закрывалось мгновенно, в конец скрипта добавляют команду <code>pause</code>. Она приостанавливает выполнение скрипта и ждёт, пока вы не нажмёте любую клавишу.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">echo Hello, World!</span><span class="code-row">pause</span></code></pre>
+
+                <p>Теперь, если вы запустите скрипт, он выведет текст и будет ждать нажатия клавиши, показывая сообщение «Для продолжения нажмите любую клавишу . . .».</p>
+
+                <h3>Секретный ингредиент: @echo off</h3>
+                <p>Когда вы запускали скрипт, вы могли заметить, что перед тем как напечатать «Hello, World!», система вывела на экран саму команду <code>C:\Users\...\hello.bat>echo Hello, World!</code>. Это выглядит некрасиво.</p>
+                <p>Чтобы скрыть сами команды и показывать только результат их работы, в самое начало скрипта добавляют <code>@echo off</code>. Символ <code>@</code> скрывает вывод самой команды отключения эха, а <code>echo off</code> отключает вывод всех последующих команд.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Hello, World!</span><span class="code-row">pause</span></code></pre>
+
+                <p>Запустите этот код, и вы увидите чистое и аккуратное окно только с приветствием.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>.bat</code>
+                        <span>расширение файла</span>
+                    </li>
+                    <li>
+                        <code>@echo off</code>
+                        <span>скрыть команды (пишется в начале)</span>
+                    </li>
+                    <li>
+                        <code>echo</code>
+                        <span>вывести текст на экран</span>
+                    </li>
+                    <li>
+                        <code>pause</code>
+                        <span>приостановить работу до нажатия клавиши</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки новичков при создании первых батников.</p>
+
+                <ul>
+                    <li><strong>«Файл сохранился как hello.bat.txt»</strong>. Блокнот по умолчанию добавляет <code>.txt</code>. При сохранении обязательно выберите «Тип файла: Все файлы» и напишите полное имя <code>hello.bat</code> (с кавычками или без, но с расширением).</li>
+                    <li><strong>«Окно мигает и сразу закрывается»</strong>. Вы забыли добавить <code>pause</code> в конец скрипта.</li>
+                    <li><strong>«На экране странные квадратики или иероглифы вместо русских букв»</strong>. Это проблема кодировки. По умолчанию командная строка использует кодировку CP866, а Блокнот сохраняет в UTF-8. Чтобы исправить это, добавьте в начало скрипта команду <code>chcp 65001</code> (это переключит консоль на UTF-8).</li>
+                    <li><strong>«Система пишет, что команда не найдена»</strong>. Вы опечатались в названии команды (например, написали <code>eco</code> вместо <code>echo</code>). Внимательно проверяйте код.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Визитка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте батник, который выводит на экран три строки: ваше имя, возраст и город. Используйте три команды <code>echo</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Каждая строка должна начинаться с новой команды <code>echo</code>. Не забудьте про <code>@echo off</code> и <code>pause</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Алексей</span><span class="code-row">echo 25 лет</span><span class="code-row">echo Москва</span><span class="code-row">pause</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Пустая строка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Сделайте так, чтобы между двумя выводимыми текстами появлялась пустая строка. Для этого используется команда <code>echo.</code> (обратите внимание на точку сразу после слова).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вставьте строку <code>echo.</code> между двумя обычными <code>echo</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Верхняя строка</span><span class="code-row">echo.</span><span class="code-row">echo Нижняя строка</span><span class="code-row">pause</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. ASCII-рамка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выведите на экран слово «CODING», обрамлённое рамкой из дефисов и вертикальных черт.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте несколько команд <code>echo</code>. Просто выводите нужные символы как обычный текст.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo --------</span><span class="code-row">echo |      |</span><span class="code-row">echo | CODING|</span><span class="code-row">echo |      |</span><span class="code-row">echo --------</span><span class="code-row">pause</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Исправьте ошибки</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами скрипт с ошибками. Найдите и исправьте их, чтобы он вывел приветствие и не закрылся.</p>
+                            <pre class="code-numbered"><code><span class="code-row">echo off</span><span class="code-row">echo Привет</span><span class="code-row">Pause</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Проверьте символы в первой и последней командах. Нужен ли символ <code>@</code> в начале? И чувствительна ли командная строка к регистру?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Привет</span><span class="code-row">pause</span></code></pre>
+                                    <p>Мы добавили <code>@</code> перед <code>echo off</code>, чтобы скрыть вывод самой команды, и исправили регистр в <code>pause</code> (хотя cmd иногда прощает регистр, лучше всегда писать команды строчными буквами).</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня вы сделали первый шаг в автоматизации Windows. Вы узнали:</p>
+                <ul>
+                    <li>Что такое Batch-скрипты и зачем они нужны.</li>
+                    <li>Как создать и запустить файл <code>.bat</code>.</li>
+                    <li>Как выводить текст с помощью <code>echo</code>.</li>
+                    <li>Как сделать скрипт красивым и читаемым с помощью <code>@echo off</code>.</li>
+                    <li>Как удержать окно открытым, используя <code>pause</code>.</li>
+                </ul>
+
+                <p>Пока наши скрипты статичны: они просто выводят заранее написанный текст. Но что, если мы хотим, чтобы программа спросила имя пользователя и поздоровалась с ним лично? Или сохранила какие-то данные?</p>
+
+                <p>В следующем уроке мы познакомимся с <strong>переменными</strong> и функцией <code>set /p</code>, которая позволяет запрашивать ввод данных у пользователя. Вы научитесь создавать по-настоящему интерактивные скрипты. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="../index.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> К списку уроков
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-02.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

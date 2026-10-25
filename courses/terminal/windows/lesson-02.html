@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навигация по файловой системе - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="windows" data-lesson-id="lesson-02">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Windows</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 02</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Windows</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson active" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация по файловой системе</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Работа с файлами и папками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Системные команды</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Сетевые утилиты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Введение в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы скриптов в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Навигация по файловой системе</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-windows-logo"></i> Windows</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились отдавать команды. Но пока мы находимся в одной папке и не умеем перемещаться по компьютеру. Представьте, что вы в огромном здании, где сотни комнат, и вам нужно попасть в конкретную. Без навигации не обойтись.</p>
+
+                <p>Сегодня мы научимся ходить по папкам, смотреть их содержимое и понимать, где мы находимся в данный момент.</p>
+
+                <h2>Где я?</h2>
+
+                <p>В любой момент вы можете узнать, в какой папке находитесь. Для этого есть команда <code>cd</code> без аргументов (или <code>pwd</code> в PowerShell). Она выведет полный путь.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cd</span></code></pre>
+
+                <p>Вы увидите что-то вроде <code>C:\Users\ВашеИмя</code>. Это ваша <strong>текущая директория</strong>.</p>
+
+                <h2>Команда dir (список файлов)</h2>
+
+                <p>Чтобы посмотреть, что лежит в текущей папке, используется команда <code>dir</code> (от слова directory - папка).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">dir</span></code></pre>
+
+                <p>Терминал выведет список всех файлов и папок. Вы увидите их имена, дату создания и размер.</p>
+
+                <p>Полезные флаги <code>dir</code>:</p>
+                <ul>
+                    <li><strong><code>/a</code></strong> - показать скрытые файлы (например, системные).</li>
+                    <li><strong><code>/s</code></strong> - показать файлы во всех вложенных папках.</li>
+                    <li><strong><code>/w</code></strong> - вывести в широком формате (по несколько в строку).</li>
+                </ul>
+
+                <h2>Команда cd (переход по папкам)</h2>
+
+                <p>Команда <code>cd</code> (change directory) меняет текущую папку. Это как войти в комнату.</p>
+
+                <p>Чтобы перейти в папку, которая находится внутри текущей:</p>
+                <pre class="code-numbered"><code><span class="code-row">cd Documents</span></code></pre>
+
+                <p>Вы вошли в папку «Документы». Теперь можете снова использовать <code>dir</code>, чтобы посмотреть, что внутри.</p>
+
+                <p>Чтобы вернуться на один уровень вверх (в родительскую папку):</p>
+                <pre class="code-numbered"><code><span class="code-row">cd ..</span></code></pre>
+
+                <p>Чтобы перейти в корень текущего диска (например, на диск C):</p>
+                <pre class="code-numbered"><code><span class="code-row">cd \</span></code></pre>
+
+                <h2>Переход на другой диск</h2>
+
+                <p>В Windows есть несколько дисков (C, D, E и т.д.). Если вы находитесь на диске C, и хотите перейти на диск D, просто введите его букву с двоеточием:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">D:</span></code></pre>
+
+                <p>Приглашение командной строки изменится на <code>D:\></code>. Теперь вы работаете с другим диском. Вернуться обратно можно так же: <code>C:</code>.</p>
+
+                <h2>Очистка экрана (cls)</h2>
+
+                <p>После множества команд экран терминала превращается в кашу. Чтобы очистить его и начать «с чистого листа», используется команда <code>cls</code> (clear screen).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cls</span></code></pre>
+
+                <p>Вся история команд исчезнет, останется только приглашение.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Подсказка для команд
+                    </div>
+                    <p>Если вы не помните точное название файла или папки, начните вводить его и нажмите <code>Tab</code>. Терминал сам дополнит имя. Например, начните писать <code>cd Doc</code> и нажмите Tab - если такая папка есть, она подставится автоматически.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>cd</code>
+                        <span>где я?</span>
+                    </li>
+                    <li>
+                        <code>dir</code>
+                        <span>список файлов</span>
+                    </li>
+                    <li>
+                        <code>cd имя_папки</code>
+                        <span>зайти в папку</span>
+                    </li>
+                    <li>
+                        <code>cd ..</code>
+                        <span>вернуться назад</span>
+                    </li>
+                    <li>
+                        <code>cd \</code>
+                        <span>в корень диска</span>
+                    </li>
+                    <li>
+                        <code>D:</code>
+                        <span>перейти на диск D</span>
+                    </li>
+                    <li>
+                        <code>cls</code>
+                        <span>очистить экран</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при навигации.</p>
+
+                <ul>
+                    <li><strong>«Системе не удаётся найти указанный путь»</strong>. Вы ошиблись в названии папки или пытаетесь зайти в несуществующую директорию. Проверьте, что вы находитесь в правильном месте (используйте <code>dir</code>).</li>
+                    <li><strong>«Синтаксическая ошибка в имени файла»</strong>. Вы забыли кавычки, а в пути к папке есть пробел. Например, папка <code>Program Files</code> содержит пробел. Правильно: <code>cd "Program Files"</code>.</li>
+                    <li><strong>«Не удаётся перейти на диск»</strong>. Вы указали букву диска, которого нет в системе. Проверьте в «Моём компьютере», какие диски у вас есть.</li>
+                    <li><strong>«Команда dir ничего не показывает»</strong>. Вы находитесь в пустой папке. Это нормально.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Осмотр дома</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перейдите в вашу домашнюю папку (если вы не там) и выведите список файлов, которые в ней находятся.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Чтобы вернуться домой из любого места, используйте <code>cd %USERPROFILE%</code> или <code>cd ~</code> (в PowerShell). Затем выполните <code>dir</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">cd %USERPROFILE%</span><span class="code-row">dir</span></code></pre>
+                                    <p>В PowerShell можно написать просто <code>cd ~</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Вверх по лестнице</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Находясь в домашней папке, поднимитесь на один уровень вверх (в папку <code>Users</code>). Затем посмотрите, какие другие пользователи есть на компьютере (команда <code>dir</code>).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для перехода на уровень вверх используется <code>cd ..</code>. После этого выполните <code>dir</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">cd ..</span><span class="code-row">dir</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Путешествие на диск D</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перейдите на диск <code>D:</code> (если у вас его нет - на любой другой доступный диск, кроме C). Посмотрите его содержимое. Затем вернитесь обратно на диск C.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для смены диска просто напишите его букву с двоеточием.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">D:</span><span class="code-row">dir</span><span class="code-row">C:</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Исправление ошибок</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Пользователь хочет перейти в папку <code>Program Files</code>, но получает ошибку. Найдите и исправьте ошибку.</p>
+                            <pre class="code-numbered"><code><span class="code-row">cd C:\Program Files</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В названии папки есть пробел. Терминал думает, что вы хотите перейти в две разные папки.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">cd "C:\Program Files"</span></code></pre>
+                                    <p>Мы взяли путь в кавычки, чтобы терминал воспринял его как единое целое.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь вы можете свободно перемещаться по файловой системе Windows, как заправский системный администратор. Вы узнали:</p>
+                <ul>
+                    <li>Как узнать текущую папку (<code>cd</code>).</li>
+                    <li>Как посмотреть содержимое папки (<code>dir</code>).</li>
+                    <li>Как переходить в другие папки (<code>cd имя</code>) и возвращаться назад (<code>cd ..</code>).</li>
+                    <li>Как переключаться между дисками.</li>
+                    <li>Как очистить экран (<code>cls</code>).</li>
+                </ul>
+
+                <p>Мы научились ходить по папкам, но пока не умеем их создавать, копировать или удалять. В следующем уроке мы разберём <strong>работу с файлами и папками</strong>. Вы научитесь создавать, копировать, перемещать и удалять данные прямо из терминала. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-01.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-03.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

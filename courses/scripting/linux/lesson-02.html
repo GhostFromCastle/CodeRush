@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переменные и аргументы - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="linux" data-lesson-id="lesson-02">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 02</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux (Bash)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение и первый скрипт</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson active" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и аргументы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и математика</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Функции в Bash</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт сбора логов</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Обработка текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик Cron</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Переменные и аргументы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~15 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы создали первый скрипт. Он был статичным: просто выводил заранее написанный текст. Но настоящая программа должна уметь меняться и подстраиваться под ситуацию. Для этого ей нужно где-то хранить данные.</p>
+
+                <p>Сегодня мы разберём <strong>переменные</strong> и <strong>аргументы</strong>. Это два способа передать информацию внутрь скрипта, чтобы он стал по-настоящему гибким.</p>
+
+                <h2>Что такое переменная</h2>
+
+                <p>Представьте, что у вас есть <strong>коробка с наклейкой</strong>. На наклейке написано имя (например, <code>name</code>), а внутри лежит значение (например, «Алексей»). В любой момент вы можете заглянуть в коробку, чтобы узнать, что там лежит.</p>
+
+                <p>В Bash переменная создаётся очень просто. Главное правило: <strong>между именем, знаком равно и значением не должно быть пробелов</strong>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">name="Алексей"</span><span class="code-row">echo "Привет, $name!"</span></code></pre>
+
+                <p>Что здесь происходит:</p>
+                <ul>
+                    <li><strong><code>name="Алексей"</code></strong> - создаёт переменную и кладёт в неё текст «Алексей».</li>
+                    <li><strong><code>$name</code></strong> - знак доллара говорит Bash: «Достань значение из коробки с именем <code>name</code> и подставь его сюда».</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Никаких пробелов!
+                    </div>
+                    <p>Если написать <code>name = "Алексей"</code> (с пробелами вокруг знака равно), Bash подумает, что вы пытаетесь запустить команду <code>name</code> с аргументами <code>=</code> и <code>Алексей</code>. Он выдаст ошибку <code>command not found</code>. Всегда пишите слитно: <code>name="Алексей"</code>.</p>
+                </div>
+
+                <h2>Глобальные переменные окружения</h2>
+
+                <p>В Linux уже есть тысячи готовых переменных, которые создаются системой автоматически. Они называются переменными окружения. Вот самые полезные из них:</p>
+
+                <ul>
+                    <li><strong><code>$USER</code></strong> - имя текущего пользователя.</li>
+                    <li><strong><code>$HOME</code></strong> - путь к вашей домашней папке.</li>
+                    <li><strong><code>$PWD</code></strong> - текущая рабочая директория.</li>
+                    <li><strong><code>$HOSTNAME</code></strong> - имя компьютера в сети.</li>
+                </ul>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">echo "Привет, $USER!"</span><span class="code-row">echo "Твоя домашняя папка: $HOME"</span></code></pre>
+
+                <p>Вы можете использовать их в любое время, не создавая вручную.</p>
+
+                <h2>Аргументы командной строки</h2>
+
+                <p>Что, если вы хотите передать данные в скрипт в момент его запуска? Например, сделать так, чтобы скрипт здоровался с разными людьми, не меняя код каждый раз.</p>
+
+                <p>Для этого используются <strong>аргументы</strong>. Это как записки, которые вы передаёте скрипту вместе с командой запуска.</p>
+
+                <p>В Bash есть специальные переменные для работы с аргументами:</p>
+                <ul>
+                    <li><strong><code>$0</code></strong> - имя самого скрипта.</li>
+                    <li><strong><code>$1</code>, <code>$2</code>, <code>$3</code>...</strong> - первый, второй, третий аргумент.</li>
+                    <li><strong><code>$#</code></strong> - количество переданных аргументов.</li>
+                    <li><strong><code>$@</code></strong> - все переданные аргументы.</li>
+                </ul>
+
+                <p>Давайте создадим скрипт <code>args.sh</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">echo "Имя скрипта: $0"</span><span class="code-row">echo "Всего аргументов: $#"</span><span class="code-row">echo "Первый аргумент: $1"</span><span class="code-row">echo "Второй аргумент: $2"</span><span class="code-row">echo "Все аргументы: $@"</span></code></pre>
+
+                <p>Если вы запустите его командой <code>./args.sh Привет Мир</code>, скрипт выведет:</p>
+                <ul>
+                    <li>Имя скрипта: <code>./args.sh</code></li>
+                    <li>Всего аргументов: <code>2</code></li>
+                    <li>Первый аргумент: <code>Привет</code></li>
+                    <li>Второй аргумент: <code>Мир</code></li>
+                    <li>Все аргументы: <code>Привет Мир</code></li>
+                </ul>
+
+                <h2>Кавычки при передаче аргументов</h2>
+
+                <p>Если аргумент состоит из нескольких слов (например, имя и фамилия вместе), его нужно брать в кавычки при запуске:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">./args.sh "Иван Петров" 25</span></code></pre>
+
+                <p>В этом случае <code>$1</code> будет содержать строку «Иван Петров» как единое целое, а <code>$2</code> - число 25.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>var="text"</code>
+                        <span>создать переменную</span>
+                    </li>
+                    <li>
+                        <code>$var</code>
+                        <span>получить значение</span>
+                    </li>
+                    <li>
+                        <code>$USER</code>
+                        <span>имя пользователя</span>
+                    </li>
+                    <li>
+                        <code>$0</code>
+                        <span>имя скрипта</span>
+                    </li>
+                    <li>
+                        <code>$1, $2</code>
+                        <span>аргументы скрипта</span>
+                    </li>
+                    <li>
+                        <code>$#</code>
+                        <span>количество аргументов</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с переменными и аргументами.</p>
+
+                <ul>
+                    <li><strong>«command not found» при создании переменной</strong>. Вы поставили пробелы вокруг знака равно. Пишите слитно: <code>var="value"</code>.</li>
+                    <li><strong>Выводится имя переменной, а не значение</strong>. Вы забыли знак доллара. Правильно: <code>echo $var</code>, неправильно: <code>echo var</code>.</li>
+                    <li><strong>«unbound variable»</strong>. Вы пытаетесь использовать <code>$1</code>, но не передали ни одного аргумента при запуске скрипта. Переменная пуста, и если стоит строгий режим, Bash выдаст ошибку.</li>
+                    <li><strong>Аргумент с пробелом разбивается на два</strong>. Вы забыли взять его в кавычки при запуске: <code>./script.sh "Иван Петров"</code>.</li>
+                    <li><strong>Переменная не сохраняется после завершения скрипта</strong>. Это нормально. Переменные внутри скрипта живут только пока он выполняется. После завершения они удаляются.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Переменная с именем</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте скрипт, который создаёт переменную <code>city</code> со значением «Москва» и выводит на экран фразу: «Я живу в городе Москва».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте переменную в начале скрипта (без пробелов вокруг равно), а затем используйте её в команде <code>echo</code> через знак <code>$</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">city="Москва"</span><span class="code-row">echo "Я живу в городе $city"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Информация о пользователе</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт, который выводит имя текущего пользователя и его домашнюю директорию, используя встроенные переменные окружения.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте переменные <code>$USER</code> и <code>$HOME</code> внутри команды <code>echo</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">echo "Пользователь: $USER"</span><span class="code-row">echo "Домашняя папка: $HOME"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Скрипт-приветствие</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте скрипт, который принимает имя пользователя в качестве первого аргумента и выводит «Привет, [Имя]!». Если имя не передано, скрипт должен вывести «Привет, незнакомец!».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>$1</code> для получения имени. Для проверки на пустоту используйте конструкцию <code>${1:-незнакомец}</code>, которая подставит значение по умолчанию, если аргумент не передан.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">name=${1:-незнакомец}</span><span class="code-row">echo "Привет, $name!"</span></code></pre>
+                                    <p>Конструкция <code>${1:-незнакомец}</code> читается как «взять $1, но если он пуст, использовать слово незнакомец».</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Исправление ошибок</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами скрипт, который не работает. Найдите и исправьте все ошибки.</p>
+                            <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">name = "Иван"</span><span class="code-row">echo "Привет, name!"</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Обратите внимание на пробелы вокруг знака равно и на то, как переменная используется внутри строки.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">name="Иван"</span><span class="code-row">echo "Привет, $name!"</span></code></pre>
+                                    <p>Мы убрали пробелы вокруг знака равно при создании переменной и добавили знак доллара перед <code>name</code> при её использовании.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь ваши скрипты стали умнее. Они могут хранить данные и принимать их извне. Вы узнали:</p>
+                <ul>
+                    <li>Как создавать переменные и обращаться к ним.</li>
+                    <li>Что такое переменные окружения и какие из них полезны.</li>
+                    <li>Как использовать аргументы командной строки (<code>$1</code>, <code>$2</code>).</li>
+                    <li>Как узнать количество аргументов (<code>$#</code>).</li>
+                </ul>
+
+                <p>Но пока наши скрипты работают как попугаи: они просто повторяют то, что мы им передали. Они не умеют считать или спрашивать данные у пользователя прямо во время работы.</p>
+
+                <p>В следующем уроке мы разберём <strong>ввод данных и математику</strong>. Вы научитесь запрашивать информацию у пользователя и выполнять арифметические операции прямо в Bash. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-01.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-03.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Условные операторы - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="linux" data-lesson-id="lesson-04">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 04</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux (Bash)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение и первый скрипт</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и аргументы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и математика</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson active" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Функции в Bash</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт сбора логов</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Обработка текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик Cron</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Условные операторы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~20 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научили скрипты считать и общаться с пользователем. Но пока они работают как трамвай на рельсах: строго от первой команды к последней. Они не умеют сворачивать в сторону.</p>
+
+                <p>Настоящая программа должна <strong>принимать решения</strong>. Если введён правильный пароль - пустить в систему. Если файл существует - удалить его. Если число чётное - вывести одно сообщение, если нечётное - другое.</p>
+
+                <p>Для этого в Bash используется конструкция <code>if</code> (если). Сегодня мы разберём, как она работает.</p>
+
+                <h2>Синтаксис if</h2>
+
+                <p>В отличие от Python или C#, где условия пишутся в скобках, в Bash всё немного иначе. Основная конструкция выглядит так:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">if [ условие ]; then</span><span class="code-row">    команды</span><span class="code-row">fi</span></code></pre>
+
+                <p>Обратите внимание на несколько важных моментов:</p>
+                <ul>
+                    <li><strong><code>[</code> и <code>]</code></strong> - это не просто скобки, а специальная команда (которая называется <code>test</code>). Между скобками и условием <strong>обязательно должны быть пробелы</strong>.</li>
+                    <li><strong><code>then</code></strong> - слово, которое открывает блок команд, выполняемых при истинном условии.</li>
+                    <li><strong><code>fi</code></strong> - слово, которое закрывает блок (это <code>if</code> наоборот). Забыть его - самая частая ошибка новичков.</li>
+                </ul>
+
+                <h2>Сравнение чисел</h2>
+
+                <p>Как мы помним, символы <code>&gt;</code> и <code>&lt;</code> в Bash используются для перенаправления вывода, поэтому для сравнения чисел используются специальные буквенные сокращения:</p>
+
+                <ul class="operator-list">
+                    <li><code>-eq</code> <span>равно (equal)</span></li>
+                    <li><code>-ne</code> <span>не равно (not equal)</span></li>
+                    <li><code>-gt</code> <span>больше (greater)</span></li>
+                    <li><code>-lt</code> <span>меньше (less)</span></li>
+                    <li><code>-ge</code> <span>больше или равно (greater or equal)</span></li>
+                    <li><code>-le</code> <span>меньше или равно (less or equal)</span></li>
+                </ul>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">age=20</span><span class="code-row">if [ "$age" -ge 18 ]; then</span><span class="code-row">    echo "Вы совершеннолетний"</span><span class="code-row">fi</span></code></pre>
+
+                <h2>Сравнение строк</h2>
+
+                <p>Для строк используются обычные знаки равно и не равно (одинарные или двойные):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">name="Алексей"</span><span class="code-row">if [ "$name" == "Алексей" ]; then</span><span class="code-row">    echo "Привет, босс!"</span><span class="code-row">fi</span></code></pre>
+
+                <p>Всегда берите переменные в двойные кавычки <code>"$name"</code>. Если переменная окажется пустой, без кавычек условие превратится в <code>[ == "Алексей" ]</code>, и скрипт упадёт с синтаксической ошибкой.</p>
+
+                <p>Также есть полезные операторы для проверки строк:</p>
+                <ul>
+                    <li><strong><code>-z "$str"</code></strong> - истинно, если строка пустая (zero length).</li>
+                    <li><strong><code>-n "$str"</code></strong> - истинно, если строка не пустая.</li>
+                </ul>
+
+                <h2>Конструкция if / else</h2>
+
+                <p>Если вы хотите сделать что-то, когда условие ложно, используется блок <code>else</code> (иначе):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">read -p "Введите пароль: " pass</span><span class="code-row">if [ "$pass" == "secret" ]; then</span><span class="code-row">    echo "Доступ разрешён"</span><span class="code-row">else</span><span class="code-row">    echo "Доступ запрещён"</span><span class="code-row">fi</span></code></pre>
+
+                <h2>Цепочка условий: elif</h2>
+
+                <p>Если вариантов больше двух, используется <code>elif</code> (сокращение от else if):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">read -p "Введите оценку (1-5): " mark</span><span class="code-row">if [ "$mark" -eq 5 ]; then</span><span class="code-row">    echo "Отлично"</span><span class="code-row">elif [ "$mark" -eq 4 ]; then</span><span class="code-row">    echo "Хорошо"</span><span class="code-row">elif [ "$mark" -eq 3 ]; then</span><span class="code-row">    echo "Удовлетворительно"</span><span class="code-row">else</span><span class="code-row">    echo "Плохо"</span><span class="code-row">fi</span></code></pre>
+
+                <h2>Множественный выбор: case</h2>
+
+                <p>Когда нужно проверить переменную с множеством конкретных значений (например, выбор пункта меню), длинная цепочка <code>elif</code> становится громоздкой. На помощь приходит <code>case</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">read -p "Выберите действие (start/stop/restart): " action</span><span class="code-row">case "$action" in</span><span class="code-row">    start)</span><span class="code-row">        echo "Запуск..."</span><span class="code-row">        ;;</span><span class="code-row">    stop)</span><span class="code-row">        echo "Остановка..."</span><span class="code-row">        ;;</span><span class="code-row">    restart)</span><span class="code-row">        echo "Перезапуск..."</span><span class="code-row">        ;;</span><span class="code-row">    *)</span><span class="code-row">        echo "Неизвестная команда"</span><span class="code-row">        ;;</span><span class="code-row">esac</span></code></pre>
+
+                <p>Обратите внимание на <code>;;</code> (два двоеточия с запятой). Это аналог <code>break</code> в других языках. А звёздочка <code>*)</code> срабатывает, если ни один вариант не подошёл (как <code>else</code>). Закрывается вся конструкция словом <code>esac</code> (case наоборот).</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>if [ ... ]; then</code>
+                        <span>начало условия</span>
+                    </li>
+                    <li>
+                        <code>fi</code>
+                        <span>конец условия</span>
+                    </li>
+                    <li>
+                        <code>-eq, -gt, -lt</code>
+                        <span>сравнение чисел</span>
+                    </li>
+                    <li>
+                        <code>==, !=</code>
+                        <span>сравнение строк</span>
+                    </li>
+                    <li>
+                        <code>elif</code>
+                        <span>иначе если</span>
+                    </li>
+                    <li>
+                        <code>case ... esac</code>
+                        <span>множественный выбор</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с условиями.</p>
+
+                <ul>
+                    <li><strong>«Syntax error near unexpected token `then'»</strong>. Вы забыли точку с запятой перед <code>then</code> или не поставили пробелы внутри скобок <code>[ ]</code>.</li>
+                    <li><strong>«unary operator expected»</strong>. Вы не взяли переменную в кавычки. Если переменная пуста, <code>[ $var == "text" ]</code> превращается в <code>[ == "text" ]</code>, что вызывает ошибку. Всегда пишите <code>[ "$var" == "text" ]</code>.</li>
+                    <li><strong>«Ожидалось выражение»</strong> (expression expected). Вы используете знак <code>&gt;</code> или <code>&lt;</code> для сравнения чисел. Используйте <code>-gt</code> и <code>-lt</code>.</li>
+                    <li><strong>Скрипт ничего не выводит</strong>. Скорее всего, условие ложно. Попробуйте вывести значение переменной через <code>echo</code> перед <code>if</code>, чтобы проверить, что там лежит.</li>
+                    <li><strong>«unexpected end of file»</strong>. Вы забыли закрыть блок словом <code>fi</code> или <code>esac</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Проверка на чётность</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт, который запрашивает число и проверяет, является ли оно чётным. Если да - выводит «Чётное», иначе - «Нечётное».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вычислите остаток от деления на 2 через <code>rem=$((num % 2))</code>. Затем проверьте: <code>if [ "$rem" -eq 0 ]; then ...</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">read -p "Введите число: " num</span><span class="code-row">rem=$((num % 2))</span><span class="code-row">if [ "$rem" -eq 0 ]; then</span><span class="code-row">    echo "Чётное"</span><span class="code-row">else</span><span class="code-row">    echo "Нечётное"</span><span class="code-row">fi</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Проверка существования файла</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт, который проверяет, существует ли файл <code>/etc/passwd</code>. Если существует - выводит «Файл на месте», если нет - «Файл не найден».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для проверки файлов в Bash используется флаг <code>-f</code>. Условие будет выглядеть так: <code>if [ -f "/etc/passwd" ]; then</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">if [ -f "/etc/passwd" ]; then</span><span class="code-row">    echo "Файл на месте"</span><span class="code-row">else</span><span class="code-row">    echo "Файл не найден"</span><span class="code-row">fi</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Калькулятор</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт-калькулятор. Спросите два числа и операцию (+, -, *, /). В зависимости от операции выполните нужное действие.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>case</code> для проверки операции. Внутри блоков вычисляйте результат через <code>$(( ))</code> и выводите его.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">read -p "Первое число: " a</span><span class="code-row">read -p "Действие (+ - * /): " op</span><span class="code-row">read -p "Второе число: " b</span><span class="code-row">case "$op" in</span><span class="code-row">    +) result=$((a + b)) ;;</span><span class="code-row">    -) result=$((a - b)) ;;</span><span class="code-row">    *) result=$((a * b)) ;;</span><span class="code-row">    /) result=$((a / b)) ;;</span><span class="code-row">    *) echo "Неизвестная операция" ; exit 1 ;;</span><span class="code-row">esac</span><span class="code-row">echo "Результат: $result"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Исправление ошибок</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами скрипт, который должен проверять возраст, но он не работает. Найдите и исправьте все ошибки.</p>
+                            <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">read -p "Возраст: " age</span><span class="code-row">if [ $age > 18 ]; then</span><span class="code-row">    echo "Взрослый"</span><span class="code-row">else</span><span class="code-row">    echo "Ребенок"</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Обратите внимание на: 1) использование знака <code>&gt;</code> для чисел; 2) отсутствие кавычек у переменной; 3) закрытие блока.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">read -p "Возраст: " age</span><span class="code-row">if [ "$age" -gt 18 ]; then</span><span class="code-row">    echo "Взрослый"</span><span class="code-row">else</span><span class="code-row">    echo "Ребенок"</span><span class="code-row">fi</span></code></pre>
+                                    <p>Мы заменили <code>&gt;</code> на <code>-gt</code>, добавили кавычки вокруг переменной и закрыли конструкцию словом <code>fi</code>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь ваши скрипты умеют думать и принимать решения. Вы научились:</p>
+                <ul>
+                    <li>Использовать конструкцию <code>if / else / elif</code>.</li>
+                    <li>Сравнивать числа с помощью <code>-eq</code>, <code>-gt</code> и других операторов.</li>
+                    <li>Сравнивать строки (с обязательными кавычками).</li>
+                    <li>Использовать <code>case</code> для проверки множества вариантов.</li>
+                </ul>
+
+                <p>Но что, если нам нужно повторить какое-то действие много раз? Например, перебрать все файлы в папке или спрашивать пароль, пока он не станет верным. Для этого нужны повторения.</p>
+
+                <p>В следующем уроке мы разберём <strong>циклы</strong>. Скрипты научатся выполнять рутинную работу за вас. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-03.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-05.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

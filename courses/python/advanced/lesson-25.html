@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Многопоточность и GIL - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="advanced" data-lesson-id="lesson-25">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый уровень</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 25</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson active" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Многопоточность и GIL</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>До этого момента все наши программы работали последовательно: шаг за шагом, строка за строкой. Если программа скачивала данные из интернета, она замирала и ждала. Если считала что-то сложное, она блокировала всё остальное.</p>
+
+                <p>Но современные компьютеры имеют многоядерные процессоры. Было бы логично использовать их все, чтобы программа работала быстрее. Сегодня мы разберёмся, как в Python работают <strong>потоки (threads)</strong> и <strong>процессы (processes)</strong>, что такое загадочный <strong>GIL</strong> и почему в Python не всё так просто с распараллеливанием.</p>
+
+                <h2>Аналогия: кухня ресторана</h2>
+
+                <p>Представьте ресторан. Есть повар, плита и заказы.</p>
+                <ul>
+                    <li><strong>Последовательная программа</strong> - это один повар, который сначала варит суп, потом жарит мясо, потом нарезает салат. Всё делает по очереди.</li>
+                    <li><strong>Многопоточность (Threading)</strong> - это один повар, но с несколькими руками. Он может одновременно помешивать суп и резать салат. Но спотыкается, потому что мозг (процессор) у него один.</li>
+                    <li><strong>Многопроцессность (Multiprocessing)</strong> - это три разных повара на трёх разных кухнях. Каждый делает своё дело независимо.</li>
+                </ul>
+
+                <h2>Потоки (threading)</h2>
+
+                <p>Потоки позволяют запускать несколько задач внутри одной программы. Все они делят общую память. В Python для этого есть встроенный модуль <code>threading</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">import threading</span><span class="code-row">import time</span><span class="code-row"></span><span class="code-row">def download_file(name):</span><span class="code-row">    print(f"Начинаю скачивать {name}...")</span><span class="code-row">    time.sleep(2)</span><span class="code-row">    print(f"Файл {name} скачан!")</span><span class="code-row"></span><span class="code-row">t1 = threading.Thread(target=download_file, args=("photo.jpg",))</span><span class="code-row">t2 = threading.Thread(target=download_file, args=("video.mp4",))</span><span class="code-row"></span><span class="code-row">t1.start()</span><span class="code-row">t2.start()</span><span class="code-row"></span><span class="code-row">t1.join()</span><span class="code-row">t2.join()</span></code></pre>
+
+                <p>Обратите внимание на <code>join()</code>. Он говорит главной программе: «Подожди, пока этот поток не завершит свою работу, и только потом идём дальше».</p>
+
+                <h2>Что такое GIL?</h2>
+
+                <p>Вот здесь начинается самое интересное. В Python (а точнее, в стандартной реализации CPython) есть глобальная блокировка, которая называется <strong>GIL (Global Interpreter Lock)</strong>.</p>
+
+                <p>GIL делает так, что в один момент времени только <strong>один поток</strong> может выполнять байт-код Python. Это как микрофон в комнате, который можно передавать из рук в руки, но говорить в него может только один человек.</p>
+
+                <p>Зачем это сделано? Для безопасности управления памятью. Без GIL два потока могли бы одновременно попытаться изменить один и тот же объект в памяти, что привело бы к катастрофе.</p>
+
+                <h2>Главное правило Python</h2>
+
+                <p>Из-за GIL все задачи делятся на два типа:</p>
+
+                <ul>
+                    <li><strong>I/O-bound (ожидание ввода-вывода)</strong> - задачи, которые большую часть времени ждут: скачивание из сети, чтение файлов, запросы к базе данных. На время ожидания GIL <strong>отпускается</strong>, поэтому <strong>многопоточность работает отлично</strong>.</li>
+                    <li><strong>CPU-bound (вычисления)</strong> - задачи, которые нагружают процессор: сложные математические расчёты, обработка изображений. Здесь GIL не даст потокам работать параллельно. Многопоточность будет работать даже <strong>медленнее</strong>, чем обычный код, из-за затрат на переключение контекста.</li>
+                </ul>
+
+                <p>Для вычислений используют модуль <code>multiprocessing</code>, который запускает <em>отдельные процессы</em> (со своей памятью и своим GIL).</p>
+
+                <h2>Многопроцессность (multiprocessing)</h2>
+
+                <p>Если вам нужно распараллелить тяжёлые вычисления, используйте процессы:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">import multiprocessing</span><span class="code-row"></span><span class="code-row">def heavy_calc(n):</span><span class="code-row">    result = sum(i * i for i in range(n))</span><span class="code-row">    print(f"Вычислено: {result}")</span><span class="code-row"></span><span class="code-row">if __name__ == "__main__":</span><span class="code-row">    p1 = multiprocessing.Process(target=heavy_calc, args=(1000000,))</span><span class="code-row">    p2 = multiprocessing.Process(target=heavy_calc, args=(1000000,))</span><span class="code-row"></span><span class="code-row">    p1.start()</span><span class="code-row">    p2.start()</span><span class="code-row"></span><span class="code-row">    p1.join()</span><span class="code-row">    p2.join()</span></code></pre>
+
+                <p>Важное замечание: код с процессами обязательно должен быть обёрнут в <code>if __name__ == "__main__":</code>. Это нужно для корректной работы в Windows.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>threading.Thread</code>
+                        <span>создать поток</span>
+                    </li>
+                    <li>
+                        <code>.start()</code>
+                        <span>запустить поток</span>
+                    </li>
+                    <li>
+                        <code>.join()</code>
+                        <span>дождаться завершения</span>
+                    </li>
+                    <li>
+                        <code>GIL</code>
+                        <span>глобальная блокировка Python</span>
+                    </li>
+                    <li>
+                        <code>I/O-bound</code>
+                        <span>сеть, файлы (нужны потоки)</span>
+                    </li>
+                    <li>
+                        <code>CPU-bound</code>
+                        <span>вычисления (нужны процессы)</span>
+                    </li>
+                    <li>
+                        <code>multiprocessing.Process</code>
+                        <span>создать процесс</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при работе с потоками.</p>
+
+                <ul>
+                    <li><strong>«Многопоточность не ускорила вычисления»</strong>. Это GIL. Потоки не подходят для математических расчётов. Используйте <code>multiprocessing</code>.</li>
+                    <li><strong>«Программа завершается сразу, не дожидаясь потоков»</strong>. Вы забыли вызвать <code>.join()</code>. Главный поток программы не ждёт, пока дочерние потоки закончат работу.</li>
+                    <li><strong>«RuntimeError при запуске multiprocessing в Windows»</strong>. Вы забыли обернуть код запуска в <code>if __name__ == "__main__":</code>.</li>
+                    <li><strong>«Данные изменились неправильно»</strong>. При работе с потоками есть риск <em>Race Condition</em> (состояние гонки). Если два потока одновременно меняют одну переменную, результат непредсказуем. Для защиты используют <code>threading.Lock()</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Параллельное скачивание</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите программу, которая создаёт два потока. Первый поток имитирует скачивание файла (ждёт 2 секунды через <code>time.sleep</code>), второй - имитирует загрузку данных (ждёт 3 секунды). Замерьте общее время выполнения программы.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте модули <code>threading</code> и <code>time</code>. В начале программы сохраните <code>start_time = time.time()</code>, в конце выведите разницу. Не забудьте про <code>join()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import threading</span><span class="code-row">import time</span><span class="code-row"></span><span class="code-row">def download():</span><span class="code-row">    time.sleep(2)</span><span class="code-row">    print("Файл скачан")</span><span class="code-row"></span><span class="code-row">def upload():</span><span class="code-row">    time.sleep(3)</span><span class="code-row">    print("Данные отправлены")</span><span class="code-row"></span><span class="code-row">start = time.time()</span><span class="code-row"></span><span class="code-row">t1 = threading.Thread(target=download)</span><span class="code-row">t2 = threading.Thread(target=upload)</span><span class="code-row"></span><span class="code-row">t1.start()</span><span class="code-row">t2.start()</span><span class="code-row"></span><span class="code-row">t1.join()</span><span class="code-row">t2.join()</span><span class="code-row"></span><span class="code-row">print(f"Общее время: {time.time() - start:.2f} сек")</span></code></pre>
+                                    <p>Программа выполнится примерно за 3 секунды (а не за 5), потому что оба потока ждали одновременно.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Многопроцессность</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте два процесса. Каждый процесс должен вычислить сумму квадратов чисел от 1 до 5 000 000. Выведите результат. Не забудьте обернуть запуск в проверку <code>if __name__ == "__main__":</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>multiprocessing.Process</code>. Для вычисления суммы можно использовать встроенную функцию <code>sum()</code> и генератор списка. Не забудьте про <code>.start()</code> и <code>.join()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import multiprocessing</span><span class="code-row"></span><span class="code-row">def calc():</span><span class="code-row">    total = sum(i * i for i in range(5000000))</span><span class="code-row">    print(f"Результат: {total}")</span><span class="code-row"></span><span class="code-row">if __name__ == "__main__":</span><span class="code-row">    p1 = multiprocessing.Process(target=calc)</span><span class="code-row">    p2 = multiprocessing.Process(target=calc)</span><span class="code-row"></span><span class="code-row">    p1.start()</span><span class="code-row">    p2.start()</span><span class="code-row"></span><span class="code-row">    p1.join()</span><span class="code-row">    p2.join()</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Блокировка (Lock)</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте глобальную переменную <code>counter = 0</code>. Запустите 5 потоков, каждый из которых 100 000 раз увеличивает счётчик на 1. Используйте <code>threading.Lock()</code>, чтобы избежать состояния гонки. Выведите итоговое значение.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте объект блокировки: <code>lock = threading.Lock()</code>. Внутри функции перед изменением переменной захватывайте блокировку: <code>with lock:</code>, а затем делайте <code>counter += 1</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import threading</span><span class="code-row"></span><span class="code-row">counter = 0</span><span class="code-row">lock = threading.Lock()</span><span class="code-row"></span><span class="code-row">def increment():</span><span class="code-row">    global counter</span><span class="code-row">    for _ in range(100000):</span><span class="code-row">        with lock:</span><span class="code-row">            counter += 1</span><span class="code-row"></span><span class="code-row">threads = []</span><span class="code-row">for _ in range(5):</span><span class="code-row">    t = threading.Thread(target=increment)</span><span class="code-row">    threads.append(t)</span><span class="code-row">    t.start()</span><span class="code-row"></span><span class="code-row">for t in threads:</span><span class="code-row">    t.join()</span><span class="code-row"></span><span class="code-row">print(f"Итог: {counter}")</span></code></pre>
+                                    <p>Без <code>lock</code> итоговое число почти наверняка было бы меньше 500 000, так как потоки перезаписывали бы результаты друг друга.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Скачиваем сайты</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите функцию, которая имитирует скачивание сайта (ждёт 1 секунду). Создайте список из 5 разных сайтов и скачайте их все параллельно с помощью потоков. Замерьте время.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте цикл, который создаёт поток для каждого сайта из списка. Запускайте поток и сразу добавляйте его в список потоков. После цикла пройдитесь по списку потоков и вызовите <code>.join()</code> для каждого.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import threading</span><span class="code-row">import time</span><span class="code-row"></span><span class="code-row">def download_site(url):</span><span class="code-row">    print(f"Скачиваю {url}")</span><span class="code-row">    time.sleep(1)</span><span class="code-row">    print(f"Готово: {url}")</span><span class="code-row"></span><span class="code-row">sites = ["site1.com", "site2.com", "site3.com", "site4.com", "site5.com"]</span><span class="code-row">threads = []</span><span class="code-row">start = time.time()</span><span class="code-row"></span><span class="code-row">for site in sites:</span><span class="code-row">    t = threading.Thread(target=download_site, args=(site,))</span><span class="code-row">    threads.append(t)</span><span class="code-row">    t.start()</span><span class="code-row"></span><span class="code-row">for t in threads:</span><span class="code-row">    t.join()</span><span class="code-row"></span><span class="code-row">print(f"Общее время: {time.time() - start:.2f} сек")</span></code></pre>
+                                    <p>Выполнение займёт около 1 секунды, хотя сайтов пять. Многопоточность идеально подходит для таких I/O-задач.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы заглянули в мир параллельного выполнения кода. Теперь вы знаете:</p>
+
+                <ul>
+                    <li>Что такое потоки (<code>threading</code>) и как их запускать.</li>
+                    <li>Что такое GIL и почему он мешает распараллеливанию вычислений.</li>
+                    <li>Чем отличаются задачи I/O-bound от CPU-bound.</li>
+                    <li>Как использовать <code>multiprocessing</code> для обхода GIL.</li>
+                    <li>Как защитить данные от состояния гонки с помощью <code>Lock</code>.</li>
+                </ul>
+
+                <p>В следующем уроке мы поговорим об <strong>асинхронности</strong>. Это ещё один способ конкурентного выполнения задач в Python, который не использует потоки и процессы, а работает в рамках одного потока с помощью событийного цикла. Это будет мощный инструмент для веб-разработки. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-24.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-26.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

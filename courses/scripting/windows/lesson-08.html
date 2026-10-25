@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Даты, время и очистка - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="windows" data-lesson-id="lesson-08">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Windows</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 08</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Windows (Bat)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в Batch-скрипты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы и метки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Аргументы командной строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Запуск программ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт бэкапа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson active" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Даты, время и очистка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Работа с логами и текстом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик и права админа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Даты, время и очистка системы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-windows-logo"></i> Windows</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Представьте, что вы решили разобрать шкаф. Вы достанете старые вещи, выбросите мусор и освободите место для нового. То же самое нужно делать и с компьютером. Временные файлы, старые логи, кэш браузеров - всё это накапливается и замедляет систему.</p>
+
+                <p>В этом уроке мы научимся заставлять скрипт понимать, какой сегодня день, и давать ему команды на безопасную очистку временных файлов. А заодно разберём, как удалять данные, которые старше определённого срока.</p>
+
+                <h2>Переменные окружения (Где что лежит)</h2>
+
+                <p>Windows хранит пути к важным папкам в специальных переменных окружения. Вы можете использовать их в скриптах, и они будут работать на любом компьютере с Windows, независимо от имени пользователя.</p>
+
+                <ul>
+                    <li><strong><code>%USERPROFILE%</code></strong> - папка вашего пользователя (например, <code>C:\Users\Alex</code>).</li>
+                    <li><strong><code>%WINDIR%</code></strong> - папка с Windows (обычно <code>C:\Windows</code>).</li>
+                    <li><strong><code>%TEMP%</code></strong> - папка для временных файлов. Именно сюда программы сбрасывают мусор во время работы.</li>
+                    <li><strong><code>%APPDATA%</code></strong> - папка с настройками ваших программ (браузеры, игры).</li>
+                </ul>
+
+                <p>Самый безопасный способ очистить компьютер - удалить файлы из <code>%TEMP%</code>. При правильной работе программы сами удаляют за собой мусор, но если программа вылетела, файлы остаются.</p>
+
+                <h2>Работа с датой</h2>
+
+                <p>В Windows есть переменная <code>%date%</code>, которая хранит текущую дату. В России она обычно выглядит как <code>25.10.2026</code>.</p>
+
+                <p>Но есть проблема: точки и слэши нельзя использовать в названиях файлов и папок. Нам нужно извлечь год, месяц и день и соединить их через дефис.</p>
+
+                <p>В Batch это делается с помощью функции подстроки <code>%var:~start,length%</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Текущая дата: %date%</span><span class="code-row">pause</span></code></pre>
+
+                <p>Если запустить этот код, мы увидим, например, <code>25.10.2026</code>. Тогда:</p>
+                <ul>
+                    <li><code>%date:~6,4%</code> - возьмёт 4 символа начиная с 6-го индекса (получится «2026»).</li>
+                    <li><code>%date:~3,2%</code> - возьмёт 2 символа начиная с 3-го индекса (получится «10»).</li>
+                    <li><code>%date:~0,2%</code> - возьмёт 2 символа с самого начала (получится «25»).</li>
+                </ul>
+
+                <p>Соединим их в правильную строку:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">set "today=%date:~6,4%-%date:~3,2%-%date:~0,2%"</span></code></pre>
+
+                <p>Теперь в переменной <code>today</code> лежит безопасная строка <code>2026-10-25</code>, которую можно использовать для создания файлов.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Внимание: формат даты зависит от региона!
+                    </div>
+                    <p>Если у вас в настройках Windows стоит американский формат (месяц/день/год), то код выше может не сработать. Самый надежный способ получить дату в скрипте - использовать команду <code>wmic os get localdatetime</code>, которая всегда выдает данные в одном и том же формате. Мы использовали её в прошлом уроке.</p>
+                </div>
+
+                <h2>Очистка временных файлов</h2>
+
+                <p>Для удаления файлов используется команда <code>del</code>, а для папок - <code>rd</code> (remove directory).</p>
+
+                <p>Чтобы не нажимать «Да» при каждом удалении, используют флаги:</p>
+                <ul>
+                    <li><strong><code>/q</code></strong> - тихий режим (без вопросов).</li>
+                    <li><strong><code>/f</code></strong> - удалить даже файлы, доступные только для чтения.</li>
+                    <li><strong><code>/s</code></strong> - удалить из всех вложенных папок.</li>
+                </ul>
+
+                <p>Пример скрипта для очистки папки с временными файлами:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Очистка временных файлов...</span><span class="code-row">del /q /f /s "%TEMP%\*.*"</span><span class="code-row">rd /s /q "%TEMP%\*"</span><span class="code-row">echo Готово!</span><span class="code-row">pause</span></code></pre>
+
+                <p>Сначала мы удаляем все файлы (даже скрытые), затем - пустые папки. Но будьте осторожны: если какая-то программа прямо сейчас работает с временным файлом, Windows может выдать ошибку. Это нормально, скрипт просто пропустит этот файл.</p>
+
+                <h2>Удаление файлов старше N дней</h2>
+
+                <p>Иногда нужно удалять не всё подряд, а только старые логи. Для этого в Windows есть утилита <code>forfiles</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">forfiles /p "C:\Logs" /s /m *.log /d -30 /c "cmd /c del @path"</span></code></pre>
+
+                <ul>
+                    <li><strong><code>/p</code></strong> - папка, в которой ищем.</li>
+                    <li><strong><code>/s</code></strong> - искать во вложенных папках.</li>
+                    <li><strong><code>/m</code></strong> - маска файла (например, <code>*.log</code>).</li>
+                    <li><strong><code>/d -30</code></strong> - файлы, которым больше 30 дней.</li>
+                    <li><strong><code>/c</code></strong> - команда, которую нужно выполнить для каждого найденного файла.</li>
+                </ul>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>%TEMP%</code>
+                        <span>папка для мусора</span>
+                    </li>
+                    <li>
+                        <code>%date%</code>
+                        <span>текущая дата</span>
+                    </li>
+                    <li>
+                        <code>del /s /q</code>
+                        <span>удалить файлы</span>
+                    </li>
+                    <li>
+                        <code>rd /s /q</code>
+                        <span>удалить папки</span>
+                    </li>
+                    <li>
+                        <code>forfiles /d -30</code>
+                        <span>удалить старое</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при очистке и работе с датами.</p>
+
+                <ul>
+                    <li><strong>«Доступ запрещён»</strong>. Вы пытаетесь удалить файлы из системной папки без прав администратора. Запустите скрипт от имени администратора.</li>
+                    <li><strong>«Файл используется другой программой»</strong>. Это нормально при очистке <code>%TEMP%</code>. Некоторые файлы защищены системой. Скрипт выдаст ошибку, но продолжит работу.</li>
+                    <li><strong>«Дата выводится криво»</strong>. Скорее всего, у вас в системе стоит нестандартный формат даты. Используйте <code>wmic os get localdatetime</code>, как в уроке про бэкап.</li>
+                    <li><strong>«forfiles не находит файлы»</strong>. Проверьте, что вы правильно указали папку в параметре <code>/p</code> и маску в <code>/m</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Очистка TEMP</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт, который удаляет все файлы из папки <code>%TEMP%</code>. Перед удалением выведите сообщение «Начинаю очистку...», после - «Очистка завершена!».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>del /q /f /s "%TEMP%\*.*"</code>. Не забудьте <code>pause</code> в конце, чтобы увидеть результат.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Начинаю очистку временных файлов...</span><span class="code-row">del /q /f /s "%TEMP%\*.*"</span><span class="code-row">echo Очистка завершена!</span><span class="code-row">pause</span></code></pre>
+                                    <p>Вы можете заметить, что некоторые файлы не удалились. Это те файлы, которые прямо сейчас использует система, их трогать нельзя.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Логи старше 7 дней</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте папку <code>C:\TestLogs</code> и положите туда несколько файлов <code>.txt</code>. Напишите скрипт, который удаляет из этой папки все <code>.txt</code> файлы старше 7 дней.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>forfiles /p "C:\TestLogs" /m *.txt /d -7 /c "cmd /c del @path"</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Удаляю старые логи...</span><span class="code-row">forfiles /p "C:\TestLogs" /m *.txt /d -7 /c "cmd /c del @path"</span><span class="code-row">echo Готово.</span><span class="code-row">pause</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Папка с датой</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт, который создаёт папку с названием, содержащим сегодняшнюю дату (например, <code>Folder_2026-10-25</code>), и выводит полный путь к ней.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Получите дату через <code>wmic</code> (как в уроке 7) или используйте подстроки <code>%date:~6,4%</code> (если у вас русский формат даты). Создайте папку через <code>md</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">for /f "tokens=2 delims==" %%a in ('wmic os get localdatetime /value') do set "dt=%%a"</span><span class="code-row">set "today=%dt:~0,4%-%dt:~4,2%-%dt:~6,2%"</span><span class="code-row">set "folder=Folder_%today%"</span><span class="code-row">md "%folder%"</span><span class="code-row">echo Создана папка: %~dp0%folder%</span><span class="code-row">pause</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Очистка и лог</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Доработайте скрипт очистки из Задачи 1. Сделайте так, чтобы все сообщения об ошибках (например, если файл не удалось удалить) записывались в текстовый файл <code>cleanup_log.txt</code> в папке со скриптом.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для перенаправления вывода ошибок используется конструкция <code>2&gt;&gt;</code>. Сделайте так: <code>del /q /f /s "%TEMP%\*.*" 2&gt;&gt; "%~dp0cleanup_log.txt"</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">echo Начинаю очистку...</span><span class="code-row">del /q /f /s "%TEMP%\*.*" 2&gt;&gt; "%~dp0cleanup_log.txt"</span><span class="code-row">echo Очистка завершена! Подробности в cleanup_log.txt</span><span class="code-row">pause</span></code></pre>
+                                    <p>Теперь все ошибки доступа (например, «Файл занят системой») будут аккуратно записаны в текстовый файл рядом со скриптом, а не выведены на экран.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь ваши скрипты умеют заботиться о системе и работать со временем. Вы научились:</p>
+                <ul>
+                    <li>Использовать переменные окружения (<code>%TEMP%</code>).</li>
+                    <li>Безопасно удалять временные файлы.</li>
+                    <li>Получать текущую дату и форматировать её.</li>
+                    <li>Использовать утилиту <code>forfiles</code> для удаления старых файлов.</li>
+                </ul>
+
+                <p>Но удалять мусор - это только полдела. Настоящие профессионалы умеют записывать историю своих действий, чтобы потом понимать, что произошло. В следующем уроке мы подробнее разберём <strong>работу с логами и текстом</strong>. Вы узнаете, как красиво выводить данные в файл и как искать в них нужную информацию. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-07.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-09.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

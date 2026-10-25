@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Асинхронность - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="advanced" data-lesson-id="lesson-26">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый уровень</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 26</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson active" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Асинхронность</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы разобрались с многопоточностью и узнали про GIL. Мы выяснили, что потоки отлично подходят для задач ввода-вывода (сеть, файлы), но создают накладные расходы на переключение контекста.</p>
+
+                <p>Сегодня мы познакомимся с ещё одним, невероятно мощным и современным подходом к конкурентному выполнению задач - <strong>асинхронностью</strong>. Это то, что лежит в основе самых быстрых веб-фреймворков (FastAPI, aiohttp) и позволяет обрабатывать тысячи запросов одновременно на одном потоке.</p>
+
+                <h2>Аналогия: повар-асинхронщик</h2>
+
+                <p>Представьте одного повара на кухне.</p>
+                <ul>
+                    <li>В обычной (синхронной) программе он ставит суп на плиту и <strong>стоит, смотря на него 20 минут</strong>, ничего не делая.</li>
+                    <li>В многопоточной он пытается одновременно резать салат и помешивать суп, но у него только две руки и одна голова (GIL), он путается и устаёт.</li>
+                    <li>В <strong>асинхронной</strong> программе он ставит суп на плиту и говорит: «Пока варится, я нарежу салат». Через 20 минут он возвращается к супу. Он делает всё один, но не тратит время на ожидание.</li>
+                </ul>
+
+                <p>Асинхронность не про параллельное выполнение (одновременно), а про <strong>конкурентное</strong> (попеременное) выполнение. Пока одна задача ждёт ответа от сети, процессор переключается на другую.</p>
+
+                <h2>Ключевые слова: async и await</h2>
+
+                <p>Для работы с асинхронностью в Python есть встроенный модуль <code>asyncio</code>. В нём есть два волшебных слова:</p>
+
+                <ul>
+                    <li><strong><code>async def</code></strong> - объявляет <strong>корутину</strong>. Это как обычная функция, но она умеет приостанавливаться на полпути и отдавать управление другим задачам.</li>
+                    <li><strong><code>await</code></strong> - ставится перед операцией, которая занимает время (например, запрос в сеть или <code>asyncio.sleep</code>). Он говорит Python: «Я жду, иди делай что-нибудь другое».</li>
+                </ul>
+
+                <pre class="code-numbered"><code><span class="code-row">import asyncio</span><span class="code-row"></span><span class="code-row">async def make_tea():</span><span class="code-row">    print("Ставлю чайник")</span><span class="code-row">    await asyncio.sleep(2)</span><span class="code-row">    print("Чай готов!")</span><span class="code-row"></span><span class="code-row">asyncio.run(make_tea())</span></code></pre>
+
+                <p>Функция <code>asyncio.run()</code> запускает главную асинхронную задачу, создаёт <strong>Event Loop</strong> (цикл событий) и управляет переключением между задачами.</p>
+
+                <h2>Главное правило</h2>
+
+                <p><code>await</code> можно использовать только внутри функции, объявленной как <code>async def</code>. Внутри обычной функции <code>await</code> вызовет <code>SyntaxError</code>.</p>
+
+                <h2>Запуск нескольких задач: asyncio.gather</h2>
+
+                <p>Если просто написать два раза <code>await</code> подряд, они выполнятся последовательно. Чтобы запустить их одновременно, используют <code>asyncio.gather()</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">import asyncio</span><span class="code-row">import time</span><span class="code-row"></span><span class="code-row">async def task(name, delay):</span><span class="code-row">    print(f"Начал {name}")</span><span class="code-row">    await asyncio.sleep(delay)</span><span class="code-row">    print(f"Закончил {name}")</span><span class="code-row"></span><span class="code-row">async def main():</span><span class="code-row">    start = time.time()</span><span class="code-row">    </span><span class="code-row">    await asyncio.gather(</span><span class="code-row">        task("А", 2),</span><span class="code-row">        task("Б", 3)</span><span class="code-row">    )</span><span class="code-row">    </span><span class="code-row">    print(f"Общее время: {time.time() - start:.2f} сек")</span><span class="code-row"></span><span class="code-row">asyncio.run(main())</span></code></pre>
+
+                <p>Эта программа выполнится за 3 секунды (по самой долгой задаче), а не за 5. Всё это время программа будет работать в <strong>одном потоке</strong>.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>async def</code>
+                        <span>объявить асинхронную функцию</span>
+                    </li>
+                    <li>
+                        <code>await</code>
+                        <span>дождаться выполнения</span>
+                    </li>
+                    <li>
+                        <code>asyncio.run()</code>
+                        <span>запустить event loop</span>
+                    </li>
+                    <li>
+                        <code>asyncio.sleep()</code>
+                        <span>асинхронная пауза</span>
+                    </li>
+                    <li>
+                        <code>asyncio.gather()</code>
+                        <span>запустить задачи параллельно</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при работе с асинхронностью.</p>
+
+                <ul>
+                    <li><strong>«RuntimeWarning: coroutine '...' was never awaited»</strong>. Вы вызвали асинхронную функцию, но забыли поставить перед ней <code>await</code>. Без этого она просто создаст объект корутины, но ничего не выполнит.</li>
+                    <li><strong>«SyntaxError: 'await' outside function»</strong>. Вы пишете <code>await</code> вне функции <code>async def</code>.</li>
+                    <li><strong>«Программа зависает или работает медленно»</strong>. Скорее всего, вы используете обычный <code>time.sleep()</code> вместо <code>asyncio.sleep()</code>. Обычный сон блокирует весь Event Loop, и другие задачи не могут выполняться.</li>
+                    <li><strong>«Не работает с обычными библиотеками»</strong>. Асинхронность требует асинхронных библиотек. Обычный <code>requests</code> заблокирует поток. Нужно использовать <code>aiohttp</code> для запросов или <code>aiosqlite</code> для баз данных.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Первая корутина</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите асинхронную функцию <code>hello()</code>, которая выводит «Привет», ждёт 2 секунды через <code>asyncio.sleep</code> и выводит «Пока». Запустите её через <code>asyncio.run()</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Не забудьте ключевое слово <code>await</code> перед <code>asyncio.sleep(2)</code>. Запуск происходит через <code>asyncio.run(hello())</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import asyncio</span><span class="code-row"></span><span class="code-row">async def hello():</span><span class="code-row">    print("Привет")</span><span class="code-row">    await asyncio.sleep(2)</span><span class="code-row">    print("Пока")</span><span class="code-row"></span><span class="code-row">asyncio.run(hello())</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Соревнование</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте две корутины: <code>runner_1</code> (ждёт 3 секунды) и <code>runner_2</code> (ждёт 1 секунду). Запустите их одновременно через <code>asyncio.gather</code>. Замерьте общее время выполнения.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Оберните запуск в ещё одну функцию <code>async def main()</code>, чтобы внутри неё использовать <code>await asyncio.gather(runner_1(), runner_2())</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import asyncio</span><span class="code-row">import time</span><span class="code-row"></span><span class="code-row">async def runner_1():</span><span class="code-row">    await asyncio.sleep(3)</span><span class="code-row">    print("Бегун 1 финишировал")</span><span class="code-row"></span><span class="code-row">async def runner_2():</span><span class="code-row">    await asyncio.sleep(1)</span><span class="code-row">    print("Бегун 2 финишировал")</span><span class="code-row"></span><span class="code-row">async def main():</span><span class="code-row">    start = time.time()</span><span class="code-row">    await asyncio.gather(runner_1(), runner_2())</span><span class="code-row">    print(f"Время: {time.time() - start:.2f} сек")</span><span class="code-row"></span><span class="code-row">asyncio.run(main())</span></code></pre>
+                                    <p>Второй бегун финиширует первым (через 1 секунду), но программа завершится только после первого (через 3 секунды).</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Асинхронный загрузчик</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите функцию <code>download_file(name)</code>, которая ждёт 2 секунды и печатает «Файл [name] загружен». Создайте 3 задачи и запустите их все одновременно.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Передайте в <code>asyncio.gather</code> три вызова вашей корутины: <code>download_file("A")</code>, <code>download_file("B")</code> и <code>download_file("C")</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import asyncio</span><span class="code-row"></span><span class="code-row">async def download_file(name):</span><span class="code-row">    await asyncio.sleep(2)</span><span class="code-row">    print(f"Файл {name} загружен")</span><span class="code-row"></span><span class="code-row">async def main():</span><span class="code-row">    await asyncio.gather(</span><span class="code-row">        download_file("A"),</span><span class="code-row">        download_file("B"),</span><span class="code-row">        download_file("C")</span><span class="code-row">    )</span><span class="code-row"></span><span class="code-row">asyncio.run(main())</span></code></pre>
+                                    <p>Все три файла «загрузятся» ровно за 2 секунды, а не за 6, так как ожидание происходит конкурентно.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Обработка ошибок</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте корутину, которая выбрасывает исключение <code>ValueError</code> (например, деление на ноль). Запустите её в <code>asyncio.gather</code> вместе с нормальной задачей. Используйте аргумент <code>return_exceptions=True</code>, чтобы gather не прерывался при первой же ошибке.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вызов будет выглядеть так: <code>results = await asyncio.gather(ok_task(), bad_task(), return_exceptions=True)</code>. В переменной <code>results</code> вместо объекта ошибки будет лежать само исключение.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import asyncio</span><span class="code-row"></span><span class="code-row">async def ok_task():</span><span class="code-row">    await asyncio.sleep(1)</span><span class="code-row">    return "Успех"</span><span class="code-row"></span><span class="code-row">async def bad_task():</span><span class="code-row">    await asyncio.sleep(1)</span><span class="code-row">    return 1 / 0</span><span class="code-row"></span><span class="code-row">async def main():</span><span class="code-row">    results = await asyncio.gather(</span><span class="code-row">        ok_task(),</span><span class="code-row">        bad_task(),</span><span class="code-row">        return_exceptions=True</span><span class="code-row">    )</span><span class="code-row">    print(results)</span><span class="code-row"></span><span class="code-row">asyncio.run(main())</span></code></pre>
+                                    <p>В консоли мы увидим список: <code>['Успех', ZeroDivisionError('division by zero')]</code>. Программа не упала, мы получили результаты обеих задач.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Асинхронность - это мощный инструмент, который может показаться сложным, но на деле он решает одну главную задачу: <strong>не заставлять программу ждать впустую</strong>. Теперь вы знаете:</p>
+
+                <ul>
+                    <li>Чем асинхронность отличается от многопоточности.</li>
+                    <li>Как объявлять корутины через <code>async def</code> и приостанавливать их через <code>await</code>.</li>
+                    <li>Как запускать несколько задач конкурентно с помощью <code>asyncio.gather()</code>.</li>
+                    <li>Как обрабатывать ошибки в асинхронных задачах.</li>
+                </ul>
+
+                <p>В следующем уроке мы ненадолго отойдём от архитектуры и вернёмся к работе с текстом. Нас ждут <strong>регулярные выражения</strong> - мини-язык для поиска и замены текста по шаблону. Это незаменимый инструмент для валидации email, парсинга логов и обработки любых строковых данных. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-25.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-27.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

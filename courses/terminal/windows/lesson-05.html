@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сетевые утилиты - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="windows" data-lesson-id="lesson-05">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Windows</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 05</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Windows</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация по файловой системе</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Работа с файлами и папками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Системные команды</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson active" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Сетевые утилиты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Введение в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы скриптов в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Сетевые утилиты</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-windows-logo"></i> Windows</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Интернет пропал. Вы открываете браузер, а там ошибка «Нет подключения к интернету». В чём дело? Сломался Wi-Fi роутер, провайдер отключил свет, или просто сайт, на который вы зашли, упал? Терминал может помочь найти виновника за пару секунд.</p>
+
+                <p>Сегодня мы изучим сетевые утилиты. Это как инструменты врача для компьютера: они позволяют поставить диагноз и понять, почему сеть работает плохо.</p>
+
+                <h2>Узнаём свой адрес: ipconfig</h2>
+
+                <p>Команда <code>ipconfig</code> (IP Configuration) показывает настройки сетевых адаптеров. Если запустить её без аргументов, вы увидите базовую информацию о вашем подключении.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ipconfig</span></code></pre>
+
+                <p>Здесь самое важное - <strong>IPv4-адрес</strong>. Это уникальный номер вашего компьютера в локальной сети (например, <code>192.168.1.5</code>).</p>
+
+                <p>Чтобы получить более подробную информацию (включая MAC-адрес и DNS-серверы), используется флаг <code>/all</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ipconfig /all</span></code></pre>
+
+                <p>А если вы сменили сеть (например, подключились к другому Wi-Fi) и интернет не работает, часто помогает сбросить настройки. Для этого используются команды <code>ipconfig /release</code> (освободить адрес) и <code>ipconfig /renew</code> (запросить новый).</p>
+
+                <h2>Проверка связи: ping</h2>
+
+                <p>Команда <code>ping</code> - это ваш главный инструмент диагностики. Она отправляет маленький пакет данных на указанный адрес и ждёт ответа.</p>
+
+                <p>Аналогия: вы кричите в колодец «Эхо!» и слушаете, вернётся ли звук. Если вернётся - связь есть.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ping google.com</span></code></pre>
+
+                <p>Если сайт доступен, вы увидите несколько строк с временем ответа (например, <code>time=15ms</code>). Если соединения нет - увидите сообщение «Превышен интервал ожидания для запроса».</p>
+
+                <p>По умолчанию <code>ping</code> отправляет 4 пакета и завершается. Чтобы пинговать бесконечно, добавьте флаг <code>-t</code> (остановить можно комбинацией <code>Ctrl+C</code>):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ping -t 8.8.8.8</span></code></pre>
+
+                <h2>Поиск маршрута: tracert</h2>
+
+                <p>Если <code>ping</code> показывает, что сайт недоступен, нужно понять, <em>где именно</em> обрывается связь. Для этого используется команда <code>tracert</code> (trace route).</p>
+
+                <p>Она показывает все промежуточные узлы (роутеры), через которые проходит ваш запрос, прежде чем достичь цели. Это как карта пересадок в метро.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">tracert google.com</span></code></pre>
+
+                <p>Если вы видите, что первые три узла отвечают, а на четвёртом начинаются «звёздочки» (таймаут), значит, проблема где-то между вашим провайдером и сайтом.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>ipconfig</code>
+                        <span>мой IP-адрес</span>
+                    </li>
+                    <li>
+                        <code>ipconfig /all</code>
+                        <span>подробная информация</span>
+                    </li>
+                    <li>
+                        <code>ipconfig /renew</code>
+                        <span>обновить IP</span>
+                    </li>
+                    <li>
+                        <code>ping сайт</code>
+                        <span>проверить связь</span>
+                    </li>
+                    <li>
+                        <code>ping -t</code>
+                        <span>пинговать бесконечно</span>
+                    </li>
+                    <li>
+                        <code>tracert сайт</code>
+                        <span>показать маршрут</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с сетью.</p>
+
+                <ul>
+                    <li><strong>«Превышен интервал ожидания»</strong>. Сайт не отвечает. Возможно, он заблокирован, выключен или у вас нет интернета.</li>
+                    <li><strong>«Не удалось обнаружить узел»</strong>. Команда не может перевести имя сайта (например, google.com) в IP-адрес. Возможно, сбились DNS-настройки. Попробуйте пинговать напрямую по IP (например, <code>ping 8.8.8.8</code>).</li>
+                    <li><strong>«ipconfig показывает 169.254.x.x»</strong>. Это значит, что ваш компьютер не смог получить IP-адрес от роутера. Попробуйте ввести <code>ipconfig /renew</code> или перезагрузить роутер.</li>
+                    <li><strong>«Для продолжения нажмите любую клавишу»</strong>. В Windows некоторые команды выводят много текста и ждут подтверждения. Просто нажмите Enter, чтобы вернуться в консоль.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Мой IP</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Узнайте IP-адрес вашего компьютера в локальной сети.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>ipconfig</code>. Найдите строку «IPv4-адрес».</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">ipconfig</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Есть ли связь?</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Проверьте, есть ли у вас интернет, отправив 4 запроса к публичному DNS-серверу Google (IP: <code>8.8.8.8</code>).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>ping</code> с указанием IP-адреса.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">ping 8.8.8.8</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Куда идёт трафик?</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Проследите маршрут до сайта <code>yandex.ru</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>tracert</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">tracert yandex.ru</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Исправление ошибок</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Пользователь хочет проверить связь с сайтом, но получает синтаксическую ошибку. Почему?</p>
+                            <pre class="code-numbered"><code><span class="code-row">ping google.com -t</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В Windows команды и их флаги обычно имеют строгий порядок. Флаг должен идти до или после? Проверьте синтаксис в шпаргалке.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">ping -t google.com</span></code></pre>
+                                    <p>В Windows флаги (ключи) обычно ставятся сразу после самой команды, перед аргументами.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь вы умеете диагностировать сеть лучше многих сотрудников поддержки. Вы узнали:</p>
+                <ul>
+                    <li>Как узнать свой IP-адрес (<code>ipconfig</code>).</li>
+                    <li>Как проверить, жив ли сайт (<code>ping</code>).</li>
+                    <li>Как понять, на каком участке пропадает связь (<code>tracert</code>).</li>
+                </ul>
+
+                <p>Мы изучили классическую командную строку (cmd). Но Microsoft развивает более мощный инструмент - <strong>PowerShell</strong>. В следующем уроке мы начнём с ним знакомиться. Вы узнаете, чем он отличается от cmd и почему он круче. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-04.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-06.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

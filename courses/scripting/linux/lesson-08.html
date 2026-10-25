@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обработка текста (grep, sed, awk) - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="linux" data-lesson-id="lesson-08">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 08</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux (Bash)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение и первый скрипт</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и аргументы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и математика</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Функции в Bash</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт сбора логов</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson active" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Обработка текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик Cron</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Обработка текста (grep, sed, awk)</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В Linux почти всё является текстом. Конфигурации программ, логи, вывод других команд - это всё обычные строки. Именно поэтому в Linux так много мощных инструментов для работы с текстом.</p>
+
+                <p>Сегодня мы изучим три «тяжеловеса», которые должен знать каждый сисадмин и DevOps-инженер. Это как швейцарский нож для работы с данными: <strong>grep</strong>, <strong>sed</strong> и <strong>awk</strong>.</p>
+
+                <h2>grep - Поисковик</h2>
+
+                <p>Утилита <code>grep</code> (global regular expression print) используется для поиска строк, содержащих определённый текст или паттерн.</p>
+
+                <p>Аналогия: это как поиск по документу в Word (Ctrl+F), но только для терминала.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">grep "Ошибка" server.log</span></code></pre>
+
+                <p>Эта команда выведет на экран все строки из файла <code>server.log</code>, в которых встречается слово «Ошибка».</p>
+
+                <p>Полезные флаги <code>grep</code>:</p>
+                <ul>
+                    <li><strong><code>-i</code></strong> - игнорировать регистр (найдёт и error, и Error).</li>
+                    <li><strong><code>-v</code></strong> - инвертировать поиск (показать строки, где этого слова <em>нет</em>).</li>
+                    <li><strong><code>-n</code></strong> - показать номер строки.</li>
+                    <li><strong><code>-r</code></strong> - рекурсивный поиск по всем файлам в папке.</li>
+                </ul>
+
+                <h2>sed - Редактор потока</h2>
+
+                <p><code>sed</code> (stream editor) - это инструмент для изменения текста «на лету», не открывая файл в редакторе. Чаще всего его используют для замены одной строки на другую.</p>
+
+                <p>Синтаксис замены выглядит так: <code>sed 's/что_искать/на_что_заменить/' файл</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">sed 's/apple/orange/' fruits.txt</span></code></pre>
+
+                <p>Этот код заменит первое вхождение слова «apple» на «orange» в каждой строке файла и выведет результат на экран (сам файл не изменится).</p>
+
+                <p>Чтобы заменить <strong>все</strong> вхождения в строке, добавьте флаг <code>g</code> (global):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">sed 's/apple/orange/g' fruits.txt</span></code></pre>
+
+                <p>А чтобы изменения сохранились прямо в файле, используется флаг <code>-i</code> (in-place):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">sed -i 's/apple/orange/g' fruits.txt</span></code></pre>
+
+                <h2>awk - Швейцарский нож</h2>
+
+                <p><code>awk</code> - это целый язык программирования для обработки текста. Он идеально подходит для работы с таблицами (например, файлами CSV или выводом команды <code>ps</code>).</p>
+
+                <p>По умолчанию <code>awk</code> разбивает строку на колонки по пробелам или табам. Переменные <code>$1</code>, <code>$2</code>, <code>$3</code> обозначают первую, вторую и третью колонку соответственно.</p>
+
+                <p>Допустим, у нас есть файл <code>users.txt</code>:</p>
+                <pre class="code-numbered"><code><span class="code-row">Алексей 25 Москва</span><span class="code-row">Мария 30 Питер</span></code></pre>
+
+                <p>Чтобы вывести только имена (первую колонку):</p>
+                <pre class="code-numbered"><code><span class="code-row">awk '{print $1}' users.txt</span></code></pre>
+
+                <p>Чтобы вывести имя и город (первую и третью колонку):</p>
+                <pre class="code-numbered"><code><span class="code-row">awk '{print $1, $3}' users.txt</span></code></pre>
+
+                <p>С помощью <code>awk</code> можно фильтровать строки, как в <code>if</code>. Например, вывести тех, кто старше 28 лет (вторая колонка):</p>
+                <pre class="code-numbered"><code><span class="code-row">awk '$2 &gt; 28 {print $1}' users.txt</span></code></pre>
+
+                <h2>Конвейеры (Pipes)</h2>
+
+                <p>Главная магия Linux заключается в том, что эти утилиты можно соединять вместе с помощью символа <code>|</code> (pipe). Это называется конвейером.</p>
+
+                <p>Конвейер берёт вывод одной команды и передаёт его на вход другой.</p>
+
+                <p>Пример: найти все процессы, связанные с <code>python</code>, и вывести только их ID (первая колонка).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ps aux | grep python | awk '{print $2}'</span></code></pre>
+
+                <p>Как это читается: команда <code>ps aux</code> (список процессов) передаёт свой текст команде <code>grep python</code> (оставляет только строки с python), которая, в свою очередь, передаёт отфильтрованные строки команде <code>awk</code>, которая выводит только вторую колонку (PID).</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>grep "text" file</code>
+                        <span>найти строку</span>
+                    </li>
+                    <li>
+                        <code>grep -i</code>
+                        <span>без учета регистра</span>
+                    </li>
+                    <li>
+                        <code>sed 's/a/b/'</code>
+                        <span>заменить текст</span>
+                    </li>
+                    <li>
+                        <code>awk '{print $1}'</code>
+                        <span>вывести колонку</span>
+                    </li>
+                    <li>
+                        <code>cmd1 | cmd2</code>
+                        <span>передать вывод по конвейеру</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с текстовыми утилитами.</p>
+
+                <ul>
+                    <li><strong>«grep ничего не находит»</strong>. Проверьте регистр. Используйте флаг <code>-i</code>, если не уверены в написании.</li>
+                    <li><strong>«sed не меняет файл»</strong>. По умолчанию <code>sed</code> выводит результат на экран, но не трогает исходный файл. Используйте флаг <code>-i</code>, чтобы сохранить изменения.</li>
+                    <li><strong>«awk выводит странные символы»</strong>. Проверьте, какие разделители в вашем файле. По умолчанию это пробелы. Если в файле запятые (CSV), укажите флаг <code>-F,</code>, например: <code>awk -F, '{print $1}' file.csv</code>.</li>
+                    <li><strong>«Слишком много вывода от конвейера»</strong>. Если команда выводит много текста, добавьте <code>| less</code> в конец. Это позволит листать вывод стрелками.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Поиск в файле</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте файл <code>test.txt</code> с любым текстом (несколько строк). Найдите в нём строку, содержащую слово «Linux».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>grep</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">grep "Linux" test.txt</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Замена в файле</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В файле <code>test.txt</code> замените все вхождения слова «Windows» на «Linux» и сохраните изменения в файле.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>sed</code> с флагом <code>-i</code> и <code>g</code>, чтобы заменить все вхождения в файле.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">sed -i 's/Windows/Linux/g' test.txt</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Вывод колонки</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте файл <code>fruits.csv</code> с данными: <code>Яблоко,50</code>, <code>Банан,30</code>, <code>Вишня,120</code>. Используя <code>awk</code>, выведите только названия фруктов (первую колонку).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Так как разделитель - запятая, используйте <code>awk -F, '{print $1}' fruits.csv</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">awk -F, '{print $1}' fruits.csv</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Конвейер</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выведите список всех пользователей в системе (команда <code>cat /etc/passwd</code>), оставьте только строки, содержащие <code>/bin/bash</code> (это пользователи с оболочкой), и извлеките только их имена (первая колонка до двоеточия).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вам понадобится цепочка: <code>cat /etc/passwd | grep "/bin/bash" | awk -F: '{print $1}'</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">cat /etc/passwd | grep "/bin/bash" | awk -F: '{print $1}'</span></code></pre>
+                                    <p>Этот скрипт читает файл паролей, фильтрует строки, где оболочкой является bash, и выводит только имя пользователя (до первого двоеточия).</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Вы получили в руки мощнейшие инструменты для работы с текстом. Теперь вы умеете:</p>
+                <ul>
+                    <li>Искать текст с помощью <code>grep</code>.</li>
+                    <li>Заменять текст с помощью <code>sed</code>.</li>
+                    <li>Извлекать колонки с помощью <code>awk</code>.</li>
+                    <li>Соединять команды в конвейеры (<code>|</code>).</li>
+                </ul>
+
+                <p>Эти навыки - база для любого системного администратора. Умение фильтровать и обрабатывать логи прямо из консоли экономит часы работы.</p>
+
+                <p>В следующем уроке мы отойдём от текста и посмотрим на саму систему. Вы узнаете, как управлять процессами, проверять место на диске и понимать, что происходит внутри вашего Linux-сервера. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-07.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-09.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

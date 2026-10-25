@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Системные команды - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="windows" data-lesson-id="lesson-04">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Windows</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 04</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Windows</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация по файловой системе</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Работа с файлами и папками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson active" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Системные команды</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Сетевые утилиты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Введение в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Основы скриптов в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Системные команды</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-windows-logo"></i> Windows</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Иногда компьютер начинает «тормозить» или зависает. Мы привыкли открывать «Диспетчер задач» через <code>Ctrl+Shift+Esc</code>, чтобы найти проблемную программу и закрыть её. Но всё это можно сделать через терминал, причём быстрее и точнее.</p>
+
+                <p>Сегодня мы научимся управлять процессами и узнаем, как получить полную информацию о системе.</p>
+
+                <h2>Просмотр процессов: tasklist</h2>
+
+                <p>Команда <code>tasklist</code> показывает список всех запущенных в системе программ (процессов). Это как рентгеновский снимок вашего компьютера, который показывает всё, что сейчас работает.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">tasklist</span></code></pre>
+
+                <p>Вывод будет содержать несколько колонок:</p>
+                <ul>
+                    <li><strong>Имя образа</strong> - название программы (например, <code>chrome.exe</code>).</li>
+                    <li><strong>PID</strong> - уникальный номер процесса (Process ID).</li>
+                    <li><strong>Имя сеанса</strong> и <strong>Память</strong> - служебная информация.</li>
+                </ul>
+
+                <p>Список может быть очень длинным. Чтобы найти что-то конкретное, используйте фильтр <code>/fi</code> (filter). Например, найдём все процессы браузера Chrome:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">tasklist /fi "imagename eq chrome.exe"</span></code></pre>
+
+                <h2>Завершение процессов: taskkill</h2>
+
+                <p>Если программа зависла и не реагирует на мышку, её нужно «прибить». Для этого есть команда <code>taskkill</code>.</p>
+
+                <p>Убить процесс можно по его имени (<code>/IM</code> от Image Name) или по номеру (<code>/PID</code>).</p>
+
+                <p>Например, принудительно закроем Блокнот:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">taskkill /IM notepad.exe /F</span></code></pre>
+
+                <p>Ключ <code>/F</code> означает «force» (принудительно). Без него система попытается закрыть программу «вежливо» (что может не сработать, если она зависла).</p>
+
+                <p>Если вы знаете PID процесса (например, 1234), можно убить его так:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">taskkill /PID 1234 /F</span></code></pre>
+
+                <h2>Информация о системе: systeminfo</h2>
+
+                <p>Команда <code>systeminfo</code> выводит подробную информацию о вашем компьютере: версию Windows, модель процессора, объём оперативной памяти, дату установки системы и многое другое.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">systeminfo</span></code></pre>
+
+                <p>Вывод может занять несколько секунд и будет очень длинным. Если вам нужна конкретная строка (например, про память), можно использовать фильтр через конвейер:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">systeminfo | findstr "Память"</span></code></pre>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Будьте осторожны с taskkill
+                    </div>
+                    <p>Не убивайте процессы, в названии которых вы не уверены. Если вы завершите системный процесс (например, <code>explorer.exe</code>), у вас исчезнет рабочий стол и панель задач. Если это случилось, перезагрузите компьютер или запустите <code>explorer.exe</code> заново через «Файл -> Новая задача» в Диспетчере задач.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>tasklist</code>
+                        <span>список процессов</span>
+                    </li>
+                    <li>
+                        <code>tasklist /fi</code>
+                        <span>фильтр процессов</span>
+                    </li>
+                    <li>
+                        <code>taskkill /IM</code>
+                        <span>убить по имени</span>
+                    </li>
+                    <li>
+                        <code>taskkill /PID</code>
+                        <span>убить по номеру</span>
+                    </li>
+                    <li>
+                        <code>taskkill /F</code>
+                        <span>принудительно</span>
+                    </li>
+                    <li>
+                        <code>systeminfo</code>
+                        <span>информация о системе</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с процессами.</p>
+
+                <ul>
+                    <li><strong>«Отказано в доступе»</strong>. Вы пытаетесь убить системный процесс или программу другого пользователя. Запустите терминал от имени администратора.</li>
+                    <li><strong>«Не удалось найти процесс»</strong>. Вы опечатались в имени программы или она уже закрылась. Проверьте список через <code>tasklist</code>.</li>
+                    <li><strong>«taskkill не убивает процесс»</strong>. Вы забыли добавить ключ <code>/F</code>. Без него программа может проигнорировать запрос на закрытие.</li>
+                    <li><strong>«systeminfo работает очень долго»</strong>. Это нормально. Сбор информации о системе требует времени. Подождите пару секунд.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Перепись населения</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выведите на экран список всех запущенных процессов в системе.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>tasklist</code> без аргументов.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">tasklist</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Найти Блокнот</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Запустите Блокнот. Найдите его PID с помощью команды <code>tasklist</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте фильтр: <code>tasklist /fi "imagename eq notepad.exe"</code>. Во второй колонке (PID) будет нужное число.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">tasklist /fi "imagename eq notepad.exe"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Принудительное закрытие</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Закройте Блокнот (который вы открыли в прошлой задаче) прямо из терминала, не используя мышку.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>taskkill</code> с флагом <code>/IM notepad.exe</code> и <code>/F</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">taskkill /IM notepad.exe /F</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Информация о системе</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выведите информацию о вашем компьютере, но оставьте только строку с версией операционной системы.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>systeminfo | findstr "ОС"</code> (или "OS" в английской версии Windows).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">systeminfo | findstr "ОС"</span></code></pre>
+                                    <p>В зависимости от версии Windows, строка может называться «Имя ОС» или «OS Name».</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь вы можете управлять процессами так же, как опытный системный администратор. Вы узнали:</p>
+                <ul>
+                    <li>Как посмотреть список всех запущенных программ (<code>tasklist</code>).</li>
+                    <li>Как найти процесс по имени с помощью фильтра.</li>
+                    <li>Как принудительно завершить зависшую программу (<code>taskkill</code>).</li>
+                    <li>Как получить информацию о системе (<code>systeminfo</code>).</li>
+                </ul>
+
+                <p>Но терминал умеет работать не только с локальным компьютером, но и с сетью. В следующем уроке мы разберём <strong>сетевые утилиты</strong>. Вы научитесь проверять интернет-соединение, узнавать свой IP-адрес и смотреть, какие сайты доступны. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-03.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-05.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

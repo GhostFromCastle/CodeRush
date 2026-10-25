@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проект: Telegram-бот - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="advanced" data-lesson-id="lesson-31">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый уровень</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 31</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-31.html" class="sidebar-lesson active" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Проект: Telegram-бот</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Мы изучили много теории: от переменных и циклов до баз данных, тестов и паттернов проектирования. Пришло время собрать всё это вместе и создать что-то по-настоящему полезное и осязаемое.</p>
+
+                <p>Сегодня мы напишем <strong>Telegram-бота</strong>. Это программа, которая работает на вашем компьютере (или сервере), общается с серверами Telegram по API и отвечает пользователям. Боты используются для всего: от службы поддержки и новостных рассылок до игр и умных помощников.</p>
+
+                <h2>Что такое Telegram Bot API?</h2>
+
+                <p>Telegram предоставляет разработчикам специальный интерфейс (API), через который программы могут отправлять и получать сообщения. Чтобы бот не был «анонимным», у него есть уникальный <strong>токен</strong> - длинная строка символов, которая работает как пароль.</p>
+
+                <p><strong>Важно:</strong> Токен - это ключ к вашему боту. Никогда и никому его не передавайте, иначе злоумышленники смогут управлять вашим ботом.</p>
+
+                <h2>Шаг 1. Получаем токен у BotFather</h2>
+
+                <p>Создать бота можно прямо в самом Telegram.</p>
+                <ol>
+                    <li>Откройте Telegram и в поиске найдите <code>@BotFather</code> (это официальный бот Telegram).</li>
+                    <li>Нажмите «Запустить» (<code>/start</code>).</li>
+                    <li>Отправьте команду <code>/newbot</code>.</li>
+                    <li>Придумайте имя бота (например, «Мой первый бот»).</li>
+                    <li>Придумайте username (он должен заканчиваться на <code>_bot</code>, например <code>my_first_code_bot</code>).</li>
+                </ol>
+
+                <p>После этого BotFather пришлёт вам сообщение с токеном. Он выглядит примерно так: <code>123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ</code>. Скопируйте его, он нам скоро понадобится.</p>
+
+                <h2>Шаг 2. Устанавливаем библиотеку</h2>
+
+                <p>Писать код для Telegram API с нуля - сложно. Поэтому используются библиотеки. Самая популярная и простая для новичков - <code>pyTelegramBotAPI</code> (часто называют просто <code>telebot</code>).</p>
+
+                <p>Откройте терминал в VS Code и выполните команду:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">pip install pytelegrambotapi</span></code></pre>
+
+                <h2>Шаг 3. Первый код</h2>
+
+                <p>Создайте файл <code>bot.py</code> и напишите следующий код. Это будет наш «Эхо-бот», который повторяет всё, что вы ему напишете.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">import telebot</span><span class="code-row"></span><span class="code-row">TOKEN = "ВАШ_ТОКЕН_ЗДЕСЬ"</span><span class="code-row">bot = telebot.TeleBot(TOKEN)</span><span class="code-row"></span><span class="code-row">@bot.message_handler(commands=['start'])</span><span class="code-row">def handle_start(message):</span><span class="code-row">    bot.send_message(message.chat.id, "Привет! Я твой первый бот.")</span><span class="code-row"></span><span class="code-row">@bot.message_handler(content_types=['text'])</span><span class="code-row">def handle_text(message):</span><span class="code-row">    bot.send_message(message.chat.id, f"Ты написал: {message.text}")</span><span class="code-row"></span><span class="code-row">bot.polling()</span></code></pre>
+
+                <p>Замените <code>ВАШ_ТОКЕН_ЗДЕСЬ</code> на токен от BotFather. Запустите файл.</p>
+
+                <p>Найдите своего бота в Telegram по его username, нажмите «Запустить» и напишите что-нибудь. Бот ответит вам!</p>
+
+                <h2>Разбор кода</h2>
+
+                <ul>
+                    <li><strong><code>telebot.TeleBot(TOKEN)</code></strong> - создаёт объект бота, авторизуясь с помощью токена.</li>
+                    <li><strong><code>@bot.message_handler(commands=['start'])</code></strong> - декоратор (мы проходили их в уроке 21). Он говорит боту: «Если пользователь пришлёт команду /start - выполни эту функцию».</li>
+                    <li><strong><code>@bot.message_handler(content_types=['text'])</code></strong> - ловит любые текстовые сообщения.</li>
+                    <li><strong><code>message.chat.id</code></strong> - уникальный идентификатор чата пользователя. Он нужен, чтобы бот знал, кому отвечать.</li>
+                    <li><strong><code>bot.send_message()</code></strong> - отправляет сообщение в указанный чат.</li>
+                    <li><strong><code>bot.polling()</code></strong> - запускает бесконечный цикл, в котором бот «слушает» сервер Telegram на предмет новых сообщений.</li>
+                </ul>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>pip install pytelegrambotapi</code>
+                        <span>установка библиотеки</span>
+                    </li>
+                    <li>
+                        <code>telebot.TeleBot(TOKEN)</code>
+                        <span>создание бота</span>
+                    </li>
+                    <li>
+                        <code>@bot.message_handler</code>
+                        <span>ловим сообщения</span>
+                    </li>
+                    <li>
+                        <code>message.chat.id</code>
+                        <span>ID пользователя</span>
+                    </li>
+                    <li>
+                        <code>bot.send_message()</code>
+                        <span>отправка сообщения</span>
+                    </li>
+                    <li>
+                        <code>bot.polling()</code>
+                        <span>запуск бота</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при создании ботов.</p>
+
+                <ul>
+                    <li><strong>«ModuleNotFoundError: No module named 'telebot'»</strong>. Вы не установили библиотеку. Выполните <code>pip install pytelegrambotapi</code> в терминале.</li>
+                    <li><strong>«Бот не отвечает на сообщения»</strong>. Проверьте, запущен ли ваш файл <code>bot.py</code> и не завершился ли он с ошибкой. Также убедитесь, что вы написали <code>bot.polling()</code> в самом конце.</li>
+                    <li><strong>«telebot.apihelper.ApiTelegramException: Unauthorized»</strong>. Вы неправильно скопировали токен, или он был отозван. Перевыпустите токен через BotFather.</li>
+                    <li><strong>«Бот отправляет сообщения по несколько раз»</strong>. Скорее всего, у вас запущено несколько копий вашей программы одновременно. Закройте все лишние терминалы и перезапустите только один.</li>
+                    <li><strong>«Ошибка при использовании русских букв»</strong>. Убедитесь, что ваш файл сохранён в кодировке UTF-8 (это стандарт для VS Code, но стоит проверить).</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Бот-попугай</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите бота, который на любое текстовое сообщение отвечает: «Ты сказал: [текст пользователя]». Если пользователь напишет «пока», бот должен ответить «До встречи!» и больше не отвечать до перезапуска.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Внутри функции <code>handle_text</code> проверяйте <code>message.text.lower()</code>. Если это «пока», отправьте ответ, но остальной код не выполняйте (можно использовать <code>return</code>).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import telebot</span><span class="code-row"></span><span class="code-row">bot = telebot.TeleBot("ВАШ_ТОКЕН")</span><span class="code-row"></span><span class="code-row">@bot.message_handler(commands=['start'])</span><span class="code-row">def start(message):</span><span class="code-row">    bot.send_message(message.chat.id, "Привет! Напиши что-нибудь.")</span><span class="code-row"></span><span class="code-row">@bot.message_handler(content_types=['text'])</span><span class="code-row">def text_handler(message):</span><span class="code-row">    if message.text.lower() == "пока":</span><span class="code-row">        bot.send_message(message.chat.id, "До встречи!")</span><span class="code-row">        return</span><span class="code-row">    </span><span class="code-row">    bot.send_message(message.chat.id, f"Ты сказал: {message.text}")</span><span class="code-row"></span><span class="code-row">bot.polling()</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Бот-кубик</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте бота, который на команду <code>/dice</code> присылает случайное число от 1 до 6. Используйте модуль <code>random</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте отдельный хендлер с декоратором <code>@bot.message_handler(commands=['dice'])</code>. Внутри используйте <code>random.randint(1, 6)</code> и отправьте результат через <code>bot.send_message</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import telebot</span><span class="code-row">import random</span><span class="code-row"></span><span class="code-row">bot = telebot.TeleBot("ВАШ_ТОКЕН")</span><span class="code-row"></span><span class="code-row">@bot.message_handler(commands=['dice'])</span><span class="code-row">def roll_dice(message):</span><span class="code-row">    result = random.randint(1, 6)</span><span class="code-row">    bot.send_message(message.chat.id, f"Выпало число: {result}")</span><span class="code-row"></span><span class="code-row">bot.polling()</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Эхо-калькулятор</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Научите бота считать. Если пользователь отправляет сообщение в формате «2 + 3» (или «10 - 4», «5 * 6»), бот должен посчитать результат и отправить его обратно. Используйте <code>eval()</code> и обработку исключений.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>try: result = eval(message.text)</code> и <code>except Exception:</code>, чтобы бот не падал, если ввести текст вместо примера. Отправьте результат в чат.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import telebot</span><span class="code-row"></span><span class="code-row">bot = telebot.TeleBot("ВАШ_ТОКЕН")</span><span class="code-row"></span><span class="code-row">@bot.message_handler(content_types=['text'])</span><span class="code-row">def calc(message):</span><span class="code-row">    try:</span><span class="code-row">        result = eval(message.text)</span><span class="code-row">        bot.send_message(message.chat.id, f"Результат: {result}")</span><span class="code-row">    except Exception:</span><span class="code-row">        bot.send_message(message.chat.id, "Я умею считать только примеры (например, 2 + 2).")</span><span class="code-row"></span><span class="code-row">bot.polling()</span></code></pre>
+                                    <p>В реальных проектах <code>eval()</code> использовать опасно, так как он может выполнить любой код, который введёт пользователь. Но для учебного примера это допустимо.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Словарь терминов</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте бота, который работает как мини-словарь. У вас есть словарь Python с терминами: <code>{"API": "Интерфейс...", "Python": "Язык программирования..."}</code>. Бот ищет слово из сообщения в словаре и присылает определение, либо говорит, что не знает такого слова.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте словарь <code>dictionary = {...}</code> в начале программы. В хендлере используйте <code>dictionary.get(message.text)</code>. Если метод вернул <code>None</code> - термина нет.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">import telebot</span><span class="code-row"></span><span class="code-row">bot = telebot.TeleBot("ВАШ_ТОКЕН")</span><span class="code-row"></span><span class="code-row">dictionary = {</span><span class="code-row">    "API": "Application Programming Interface",</span><span class="code-row">    "Python": "Язык программирования общего назначения",</span><span class="code-row">    "Код": "Набор инструкций для компьютера"</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">@bot.message_handler(content_types=['text'])</span><span class="code-row">def search_word(message):</span><span class="code-row">    word = message.text</span><span class="code-row">    definition = dictionary.get(word)</span><span class="code-row">    </span><span class="code-row">    if definition:</span><span class="code-row">        bot.send_message(message.chat.id, f"{word}: {definition}")</span><span class="code-row">    else:</span><span class="code-row">        bot.send_message(message.chat.id, "Я не знаю такого слова.")</span><span class="code-row"></span><span class="code-row">bot.polling()</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы создали первого настоящего Telegram-бота. Это огромный шаг: теперь ваша программа общается с реальными людьми через интернет. Вы узнали:</p>
+
+                <ul>
+                    <li>Как получить токен у BotFather и зачем он нужен.</li>
+                    <li>Как установить и использовать библиотеку <code>telebot</code>.</li>
+                    <li>Как обрабатывать команды и текстовые сообщения.</li>
+                    <li>Как отправлять ответы пользователям.</li>
+                    <li>Как обрабатывать ошибки, чтобы бот не падал.</li>
+                </ul>
+
+                <p>Создание ботов - это отличный способ попрактиковаться. Бот может помогать вам с учёбой, напоминать о делах, отправлять погоду или мемы. Всё ограничено лишь вашей фантазией.</p>
+
+                <p>В следующем, финальном уроке продвинутого уровня мы закрепим все полученные знания. Мы соберём <strong>финальный проект</strong>, который объединит в себе базу данных, регулярные выражения, телеграм-бота и обработку ошибок. Вы увидите, как все разрозненные кусочки пазла собираются в единое целое. До встречи на финишной прямой!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-30.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-32.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика: скрипт бэкапа - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="windows" data-lesson-id="lesson-07">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Windows</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 07</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Windows (Bat)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в Batch-скрипты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы и метки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Аргументы командной строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson active" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Запуск программ</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт бэкапа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Даты, время и очистка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Работа с логами и текстом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик и права админа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Практика: скрипт бэкапа</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-windows-logo"></i> Windows</span>
+                    <span><i class="ph ph-code"></i> Только практика</span>
+                </div>
+
+                <p>Мы изучили все базовые инструменты: условия, циклы, аргументы и запуск программ. Пришло время собрать их вместе и написать первый по-настоящему полезный скрипт, который вы сможете использовать каждый день.</p>
+
+                <p>Сегодня мы создадим <strong>скрипт для резервного копирования</strong> (бэкапа). Он будет брать вашу важную папку с документами и копировать её в безопасное место, добавляя к названию текущую дату.</p>
+
+                <h2>Зачем нужен бэкап?</h2>
+
+                <p>Жесткие диски ломаются, файлы случайно удаляются, а вирусы могут зашифровать все данные. Настоящие профи не просто делают копии — они <strong>автоматизируют</strong> этот процесс, чтобы не забыть о нём.</p>
+
+                <h2>Инструмент для копирования: xcopy</h2>
+
+                <p>Обычная команда <code>copy</code> умеет копировать только отдельные файлы. Для копирования целых папок со вложенными директориями используется <code>xcopy</code> (extended copy).</p>
+
+                <p>У неё есть несколько важных ключей (флагов):</p>
+                <ul>
+                    <li><strong><code>/E</code></strong> - копировать все папки, включая пустые.</li>
+                    <li><strong><code>/I</code></strong> - если папки назначения нет, считать её папкой (а не файлом).</li>
+                    <li><strong><code>/H</code></strong> - копировать скрытые и системные файлы.</li>
+                    <li><strong><code>/Y</code></strong> - не спрашивать подтверждение на перезапись файлов.</li>
+                </ul>
+
+                <h2>Работа с датой</h2>
+
+                <p>Если мы каждый раз будем копировать файлы в одну и ту же папку, мы просто перезапишем старые копии. Нам нужно создавать новую папку с датой, например <code>Backup_2026-10-25</code>.</p>
+
+                <p>В Windows есть переменная <code>%date%</code>, которая хранит текущую дату. Но у неё есть проблема: в разных странах формат отличается (например, <code>25.10.2026</code> или <code>10/25/2026</code>). А символы <code>/</code> и <code>.</code> нельзя использовать в названиях папок!</p>
+
+                <p>Чтобы заменить точки и слэши на дефисы (которые разрешены в названиях папок), используется трюк с заменой текста:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">set "today=%date:~-4%-%date:~3,2%-%date:~0,2%"</span></code></pre>
+
+                <p>Эта конструкция берёт подстроки из <code>%date%</code> (год, месяц, день) и расставляет между ними дефисы. <em>Если у вас в системе формат даты другой, этот код может не сработать. Для простоты в этом уроке мы будем использовать команду <code>wmic</code>, которая всегда выдаёт дату в стандартном формате.</em></p>
+
+                <h2>Сборка скрипта</h2>
+
+                <p>Давайте создадим файл <code>backup.bat</code>. Напишем пошагово, что он должен делать:</p>
+
+                <ol>
+                    <li>Получить сегодняшнюю дату в формате ГГГГ-ММ-ДД.</li>
+                    <li>Создать папку с названием <code>Backup_[дата]</code>.</li>
+                    <li>Скопировать туда все файлы из папки <code>Мои документы</code>.</li>
+                    <li>Вывести сообщение об успехе.</li>
+                </ol>
+
+                <pre class="code-numbered"><code><span class="code-row">@echo off</span><span class="code-row">chcp 65001 >nul</span><span class="code-row">title Скрипт резервного копирования</span><span class="code-row"></span><span class="code-row">rem Получаем дату в формате YYYYMMDD</span><span class="code-row">for /f "tokens=2 delims==" %%a in ('wmic os get localdatetime /value') do set "dt=%%a"</span><span class="code-row">set "today=%dt:~0,4%-%dt:~4,2%-%dt:~6,2%"</span><span class="code-row"></span><span class="code-row">set "source=C:\Users\%USERNAME%\Documents"</span><span class="code-row">set "backup_dir=%~dp0Backup_%today%"</span><span class="code-row"></span><span class="code-row">echo Создаю резервную копию...</span><span class="code-row">if not exist "%backup_dir%" md "%backup_dir%"</span><span class="code-row"></span><span class="code-row">xcopy "%source%\*.*" "%backup_dir%\" /E /I /H /Y</span><span class="code-row"></span><span class="code-row">echo.</span><span class="code-row">echo Готово! Файлы сохранены в папку:</span><span class="code-row">echo %backup_dir%</span><span class="code-row">pause</span></code></pre>
+
+                <h2>Разбор новых команд</h2>
+
+                <ul>
+                    <li><strong><code>chcp 65001</code></strong> - включает кодировку UTF-8, чтобы русские буквы в консоли отображались правильно.</li>
+                    <li><strong><code>title</code></strong> - меняет название окна командной строки.</li>
+                    <li><strong><code>rem</code></strong> - комментарий (система его игнорирует).</li>
+                    <li><strong><code>%USERNAME%</code></strong> - это встроенная переменная Windows, которая хранит имя текущего пользователя.</li>
+                    <li><strong><code>%~dp0</code></strong> - это очень важная конструкция! Она означает «диск и путь к папке, в которой лежит сам скрипт». Благодаря ей бэкап будет создаваться рядом с самим файлом <code>backup.bat</code>, где бы вы его ни запустили.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Осторожно с путями
+                    </div>
+                    <p>В переменной <code>source</code> мы используем путь к документам по умолчанию. Если у вас папка «Документы» находится на другом диске или называется иначе (например, из-за OneDrive), измените путь в строке <code>set "source=..."</code> на свой.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>xcopy</code>
+                        <span>копирование папок</span>
+                    </li>
+                    <li>
+                        <code>/E /I /H /Y</code>
+                        <span>флаги xcopy</span>
+                    </li>
+                    <li>
+                        <code>%USERNAME%</code>
+                        <span>имя пользователя</span>
+                    </li>
+                    <li>
+                        <code>%~dp0</code>
+                        <span>путь к папке скрипта</span>
+                    </li>
+                    <li>
+                        <code>rem</code>
+                        <span>комментарий</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при создании бэкапа.</p>
+
+                <ul>
+                    <li><strong>«Недостаточно прав для выполнения операции»</strong>. Скрипт пытается скопировать системные файлы. Запустите файл от имени администратора (ПКМ -> Запуск от имени администратора).</li>
+                    <li><strong>«Папка не найдена»</strong>. Проверьте, существует ли папка, указанная в <code>source</code>. Если у вас Windows на английском, путь будет <code>C:\Users\...\Documents</code>.</li>
+                    <li><strong>«xcopy не является внутренней или внешней командой»</strong>. Убедитесь, что в скрипте нет опечаток. Также xcopy может отсутствовать в некоторых урезанных версиях Windows (редко).</li>
+                    <li><strong>«Кракозябры вместо русского текста»</strong>. Если вы не добавили <code>chcp 65001</code>, консоль может не понимать UTF-8. Однако это зависит от версии Windows.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Свой путь</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Измените скрипт из урока так, чтобы он копировал не папку «Документы», а папку <code>C:\Projects</code> (или любую другую, которая есть на вашем компьютере).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Найдите строку <code>set "source=..."</code> и замените путь в кавычках на свой.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">set "source=C:\Projects"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Дописываем время</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Сделайте так, чтобы в название папки бэкапа добавлялось не только дата, но и время (часы и минуты), чтобы можно было делать несколько бэкапов за день. Например: <code>Backup_2026-10-25_14-30</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте переменную <code>%time%</code>. Но в ней есть двоеточия (14:30:15.12). Замените их на дефисы: <code>set "tm=%time::=-%"</code>. И обрежьте лишние секунды: <code>%tm:~0,5%</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">for /f "tokens=2 delims==" %%a in ('wmic os get localdatetime /value') do set "dt=%%a"</span><span class="code-row">set "today=%dt:~0,4%-%dt:~4,2%-%dt:~6,2%"</span><span class="code-row">set "tm=%time::=-%"</span><span class="code-row">set "tm=%tm:~0,5%"</span><span class="code-row">set "backup_dir=%~dp0Backup_%today%_%tm%"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Проверка исходной папки</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Добавьте проверку: если папки, которую мы хотим скопировать (<code>source</code>), не существует, скрипт должен вывести красное сообщение об ошибке и завершиться, не создавая пустую папку бэкапа.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>if not exist "%source%" ( ... )</code>. Внутри выведите ошибку, сделайте <code>pause</code> и <code>goto :eof</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">if not exist "%source%" (</span><span class="code-row">    echo Ошибка: Исходная папка %source% не найдена!</span><span class="code-row">    pause</span><span class="code-row">    goto :eof</span><span class="code-row">)</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Очистка старых бэкапов</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В папке со скриптом могут накапливаться старые бэкапы. Добавьте в конец скрипта команду, которая удаляет папки, начинающиеся на <code>Backup_</code> (сделайте это в тестовой папке, чтобы не удалить лишнее).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Это сложная задача. Можно использовать цикл <code>for /d %%d in (Backup_*) do rd /s /q "%%d"</code>. Ключ <code>/d</code> означает перебор только папок. <code>rd</code> - удаление папки, <code>/s</code> - со всем содержимым, <code>/q</code> - без вопросов.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">for /d %%d in ("%~dp0Backup_*") do rd /s /q "%%d"</span></code></pre>
+                                    <p>Но имейте в виду: этот код удалит <strong>все</strong> папки, начинающиеся на Backup_, прямо перед созданием новой. Будьте осторожны!</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Вы написали скрипт, который реально экономит время и защищает данные. Теперь вы знаете:</p>
+                <ul>
+                    <li>Как использовать <code>xcopy</code> для копирования папок.</li>
+                    <li>Как получить текущую дату и время.</li>
+                    <li>Что такое <code>%~dp0</code> и <code>%USERNAME%</code>.</li>
+                    <li>Как добавлять комментарии через <code>rem</code>.</li>
+                </ul>
+
+                <p>Но это только начало. Настоящие профи не просто копируют файлы, они умеют управлять системой. В следующем уроке мы разберём <strong>даты, время и очистку системы</strong>. Вы узнаете, как безопасно удалять временные файлы, кэш и освобождать место на диске. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-06.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-08.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

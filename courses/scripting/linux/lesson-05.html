@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Циклы - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="linux" data-lesson-id="lesson-05">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 05</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux (Bash)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение и первый скрипт</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и аргументы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и математика</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson active" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Функции в Bash</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт сбора логов</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Обработка текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик Cron</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Циклы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Представьте, что вам нужно создать 100 пустых папок для проекта. Или обработать тысячу лог-файлов, чтобы найти ошибки. Писать одну и ту же команду сто или тысячу раз - безумие. Для этого в программировании существуют <strong>циклы</strong>.</p>
+
+                <p>В Bash есть три основных вида циклов: <code>for</code> (для перебора), <code>while</code> (пока условие истинно) и <code>until</code> (пока условие ложно). Сегодня мы научимся ими пользоваться.</p>
+
+                <h2>Цикл for</h2>
+
+                <p>Цикл <code>for</code> используется, когда мы точно знаем, сколько раз нужно повторить действие, или когда нужно перебрать список элементов.</p>
+
+                <p>Синтаксис выглядит так:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">for переменная in список; do</span><span class="code-row">    команды</span><span class="code-row">done</span></code></pre>
+
+                <p>Как и в условиях, блок начинается с <code>do</code> и заканчивается словом <code>done</code> (сделано).</p>
+
+                <h3>Перебор списка значений</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">for fruit in яблоко банан вишня; do</span><span class="code-row">    echo "Я люблю $fruit"</span><span class="code-row">done</span></code></pre>
+
+                <p>Этот скрипт трижды выведет сообщение, подставляя вместо <code>$fruit</code> по очереди каждое слово из списка.</p>
+
+                <h3>Перебор числового диапазона</h3>
+
+                <p>Bash поддерживает удобный синтаксис для перебора чисел: <code>{начало..конец}</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">for i in {1..5}; do</span><span class="code-row">    echo "Шаг номер $i"</span><span class="code-row">done</span></code></pre>
+
+                <p>Этот цикл выполнится ровно 5 раз (от 1 до 5 включительно).</p>
+
+                <h2>Цикл while</h2>
+
+                <p>Цикл <code>while</code> (пока) выполняется до тех пор, пока условие в скобках остаётся истинным. Как только условие становится ложным - цикл завершается.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">while [ условие ]; do</span><span class="code-row">    команды</span><span class="code-row">done</span></code></pre>
+
+                <p>Аналогия: «Пока в кастрюле есть вода - помешивай суп». Как только вода выкипела (условие нарушилось) - мешать больше не нужно.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">count=1</span><span class="code-row">while [ "$count" -le 3 ]; do</span><span class="code-row">    echo "Попытка номер $count"</span><span class="code-row">    count=$((count + 1))</span><span class="code-row">done</span></code></pre>
+
+                <p><strong>Важно:</strong> внутри цикла <code>while</code> мы должны что-то менять, чтобы условие рано или поздно стало ложным. В нашем примере мы увеличиваем <code>count</code> на 1. Если этого не делать, цикл будет бесконечным.</p>
+
+                <h2>Цикл until</h2>
+
+                <p>Цикл <code>until</code> (до тех пор, пока не) - это полная противоположность <code>while</code>. Он выполняется, пока условие <strong>ложно</strong>. Как только условие становится истинным, цикл завершается.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">count=1</span><span class="code-row">until [ "$count" -gt 3 ]; do</span><span class="code-row">    echo "Попытка $count"</span><span class="code-row">    count=$((count + 1))</span><span class="code-row">done</span></code></pre>
+
+                <p>Этот код делает то же самое, что и предыдущий, но записан через <code>until</code>: «Выполняй, пока count не станет больше 3».</p>
+
+                <h2>Полезные приемы</h2>
+
+                <h3>Бесконечный цикл</h3>
+
+                <p>Иногда нужно, чтобы скрипт работал до тех пор, пока пользователь сам его не остановит (например, меню). Для этого используют конструкцию <code>while true</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">while true; do</span><span class="code-row">    read -p "Введите команду (или 'выход'): " cmd</span><span class="code-row">    if [ "$cmd" == "выход" ]; then</span><span class="code-row">        break</span><span class="code-row">    fi</span><span class="code-row">    echo "Вы ввели: $cmd"</span><span class="code-row">done</span></code></pre>
+
+                <h3>Прерывание цикла: break и continue</h3>
+
+                <p>Команда <code>break</code> полностью прерывает цикл и выходит из него. Команда <code>continue</code> пропускает текущую итерацию и переходит к следующей.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">for i in {1..5}; do</span><span class="code-row">    if [ "$i" -eq 3 ]; then</span><span class="code-row">        continue</span><span class="code-row">    fi</span><span class="code-row">    echo "Число: $i"</span><span class="code-row">done</span></code></pre>
+
+                <p>Этот скрипт выведет 1, 2, 4, 5. Число 3 будет пропущено из-за <code>continue</code>.</p>
+
+                <h2>Чтение файла в цикле</h2>
+
+                <p>Часто циклы используются для построчной обработки текстовых файлов. Делается это с помощью связки <code>while read</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">while IFS= read -r line; do</span><span class="code-row">    echo "Строка: $line"</span><span class="code-row">done &lt; file.txt</span></code></pre>
+
+                <p>Конструкция <code>IFS= read -r</code> - это золотой стандарт чтения файлов в Bash. Она защищает от потери пробелов и обработки обратных слэшей.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>for i in {1..5}; do</code>
+                        <span>цикл по числам</span>
+                    </li>
+                    <li>
+                        <code>while [ ... ]; do</code>
+                        <span>цикл с условием</span>
+                    </li>
+                    <li>
+                        <code>until [ ... ]; do</code>
+                        <span>цикл обратного условия</span>
+                    </li>
+                    <li>
+                        <code>do ... done</code>
+                        <span>тело цикла</span>
+                    </li>
+                    <li>
+                        <code>break</code>
+                        <span>выйти из цикла</span>
+                    </li>
+                    <li>
+                        <code>continue</code>
+                        <span>пропустить шаг</span>
+                    </li>
+                    <li>
+                        <code>while read line</code>
+                        <span>чтение файла</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с циклами.</p>
+
+                <ul>
+                    <li><strong>«Скрипт завис и не отвечает»</strong>. У вас бесконечный цикл. Проверьте, меняется ли переменная внутри <code>while</code>, чтобы условие могло стать ложным. Если нет - добавьте изменение или используйте <code>break</code>.</li>
+                    <li><strong>«Syntax error: unexpected end of file»</strong>. Вы забыли закрыть цикл словом <code>done</code>.</li>
+                    <li><strong>«Команды цикла выполняются один раз»</strong>. Проверьте условия. Возможно, условие изначально ложно (например, вы проверяете <code>[ $i -gt 5 ]</code>, когда <code>i=1</code>).</li>
+                    <li><strong>«Переменная внутри цикла не сохраняет значение»</strong>. Если вы используете конвейер (например, <code>echo ... | while read ...</code>), цикл выполняется в подоболочке. Переменные, созданные внтури, не сохранятся после выхода. Используйте перенаправление потока (<code>done &lt; file</code>) вместо конвейера.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. От 1 до 5</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт, который с помощью цикла <code>for</code> выводит на экран числа от 1 до 5.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте конструкцию <code>for i in {1..5}; do ... done</code>. Внутри цикла выведите <code>$i</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">for i in {1..5}; do</span><span class="code-row">    echo "$i"</span><span class="code-row">done</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Сумма чисел</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Спросите у пользователя число N. С помощью цикла посчитайте сумму всех чисел от 1 до N.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте переменную <code>total=0</code>. В цикле <code>for i in $(seq 1 $n)</code> прибавляйте <code>i</code> к <code>total</code> через <code>total=$((total + i))</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">read -p "Введите N: " n</span><span class="code-row">total=0</span><span class="code-row">for i in $(seq 1 $n); do</span><span class="code-row">    total=$((total + i))</span><span class="code-row">done</span><span class="code-row">echo "Сумма от 1 до $n: $total"</span></code></pre>
+                                    <p>Команда <code>seq 1 $n</code> генерирует последовательность чисел от 1 до N.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Вечный пароль</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт, который бесконечно просит ввести пароль. Если введено слово «secret», выводит «Доступ разрешён» и завершается.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>while true; do ... done</code>. Внутри спрашивайте пароль через <code>read</code> и проверяйте через <code>if</code>. Если верно - <code>break</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">while true; do</span><span class="code-row">    read -p "Введите пароль: " pass</span><span class="code-row">    if [ "$pass" == "secret" ]; then</span><span class="code-row">        echo "Доступ разрешён"</span><span class="code-row">        break</span><span class="code-row">    else</span><span class="code-row">        echo "Неверный пароль"</span><span class="code-row">    fi</span><span class="code-row">done</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Исправление ошибок</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами скрипт, который должен вывести числа от 1 до 3, но он не работает. Найдите и исправьте ошибки.</p>
+                            <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">for i in {1..3}</span><span class="code-row">    echo "Число: $i"</span><span class="code-row">done</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Посмотрите внимательно на первую строку цикла. Чего не хватает после списка?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">for i in {1..3}; do</span><span class="code-row">    echo "Число: $i"</span><span class="code-row">done</span></code></pre>
+                                    <p>В первой строке не хватало точки с запятой и слова <code>do</code> перед телом цикла.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь ваши скрипты могут выполнять тысячи операций за секунды. Вы научились:</p>
+                <ul>
+                    <li>Использовать цикл <code>for</code> для перебора списков и чисел.</li>
+                    <li>Использовать <code>while</code> и <code>until</code> для циклов с условиями.</li>
+                    <li>Создавать бесконечные циклы и прерывать их через <code>break</code>.</li>
+                    <li>Читать файлы построчно с помощью <code>while read</code>.</li>
+                </ul>
+
+                <p>Но представьте, что у вас есть скрипт на 100 строк, и вы хотите использовать один и тот же блок кода (например, очистку логов) в разных местах. Копировать его - плохая идея. Для этого существуют <strong>функции</strong>.</p>
+
+                <p>В следующем уроке мы научимся создавать собственные функции, передавать им аргументы и возвращать результаты. Это сделает ваши скрипты чище и профессиональнее. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-04.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-06.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

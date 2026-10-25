@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Паттерны проектирования - Python для начинающих - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="python" data-level="advanced" data-lesson-id="lesson-30">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Python для начинающих</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый уровень</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 30</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Установка и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и диалог</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия: if, elif, else</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы: while, for</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Работа со строками</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Практика: Орёл или Решка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных под капотом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Списки (Lists)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Кортежи, множества, словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Функции: основы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Аргументы и lambda</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Модули и пакеты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>ООП: классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>ООП: наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>ООП: свойства</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Генераторы и итераторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Декораторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Магические методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Абстракции и протоколы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многопоточность и GIL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>База данных (SQLite)</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-30.html" class="sidebar-lesson active" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Паттерны проектирования</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились писать юнит-тесты, чтобы обезопасить наш код от случайных поломок при изменениях. Но тесты защищают от ошибок в реализации, а что насчёт самой структуры проекта?</p>
+
+                <p>Представьте, что вы проектируете дом. Вы можете придумывать каждую деталь с нуля, а можете взять готовый чертёж, который проверен временем. В программировании такие «чертежи» для решения типовых архитектурных задач называются <strong>паттернами проектирования</strong>.</p>
+
+                <p>Это не готовый код, который можно просто скопировать. Это <strong>шаблон</strong>, который описывает, как правильно организовать классы и их взаимодействие. Сегодня мы разберём три самых популярных паттерна, которые пригодятся вам в реальных проектах.</p>
+
+                <h2>Зачем нужны паттерны?</h2>
+
+                <p>Паттерны - это общий язык разработчиков. Когда вы говорите коллеге: «Я использовал здесь Фабрику», он сразу понимает, как устроен ваш код, не читая его. Это делает архитектуру понятной и поддерживаемой.</p>
+
+                <p>Кроме того, паттерны решают конкретные проблемы. Например: как создать объект, чтобы во всей программе был только один его экземпляр? Или как уведомить 10 разных систем о том, что что-то произошло, не создавая жёстких связей между ними?</p>
+
+                <h2>1. Одиночка (Singleton)</h2>
+
+                <p><strong>Проблема:</strong> Вам нужно, чтобы у класса был <em>только один</em> экземпляр во всей программе. Например, подключение к базе данных или настройки приложения. Если создать два подключения, они начнут конфликтовать.</p>
+
+                <p><strong>Решение:</strong> Паттерн Singleton гарантирует, что при попытке создать объект второй раз, вам вернётся тот же самый объект, созданный в первый раз.</p>
+
+                <p>Аналогия: это как президент страны. Вы можете сколько угодно говорить «вызвать президента», но он всегда один и тот же человек.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">class DatabaseConnection:</span><span class="code-row">    _instance = None</span><span class="code-row"></span><span class="code-row">    def __new__(cls):</span><span class="code-row">        if cls._instance is None:</span><span class="code-row">            print("Создаём новое подключение")</span><span class="code-row">            cls._instance = super(DatabaseConnection, cls).__new__(cls)</span><span class="code-row">        return cls._instance</span><span class="code-row"></span><span class="code-row">db1 = DatabaseConnection()</span><span class="code-row">db2 = DatabaseConnection()</span><span class="code-row"></span><span class="code-row">print(db1 is db2) # Выведет True</span></code></pre>
+
+                <p>Мы переопределили магический метод <code>__new__</code>. Он вызывается <em>перед</em> созданием объекта. Если объект уже существует - мы возвращаем его, а не создаём новый.</p>
+
+                <h2>2. Фабрика (Factory)</h2>
+
+                <p><strong>Проблема:</strong> У вас есть много классов, которые наследуются от одного родителя (например, разные виды транспорта: Машина, Мотоцикл, Самолёт). В коде вам нужно создавать их в зависимости от условия, и писать длинные цепочки <code>if/elif</code> каждый раз.</p>
+
+                <p><strong>Решение:</strong> Вы создаёте отдельный класс-«фабрику», который берёт на себя всю логику создания объектов.</p>
+
+                <p>Аналогия: вы приходите в автосалон и говорите «Мне машину для города». Менеджер сам решает, что предложить (например, компактный седан). Вам не нужно знать, как её собирают.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">class Car:</span><span class="code-row">    def drive(self):</span><span class="code-row">        print("Едем на машине")</span><span class="code-row"></span><span class="code-row">class Bike:</span><span class="code-row">    def drive(self):</span><span class="code-row">        print("Едем на велосипеде")</span><span class="code-row"></span><span class="code-row">class VehicleFactory:</span><span class="code-row">    @staticmethod</span><span class="code-row">    def create_vehicle(type):</span><span class="code-row">        if type == "car":</span><span class="code-row">            return Car()</span><span class="code-row">        elif type == "bike":</span><span class="code-row">            return Bike()</span><span class="code-row">        else:</span><span class="code-row">            raise ValueError("Неизвестный тип")</span><span class="code-row"></span><span class="code-row">vehicle = VehicleFactory.create_vehicle("car")</span><span class="code-row">vehicle.drive()</span></code></pre>
+
+                <h2>3. Наблюдатель (Observer)</h2>
+
+                <p><strong>Проблема:</strong> У вас есть объект (например, магазин), и при изменении его состояния нужно уведомить кучу других объектов (покупателей, бухгалтерию, склад). Жёстко связывать их все в одном методе - плохая идея.</p>
+
+                <p><strong>Решение:</strong> Мы создаём список «подписчиков». Когда происходит событие, магазин просто проходит по списку и вызывает у каждого метод <code>update()</code>.</p>
+
+                <p>Аналогия: это как YouTube-канал и подписчики. Автор выложил видео (событие), и платформа сама разослала уведомления всем, кто нажал «колокольчик».</p>
+
+                <pre class="code-numbered"><code><span class="code-row">class Subject:</span><span class="code-row">    def __init__(self):</span><span class="code-row">        self._observers = []</span><span class="code-row"></span><span class="code-row">    def attach(self, observer):</span><span class="code-row">        self._observers.append(observer)</span><span class="code-row"></span><span class="code-row">    def notify(self, message):</span><span class="code-row">        for obs in self._observers:</span><span class="code-row">            obs.update(message)</span><span class="code-row"></span><span class="code-row">class EmailNotifier:</span><span class="code-row">    def update(self, message):</span><span class="code-row">        print(f"Email: Получено сообщение - {message}")</span><span class="code-row"></span><span class="code-row">class SmsNotifier:</span><span class="code-row">    def update(self, message):</span><span class="code-row">        print(f"SMS: Получено сообщение - {message}")</span><span class="code-row"></span><span class="code-row">shop = Subject()</span><span class="code-row">shop.attach(EmailNotifier())</span><span class="code-row">shop.attach(SmsNotifier())</span><span class="code-row">shop.notify("Новый товар в магазине!")</span></code></pre>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Singleton</code>
+                        <span>один объект на всю программу</span>
+                    </li>
+                    <li>
+                        <code>Factory</code>
+                        <span>создание объектов через отдельный класс</span>
+                    </li>
+                    <li>
+                        <code>Observer</code>
+                        <span>подписка и рассылка уведомлений</span>
+                    </li>
+                    <li>
+                        <code>__new__</code>
+                        <span>магический метод для Singleton</span>
+                    </li>
+                    <li>
+                        <code>@staticmethod</code>
+                        <span>статический метод фабрики</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с паттернами.</p>
+
+                <ul>
+                    <li><strong>«Паттерны - это сложно и долго»</strong>. Внедрять паттерны ради паттернов - плохая идея. Для простого скрипта на 50 строк Singleton будет перебором. Паттерны нужны, когда проект растёт и нужно избежать хаоса.</li>
+                    <li><strong>«Синглтон создаёт глобальное состояние»</strong>. Это главный минус Singleton. Он по сути является глобальной переменной. Используйте его осторожно, только там, где действительно нужен один объект (например, логгер или настройки).</li>
+                    <li><strong>«Забыл @staticmethod в фабрике»</strong>. Если не добавить декоратор, метод будет ожидать <code>self</code> при вызове, и <code>VehicleFactory.create_vehicle("car")</code> выдаст ошибку.</li>
+                    <li><strong>«Наблюдатель забыл отписаться»</strong>. Если объект-наблюдатель больше не нужен, но остался в списке <code>_observers</code>, он будет продолжать получать уведомления (и занимать память). Нужно предусмотреть метод <code>detach</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Синглтон для настроек</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте класс <code>AppSettings</code> с использованием паттерна Singleton. В нём должен быть атрибут <code>theme = "dark"</code>. Создайте два объекта этого класса и измените тему через первый. Проверьте, что тема изменилась и у второго объекта.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте метод <code>__new__</code> с проверкой <code>_instance</code>. Так как оба объекта будут ссылаться на одну и ту же область памяти, изменение атрибута через <code>obj1</code> сразу отразится на <code>obj2</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">class AppSettings:</span><span class="code-row">    _instance = None</span><span class="code-row">    theme = "dark"</span><span class="code-row"></span><span class="code-row">    def __new__(cls):</span><span class="code-row">        if cls._instance is None:</span><span class="code-row">            cls._instance = super(AppSettings, cls).__new__(cls)</span><span class="code-row">        return cls._instance</span><span class="code-row"></span><span class="code-row">s1 = AppSettings()</span><span class="code-row">s2 = AppSettings()</span><span class="code-row"></span><span class="code-row">s1.theme = "light"</span><span class="code-row">print(s2.theme) # light</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Простая фабрика</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте два класса: <code>Cat</code> (с методом <code>speak</code>, который печатает «Мяу») и <code>Dog</code> (с методом <code>speak</code>, который печатает «Гав»). Напишите класс <code>AnimalFactory</code> со статическим методом <code>create_animal(animal_type)</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Внутри фабрики используйте условие <code>if animal_type == "cat": return Cat()</code> и так далее. Не забудьте декоратор <code>@staticmethod</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">class Cat:</span><span class="code-row">    def speak(self):</span><span class="code-row">        print("Мяу")</span><span class="code-row"></span><span class="code-row">class Dog:</span><span class="code-row">    def speak(self):</span><span class="code-row">        print("Гав")</span><span class="code-row"></span><span class="code-row">class AnimalFactory:</span><span class="code-row">    @staticmethod</span><span class="code-row">    def create_animal(animal_type):</span><span class="code-row">        if animal_type == "cat":</span><span class="code-row">            return Cat()</span><span class="code-row">        elif animal_type == "dog":</span><span class="code-row">            return Dog()</span><span class="code-row">        else:</span><span class="code-row">            raise ValueError("Неизвестное животное")</span><span class="code-row"></span><span class="code-row">my_pet = AnimalFactory.create_animal("dog")</span><span class="code-row">my_pet.speak()</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Наблюдатели в чате</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте класс <code>ChatRoom</code> (Subject) и класс <code>User</code> (Observer). В чате есть метод <code>send_message(text)</code>, который вызывает у всех подписчиков метод <code>receive(text)</code>, выводящий сообщение. Добавьте двух пользователей и отправьте одно сообщение.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В <code>ChatRoom</code> создайте список <code>users = []</code> и метод <code>add_user(user)</code>. При отправке сообщения проходите циклом по списку и вызывайте <code>user.receive(text)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">class ChatRoom:</span><span class="code-row">    def __init__(self):</span><span class="code-row">        self.users = []</span><span class="code-row"></span><span class="code-row">    def add_user(self, user):</span><span class="code-row">        self.users.append(user)</span><span class="code-row"></span><span class="code-row">    def send_message(self, text):</span><span class="code-row">        print(f"Чат разослал: {text}")</span><span class="code-row">        for user in self.users:</span><span class="code-row">            user.receive(text)</span><span class="code-row"></span><span class="code-row">class User:</span><span class="code-row">    def __init__(self, name):</span><span class="code-row">        self.name = name</span><span class="code-row"></span><span class="code-row">    def receive(self, text):</span><span class="code-row">        print(f"{self.name} получил: {text}")</span><span class="code-row"></span><span class="code-row">chat = ChatRoom()</span><span class="code-row">chat.add_user(User("Алексей"))</span><span class="code-row">chat.add_user(User("Мария"))</span><span class="code-row"></span><span class="code-row">chat.send_message("Привет всем!")</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Фабрика Синглтонов</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Комбинированная задача. Создайте класс <code>Logger</code> (Синглтон), который имеет метод <code>log(message)</code>. Создайте <code>LoggerFactory</code>, который всегда возвращает один и тот же экземпляр логгера. Проверьте, что через фабрику нельзя создать два разных логгера.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В классе <code>Logger</code> используйте стандартный Singleton через <code>__new__</code>. А в <code>LoggerFactory</code> просто напишите метод <code>get_logger()</code>, который делает <code>return Logger()</code>. Так как Logger - синглтон, он всегда будет возвращать один объект.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">class Logger:</span><span class="code-row">    _instance = None</span><span class="code-row"></span><span class="code-row">    def __new__(cls):</span><span class="code-row">        if cls._instance is None:</span><span class="code-row">            cls._instance = super(Logger, cls).__new__(cls)</span><span class="code-row">        return cls._instance</span><span class="code-row"></span><span class="code-row">    def log(self, message):</span><span class="code-row">        print(f"[LOG]: {message}")</span><span class="code-row"></span><span class="code-row">class LoggerFactory:</span><span class="code-row">    @staticmethod</span><span class="code-row">    def get_logger():</span><span class="code-row">        return Logger()</span><span class="code-row"></span><span class="code-row">logger1 = LoggerFactory.get_logger()</span><span class="code-row">logger2 = LoggerFactory.get_logger()</span><span class="code-row"></span><span class="code-row">print(logger1 is logger2) # True</span><span class="code-row">logger1.log("Система запущена")</span></code></pre>
+                                    <p>Паттерны отлично комбинируются друг с другом, решая более сложные архитектурные задачи.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы прикоснулись к миру взрослой архитектуры. Теперь вы знаете:</p>
+
+                <ul>
+                    <li>Что такое паттерны проектирования и зачем они нужны.</li>
+                    <li>Как реализовать <strong>Singleton</strong> для создания единственного экземпляра.</li>
+                    <li>Как использовать <strong>Factory</strong> для централизованного создания объектов.</li>
+                    <li>Как работает паттерн <strong>Observer</strong> для событийной модели.</li>
+                </ul>
+
+                <p>Паттернов существует гораздо больше (около 23 классических), но даже этих трёх достаточно, чтобы сделать код в ваших проектах значительно чище и понятнее.</p>
+
+                <p>В следующем уроке мы начнём наш первый крупный проект с реальным применением знаний. Мы создадим <strong>Telegram-бота</strong>. Вы узнаете, как работают API, как получать сообщения от пользователей и как заставить бота отвечать. Это будет невероятно интересно. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-29.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-31.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

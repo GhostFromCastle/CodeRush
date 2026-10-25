@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика: скрипт сбора логов - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="linux" data-lesson-id="lesson-07">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 07</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux (Bash)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение и первый скрипт</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и аргументы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и математика</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Функции в Bash</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson active" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт сбора логов</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Обработка текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик Cron</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Практика: скрипт сбора логов</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Только практика</span>
+                </div>
+
+                <p>Мы изучили все основные конструкции Bash. Пришло время написать скрипт, который приносит реальную пользу. Сегодня мы соберём скрипт для сбора и архивации логов.</p>
+
+                <p>На серверах логи имеют свойство накапливаться и занимать всё свободное место на диске. Если за этим не следить, сервер может упасть. Наш скрипт будет автоматически проверять место, находить старые логи и упаковывать их в архив.</p>
+
+                <h2>Инструменты для работы</h2>
+
+                <p>Прежде чем писать код, разберём три команды, которые нам понадобятся:</p>
+
+                <ul>
+                    <li><strong><code>df -h</code></strong> - показывает свободное место на дисках в удобном формате (гигабайты, мегабайты).</li>
+                    <li><strong><code>du -sh folder</code></strong> - показывает размер конкретной папки.</li>
+                    <li><strong><code>tar -czf archive.tar.gz folder</code></strong> - упаковывает папку в архив (сжатый). Ключи означают: <code>c</code> - создать, <code>z</code> - сжать через gzip, <code>f</code> - указать имя файла.</li>
+                </ul>
+
+                <h2>Пишем скрипт</h2>
+
+                <p>Давайте создадим файл <code>log_collector.sh</code>. Наш скрипт будет выполнять следующие шаги:</p>
+                <ol>
+                    <li>Проверять, существует ли папка с логами.</li>
+                    <li>Создавать папку для архивов, если её нет.</li>
+                    <li>Упаковывать логи в архив с текущей датой.</li>
+                    <li>Удалять старые архивы (старше 7 дней).</li>
+                </ol>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row"></span><span class="code-row">LOG_DIR="/var/log/myapp"</span><span class="code-row">BACKUP_DIR="/backups/logs"</span><span class="code-row">DAYS_TO_KEEP=7</span><span class="code-row"></span><span class="code-row">if [ ! -d "$LOG_DIR" ]; then</span><span class="code-row">    echo "Ошибка: Папка с логами не найдена ($LOG_DIR)"</span><span class="code-row">    exit 1</span><span class="code-row">fi</span><span class="code-row"></span><span class="code-row">if [ ! -d "$BACKUP_DIR" ]; then</span><span class="code-row">    echo "Создаю папку для бэкапов: $BACKUP_DIR"</span><span class="code-row">    mkdir -p "$BACKUP_DIR"</span><span class="code-row">fi</span><span class="code-row"></span><span class="code-row">TODAY=$(date +%Y-%m-%d)</span><span class="code-row">ARCHIVE_NAME="$BACKUP_DIR/myapp_logs_$TODAY.tar.gz"</span><span class="code-row"></span><span class="code-row">echo "Начинаю архивацию логов..."</span><span class="code-row">tar -czf "$ARCHIVE_NAME" -C "$(dirname "$LOG_DIR")" "$(basename "$LOG_DIR")"</span><span class="code-row"></span><span class="code-row">if [ $? -eq 0 ]; then</span><span class="code-row">    echo "Архив успешно создан: $ARCHIVE_NAME"</span><span class="code-row">else</span><span class="code-row">    echo "Ошибка при создании архива"</span><span class="code-row">    exit 1</span><span class="code-row">fi</span><span class="code-row"></span><span class="code-row">echo "Удаляю архивы старше $DAYS_TO_KEEP дней..."</span><span class="code-row">find "$BACKUP_DIR" -name "*.tar.gz" -type f -mtime +$DAYS_TO_KEEP -delete</span><span class="code-row"></span><span class="code-row">echo "Готово!"</span></code></pre>
+
+                <h2>Разбор сложных моментов</h2>
+
+                <p>В скрипте есть несколько мест, которые могут показаться сложными:</p>
+
+                <ul>
+                    <li><strong><code>-C "$(dirname "$LOG_DIR")"</code></strong>. Флаг <code>-C</code> у <code>tar</code> меняет директорию перед архивацией. Мы используем <code>dirname</code>, чтобы получить путь к родительской папке логов. Это нужно для того, чтобы внутри архива не было длинных абсолютных путей.</li>
+                    <li><strong><code>$?</code></strong> - это специальная переменная, которая хранит код возврата последней выполненной команды. Если код равен 0 (<code>-eq 0</code>), значит, команда выполнилась успешно.</li>
+                    <li><strong><code>find ... -mtime +7 -delete</code></strong> - ищет файлы с расширением <code>.tar.gz</code>, которые не менялись больше 7 дней, и удаляет их. <code>mtime</code> означает время модификации.</li>
+                </ul>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>df -h</code>
+                        <span>место на диске</span>
+                    </li>
+                    <li>
+                        <code>tar -czf</code>
+                        <span>создать архив</span>
+                    </li>
+                    <li>
+                        <code>$?</code>
+                        <span>код возврата</span>
+                    </li>
+                    <li>
+                        <code>find -mtime +7</code>
+                        <span>найти старые файлы</span>
+                    </li>
+                    <li>
+                        <code>basename/dirname</code>
+                        <span>имя файла/папки</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при создании скриптов для бэкапа.</p>
+
+                <ul>
+                    <li><strong>«Permission denied»</strong>. Скрипт пытается прочитать логи в <code>/var/log</code> или записать в <code>/backups</code>, но у вас нет прав. Запустите скрипт через <code>sudo</code>.</li>
+                    <li><strong>«Не хватает места на диске»</strong>. Если логи весят сотни гигабайт, архивация может исчерпать всё свободное место. Используйте <code>df -h</code> перед запуском или архивируйте только самые старые файлы.</li>
+                    <li><strong>«Архив создаётся, но внутри пусто»</strong>. Проверьте, что переменная <code>LOG_DIR</code> указывает на правильную папку и в ней есть файлы.</li>
+                    <li><strong>«find не удаляет старые архивы»</strong>. Проверьте, что вы запускаете скрипт от имени пользователя, у которого есть права на удаление файлов в папке бэкапов.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Тестовая папка</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте тестовую папку <code>~/test_logs</code> и положите в неё несколько текстовых файлов. Напишите скрипт, который архивирует эту папку в файл <code>test_logs.tar.gz</code> в вашей домашней директории.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>tar -czf ~/test_logs.tar.gz -C ~ test_logs</code>. Флаг <code>-C ~</code> переходит в домашнюю папку, чтобы путь внутри архива был коротким.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">tar -czf ~/test_logs.tar.gz -C ~ test_logs</span><span class="code-row">echo "Архив создан!"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Проверка свободного места</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите функцию <code>check_space</code>, которая проверяет свободное место на корневом разделе (<code>/</code>). Если свободно меньше 1 ГБ, выводит предупреждение.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>df -h /</code> и <code>awk</code>, чтобы вытащить процент использования. Или проще: выведите <code>df -h /</code> и проверьте визуально, но для автоматизации лучше использовать <code>df --output=avail / | tail -1</code> (выдаст свободное место в килобайтах).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">check_space() {</span><span class="code-row">    local free_kb=$(df --output=avail / | tail -1)</span><span class="code-row">    local free_mb=$((free_kb / 1024))</span><span class="code-row">    if [ "$free_mb" -lt 1024 ]; then</span><span class="code-row">        echo "Внимание! Мало места на диске: ${free_mb} МБ"</span><span class="code-row">    else</span><span class="code-row">        echo "Места достаточно."</span><span class="code-row">    fi</span><span class="code-row">}</span><span class="code-row">check_space</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Сбор логов в цикле</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Предположим, у вас есть папка <code>~/logs</code>, а в ней три подпапки: <code>app1</code>, <code>app2</code>, <code>app3</code>. Напишите скрипт, который с помощью цикла по очереди архивирует каждую из них в отдельный файл.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте цикл <code>for dir in ~/logs/*; do ... done</code>. Внутри цикла вызывайте <code>tar</code> для каждой папки.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">for dir in ~/logs/*; do</span><span class="code-row">    if [ -d "$dir" ]; then</span><span class="code-row">        name=$(basename "$dir")</span><span class="code-row">        tar -czf "$HOME/${name}_backup.tar.gz" -C "$HOME/logs" "$name"</span><span class="code-row">        echo "Готово: $name"</span><span class="code-row">    fi</span><span class="code-row">done</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Финальный скрипт</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Соберите всё вместе. Напишите скрипт, который проверяет свободное место, создаёт папку для бэкапов (если её нет), архивирует папку <code>~/logs</code> с текущей датой в названии и удаляет старые архивы (старше 7 дней).</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте функции, которые мы написали в предыдущих задачах, и объедините их. Для удаления старых архивов используйте <code>find ... -mtime +7 -delete</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row"></span><span class="code-row">BACKUP_DIR="$HOME/backups"</span><span class="code-row">LOG_DIR="$HOME/logs"</span><span class="code-row"></span><span class="code-row">if [ ! -d "$LOG_DIR" ]; then</span><span class="code-row">    echo "Папка $LOG_DIR не найдена!"</span><span class="code-row">    exit 1</span><span class="code-row">fi</span><span class="code-row"></span><span class="code-row">mkdir -p "$BACKUP_DIR"</span><span class="code-row"></span><span class="code-row">TODAY=$(date +%Y-%m-%d)</span><span class="code-row">tar -czf "$BACKUP_DIR/logs_$TODAY.tar.gz" -C "$HOME" "logs"</span><span class="code-row">echo "Бэкап создан."</span><span class="code-row"></span><span class="code-row">find "$BACKUP_DIR" -name "logs_*.tar.gz" -mtime +7 -delete</span><span class="code-row">echo "Старые архивы удалены."</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Вы написали скрипт, который реально используется системными администраторами. Теперь вы знаете:</p>
+                <ul>
+                    <li>Как проверять свободное место и создавать папки.</li>
+                    <li>Как упаковывать папки в архивы с помощью <code>tar</code>.</li>
+                    <li>Как использовать <code>find</code> для удаления старых файлов.</li>
+                    <li>Как проверять код возврата команды через <code>$?</code>.</li>
+                </ul>
+
+                <p>Но настоящий профи не просто пишет скрипты, он умеет быстро находить в них нужную информацию. Логи, конфиги, вывод команд - всё это текст, который нужно уметь фильтровать. В следующем уроке мы разберём мощнейшие утилиты Linux: <code>grep</code>, <code>sed</code> и <code>awk</code>. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-06.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-08.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

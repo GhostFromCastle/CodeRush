@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Функции в Bash - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="linux" data-lesson-id="lesson-06">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 06</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux (Bash)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение и первый скрипт</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и аргументы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и математика</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson active" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Функции в Bash</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт сбора логов</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Обработка текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик Cron</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Функции в Bash</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Представьте, что вы пишете скрипт для установки программы. Вам нужно три раза вывести красивый заголовок с датой и временем: в начале, перед установкой и в конце. Копировать одни и те же пять строк кода - плохая практика. Если вы захотите изменить дизайн заголовка, придётся править его в трёх местах.</p>
+
+                <p>Для решения этой проблемы придумали <strong>функции</strong>. Это именованные блоки кода, которые можно вызывать по имени столько раз, сколько нужно.</p>
+
+                <p>Аналогия: функция - это как рецепт в кулинарной книге. Вы не запоминаете каждый шаг, вы просто говорите: «Приготовь по рецепту №5». Один раз записали - много раз пользуетесь.</p>
+
+                <h2>Создание и вызов функции</h2>
+
+                <p>В Bash функция создаётся с помощью ключевого слова <code>function</code> или просто скобок <code>()</code>. Оба варианта работают одинаково.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row"></span><span class="code-row">greet() {</span><span class="code-row">    echo "Привет, мир!"</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">greet</span></code></pre>
+
+                <p>Здесь мы создали функцию <code>greet</code> и вызвали её по имени. Функции должны быть объявлены <strong>до</strong> того, как вы их вызовете. Если поменять местами вызов и объявление, Bash выдаст ошибку.</p>
+
+                <h2>Аргументы функции</h2>
+
+                <p>Функции могут принимать аргументы. Внутри функции они доступны через те же переменные <code>$1</code>, <code>$2</code> и так далее, что и аргументы скрипта.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row"></span><span class="code-row">greet_user() {</span><span class="code-row">    echo "Привет, $1!"</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">greet_user "Алексей"</span><span class="code-row">greet_user "Мария"</span></code></pre>
+
+                <p>В этом примере <code>$1</code> внутри функции означает первый аргумент, переданный <em>именно этой функции</em>, а не всему скрипту.</p>
+
+                <h2>Локальные переменные</h2>
+
+                <p>По умолчанию переменные внутри функций являются глобальными. Если вы создадите переменную <code>name</code> внутри функции, она останется доступной и после её завершения. Это может привести к путанице.</p>
+
+                <p>Чтобы переменная существовала только внутри функции, перед её созданием пишут ключевое слово <code>local</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row"></span><span class="code-row">my_func() {</span><span class="code-row">    local temp="Секрет"</span><span class="code-row">    echo "Внутри функции: $temp"</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">my_func</span><span class="code-row">echo "Снаружи: $temp"</span></code></pre>
+
+                <p>Этот скрипт выведет «Внутри функции: Секрет», а во второй строке выведет пустоту, потому что переменная <code>temp</code> уничтожилась после выхода из функции.</p>
+
+                <h2>Возврат значений</h2>
+
+                <p>В Bash функции не могут вернуть строку или число так, как это делают функции в Python или JavaScript. Вместо этого они возвращают <strong>код выхода</strong> (от 0 до 255), где 0 означает успех, а любое другое число - ошибку.</p>
+
+                <p>Но что, если нам нужно вернуть строку (например, результат вычисления)? Есть два способа:</p>
+
+                <p><strong>Способ 1. Вывести результат на экран и перехватить его</strong> (самый популярный):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row"></span><span class="code-row">get_sum() {</span><span class="code-row">    local a=$1</span><span class="code-row">    local b=$2</span><span class="code-row">    echo $((a + b))</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">result=$(get_sum 5 3)</span><span class="code-row">echo "Сумма: $result"</span></code></pre>
+
+                <p><strong>Способ 2. Использовать команду return для кода ошибки</strong>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row"></span><span class="code-row">check_file() {</span><span class="code-row">    if [ -f "$1" ]; then</span><span class="code-row">        return 0</span><span class="code-row">    else</span><span class="code-row">        return 1</span><span class="code-row">    fi</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">if check_file "/etc/passwd"; then</span><span class="code-row">    echo "Файл найден"</span><span class="code-row">fi</span></code></pre>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>name() { ... }</code>
+                        <span>создать функцию</span>
+                    </li>
+                    <li>
+                        <code>$1, $2</code>
+                        <span>аргументы функции</span>
+                    </li>
+                    <li>
+                        <code>local var</code>
+                        <span>локальная переменная</span>
+                    </li>
+                    <li>
+                        <code>result=$(func)</code>
+                        <span>перехват вывода</span>
+                    </li>
+                    <li>
+                        <code>return 0</code>
+                        <span>успешное завершение</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с функциями.</p>
+
+                <ul>
+                    <li><strong>«command not found»</strong>. Вы вызываете функцию до того, как она была объявлена. В Bash интерпретатор читает код сверху вниз, поэтому функции нужно писать в начале скрипта.</li>
+                    <li><strong>«Syntax error near unexpected token `}'»</strong>. Вы забыли пробел между именем функции и фигурной скобкой, либо не поставили точку с запятой после закрывающей скобки <code>}</code> (если она не на новой строке).</li>
+                    <li><strong>Результат функции не сохраняется в переменную</strong>. Убедитесь, что вы используете <code>$( )</code> вокруг вызова функции, а не просто имя. Правильно: <code>res=$(my_func)</code>.</li>
+                    <li><strong>Переменная не меняется после вызова функции</strong>. По умолчанию функции не могут изменять переменные вызывающей стороны, если только вы не используете глобальные переменные (без <code>local</code>). Будьте осторожны с областью видимости.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Функция приветствия</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте функцию <code>hello</code>, которая выводит на экран «Привет, как дела?». Вызовите эту функцию дважды.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Объявите функцию в начале скрипта, внутри неё используйте <code>echo</code>. Затем два раза напишите имя функции.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">hello() {</span><span class="code-row">    echo "Привет, как дела?"</span><span class="code-row">}</span><span class="code-row">hello</span><span class="code-row">hello</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Сложение с аргументами</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите функцию <code>add</code>, которая принимает два числа и выводит их сумму. Вызовите её с числами 10 и 20.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>$1</code> и <code>$2</code> внутри функции. Вычислите сумму через <code>echo $(( $1 + $2 ))</code>. Вызовите как <code>add 10 20</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">add() {</span><span class="code-row">    echo $(( $1 + $2 ))</span><span class="code-row">}</span><span class="code-row">add 10 20</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Перехват результата</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Измените функцию <code>add</code> из прошлой задачи так, чтобы она возвращала результат в переменную <code>result</code>. Выведите результат в формате «Итог: [сумма]».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте конструкцию <code>result=$(add 10 20)</code>, чтобы перехватить вывод функции.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">add() {</span><span class="code-row">    echo $(( $1 + $2 ))</span><span class="code-row">}</span><span class="code-row">result=$(add 10 20)</span><span class="code-row">echo "Итог: $result"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Исправление ошибок</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Перед вами скрипт, который не работает. Найдите и исправьте все ошибки.</p>
+                            <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">greet() {</span><span class="code-row">    local name="Иван"</span><span class="code-row">    echo "Привет, $name"</span><span class="code-row">}</span><span class="code-row">echo "Вывод: $name"</span><span class="code-row">greet</span></code></pre>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните порядок объявления и вызова функций. И где должны находиться <code>local</code> переменные.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">greet() {</span><span class="code-row">    local name="Иван"</span><span class="code-row">    echo "Привет, $name"</span><span class="code-row">}</span><span class="code-row">greet</span><span class="code-row">echo "Вывод: $name"</span></code></pre>
+                                    <p>Во-первых, функция <code>greet</code> должна быть вызвана <strong>до</strong> того, как мы пытаемся прочитать <code>$name</code> (потому что <code>local</code> уничтожается после вызова). Во-вторых, вызов функции должен быть до попытки использовать переменную.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь ваши скрипты стали структурированными и готовыми к переиспользованию. Вы научились:</p>
+                <ul>
+                    <li>Создавать и вызывать функции.</li>
+                    <li>Передавать аргументы в функции.</li>
+                    <li>Использовать <code>local</code> для изоляции переменных.</li>
+                    <li>Возвращать результаты через <code>echo</code> и перехватывать их через <code>$()</code>.</li>
+                </ul>
+
+                <p>Мы изучили все основные инструменты Bash. Пришло время собрать их вместе и написать первый серьёзный скрипт. В следующем уроке мы создадим <strong>скрипт сбора логов</strong>, который проверит место на диске, найдёт старые файлы и упакует их в архив. До встречи!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-05.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-07.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

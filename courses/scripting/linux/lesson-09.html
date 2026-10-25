@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Процессы и мониторинг системы - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="scripting" data-level="linux" data-lesson-id="lesson-09">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Скрипты</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 09</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux (Bash)</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение и первый скрипт</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и аргументы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных и математика</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условные операторы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Функции в Bash</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Практика: скрипт сбора логов</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Обработка текста</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson active" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Планировщик Cron</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Процессы и мониторинг системы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Linux - это многозадачная система. Одновременно работают браузер, редактор кода, музыкальный плеер и десятки фоновых служб. Все они называются <strong>процессами</strong>.</p>
+
+                <p>Иногда процессы зависают, начинают потреблять всю оперативную память или бесконечно грузить процессор. В таких случаях нужно уметь найти виновника и «прибить» его. Сегодня мы научимся управлять процессами и следить за здоровьем системы.</p>
+
+                <h2>Просмотр процессов: ps и top</h2>
+
+                <p>Самый простой способ посмотреть, что сейчас запущено - это команда <code>ps</code> (process status). Без аргументов она покажет только процессы, запущенные в текущем терминале.</p>
+
+                <p>Чтобы увидеть <strong>все</strong> процессы в системе, используется связка <code>ps aux</code> (или <code>ps -ef</code>).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ps aux</span></code></pre>
+
+                <p>Вывод будет большим. Основные колонки:</p>
+                <ul>
+                    <li><strong>USER</strong> - кто запустил процесс.</li>
+                    <li><strong>PID</strong> - уникальный номер процесса (Process ID).</li>
+                    <li><strong>%CPU</strong> и <strong>%MEM</strong> - сколько ресурсов он потребляет.</li>
+                    <li><strong>COMMAND</strong> - название программы.</li>
+                </ul>
+
+                <p>Но <code>ps</code> показывает статичную картинку. Чтобы смотреть на процессы в реальном времени, используется команда <code>top</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">top</span></code></pre>
+
+                <p>Она обновляет список каждые пару секунд. Выход из <code>top</code> - клавиша <code>q</code>. Если у вас установлена утилита <code>htop</code>, она работает гораздо удобнее (с цветами и поддержкой мыши).</p>
+
+                <h2>Убийство процессов: kill</h2>
+
+                <p>Если программа зависла, её нужно завершить. Для этого используется команда <code>kill</code>, которой передаётся номер процесса (PID).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">kill 1234</span></code></pre>
+
+                <p>По умолчанию <code>kill</code> отправляет сигнал <code>SIGTERM</code> (вежливая просьба завершиться). Программа может сохранить данные и закрыться.</p>
+
+                <p>Если программа полностью зависла и не реагирует на вежливость, используется <strong>принудительное</strong> убийство с сигналом <code>SIGKILL</code> (флаг <code>-9</code>):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">kill -9 1234</span></code></pre>
+
+                <p>Также можно убивать процессы по имени, не зная их PID:</p>
+                <pre class="code-numbered"><code><span class="code-row">pkill firefox</span></code></pre>
+
+                <h2>Мониторинг диска и памяти</h2>
+
+                <p>Помимо процессора, скриптам часто нужно проверять, не закончилось ли место на диске. Для этого есть две команды:</p>
+
+                <ul>
+                    <li><strong><code>df -h</code></strong> (disk free) - показывает свободное место на всех дисках в удобном формате (гигабайты).</li>
+                    <li><strong><code>du -sh /path/to/folder</code></strong> (disk usage) - показывает, сколько занимает конкретная папка или файл.</li>
+                </ul>
+
+                <p>Для проверки оперативной памяти используется команда <code>free -h</code>.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>ps aux</code>
+                        <span>все процессы</span>
+                    </li>
+                    <li>
+                        <code>top</code>
+                        <span>мониторинг в реальном времени</span>
+                    </li>
+                    <li>
+                        <code>kill PID</code>
+                        <span>завершить процесс</span>
+                    </li>
+                    <li>
+                        <code>kill -9 PID</code>
+                        <span>убить принудительно</span>
+                    </li>
+                    <li>
+                        <code>df -h</code>
+                        <span>место на диске</span>
+                    </li>
+                    <li>
+                        <code>du -sh</code>
+                        <span>размер папки</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с процессами.</p>
+
+                <ul>
+                    <li><strong>«kill: (1234) - No such process»</strong>. Процесс уже завершился (возможно, вы не успели его убить).</li>
+                    <li><strong>«kill: (1234) - Operation not permitted»</strong>. Вы пытаетесь убить системный процесс или процесс другого пользователя. Нужно запускать команду через <code>sudo</code>.</li>
+                    <li><strong>«df -h показывает 100%»</strong>. Диск заполнен. Используйте <code>du -sh *</code> в разных папках, чтобы найти самого прожорливого «едока» места.</li>
+                    <li><strong>«Не могу найти процесс в ps aux»</strong>. Используйте конвейер с <code>grep</code>: <code>ps aux | grep имя_программы</code>, чтобы отфильтровать нужную строку.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Найти процесс</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Откройте любой графический редактор или браузер. Найдите его PID с помощью <code>ps aux</code> и <code>grep</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Выполните команду <code>ps aux | grep firefox</code> (или название другой программы). Вторая колонка - это PID.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">ps aux | grep firefox</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Проверка диска</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт, который выводит свободное место на корневом разделе (<code>/</code>) в мегабайтах.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>df -m /</code> (флаг <code>-m</code> - мегабайты). Затем через <code>awk 'NR==2 {print $4}'</code> вытащите нужную колонку.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">free_mb=$(df -m / | awk 'NR==2 {print $4}')</span><span class="code-row">echo "Свободно на /: $free_mb МБ"</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Убить зависший процесс</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Запустите в терминале команду <code>sleep 1000</code> (она просто уснёт на 1000 секунд). В новом окне терминала найдите её PID и завершите её.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Найдите PID через <code>ps aux | grep sleep</code>. Затем выполните <code>kill -9 PID</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">sleep 1000 &</span><span class="code-row">ps aux | grep sleep</span><span class="code-row">kill -9 <PID></span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Самый большой файл</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Напишите скрипт, который находит в текущей директории самый большой файл и выводит его размер и имя.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте команду <code>du -ah | sort -rh | head -n 2</code>. Первая строка будет общей папкой, а вторая - самым большим файлом.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">#!/bin/bash</span><span class="code-row">echo "Самый большой файл в текущей папке:"</span><span class="code-row">du -ah . | sort -rh | grep -v "^.*\s\.$" | head -n 1</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Теперь вы можете контролировать свою систему и держать её в форме. Вы узнали:</p>
+                <ul>
+                    <li>Как смотреть на процессы через <code>ps</code> и <code>top</code>.</li>
+                    <li>Как принудительно завершить зависшую программу через <code>kill -9</code>.</li>
+                    <li>Как проверить свободное место с помощью <code>df -h</code> и <code>du</code>.</li>
+                </ul>
+
+                <p>В финальном уроке мы соберём все полученные знания вместе. Вы узнаете, как настроить автоматический запуск ваших скриптов по расписанию с помощью <strong>Планировщика Cron</strong>, и напишем скрипт для бэкапа базы данных. До встречи на последнем уроке!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-08.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-10.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>
