@@ -8,8 +8,10 @@ import { initPrefetch } from './prefetch.js';
 import { initTrainers } from './trainers.js';
 import { initDictionary } from './dictionary.js';
 import { initBurgerMenu } from './burger-menu.js';
+import { initAnalytics } from './analytics.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    initAnalytics();
     initCatalog();
     initCounters();
     initCoursePage();

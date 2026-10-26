@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чтение файлов и поиск - Терминал - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="linux" data-lesson-id="lesson-04">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../courses.html">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 04</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация и структура</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Управление файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson active" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Чтение и поиск</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Права доступа и sudo</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Управление пакетами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Перенаправление и конвейеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Чтение файлов и поиск</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились создавать, копировать и удалять файлы.
+                    Но зачем нужны файлы, если мы не можем заглянуть внутрь и понять,
+                    что там? В этом уроке разберёмся, как <strong>читать содержимое</strong>
+                    файлов и как <strong>искать</strong> - и по файловой системе, и внутри
+                    самих файлов.</p>
+
+                <p>Эти инструменты - хлеб системного администратора и разработчика.
+                    Логи сервера, конфиги, исходный код, текстовые данные - всё это
+                    читается и ищется через команды, которые мы сегодня освоим.</p>
+
+                <h2>Прочитать файл целиком: cat</h2>
+
+                <p>Самая простая команда для чтения - <code>cat</code> (от английского
+                    <em>concatenate</em> - «соединять»). Она выводит содержимое файла
+                    в терминал:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cat hello.txt</span><span class="code-row">Привет, Linux!</span></code></pre>
+
+                <p>Просто и понятно. Но есть нюанс: если файл длинный, содержимое
+                    просто пронесётся перед глазами и останется только последняя
+                    часть в окне. Для больших файлов <code>cat</code> - плохой выбор.</p>
+
+                <p><strong>Когда cat подходит:</strong></p>
+                <ul>
+                    <li>Файл короткий (несколько строк).</li>
+                    <li>Конфиг на 10-20 строк.</li>
+                    <li>Нужно быстро заглянуть в один файл.</li>
+                </ul>
+
+                <p><strong>Когда cat не подходит:</strong></p>
+                <ul>
+                    <li>Логи на тысячи строк.</li>
+                    <li>Большие тексты.</li>
+                    <li>Файлы, которые нужно читать постранично.</li>
+                </ul>
+
+                <h3>Полезный ключ: -n (нумерация строк)</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cat -n hello.txt</span><span class="code-row">     1  Привет, Linux!</span></code></pre>
+
+                <p>Добавляет номера строк. Удобно, когда нужно сказать коллеге
+                    «посмотри на строку 42» или сравнить два файла по номерам.</p>
+
+                <h2>Постраничный просмотр: less</h2>
+
+                <p>Для больших файлов есть <code>less</code> - команда, которая
+                    открывает файл в <strong>постраничном просмотрщике</strong>. Можно
+                    листать стрелками, искать по тексту, не выходя из просмотра.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ less /var/log/syslog</span></code></pre>
+
+                <p>Откроется первая страница файла. Внизу будет строка состояния -
+                    сколько просмотрено, из какого файла.</p>
+
+                <h3>Управление внутри less</h3>
+
+                <p>Это не обычный вывод в терминал - это интерактивный просмотрщик.
+                    Клавиши работают специальные:</p>
+
+                <ul>
+                    <li><code>↑</code> / <code>↓</code> - листать по одной строке.</li>
+                    <li><code>Space</code> - страница вниз.</li>
+                    <li><code>b</code> - страница вверх.</li>
+                    <li><code>g</code> - в начало файла.</li>
+                    <li><code>G</code> (большая) - в конец файла.</li>
+                    <li><code>/слово</code> - поиск вперёд. Enter - применить.</li>
+                    <li><code>n</code> - следующее совпадение, <code>N</code> -
+                        предыдущее.</li>
+                    <li><code>q</code> - выйти обратно в терминал.</li>
+                </ul>
+
+                <p>Ключевые <code>g</code>, <code>G</code>, <code>/</code>, <code>q</code> -
+                    запомните их, остальное придёт с опытом. Именно эти четыре
+                    используются постоянно.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Почему «less», а не «more»
+                    </div>
+                    <p>Есть ещё команда <code>more</code> - старый предшественник
+                        <code>less</code>. Она тоже листает постранично, но не
+                        умеет двигаться назад, искать по тексту и работать с
+                        большинством файлов. <code>less</code> - современная
+                        и полноценная замена. Существует даже шутка: «less is
+                        more» - «less (меньше) - это больше (функций)».</p>
+                </div>
+
+                <h2>Начало и конец файла: head и tail</h2>
+
+                <p>Иногда нужно посмотреть не весь файл, а только его начало или конец.
+                    Например, в логах - свежие записи всегда в конце, в конфигах -
+                    шапка с параметрами в начале.</p>
+
+                <h3>head - первые строки</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ head /var/log/syslog</span></code></pre>
+
+                <p>По умолчанию показывает первые 10 строк. Можно указать другое
+                    количество через ключ <code>-n</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ head -n 20 /var/log/syslog</span><span class="code-row">$ head -n 1 hello.txt</span></code></pre>
+
+                <p>Первая команда - 20 строк, вторая - одну строку. Ключ
+                    <code>-n</code> работает во многих командах (потом встретим его
+                    ещё не раз).</p>
+
+                <h3>tail - последние строки</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ tail /var/log/syslog</span></code></pre>
+
+                <p>Те же 10 строк, но с конца. Тоже можно изменить через
+                    <code>-n</code>.</p>
+
+                <h3>tail -f - следить за файлом</h3>
+
+                <p>Незаменимая вещь при работе с логами. Ключ <code>-f</code>
+                    (follow) «подписывается» на файл и показывает новые строки
+                    по мере их появления:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ tail -f /var/log/syslog</span></code></pre>
+
+                <p>Открывается последние 10 строк, и терминал остаётся в «живом»
+                    режиме - как только в файл дописывается что-то новое, оно
+                    тут же появляется на экране. Выход - <code>Ctrl + C</code>.</p>
+
+                <p>Это must-have при отладке: запускаете <code>tail -f</code> на
+                    логе приложения, воспроизводите проблему в браузере - и
+                    видите, что приложение пишет в реальном времени.</p>
+
+                <h2>Поиск в файловой системе: find</h2>
+
+                <p>Второй важный инструмент - <code>find</code>. Ищет файлы и папки
+                    по разным критериям: по имени, размеру, дате изменения, владельцу.</p>
+
+                <h3>Поиск по имени</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ find . -name "*.txt"</span></code></pre>
+
+                <p>Что тут что:</p>
+
+                <ul>
+                    <li><code>.</code> - начальная точка поиска. Точка означает
+                        «текущая папка» (можно указать абсолютный путь, например
+                        <code>/home/student</code>).</li>
+                    <li><code>-name</code> - искать по имени.</li>
+                    <li><code>"*.txt"</code> - шаблон имени. Звёздочка означает
+                        «любые символы». Кавычки важны - без них bash попытается
+                        сам развернуть звёздочку, и результат будет непредсказуемый.</li>
+                </ul>
+
+                <p>Команда выведет все файлы <code>.txt</code> в текущей папке и
+                    во всех вложенных - рекурсивно.</p>
+
+                <h3>Только файлы или только папки</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ find . -type f -name "*.txt"</span><span class="code-row">$ find . -type d -name "src"</span></code></pre>
+
+                <p><code>-type f</code> - только файлы (file), <code>-type d</code> -
+                    только папки (directory). Полезно, когда у вас есть папки и
+                    файлы с похожими именами.</p>
+
+                <h3>Поиск по размеру</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ find . -size +10M</span></code></pre>
+
+                <p>Найдёт всё, что больше 10 мегабайт. Очень полезно для поиска
+                    «что же занимает всё место на диске». Ключ <code>-size</code>
+                    понимает байты (c), килобайты (k), мегабайты (M), гигабайты (G).
+                    Знак <code>+</code> - «больше чем», <code>-</code> - «меньше чем».</p>
+
+                <h3>Поиск с действием</h3>
+
+                <p>Одна из мощных фич <code>find</code> - можно не просто найти
+                    файлы, но и что-то с ними сделать. Ключ <code>-exec</code>
+                    позволяет запустить команду для каждого найденного файла:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ find . -name "*.bak" -exec rm {} \;</span></code></pre>
+
+                <p>Найдёт все файлы <code>.bak</code> и удалит их. Конструкция
+                    <code>{}</code> заменяется на путь к файлу, а <code>\;</code> -
+                    конец команды для <code>-exec</code> (обратный слэш нужен,
+                    чтобы bash не съел точку с запятой).</p>
+
+                <p><strong>Осторожно:</strong> с <code>-exec rm</code> будьте
+                    предельно внимательны. Сначала выполните команду без
+                    <code>-exec</code>, посмотрите, что она находит. Убедитесь,
+                    что это именно то, что вы хотите удалить. И только потом
+                    добавляйте <code>-exec</code>.</p>
+
+                <h2>Поиск внутри файлов: grep</h2>
+
+                <p>Третья ключевая команда - <code>grep</code>. Ищет текст
+                    <strong>внутри</strong> файлов. Одна из самых используемых
+                    команд в Linux вообще.</p>
+
+                <h3>Простой поиск</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ grep "error" /var/log/syslog</span></code></pre>
+
+                <p>Найдёт все строки, где встречается слово «error», и выведет их.
+                    Регистр учитывается: «error» и «Error» - разные строки.</p>
+
+                <h3>Игнорировать регистр: -i</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ grep -i "error" /var/log/syslog</span></code></pre>
+
+                <p>Ключ <code>-i</code> (ignore case) - найдёт и «error», и «Error»,
+                    и «ERROR».</p>
+
+                <h3>Номера строк: -n</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ grep -n "error" /var/log/syslog</span><span class="code-row">142:Oct 25 14:30:00 ... error loading config</span><span class="code-row">287:Oct 25 14:35:12 ... fatal error: ...</span></code></pre>
+
+                <p>Показывает номер строки перед каждой найденной. Удобно, когда
+                    потом нужно открыть файл и посмотреть контекст.</p>
+
+                <h3>Рекурсивный поиск: -r</h3>
+
+                <p>Один из самых мощных сценариев. Ищем не в одном файле, а во
+                    всех файлах внутри папки:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ grep -r "TODO" ./src</span></code></pre>
+
+                <p>Найдёт все строки с «TODO» во всех файлах папки <code>./src</code>
+                    рекурсивно. Отличный способ найти все незавершённые задачи
+                    в проекте.</p>
+
+                <h3>Комбинирование ключей</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ grep -rin "error" ./logs</span></code></pre>
+
+                <p>Рекурсивно, игнорируя регистр, с номерами строк - в папке
+                    <code>logs</code>. Ключи можно писать вместе или раздельно
+                    (<code>-r -i -n</code>), результат одинаковый.</p>
+
+                <h3>Вывести только имена файлов: -l</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ grep -rl "import config" ./src</span></code></pre>
+
+                <p>Вместо содержимого строк - только список файлов, где есть
+                    совпадения. Полезно, когда ищешь «в каких файлах используется
+                    эта функция».</p>
+
+                <h3>Исключить: -v</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ grep -v "DEBUG" /var/log/syslog</span></code></pre>
+
+                <p>Инвертирует результат - показывает строки <strong>без</strong>
+                    указанного слова. Отлично подходит для фильтрации логов:
+                    «покажи всё, кроме отладочного шума».</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Почему grep
+                    </div>
+                    <p>Название происходит от команды <code>g/re/p</code>
+                        в редакторе <code>ed</code>: <em>global regular
+                        expression print</em>. Историческое наследие -
+                        но прижилось настолько, что стало отдельной
+                        командой. А ещё от него произошёл глагол «погрепать»,
+                        которым программисты называют поиск по тексту -
+                        «погрепай логи».</p>
+                </div>
+
+                <h2>Подсчёт строк, слов, символов: wc</h2>
+
+                <p>Ещё одна полезная команда - <code>wc</code> (word count).
+                    Считает:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ wc file.txt</span><span class="code-row">  42  312 2048 file.txt</span></code></pre>
+
+                <p>Три числа подряд: строк, слов, байт. Порядок запомнить легко:
+                    <strong>стр → слов → байт</strong>.</p>
+
+                <p>Можно запросить только что-то одно:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ wc -l file.txt</span><span class="code-row">42 file.txt</span></code></pre>
+
+                <p>Только количество строк - <code>-l</code>. Аналогично
+                    <code>-w</code> (слова), <code>-c</code> (байты).</p>
+
+                <p><code>wc -l</code> очень часто используют вместе с другими
+                    командами для подсчёта количества чего-либо. Например,
+                    «сколько файлов у нас есть»:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls | wc -l</span></code></pre>
+
+                <p>Но про этот синтаксис с вертикальной чертой - подробно в
+                    уроке 8. Пока просто знайте, что <code>wc -l</code> -
+                    популярная команда.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>cat file</code>
+                        <span>весь файл в терминал</span>
+                    </li>
+                    <li>
+                        <code>less file</code>
+                        <span>постраничный просмотр</span>
+                    </li>
+                    <li>
+                        <code>head -n 5 file</code>
+                        <span>первые 5 строк</span>
+                    </li>
+                    <li>
+                        <code>tail -f file</code>
+                        <span>следить за файлом</span>
+                    </li>
+                    <li>
+                        <code>find . -name "*.txt"</code>
+                        <span>найти файлы по имени</span>
+                    </li>
+                    <li>
+                        <code>find . -size +10M</code>
+                        <span>файлы больше 10 МБ</span>
+                    </li>
+                    <li>
+                        <code>grep "text" file</code>
+                        <span>найти текст в файле</span>
+                    </li>
+                    <li>
+                        <code>grep -rin "error" .</code>
+                        <span>найти везде, без регистра</span>
+                    </li>
+                    <li>
+                        <code>wc -l file</code>
+                        <span>количество строк</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Типичные проблемы при чтении и поиске.</p>
+
+                <ul>
+                    <li><strong>«cat вывел огромный файл, я ничего не успел
+                            прочитать».</strong> Для больших файлов используйте
+                        <code>less</code>. Если уже так получилось - просто
+                        прокрутите вверх или используйте
+                        <code>Ctrl + Shift + PageUp</code> (в большинстве
+                        терминалов).</li>
+                    <li><strong>«less не закрывается».</strong> Нажмите
+                        <code>q</code>. Именно маленькую английскую. Не
+                        <code>Esc</code>, не <code>Ctrl+C</code> (хотя
+                        обычно тоже работает), а именно <code>q</code>.</li>
+                    <li><strong>«find ничего не находит».</strong> Проверьте
+                        три вещи: 1) путь правильный? 2) шаблон в кавычках?
+                        3) точно ли есть такой файл (проверьте <code>ls</code>)?</li>
+                    <li><strong>«find . -name *.txt находит не то».</strong>
+                        Кавычки забыли. Без кавычек bash сначала сам разворачивает
+                        <code>*.txt</code> в список файлов - и <code>find</code>
+                        получает не шаблон, а кучу аргументов. Всегда в кавычках:
+                        <code>"*.txt"</code>.</li>
+                    <li><strong>«grep не находит текст, хотя он там точно
+                            есть».</strong> Проверьте регистр (попробуйте
+                        <code>-i</code>). Возможно, в файле не обычный текст,
+                        а бинарные данные - grep по умолчанию их не выводит,
+                        нужен ключ <code>-a</code>.</li>
+                    <li><strong>«grep -r выдаёт Permission denied на некоторые
+                            папки».</strong> Так бывает, когда grep пытается
+                        залезть в чужие папки без прав. Можно игнорировать
+                        ошибки через <code>2&gt;/dev/null</code> (об этом
+                        в уроке 8) или запускать с <code>sudo</code>.</li>
+                    <li><strong>«tail -f показывает не всё».</strong> По
+                        умолчанию <code>tail</code> показывает 10 последних
+                        строк на старте. Если нужно больше - используйте
+                        <code>tail -n 100 -f file</code>. А чтобы следить
+                        за файлом с самого начала - <code>tail -f</code>
+                        покажет только новое.</li>
+                    <li><strong>«Хочу остановить cat/tail -f/less, а терминал
+                            не реагирует».</strong> <code>Ctrl + C</code>
+                        прерывает любую команду. Если не работает -
+                        закройте окно.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первая - на чтение файлов, вторая - на head/tail,
+                    третья - на find, четвёртая - на grep. Все задачи можно
+                    выполнять на своих файлах, создать которые - часть упражнений.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Создать и прочитать</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте файл
+                                <code>poem.txt</code> с любым четверостишием
+                                (используйте <code>echo</code> с перенаправлением
+                                или откройте nano - если он есть). Затем:</p>
+                            <ol>
+                                <li>Прочитайте его через <code>cat</code>.</li>
+                                <li>Прочитайте через <code>cat -n</code>.</li>
+                                <li>Откройте через <code>less</code>, полистайте,
+                                    закройте.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Многострочный текст через echo можно
+                                        создать так:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">$ echo -e "Строка 1\nСтрока 2\nСтрока 3\nСтрока 4" &gt; poem.txt</span></code></pre>
+                                    <p>Ключ <code>-e</code> включает
+                                        интерпретацию <code>\n</code> как
+                                        переноса строки.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ echo -e "Буря мглою небо кроет,\nВихри снежные крутя;\nТо, как зверь, она завоет,\nТо заплачет, как дитя." &gt; poem.txt</span><span class="code-row">$ cat poem.txt</span><span class="code-row">Буря мглою небо кроет,</span><span class="code-row">Вихри снежные крутя;</span><span class="code-row">То, как зверь, она завоет,</span><span class="code-row">То заплачет, как дитя.</span><span class="code-row">$ cat -n poem.txt</span><span class="code-row">     1  Буря мглою небо кроет,</span><span class="code-row">     2  Вихри снежные крутя;</span><span class="code-row">     3  То, как зверь, она завоет,</span><span class="code-row">     4  То заплачет, как дитя.</span><span class="code-row">$ less poem.txt</span></code></pre>
+                                    <p>В <code>less</code> можно нажать
+                                        <code>q</code>, чтобы выйти. Если
+                                        файл короткий - он поместится на
+                                        экране, но <code>less</code> всё
+                                        равно откроется в режиме просмотра.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Голова и хвост</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте файл
+                                <code>numbers.txt</code> с числами от 1 до 20,
+                                каждое на новой строке. Затем:</p>
+                            <ol>
+                                <li>Покажите первые 5 строк через
+                                    <code>head</code>.</li>
+                                <li>Покажите последние 3 строки через
+                                    <code>tail</code>.</li>
+                                <li>Откройте <code>tail -f</code> на этом файле
+                                    в одном терминале. В другом (или через
+                                    <code>echo &gt;&gt;</code>) добавьте
+                                    строку. Убедитесь, что она появилась.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Числа от 1 до 20 одной командой:
+                                        <code>seq 1 20 &gt; numbers.txt</code>.
+                                        Ключи head/tail с количеством строк:
+                                        <code>-n 5</code> и <code>-n 3</code>.
+                                        Для добавления строки используйте
+                                        <code>&gt;&gt;</code> (двойное
+                                        перенаправление) - оно дописывает
+                                        в конец, а не перезаписывает.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ seq 1 20 &gt; numbers.txt</span><span class="code-row">$ head -n 5 numbers.txt</span><span class="code-row">1</span><span class="code-row">2</span><span class="code-row">3</span><span class="code-row">4</span><span class="code-row">5</span><span class="code-row">$ tail -n 3 numbers.txt</span><span class="code-row">18</span><span class="code-row">19</span><span class="code-row">20</span><span class="code-row">$ tail -f numbers.txt</span></code></pre>
+                                    <p>Теперь в другом терминале:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">$ echo 21 &gt;&gt; numbers.txt</span></code></pre>
+                                    <p>И в первом терминале, где открыт
+                                        <code>tail -f</code>, сразу же
+                                        появится «21». Выход -
+                                        <code>Ctrl + C</code>.</p>
+                                    <p>Конструкция <code>&gt;&gt;</code> -
+                                        это <strong>дописывание</strong>.
+                                        В отличие от <code>&gt;</code>
+                                        (одинарного), которое перезаписывает
+                                        файл целиком, <code>&gt;&gt;</code>
+                                        добавляет в конец, не трогая
+                                        старое содержимое.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Найдите файлы</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Найдите в своей домашней папке:</p>
+                            <ol>
+                                <li>Все файлы с расширением <code>.txt</code>.</li>
+                                <li>Все папки с именем <code>Documents</code>.</li>
+                                <li>Все файлы больше 1 МБ.</li>
+                            </ol>
+                            <p>Плюс создайте несколько пустых файлов
+                                (<code>touch test1.txt test2.txt</code>) и
+                                найдите их через <code>find</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Поиск начинаем из домашней папки:
+                                        <code>find ~ ...</code>. По имени -
+                                        <code>-name "*.txt"</code>, по типу -
+                                        <code>-type d</code> для папок,
+                                        по размеру - <code>-size +1M</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ find ~ -name "*.txt"</span><span class="code-row">/home/student/poem.txt</span><span class="code-row">/home/student/numbers.txt</span><span class="code-row">/home/student/test1.txt</span><span class="code-row">/home/student/test2.txt</span><span class="code-row"></span><span class="code-row">$ find ~ -type d -name "Documents"</span><span class="code-row">/home/student/Documents</span><span class="code-row"></span><span class="code-row">$ find ~ -size +1M -type f</span><span class="code-row">/home/student/Downloads/movie.mp4</span><span class="code-row">/home/student/.cache/browser/cache.db</span></code></pre>
+                                    <p>Обратите внимание: <code>find</code>
+                                        ищет <strong>рекурсивно</strong> -
+                                        заходит во все вложенные папки. Это
+                                        и хорошо (найдёт всё), и плохо
+                                        (может занять время на большой
+                                        папке).</p>
+                                    <p>Ещё момент: <code>find</code> по
+                                        домашней папке покажет и
+                                        <strong>скрытые</strong> папки вроде
+                                        <code>.cache</code>. Это нормально,
+                                        find не пропускает скрытое.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Поиск в тексте</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте несколько текстовых
+                                файлов с разным содержимым. Например:</p>
+                            <ul>
+                                <li><code>log.txt</code>: строки с «INFO»,
+                                    «WARNING», «ERROR».</li>
+                                <li><code>config.txt</code>: параметры
+                                    типа «debug=true», «port=8080».</li>
+                            </ul>
+                            <p>Затем найдите:</p>
+                            <ol>
+                                <li>Все строки со словом «ERROR» во всех
+                                    файлах.</li>
+                                <li>Все строки со словом «error» (без учёта
+                                    регистра).</li>
+                                <li>Все строки <strong>без</strong> слова
+                                    «INFO».</li>
+                                <li>Все файлы, где есть слово «port».</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните ключи grep: <code>-r</code>
+                                        рекурсивно, <code>-i</code> без
+                                        регистра, <code>-v</code> инверсия,
+                                        <code>-l</code> только имена файлов.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создание файлов:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">$ cat &gt; log.txt &lt;&lt; EOF</span><span class="code-row">INFO: server started</span><span class="code-row">WARNING: low memory</span><span class="code-row">ERROR: connection failed</span><span class="code-row">INFO: retry</span><span class="code-row">EOF</span><span class="code-row">$ echo -e "debug=true\nport=8080\nhost=localhost" &gt; config.txt</span></code></pre>
+                                    <p>(Конструкция <code>&lt;&lt; EOF</code> -
+                                        это «heredoc», позволяет ввести
+                                        многострочный текст. Подробнее -
+                                        в уроке 8.)</p>
+                                    <p>Поиск:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">$ grep -r "ERROR" .</span><span class="code-row">./log.txt:ERROR: connection failed</span><span class="code-row"></span><span class="code-row">$ grep -ri "error" .</span><span class="code-row">./log.txt:ERROR: connection failed</span><span class="code-row"></span><span class="code-row">$ grep -v "INFO" log.txt</span><span class="code-row">WARNING: low memory</span><span class="code-row">ERROR: connection failed</span><span class="code-row"></span><span class="code-row">$ grep -rl "port" .</span><span class="code-row">./config.txt</span></code></pre>
+                                    <p>Что произошло:</p>
+                                    <ul>
+                                        <li><code>grep -r</code> прошёлся
+                                            по всем файлам в текущей папке
+                                            и нашёл строку с «ERROR».</li>
+                                        <li><code>-i</code> добавил поиск
+                                            без учёта регистра.</li>
+                                        <li><code>-v</code> показал строки,
+                                            где слова «INFO» нет.</li>
+                                        <li><code>-l</code> вывел только
+                                            имя файла, где есть «port»
+                                            (полезно, когда файлов
+                                            много).</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Освоили чтение файлов и поиск - те операции, без которых работа в
+                    терминале невозможна. Узнали, что <code>cat</code> подходит для
+                    маленьких файлов, а <code>less</code> - для больших, с
+                    возможностью листать и искать внутри. Разобрались с
+                    <code>head</code> и <code>tail</code> (включая волшебный
+                    <code>tail -f</code> для слежки за логами в реальном времени).</p>
+
+                <p>Изучили <code>find</code> - мощный поиск файлов по имени, типу,
+                    размеру и другим критериям. И <code>grep</code> - поиск текста
+                    внутри файлов с множеством полезных ключей (<code>-r</code>,
+                    <code>-i</code>, <code>-n</code>, <code>-v</code>,
+                    <code>-l</code>). Плюс <code>wc</code> для подсчёта строк,
+                    слов и байт.</p>
+
+                <p>В следующем уроке разберём <strong>права доступа</strong> и
+                    <code>sudo</code>. Это тема, которая поначалу пугает
+                    новичков: почему нельзя зайти в какую-то папку, почему
+                    «Permission denied», и что такое вообще этот суперпользователь
+                    root. Разберёмся с <code>chmod</code>, <code>chown</code>
+                    и когда нужен <code>sudo</code>.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-03.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-05.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Основы скриптов в PowerShell - CodeRush</title>
+    <title>Продвинутый PowerShell - Терминал - CodeRush</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
     <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
@@ -19,7 +21,7 @@
     <link rel="stylesheet" href="../../../css/main.css">
 </head>
 
-<body data-course-id="terminal" data-level="windows" data-lesson-id="lesson-07">
+<body data-course-id="terminal" data-level="windows" data-lesson-id="lesson-08">
 
     <header class="site-header">
         <div class="container">
@@ -47,7 +49,7 @@
             <i class="ph ph-caret-right"></i>
             <a href="index.html">Windows</a>
             <i class="ph ph-caret-right"></i>
-            <span>Урок 07</span>
+            <span>Урок 08</span>
         </nav>
     </div>
 
@@ -89,9 +91,14 @@
                             <span>Введение в PowerShell</span>
                             <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
                         </a>
-                        <a href="lesson-07.html" class="sidebar-lesson active" data-lesson-id="lesson-07">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
                             <span class="sidebar-lesson-num">07</span>
                             <span>Основы скриптов в PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson active" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Продвинутый PowerShell</span>
                             <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
                         </a>
                     </div>
@@ -99,64 +106,618 @@
             </aside>
 
             <article class="lesson-content">
-                <h1>Основы скриптов в PowerShell</h1>
+                <h1>Продвинутый PowerShell</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-clock"></i> ~55 минут</span>
                     <span><i class="ph ph-windows-logo"></i> Windows</span>
                     <span><i class="ph ph-code"></i> Только практика</span>
                 </div>
 
-                <p>Мы подошли к финалу курса по терминалу Windows. Мы научились перемещаться по файлам, управлять процессами и даже проверять сеть. Но настоящая магия начинается, когда вы объединяете эти команды в <strong>скрипты</strong>.</p>
+                <p>Это финальный урок курса. Мы прошли долгий путь: от первого
+                    <code>echo</code> до полноценных скриптов с параметрами,
+                    функциями и обработкой ошибок. Но PowerShell на этом
+                    не заканчивается - есть целый пласт возможностей, который
+                    отличает новичка от уверенного пользователя.</p>
 
-                <p>В PowerShell скрипты сохраняются в файлах с расширением <code>.ps1</code>. В этом уроке мы напишем наш первый скрипт и разберём главные фишки PowerShell: переменные и конвейеры.</p>
+                <p>В этом уроке разберём то, что делает PowerShell по-настоящему
+                    мощным: <strong>глубокую работу с объектами</strong>
+                    (группировка, вычисляемые свойства, обработка в конвейере),
+                    <strong>работу с файлами и данными</strong> (CSV, JSON),
+                    <strong>регулярные выражения</strong> и
+                    <strong>правильную обработку ошибок</strong>. А в конце -
+                    <strong>лучшие практики</strong>, которые отделяют
+                    «работает» от «сделано профессионально».</p>
 
-                <h2>Политика выполнения (Execution Policy)</h2>
+                <p>После этого урока вы сможете писать скрипты, которые не стыдно
+                    показать коллегам, - и использовать PowerShell для реальных
+                    задач: парсинг логов, генерация отчётов, автоматизация
+                    рутины.</p>
 
-                <p>Windows очень заботится о безопасности. По умолчанию она <strong>запрещает</strong> запускать любые скачанные или созданные вами скрипты <code>.ps1</code>, чтобы вирусы не могли навредить системе.</p>
+                <h2>Глубокая работа с объектами</h2>
 
-                <p>Если вы попытаетесь запустить скрипт, то увидите ошибку:</p>
-                <pre class="code-numbered"><code><span class="code-row">... выполнение сценариев отключено в этой системе.</span></code></pre>
+                <p>В уроке 6 мы познакомились с <code>Select-Object</code>,
+                    <code>Sort-Object</code>, <code>Where-Object</code>
+                    и <code>Measure-Object</code>. Теперь пойдём дальше -
+                    к тому, что позволяет делать с объектами сложные
+                    преобразования.</p>
 
-                <p>Чтобы разрешить запуск своих скриптов, нужно открыть PowerShell <strong>от имени администратора</strong> и ввести команду:</p>
+                <h3>Вычисляемые свойства</h3>
 
-                <pre class="code-numbered"><code><span class="code-row">Set-ExecutionPolicy RemoteSigned</span></code></pre>
+                <p>Самый мощный приём в <code>Select-Object</code>. Можно
+                    создавать <strong>свои свойства на лету</strong> -
+                    с любым вычислением:</p>
 
-                <p>Эта команда разрешает запуск локальных (ваших) скриптов, но требует цифровую подпись для скачанных из интернета. Это безопасный компромисс.</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-Process | Select-Object Name, @{Name='MemoryMB'; Expression={[math]::Round($_.WorkingSet / 1MB, 1)}}</span></code></pre>
 
-                <h2>Переменные в PowerShell</h2>
+                <p>Разберём синтаксис. <code>@{Name=...; Expression={...}}</code> -
+                    это <strong>хеш-таблица</strong>, которая создаёт новое
+                    вычисляемое свойство:</p>
+                <ul>
+                    <li><code>Name</code> - имя нового свойства (как
+                        оно будет в выводе).</li>
+                    <li><code>Expression</code> - блок кода, который
+                        вычисляет значение. <code>$_</code> - текущий
+                        объект в конвейере.</li>
+                </ul>
 
-                <p>Как и в любом языке программирования, в PowerShell можно хранить данные в переменных. Они всегда начинаются со знака доллара <code>$</code>.</p>
+                <p>В примере мы берём <code>WorkingSet</code> (в байтах),
+                    делим на 1 МБ (1048576) и округляем до одного знака
+                    после запятой. Получается колонка <code>MemoryMB</code>
+                    с понятными числами.</p>
 
-                <pre class="code-numbered"><code><span class="code-row">$name = "Алексей"</span><span class="code-row">Write-Host "Привет, $name!"</span></code></pre>
+                <p>Можно создавать несколько свойств сразу:</p>
 
-                <p>Команда <code>Write-Host</code> выводит текст на экран (аналог <code>echo</code>). Обратите внимание, что переменная подставляется прямо в строку без дополнительных знаков.</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-Process | Select-Object Name, @{N='MB'; E={[math]::Round($_.WorkingSet / 1MB, 1)}}, @{N='CPUSec'; E={[math]::Round($_.CPU, 1)}}</span></code></pre>
 
-                <h2>Конвейеры и фильтрация</h2>
+                <p>Сокращения <code>N</code> и <code>E</code> работают
+                    так же, как <code>Name</code> и <code>Expression</code> -
+                    просто короче для длинных конвейеров.</p>
 
-                <p>Главная сила PowerShell - это конвейеры (pipes, символ <code>|</code>). Они позволяют передавать результат одной команды в другую как объекты.</p>
+                <h3>Группировка: Group-Object</h3>
 
-                <p>В связке с конвейером часто используют команду <code>Where-Object</code> для фильтрации. Внутри фигурных скобок <code>{}</code> пишется условие, где <code>$_</code> означает «текущий объект».</p>
+                <p><code>Group-Object</code> собирает объекты в группы
+                    по значению указанного свойства. Например, сколько
+                    процессов работает под каждым именем:</p>
 
-                <p>Пример: найти все процессы, которые потребляют больше 100 мегабайт памяти (колонка <code>WorkingSet</code>).</p>
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Group-Object Name</span></code></pre>
 
-                <pre class="code-numbered"><code><span class="code-row">Get-Process | Where-Object {$_.WorkingSet -gt 100MB}</span></code></pre>
+                <p>Вывод:</p>
 
-                <h2>Создаём первый скрипт</h2>
+                <pre class="code-numbered"><code><span class="code-row">Count Name                      Group</span><span class="code-row">----- ----                      -----</span><span class="code-row">   15 chrome                    {chrome, chrome, chrome...}</span><span class="code-row">    8 svchost                   {svchost, svchost...}</span><span class="code-row">    3 notepad                   {notepad, notepad, notepad}</span><span class="code-row">    1 explorer                  {explorer}</span></code></pre>
 
-                <p>Давайте соберём всё вместе и напишем скрипт, который выводит приветствие и список самых прожорливых по памяти процессов.</p>
+                <p>Сразу видно: 15 процессов Chrome, 8 <code>svchost</code>
+                    и так далее. Полезно для анализа: если <code>svchost</code>
+                    вдруг 50 - это нормально, у него много служб. А если
+                    <code>chrome</code> 200 - пора закрыть лишние вкладки.</p>
 
-                <p><strong>Шаг 1.</strong> Откройте Блокнот (или VS Code).</p>
-                <p><strong>Шаг 2.</strong> Напишите следующий код:</p>
+                <p>Можно группировать по вычисляемому свойству:</p>
 
-                <pre class="code-numbered"><code><span class="code-row">$user = $env:USERNAME</span><span class="code-row">Write-Host "Привет, $user! Запускаю диагностику..."</span><span class="code-row"></span><span class="code-row">$topProcesses = Get-Process | Sort-Object -Property WorkingSet -Descending | Select-Object -First 3</span><span class="code-row"></span><span class="code-row">Write-Host "`nТоп-3 программы по памяти:"</span><span class="code-row">$topProcesses | Format-Table Name, WorkingSet</span></code></pre>
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-ChildItem | Group-Object Extension</span></code></pre>
 
-                <p><strong>Шаг 3.</strong> Сохраните файл с именем <code>diag.ps1</code> (обязательно выберите «Тип файла: Все файлы», чтобы не добавилось <code>.txt</code>).</p>
+                <p>Покажет, сколько файлов с каким расширением в текущей
+                    папке. Полезно для быстрой инвентаризации.</p>
 
-                <p><strong>Шаг 4.</strong> Откройте PowerShell, перейдите в папку с файлом и запустите его:</p>
+                <h3>ForEach-Object: обработка в конвейере</h3>
 
-                <pre class="code-numbered"><code><span class="code-row">.\diag.ps1</span></code></pre>
+                <p>В уроке 7 мы разбирали цикл <code>foreach ($x in $arr)</code>.
+                    Но есть и <strong>команда конвейера</strong>
+                    <code>ForEach-Object</code> - работает иначе: принимает
+                    объекты из конвейера и для каждого выполняет блок кода.</p>
 
-                <p>Скрипт выведет ваше имя (взятое из переменной окружения <code>$env:USERNAME</code>) и таблицу с тремя самыми тяжёлыми процессами.</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-Process | ForEach-Object { Write-Host "Процесс: $($_.Name), PID: $($_.Id)" }</span></code></pre>
+
+                <p>Разница с циклом <code>foreach</code>:</p>
+                <ul>
+                    <li><strong>foreach ($x in $arr)</strong> - обычный
+                        цикл, работает с массивом, который уже есть
+                        в памяти.</li>
+                    <li><strong>ForEach-Object</strong> - команда конвейера,
+                        обрабатывает объекты по мере поступления. Работает
+                        даже с бесконечным потоком.</li>
+                </ul>
+
+                <p>Для большинства задач оба варианта дают одинаковый результат.
+                    <code>ForEach-Object</code> удобнее в длинных конвейерах,
+                    где объекты приходят из предыдущих команд.</p>
+
+                <p>Можно применять и для преобразования. Например,
+                    переименовать группу файлов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-ChildItem *.txt | ForEach-Object { Rename-Item $_.FullName -NewName "old-$($_.Name)" }</span></code></pre>
+
+                <p>Найдёт все <code>.txt</code> в текущей папке и добавит
+                    к каждому имени префикс «old-».</p>
+
+                <h3>Where-Object с несколькими условиями</h3>
+
+                <p>В уроке 6 мы фильтровали по одному свойству. Но условия
+                    могут быть сложными - через <code>-and</code>,
+                    <code>-or</code>, <code>-not</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-Process | Where-Object { $_.WorkingSet -gt 100MB -and $_.CPU -gt 10 }</span></code></pre>
+
+                <p>«Процессы, которые занимают больше 100 мегабайт
+                    и при этом потратили больше 10 секунд CPU». Именно
+                    такие процессы часто «висят» и мешают работе.</p>
+
+                <h3>Полный пример: топ-5 процессов с человеческими
+                    значениями</h3>
+
+                <p>Соберём всё вместе - это классический запрос
+                    для диагностики:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-Process |</span><span class="code-row">    Sort-Object WorkingSet -Descending |</span><span class="code-row">    Select-Object -First 5 Name, Id, @{N='MemoryMB'; E={[math]::Round($_.WorkingSet / 1MB, 1)}}, @{N='CPUSec'; E={[math]::Round($_.CPU, 1)}} |</span><span class="code-row">    Format-Table -AutoSize</span></code></pre>
+
+                <p>Результат - аккуратная таблица:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Name           Id      MemoryMB    CPUSec</span><span class="code-row">----           --      --------    ------</span><span class="code-row">chrome        7532       1234.5     456.7</span><span class="code-row">Code          4821        567.8     234.5</span><span class="code-row">explorer      1024        234.5      45.6</span><span class="code-row">Teams         5678        123.4      67.8</span><span class="code-row">svchost       1234         98.7      12.3</span></code></pre>
+
+                <p>Понятные мегабайты, понятные секунды, отсортировано
+                    по памяти, только 5 строк. Идеально для отчёта
+                    или скриншота коллеге.</p>
+
+                <h2>Работа с файлами и данными</h2>
+
+                <p>PowerShell умеет не просто читать и записывать
+                    файлы, но и работать с структурированными данными -
+                    CSV, JSON. Это то, что нужно для реальных задач:
+                    парсинга логов, генерации отчётов, обмена
+                    данными с другими системами.</p>
+
+                <h3>Get-Content и Set-Content</h3>
+
+                <p>Базовые команды для чтения и записи файлов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-Content "notes.txt"</span></code></pre>
+
+                <p>Читает файл построчно. Каждая строка - отдельный элемент
+                    в конвейере. Это открывает много возможностей:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-Content "log.txt" | Where-Object { $_ -match "ERROR" }</span></code></pre>
+
+                <p>«Показать только строки, где есть ERROR» - классический
+                    анализ логов. В cmd это делалось через <code>findstr</code>,
+                    но с объектами куда гибче.</p>
+
+                <p>Запись в файл:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">"Привет, мир" | Set-Content "hello.txt"</span></code></pre>
+
+                <p>Перезаписывает файл. Для дописывания - <code>Add-Content</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">"Ещё одна строка" | Add-Content "hello.txt"</span></code></pre>
+
+                <h3>CSV: Import-Csv и Export-Csv</h3>
+
+                <p>CSV (comma-separated values) - простой табличный формат,
+                    который понимают все табличные редакторы. PowerShell
+                    работает с ним напрямую.</p>
+
+                <p>Импорт:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$users = Import-Csv "users.csv"</span><span class="code-row">$users</span></code></pre>
+
+                <p>Каждая строка CSV превращается в объект со свойствами
+                    по именам колонок. Если CSV такой:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Name,Age,City</span><span class="code-row">Иван,30,Москва</span><span class="code-row">Мария,25,Питер</span></code></pre>
+
+                <p>То <code>$users</code> будет массивом из двух объектов
+                    с полями <code>Name</code>, <code>Age</code>,
+                    <code>City</code>. И с ними можно делать всё то же,
+                    что и с любыми объектами PowerShell:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$users | Where-Object { [int]$_.Age -gt 25 }</span><span class="code-row">$users | Sort-Object { [int]$_.Age }</span><span class="code-row">$users | Select-Object Name, City</span></code></pre>
+
+                <p>Экспорт:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-Process | Select-Object Name, Id, CPU | Export-Csv "processes.csv" -NoTypeInformation</span></code></pre>
+
+                <p>Сохранит таблицу процессов в CSV. Ключ
+                    <code>-NoTypeInformation</code> убирает служебную
+                    первую строку с типом объектов - обычно она
+                    только мешает.</p>
+
+                <h3>JSON: ConvertTo-Json и ConvertFrom-Json</h3>
+
+                <p>JSON - стандарт обмена данными в современном мире
+                    (API, конфиги, веб-сервисы). PowerShell понимает его
+                    из коробки.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$data = @{</span><span class="code-row">    Name = "Иван"</span><span class="code-row">    Age = 30</span><span class="code-row">    Skills = @("PowerShell", "Python")</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">$data | ConvertTo-Json</span></code></pre>
+
+                <p>Превратит хеш-таблицу в JSON-строку:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">{</span><span class="code-row">    "Name": "Иван",</span><span class="code-row">    "Age": 30,</span><span class="code-row">    "Skills": ["PowerShell", "Python"]</span><span class="code-row">}</span></code></pre>
+
+                <p>Обратно:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$json = '{"name":"Иван","age":30}'</span><span class="code-row">$obj = $json | ConvertFrom-Json</span><span class="code-row">$obj.name</span><span class="code-row">Иван</span></code></pre>
+
+                <p>Полезно для чтения конфигов, работы с API
+                    (REST-сервисы возвращают JSON), сохранения
+                    структурированных данных.</p>
+
+                <h3>Test-Path: проверка существования</h3>
+
+                <p>Мы уже видели <code>Test-Path</code> в уроке 7.
+                    Ещё пара применений:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Test-Path "C:\Windows"</span><span class="code-row">Test-Path "C:\nonexistent"</span><span class="code-row">Test-Path "HKLM:\SOFTWARE"</span></code></pre>
+
+                <p>Работает с файлами, папками, реестром, дисками,
+                    переменными окружения. Универсальный способ
+                    проверить «существует ли».</p>
+
+                <p>Ключ <code>-PathType Leaf</code> - только файлы,
+                    <code>-PathType Container</code> - только папки:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Test-Path "C:\Windows" -PathType Container</span></code></pre>
+
+                <h2>Регулярные выражения</h2>
+
+                <p>Регулярные выражения (regex) - это язык шаблонов
+                    для поиска и замены текста. Мощная штука, которой
+                    можно напугать кого угодно, но базовые приёмы
+                    осваиваются за 10 минут и окупаются навсегда.</p>
+
+                <h3>-match: найти по шаблону</h3>
+
+                <p>В уроке 7 мы использовали <code>-like</code> для простых
+                    шаблонов с <code>*</code>. <code>-match</code> -
+                    для настоящих регулярных выражений:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">"hello123" -match "\d+"</span><span class="code-row">True</span><span class="code-row"></span><span class="code-row">"abc" -match "\d+"</span><span class="code-row">False</span></code></pre>
+
+                <p><code>\d+</code> означает «одна или больше цифр».
+                    Строка «hello123» содержит цифры - совпадение.
+                    Строка «abc» - нет.</p>
+
+                <p>Основные конструкции:</p>
+                <ul>
+                    <li><code>\d</code> - любая цифра (0-9).</li>
+                    <li><code>\w</code> - буква, цифра или подчёркивание.</li>
+                    <li><code>\s</code> - пробельный символ.</li>
+                    <li><code>.</code> - любой символ.</li>
+                    <li><code>+</code> - «один или больше».</li>
+                    <li><code>*</code> - «ноль или больше».</li>
+                    <li><code>?</code> - «ноль или один».</li>
+                    <li><code>^</code> - начало строки.</li>
+                    <li><code>$</code> - конец строки.</li>
+                </ul>
+
+                <h3>-replace: заменить по шаблону</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">"Hello World" -replace "World", "PowerShell"</span><span class="code-row">Hello PowerShell</span></code></pre>
+
+                <p>Простая замена. Но мощь - в regex:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">"Телефон: 8-800-555-1234" -replace "\d", "*"</span><span class="code-row">Телефон: *-***-***-****</span></code></pre>
+
+                <p>Заменяет все цифры на звёздочки - удобно
+                    для маскирования чувствительных данных
+                    в логах.</p>
+
+                <h3>-split: разбить на части</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">"a,b,c,d" -split ","</span><span class="code-row">a</span><span class="code-row">b</span><span class="code-row">c</span><span class="code-row">d</span></code></pre>
+
+                <p>Разбивает строку по разделителю на массив. С regex
+                    разделитель может быть любым:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">"one1two22three333four" -split "\d+"</span><span class="code-row">one</span><span class="code-row">two</span><span class="code-row">three</span><span class="code-row">four</span></code></pre>
+
+                <p>Разделитель - «одна или больше цифр». Результат -
+                    массив из четырёх слов.</p>
+
+                <h3>Практический пример: парсинг логов</h3>
+
+                <p>Типичная задача - вытащить IP-адреса из лог-файла:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$ips = Get-Content "access.log" | ForEach-Object {</span><span class="code-row">    if ($_ -match "(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})") {</span><span class="code-row">        $matches[1]</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">$ips | Group-Object | Sort-Object Count -Descending | Select-Object -First 10 Name, Count</span></code></pre>
+
+                <p>Что тут происходит:</p>
+                <ol>
+                    <li><code>Get-Content</code> читает файл построчно.</li>
+                    <li><code>ForEach-Object</code> обрабатывает каждую
+                        строку.</li>
+                    <li><code>$_ -match "..."</code> проверяет, есть ли
+                        в строке IP-адрес по шаблону.</li>
+                    <li>Если есть - <code>$matches[1]</code> содержит
+                        первую группу (сам IP).</li>
+                    <li>Собираем в массив <code>$ips</code>.</li>
+                    <li><code>Group-Object</code> группирует одинаковые
+                        IP.</li>
+                    <li><code>Sort-Object Count -Descending</code> -
+                        самые частые сверху.</li>
+                    <li><code>Select-Object -First 10</code> - топ-10.</li>
+                </ol>
+
+                <p>Результат - список IP-адресов, которые чаще всего
+                    заходили на сервер. Классический анализ логов,
+                    который в cmd потребовал бы нескольких утилит
+                    и хитрой склейки. Здесь - один конвейер.</p>
+
+                <h2>Правильная обработка ошибок</h2>
+
+                <p>В уроке 7 мы разобрали <code>try</code>/<code>catch</code>.
+                    Теперь пойдём глубже - к тому, как PowerShell
+                    на самом деле устроен внутри.</p>
+
+                <h3>Два типа ошибок</h3>
+
+                <p>В PowerShell ошибки бывают двух видов:</p>
+                <ul>
+                    <li><strong>Terminating</strong> (останавливающие) -
+                        прерывают выполнение команды. Например,
+                        синтаксическая ошибка.</li>
+                    <li><strong>Non-terminating</strong> (не останавливающие) -
+                        команда сообщает об ошибке, но продолжает работу.
+                        Например, <code>Get-ChildItem</code> на папке
+                        без прав: покажет ошибку для неё, но продолжит
+                        с остальными.</li>
+                </ul>
+
+                <p>Это критично понимать: <code>try</code>/<code>catch</code>
+                    ловит <strong>только terminating</strong>.
+                    Большинство ошибок PowerShell - non-terminating,
+                    и они просто «пролетают» мимо <code>catch</code>.</p>
+
+                <h3>-ErrorAction: управление ошибками</h3>
+
+                <p>Параметр <code>-ErrorAction</code> есть у каждой команды.
+                    Он говорит, что делать с ошибкой:</p>
+
+                <ul>
+                    <li><code>Continue</code> - показать ошибку
+                        и продолжить (по умолчанию).</li>
+                    <li><code>Stop</code> - превратить в terminating,
+                        то есть остановить и позволить <code>catch</code>
+                        её поймать.</li>
+                    <li><code>SilentlyContinue</code> - молча
+                        проигнорировать.</li>
+                    <li><code>Inquire</code> - спросить пользователя.</li>
+                    <li><code>Ignore</code> - вообще никак не реагировать
+                        (даже в <code>$Error</code> не попадёт).</li>
+                </ul>
+
+                <p>Пример - как правильно ловить ошибки:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">try {</span><span class="code-row">    Get-Content "C:\nonexistent\file.txt" -ErrorAction Stop</span><span class="code-row">}</span><span class="code-row">catch {</span><span class="code-row">    Write-Host "Файл не найден: $($_.Exception.Message)"</span><span class="code-row">}</span></code></pre>
+
+                <p>Без <code>-ErrorAction Stop</code> блок
+                    <code>catch</code> не сработал бы - ошибка была
+                    бы non-terminating и просто прошла мимо.</p>
+
+                <h3>$ErrorActionPreference: глобально</h3>
+
+                <p>Если нужно, чтобы <strong>все</strong> ошибки
+                    в скрипте останавливали выполнение - можно задать
+                    глобальную настройку в начале:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$ErrorActionPreference = "Stop"</span></code></pre>
+
+                <p>После этой строки любая ошибка будет terminating.
+                    Удобно для скриптов, где каждая ошибка критична.
+                    Например, в резервном копировании: если один файл
+                    не скопировался - лучше остановиться и разобраться,
+                    а не продолжать, создавая неполный бэкап.</p>
+
+                <p>Часто используют в начале скрипта - и дальше
+                    пишут <code>try</code>/<code>catch</code>
+                    вокруг блоков, где ошибки допустимы:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$ErrorActionPreference = "Stop"</span><span class="code-row"></span><span class="code-row">try {</span><span class="code-row">    $content = Get-Content $file</span><span class="code-row">    Write-Host "Успех"</span><span class="code-row">}</span><span class="code-row">catch {</span><span class="code-row">    Write-Host "Ошибка: $($_.Exception.Message)"</span><span class="code-row">    exit 1</span><span class="code-row">}</span></code></pre>
+
+                <h3>Разные типы исключений</h3>
+
+                <p>Можно ловить конкретные типы ошибок разными
+                    блоками <code>catch</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">try {</span><span class="code-row">    Get-Content "missing.txt" -ErrorAction Stop</span><span class="code-row">}</span><span class="code-row">catch [System.IO.FileNotFoundException] {</span><span class="code-row">    Write-Host "Файл не найден"</span><span class="code-row">}</span><span class="code-row">catch [System.UnauthorizedAccessException] {</span><span class="code-row">    Write-Host "Нет прав"</span><span class="code-row">}</span><span class="code-row">catch {</span><span class="code-row">    Write-Host "Какая-то другая ошибка: $($_.Exception.Message)"</span><span class="code-row">}</span></code></pre>
+
+                <p>Порядок важен: сначала конкретные типы, последний
+                    <code>catch</code> - без указания типа, как «общий».
+                    Он сработает, если ни один предыдущий не подошёл.</p>
+
+                <h3>finally: выполнится в любом случае</h3>
+
+                <p>Блок <code>finally</code> выполняется и при успехе,
+                    и при ошибке. Идеальное место для очистки ресурсов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$file = $null</span><span class="code-row">try {</span><span class="code-row">    $file = [System.IO.File]::OpenRead("C:\data.txt")</span><span class="code-row">    Write-Host "Файл открыт"</span><span class="code-row">}</span><span class="code-row">catch {</span><span class="code-row">    Write-Host "Ошибка"</span><span class="code-row">}</span><span class="code-row">finally {</span><span class="code-row">    if ($file) { $file.Close() }</span><span class="code-row">    Write-Host "Ресурсы освобождены"</span><span class="code-row">}</span></code></pre>
+
+                <p>Даже если что-то упало - файл закроется, ресурсы
+                    освободятся.</p>
+
+                <h2>Лучшие практики</h2>
+
+                <p>Это то, что отличает «работает» от «сделано
+                    профессионально». Советы, которые сэкономят
+                    вам часы отладки и нервы коллегам.</p>
+
+                <h3>1. Имена командлетов: Глагол-Существительное</h3>
+
+                <p>Функцию называйте <code>Get-Something</code>,
+                    <code>Set-Something</code>, <code>New-Something</code>,
+                    <code>Remove-Something</code> - как встроенные команды.
+                    Не <code>DoStuff</code>, не <code>ProcessData</code>,
+                    а <code>Convert-Data</code>, <code>Get-UserInfo</code>.</p>
+
+                <p>Проверить, что глагол официально одобрен Microsoft:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Verb | Where-Object Verb -eq "Convert"</span></code></pre>
+
+                <p>Если глагол не в списке - <code>Get-Verb</code> подскажет
+                    замену.</p>
+
+                <h3>2. Write-Output вместо Write-Host для возврата</h3>
+
+                <p>В уроке 6 мы разбирали: <code>Write-Host</code> -
+                    для пользователя, <code>Write-Output</code> -
+                    для конвейера. Правило простое:</p>
+                <ul>
+                    <li>Показать сообщение «Запускаю...» -
+                        <code>Write-Host</code>.</li>
+                    <li>Вернуть результат, который будут использовать
+                        другие команды - <code>Write-Output</code>
+                        (или просто значение без команды).</li>
+                </ul>
+
+                <p>Плохо:</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">function Get-Doubled($x) { Write-Host ($x * 2) }</span></code></pre>
+
+                <p>Хорошо:</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">function Get-Doubled($x) { return $x * 2 }</span></code></pre>
+
+                <p>В первом случае <code>Get-Doubled 5 | Something</code>
+                    не сработает - <code>Write-Host</code> ничего не передаёт
+                    дальше. Во втором - работает.</p>
+
+                <h3>3. Set-StrictMode для поиска опечаток</h3>
+
+                <p>По умолчанию PowerShell прощает многое: обращение
+                    к несуществующей переменной возвращает <code>$null</code>,
+                    не не выдаёт ошибку. Это удобно для быстрых скриптов,
+                    но опасно для больших - опечатка в имени переменной
+                    может пройти незамеченной.</p>
+
+                <p><code>Set-StrictMode</code> включает строгий режим:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Set-StrictMode -Version Latest</span></code></pre>
+
+                <p>После этой строки обращение к необъявленной переменной
+                    даёт ошибку. Рекомендуется в начале каждого серьёзного
+                    скрипта - найдёт опечатки, которые иначе всплывут
+                    через месяц в проде.</p>
+
+                <h3>4. Комментарий-шапка с описанием</h3>
+
+                <p>В начале каждого скрипта - блок с описанием:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">&lt;#</span><span class="code-row">.SYNOPSIS</span><span class="code-row">Короткое описание, что делает скрипт.</span><span class="code-row"></span><span class="code-row">.DESCRIPTION</span><span class="code-row">Подробное описание: зачем нужен, что делает,</span><span class="code-row">какие есть ограничения.</span><span class="code-row"></span><span class="code-row">.PARAMETER Source</span><span class="code-row">Путь к источнику.</span><span class="code-row"></span><span class="code-row">.PARAMETER Destination</span><span class="code-row">Путь к назначению.</span><span class="code-row"></span><span class="code-row">.EXAMPLE</span><span class="code-row">.\backup.ps1 -Source "C:\Data" -Destination "D:\Backup"</span><span class="code-row">#&gt;</span></code></pre>
+
+                <p>Через месяц вы сами забудете, зачем написали этот
+                    скрипт. А коллега без шапки вообще не разберётся.
+                    <code>Get-Help</code> читает такую шапку - справка
+                    работает автоматически.</p>
+
+                <h3>5. #Requires для зависимостей</h3>
+
+                <p>Если скрипт требует определённой версии PowerShell
+                    или прав администратора - укажите это в начале:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">#Requires -Version 5.1</span><span class="code-row">#Requires -RunAsAdministrator</span></code></pre>
+
+                <p>PowerShell проверит условия при запуске. Если
+                    не выполнены - сразу выдаст понятную ошибку,
+                    а не упадёт где-то в середине.</p>
+
+                <h3>6. Обрабатывайте ошибки явно</h3>
+
+                <p>Каждая команда, которая может упасть, - должна быть
+                    в <code>try</code>/<code>catch</code>. Особенно это
+                    касается файловых операций, сетевых запросов, работы
+                    с внешними системами.</p>
+
+                <p>Плохо:</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">Copy-Item "C:\Data" "D:\Backup" -Recurse</span></code></pre>
+
+                <p>Хорошо:</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">try {</span><span class="code-row">    Copy-Item "C:\Data" "D:\Backup" -Recurse -ErrorAction Stop</span><span class="code-row">    Write-Host "Скопировано"</span><span class="code-row">}</span><span class="code-row">catch {</span><span class="code-row">    Write-Host "Ошибка: $($_.Exception.Message)"</span><span class="code-row">    exit 1</span><span class="code-row">}</span></code></pre>
+
+                <p>Второй вариант скажет вам, что пошло не так, а не просто
+                    «молча ничего не сделает».</p>
+
+                <h3>7. Осмысленные сообщения</h3>
+
+                <p>Плохо: <code>Write-Host "Error"</code>.</p>
+
+                <p>Хорошо: <code>Write-Host "Ошибка копирования $file: $($_.Exception.Message)"</code>.</p>
+
+                <p>Через полгода, когда кто-то (или вы) будет разбираться
+                    с логами, скажет спасибо. Сообщения должны содержать:
+                    что произошло, с каким объектом, что делать.</p>
+
+                <h3>8. Не изобретайте велосипед</h3>
+
+                <p>Прежде чем писать функцию, проверьте - вдруг уже есть
+                    встроенная. <code>Get-Command</code> и
+                    <code>Get-Help</code> - ваши лучшие друзья.
+                    Скорее всего, задача, которую вы решаете, уже решена
+                    кем-то в стандартных модулях.</p>
+
+                <h2>Итоговый пример: скрипт-отчёт</h2>
+
+                <p>Соберём всё из этого урока в один осмысленный скрипт.
+                    Он делает резервную копию папки, экспортирует
+                    информацию о процессе в CSV и JSON, обрабатывает
+                    ошибки и следует лучшим практикам.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">&lt;#</span><span class="code-row">.SYNOPSIS</span><span class="code-row">Резервное копирование папки с отчётом о процессе.</span><span class="code-row"></span><span class="code-row">.PARAMETER Source</span><span class="code-row">Исходная папка.</span><span class="code-row"></span><span class="code-row">.PARAMETER Destination</span><span class="code-row">Куда копировать.</span><span class="code-row">#&gt;</span><span class="code-row"></span><span class="code-row">#Requires -Version 5.1</span><span class="code-row"></span><span class="code-row">param(</span><span class="code-row">    [string]$Source = "C:\Data",</span><span class="code-row">    [string]$Destination = "D:\Backup"</span><span class="code-row">)</span><span class="code-row"></span><span class="code-row">Set-StrictMode -Version Latest</span><span class="code-row">$ErrorActionPreference = "Stop"</span><span class="code-row"></span><span class="code-row">function Write-Divider {</span><span class="code-row">    Write-Host ("=" * 50)</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">function Copy-SourceToBackup {</span><span class="code-row">    param([string]$From, [string]$To)</span><span class="code-row"></span><span class="code-row">    if (-not (Test-Path $From)) {</span><span class="code-row">        throw "Исходная папка не найдена: $From"</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    if (-not (Test-Path $To)) {</span><span class="code-row">        New-Item -Path $To -ItemType Directory | Out-Null</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    $files = Get-ChildItem -Path $From -File -Recurse</span><span class="code-row">    $copied = 0</span><span class="code-row"></span><span class="code-row">    foreach ($file in $files) {</span><span class="code-row">        try {</span><span class="code-row">            Copy-Item $file.FullName -Destination $To -ErrorAction Stop</span><span class="code-row">            $copied++</span><span class="code-row">        }</span><span class="code-row">        catch {</span><span class="code-row">            Write-Host "Пропуск $($file.Name): $($_.Exception.Message)"</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return $copied</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Write-Divider</span><span class="code-row">Write-Host "Резервное копирование: $Source -> $Destination"</span><span class="code-row">Write-Divider</span><span class="code-row"></span><span class="code-row">try {</span><span class="code-row">    $startTime = Get-Date</span><span class="code-row">    $totalCopied = Copy-SourceToBackup -From $Source -To $Destination</span><span class="code-row">    $duration = (Get-Date) - $startTime</span><span class="code-row"></span><span class="code-row">    $report = [PSCustomObject]@{</span><span class="code-row">        Date = $startTime</span><span class="code-row">        Source = $Source</span><span class="code-row">        Destination = $Destination</span><span class="code-row">        FilesCopied = $totalCopied</span><span class="code-row">        DurationSeconds = [math]::Round($duration.TotalSeconds, 1)</span><span class="code-row">        Success = $true</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    $report | Export-Csv "$Destination\report.csv" -NoTypeInformation</span><span class="code-row">    $report | ConvertTo-Json | Set-Content "$Destination\report.json"</span><span class="code-row"></span><span class="code-row">    Write-Host "Скопировано файлов: $totalCopied за $($report.DurationSeconds) сек"</span><span class="code-row">}</span><span class="code-row">catch {</span><span class="code-row">    Write-Host "Ошибка: $($_.Exception.Message)"</span><span class="code-row">    exit 1</span><span class="code-row">}</span><span class="code-row">finally {</span><span class="code-row">    Write-Divider</span><span class="code-row">    Write-Host "Работа завершена"</span><span class="code-row">}</span></code></pre>
+
+                <p>Что в этом скрипте хорошего:</p>
+                <ul>
+                    <li>Шапка с документацией (работает <code>Get-Help</code>).</li>
+                    <li><code>#Requires</code> - проверка версии.</li>
+                    <li><code>param()</code> - параметры с типами
+                        и значениями по умолчанию.</li>
+                    <li><code>Set-StrictMode</code> - строгий режим.</li>
+                    <li><code>$ErrorActionPreference</code> - все ошибки
+                        останавливают.</li>
+                    <li>Функция <code>Copy-SourceToBackup</code> -
+                        отдельная логика, переиспользуемая.</li>
+                    <li><code>try</code>/<code>catch</code>/<code>finally</code> -
+                        правильная обработка.</li>
+                    <li><code>[PSCustomObject]</code> - объект для отчёта,
+                        а не хеш-таблица - можно сразу
+                        <code>Export-Csv</code>.</li>
+                    <li>Экспорт в два формата - CSV для Excel, JSON
+                        для программ.</li>
+                </ul>
+
+                <p>Такой скрипт не стыдно показать коллегам и положить
+                    в репозиторий. Это уровень, к которому стоит
+                    стремиться.</p>
 
                 <h2>Шпаргалка</h2>
 
@@ -164,64 +725,193 @@
 
                 <ul class="operator-list">
                     <li>
-                        <code>.ps1</code>
-                        <span>расширение скрипта</span>
+                        <code>@{N='x'; E={...}}</code>
+                        <span>вычисляемое свойство</span>
                     </li>
                     <li>
-                        <code>Set-ExecutionPolicy</code>
-                        <span>разрешить скрипты</span>
+                        <code>Group-Object</code>
+                        <span>группировка</span>
                     </li>
                     <li>
-                        <code>$var = "text"</code>
-                        <span>создать переменную</span>
+                        <code>ForEach-Object</code>
+                        <span>обработка в конвейере</span>
                     </li>
                     <li>
-                        <code>Write-Host</code>
-                        <span>вывести текст</span>
+                        <code>Get-Content</code>
+                        <span>прочитать файл</span>
                     </li>
                     <li>
-                        <code>|</code>
-                        <span>конвейер (передача данных)</span>
+                        <code>Set-Content</code>
+                        <span>записать в файл</span>
                     </li>
                     <li>
-                        <code>Where-Object</code>
-                        <span>фильтрация</span>
+                        <code>Add-Content</code>
+                        <span>дописать</span>
                     </li>
                     <li>
-                        <code>$_</code>
-                        <span>текущий объект</span>
+                        <code>Import-Csv</code>
+                        <span>читать CSV</span>
+                    </li>
+                    <li>
+                        <code>Export-Csv</code>
+                        <span>записать CSV</span>
+                    </li>
+                    <li>
+                        <code>ConvertTo-Json</code>
+                        <span>объект в JSON</span>
+                    </li>
+                    <li>
+                        <code>ConvertFrom-Json</code>
+                        <span>JSON в объект</span>
+                    </li>
+                    <li>
+                        <code>-match</code>
+                        <span>поиск по regex</span>
+                    </li>
+                    <li>
+                        <code>-replace</code>
+                        <span>замена</span>
+                    </li>
+                    <li>
+                        <code>-split</code>
+                        <span>разбить</span>
+                    </li>
+                    <li>
+                        <code>-ErrorAction Stop</code>
+                        <span>для try/catch</span>
+                    </li>
+                    <li>
+                        <code>$ErrorActionPreference</code>
+                        <span>глобально</span>
+                    </li>
+                    <li>
+                        <code>Set-StrictMode</code>
+                        <span>строгий режим</span>
                     </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные ошибки при создании скриптов.</p>
+                <p>Типичные проблемы продвинутого уровня и их решения.</p>
 
                 <ul>
-                    <li><strong>«Запуск сценариев отключён»</strong>. Вы не выполнили <code>Set-ExecutionPolicy RemoteSigned</code> или запустили PowerShell не от имени администратора.</li>
-                    <li><strong>«Файл не найден»</strong>. Вы находитесь не в той папке. Используйте <code>cd</code>, чтобы перейти туда, где лежит <code>diag.ps1</code>.</li>
-                    <li><strong>Скрипт открывается в Блокноте, а не запускается</strong>. Вы запускаете его двойным кликом. В PowerShell запускайте файлы через консоль: <code>.\имя_файла.ps1</code>.</li>
-                    <li><strong>Кракозябры вместо русских букв</strong>. В старых версиях PowerShell консоль не понимает кодировку UTF-8 без настройки. Сохраняйте скрипты в кодировке Windows-1251 или добавьте <code>[Console]::OutputEncoding = [System.Text.Encoding]::UTF8</code> в начало скрипта.</li>
+                    <li><strong>«Вычисляемое свойство не
+                            работает».</strong> Проверьте синтаксис
+                        хеш-таблицы: <code>@{Name='X';
+                            Expression={...}}</code>. Частая ошибка -
+                        забыть запятую между блоками в
+                        <code>Select-Object</code> или поставить
+                        обычные кавычки вместо фигурных скобок
+                        в <code>Expression</code>.</li>
+                    <li><strong>«Group-Object выдаёт не то, что
+                            ожидалось».</strong> Проверьте имя
+                        свойства: <code>Group-Object Name</code>
+                        работает, а <code>Group-Object name</code>
+                        тоже работает - регистр не важен. Но если
+                        свойство называется иначе (например,
+                        <code>ProcessName</code> вместо
+                        <code>Name</code>) - нужное имя нужно
+                        сначала узнать через
+                        <code>Get-Member</code>.</li>
+                    <li><strong>«Import-Csv не находит файл».</strong>
+                        <code>Import-Csv</code> ждёт путь к файлу,
+                        а не к папке. Проверьте, что файл существует
+                        через <code>Test-Path</code>. И что у файла
+                        расширение <code>.csv</code> - если файл
+                        в другой кодировке, могут быть проблемы
+                        с кириллицей.</li>
+                    <li><strong>«Кракозябры при чтении CSV с
+                            русскими буквами».</strong> Excel сохраняет
+                        CSV в Windows-1251, а PowerShell 5.1 по
+                        умолчанию читает UTF-8 (или наоборот).
+                        Решение: <code>Import-Csv -Encoding Default</code>
+                        или <code>-Encoding UTF8</code> - подбирается
+                        в зависимости от кодировки файла.</li>
+                    <li><strong>«try/catch не ловит ошибку».</strong>
+                        Как в уроке 7: скорее всего, ошибка
+                        non-terminating. Добавьте
+                        <code>-ErrorAction Stop</code> к команде
+                        внутри <code>try</code>. Или задайте
+                        <code>$ErrorActionPreference = "Stop"</code>
+                        в начале скрипта.</li>
+                    <li><strong>«Set-StrictMode сломал работающий
+                            скрипт».</strong> Так и должно быть -
+                        строгий режим выявил проблемы, которые
+                        раньше проходили молча. Необъявленные
+                        переменные, обращение к несуществующим
+                        свойствам - всё это теперь ошибки.
+                        Исправьте найденное - скрипт станет
+                        надёжнее.</li>
+                    <li><strong>«Регулярное выражение не
+                            срабатывает».</strong> Проверьте на
+                        простом примере: <code>"test123" -match
+                            "\d+"</code>. Если работает - проблема
+                        в самом шаблоне. Если не работает - может
+                        быть, вы используете <code>-eq</code>
+                        вместо <code>-match</code>. И помните:
+                        в двойных кавычках <code>\</code> может
+                        быть escape-символом - используйте
+                        одинарные кавычки для шаблонов
+                        (<code>'\d+'</code>, не
+                        <code>"\d+"</code>).</li>
+                    <li><strong>«ForEach-Object vs foreach - что
+                            использовать».</strong> Для коллекций
+                        в памяти - <code>foreach</code> быстрее.
+                        В длинных конвейерах -
+                        <code>ForEach-Object</code> удобнее
+                        и читается лучше. Оба варианта рабочие,
+                        оба правильные. Выбирайте по
+                        контексту.</li>
+                    <li><strong>«ConvertTo-Json выдаёт что-то
+                            странное для сложных объектов».</strong>
+                        По умолчанию <code>-Depth 2</code> -
+                        вложенные объекты могут обрезаться.
+                        Для сложных структур добавьте
+                        <code>-Depth 10</code>. Иначе увидите
+                        <code>System.Object[]</code> вместо
+                        данных.</li>
+                    <li><strong>«Export-Csv выдаёт кракозябры
+                            в Excel».</strong> По умолчанию
+                        <code>Export-Csv</code> пишет в UTF-8
+                        без BOM - Excel открывает как
+                        Windows-1251. Решение:
+                        <code>Export-Csv -Encoding UTF8BOM</code>
+                        в PowerShell 7, или
+                        <code>-Encoding Unicode</code> в 5.1.</li>
                 </ul>
 
-                <p>Если что-то не получается - напишите нам в
+                <p>Если что-то не получается или есть вопрос - напишите в
                     <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
                     разберёмся вместе.
                 </p>
 
                 <h2>Практика</h2>
 
-                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+                <p>Четыре задачи. Первые две - на объекты и данные,
+                    третья и четвёртая - на комплексные сценарии.
+                    Это финальные задачи курса.</p>
 
                 <div class="task-list">
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 1. Разрешаем скрипты</span>
+                            <span>Задача 1. Топ-процессов с удобными
+                                значениями</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Откройте PowerShell от имени администратора и разрешите выполнение локальных скриптов.</p>
+                            <p class="task-desc">Соберите конвейер, который
+                                показывает:</p>
+                            <ol>
+                                <li>Топ-10 процессов по памяти.</li>
+                                <li>Только три колонки: имя, PID,
+                                    память в мегабайтах (округлённую
+                                    до одного знака).</li>
+                                <li>Отсортировано по убыванию
+                                    памяти.</li>
+                                <li>Красивая таблица через
+                                    <code>Format-Table -AutoSize</code>.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -229,17 +919,53 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте команду <code>Set-ExecutionPolicy</code> с параметром <code>RemoteSigned</code>.</p>
+                                    <p>Структура:
+                                        <code>Get-Process</code> →
+                                        <code>Sort-Object</code> →
+                                        <code>Select-Object -First 10</code>
+                                        с вычисляемым свойством →
+                                        <code>Format-Table</code>.
+                                        Для мегабайт -
+                                        <code>[math]::Round($_.WorkingSet / 1MB, 1)</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">Set-ExecutionPolicy RemoteSigned</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">Get-Process |</span><span class="code-row">    Sort-Object WorkingSet -Descending |</span><span class="code-row">    Select-Object -First 10 Name, Id, @{N='MemoryMB'; E={[math]::Round($_.WorkingSet / 1MB, 1)}} |</span><span class="code-row">    Format-Table -AutoSize</span></code></pre>
+                                    <p>Вывод:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">Name        Id      MemoryMB</span><span class="code-row">----        --      --------</span><span class="code-row">chrome    7532        1234.5</span><span class="code-row">Code      4821         567.8</span><span class="code-row">explorer  1024         234.5</span><span class="code-row">...</span></code></pre>
+                                    <p>Что тут важно:</p>
+                                    <ul>
+                                        <li><strong>Порядок</strong>:
+                                            сначала сортировка
+                                            по полному
+                                            <code>WorkingSet</code>
+                                            (байты), потом выборка
+                                            топ-10, потом округление
+                                            до мегабайт. Если
+                                            округлить раньше -
+                                            сортировка будет
+                                            по округлённым
+                                            значениям, а это
+                                            менее точно.</li>
+                                        <li><strong>-AutoSize</strong>
+                                            в <code>Format-Table</code>
+                                            автоматически
+                                            подбирает ширину
+                                            колонок по
+                                            содержимому.</li>
+                                        <li><strong>N= и E=</strong> -
+                                            сокращения
+                                            для Name и
+                                            Expression. Работают
+                                            одинаково, но короче
+                                            читать.</li>
+                                    </ul>
                                 </div>
                             </details>
                         </div>
@@ -247,11 +973,25 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 2. Переменные и математика</span>
+                            <span>Задача 2. Анализ файлов по расширениям</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Создайте две переменные с числами, сложите их и выведите результат на экран с помощью <code>Write-Host</code>.</p>
+                            <p class="task-desc">Разберитесь, что лежит
+                                в вашей домашней папке:</p>
+                            <ol>
+                                <li>Получите список всех файлов в домашней
+                                    папке (без подпапок).</li>
+                                <li>Сгруппируйте по расширению через
+                                    <code>Group-Object</code>.</li>
+                                <li>Отсортируйте по количеству файлов
+                                    (по убыванию).</li>
+                                <li>Выведите топ-5 расширений: расширение
+                                    и количество.</li>
+                                <li>Сохраните результат в CSV-файл
+                                    <code>extensions.csv</code>
+                                    в домашней папке.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -259,17 +999,64 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Создайте <code>$a = 5</code> и <code>$b = 10</code>. Результат сохраните в <code>$sum = $a + $b</code>. Выведите через <code>Write-Host "Сумма: $sum"</code>.</p>
+                                    <p><code>Get-ChildItem -File</code>
+                                        даёт только файлы.
+                                        <code>Group-Object Extension</code>
+                                        группирует по расширению.
+                                        <code>Sort-Object Count -Descending</code>
+                                        - по количеству.
+                                        <code>Select-Object -First 5 Name, Count</code>
+                                        - топ-5.
+                                        <code>Export-Csv -NoTypeInformation</code>
+                                        - сохранить.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">$a = 5</span><span class="code-row">$b = 10</span><span class="code-row">$sum = $a + $b</span><span class="code-row">Write-Host "Сумма: $sum"</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">Get-ChildItem $HOME -File |</span><span class="code-row">    Group-Object Extension |</span><span class="code-row">    Sort-Object Count -Descending |</span><span class="code-row">    Select-Object -First 5 Name, Count |</span><span class="code-row">    Export-Csv "$HOME\extensions.csv" -NoTypeInformation</span></code></pre>
+                                    <p>Обратите внимание на несколько
+                                        моментов:</p>
+                                    <ul>
+                                        <li><strong>$HOME</strong> - встроенная
+                                            переменная с путём
+                                            к домашней папке.
+                                            Эквивалент
+                                            <code>$env:USERPROFILE</code>.</li>
+                                        <li><strong>-File</strong> в
+                                            <code>Get-ChildItem</code>
+                                            исключает папки -
+                                            иначе группировка
+                                            включала бы
+                                            и директории без
+                                            расширения.</li>
+                                        <li><strong>Свойства Name
+                                                и Count</strong> появляются
+                                            автоматически после
+                                            <code>Group-Object</code>:
+                                            <code>Name</code> - ключ
+                                            группировки (расширение),
+                                            <code>Count</code> -
+                                            сколько объектов в
+                                            группе.</li>
+                                        <li><strong>Export-Csv</strong>
+                                            создаст таблицу
+                                            в CSV - можно
+                                            открыть в Excel
+                                            и увидеть
+                                            результат.</li>
+                                    </ul>
+                                    <p>Если в домашней папке мало
+                                        файлов - попробуйте
+                                        на папке с проектом
+                                        или на
+                                        <code>C:\Windows\System32</code>
+                                        (для чтения обычно
+                                        доступна).</p>
                                 </div>
                             </details>
                         </div>
@@ -277,11 +1064,25 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Фильтр служб</span>
+                            <span>Задача 3. Парсинг логов с regex</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Выведите список всех служб Windows (команда <code>Get-Service</code>), но оставьте только те, которые сейчас запущены (статус <code>Running</code>).</p>
+                            <p class="task-desc">Создайте файл
+                                <code>test.log</code> с несколькими
+                                строками примерно такого вида:</p>
+                            <pre class="code-numbered"><code><span class="code-row">2026-10-20 12:30:45 ERROR Connection failed from 192.168.1.5</span><span class="code-row">2026-10-20 12:31:00 INFO User login: ivan</span><span class="code-row">2026-10-20 12:32:15 ERROR Timeout from 192.168.1.10</span><span class="code-row">2026-10-20 12:33:00 INFO Request processed</span><span class="code-row">2026-10-20 12:34:22 ERROR Database error from 10.0.0.5</span></code></pre>
+                            <p>Затем:</p>
+                            <ol>
+                                <li>Вытащите все строки с «ERROR».</li>
+                                <li>Из них вытащите все IP-адреса
+                                    через regex.</li>
+                                <li>Сгруппируйте IP и посчитайте,
+                                    сколько раз каждый
+                                    встречается.</li>
+                                <li>Сохраните результат в JSON-файл
+                                    <code>errors.json</code>.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -289,17 +1090,78 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте конвейер: <code>Get-Service | Where-Object {$_.Status -eq "Running"}</code>.</p>
+                                    <p>Шаблон IP-адреса:
+                                        <code>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}</code>.
+                                        Извлечь через
+                                        <code>$matches[0]</code>
+                                        после <code>-match</code>.
+                                        Для JSON -
+                                        <code>ConvertTo-Json</code>
+                                        и <code>Set-Content</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">Get-Service | Where-Object {$_.Status -eq "Running"}</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">$ips = Get-Content "test.log" | ForEach-Object {</span><span class="code-row">    if ($_ -match "ERROR" -and $_ -match "(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})") {</span><span class="code-row">        $matches[1]</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">$report = $ips | Group-Object | Sort-Object Count -Descending | Select-Object Name, Count</span><span class="code-row"></span><span class="code-row">$report | ConvertTo-Json | Set-Content "errors.json"</span><span class="code-row"></span><span class="code-row">$report</span></code></pre>
+                                    <p>Что тут важно:</p>
+                                    <ul>
+                                        <li><strong>Двойное условие</strong>
+                                            <code>-and</code>:
+                                            строка должна
+                                            содержать и «ERROR»,
+                                            и IP. Если бы
+                                            проверяли только
+                                            на IP - поймали
+                                            бы и INFO-строки
+                                            с адресами.</li>
+                                        <li><strong>$matches[1]</strong>
+                                            - первая группа
+                                            в скобках.
+                                            Мы обернули шаблон
+                                            IP в скобки
+                                            <code>(...)</code> -
+                                            именно это значение
+                                            доступно в
+                                            <code>$matches[1]</code>.
+                                            <code>$matches[0]</code> -
+                                            вся совпавшая
+                                            подстрока (для
+                                            нашего шаблона
+                                            она совпадает
+                                            с группой, но
+                                            для сложных
+                                            шаблонов может
+                                            быть иначе).</li>
+                                        <li><strong>Group-Object</strong>
+                                            без параметров
+                                            группирует
+                                            по значению
+                                            целиком -
+                                            для массива
+                                            строк это
+                                            как раз
+                                            уникальные
+                                            значения.</li>
+                                        <li><strong>ConvertTo-Json</strong>
+                                            превращает
+                                            результат
+                                            в JSON -
+                                            удобно
+                                            для
+                                            дальнейшей
+                                            обработки
+                                            программами.</li>
+                                    </ul>
+                                    <p>Результат в
+                                        <code>errors.json</code>
+                                        будет выглядеть
+                                        так:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">[</span><span class="code-row">  {"Name": "192.168.1.5", "Count": 1},</span><span class="code-row">  {"Name": "192.168.1.10", "Count": 1},</span><span class="code-row">  {"Name": "10.0.0.5", "Count": 1}</span><span class="code-row">]</span></code></pre>
                                 </div>
                             </details>
                         </div>
@@ -307,11 +1169,41 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Скрипт-отчёт</span>
+                            <span>Задача 4. Итоговый скрипт</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Напишите скрипт <code>report.ps1</code>, который выводит ваше имя пользователя, текущую дату и количество запущенных процессов. Сохраните и запустите его.</p>
+                            <p class="task-desc">Соберите всё, что
+                                изучили, в один осмысленный скрипт
+                                <code>sysinfo.ps1</code>:</p>
+                            <ol>
+                                <li>В начале - шапка с описанием
+                                    для <code>Get-Help</code>.</li>
+                                <li><code>#Requires -Version 5.1</code>.</li>
+                                <li><code>param()</code> с параметром
+                                    <code>$OutputPath</code>
+                                    (по умолчанию <code>$HOME</code>).</li>
+                                <li><code>Set-StrictMode -Version Latest</code>
+                                    и <code>$ErrorActionPreference = "Stop"</code>.</li>
+                                <li>Скрипт собирает:
+                                    <ul>
+                                        <li>информацию о компьютере
+                                            через
+                                            <code>Get-ComputerInfo</code>;</li>
+                                        <li>топ-5 процессов по памяти;</li>
+                                        <li>информацию о свободном
+                                            месте на дисках.</li>
+                                    </ul>
+                                </li>
+                                <li>Всё это сохраняет в два файла:
+                                    <code>sysinfo.csv</code> и
+                                    <code>sysinfo.json</code>
+                                    в папке <code>$OutputPath</code>.</li>
+                                <li>Обрабатывает ошибки через
+                                    <code>try</code>/<code>catch</code>/<code>finally</code>.</li>
+                                <li>В конце выводит путь
+                                    к сохранённым файлам.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -319,17 +1211,77 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте <code>$env:USERNAME</code> для имени, <code>Get-Date</code> для даты и <code>(Get-Process).Count</code> для количества процессов. Не забудьте про <code>Write-Host</code>.</p>
+                                    <p>Собирайте данные
+                                        в <code>[PSCustomObject]</code> -
+                                        это универсальный
+                                        способ. Один
+                                        объект с полями
+                                        <code>ComputerName</code>,
+                                        <code>OSVersion</code>,
+                                        <code>TopProcesses</code>,
+                                        <code>Disks</code>.
+                                        Потом
+                                        <code>Export-Csv</code>
+                                        и
+                                        <code>ConvertTo-Json</code>
+                                        + <code>Set-Content</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">$user = $env:USERNAME</span><span class="code-row">$date = Get-Date</span><span class="code-row">$procCount = (Get-Process).Count</span><span class="code-row"></span><span class="code-row">Write-Host "Отчёт для: $user"</span><span class="code-row">Write-Host "Дата: $date"</span><span class="code-row">Write-Host "Запущено процессов: $procCount"</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">&lt;#</span><span class="code-row">.SYNOPSIS</span><span class="code-row">Собирает информацию о системе и сохраняет в файлы.</span><span class="code-row"></span><span class="code-row">.PARAMETER OutputPath</span><span class="code-row">Папка для сохранения отчётов.</span><span class="code-row">#&gt;</span><span class="code-row"></span><span class="code-row">#Requires -Version 5.1</span><span class="code-row"></span><span class="code-row">param(</span><span class="code-row">    [string]$OutputPath = $HOME</span><span class="code-row">)</span><span class="code-row"></span><span class="code-row">Set-StrictMode -Version Latest</span><span class="code-row">$ErrorActionPreference = "Stop"</span><span class="code-row"></span><span class="code-row">try {</span><span class="code-row">    Write-Host "Собираю информацию о системе..."</span><span class="code-row"></span><span class="code-row">    if (-not (Test-Path $OutputPath)) {</span><span class="code-row">        New-Item -Path $OutputPath -ItemType Directory | Out-Null</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    $computer = Get-ComputerInfo</span><span class="code-row">    $topProcs = Get-Process |</span><span class="code-row">        Sort-Object WorkingSet -Descending |</span><span class="code-row">        Select-Object -First 5 Name, Id, @{N='MemoryMB'; E={[math]::Round($_.WorkingSet / 1MB, 1)}}</span><span class="code-row"></span><span class="code-row">    $disks = Get-PSDrive -PSProvider FileSystem | Where-Object { $_.Used } |</span><span class="code-row">        Select-Object Name, @{N='FreeGB'; E={[math]::Round($_.Free / 1GB, 1)}}, @{N='UsedGB'; E={[math]::Round($_.Used / 1GB, 1)}}</span><span class="code-row"></span><span class="code-row">    $report = [PSCustomObject]@{</span><span class="code-row">        Date = (Get-Date).ToString("yyyy-MM-dd HH:mm")</span><span class="code-row">        ComputerName = $computer.CsName</span><span class="code-row">        OSVersion = $computer.WindowsVersion</span><span class="code-row">        TotalMemoryGB = [math]::Round($computer.CsTotalPhysicalMemory / 1GB, 1)</span><span class="code-row">        TopProcesses = $topProcs</span><span class="code-row">        Disks = $disks</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    $report | Export-Csv "$OutputPath\sysinfo.csv" -NoTypeInformation</span><span class="code-row">    $report | ConvertTo-Json -Depth 5 | Set-Content "$OutputPath\sysinfo.json"</span><span class="code-row"></span><span class="code-row">    Write-Host "Готово. Файлы сохранены в $OutputPath"</span><span class="code-row">    Write-Host "  - sysinfo.csv"</span><span class="code-row">    Write-Host "  - sysinfo.json"</span><span class="code-row">}</span><span class="code-row">catch {</span><span class="code-row">    Write-Host "Ошибка: $($_.Exception.Message)"</span><span class="code-row">    exit 1</span><span class="code-row">}</span><span class="code-row">finally {</span><span class="code-row">    Write-Host "Скрипт завершил работу"</span><span class="code-row">}</span></code></pre>
+                                    <p>Что тут стоит отметить:</p>
+                                    <ul>
+                                        <li><strong>[PSCustomObject]</strong> -
+                                            создаёт произвольный
+                                            объект с нужными
+                                            полями. Лучше
+                                            хеш-таблицы, потому
+                                            что корректно
+                                            сериализуется в CSV
+                                            и JSON.</li>
+                                        <li><strong>-Depth 5</strong>
+                                            в <code>ConvertTo-Json</code> -
+                                            потому что внутри
+                                            объекта есть вложенные
+                                            (<code>TopProcesses</code>,
+                                            <code>Disks</code>).
+                                            Без ключа они
+                                            обрежутся.</li>
+                                        <li><strong>Get-PSDrive</strong>
+                                            с
+                                            <code>-PSProvider FileSystem</code> -
+                                            список дисков.
+                                            Фильтр
+                                            <code>{ $_.Used }</code>
+                                            убирает пустые
+                                            (например,
+                                            отключённые
+                                            сетевые).</li>
+                                        <li><strong>Строковый
+                                                формат даты</strong>
+                                            <code>(Get-Date).ToString("yyyy-MM-dd HH:mm")</code> -
+                                            читаемый формат
+                                            без лишних
+                                            миллисекунд.</li>
+                                    </ul>
+                                    <p>Этот скрипт - реальный
+                                        инструмент. Его можно
+                                        запускать по расписанию
+                                        (например, через
+                                        Планировщик задач),
+                                        чтобы отслеживать
+                                        изменения состояния
+                                        системы. Или
+                                        использовать как
+                                        основу для своих
+                                        скриптов
+                                        мониторинга.</p>
                                 </div>
                             </details>
                         </div>
@@ -337,23 +1289,147 @@
 
                 </div>
 
-                <h2>Курс завершён!</h2>
+                <h2>Курс завершён</h2>
 
-                <p>Поздравляем! Вы прошли полный курс по терминалу Windows. Это огромный шаг в освоении компьютера на профессиональном уровне. Теперь вы:</p>
+                <p>Поздравляем! Вы прошли полный курс по терминалу Windows -
+                    восемь уроков от первого <code>echo</code> до продвинутых
+                    скриптов с обработкой ошибок и экспортом в JSON. Давайте
+                    оглянемся на путь, который мы прошли.</p>
+
+                <p><strong>Урок 1.</strong> Поняли, что такое терминал,
+                    чем отличаются cmd, PowerShell и Windows Terminal.
+                    Научились открывать, настраивать и использовать
+                    базовые команды (<code>echo</code>, <code>whoami</code>,
+                    <code>ver</code>, <code>cls</code>), освоили горячие
+                    клавиши и историю.</p>
+
+                <p><strong>Урок 2.</strong> Разобрались с файловой системой
+                    Windows, абсолютными и относительными путями. Научились
+                    навигировать (<code>cd</code>), смотреть содержимое
+                    (<code>dir</code> с ключами), переключать диски,
+                    использовать переменные окружения и <code>pushd</code>/
+                    <code>popd</code>.</p>
+
+                <p><strong>Урок 3.</strong> Освоили управление файлами:
+                    создание (<code>mkdir</code>, <code>echo &gt;</code>,
+                    <code>New-Item</code>), копирование (<code>copy</code>,
+                    <code>xcopy</code>), перемещение (<code>move</code>,
+                    <code>ren</code>), удаление (<code>del</code>,
+                    <code>rmdir /s</code>). Узнали про wildcards
+                    и атрибуты (<code>attrib</code>).</p>
+
+                <p><strong>Урок 4.</strong> Научились управлять процессами
+                    (<code>tasklist</code>, <code>taskkill</code>
+                    с <code>/F</code> и <code>/T</code>), получать
+                    информацию о системе (<code>systeminfo</code>,
+                    <code>ver</code>), работать с переменными
+                    окружения (<code>set</code>, <code>setx</code>)
+                    и питанием (<code>shutdown</code>).</p>
+
+                <p><strong>Урок 5.</strong> Разобрались с сетью:
+                    <code>ipconfig</code> с ключами
+                    (<code>/all</code>, <code>/flushdns</code>,
+                    <code>/renew</code>), <code>ping</code> с
+                    диагностикой по цепочке, <code>tracert</code>,
+                    <code>pathping</code>, <code>nslookup</code>,
+                    <code>netstat</code>, <code>Test-NetConnection</code>.</p>
+
+                <p><strong>Урок 6.</strong> Познакомились с PowerShell:
+                    объекты вместо текста, командлеты формата
+                    «Глагол-Существительное», <code>Get-Command</code>
+                    для поиска, <code>Get-Help</code> для справки,
+                    <code>Get-Member</code> для исследования объектов,
+                    <code>Select-Object</code>, <code>Sort-Object</code>,
+                    <code>Where-Object</code>, <code>Measure-Object</code>
+                    для обработки данных.</p>
+
+                <p><strong>Урок 7.</strong> Научились писать скрипты:
+                    Execution Policy, переменные с интерполяцией,
+                    операторы, <code>if</code>/<code>else</code>,
+                    циклы (<code>foreach</code>, <code>for</code>,
+                    <code>while</code>), функции с параметрами,
+                    <code>param()</code> для аргументов,
+                    <code>try</code>/<code>catch</code> для ошибок.</p>
+
+                <p><strong>Урок 8.</strong> Углубились в продвинутые
+                    возможности: вычисляемые свойства, группировка,
+                    <code>ForEach-Object</code>, работа с CSV и JSON,
+                    регулярные выражения, правильная обработка ошибок
+                    с <code>-ErrorAction Stop</code>
+                    и <code>$ErrorActionPreference</code>,
+                    лучшие практики (<code>Set-StrictMode</code>,
+                    шапка скрипта, <code>#Requires</code>,
+                    осмысленные сообщения).</p>
+
+                <p>Вместе это <strong>полный набор</strong> практических
+                    навыков работы с терминалом Windows. Вы теперь умеете:
+                </p>
+
                 <ul>
-                    <li>Свободно перемещаетесь по файловой системе без мышки.</li>
-                    <li>Умеете создавать, копировать и удалять файлы и папки.</li>
-                    <li>Можете управлять процессами и диагностировать сеть.</li>
-                    <li>Знаете, чем отличается cmd от PowerShell.</li>
-                    <li>Умеете писать собственные скрипты на PowerShell для автоматизации.</li>
+                    <li>Свободно перемещаться по файловой системе
+                        без мышки.</li>
+                    <li>Управлять файлами и папками через
+                        терминал - быстрее, чем в проводнике.</li>
+                    <li>Диагностировать проблемы с процессами,
+                        системой и сетью.</li>
+                    <li>Писать скрипты на PowerShell - от простых
+                        автоматизаций до полноценных инструментов.</li>
+                    <li>Обрабатывать данные - CSV, JSON, логи -
+                        без Excel и сторонних программ.</li>
+                    <li>Применять лучшие практики, чтобы скрипты
+                        были надёжными и понятными.</li>
                 </ul>
 
-                <p>Эти навыки пригодятся вам не только в программировании, но и в повседневной жизни. Вы сможете быстро наводить порядок на диске, находить причины проблем с интернетом или автоматизировать рутинные задачи.</p>
+                <h3>Что дальше</h3>
 
-                <p>Спасибо, что учились вместе с CodeRush. Впереди вас ждут новые курсы, в том числе по терминалу Linux! Удачи!</p>
+                <p>Восемь уроков - это база, но PowerShell огромен.
+                    Направления для развития:</p>
+
+                <ul>
+                    <li><strong>Модули PowerShell.</strong> Установка
+                        из PowerShell Gallery
+                        (<code>Install-Module</code>), использование
+                        сторонних модулей (Az для Azure, AWS.Tools
+                        для AWS, ExchangeOnlineManagement).</li>
+                    <li><strong>Работа с Active Directory</strong>
+                        - модуль <code>ActiveDirectory</code>
+                        для управления пользователями
+                        и группами в домене.</li>
+                    <li><strong>PowerShell Remoting.</strong>
+                        Удалённое выполнение команд на других
+                        компьютерах (<code>Invoke-Command</code>,
+                        <code>New-PSSession</code>).</li>
+                    <li><strong>Desired State Configuration (DSC)</strong>
+                        - декларативное управление конфигурацией
+                        серверов.</li>
+                    <li><strong>REST API</strong> через
+                        <code>Invoke-RestMethod</code> -
+                        общение с современными веб-сервисами.</li>
+                    <li><strong>Pester</strong> - фреймворк
+                        для тестирования PowerShell-скриптов.</li>
+                    <li><strong>Планировщик задач</strong> -
+                        автоматический запуск скриптов
+                        по расписанию.</li>
+                </ul>
+
+                <p>И, конечно, <strong>практика</strong>. Терминал -
+                    это навык, который улучшается только
+                    с использованием. Начните с малого:
+                    замените пару действий в проводнике
+                    на команды, напишите один-два скрипта
+                    для рутины, постепенно расширяйте.</p>
+
+                <p>Через месяц регулярной работы вы будете
+                    удивляться, как раньше обходились без
+                    PowerShell. А ещё через полгода - сможете
+                    автоматизировать то, что казалось
+                    невозможным.</p>
+
+                <p>Спасибо, что были с нами все восемь уроков.
+                    Удачи в освоении терминала!</p>
 
                 <div class="lesson-actions">
-                    <a href="lesson-06.html" class="btn-secondary">
+                    <a href="lesson-07.html" class="btn-secondary">
                         <i class="ph ph-arrow-left"></i> Предыдущий урок
                     </a>
                     <button class="btn-complete">

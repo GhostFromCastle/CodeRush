@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перенаправление и конвейеры - Терминал - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="linux" data-lesson-id="lesson-08">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../courses.html">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 08</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация и структура</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Управление файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Чтение и поиск</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Права доступа и sudo</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Управление пакетами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson active" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Перенаправление и конвейеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Перенаправление ввода-вывода и конвейеры</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~50 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Это финальный урок курса по терминалу Linux. Мы прошли долгий
+                    путь: научились перемещаться по файловой системе, управлять
+                    файлами, читать и искать, работать с правами, процессами
+                    и пакетами. Осталась последняя, но очень важная тема -
+                    <strong>перенаправление ввода-вывода и конвейеры</strong>.</p>
+
+                <p>Именно она превращает отдельные команды в мощные инструменты.
+                    Вы уже видели в предыдущих уроках загадочные <code>&gt;</code>,
+                    <code>&gt;&gt;</code>, <code>|</code> и <code>2&gt;/dev/null</code>,
+                    но, возможно, не до конца понимали, как это работает. Сегодня
+                    разберёмся досконально.</p>
+
+                <p>После этого урока вы сможете делать то, что раньше казалось
+                    магией: находить самые большие файлы, фильтровать логи
+                    от лишнего, объединять результат нескольких команд в одну
+                    строку.</p>
+
+                <h2>Три потока каждой команды</h2>
+
+                <p>Прежде чем работать с перенаправлением, нужно понять одну
+                    вещь: <strong>у каждой программы в Linux есть три канала
+                    связи с миром</strong>. Они называются <em>файловые
+                    дескрипторы</em>.</p>
+
+                <ul>
+                    <li><strong>stdin</strong> (standard input) - стандартный
+                        ввод. Откуда команда берёт данные. По умолчанию -
+                        клавиатура.</li>
+                    <li><strong>stdout</strong> (standard output) - стандартный
+                        вывод. Куда команда пишет результат. По умолчанию -
+                        терминал.</li>
+                    <li><strong>stderr</strong> (standard error) - стандартный
+                        поток ошибок. Куда команда пишет сообщения об ошибках.
+                        По умолчанию тоже терминал, но это <em>отдельный</em>
+                        канал.</li>
+                </ul>
+
+                <p>У каждого канала есть номер:</p>
+
+                <ul>
+                    <li><strong>0</strong> - stdin.</li>
+                    <li><strong>1</strong> - stdout.</li>
+                    <li><strong>2</strong> - stderr.</li>
+                </ul>
+
+                <p>Эти номера называются <strong>файловыми дескрипторами</strong>.
+                    Запомните их - они будут встречаться в записях вида
+                    <code>2&gt;</code>.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Зачем разделять вывод и ошибки
+                    </div>
+                    <p>Казалось бы, зачем два отдельных канала для «результата»
+                        и «ошибки»? Разве нельзя писать всё в одно место?
+                        Можно, но неудобно. Разделение позволяет:
+                        например, сохранять только полезный вывод
+                        в файл, а ошибки - отдельно или вообще
+                        выбрасывать. Или фильтровать одно,
+                        не трогая другое. Об этом - ниже.</p>
+                </div>
+
+                <h2>Куда идёт вывод команды</h2>
+
+                <p>Возьмём простую команду <code>ls</code> в домашней папке:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls</span><span class="code-row">Desktop  Documents  Downloads  Music</span></code></pre>
+
+                <p>Что произошло технически:</p>
+
+                <ol>
+                    <li><code>ls</code> прочитала содержимое папки.</li>
+                    <li>Записала результат в <strong>stdout</strong> (файловый
+                        дескриптор 1).</li>
+                    <li>По умолчанию stdout направлен в терминал - и мы
+                        видим список.</li>
+                </ol>
+
+                <p>Теперь возьмём команду с ошибкой:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls /nonexistent</span><span class="code-row">ls: cannot access '/nonexistent': No such file or directory</span></code></pre>
+
+                <p>Здесь <code>ls</code> записала сообщение об ошибке в
+                    <strong>stderr</strong> (файловый дескриптор 2). В терминале
+                    оно выглядит так же, как обычный вывод, но канал другой.</p>
+
+                <p>Именно поэтому можно отдельно перенаправить полезный вывод
+                    и отдельно - ошибки. Раз stdout и stderr - разные каналы,
+                    можно управлять каждым независимо.</p>
+
+                <h2>Перенаправление stdout: &gt; и &gt;&gt;</h2>
+
+                <p>Самый частый вид перенаправления - записать вывод команды
+                    в файл вместо терминала. Синтаксис:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ команда &gt; файл</span></code></pre>
+
+                <p>Пример:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls &gt; filelist.txt</span></code></pre>
+
+                <p>Что произошло: <code>ls</code> выполнилась, но её вывод
+                    (stdout) не попал в терминал, а был записан в файл
+                    <code>filelist.txt</code>. В терминале ничего не появилось -
+                    всё ушло в файл.</p>
+
+                <p>Проверим:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cat filelist.txt</span><span class="code-row">Desktop</span><span class="code-row">Documents</span><span class="code-row">Downloads</span><span class="code-row">Music</span><span class="code-row">filelist.txt</span></code></pre>
+
+                <p>Всё на месте. Обратите внимание - <code>filelist.txt</code>
+                    тоже попал в список, потому что файл был создан <em>до</em>
+                    того, как <code>ls</code> прочитала папку.</p>
+
+                <h3>Опасность: &gt; перезаписывает файл</h3>
+
+                <p>Важный момент: <code>&gt;</code> (одинарное) <strong>полностью
+                    перезаписывает файл</strong>. Если файл существовал - его
+                    старое содержимое исчезает.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ echo "старое" &gt; test.txt</span><span class="code-row">$ cat test.txt</span><span class="code-row">старое</span><span class="code-row"></span><span class="code-row">$ echo "новое" &gt; test.txt</span><span class="code-row">$ cat test.txt</span><span class="code-row">новое</span></code></pre>
+
+                <p>Второй <code>echo</code> с <code>&gt;</code> затёр старое
+                    содержимое. Это не всегда то, что нужно.</p>
+
+                <h3>Дописывание: &gt;&gt;</h3>
+
+                <p>Если нужно <strong>добавить</strong> в конец файла, не
+                    стирая старое - используйте <code>&gt;&gt;</code>
+                    (двойное):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ echo "первая строка" &gt; log.txt</span><span class="code-row">$ echo "вторая строка" &gt;&gt; log.txt</span><span class="code-row">$ echo "третья строка" &gt;&gt; log.txt</span><span class="code-row">$ cat log.txt</span><span class="code-row">первая строка</span><span class="code-row">вторая строка</span><span class="code-row">третья строка</span></code></pre>
+
+                <p>Отличный способ вести лог-файл: каждое новое событие
+                    дописывается в конец, ничего не теряется.</p>
+
+                <h2>Перенаправление stdin: &lt;</h2>
+
+                <p>По умолчанию команды читают ввод с клавиатуры. Ключ
+                    <code>&lt;</code> позволяет читать из файла:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ команда &lt; файл</span></code></pre>
+
+                <p>Пример: команда <code>wc -l</code> (считает строки) может
+                    работать двумя способами:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ wc -l filelist.txt</span><span class="code-row">5 filelist.txt</span><span class="code-row"></span><span class="code-row">$ wc -l &lt; filelist.txt</span><span class="code-row">5</span></code></pre>
+
+                <p>В первом случае <code>wc</code> открыла файл сама (передав
+                    имя как аргумент). Во втором - оболочка открыла файл и
+                    передала его содержимое в stdin команды. Разница небольшая,
+                    но иногда важная: во втором случае <code>wc</code> не знает,
+                    откуда данные, поэтому не может вывести имя файла.</p>
+
+                <p>Ключ <code>&lt;</code> используется реже, чем
+                    <code>&gt;</code> - обычно командам просто передают имя
+                    файла. Но иногда он нужен: например, при работе с
+                    командами, которые читают только из stdin.</p>
+
+                <h2>Перенаправление stderr: 2&gt;</h2>
+
+                <p>Помните, у нас есть отдельный канал ошибок (stderr,
+                    дескриптор 2). Его тоже можно перенаправить:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ команда 2&gt; файл_ошибок</span></code></pre>
+
+                <p>Пример - попробуем прочитать несуществующий файл:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cat /nonexistent 2&gt; errors.log</span><span class="code-row">$ cat errors.log</span><span class="code-row">cat: /nonexistent: No such file or directory</span></code></pre>
+
+                <p>В терминале ничего не появилось - ошибка ушла в файл
+                    <code>errors.log</code>. Очень полезно при работе со
+                    скриптами: если что-то пошло не так, ошибка не мешает
+                    основному выводу.</p>
+
+                <h3>Порядок перенаправлений важен</h3>
+
+                <p>Ключевая тонкость. Разница между
+                    <code>команда &gt; file 2&gt;&amp;1</code> и
+                    <code>команда 2&gt;&amp;1 &gt; file</code> огромна.</p>
+
+                <p><strong><code>&gt; file 2&gt;&amp;1</code></strong>:</p>
+
+                <ol>
+                    <li>Сначала <code>&gt; file</code> - stdout перенаправляется
+                        в файл.</li>
+                    <li>Затем <code>2&gt;&amp;1</code> - stderr перенаправляется
+                        «туда же, куда сейчас указывает stdout» - то есть
+                        тоже в файл.</li>
+                </ol>
+
+                <p>Итог: и обычный вывод, и ошибки попадают в файл. Правильно.</p>
+
+                <p><strong><code>2&gt;&amp;1 &gt; file</code></strong>:</p>
+
+                <ol>
+                    <li>Сначала <code>2&gt;&amp;1</code> - stderr перенаправляется
+                        «туда же, куда сейчас указывает stdout». А stdout
+                        пока указывает в терминал - значит, stderr идёт
+                        в терминал.</li>
+                    <li>Затем <code>&gt; file</code> - stdout перенаправляется
+                        в файл.</li>
+                </ol>
+
+                <p>Итог: обычный вывод - в файл, а ошибки - в терминал.
+                    Не то, что хотели.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Правило
+                    </div>
+                    <p>Всегда пишите <code>&gt; file 2&gt;&amp;1</code>,
+                        а не наоборот. Первое работает как ожидается,
+                        второе - сбивает с толку. Порядок перенаправлений
+                        читается слева направо.</p>
+                </div>
+
+                <h2>/dev/null - «чёрная дыра»</h2>
+
+                <p>В Linux есть специальный файл <code>/dev/null</code> -
+                    «устройство ноль». Всё, что в него записано, <strong>исчезает
+                    навсегда</strong>. Ничего не сохраняется, ничего не
+                    возвращается.</p>
+
+                <p>Используется для подавления ненужного вывода:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls /nonexistent 2&gt; /dev/null</span></code></pre>
+
+                <p>Ошибка есть, но она уходит в «чёрную дыру» - в терминал
+                    ничего не выводится. Полезно, когда знаешь, что команда
+                    может выдать ошибку, но она тебе неинтересна.</p>
+
+                <p>Полностью «заглушить» команду - и вывод, и ошибки:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ команда &gt; /dev/null 2&gt;&amp;1</span></code></pre>
+
+                <p>Ничего не увидишь, но команда выполнится. Иногда полезно,
+                    когда нужно просто запустить что-то в тишине.</p>
+
+                <h2>Конвейеры: |</h2>
+
+                <p>Самое мощное изобретение Unix. Вертикальная черта
+                    <code>|</code> - <strong>конвейер</strong> (pipe) -
+                    соединяет две команды: вывод первой идёт на вход второй.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ команда1 | команда2</span></code></pre>
+
+                <p>Поток данных:</p>
+
+                <ol>
+                    <li><code>команда1</code> пишет в stdout.</li>
+                    <li>Вместо того чтобы попасть в терминал, этот вывод
+                        идёт в stdin команды <code>команда2</code>.</li>
+                    <li><code>команда2</code> обрабатывает и выдаёт свой
+                        результат.</li>
+                </ol>
+
+                <h3>Простой пример</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls | wc -l</span><span class="code-row">5</span></code></pre>
+
+                <p>Что произошло:</p>
+
+                <ul>
+                    <li><code>ls</code> выдала список файлов - строки.</li>
+                    <li>Эти строки пошли в <code>wc -l</code>, которая
+                        считает количество строк.</li>
+                    <li>Результат - одно число: сколько файлов в папке.</li>
+                </ul>
+
+                <p>Одной командой мы ответили на вопрос «сколько файлов в
+                    папке». Без конвейера пришлось бы считать вручную.</p>
+
+                <h3>Более сложный пример</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls /usr/bin | grep python | head -n 5</span></code></pre>
+
+                <p>Цепочка из трёх команд:</p>
+
+                <ol>
+                    <li><code>ls /usr/bin</code> - все файлы в
+                        <code>/usr/bin</code>.</li>
+                    <li><code>grep python</code> - оставить только строки со
+                        словом «python».</li>
+                    <li><code>head -n 5</code> - показать первые 5.</li>
+                </ol>
+
+                <p>Результат - первая пятёрка программ в системе, связанных
+                    с Python. Это уже осмысленный анализ.</p>
+
+                <h3>Цепочка любой длины</h3>
+
+                <p>Можно соединять сколько угодно команд:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ps aux | grep firefox | grep -v grep | wc -l</span></code></pre>
+
+                <p>Что тут происходит:</p>
+
+                <ol>
+                    <li><code>ps aux</code> - все процессы.</li>
+                    <li><code>grep firefox</code> - только с firefox.</li>
+                    <li><code>grep -v grep</code> - убрать строку, где
+                        сам grep.</li>
+                    <li><code>wc -l</code> - посчитать оставшиеся.</li>
+                </ol>
+
+                <p>Результат - сколько именно процессов firefox запущено.
+                    Одной строкой.</p>
+
+                <h2>Классические конвейеры</h2>
+
+                <p>Несколько рецептов, которые используются постоянно.</p>
+
+                <h3>Сортировка по размеру</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ du -sh ~/* | sort -rh | head -n 10</span></code></pre>
+
+                <p>Самые большие папки в домашней директории. Разбирали в
+                    уроке 6, но теперь понятно, как это работает:</p>
+
+                <ul>
+                    <li><code>du -sh</code> выдаёт строки вида «размер путь».</li>
+                    <li><code>sort -rh</code> сортирует по убыванию (по числам).</li>
+                    <li><code>head -n 10</code> - первые 10 строк - топ-10.</li>
+                </ul>
+
+                <h3>Поиск в логах</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ tail -f /var/log/syslog | grep -i error</span></code></pre>
+
+                <p>Следить за логом в реальном времени и показывать только
+                    строки с «error». Идеально для отладки.</p>
+
+                <h3>Подсчёт уникальных значений</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cat access.log | awk '{print $1}' | sort | uniq -c | sort -rn | head</span></code></pre>
+
+                <p>Топ IP-адресов, с которых чаще всего заходили на сервер.
+                    Классика анализа логов:</p>
+
+                <ul>
+                    <li><code>awk '{print $1}'</code> - вывести первое поле
+                        (обычно IP в логе веб-сервера).</li>
+                    <li><code>sort</code> - отсортировать, чтобы одинаковые
+                        IP шли подряд.</li>
+                    <li><code>uniq -c</code> - подсчитать повторы.</li>
+                    <li><code>sort -rn</code> - отсортировать по количеству.</li>
+                    <li><code>head</code> - показать топ.</li>
+                </ul>
+
+                <h3>Сохранить и показать: tee</h3>
+
+                <p>Обычно вывод идёт либо в файл, либо в терминал. Команда
+                    <code>tee</code> делает и то, и другое: пишет в файл
+                    и одновременно показывает на экране.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls | tee filelist.txt</span><span class="code-row">Desktop</span><span class="code-row">Documents</span><span class="code-row">Downloads</span><span class="code-row">Music</span></code></pre>
+
+                <p>Вывод показан на экране <em>и</em> сохранён в
+                    <code>filelist.txt</code>. Удобно, когда хочешь сразу
+                    видеть результат и при этом иметь его копию.</p>
+
+                <p>Дописывание в конец - ключ <code>-a</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls | tee -a filelist.txt</span></code></pre>
+
+                <h2>Heredoc: многострочный ввод</h2>
+
+                <p>Отдельная полезная конструкция - <strong>heredoc</strong>.
+                    Позволяет передать многострочный текст в команду прямо
+                    в терминале, без создания промежуточного файла.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cat &lt;&lt; EOF &gt; note.txt</span><span class="code-row">Первая строка</span><span class="code-row">Вторая строка</span><span class="code-row">Третья строка</span><span class="code-row">EOF</span></code></pre>
+
+                <p>Что произошло:</p>
+
+                <ul>
+                    <li><code>cat &lt;&lt; EOF</code> - «читай ввод до строки
+                        «EOF»».</li>
+                    <li>Всё, что вы ввели между этой строкой и «EOF»,
+                        считается содержимым.</li>
+                    <li><code>&gt; note.txt</code> - записать это содержимое
+                        в файл.</li>
+                </ul>
+
+                <p>Три строки попали в <code>note.txt</code>. Слово «EOF»
+                    может быть любым - это просто маркер конца, не команда.
+                    Часто используют <code>EOF</code>, но можно и
+                    <code>END</code>, и <code>КОНЕЦ</code> - что удобнее.</p>
+
+                <p>Heredoc пригодится в скриптах: когда нужно передать
+                    большой блок текста команде, а создавать отдельный
+                    файл лень.</p>
+
+                <h2>Полная картина: все операторы вместе</h2>
+
+                <p>Соберём в одном месте, что мы изучили:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Оператор</th>
+                            <th>Что делает</th>
+                            <th>Пример</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&gt; file</code></td>
+                            <td>Вывод в файл (перезапись)</td>
+                            <td><code>ls &gt; list.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&gt;&gt; file</code></td>
+                            <td>Вывод в файл (дописать)</td>
+                            <td><code>echo "x" &gt;&gt; log.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt; file</code></td>
+                            <td>Ввод из файла</td>
+                            <td><code>wc -l &lt; list.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>2&gt; file</code></td>
+                            <td>Ошибки в файл</td>
+                            <td><code>cmd 2&gt; err.log</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>2&gt;&amp;1</code></td>
+                            <td>Ошибки туда же, куда вывод</td>
+                            <td><code>cmd &gt; all.log 2&gt;&amp;1</code></td>
+                        </tr>
+                        <tr class="highlight">
+                            <td><code>|</code></td>
+                            <td>Конвейер: вывод → ввод</td>
+                            <td><code>ls | wc -l</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&gt; /dev/null</code></td>
+                            <td>Выбросить вывод</td>
+                            <td><code>cmd &gt; /dev/null</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>tee file</code></td>
+                            <td>И в файл, и на экран</td>
+                            <td><code>ls | tee list.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;&lt; EOF</code></td>
+                            <td>Многострочный ввод</td>
+                            <td><code>cat &lt;&lt; EOF &gt; f</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>stdin (0)</code>
+                        <span>ввод, по умолчанию клавиатура</span>
+                    </li>
+                    <li>
+                        <code>stdout (1)</code>
+                        <span>вывод, по умолчанию терминал</span>
+                    </li>
+                    <li>
+                        <code>stderr (2)</code>
+                        <span>ошибки, по умолчанию терминал</span>
+                    </li>
+                    <li>
+                        <code>&gt;</code>
+                        <span>в файл (перезапись)</span>
+                    </li>
+                    <li>
+                        <code>&gt;&gt;</code>
+                        <span>в файл (дописать)</span>
+                    </li>
+                    <li>
+                        <code>2&gt;</code>
+                        <span>ошибки в файл</span>
+                    </li>
+                    <li>
+                        <code>2&gt;&amp;1</code>
+                        <span>ошибки вместе с выводом</span>
+                    </li>
+                    <li>
+                        <code>|</code>
+                        <span>конвейер</span>
+                    </li>
+                    <li>
+                        <code>/dev/null</code>
+                        <span>чёрная дыра</span>
+                    </li>
+                    <li>
+                        <code>tee</code>
+                        <span>и в файл, и на экран</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Типичные ошибки при работе с перенаправлением.</p>
+
+                <ul>
+                    <li><strong>«&gt; перезаписал файл, я потерял данные».</strong>
+                        Да, <code>&gt;</code> стирает старое содержимое. Для
+                        дописывания - <code>&gt;&gt;</code>. Если данные
+                        критичные - сначала проверьте, существует ли файл,
+                        или используйте <code>cp</code> для бэкапа перед
+                        перезаписью.</li>
+                    <li><strong>«Вывод в файл, но при cat там пусто».</strong>
+                        Возможно, команда писала в stderr, а вы
+                        перенаправили только stdout. Или команда упала
+                        до того, как успела что-то вывести. Проверьте
+                        через <code>cmd &gt; file 2&gt;&amp;1</code> -
+                        чтобы поймать всё.</li>
+                    <li><strong>«Ошибки в файл ушли, но и в терминал
+                            тоже».</strong> Скорее всего, вы написали
+                        <code>2&gt;&amp;1 &gt; file</code> вместо
+                        <code>&gt; file 2&gt;&amp;1</code>. Порядок
+                        важен.</li>
+                    <li><strong>«Конвейер не работает - команда1
+                            зависает».</strong> Возможно, <code>команда2</code>
+                        не читает stdin (например, ждёт имя файла
+                        аргументом). Проверьте справку команды2 через
+                        <code>--help</code>. Если она не поддерживает
+                        stdin - конвейер бесполезен.</li>
+                    <li><strong>«cat &gt; file - как выйти?»</strong> Если
+                        вы запустили <code>cat &gt; file</code> без
+                        аргументов - он читает с клавиатуры, пока не
+                        нажмёте <code>Ctrl + D</code>. Это «конец файла»,
+                        сигнал «больше ввода не будет». После
+                        <code>Ctrl + D</code> - вернётесь в приглашение,
+                        а введённый текст будет в файле.</li>
+                    <li><strong>«ls | wc -l показывает не то число».</strong>
+                        Проверьте глазами: <code>ls</code> сначала без
+                        конвейера. Возможно, файлов меньше, чем
+                        кажется, или есть скрытые (тогда
+                        <code>ls -a | wc -l</code>).</li>
+                    <li><strong>«tee не показывает вывод».</strong> Проверьте,
+                        что команда перед tee вообще что-то выдаёт.
+                        Иногда ошибочно путают: <code>cmd | tee file</code> -
+                        tee в конце конвейера, а не в начале.</li>
+                    <li><strong>«Heredoc не срабатывает».</strong> Убедитесь,
+                        что закрывающий маркер (EOF) стоит на отдельной
+                        строке, без пробелов в начале, и точно совпадает
+                        с открывающим. Даже лишний пробел перед
+                        <code>EOF</code> сломает конструкцию.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на базовое перенаправление,
+                    третья - на конвейеры, четвёртая - комплексная, объединяющая
+                    всё, что изучили за курс.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Сохраните вывод</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В домашней папке:</p>
+                            <ol>
+                                <li>Запишите список файлов в
+                                    <code>list.txt</code> через
+                                    <code>ls &gt; list.txt</code>.</li>
+                                <li>Проверьте, что файл создан -
+                                    <code>cat list.txt</code>.</li>
+                                <li>Допишите в конец этого файла
+                                    строку «конец списка» через
+                                    <code>echo "конец списка" &gt;&gt; list.txt</code>.</li>
+                                <li>Снова проверьте через <code>cat</code> -
+                                    строка должна быть в конце, а старое
+                                    содержимое - сохраниться.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Помните разницу: <code>&gt;</code>
+                                        перезаписывает, <code>&gt;&gt;</code>
+                                        дописывает. На шаге 1 используйте
+                                        <code>&gt;</code> (создаём с нуля),
+                                        на шаге 3 - <code>&gt;&gt;</code>
+                                        (дописываем).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ ls &gt; list.txt</span><span class="code-row">$ cat list.txt</span><span class="code-row">Desktop</span><span class="code-row">Documents</span><span class="code-row">Downloads</span><span class="code-row">...</span><span class="code-row"></span><span class="code-row">$ echo "конец списка" &gt;&gt; list.txt</span><span class="code-row">$ cat list.txt</span><span class="code-row">Desktop</span><span class="code-row">Documents</span><span class="code-row">Downloads</span><span class="code-row">...</span><span class="code-row">конец списка</span></code></pre>
+                                    <p>Обратите внимание: <code>list.txt</code>
+                                        появится и в самом списке при втором
+                                        <code>ls</code> (если сделаете), но
+                                        это нормально - файл создаётся
+                                        первым, потом <code>ls</code> его
+                                        видит.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Ошибки отдельно</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Попробуйте прочитать
+                                несуществующий файл, но так, чтобы:</p>
+                            <ol>
+                                <li>Ошибка ушла в файл <code>errors.log</code>.</li>
+                                <li>В терминале ничего не было.</li>
+                                <li>Потом проверьте через <code>cat errors.log</code> -
+                                    ошибка должна быть там.</li>
+                                <li>Повторите с <code>/dev/null</code> -
+                                    ошибка должна полностью исчезнуть.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для ошибок в файл -
+                                        <code>2&gt; errors.log</code>.
+                                        Для полного подавления -
+                                        <code>2&gt; /dev/null</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ cat /nonexistent 2&gt; errors.log</span><span class="code-row"># в терминале пусто</span><span class="code-row"></span><span class="code-row">$ cat errors.log</span><span class="code-row">cat: /nonexistent: No such file or directory</span><span class="code-row"></span><span class="code-row">$ cat /nonexistent 2&gt; /dev/null</span><span class="code-row"># в терминале пусто, и в файлах ничего</span></code></pre>
+                                    <p>В чём разница:</p>
+                                    <ul>
+                                        <li>Во втором случае ошибка
+                                            сохранена - можно потом
+                                            прочитать и разобраться,
+                                            что было.</li>
+                                        <li>В третьем случае ошибка
+                                            исчезла навсегда - даже
+                                            если очень захотите
+                                            прочитать, не сможете.
+                                            Используйте <code>/dev/null</code>
+                                            только когда точно знаете,
+                                            что ошибка неинтересна.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Конвейеры</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Используйте конвейер для
+                                каждой задачи:</p>
+                            <ol>
+                                <li>Посчитайте количество файлов в
+                                    <code>/usr/bin</code>.</li>
+                                <li>Найдите все файлы в
+                                    <code>/usr/bin</code>, начинающиеся
+                                    с «py» - первые 5 имён.</li>
+                                <li>Из всех запущенных процессов
+                                    (<code>ps aux</code>) оставьте
+                                    только ваши (где вы - пользователь),
+                                    посчитайте их количество.</li>
+                                <li>Найдите в домашней папке все
+                                    <code>.txt</code>-файлы, отсортируйте
+                                    их по имени.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для подсчёта - <code>wc -l</code>.
+                                        Для фильтра - <code>grep</code>.
+                                        Для первых строк - <code>head</code>.
+                                        Для сортировки - <code>sort</code>.
+                                        Для поиска файлов -
+                                        <code>find</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Решения:</p>
+                                    <pre class="code-numbered"><code><span class="code-row"># 1. Количество файлов в /usr/bin</span><span class="code-row">$ ls /usr/bin | wc -l</span><span class="code-row">1854</span><span class="code-row"></span><span class="code-row"># 2. Файлы на "py", первые 5</span><span class="code-row">$ ls /usr/bin | grep ^py | head -n 5</span><span class="code-row">py3clean</span><span class="code-row">py3compile</span><span class="code-row">py3versions</span><span class="code-row">python3</span><span class="code-row">python3.10</span><span class="code-row"></span><span class="code-row"># 3. Мои процессы</span><span class="code-row">$ ps aux | grep ^student | wc -l</span><span class="code-row">42</span><span class="code-row"></span><span class="code-row"># 4. Все .txt, отсортированные</span><span class="code-row">$ find ~ -name "*.txt" | sort</span><span class="code-row">/home/student/list.txt</span><span class="code-row">/home/student/note.txt</span><span class="code-row">/home/student/poem.txt</span></code></pre>
+                                    <p>Что тут интересного:</p>
+                                    <ul>
+                                        <li><strong><code>^py</code></strong> -
+                                            регулярное выражение «начинается
+                                            с py». Просто <code>py</code>
+                                            нашёл бы «py» в любом месте
+                                            имени.</li>
+                                        <li><strong><code>^student</code></strong> -
+                                            строки, начинающиеся с имени
+                                            пользователя. В <code>ps aux</code>
+                                            первая колонка - имя
+                                            пользователя, поэтому работает.</li>
+                                        <li><strong><code>find | sort</code></strong> -
+                                            конвейер между разными
+                                            командами: find выдаёт пути,
+                                            sort их сортирует.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Комплексная</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Составьте одну команду (можно
+                                с конвейером) для каждой задачи:</p>
+                            <ol>
+                                <li>Топ-3 самых больших файлов в домашней
+                                    папке с их размерами.</li>
+                                <li>Список всех процессов, отсортированный
+                                    по использованию памяти (по убыванию),
+                                    только 5 самых прожорливых.</li>
+                                <li>Количество уникальных пользователей
+                                    в системе (по <code>ps aux</code>).</li>
+                                <li>Содержимое вашего <code>list.txt</code>
+                                    сохранить в <code>copy.txt</code>
+                                    и одновременно показать на экране.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните:
+                                        <code>find</code> + <code>du</code> -
+                                        размеры файлов.
+                                        <code>ps aux | sort -k4 -rn</code> -
+                                        сортировка по памяти.
+                                        <code>awk</code> + <code>sort -u</code> -
+                                        уникальные значения.
+                                        <code>tee</code> - и в файл,
+                                        и на экран.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Возможные решения:</p>
+                                    <pre class="code-numbered"><code><span class="code-row"># 1. Топ-3 файлов по размеру</span><span class="code-row">$ find ~ -type f -exec du -h {} + | sort -rh | head -n 3</span><span class="code-row"></span><span class="code-row"># 2. Топ-5 процессов по памяти</span><span class="code-row">$ ps aux | sort -k4 -rn | head -n 5</span><span class="code-row"></span><span class="code-row"># 3. Уникальные пользователи в ps</span><span class="code-row">$ ps aux | awk '{print $1}' | tail -n +2 | sort -u</span><span class="code-row"></span><span class="code-row"># 4. Показать и сохранить</span><span class="code-row">$ cat list.txt | tee copy.txt</span></code></pre>
+                                    <p>Разбор:</p>
+                                    <ul>
+                                        <li><strong><code>find -exec du</code></strong> -
+                                            для каждого файла вызвать
+                                            <code>du -h</code>, чтобы получить
+                                            размер. Потом sort по убыванию
+                                            и top-3.</li>
+                                        <li><strong><code>sort -k4 -rn</code></strong> -
+                                            сортировка по 4-й колонке
+                                            (<code>%MEM</code> в
+                                            <code>ps aux</code>), числами,
+                                            по убыванию.</li>
+                                        <li><strong><code>awk '{print $1}'</code></strong> -
+                                            вывести первую колонку (имя
+                                            пользователя).
+                                            <code>tail -n +2</code> -
+                                            убрать заголовок.
+                                            <code>sort -u</code> -
+                                            уникальные.</li>
+                                        <li><strong><code>cat | tee</code></strong> -
+                                            и показать, и сохранить.
+                                            Альтернатива:
+                                            <code>tee copy.txt &lt; list.txt</code>.</li>
+                                    </ul>
+                                    <p>Каждая задача - одна строка в
+                                        терминале. Мышкой на это ушли
+                                        бы минуты. В этом и есть сила
+                                        конвейеров.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с перенаправлением ввода-вывода и конвейерами -
+                    темой, которая превращает отдельные команды в мощные
+                    инструменты. Узнали, что у каждой программы есть три
+                    файловых дескриптора: <strong>stdin</strong> (0),
+                    <strong>stdout</strong> (1) и <strong>stderr</strong> (2).
+                    Поняли, почему вывод и ошибки - это отдельные каналы.</p>
+
+                <p>Освоили все основные операторы: <code>&gt;</code> (в файл),
+                    <code>&gt;&gt;</code> (дописать), <code>&lt;</code>
+                    (из файла), <code>2&gt;</code> (ошибки в файл),
+                    <code>2&gt;&amp;1</code> (объединить с основным выводом),
+                    <code>|</code> (конвейер), <code>/dev/null</code>
+                    (чёрная дыра), <code>tee</code> (и в файл, и на экран),
+                    <code>&lt;&lt;</code> (heredoc).</p>
+
+                <p>Изучили классические рецепты: топ-большие файлы, топ-IP
+                    из логов, поиск в реальном времени. Теперь вы понимаете,
+                    что стоит за командами из предыдущих уроков -
+                    <code>ls | wc -l</code>, <code>du -sh | sort -rh</code>,
+                    <code>grep -r | head</code> - и можете строить свои
+                    цепочки под конкретную задачу.</p>
+
+                <h3>Курс завершён</h3>
+
+                <p>Это был финальный, восьмой урок курса «Терминал Linux».
+                    Давайте оглянемся на путь, который мы прошли.</p>
+
+                <p><strong>Урок 1.</strong> Поняли, что такое терминал и
+                    оболочка, научились открывать терминал и пользоваться
+                    историей команд, автодополнением и справкой.</p>
+
+                <p><strong>Урок 2.</strong> Разобрались со структурой
+                    файловой системы, командами <code>pwd</code>,
+                    <code>ls</code>, <code>cd</code>, абсолютными
+                    и относительными путями.</p>
+
+                <p><strong>Урок 3.</strong> Научились создавать,
+                    копировать, перемещать и удалять файлы и папки.</p>
+
+                <p><strong>Урок 4.</strong> Освоили чтение файлов
+                    (<code>cat</code>, <code>less</code>,
+                    <code>head</code>, <code>tail</code>) и поиск
+                    (<code>find</code>, <code>grep</code>).</p>
+
+                <p><strong>Урок 5.</strong> Разобрались с правами
+                    доступа и <code>sudo</code>.</p>
+
+                <p><strong>Урок 6.</strong> Познакомились с процессами
+                    и системным мониторингом (<code>ps</code>,
+                    <code>top</code>, <code>kill</code>, <code>free</code>,
+                    <code>df</code>).</p>
+
+                <p><strong>Урок 7.</strong> Освоили управление
+                    пакетами через <code>apt</code> (и его аналоги).</p>
+
+                <p><strong>Урок 8.</strong> Завершили перенаправлением
+                    ввода-вывода и конвейерами.</p>
+
+                <p>Вместе это <strong>полный базовый набор</strong> работы
+                    в командной строке Linux. Не «продвинутый» и не «экспертный» -
+                    но достаточный, чтобы:</p>
+
+                <ul>
+                    <li>Подключиться к серверу по SSH и работать на нём.</li>
+                    <li>Настроить окружение разработчика.</li>
+                    <li>Писать bash-скрипты для автоматизации.</li>
+                    <li>Разбираться в логах, находить проблемы.</li>
+                    <li>Управлять файлами и процессами.</li>
+                    <li>Понимать, что делает любая команда, которую
+                        вы встретите в документации или в интернете.</li>
+                </ul>
+
+                <h3>Что делать дальше</h3>
+
+                <p>Восемь уроков - это база. Дальше - практика и углубление.
+                    Направления, в которых стоит развиваться:</p>
+
+                <ul>
+                    <li><strong>Bash-скрипты.</strong> Переменные, условия,
+                        циклы, функции. Автоматизация рутинных задач -
+                        отдельный большой мир. У нас в курсе «Скрипты»
+                        есть целый раздел по Bash.</li>
+                    <li><strong>Продвинутые инструменты.</strong>
+                        <code>awk</code>, <code>sed</code>, <code>xargs</code>,
+                        <code>rsync</code>, <code>ssh</code> с ключами
+                        и туннелями.</li>
+                    <li><strong>Сеть.</strong> <code>curl</code>,
+                        <code>wget</code>, <code>ss</code>,
+                        <code>tcpdump</code>, <code>netstat</code>.</li>
+                    <li><strong>Управление сервером.</strong>
+                        <code>systemctl</code>, <code>journalctl</code>,
+                        конфиги в <code>/etc</code>, бэкапы,
+                        cron-задачи.</li>
+                    <li><strong>Контейнеры и облако.</strong> Docker,
+                        Kubernetes, работа с облачными платформами
+                        через CLI.</li>
+                </ul>
+
+                <p>Терминал - это навык, который улучшается с практикой.
+                    Чем больше вы его используете в повседневной работе,
+                    тем быстрее и естественнее он становится. Через месяц
+                    регулярной практики вы будете удивляться, как раньше
+                    обходились без него.</p>
+
+                <p>Не бойтесь экспериментировать. Терминал прощает ошибки
+                    гораздо чаще, чем кажется: большинство команд
+                    безопасны, а разрушительные требуют явного подтверждения
+                    (или прав root). А если что-то сломается - всегда есть
+                    <code>Ctrl + Z</code>, <code>Ctrl + C</code> и возможность
+                    разобраться.</p>
+
+                <p>Спасибо, что были с нами все восемь уроков.
+                    Удачи в освоении командной строки!</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-07.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <span></span>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

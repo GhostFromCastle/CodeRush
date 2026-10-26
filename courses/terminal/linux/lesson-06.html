@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Процессы и системный мониторинг - Терминал - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="linux" data-lesson-id="lesson-06">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../courses.html">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 06</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация и структура</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Управление файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Чтение и поиск</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Права доступа и sudo</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson active" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Управление пакетами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Перенаправление и конвейеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Процессы и системный мониторинг</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Компьютер завис. Браузер сожрал всю память. Тяжёлый скрипт не
+                    реагирует на <code>Ctrl + C</code>. Знакомо? В графическом
+                    интерфейсе мы в таких случаях открываем диспетчер задач -
+                    смотрим, что происходит, и завершаем проблемный процесс.
+                    В Linux для этого есть свои инструменты, и работают они
+                    гораздо точнее и мощнее.</p>
+
+                <p>В этом уроке разберёмся, что такое <strong>процесс</strong>,
+                    как посмотреть, что сейчас работает на системе, как понять,
+                    что именно нагружает процессор и память, и как аккуратно
+                    завершить зависшую программу, не перезагружая компьютер.</p>
+
+                <h2>Что такое процесс</h2>
+
+                <p><strong>Процесс</strong> - это запущенная программа. Файл на диске
+                    (например, <code>/usr/bin/firefox</code>) - это ещё не процесс,
+                    это просто набор инструкций. Процесс появляется, когда вы
+                    программу запускаете: система выделяет ей память, процессорное
+                    время и присваивает уникальный номер - <strong>PID</strong>
+                    (Process ID).</p>
+
+                <p>Аналогия простая. Программа на диске - это рецепт в кулинарной
+                    книге. Процесс - это повар, который прямо сейчас готовит по
+                    этому рецепту. Один рецепт может готовить несколько поваров
+                    одновременно - так и одна программа может быть запущена
+                    в нескольких процессах (например, десять вкладок браузера -
+                    часто десять процессов).</p>
+
+                <p>У каждого процесса есть:</p>
+
+                <ul>
+                    <li><strong>PID</strong> - уникальный номер в системе.</li>
+                    <li><strong>PPID</strong> - номер родительского процесса
+                        (тот, который его запустил).</li>
+                    <li><strong>Пользователь</strong> - от чьего имени он работает.</li>
+                    <li><strong>Состояние</strong> - работает, спит, ждёт, зомби.</li>
+                    <li><strong>Потребление</strong> - сколько CPU и памяти занимает.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        PID 1 - самый важный
+                    </div>
+                    <p>У процесса с номером 1 особое место: это <strong>init</strong>
+                        (или его современная замена - <strong>systemd</strong>).
+                        Он запускается при загрузке системы и становится «родителем»
+                        всех остальных процессов. Если PID 1 умирает - система
+                        останавливается. Поэтому убить его обычными способами
+                        нельзя - ядро защищает.</p>
+                </div>
+
+                <h2>ps - снимок процессов</h2>
+
+                <p>Самая базовая команда для просмотра процессов. Она показывает
+                    <em>снимок</em> - то есть состояние на момент запуска. Запустили
+                    <code>ps</code> - увидели список, процесс не обновляется.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ps</span><span class="code-row">    PID TTY          TIME CMD</span><span class="code-row">   1234 pts/0    00:00:00 bash</span><span class="code-row">   5678 pts/0    00:00:00 ps</span></code></pre>
+
+                <p>По умолчанию <code>ps</code> показывает только процессы
+                    <strong>текущей сессии</strong> - то есть то, что запущено
+                    в этом терминале. Здесь видно две штуки: <code>bash</code>
+                    (сам терминал) и <code>ps</code> (команда, которую только
+                    что выполнили).</p>
+
+                <p>Колонки:</p>
+
+                <ul>
+                    <li><strong>PID</strong> - номер процесса.</li>
+                    <li><strong>TTY</strong> - терминал, к которому привязан
+                        (<code>pts/0</code> - это «псевдо-терминал», обычное
+                        окно).</li>
+                    <li><strong>TIME</strong> - сколько процессорного времени
+                        потрачено.</li>
+                    <li><strong>CMD</strong> - имя команды.</li>
+                </ul>
+
+                <p>Полезно, но слишком мало. Обычно нужен полный список.</p>
+
+                <h3>ps aux - все процессы</h3>
+
+                <p>Классическая комбинация ключей, которую знают все:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ps aux</span></code></pre>
+
+                <p>Что означают ключи:</p>
+
+                <ul>
+                    <li><code>a</code> - показать процессы всех пользователей,
+                        а не только свои.</li>
+                    <li><code>u</code> - «user-oriented» формат: с указанием
+                        пользователя, CPU, памяти.</li>
+                    <li><code>x</code> - показать процессы, у которых нет
+                        терминала (фоновые службы, демоны).</li>
+                </ul>
+
+                <p>Вывод будет большим - десятки, а то и сотни строк. Вот что вы
+                    увидите:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><span class="code-row">root         1  0.0  0.1 167432 11234 ?        Ss   10:00   0:01 /sbin/init</span><span class="code-row">root       412  0.0  0.2  98765 20123 ?        Ss   10:00   0:00 /usr/sbin/sshd</span><span class="code-row">student   1234  0.0  0.3  23456  8765 pts/0    Ss   12:00   0:00 bash</span><span class="code-row">student   5678  0.1  0.5  123456 45678 ?       Sl   12:15   0:02 /usr/bin/firefox</span></code></pre>
+
+                <p>Нас интересуют, в первую очередь, три колонки:</p>
+
+                <ul>
+                    <li><strong>%CPU</strong> - сколько процессорного времени
+                        занимает процесс. Больше 100% - процесс использует
+                        несколько ядер одновременно.</li>
+                    <li><strong>%MEM</strong> - какую долю оперативной памяти
+                        занимает.</li>
+                    <li><strong>COMMAND</strong> - что запущено.</li>
+                </ul>
+
+                <p>А также <strong>STAT</strong> - состояние процесса. Основные
+                    значения:</p>
+
+                <ul>
+                    <li><code>R</code> - running, выполняется прямо сейчас.</li>
+                    <li><code>S</code> - sleeping, спит и ждёт события (это
+                        нормально - большинство процессов в этом состоянии).</li>
+                    <li><code>D</code> - uninterruptible sleep, ждёт
+                        ввода-вывода (диск, сеть). Нельзя прервать сигналом.</li>
+                    <li><code>T</code> - stopped, остановлен (например,
+                        через Ctrl+Z).</li>
+                    <li><code>Z</code> - zombie, завершился, но родитель
+                        ещё не забрал его код возврата.</li>
+                </ul>
+
+                <h3>Фильтрация через grep</h3>
+
+                <p>Смотреть на сотни строк неудобно. Обычно ищут что-то конкретное.
+                    Например, все процессы <code>firefox</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ps aux | grep firefox</span></code></pre>
+
+                <p>Вертикальная черта <code>|</code> - это <strong>конвейер</strong>,
+                    о котором подробно в уроке 8. Пока просто запомните: это
+                    способ передать вывод одной команды в другую. <code>ps aux</code>
+                    выдаёт список, <code>grep firefox</code> оставляет только
+                    строки с «firefox».</p>
+
+                <p>Вы увидите два-три процесса firefox (браузер многопроцессный)
+                    и один лишний - сам <code>grep firefox</code>. Так бывает
+                    всегда: <code>grep</code> ищет по списку, в котором уже есть
+                    он сам. Если это мешает - можно фильтровать так:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ps aux | grep [f]irefox</span></code></pre>
+
+                <p>Квадратные скобки - хитрость: шаблон <code>[f]irefox</code>
+                    совпадает со строкой «firefox», но не совпадает с самим
+                    собой «grep [f]irefox» - поэтому процесс grep в вывод
+                    не попадает.</p>
+
+                <h2>top - мониторинг в реальном времени</h2>
+
+                <p><code>ps</code> - это снимок. Но часто нужно <em>наблюдать</em>
+                    за процессами - кто что делает прямо сейчас, что меняется.
+                    Для этого есть <code>top</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ top</span></code></pre>
+
+                <p>Открывается полноэкранный «пульт управления». Сверху -
+                    сводка о системе, снизу - список процессов. Обновляется
+                    каждые несколько секунд. Выход - <code>q</code>.</p>
+
+                <h3>Что видно в верхней части</h3>
+
+                <p>Сводка показывает:</p>
+
+                <ul>
+                    <li><strong>uptime</strong> - сколько система работает
+                        с момента загрузки.</li>
+                    <li><strong>load average</strong> - средняя нагрузка
+                        за 1, 5 и 15 минут. Если больше количества ядер
+                        (например, 4.5 на 4-ядерной системе) - система
+                        перегружена.</li>
+                    <li><strong>Задачи</strong> - сколько всего процессов,
+                        сколько работают, спят, зомби.</li>
+                    <li><strong>CPU</strong> - процент использования
+                        процессора: us (пользовательские процессы),
+                        sy (системные), id (свободен).</li>
+                    <li><strong>MiB Mem</strong> - оперативная память:
+                        total, free, used, buff/cache.</li>
+                    <li><strong>MiB Swap</strong> - swap-память (своп -
+                        это область на диске, куда выгружаются редко
+                        используемые страницы памяти).</li>
+                </ul>
+
+                <h3>Что видно в списке процессов</h3>
+
+                <p>Колонки почти те же, что в <code>ps aux</code>:
+                    PID, USER, %CPU, %MEM, TIME+, COMMAND. По умолчанию
+                    отсортировано по CPU - самый «горячий» процесс сверху.</p>
+
+                <h3>Управление внутри top</h3>
+
+                <p>Клавиши, которые работают прямо в <code>top</code>:</p>
+
+                <ul>
+                    <li><code>q</code> - выйти.</li>
+                    <li><code>h</code> - помощь со всеми клавишами.</li>
+                    <li><code>M</code> (большая) - отсортировать
+                        по памяти.</li>
+                    <li><code>P</code> (большая) - отсортировать
+                        по процессору (по умолчанию).</li>
+                    <li><code>T</code> (большая) - отсортировать
+                        по времени работы.</li>
+                    <li><code>k</code> - убить процесс (спросит PID).</li>
+                    <li><code>1</code> - показать нагрузку по каждому
+                        ядру отдельно.</li>
+                </ul>
+
+                <p>Клавиши <code>q</code>, <code>M</code>, <code>P</code>,
+                    <code>1</code> - те, что реально используются.
+                    Остальное - для случая «а что тут вообще можно».</p>
+
+                <h2>htop - современная альтернатива</h2>
+
+                <p><code>top</code> - это стандарт, но у него неудобный
+                    интерфейс. Есть улучшенная версия - <code>htop</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ htop</span></code></pre>
+
+                <p>Отличия:</p>
+
+                <ul>
+                    <li>Цветная подсветка - сразу видно, что нагружено.</li>
+                    <li>Графические полосы CPU и памяти.</li>
+                    <li>Можно кликать мышкой по процессам.</li>
+                    <li>Удобнее навигация: стрелками выбрать процесс,
+                        F9 - убить, F5 - дерево процессов.</li>
+                    <li>F4 - фильтр по имени.</li>
+                </ul>
+
+                <p>Минус один: <code>htop</code> не установлен по умолчанию
+                    в большинстве дистрибутивов. Установить:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt install htop</span></code></pre>
+
+                <p>Или <code>sudo dnf install htop</code> в Fedora. После
+                    установки - команда <code>htop</code> работает.</p>
+
+                <p>Если у вас есть доступ установить <code>htop</code> - ставьте.
+                    Если нет - <code>top</code> тоже полноценный инструмент,
+                    просто менее удобный.</p>
+
+                <h2>kill - завершить процесс</h2>
+
+                <p>Основной способ завершить процесс - команда <code>kill</code>.
+                    Ей нужно передать <strong>PID</strong> процесса:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ kill 5678</span></code></pre>
+
+                <p>Что произойдёт: системе отправляется сигнал <code>TERM</code>
+                    (terminate) - «завершись». Большинство процессов корректно
+                    его обрабатывают: сохраняют данные, закрывают файлы, завершаются.
+                    Обычно этого достаточно.</p>
+
+                <h3>Сигналы</h3>
+
+                <p>«Сигнал» - это способ, которым одна программа сообщает другой
+                    «сделай что-нибудь». Самые используемые:</p>
+
+                <ul>
+                    <li><strong><code>SIGTERM</code> (15)</strong> - просьба
+                        завершиться. По умолчанию <code>kill</code> отправляет
+                        именно его.</li>
+                    <li><strong><code>SIGKILL</code> (9)</strong> - приказ
+                        завершиться немедленно. Процесс не может его
+                        проигнорировать или обработать. Используется, когда
+                        TERM не помогает.</li>
+                    <li><strong><code>SIGINT</code> (2)</strong> - прерывание.
+                        То же, что делает <code>Ctrl + C</code>.</li>
+                    <li><strong><code>SIGSTOP</code> (19)</strong> -
+                        приостановить процесс (не убить, а «заморозить»).</li>
+                    <li><strong><code>SIGCONT</code> (18)</strong> -
+                        продолжить приостановленный процесс.</li>
+                    <li><strong><code>SIGHUP</code> (1)</strong> - обычно
+                        «перечитай конфиг».</li>
+                </ul>
+
+                <h3>Как отправить конкретный сигнал</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ kill -9 5678</span><span class="code-row">$ kill -KILL 5678</span><span class="code-row">$ kill -15 5678</span><span class="code-row">$ kill -TERM 5678</span></code></pre>
+
+                <p>Обе пары - эквивалентны: можно цифрой, можно именем.
+                    <code>-9</code> и <code>-KILL</code> - одно и то же,
+                    <code>-15</code> и <code>-TERM</code> - тоже.</p>
+
+                <h3>Правильный порядок</h3>
+
+                <p>Всегда пытайтесь сначала мягко:</p>
+
+                <ol>
+                    <li><code>kill 5678</code> (или <code>kill -15 5678</code>) -
+                        попросить завершиться.</li>
+                    <li>Подождать 3-5 секунд. Процесс может сохранять
+                        данные, ему нужно время.</li>
+                    <li>Если не завершился - <code>kill -9 5678</code>.
+                        Это радикально, но иногда единственный выход.</li>
+                </ol>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Почему kill -9 - это крайняя мера
+                    </div>
+                    <p>Когда вы шлёте процессу <code>SIGTERM</code>, у него есть
+                        шанс сохранить данные, закрыть соединения, удалить
+                        временные файлы. <code>SIGKILL</code> этого шанса
+                        не даёт - процесс умирает мгновенно, в каком бы
+                        состоянии ни был. Это может привести к:</p>
+                    <ul>
+                        <li>Потере несохранённых данных (например,
+                            в редакторе).</li>
+                        <li>Повреждению файлов (если процесс их писал
+                            в момент убийства).</li>
+                    </ul>
+                    <p><code>kill -9</code> используйте только когда
+                        <code>kill</code> без ключа не помог.</p>
+                </div>
+
+                <h2>killall и pkill - убить по имени</h2>
+
+                <p>Иногда PID неизвестен, а знаете вы только имя программы.
+                    Например, «у меня завис firefox». Искать PID через
+                    <code>ps aux | grep firefox</code> - лишний шаг. Есть
+                    команды, которые ищут по имени сами:</p>
+
+                <h3>killall</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ killall firefox</span></code></pre>
+
+                <p>Убьёт <strong>все</strong> процессы с именем <code>firefox</code>.
+                    По умолчанию - через TERM.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ killall -9 firefox</span></code></pre>
+
+                <p>Через SIGKILL, если обычно не помогло.</p>
+
+                <h3>pkill - с шаблоном</h3>
+
+                <p><code>pkill</code> умеет искать не только по точному имени,
+                    но и по части имени:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ pkill fire</span></code></pre>
+
+                <p>Убьёт все процессы, в имени которых есть «fire» -
+                    <code>firefox</code>, <code>firewalld</code> и всё такое.
+                    <strong>Осторожно</strong>: можно случайно убить что-то
+                    лишнее. Всегда сначала проверяйте, что найдётся:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ pgrep fire</span></code></pre>
+
+                <p><code>pgrep</code> - «показать PID по имени». Если вывод
+                    вас устраивает - тогда уже <code>pkill</code>.</p>
+
+                <h2>Фоновые задачи: &amp;, jobs, bg, fg</h2>
+
+                <p>Обычно команда занимает терминал: пока она работает, вы не
+                    можете вводить другие. Но есть способы запустить программу
+                    <strong>в фоне</strong>, чтобы терминал остался свободен.</p>
+
+                <h3>Амперсанд в конце: &amp;</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sleep 300 &amp;</span><span class="code-row">[1] 12345</span></code></pre>
+
+                <p>Запустили <code>sleep 300</code> (программа, которая просто
+                    ждёт 300 секунд) в фоне. Сразу вернулось приглашение -
+                    можно вводить другие команды. В квадратных скобках
+                    <code>[1]</code> - номер задачи в текущей сессии,
+                    <code>12345</code> - PID.</p>
+
+                <h3>jobs - список фоновых задач</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ jobs</span><span class="code-row">[1]+  Running    sleep 300 &amp;</span></code></pre>
+
+                <p>Показывает все фоновые задачи в этой сессии.</p>
+
+                <h3>Ctrl + Z - приостановить</h3>
+
+                <p>Если команда уже работает и занимает терминал, а хочется
+                    её «отложить» - нажмите <code>Ctrl + Z</code>. Программа
+                    не завершится, а приостановится (попадёт в состояние
+                    «stopped»).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sleep 300</span><span class="code-row">^Z</span><span class="code-row">[1]+  Stopped    sleep 300</span></code></pre>
+
+                <h3>bg - отправить в фон</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ bg</span></code></pre>
+
+                <p>Приостановленная задача продолжит выполняться, но уже
+                    в фоне. Терминал свободен.</p>
+
+                <h3>fg - вернуть на передний план</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ fg</span></code></pre>
+
+                <p>Возвращает фоновую или приостановленную задачу обратно
+                    «на передний план» - как будто вы её только что запустили.
+                    Полезно, если случайно нажали <code>Ctrl + Z</code>
+                    и хотите продолжить работу.</p>
+
+                <h2>Системный мониторинг: uptime, free, df, du</h2>
+
+                <p>Помимо процессов, полезно смотреть на состояние системы в целом.
+                    Есть четыре команды, которые стоит знать.</p>
+
+                <h3>uptime - сколько работаем и насколько загружены</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ uptime</span><span class="code-row"> 12:30:45 up 2 days,  3:15,  2 users,  load average: 0.15, 0.20, 0.18</span></code></pre>
+
+                <p>Показывает три вещи:</p>
+
+                <ul>
+                    <li>Текущее время и сколько система работает без
+                        перезагрузки.</li>
+                    <li>Сколько пользователей в системе.</li>
+                    <li>Load average - средняя нагрузка за 1, 5 и 15 минут.</li>
+                </ul>
+
+                <p>Как читать load average: если он больше, чем количество ядер,
+                    система перегружена. Например, на 4-ядерной машине
+                    load average 4.0 - это полная загрузка, всё нормально.
+                    А 8.0 - уже очередь задач, всё тормозит.</p>
+
+                <h3>free - сколько памяти</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ free -h</span><span class="code-row">               total        used        free      shared  buff/cache   available</span><span class="code-row">Mem:           7.8Gi       2.4Gi       3.1Gi       234Mi       2.3Gi       4.8Gi</span><span class="code-row">Swap:          2.0Gi          0B       2.0Gi</span></code></pre>
+
+                <p>Ключ <code>-h</code> (human) - в удобных единицах (гигабайты,
+                    мегабайты). Без него - в килобайтах, неудобно.</p>
+
+                <p>Колонки:</p>
+
+                <ul>
+                    <li><strong>total</strong> - всего памяти.</li>
+                    <li><strong>used</strong> - используется.</li>
+                    <li><strong>free</strong> - свободно (не тронуто).</li>
+                    <li><strong>buff/cache</strong> - кэш файлов. Linux
+                        использует свободную память для кэширования дисков.
+                        Если приложению нужна память - кэш отдаётся.</li>
+                    <li><strong>available</strong> - реально доступно для
+                        приложений. Самая важная цифра: если она близка
+                        к нулю - памяти не хватает.</li>
+                    <li><strong>Swap</strong> - своп. Если он используется
+                        активно - это плохо, память закончилась.</li>
+                </ul>
+
+                <h3>df - сколько места на дисках</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ df -h</span><span class="code-row">Filesystem      Size  Used Avail Use% Mounted on</span><span class="code-row">/dev/sda1        50G   25G   23G  52% /</span><span class="code-row">/dev/sdb1       1.8T  200G  1.5T  12% /home</span></code></pre>
+
+                <p>Показывает все смонтированные файловые системы и сколько
+                    на каждой занято. Колонка <strong>Use%</strong> - процент
+                    использования. Если где-то 95% и выше - надо срочно
+                    освобождать место. Когда диск заполнен полностью,
+                    система может вести себя непредсказуемо.</p>
+
+                <h3>du - что занимает место в папке</h3>
+
+                <p><code>df</code> говорит «диск занят на 90%», а
+                    <code>du</code> - «вот эта папка занимает 30 гигабайт».</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ du -sh ~/Downloads</span><span class="code-row">3.2G    /home/student/Downloads</span></code></pre>
+
+                <p>Ключ <code>-s</code> - summary, только итоговая цифра.
+                    <code>-h</code> - в удобных единицах.</p>
+
+                <p>Полезный приём для поиска «что забивает диск» - смотрим
+                    размер всех подпапок и сортируем по убыванию:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ du -sh ~/* | sort -rh | head -n 10</span></code></pre>
+
+                <p>Подробно про конвейер <code>|</code> и <code>sort</code>
+                    поговорим в уроке 8, но смысл понятен: покажи размеры
+                    всего в домашней папке, отсортируй по убыванию, покажи
+                    первые 10 строк. Это даёт ответ на вопрос «что занимает
+                    всё место» за одну команду.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>ps aux</code>
+                        <span>все процессы</span>
+                    </li>
+                    <li>
+                        <code>ps aux | grep name</code>
+                        <span>найти процесс по имени</span>
+                    </li>
+                    <li>
+                        <code>top</code>
+                        <span>мониторинг в реальном времени</span>
+                    </li>
+                    <li>
+                        <code>htop</code>
+                        <span>удобная альтернатива top</span>
+                    </li>
+                    <li>
+                        <code>kill PID</code>
+                        <span>мягко завершить</span>
+                    </li>
+                    <li>
+                        <code>kill -9 PID</code>
+                        <span>принудительно завершить</span>
+                    </li>
+                    <li>
+                        <code>killall name</code>
+                        <span>убить все по имени</span>
+                    </li>
+                    <li>
+                        <code>команда &amp;</code>
+                        <span>запустить в фоне</span>
+                    </li>
+                    <li>
+                        <code>jobs</code>
+                        <span>список фоновых</span>
+                    </li>
+                    <li>
+                        <code>Ctrl+Z / bg / fg</code>
+                        <span>приостановить / в фон / вернуть</span>
+                    </li>
+                    <li>
+                        <code>uptime</code>
+                        <span>нагрузка load average</span>
+                    </li>
+                    <li>
+                        <code>free -h</code>
+                        <span>оперативная память</span>
+                    </li>
+                    <li>
+                        <code>df -h</code>
+                        <span>место на дисках</span>
+                    </li>
+                    <li>
+                        <code>du -sh dir</code>
+                        <span>размер папки</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Типичные ситуации с процессами и их решения.</p>
+
+                <ul>
+                    <li><strong>«kill 1234 выдаёт No such process».</strong>
+                        Процесс уже завершился. Возможно, вы набрали PID
+                        с опечаткой или он умер сам между тем моментом,
+                        когда вы его увидели в <code>ps</code>, и моментом,
+                        когда попытались убить.</li>
+                    <li><strong>«kill 1234 выдаёт Operation not permitted».</strong>
+                        Процесс принадлежит другому пользователю (часто
+                        root). Обычный пользователь может убивать только
+                        свои процессы. Чужие - только через
+                        <code>sudo kill</code>. И это правильно: иначе
+                        любой мог бы убить любую службу.</li>
+                    <li><strong>«Процесс не умирает даже от kill -9».</strong>
+                        Такое возможно, если процесс в состоянии
+                        <code>D</code> (uninterruptible sleep) - он ждёт
+                        ввода-вывода (диск, сеть) и не реагирует на
+                        сигналы, пока не дождётся. Обычно связано с
+                        зависшим диском или сетевой файловой системой.
+                        Решение - дождаться завершения операции или
+                        перезагрузить систему.</li>
+                    <li><strong>«ps aux | grep что-то показывает grep
+                            что-то».</strong> Так и должно быть - grep
+                        ищет в выводе ps и находит сам себя. Чтобы
+                        отфильтровать, используйте квадратные скобки:
+                        <code>grep [ч]то-то</code>.</li>
+                    <li><strong>«load average высокий, но CPU свободен».</strong>
+                        Возможно, процессы в состоянии D ждут
+                        ввода-вывода. Проверьте <code>ps aux | grep ' D '</code>.
+                        Также часто бывает при проблемах с диском или
+                        медленной сетью. Смотрите <code>iostat</code>
+                        или <code>iotop</code>.</li>
+                    <li><strong>«free показывает 95% памяти занято».</strong>
+                        Смотрите не на used, а на available. Linux
+                        использует свободную память как кэш файлов, и
+                        used может быть высоким без всяких проблем.
+                        Если available - сотни мегабайт и больше -
+                        всё нормально.</li>
+                    <li><strong>«df говорит 100%, но du показывает
+                            меньше».</strong> Возможно, какой-то процесс
+                        держит открытым удалённый файл. Место не
+                        освобождается, пока процесс не завершится или
+                        не закроет файл. Проверить:
+                        <code>sudo lsof +L1</code>.</li>
+                    <li><strong>«Не могу установить htop, нет sudo».</strong>
+                        Используйте обычный <code>top</code>. Он
+                        есть всегда и решает 90% задач мониторинга.
+                        Или спросите у администратора, можно ли установить
+                        htop.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первая - на просмотр процессов, вторая -
+                    на убийство, третья - на фоновые задачи, четвёртая -
+                    на системный мониторинг. Все задачи безопасные и
+                    обратимыми.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Найдите процессы</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выполните три шага:</p>
+                            <ol>
+                                <li>Посмотрите все процессы в системе через
+                                    <code>ps aux</code>. Обратите внимание
+                                    на колонки USER, PID, %CPU, %MEM,
+                                    COMMAND.</li>
+                                <li>Найдите свой текущий процесс bash -
+                                    тот, что вы запустили в этом терминале.
+                                    Подсказка: команда <code>echo $$</code>
+                                    покажет PID вашей оболочки.</li>
+                                <li>Найдите топ-3 процесса по потреблению
+                                    памяти через <code>ps aux</code>.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для поиска по имени -
+                                        <code>ps aux | grep имя</code>.
+                                        Для сортировки по памяти можно
+                                        использовать <code>top</code> и
+                                        нажать <code>M</code> - он
+                                        отсортирует по %MEM.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ echo $$</span><span class="code-row">1234</span><span class="code-row"></span><span class="code-row">$ ps aux | grep 1234</span><span class="code-row">student 1234 0.0 0.1 ... -bash</span><span class="code-row"></span><span class="code-row">$ top</span><span class="code-row"># внутри top нажмите M</span></code></pre>
+                                    <p>Что вы найдёте:</p>
+                                    <ul>
+                                        <li>Переменная <code>$$</code>
+                                            содержит PID текущей
+                                            оболочки. Это bash, в котором
+                                            вы работаете.</li>
+                                        <li>Под root работают системные
+                                            службы: <code>systemd</code>,
+                                            <code>sshd</code>, <code>cron</code>
+                                            и другие. Это нормально -
+                                            так и должно быть.</li>
+                                        <li>Топ-3 по памяти часто -
+                                            браузер, редактор, что-то
+                                            из GUI. Если вы работаете
+                                            в чистой консоли (без
+                                            графики) - топ может быть
+                                            скромным, мегабайт по 50-100.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Запустите и завершите</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Запустите «долгую» программу и
+                                завершите её:</p>
+                            <ol>
+                                <li>Запустите <code>sleep 300</code> в фоне
+                                    (с <code>&amp;</code>).</li>
+                                <li>Найдите его PID через
+                                    <code>ps aux | grep sleep</code>.</li>
+                                <li>Завершите его командой <code>kill</code>
+                                    (без <code>-9</code>).</li>
+                                <li>Убедитесь через <code>ps aux | grep sleep</code>,
+                                    что процесса больше нет.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p><code>sleep</code> - идеальная
+                                        программа для таких упражнений.
+                                        Она просто ждёт указанное
+                                        количество секунд и ничего
+                                        не делает - ни с файлами,
+                                        ни с системой.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ sleep 300 &amp;</span><span class="code-row">[1] 2345</span><span class="code-row"></span><span class="code-row">$ ps aux | grep [s]leep</span><span class="code-row">student 2345 0.0 0.0 ... sleep 300</span><span class="code-row"></span><span class="code-row">$ kill 2345</span><span class="code-row"></span><span class="code-row">$ ps aux | grep [s]leep</span><span class="code-row"># пусто - процесса больше нет</span></code></pre>
+                                    <p>Что тут интересного:</p>
+                                    <ul>
+                                        <li>PID из вывода <code>[1] 2345</code> -
+                                            это и есть PID процесса.
+                                            Можно было сразу
+                                            <code>kill 2345</code>,
+                                            без поиска через ps.</li>
+                                        <li>Используем <code>[s]leep</code>
+                                            вместо <code>sleep</code> -
+                                            чтобы не находить сам grep.</li>
+                                        <li><code>kill</code> без ключа
+                                            сработал мгновенно -
+                                            потому что sleep корректно
+                                            обрабатывает SIGTERM.
+                                            Для «хороших» программ
+                                            этого всегда достаточно.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Управление задачами</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Потренируйтесь с фоновыми
+                                задачами:</p>
+                            <ol>
+                                <li>Запустите <code>sleep 600</code> в
+                                    фоне через <code>&amp;</code>.</li>
+                                <li>Выполните <code>jobs</code> - увидите
+                                    задачу в статусе Running.</li>
+                                <li>Запустите ещё один <code>sleep 600</code>
+                                    на переднем плане (без &amp;). Нажмите
+                                    <code>Ctrl + Z</code> - программа
+                                    остановится.</li>
+                                <li>Снова <code>jobs</code> - теперь
+                                    две задачи, одна Running, одна Stopped.</li>
+                                <li>Выполните <code>bg</code> - приостановленная
+                                    задача уйдёт в фон.</li>
+                                <li>Выполните <code>fg</code> - одна из фоновых
+                                    вернётся на передний план.</li>
+                                <li>Завершите обе через <code>kill %1</code>
+                                    и <code>kill %2</code> (номера задач).</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В <code>kill %1</code> знак
+                                        <code>%</code> означает
+                                        «номер задачи в jobs», а не PID.
+                                        Это удобно, когда не хочется
+                                        искать PID.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ sleep 600 &amp;</span><span class="code-row">[1] 3456</span><span class="code-row"></span><span class="code-row">$ jobs</span><span class="code-row">[1]+  Running    sleep 600 &amp;</span><span class="code-row"></span><span class="code-row">$ sleep 600</span><span class="code-row">^Z</span><span class="code-row">[2]+  Stopped    sleep 600</span><span class="code-row"></span><span class="code-row">$ jobs</span><span class="code-row">[1]-  Running    sleep 600 &amp;</span><span class="code-row">[2]+  Stopped    sleep 600</span><span class="code-row"></span><span class="code-row">$ bg</span><span class="code-row">[2]+ sleep 600 &amp;</span><span class="code-row"></span><span class="code-row">$ fg</span><span class="code-row">sleep 600</span><span class="code-row">^C</span><span class="code-row"></span><span class="code-row">$ kill %1</span></code></pre>
+                                    <p>Разбор действий:</p>
+                                    <ul>
+                                        <li><code>Ctrl + Z</code> не
+                                            убивает процесс - а
+                                            приостанавливает (состояние
+                                            Stopped). Задача не выполняется
+                                            и не занимает CPU, но и не
+                                            завершена.</li>
+                                        <li><code>bg</code> без номера
+                                            работает с последней
+                                            задачей (той, что помечена
+                                            <code>+</code>). Можно
+                                            <code>bg %2</code> - явно.</li>
+                                        <li><code>fg</code> возвращает
+                                            на передний план, и теперь
+                                            <code>Ctrl + C</code> её
+                                            завершит.</li>
+                                        <li><code>kill %1</code> -
+                                            по номеру задачи вместо
+                                            PID.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Мониторинг системы</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Проверьте состояние своей
+                                системы:</p>
+                            <ol>
+                                <li>Сколько система работает без
+                                    перезагрузки и какой load average?</li>
+                                <li>Сколько оперативной памяти используется
+                                    и сколько доступно?</li>
+                                <li>Сколько места на каждом диске?</li>
+                                <li>Какая папка в вашей домашней директории
+                                    самая большая?</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Четыре команды:
+                                        <code>uptime</code>,
+                                        <code>free -h</code>,
+                                        <code>df -h</code>,
+                                        <code>du -sh ~/* | sort -rh | head -5</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ uptime</span><span class="code-row"> 14:30:00 up 3 days,  2:15,  2 users,  load average: 0.25, 0.30, 0.28</span><span class="code-row"></span><span class="code-row">$ free -h</span><span class="code-row">               total        used        free      shared  buff/cache   available</span><span class="code-row">Mem:           7.8Gi       3.2Gi       2.1Gi       156Mi       2.5Gi       4.1Gi</span><span class="code-row">Swap:          2.0Gi       128Mi       1.9Gi</span><span class="code-row"></span><span class="code-row">$ df -h</span><span class="code-row">Filesystem      Size  Used Avail Use% Mounted on</span><span class="code-row">/dev/sda1        50G   22G   26G  46% /</span><span class="code-row">/dev/sdb1       1.8T  350G  1.4T  21% /home</span><span class="code-row"></span><span class="code-row">$ du -sh ~/* | sort -rh | head -5</span><span class="code-row">15G     /home/student/Downloads</span><span class="code-row">8.2G    /home/student/Documents</span><span class="code-row">3.1G    /home/student/Videos</span><span class="code-row">2.0G    /home/student/.cache</span><span class="code-row">500M    /home/student/Pictures</span></code></pre>
+                                    <p>Как читать результаты:</p>
+                                    <ul>
+                                        <li><strong>uptime</strong> - если
+                                            система работает 3 дня, это
+                                            хорошо. Load average 0.25 -
+                                            почти ничего не делает,
+                                            всё свободно. Если был бы 4.0
+                                            при 4 ядрах - была бы полная
+                                            загрузка.</li>
+                                        <li><strong>free -h</strong> -
+                                            смотрим на <code>available</code>
+                                            (4.1 GiB). Это сколько
+                                            реально может выделить
+                                            приложениям. Если бы было
+                                            100 MiB - пора искать, что
+                                            съело память.</li>
+                                        <li><strong>df -h</strong> -
+                                            смотрим <code>Use%</code>.
+                                            Всё до 80% - нормально.
+                                            Выше 90% - надо освобождать.</li>
+                                        <li><strong>du</strong> -
+                                            показал самую большую папку.
+                                            Если <code>Downloads</code>
+                                            раздут до 15G - возможно,
+                                            пора почистить.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с процессами и системным мониторингом. Узнали, что
+                    процесс - это запущенная программа с уникальным PID, что у
+                    каждого процесса есть владелец, состояние и потребление
+                    ресурсов. Научились смотреть на всё это через
+                    <code>ps aux</code> (снимок) и <code>top</code> или
+                    <code>htop</code> (мониторинг в реальном времени).</p>
+
+                <p>Освоили завершение процессов через <code>kill</code>: сначала
+                    мягко (<code>SIGTERM</code>), только потом жёстко
+                    (<code>SIGKILL</code> / <code>-9</code>). Плюс удобные
+                    варианты <code>killall</code> и <code>pkill</code>, когда
+                    PID неизвестен, а имя программы - знаете.</p>
+
+                <p>Научились запускать задачи в фоне через <code>&amp;</code>,
+                    приостанавливать через <code>Ctrl + Z</code> и переключаться
+                    между ними через <code>jobs</code>, <code>bg</code> и
+                    <code>fg</code>. Это спасает, когда запустил долгую
+                    команду, а терминал нужен для другого.</p>
+
+                <p>И разобрали четыре базовых инструмента мониторинга системы:
+                    <code>uptime</code> (сколько работаем и нагрузка),
+                    <code>free -h</code> (память), <code>df -h</code> (диски)
+                    и <code>du -sh</code> (размер папок).</p>
+
+                <p>Теперь вы умеете отвечать на вопросы, которые у любого
+                    пользователя Linux возникают регулярно: «что-то тормозит,
+                    что происходит?», «кончилась память?», «что занимает
+                    место на диске?», «как убить зависшую программу?».</p>
+
+                <p>В следующем уроке займёмся <strong>управлением пакетами</strong> -
+                    разберёмся, как устанавливать и удалять программы, как
+                    обновлять систему, что такое репозитории и в чём разница
+                    между <code>apt</code>, <code>dnf</code> и другими
+                    пакетными менеджерами.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-05.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-07.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

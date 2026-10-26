@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Основы скриптов в PowerShell - CodeRush</title>
+    <title>Основы скриптов в PowerShell - Терминал - CodeRush</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
     <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
@@ -94,6 +96,11 @@
                             <span>Основы скриптов в PowerShell</span>
                             <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
                         </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Продвинутый PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
                     </div>
                 </div>
             </aside>
@@ -101,62 +108,640 @@
             <article class="lesson-content">
                 <h1>Основы скриптов в PowerShell</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-clock"></i> ~50 минут</span>
                     <span><i class="ph ph-windows-logo"></i> Windows</span>
-                    <span><i class="ph ph-code"></i> Только практика</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
 
-                <p>Мы подошли к финалу курса по терминалу Windows. Мы научились перемещаться по файлам, управлять процессами и даже проверять сеть. Но настоящая магия начинается, когда вы объединяете эти команды в <strong>скрипты</strong>.</p>
+                <p>До этого момента мы вводили команды по одной. Ввели - выполнили -
+                    ввели следующую. Это удобно для разовых задач, но что если
+                    нужно выполнять <strong>одну и ту же последовательность каждый
+                        день</strong>? Создавать папки, копировать файлы, проверять
+                    процессы, отправлять отчёт? Каждый раз печатать десятки команд
+                    вручную - бессмысленная трата времени.</p>
 
-                <p>В PowerShell скрипты сохраняются в файлах с расширением <code>.ps1</code>. В этом уроке мы напишем наш первый скрипт и разберём главные фишки PowerShell: переменные и конвейеры.</p>
+                <p>Именно для этого существуют <strong>скрипты</strong> - файлы
+                    с набором команд, которые выполняются как одна программа.
+                    В PowerShell такие файлы имеют расширение <code>.ps1</code>.
+                    Сегодня научимся их писать.</p>
 
-                <h2>Политика выполнения (Execution Policy)</h2>
+                <p>Мы разберём: как разрешить запуск скриптов (Windows по умолчанию
+                    их блокирует), как писать комментарии, работать с переменными,
+                    принимать решения через <code>if</code>, повторять действия
+                    через циклы, создавать свои функции и запускать всё это
+                    из терминала. Это уже полноценное программирование -
+                    просто на языке, встроенном в Windows.</p>
 
-                <p>Windows очень заботится о безопасности. По умолчанию она <strong>запрещает</strong> запускать любые скачанные или созданные вами скрипты <code>.ps1</code>, чтобы вирусы не могли навредить системе.</p>
+                <h2>Политика выполнения: почему Windows блокирует скрипты</h2>
 
-                <p>Если вы попытаетесь запустить скрипт, то увидите ошибку:</p>
-                <pre class="code-numbered"><code><span class="code-row">... выполнение сценариев отключено в этой системе.</span></code></pre>
+                <p>Первое, с чем сталкивается каждый, кто пытается запустить
+                    <code>.ps1</code>-файл, - сообщение об ошибке:</p>
 
-                <p>Чтобы разрешить запуск своих скриптов, нужно открыть PowerShell <strong>от имени администратора</strong> и ввести команду:</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">.\hello.ps1 : Не удается загрузить файл ... так как выполнение сценариев отключено в этой системе.</span></code></pre>
+
+                <p>Это не баг, а защита. Windows по умолчанию <strong>запрещает
+                        запуск любых скриптов</strong> - чтобы случайно
+                    скачанный из интернета файл не навредил системе. Это
+                    называется <strong>Execution Policy</strong> (политика
+                    выполнения).</p>
+
+                <p>Посмотреть текущую политику:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-ExecutionPolicy</span><span class="code-row">Restricted</span></code></pre>
+
+                <p><code>Restricted</code> - «запрещено всё». Именно это
+                    стоит по умолчанию на большинстве систем.</p>
+
+                <h3>Разрешить запуск своих скриптов</h3>
+
+                <p>Откройте PowerShell <strong>от имени администратора</strong>
+                    (правая кнопка на «Пуск» - «Терминал (Администратор)»)
+                    и выполните:</p>
 
                 <pre class="code-numbered"><code><span class="code-row">Set-ExecutionPolicy RemoteSigned</span></code></pre>
 
-                <p>Эта команда разрешает запуск локальных (ваших) скриптов, но требует цифровую подпись для скачанных из интернета. Это безопасный компромисс.</p>
+                <p>Windows спросит подтверждение - отвечайте <code>Y</code>.
+                    Готово, теперь можно запускать свои скрипты.</p>
 
-                <h2>Переменные в PowerShell</h2>
+                <h3>Что значит RemoteSigned</h3>
 
-                <p>Как и в любом языке программирования, в PowerShell можно хранить данные в переменных. Они всегда начинаются со знака доллара <code>$</code>.</p>
+                <p>Политик несколько, и <code>RemoteSigned</code> -
+                    разумный компромисс:</p>
 
-                <pre class="code-numbered"><code><span class="code-row">$name = "Алексей"</span><span class="code-row">Write-Host "Привет, $name!"</span></code></pre>
+                <ul>
+                    <li><strong>Restricted</strong> - запрещено всё.
+                        Значение по умолчанию.</li>
+                    <li><strong>AllSigned</strong> - разрешены только
+                        подписанные скрипты. Строго, но неудобно -
+                        свои скрипты тоже нужно подписывать.</li>
+                    <li><strong>RemoteSigned</strong> - локальные скрипты
+                        работают, а скачанные из интернета - только
+                        с цифровой подписью. <strong>Оптимальный
+                            выбор для большинства.</strong></li>
+                    <li><strong>Unrestricted</strong> - разрешено всё.
+                        Небезопасно.</li>
+                    <li><strong>Bypass</strong> - вообще никаких проверок.
+                        Только для специальных случаев.</li>
+                </ul>
 
-                <p>Команда <code>Write-Host</code> выводит текст на экран (аналог <code>echo</code>). Обратите внимание, что переменная подставляется прямо в строку без дополнительных знаков.</p>
+                <p>После смены политики её значение сохраняется навсегда.
+                    Обратно вернуть можно так же: <code>Set-ExecutionPolicy
+                    Restricted</code>.</p>
 
-                <h2>Конвейеры и фильтрация</h2>
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Альтернатива: запуск без смены политики
+                    </div>
+                    <p>Если менять политику не хочется (или нет прав
+                        администратора) - можно запустить скрипт в обход
+                        через ключ <code>-ExecutionPolicy Bypass</code>:</p>
+                    <pre
+                        class="code-numbered"><code><span class="code-row">powershell -ExecutionPolicy Bypass -File .\hello.ps1</span></code></pre>
+                    <p>Работает, но каждый раз нужно писать длинную команду.
+                        Для регулярной работы удобнее один раз сменить
+                        политику.</p>
+                </div>
 
-                <p>Главная сила PowerShell - это конвейеры (pipes, символ <code>|</code>). Они позволяют передавать результат одной команды в другую как объекты.</p>
+                <h2>Первый скрипт: Hello, World</h2>
 
-                <p>В связке с конвейером часто используют команду <code>Where-Object</code> для фильтрации. Внутри фигурных скобок <code>{}</code> пишется условие, где <code>$_</code> означает «текущий объект».</p>
+                <p>Традиционно начинают с простого. Создайте файл
+                    <code>hello.ps1</code> в любом удобном месте (например,
+                    в домашней папке). Проще всего через Блокнот:</p>
 
-                <p>Пример: найти все процессы, которые потребляют больше 100 мегабайт памяти (колонка <code>WorkingSet</code>).</p>
+                <ol>
+                    <li>Откройте Блокнот (<code>notepad</code> в терминале
+                        или через «Пуск»).</li>
+                    <li>Напишите одну строку (см. код ниже).</li>
+                    <li>Сохраните как <code>hello.ps1</code> - обязательно
+                        выберите «Тип файла: Все файлы», чтобы Блокнот
+                        не добавил <code>.txt</code> в конец.</li>
+                </ol>
 
-                <pre class="code-numbered"><code><span class="code-row">Get-Process | Where-Object {$_.WorkingSet -gt 100MB}</span></code></pre>
+                <pre
+                    class="code-numbered"><code><span class="code-row">Write-Host "Привет, это мой первый скрипт!"</span></code></pre>
 
-                <h2>Создаём первый скрипт</h2>
+                <p>Теперь в терминале перейдите в папку со скриптом
+                    и запустите:</p>
 
-                <p>Давайте соберём всё вместе и напишем скрипт, который выводит приветствие и список самых прожорливых по памяти процессов.</p>
+                <pre class="code-numbered"><code><span class="code-row">.\hello.ps1</span></code></pre>
 
-                <p><strong>Шаг 1.</strong> Откройте Блокнот (или VS Code).</p>
-                <p><strong>Шаг 2.</strong> Напишите следующий код:</p>
+                <p>Точка и обратный слэш <code>.\</code> - это важный
+                    момент. В PowerShell <strong>нельзя запустить скрипт
+                        по имени</strong> - только с указанием пути. Точка
+                    означает «текущая папка», то есть «запусти
+                    <code>hello.ps1</code> из текущей директории». Это
+                    защита от случайного запуска одноимённого скрипта
+                    из <code>PATH</code>.</p>
 
-                <pre class="code-numbered"><code><span class="code-row">$user = $env:USERNAME</span><span class="code-row">Write-Host "Привет, $user! Запускаю диагностику..."</span><span class="code-row"></span><span class="code-row">$topProcesses = Get-Process | Sort-Object -Property WorkingSet -Descending | Select-Object -First 3</span><span class="code-row"></span><span class="code-row">Write-Host "`nТоп-3 программы по памяти:"</span><span class="code-row">$topProcesses | Format-Table Name, WorkingSet</span></code></pre>
+                <p>Если всё правильно - увидите приветствие. Первый скрипт
+                    работает.</p>
 
-                <p><strong>Шаг 3.</strong> Сохраните файл с именем <code>diag.ps1</code> (обязательно выберите «Тип файла: Все файлы», чтобы не добавилось <code>.txt</code>).</p>
+                <h2>Комментарии</h2>
 
-                <p><strong>Шаг 4.</strong> Откройте PowerShell, перейдите в папку с файлом и запустите его:</p>
+                <p>Комментарии - это текст в скрипте, который <strong>не
+                        выполняется</strong>. Он нужен для заметок: объяснений,
+                    напоминаний, пометок. Через месяц вы забудете, зачем
+                    написали эту строку - комментарий спасёт.</p>
 
-                <pre class="code-numbered"><code><span class="code-row">.\diag.ps1</span></code></pre>
+                <h3>Однострочный: #</h3>
 
-                <p>Скрипт выведет ваше имя (взятое из переменной окружения <code>$env:USERNAME</code>) и таблицу с тремя самыми тяжёлыми процессами.</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row"># Это комментарий. Всё, что после решётки, не выполняется.</span><span class="code-row">Write-Host "Привет"  # А это - комментарий после кода</span></code></pre>
+
+                <h3>Многострочный: &lt;# ... #&gt;</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">&lt;#</span><span class="code-row">Это многострочный комментарий.</span><span class="code-row">Он полезен для больших блоков:</span><span class="code-row">описания скрипта, списка изменений, заметок.</span><span class="code-row">#&gt;</span><span class="code-row">Write-Host "Привет"</span></code></pre>
+
+                <p>Многострочные комментарии часто используют в начале
+                    скрипта - как «шапку» с описанием:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">&lt;#</span><span class="code-row">.SYNOPSIS</span><span class="code-row">Скрипт для резервного копирования документов.</span><span class="code-row"></span><span class="code-row">.DESCRIPTION</span><span class="code-row">Копирует папку Documents в указанную папку назначения.</span><span class="code-row">Логирует каждый шаг в файл.</span><span class="code-row"></span><span class="code-row">.EXAMPLE</span><span class="code-row">.\backup.ps1 -Destination D:\Backups</span><span class="code-row">#&gt;</span></code></pre>
+
+                <p>Такой формат понимает <code>Get-Help</code> - если
+                    скрипт написан с такой шапкой, справка работает
+                    и для него.</p>
+
+                <h2>Переменные</h2>
+
+                <p>Переменная - это имя, за которым хранится значение.
+                    В PowerShell переменные начинаются со знака доллара
+                    <code>$</code>.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$name = "Алексей"</span><span class="code-row">$age = 25</span><span class="code-row">$isStudent = $true</span></code></pre>
+
+                <p>Имя переменной - любое, из букв, цифр и подчёркиваний.
+                    Регистр не важен: <code>$name</code> и <code>$Name</code> -
+                    одна и та же переменная. Но принято писать в едином
+                    стиле по всему скрипту.</p>
+
+                <h3>Типы данных</h3>
+
+                <p>PowerShell определяет тип автоматически, но можно
+                    указать явно:</p>
+
+                <ul>
+                    <li><strong>Строка</strong> - в кавычках.
+                        <code>$name = "Алексей"</code>.</li>
+                    <li><strong>Число</strong> - без кавычек.
+                        <code>$age = 25</code>, <code>$pi = 3.14</code>.</li>
+                    <li><strong>Логическое</strong> - <code>$true</code>
+                        или <code>$false</code>.</li>
+                    <li><strong>Массив</strong> - через запятую
+                        в <code>@()</code>.
+                        <code>$colors = @("red", "green", "blue")</code>.</li>
+                    <li><strong>Хеш-таблица</strong> - через
+                        <code>@{}</code>.
+                        <code>$user = @{Name="Иван"; Age=30}</code>.</li>
+                </ul>
+
+                <p>Явное указание типа:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">[int]$age = 25</span><span class="code-row">[string]$name = "Алексей"</span></code></pre>
+
+                <p>Полезно, когда нужно, чтобы переменная не превратилась
+                    в другой тип случайно. Например, <code>[int]$age = "25"</code>
+                    автоматически преобразует строку в число.</p>
+
+                <h3>Использование переменных в строках</h3>
+
+                <p>Самый удобный способ - <strong>интерполяция</strong>:
+                    переменная подставляется прямо в строку с двойными
+                    кавычками.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$name = "Алексей"</span><span class="code-row">$age = 25</span><span class="code-row">Write-Host "Меня зовут $name, мне $age лет"</span><span class="code-row">Меня зовут Алексей, мне 25 лет</span></code></pre>
+
+                <p>В одинарных кавычках интерполяции <strong>нет</strong>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Write-Host 'Меня зовут $name'</span><span class="code-row">Меня зовут $name</span></code></pre>
+
+                <p>Это важное отличие: <code>"..."</code> подставляет
+                    переменные, <code>'...'</code> - нет. Используйте
+                    двойные, когда хотите, чтобы переменные
+                    раскрылись.</p>
+
+                <h3>Встроенные переменные</h3>
+
+                <p>PowerShell сам заполняет некоторые переменные
+                    полезными значениями. Их можно читать (и иногда
+                    менять), но не нужно объявлять:</p>
+
+                <ul>
+                    <li><code>$env:USERNAME</code> - имя текущего
+                        пользователя.</li>
+                    <li><code>$env:COMPUTERNAME</code> - имя компьютера.</li>
+                    <li><code>$env:USERPROFILE</code> - домашняя папка.</li>
+                    <li><code>$PSScriptRoot</code> - папка, в которой
+                        лежит текущий скрипт (только в скрипте,
+                        не в командной строке).</li>
+                    <li><code>$HOME</code> - домашняя папка
+                        пользователя.</li>
+                    <li><code>$PWD</code> - текущая рабочая папка.</li>
+                    <li><code>$args</code> - аргументы, переданные
+                        скрипту.</li>
+                </ul>
+
+                <p>Пример:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Write-Host "Привет, $env:USERNAME!"</span><span class="code-row">Write-Host "Ты на компьютере $env:COMPUTERNAME"</span></code></pre>
+
+                <h2>Операторы</h2>
+
+                <p>PowerShell использует непривычные для программистов
+                    операторы сравнения - словесные, а не символьные.
+                    Это сделано, чтобы избежать путаницы с перенаправлением
+                    ввода-вывода (<code>&gt;</code> в PowerShell означает
+                    перенаправление, а не «больше»).</p>
+
+                <h3>Сравнение</h3>
+
+                <ul>
+                    <li><code>-eq</code> - равно (<code>$a -eq $b</code>).</li>
+                    <li><code>-ne</code> - не равно.</li>
+                    <li><code>-gt</code> - больше.</li>
+                    <li><code>-lt</code> - меньше.</li>
+                    <li><code>-ge</code> - больше или равно.</li>
+                    <li><code>-le</code> - меньше или равно.</li>
+                </ul>
+
+                <p>Пример:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$age = 25</span><span class="code-row">$age -gt 18</span><span class="code-row">True</span><span class="code-row">$age -eq 30</span><span class="code-row">False</span></code></pre>
+
+                <h3>Строки</h3>
+
+                <ul>
+                    <li><code>-like</code> - совпадает с шаблоном
+                        (с <code>*</code> и <code>?</code>).
+                        <code>"hello" -like "he*"</code> вернёт
+                        <code>$true</code>.</li>
+                    <li><code>-match</code> - совпадает с регулярным
+                        выражением. <code>"hello123" -match "\d+"</code>
+                        вернёт <code>$true</code>.</li>
+                    <li><code>-contains</code> - проверка, есть ли
+                        элемент в массиве.</li>
+                </ul>
+
+                <h3>Логические</h3>
+
+                <ul>
+                    <li><code>-and</code> - И (оба условия верны).</li>
+                    <li><code>-or</code> - ИЛИ (хотя бы одно верно).</li>
+                    <li><code>-not</code> - НЕ (инверсия).</li>
+                </ul>
+
+                <p>Пример:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$age = 25</span><span class="code-row">$hasLicense = $true</span><span class="code-row">$age -gt 18 -and $hasLicense</span><span class="code-row">True</span></code></pre>
+
+                <h3>Арифметика</h3>
+
+                <p>Тут всё привычно:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$a = 10</span><span class="code-row">$b = 3</span><span class="code-row">$a + $b    # 13</span><span class="code-row">$a - $b    # 7</span><span class="code-row">$a * $b    # 30</span><span class="code-row">$a / $b    # 3.333...</span><span class="code-row">$a % $b    # 1 (остаток от деления)</span></code></pre>
+
+                <h2>Условный оператор: if / else</h2>
+
+                <p>Основной способ заставить скрипт «принимать решения».
+                    Синтаксис почти как в других языках:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">if (условие) {</span><span class="code-row">    # выполняется, если условие истинно</span><span class="code-row">}</span></code></pre>
+
+                <p>Полная форма:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">if (условие) {</span><span class="code-row">    # если истина</span><span class="code-row">}</span><span class="code-row">elseif (другое условие) {</span><span class="code-row">    # если первое ложно, но это истинно</span><span class="code-row">}</span><span class="code-row">else {</span><span class="code-row">    # если все предыдущие ложны</span><span class="code-row">}</span></code></pre>
+
+                <p>Пример - проверка возраста:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$age = 25</span><span class="code-row"></span><span class="code-row">if ($age -ge 18) {</span><span class="code-row">    Write-Host "Совершеннолетний"</span><span class="code-row">}</span><span class="code-row">else {</span><span class="code-row">    Write-Host "Несовершеннолетний"</span><span class="code-row">}</span></code></pre>
+
+                <p>Более сложный - с <code>elseif</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$score = 75</span><span class="code-row"></span><span class="code-row">if ($score -ge 90) {</span><span class="code-row">    Write-Host "Отлично"</span><span class="code-row">}</span><span class="code-row">elseif ($score -ge 70) {</span><span class="code-row">    Write-Host "Хорошо"</span><span class="code-row">}</span><span class="code-row">elseif ($score -ge 50) {</span><span class="code-row">    Write-Host "Удовлетворительно"</span><span class="code-row">}</span><span class="code-row">else {</span><span class="code-row">    Write-Host "Плохо"</span><span class="code-row">}</span></code></pre>
+
+                <p>Проверки идут сверху вниз. Как только одна сработала -
+                    остальные пропускаются. Поэтому порядок важен: сначала
+                    самое строгое условие, потом мягче.</p>
+
+                <h3>Проверка на существование файла</h3>
+
+                <p>Очень частая задача - проверить, существует ли файл
+                    или папка, прежде чем что-то с ними делать. Для
+                    этого есть <code>Test-Path</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$file = "C:\Users\Иван\notes.txt"</span><span class="code-row"></span><span class="code-row">if (Test-Path $file) {</span><span class="code-row">    Write-Host "Файл существует"</span><span class="code-row">}</span><span class="code-row">else {</span><span class="code-row">    Write-Host "Файла нет"</span><span class="code-row">}</span></code></pre>
+
+                <p><code>Test-Path</code> возвращает <code>$true</code>
+                    или <code>$false</code> - идеально для <code>if</code>.
+                    Работает и для файлов, и для папок, и для реестра.</p>
+
+                <h3>Тернарный оператор</h3>
+
+                <p>В PowerShell 7 (не в 5.1) появился сокращённый вариант
+                    для простых условий:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$status = $age -ge 18 ? "Adult" : "Minor"</span></code></pre>
+
+                <p>«Если <code>age &gt;= 18</code> - вернуть «Adult»,
+                    иначе - «Minor»». Короче, чем <code>if</code>/<code>else</code>.
+                    В Windows PowerShell 5.1 не работает - используйте
+                    обычный <code>if</code>.</p>
+
+                <h2>Циклы</h2>
+
+                <p>Циклы нужны, когда какое-то действие надо повторить
+                    много раз. Например, обработать все файлы в папке
+                    или выполнить операцию для каждого пользователя
+                    из списка.</p>
+
+                <h3>foreach</h3>
+
+                <p>Самый популярный цикл. «Для каждого элемента из
+                    коллекции - сделай что-то»:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$colors = @("red", "green", "blue")</span><span class="code-row"></span><span class="code-row">foreach ($color in $colors) {</span><span class="code-row">    Write-Host "Цвет: $color"</span><span class="code-row">}</span></code></pre>
+
+                <p>Результат:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Цвет: red</span><span class="code-row">Цвет: green</span><span class="code-row">Цвет: blue</span></code></pre>
+
+                <p>Внутри фигурных скобок <code>$color</code> по очереди
+                    принимает каждое значение из массива.</p>
+
+                <h3>Цикл по файлам в папке</h3>
+
+                <p>Очень частая задача - сделать что-то со всеми файлами
+                    в папке:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$files = Get-ChildItem -Path "C:\Temp" -File</span><span class="code-row"></span><span class="code-row">foreach ($file in $files) {</span><span class="code-row">    Write-Host "Файл: $($file.Name), размер: $($file.Length) байт"</span><span class="code-row">}</span></code></pre>
+
+                <p>Здесь <code>$($file.Name)</code> - подстановка
+                    свойства объекта. Просто <code>$file.Name</code>
+                    внутри строки не сработает так, как ожидается -
+                    PowerShell попытается найти переменную с именем
+                    <code>file.Name</code>. Скобки <code>$(...)</code>
+                    говорят: «сначала вычисли выражение, потом подставь
+                    результат».</p>
+
+                <h3>for</h3>
+
+                <p>Классический цикл «сделай N раз, с счётчиком»:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">for ($i = 1; $i -le 5; $i++) {</span><span class="code-row">    Write-Host "Итерация $i"</span><span class="code-row">}</span></code></pre>
+
+                <p>Разбор:</p>
+                <ul>
+                    <li><code>$i = 1</code> - начальное значение
+                        счётчика.</li>
+                    <li><code>$i -le 5</code> - условие продолжения
+                        (пока <code>i</code> меньше или равно 5).</li>
+                    <li><code>$i++</code> - что делать после каждой
+                        итерации (увеличить на 1).</li>
+                </ul>
+
+                <h3>while</h3>
+
+                <p>Цикл «пока условие истинно»:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">$count = 0</span><span class="code-row">while ($count -lt 3) {</span><span class="code-row">    Write-Host "Счётчик: $count"</span><span class="code-row">    $count++</span><span class="code-row">}</span></code></pre>
+
+                <p>Выполняется, пока <code>count &lt; 3</code>.
+                    Внутри цикла обязательно нужно менять условие
+                    (<code>count++</code>), иначе цикл будет
+                    бесконечным.</p>
+
+                <h3>Управление циклом</h3>
+
+                <p>Два ключевых слова для управления:</p>
+                <ul>
+                    <li><code>break</code> - прервать цикл полностью.</li>
+                    <li><code>continue</code> - пропустить текущую
+                        итерацию и перейти к следующей.</li>
+                </ul>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">foreach ($n in 1..10) {</span><span class="code-row">    if ($n -eq 5) {</span><span class="code-row">        break</span><span class="code-row">    }</span><span class="code-row">    if ($n % 2 -eq 0) {</span><span class="code-row">        continue</span><span class="code-row">    }</span><span class="code-row">    Write-Host $n</span><span class="code-row">}</span></code></pre>
+
+                <p>Выведет <code>1 3</code> - на чётных срабатывает
+                    <code>continue</code>, а на 5 - <code>break</code>,
+                    и цикл завершается.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Конструкция 1..10
+                    </div>
+                    <p><code>1..10</code> - это диапазон. PowerShell
+                        автоматически создаёт массив чисел от 1 до 10.
+                        Можно <code>1..100</code>, <code>5..1</code> (обратный
+                        порядок), даже <code>"a".."e"</code> - для букв.
+                        Очень удобно в циклах.</p>
+                </div>
+
+                <h2>Функции</h2>
+
+                <p>Функция - это именованный блок кода, который можно
+                    вызывать многократно. Если вы делаете что-то
+                    повторяющееся - оберните это в функцию.</p>
+
+                <h3>Простая функция</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">function Say-Hello {</span><span class="code-row">    Write-Host "Привет!"</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Say-Hello</span></code></pre>
+
+                <p>Объявили функцию <code>Say-Hello</code>, потом вызвали
+                    её по имени. Результат - «Привет!».</p>
+
+                <p>Обратите внимание на имя: <code>Глагол-Существительное</code>.
+                    Как у встроенных команд. Так принято - если функция
+                    <code>Get-Something</code> - она что-то возвращает,
+                    <code>Set-Something</code> - что-то меняет. Это
+                    делает код предсказуемым.</p>
+
+                <h3>С параметрами</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">function Greet-User($name) {</span><span class="code-row">    Write-Host "Привет, $name!"</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Greet-User "Алексей"</span><span class="code-row">Greet-User "Мария"</span></code></pre>
+
+                <p>Параметр <code>$name</code> указывается в скобках
+                    после имени функции. При вызове функции значение
+                    передаётся в кавычках (если это строка).</p>
+
+                <h3>С несколькими параметрами</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">function Add-Numbers($a, $b) {</span><span class="code-row">    $sum = $a + $b</span><span class="code-row">    Write-Host "Сумма: $sum"</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Add-Numbers 5 3</span><span class="code-row">Сумма: 8</span></code></pre>
+
+                <h3>Возврат значения: return</h3>
+
+                <p>Функция может не писать в консоль, а возвращать
+                    результат - чтобы вызывающий код мог с ним
+                    работать:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">function Get-Sum($a, $b) {</span><span class="code-row">    return $a + $b</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">$result = Get-Sum 10 20</span><span class="code-row">Write-Host "Результат: $result"</span><span class="code-row">Результат: 30</span></code></pre>
+
+                <p>Разница принципиальная:</p>
+                <ul>
+                    <li><code>Write-Host</code> внутри функции -
+                        выводит на экран, но ничего не возвращает.
+                        Снаружи работать с результатом не получится.</li>
+                    <li><code>return</code> - возвращает значение.
+                        Снаружи можно сохранить в переменную,
+                        передать в конвейер, обработать.</li>
+                </ul>
+
+                <p>Правило: если функция должна «сделать что-то
+                    и показать» - <code>Write-Host</code>. Если
+                    «вычислить и отдать» - <code>return</code>.</p>
+
+                <h2>Аргументы скрипта</h2>
+
+                <p>Скрипт может принимать аргументы командной строки -
+                    как обычные программы. Например, скрипт для
+                    копирования файлов, которому передают путь
+                    источника и назначения.</p>
+
+                <h3>Через $args</h3>
+
+                <p>Простейший способ - встроенная переменная
+                    <code>$args</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row"># script.ps1</span><span class="code-row">Write-Host "Всего аргументов: $($args.Count)"</span><span class="code-row">foreach ($arg in $args) {</span><span class="code-row">    Write-Host "Аргумент: $arg"</span><span class="code-row">}</span></code></pre>
+
+                <p>Запуск:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">.\script.ps1 hello world 123</span><span class="code-row">Всего аргументов: 3</span><span class="code-row">Аргумент: hello</span><span class="code-row">Аргумент: world</span><span class="code-row">Аргумент: 123</span></code></pre>
+
+                <h3>Через param (правильный способ)</h3>
+
+                <p>Более правильный и удобный способ - объявить параметры
+                    в блоке <code>param()</code> в самом начале скрипта:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">param(</span><span class="code-row">    [string]$Source,</span><span class="code-row">    [string]$Destination,</span><span class="code-row">    [int]$Count = 1</span><span class="code-row">)</span><span class="code-row"></span><span class="code-row">Write-Host "Копирую из $Source в $Destination"</span><span class="code-row">Write-Host "Количество: $Count"</span></code></pre>
+
+                <p>Запуск:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">.\script.ps1 -Source C:\Data -Destination D:\Backup -Count 5</span><span class="code-row">.\script.ps1 -Source C:\Data -Destination D:\Backup</span></code></pre>
+
+                <p>Преимущества:</p>
+                <ul>
+                    <li>Типы проверяются автоматически
+                        (<code>[int]$Count</code> не примет строку).</li>
+                    <li>Значения по умолчанию
+                        (<code>$Count = 1</code>).</li>
+                    <li>Понятные имена параметров
+                        (<code>-Source</code>, <code>-Destination</code>).</li>
+                    <li>Справка <code>Get-Help</code> работает корректно.</li>
+                </ul>
+
+                <p>Вызывать можно и без имён - по позиции:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">.\script.ps1 C:\Data D:\Backup</span></code></pre>
+
+                <p>Но с именами надёжнее: если скрипт разрастётся,
+                    вы сами через месяц не вспомните, что первый
+                    аргумент - это Source, а второй - Destination.</p>
+
+                <h2>Обработка ошибок: try / catch</h2>
+
+                <p>Что делать, если что-то пошло не так? Файл не найден,
+                    нет прав, сеть недоступна. Вместо того чтобы скрипт
+                    падал с ошибкой, можно «поймать» её и обработать
+                    аккуратно:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">try {</span><span class="code-row">    Get-Content "C:\nonexistent\file.txt"</span><span class="code-row">    Write-Host "Файл прочитан"</span><span class="code-row">}</span><span class="code-row">catch {</span><span class="code-row">    Write-Host "Ошибка: $($_.Exception.Message)"</span><span class="code-row">}</span><span class="code-row">finally {</span><span class="code-row">    Write-Host "Завершено"</span><span class="code-row">}</span></code></pre>
+
+                <p>Как это работает:</p>
+                <ul>
+                    <li><strong>try</strong> - что попробовать сделать.</li>
+                    <li><strong>catch</strong> - что делать, если была
+                        ошибка. <code>$_</code> - сам объект ошибки,
+                        <code>$_.Exception.Message</code> - текст
+                        ошибки.</li>
+                    <li><strong>finally</strong> - что выполнить
+                        в любом случае (и при успехе, и при ошибке).
+                        Необязателен.</li>
+                </ul>
+
+                <p>По умолчанию <code>try/catch</code> срабатывает
+                    только на «останавливающие» ошибки (terminating).
+                    Многие команды PowerShell при сбое выдают
+                    «не останавливающие» - и <code>catch</code> их
+                    пропустит. Чтобы поймать, нужно добавить
+                    <code>-ErrorAction Stop</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">try {</span><span class="code-row">    Get-Content "C:\nonexistent\file.txt" -ErrorAction Stop</span><span class="code-row">}</span><span class="code-row">catch {</span><span class="code-row">    Write-Host "Поймали ошибку: $($_.Exception.Message)"</span><span class="code-row">}</span></code></pre>
+
+                <p>Это тонкость, на которой часто спотыкаются. Запомните:
+                    если <code>catch</code> не срабатывает, хотя
+                    ошибка есть - добавьте <code>-ErrorAction Stop</code>.</p>
+
+                <h2>Полный пример: скрипт для резервного копирования</h2>
+
+                <p>Соберём всё вместе в один осмысленный скрипт. Он
+                    принимает исходную и целевую папку, копирует файлы
+                    и логирует каждый шаг.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">param(</span><span class="code-row">    [string]$Source = "C:\Data",</span><span class="code-row">    [string]$Destination = "D:\Backup"</span><span class="code-row">)</span><span class="code-row"></span><span class="code-row">Write-Host "=== Запуск резервного копирования ==="</span><span class="code-row">Write-Host "Источник: $Source"</span><span class="code-row">Write-Host "Назначение: $Destination"</span><span class="code-row"></span><span class="code-row">if (-not (Test-Path $Source)) {</span><span class="code-row">    Write-Host "Ошибка: исходная папка не найдена"</span><span class="code-row">    exit 1</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">if (-not (Test-Path $Destination)) {</span><span class="code-row">    New-Item -Path $Destination -ItemType Directory | Out-Null</span><span class="code-row">    Write-Host "Создана папка назначения"</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">$files = Get-ChildItem -Path $Source -File</span><span class="code-row">$count = 0</span><span class="code-row"></span><span class="code-row">foreach ($file in $files) {</span><span class="code-row">    try {</span><span class="code-row">        Copy-Item $file.FullName -Destination $Destination -ErrorAction Stop</span><span class="code-row">        $count++</span><span class="code-row">        Write-Host "Скопирован: $($file.Name)"</span><span class="code-row">    }</span><span class="code-row">    catch {</span><span class="code-row">        Write-Host "Ошибка с $($file.Name): $($_.Exception.Message)"</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Write-Host "=== Готово. Скопировано файлов: $count из $($files.Count) ==="</span></code></pre>
+
+                <p>Что тут происходит по шагам:</p>
+                <ol>
+                    <li><code>param()</code> - объявляет два параметра
+                        с значениями по умолчанию. Можно запустить
+                        без аргументов - возьмутся дефолты.</li>
+                    <li>Выводим информационные сообщения.</li>
+                    <li><code>Test-Path</code> проверяет, существует
+                        ли исходная папка. Если нет - выходим
+                        с кодом ошибки <code>exit 1</code>.</li>
+                    <li>Если папки назначения нет - создаём через
+                        <code>New-Item</code>. <code>| Out-Null</code>
+                        подавляет вывод команды (иначе она напишет
+                        «создано...» в консоль).</li>
+                    <li><code>Get-ChildItem -File</code> получает
+                        список файлов (только файлы, без папок).</li>
+                    <li>Цикл <code>foreach</code> копирует каждый
+                        файл. Внутри <code>try/catch</code> - если
+                        один файл не скопируется, скрипт продолжит
+                        работу с остальными.</li>
+                    <li>В конце - итоговая статистика.</li>
+                </ol>
+
+                <p>Это уже полноценный скрипт, который можно использовать
+                    в реальной работе. Запустить можно так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">.\backup.ps1 -Source "C:\Users\Иван\Documents" -Destination "D:\Backups\Documents"</span></code></pre>
 
                 <h2>Шпаргалка</h2>
 
@@ -172,56 +757,159 @@
                         <span>разрешить скрипты</span>
                     </li>
                     <li>
-                        <code>$var = "text"</code>
-                        <span>создать переменную</span>
+                        <code>.\script.ps1</code>
+                        <span>запуск</span>
                     </li>
                     <li>
-                        <code>Write-Host</code>
-                        <span>вывести текст</span>
+                        <code>#</code>
+                        <span>комментарий</span>
                     </li>
                     <li>
-                        <code>|</code>
-                        <span>конвейер (передача данных)</span>
+                        <code>&lt;# ... #&gt;</code>
+                        <span>многострочный</span>
                     </li>
                     <li>
-                        <code>Where-Object</code>
-                        <span>фильтрация</span>
+                        <code>$var = "..."</code>
+                        <span>переменная</span>
                     </li>
                     <li>
-                        <code>$_</code>
-                        <span>текущий объект</span>
+                        <code>"$var"</code>
+                        <span>интерполяция</span>
+                    </li>
+                    <li>
+                        <code>'...'</code>
+                        <span>без интерполяции</span>
+                    </li>
+                    <li>
+                        <code>if / elseif / else</code>
+                        <span>условие</span>
+                    </li>
+                    <li>
+                        <code>-eq, -ne, -gt, -lt</code>
+                        <span>сравнение</span>
+                    </li>
+                    <li>
+                        <code>foreach ($x in $arr)</code>
+                        <span>по коллекции</span>
+                    </li>
+                    <li>
+                        <code>for / while</code>
+                        <span>с счётчиком / пока</span>
+                    </li>
+                    <li>
+                        <code>function Name {}</code>
+                        <span>функция</span>
+                    </li>
+                    <li>
+                        <code>param()</code>
+                        <span>аргументы скрипта</span>
+                    </li>
+                    <li>
+                        <code>try / catch</code>
+                        <span>обработка ошибок</span>
+                    </li>
+                    <li>
+                        <code>-ErrorAction Stop</code>
+                        <span>чтобы поймать ошибку</span>
                     </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные ошибки при создании скриптов.</p>
+                <p>Типичные проблемы при написании и запуске скриптов.</p>
 
                 <ul>
-                    <li><strong>«Запуск сценариев отключён»</strong>. Вы не выполнили <code>Set-ExecutionPolicy RemoteSigned</code> или запустили PowerShell не от имени администратора.</li>
-                    <li><strong>«Файл не найден»</strong>. Вы находитесь не в той папке. Используйте <code>cd</code>, чтобы перейти туда, где лежит <code>diag.ps1</code>.</li>
-                    <li><strong>Скрипт открывается в Блокноте, а не запускается</strong>. Вы запускаете его двойным кликом. В PowerShell запускайте файлы через консоль: <code>.\имя_файла.ps1</code>.</li>
-                    <li><strong>Кракозябры вместо русских букв</strong>. В старых версиях PowerShell консоль не понимает кодировку UTF-8 без настройки. Сохраняйте скрипты в кодировке Windows-1251 или добавьте <code>[Console]::OutputEncoding = [System.Text.Encoding]::UTF8</code> в начало скрипта.</li>
+                    <li><strong>«Выполнение сценариев отключено».</strong>
+                        Не сменили Execution Policy. Откройте
+                        PowerShell от администратора и выполните
+                        <code>Set-ExecutionPolicy RemoteSigned</code>.
+                        Это нужно один раз - настройка сохранится.</li>
+                    <li><strong>«Файл не найден» при запуске
+                            <code>.\script.ps1</code>.</strong> Вы
+                        не в той папке. Проверьте через <code>pwd</code>
+                        или <code>Get-Location</code>, что терминал
+                        открыт там, где лежит скрипт. Или используйте
+                        полный путь: <code>C:\Scripts\script.ps1</code>.</li>
+                    <li><strong>«Скрипт открывается в Блокноте, а не
+                            запускается».</strong> Вы кликнули
+                        по нему двойным в проводнике. Windows
+                        по умолчанию связывает <code>.ps1</code>
+                        с Блокнотом. Запускайте через терминал:
+                        <code>.\script.ps1</code>.</li>
+                    <li><strong>«Кракозябры вместо русских букв».</strong>
+                        Проблема с кодировкой файла. По умолчанию
+                        PowerShell 5.1 ждёт Windows-1251, а Блокнот
+                        может сохранить в UTF-8. Решения:
+                        1) сохранить файл в кодировке Windows-1251
+                        в Блокноте; 2) в PowerShell 5.1 добавить
+                        в начало скрипта
+                        <code>[Console]::OutputEncoding = [System.Text.Encoding]::UTF8</code>;
+                        3) использовать PowerShell 7 (там UTF-8
+                        по умолчанию).</li>
+                    <li><strong>«try/catch не ловит ошибку».</strong>
+                        Скорее всего, ошибка «не останавливающая».
+                        Добавьте <code>-ErrorAction Stop</code> к той
+                        команде, которая падает. Это самая частая
+                        тонкость в PowerShell.</li>
+                    <li><strong>«Переменная не подставилась в
+                            строку».</strong> Проверьте кавычки.
+                        В одинарных <code>'...'</code> подстановки
+                        нет - только текст. Нужны двойные
+                        <code>"..."</code>. Если переменная -
+                        свойство объекта, используйте
+                        <code>$($obj.Prop)</code>.</li>
+                    <li><strong>«Цикл завис и не завершается».</strong>
+                        Скорее всего, бесконечный <code>while</code> -
+                        не меняется условие. Или <code>for</code>
+                        без увеличения счётчика. Прерывается
+                        через <code>Ctrl + C</code>. Проверьте,
+                        что внутри цикла условие выхода
+                        когда-нибудь станет ложным.</li>
+                    <li><strong>«Скрипт работает неправильно, но
+                            ошибки нет».</strong> Добавьте
+                        <code>Write-Host</code> в ключевых местах,
+                        чтобы понять, где логика ломается. Или
+                        используйте <code>Set-PSDebug -Trace 1</code>
+                        для пошагового выполнения. Или запустите
+                        в VS Code с точками останова - это
+                        самый удобный способ отладки.</li>
                 </ul>
 
-                <p>Если что-то не получается - напишите нам в
+                <p>Если что-то не получается или есть вопрос - напишите в
                     <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
                     разберёмся вместе.
                 </p>
 
                 <h2>Практика</h2>
 
-                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+                <p>Четыре задачи. Все выполняются в отдельной папке
+                    (например, <code>C:\Scripts</code>) - чтобы не
+                    задеть ничего важного.</p>
 
                 <div class="task-list">
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 1. Разрешаем скрипты</span>
+                            <span>Задача 1. Первый скрипт</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Откройте PowerShell от имени администратора и разрешите выполнение локальных скриптов.</p>
+                            <p class="task-desc">Пройдите базовый путь:</p>
+                            <ol>
+                                <li>Проверьте текущую политику
+                                    выполнения через
+                                    <code>Get-ExecutionPolicy</code>.</li>
+                                <li>Если она <code>Restricted</code> -
+                                    смените на <code>RemoteSigned</code>
+                                    (от администратора).</li>
+                                <li>Создайте файл <code>hello.ps1</code>
+                                    с одной строкой:
+                                    <code>Write-Host "Привет!"</code></li>
+                                <li>Запустите через
+                                    <code>.\hello.ps1</code>.</li>
+                                <li>Добавьте в скрипт комментарий в начале -
+                                    что делает этот скрипт.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -229,17 +917,43 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте команду <code>Set-ExecutionPolicy</code> с параметром <code>RemoteSigned</code>.</p>
+                                    <p>Для создания файла можно
+                                        использовать Блокнот
+                                        (<code>notepad hello.ps1</code>
+                                        прямо из терминала) или
+                                        <code>New-Item hello.ps1</code>.
+                                        При сохранении в Блокноте
+                                        выберите «Тип файла: Все файлы»,
+                                        чтобы не получилось
+                                        <code>hello.ps1.txt</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">Set-ExecutionPolicy RemoteSigned</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">Get-ExecutionPolicy</span><span class="code-row">Restricted</span><span class="code-row"></span><span class="code-row"># от администратора:</span><span class="code-row">Set-ExecutionPolicy RemoteSigned</span><span class="code-row"></span><span class="code-row"># в файле hello.ps1:</span><span class="code-row"># Мой первый скрипт - выводит приветствие</span><span class="code-row">Write-Host "Привет!"</span><span class="code-row"></span><span class="code-row">.\hello.ps1</span><span class="code-row">Привет!</span></code></pre>
+                                    <p>Обратите внимание:</p>
+                                    <ul>
+                                        <li><code>Get-ExecutionPolicy</code>
+                                            работает без
+                                            администратора.
+                                            А <code>Set-</code> -
+                                            требует прав.</li>
+                                        <li>После смены политики
+                                            она сохраняется
+                                            навсегда - в
+                                            следующих сессиях
+                                            менять не нужно.</li>
+                                        <li>Комментарий с
+                                            <code>#</code> не
+                                            выполняется - скрипт
+                                            выводит только
+                                            «Привет!».</li>
+                                    </ul>
                                 </div>
                             </details>
                         </div>
@@ -247,11 +961,28 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 2. Переменные и математика</span>
+                            <span>Задача 2. Переменные и условия</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Создайте две переменные с числами, сложите их и выведите результат на экран с помощью <code>Write-Host</code>.</p>
+                            <p class="task-desc">Создайте скрипт
+                                <code>check-age.ps1</code>, который:</p>
+                            <ol>
+                                <li>Задаёт переменную <code>$age</code>
+                                    со значением 20.</li>
+                                <li>Выводит приветствие с вашим именем
+                                    (можно взять из
+                                    <code>$env:USERNAME</code>).</li>
+                                <li>Проверяет через <code>if</code>:
+                                    если возраст 18 или больше -
+                                    выводит «Взрослый», иначе -
+                                    «Ребёнок».</li>
+                                <li>Запускает скрипт и проверяет
+                                    результат.</li>
+                                <li>Меняет <code>$age</code> на 15
+                                    и запускает снова - результат
+                                    должен измениться.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -259,17 +990,38 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Создайте <code>$a = 5</code> и <code>$b = 10</code>. Результат сохраните в <code>$sum = $a + $b</code>. Выведите через <code>Write-Host "Сумма: $sum"</code>.</p>
+                                    <p>Синтаксис:
+                                        <code>$age = 20</code>,
+                                        потом
+                                        <code>if ($age -ge 18) { ... } else { ... }</code>.
+                                        Не забудьте двойные кавычки,
+                                        если хотите подставить
+                                        переменную в
+                                        <code>Write-Host</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">$a = 5</span><span class="code-row">$b = 10</span><span class="code-row">$sum = $a + $b</span><span class="code-row">Write-Host "Сумма: $sum"</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row"># Проверка возраста</span><span class="code-row">$age = 20</span><span class="code-row">$name = $env:USERNAME</span><span class="code-row"></span><span class="code-row">Write-Host "Привет, $name!"</span><span class="code-row">Write-Host "Твой возраст: $age"</span><span class="code-row"></span><span class="code-row">if ($age -ge 18) {</span><span class="code-row">    Write-Host "Взрослый"</span><span class="code-row">}</span><span class="code-row">else {</span><span class="code-row">    Write-Host "Ребёнок"</span><span class="code-row">}</span></code></pre>
+                                    <p>Запуск:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">.\check-age.ps1</span><span class="code-row">Привет, Иван!</span><span class="code-row">Твой возраст: 20</span><span class="code-row">Взрослый</span></code></pre>
+                                    <p>Если поменять <code>$age = 15</code> -
+                                        результат будет «Ребёнок».</p>
+                                    <p>Обратите внимание на
+                                        <code>-ge</code> - «больше
+                                        или равно». Если написать
+                                        <code>&gt;=</code> (как
+                                        в других языках), PowerShell
+                                        не поймёт - это не
+                                        оператор сравнения,
+                                        а часть
+                                        перенаправления
+                                        вывода.</p>
                                 </div>
                             </details>
                         </div>
@@ -277,11 +1029,21 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Фильтр служб</span>
+                            <span>Задача 3. Циклы</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Выведите список всех служб Windows (команда <code>Get-Service</code>), но оставьте только те, которые сейчас запущены (статус <code>Running</code>).</p>
+                            <p class="task-desc">Создайте скрипт
+                                <code>multiplication.ps1</code>, который
+                                выводит таблицу умножения на 7:</p>
+                            <ol>
+                                <li>Используйте цикл <code>for</code>
+                                    от 1 до 10.</li>
+                                <li>На каждой итерации выводите
+                                    строку вида «7 x 3 = 21».</li>
+                                <li>Запустите и проверьте, что все
+                                    10 строк на месте.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -289,17 +1051,31 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте конвейер: <code>Get-Service | Where-Object {$_.Status -eq "Running"}</code>.</p>
+                                    <p>Синтаксис:
+                                        <code>for ($i = 1; $i -le 10; $i++) { ... }</code>.
+                                        Внутри -
+                                        <code>$result = 7 * $i</code>,
+                                        потом <code>Write-Host "7 x $i = $result"</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">Get-Service | Where-Object {$_.Status -eq "Running"}</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row"># Таблица умножения на 7</span><span class="code-row">for ($i = 1; $i -le 10; $i++) {</span><span class="code-row">    $result = 7 * $i</span><span class="code-row">    Write-Host "7 x $i = $result"</span><span class="code-row">}</span></code></pre>
+                                    <p>Вывод:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">7 x 1 = 7</span><span class="code-row">7 x 2 = 14</span><span class="code-row">7 x 3 = 21</span><span class="code-row">...</span><span class="code-row">7 x 10 = 70</span></code></pre>
+                                    <p>Можно попробовать другие
+                                        циклы для сравнения:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">foreach ($i in 1..10) {</span><span class="code-row">    Write-Host "7 x $i = $(7 * $i)"</span><span class="code-row">}</span></code></pre>
+                                    <p>Второй вариант короче, но
+                                        менее нагляден. Оба
+                                        работают. Используйте
+                                        тот, что понятнее
+                                        вам.</p>
                                 </div>
                             </details>
                         </div>
@@ -307,11 +1083,35 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Скрипт-отчёт</span>
+                            <span>Задача 4. Функции и параметры</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Напишите скрипт <code>report.ps1</code>, который выводит ваше имя пользователя, текущую дату и количество запущенных процессов. Сохраните и запустите его.</p>
+                            <p class="task-desc">Создайте скрипт
+                                <code>report.ps1</code> с параметрами
+                                и функцией:</p>
+                            <ol>
+                                <li>В начале - <code>param()</code>
+                                    с двумя параметрами:
+                                    <code>$UserName</code> (по умолчанию
+                                    <code>$env:USERNAME</code>) и
+                                    <code>$ShowDate</code> (по умолчанию
+                                    <code>$true</code>, тип
+                                    <code>[bool]</code>).</li>
+                                <li>Функция <code>Write-Divider</code>,
+                                    которая выводит линию из 40
+                                    символов «=».</li>
+                                <li>Использование:
+                                    <code>Write-Divider</code>, потом
+                                    «Отчёт для: $UserName»,
+                                    <code>Write-Divider</code>,
+                                    если <code>$ShowDate</code> - вывод
+                                    текущей даты через
+                                    <code>Get-Date</code>,
+                                    потом <code>Write-Divider</code>.</li>
+                                <li>Запустить с параметрами
+                                    и без - посмотреть разницу.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -319,17 +1119,58 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте <code>$env:USERNAME</code> для имени, <code>Get-Date</code> для даты и <code>(Get-Process).Count</code> для количества процессов. Не забудьте про <code>Write-Host</code>.</p>
+                                    <p>Синтаксис:
+                                        <code>param([string]$UserName = $env:USERNAME, [bool]$ShowDate = $true)</code>.
+                                        Для логического флага при
+                                        вызове -
+                                        <code>.\report.ps1 -ShowDate $false</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">$user = $env:USERNAME</span><span class="code-row">$date = Get-Date</span><span class="code-row">$procCount = (Get-Process).Count</span><span class="code-row"></span><span class="code-row">Write-Host "Отчёт для: $user"</span><span class="code-row">Write-Host "Дата: $date"</span><span class="code-row">Write-Host "Запущено процессов: $procCount"</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">param(</span><span class="code-row">    [string]$UserName = $env:USERNAME,</span><span class="code-row">    [bool]$ShowDate = $true</span><span class="code-row">)</span><span class="code-row"></span><span class="code-row">function Write-Divider {</span><span class="code-row">    Write-Host ("=" * 40)</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Write-Divider</span><span class="code-row">Write-Host "Отчёт для: $UserName"</span><span class="code-row">Write-Divider</span><span class="code-row"></span><span class="code-row">if ($ShowDate) {</span><span class="code-row">    Write-Host "Дата: $(Get-Date)"</span><span class="code-row">    Write-Divider</span><span class="code-row">}</span></code></pre>
+                                    <p>Запуск без параметров:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">.\report.ps1</span><span class="code-row">========================================</span><span class="code-row">Отчёт для: Иван</span><span class="code-row">========================================</span><span class="code-row">Дата: 26.10.2026 14:30:15</span><span class="code-row">========================================</span></code></pre>
+                                    <p>С параметрами:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">.\report.ps1 -UserName "Мария" -ShowDate $false</span><span class="code-row">========================================</span><span class="code-row">Отчёт для: Мария</span><span class="code-row">========================================</span></code></pre>
+                                    <p>Что тут интересного:</p>
+                                    <ul>
+                                        <li><strong>Значения по
+                                                умолчанию</strong>
+                                            позволяют запускать
+                                            скрипт без аргументов -
+                                            он работает с
+                                            разумными
+                                            настройками.</li>
+                                        <li><strong>Функция</strong>
+                                            <code>Write-Divider</code>
+                                            убирает дублирование:
+                                            вместо трёх строк с
+                                            «====» - три вызова
+                                            функции.</li>
+                                        <li><strong>Конструкция
+                                                <code>"=" * 40</code></strong> -
+                                            повторяет строку
+                                            40 раз. Быстрый
+                                            способ создать
+                                            разделитель.</li>
+                                        <li><strong>Флаг
+                                                <code>-ShowDate $false</code></strong> -
+                                            отключает вывод даты.
+                                            Удобно для разных
+                                            сценариев
+                                            использования.</li>
+                                    </ul>
+                                    <p>Это уже похоже на настоящий
+                                        инструмент. Такие скрипты
+                                        пишут для реальной работы:
+                                        отчёты, резервные копии,
+                                        мониторинг.</p>
                                 </div>
                             </details>
                         </div>
@@ -337,20 +1178,86 @@
 
                 </div>
 
-                <h2>Курс завершён!</h2>
+                <h2>Что мы узнали и что дальше</h2>
 
-                <p>Поздравляем! Вы прошли полный курс по терминалу Windows. Это огромный шаг в освоении компьютера на профессиональном уровне. Теперь вы:</p>
+                <p>Научились писать скрипты в PowerShell - превращать наборы
+                    команд в файлы <code>.ps1</code>, которые можно запускать
+                    одной командой. Разобрались с <strong>Execution
+                        Policy</strong>: почему Windows блокирует скрипты
+                    и как это отключить безопасно (<code>RemoteSigned</code>).</p>
+
+                <p>Освоили основы программирования на PowerShell:
+                    <strong>комментарии</strong> (<code>#</code>
+                    и <code>&lt;# ... #&gt;</code>),
+                    <strong>переменные</strong> (<code>$name = "..."</code>)
+                    с интерполяцией в двойных кавычках,
+                    <strong>операторы</strong> сравнения (<code>-eq</code>,
+                    <code>-gt</code> и другие) и логические
+                    (<code>-and</code>, <code>-or</code>).</p>
+
+                <p>Разобрались с <strong>условиями</strong>:
+                    <code>if</code>/<code>elseif</code>/<code>else</code>,
+                    проверкой существования файлов через
+                    <code>Test-Path</code> и сокращённым тернарным
+                    оператором (в PowerShell 7). С <strong>циклами</strong>:
+                    <code>foreach</code> (по коллекции), <code>for</code>
+                    (со счётчиком), <code>while</code> (пока условие),
+                    плюс управление через <code>break</code>
+                    и <code>continue</code>.</p>
+
+                <p>Поняли, как создавать <strong>функции</strong> -
+                    именованные блоки кода, которые можно вызывать
+                    многократно. С параметрами и возвратом значений
+                    через <code>return</code>. И как принимать
+                    <strong>аргументы скрипта</strong> - либо через
+                    <code>$args</code>, либо (правильнее) через
+                    блок <code>param()</code> с типами и значениями
+                    по умолчанию.</p>
+
+                <p>Изучили <strong>обработку ошибок</strong> через
+                    <code>try</code>/<code>catch</code>/<code>finally</code>
+                    с важной тонкостью: большинство ошибок PowerShell
+                    «не останавливающие», и чтобы их поймать - нужен
+                    <code>-ErrorAction Stop</code>.</p>
+
+                <p>И собрали всё вместе в реальном скрипте
+                    <code>backup.ps1</code> - с параметрами, проверкой
+                    путей, циклом по файлам, обработкой ошибок
+                    и итоговой статистикой. Это уже полноценный
+                    инструмент, который можно использовать
+                    в работе.</p>
+
+                <h3>Что дальше</h3>
+
+                <p>В следующем, финальном уроке курса - <strong>Продвинутый
+                        PowerShell</strong>. Мы углубимся в то, что делает
+                    его по-настоящему мощным:</p>
+
                 <ul>
-                    <li>Свободно перемещаетесь по файловой системе без мышки.</li>
-                    <li>Умеете создавать, копировать и удалять файлы и папки.</li>
-                    <li>Можете управлять процессами и диагностировать сеть.</li>
-                    <li>Знаете, чем отличается cmd от PowerShell.</li>
-                    <li>Умеете писать собственные скрипты на PowerShell для автоматизации.</li>
+                    <li><strong>Работа с объектами</strong> в деталях:
+                        <code>Get-Member</code>, <code>Select-Object</code>
+                        с вычисляемыми свойствами, <code>Group-Object</code>
+                        для группировки, <code>ForEach-Object</code> для
+                        обработки в конвейере.</li>
+                    <li><strong>Работа с файлами и данными</strong>:
+                        <code>Get-Content</code>, <code>Set-Content</code>,
+                        <code>Import-Csv</code>, <code>Export-Csv</code>,
+                        <code>ConvertTo-Json</code>.</li>
+                    <li><strong>Регулярные выражения</strong>:
+                        <code>-match</code>, <code>-replace</code>,
+                        <code>-split</code>.</li>
+                    <li><strong>Обработка ошибок подробно</strong>:
+                        <code>$ErrorActionPreference</code>,
+                        разные типы исключений.</li>
+                    <li><strong>Лучшие практики</strong>: как писать
+                        скрипты, которые не стыдно показать,
+                        и как использовать PowerShell в реальной
+                        работе.</li>
                 </ul>
 
-                <p>Эти навыки пригодятся вам не только в программировании, но и в повседневной жизни. Вы сможете быстро наводить порядок на диске, находить причины проблем с интернетом или автоматизировать рутинные задачи.</p>
-
-                <p>Спасибо, что учились вместе с CodeRush. Впереди вас ждут новые курсы, в том числе по терминалу Linux! Удачи!</p>
+                <p>После финального урока вы будете полноценно владеть
+                    инструментом, которым пользуются системные
+                    администраторы Windows по всему миру.</p>
 
                 <div class="lesson-actions">
                     <a href="lesson-06.html" class="btn-secondary">
@@ -359,8 +1266,8 @@
                     <button class="btn-complete">
                         <i class="ph ph-check-circle"></i> Отметить как пройденный
                     </button>
-                    <a href="../index.html" class="btn-secondary">
-                        К списку курсов <i class="ph ph-arrow-right"></i>
+                    <a href="lesson-08.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
                     </a>
                 </div>
             </article>

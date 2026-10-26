@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление файлами и папками - Терминал - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="linux" data-lesson-id="lesson-03">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../courses.html">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 03</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация и структура</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson active" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Управление файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Чтение и поиск</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Права доступа и sudo</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Управление пакетами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Перенаправление и конвейеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Управление файлами и папками</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились перемещаться по файловой системе и смотреть,
+                    что в ней есть. Но смотреть - это только половина дела. Настоящая работа
+                    начинается, когда мы <strong>создаём</strong> файлы, <strong>копируем</strong>,
+                    <strong>перемещаем</strong> и <strong>удаляем</strong>. Именно этим и
+                    займёмся сегодня.</p>
+
+                <p>Осторожно: часть команд из этого урока <strong>необратимо меняют
+                        файловую систему</strong>. Удалённый файл в терминале не попадает
+                    в корзину - он исчезает навсегда. Поэтому сначала разберёмся с
+                    правилами безопасности, а потом уже будем действовать.</p>
+
+                <h2>Правила безопасности при работе с файлами</h2>
+
+                <p>Прежде чем что-то делать, запомните три правила. Они простые, но
+                    спасут вас от потери данных.</p>
+
+                <h3>Правило 1: сначала проверь, потом делай</h3>
+
+                <p>Перед любой командой, которая меняет файлы, посмотрите <code>pwd</code>
+                    и <code>ls</code>. Вы точно в той папке? Вы точно понимаете, что
+                    будете менять? Ошибка в один символ может стоить недели работы.</p>
+
+                <h3>Правило 2: следи за пробелами и кавычками</h3>
+
+                <p><code>rm my file.txt</code> - удалит два файла: <code>my</code> и
+                    <code>file.txt</code>. А <code>rm "my file.txt"</code> - один файл
+                    с пробелом в имени. Разница критична. Если имя содержит пробелы -
+                    всегда берите в кавычки.</p>
+
+                <h3>Правило 3: не используй rm с wildcard без проверки</h3>
+
+                <p>Команда <code>rm *</code> удаляет <strong>всё</strong> в текущей папке.
+                    А <code>rm -rf /</code> - пытается удалить вообще всю систему.
+                    Wildcard (символы <code>*</code>, <code>?</code>) - мощный инструмент,
+                    но требует предельной осторожности. Всегда сначала проверяйте через
+                    <code>ls *</code>, что именно попадёт под удаление.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Корзины нет
+                    </div>
+                    <p>В отличие от Windows и macOS, терминал Linux не отправляет
+                        файлы в корзину. <code>rm</code> удаляет файл сразу - точнее,
+                        <em>помечает место на диске как свободное</em>. Восстановить
+                        потом можно, но это уже специальная процедура форензики,
+                        и не всегда успешно. Относитесь к <code>rm</code> как к
+                        безвозвратному действию.</p>
+                </div>
+
+                <h2>Создание файлов: touch</h2>
+
+                <p>Самая простая команда для создания файла - <code>touch</code>. Она
+                    создаёт <strong>пустой файл</strong>, если его не существует.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ touch notes.txt</span></code></pre>
+
+                <p>Всё, файл <code>notes.txt</code> создан в текущей папке. Пустой -
+                    ноль байт. Проверить можно через <code>ls -l</code>.</p>
+
+                <p>Можно создать несколько файлов сразу:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ touch a.txt b.txt c.txt</span></code></pre>
+
+                <p>Или файлы с более сложными именами (тут не забываем кавычки):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ touch "my notes.txt" "проект 2026.md"</span></code></pre>
+
+                <p>У <code>touch</code> есть ещё одна роль: если файл уже существует,
+                    <code>touch</code> обновляет его время последнего изменения, но
+                    не трогает содержимое. Это иногда используется в скриптах -
+                    «пометить файл как свежий». Содержимое через <code>touch</code>
+                    не задать.</p>
+
+                <h3>Создать файл с содержимым: echo &gt; file</h3>
+
+                <p>Если нужно создать не пустой файл, а сразу с текстом - используют
+                    <strong>перенаправление вывода</strong>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ echo "Привет, мир!" &gt; hello.txt</span></code></pre>
+
+                <p>Что произошло: команда <code>echo</code> вывела строку, но не в
+                    терминал, а в файл <code>hello.txt</code>. Файл создан с этой
+                    строкой. Подробно про <code>&gt;</code> и другие операторы
+                    перенаправления поговорим в уроке 8. Пока просто запомните, что
+                    так можно создавать файлы с содержимым.</p>
+
+                <h2>Создание папок: mkdir</h2>
+
+                <p>Команда <code>mkdir</code> (make directory) создаёт папку:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ mkdir projects</span></code></pre>
+
+                <p>Можно создать несколько папок сразу:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ mkdir html css js</span></code></pre>
+
+                <h3>Вложенные папки: ключ -p</h3>
+
+                <p>Обычно <code>mkdir a/b/c</code> не сработает, если нет папки
+                    <code>a</code>. Ключ <code>-p</code> (parents) создаёт всю цепочку
+                    папок, если их нет:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ mkdir -p projects/myapp/src</span></code></pre>
+
+                <p>Теперь в папке <code>projects</code> есть <code>myapp</code>, а в ней -
+                    <code>src</code>. Один командой. Очень удобно при создании структуры
+                    проекта.</p>
+
+                <h2>Копирование: cp</h2>
+
+                <p>Команда <code>cp</code> (copy) копирует файлы и папки. Синтаксис:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cp источник назначение</span></code></pre>
+
+                <h3>Копирование файла</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cp notes.txt notes-backup.txt</span></code></pre>
+
+                <p>Создали копию <code>notes.txt</code> под именем
+                    <code>notes-backup.txt</code>. Оригинал остался на месте.</p>
+
+                <p>Можно скопировать файл в другую папку - сохранив имя:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cp notes.txt projects/</span></code></pre>
+
+                <p>Теперь <code>notes.txt</code> есть в текущей папке и в
+                    <code>projects/</code>. Две независимые копии.</p>
+
+                <h3>Копирование папок: ключ -r</h3>
+
+                <p>Просто <code>cp projects projects-backup</code> не сработает - надо
+                    указать ключ <code>-r</code> (recursive), чтобы скопировать папку
+                    со всем содержимым:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cp -r projects projects-backup</span></code></pre>
+
+                <h3>Ключ -i: не перезаписывать случайно</h3>
+
+                <p>По умолчанию <code>cp</code> перезаписывает существующие файлы без
+                    предупреждения. Это опасно. Ключ <code>-i</code> (interactive)
+                    просит подтверждения:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cp -i notes.txt notes-backup.txt</span><span class="code-row">cp: overwrite 'notes-backup.txt'? </span></code></pre>
+
+                <p>Отвечаете <code>y</code> - перезапишет, <code>n</code> - отменит.
+                    Полезная привычка при работе с важными файлами.</p>
+
+                <h2>Перемещение и переименование: mv</h2>
+
+                <p>Команда <code>mv</code> (move) делает две вещи: <strong>перемещает</strong>
+                    файл в другое место и <strong>переименовывает</strong> его. По сути,
+                    это одна и та же операция - меняется путь к файлу.</p>
+
+                <h3>Переименование</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ mv notes.txt todo.txt</span></code></pre>
+
+                <p>Файл <code>notes.txt</code> теперь называется <code>todo.txt</code>.
+                    Содержимое не изменилось, только имя.</p>
+
+                <h3>Перемещение в другую папку</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ mv todo.txt projects/</span></code></pre>
+
+                <p>Файл перемещён в <code>projects/</code>. Из текущей папки он исчез.</p>
+
+                <h3>Перемещение с переименованием</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ mv todo.txt projects/tasks.txt</span></code></pre>
+
+                <p>Переместили в <code>projects/</code> и заодно переименовали в
+                    <code>tasks.txt</code>.</p>
+
+                <p>Перемещение папок работает так же - <code>-r</code> не нужен (в
+                    отличие от <code>cp</code>):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ mv projects/archive projects-backup/</span></code></pre>
+
+                <p>Папка <code>archive</code> переехала в <code>projects-backup/</code>.</p>
+
+                <h2>Удаление: rm</h2>
+
+                <p>Самая опасная команда в этом уроке. <code>rm</code> (remove)
+                    удаляет файлы и папки. <strong>Без корзины, без подтверждения,
+                        без возможности отменить</strong>.</p>
+
+                <h3>Удаление файла</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ rm notes.txt</span></code></pre>
+
+                <p>Файл удалён. Восстановить можно только специальными утилитами, и
+                    не всегда успешно.</p>
+
+                <h3>Удаление нескольких файлов</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ rm a.txt b.txt c.txt</span></code></pre>
+
+                <h3>Удаление папки: -r</h3>
+
+                <p>Просто <code>rm projects</code> не сработает - папка не пустая или
+                    вообще папка. Нужен <code>-r</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ rm -r projects</span></code></pre>
+
+                <p>Удалит папку <code>projects</code> со всем содержимым. Без
+                    предупреждений.</p>
+
+                <h3>Ключ -i: подтверждение</h3>
+
+                <p>Как и с <code>cp</code>, ключ <code>-i</code> просит подтверждения
+                    для каждого удаляемого файла:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ rm -ri projects</span><span class="code-row">rm: descend into directory 'projects'? y</span><span class="code-row">rm: remove regular file 'projects/notes.txt'? y</span><span class="code-row">...</span></code></pre>
+
+                <p>Медленно, но надёжно. Рекомендую использовать <code>-i</code> для
+                    папок, в которых есть что-то ценное.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Опасная команда
+                    </div>
+                    <p>В интернете можно встретить совет «если хочешь почистить
+                        систему - запусти <code>sudo rm -rf /*</code>». <strong>Никогда
+                        так не делайте</strong>. Эта команда пытается удалить всё
+                        содержимое корня системы. Даже если система защитит себя
+                        (современные версии частично защищают), вы потеряете многое
+                        и, скорее всего, сломаете ОС. Это не «очистка», это
+                        разрушение.</p>
+                </div>
+
+                <h2>Полезные сокращения: фигурные скобки</h2>
+
+                <p>В bash есть удобный способ создавать много файлов и папок с похожими
+                    именами - через <strong>фигурные скобки</strong>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ mkdir -p project/{src,docs,tests}</span></code></pre>
+
+                <p>Создаст три папки внутри <code>project</code>: <code>src</code>,
+                    <code>docs</code>, <code>tests</code>. Одной командой.</p>
+
+                <p>С файлами тоже работает:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ touch file{1..5}.txt</span></code></pre>
+
+                <p>Создаст <code>file1.txt</code>, <code>file2.txt</code>,
+                    <code>file3.txt</code>, <code>file4.txt</code>, <code>file5.txt</code>.
+                    Конструкция <code>{1..5}</code> разворачивается в диапазон от 1
+                    до 5.</p>
+
+                <p>А можно даже так:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ mkdir -p 2026/{Q1,Q2,Q3,Q4}/{reports,backups}</span></code></pre>
+
+                <p>Создаст структуру из 8 папок: 2026/Q1/reports, 2026/Q1/backups,
+                    2026/Q2/reports и так далее. Очень удобно для организации
+                    проектов.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>touch file</code>
+                        <span>создать пустой файл</span>
+                    </li>
+                    <li>
+                        <code>echo "text" &gt; file</code>
+                        <span>создать с содержимым</span>
+                    </li>
+                    <li>
+                        <code>mkdir dir</code>
+                        <span>создать папку</span>
+                    </li>
+                    <li>
+                        <code>mkdir -p a/b/c</code>
+                        <span>вложенные папки</span>
+                    </li>
+                    <li>
+                        <code>cp src dst</code>
+                        <span>копировать файл</span>
+                    </li>
+                    <li>
+                        <code>cp -r src dst</code>
+                        <span>копировать папку</span>
+                    </li>
+                    <li>
+                        <code>mv src dst</code>
+                        <span>переместить или переименовать</span>
+                    </li>
+                    <li>
+                        <code>rm file</code>
+                        <span>удалить файл</span>
+                    </li>
+                    <li>
+                        <code>rm -r dir</code>
+                        <span>удалить папку</span>
+                    </li>
+                    <li>
+                        <code>{a,b,c}</code>
+                        <span>несколько значений</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Типичные ошибки при работе с файлами и способы их решить.</p>
+
+                <ul>
+                    <li><strong>«rm: cannot remove 'file.txt': No such file or
+                            directory».</strong> Файла нет. Проверьте через
+                        <code>ls</code>, что он существует и вы в правильной
+                        папке.</li>
+                    <li><strong>«rm: cannot remove 'projects': Is a directory».</strong>
+                        Пытаетесь удалить папку без <code>-r</code>. Используйте
+                        <code>rm -r projects</code>.</li>
+                    <li><strong>«cp: omitting directory 'projects'».</strong>
+                        То же с копированием: папку надо через
+                        <code>cp -r</code>.</li>
+                    <li><strong>«Permission denied».</strong> У вас нет прав на
+                        эту операцию. Например, попытка удалить файл в
+                        <code>/etc</code> под обычным пользователем. Решение -
+                        <code>sudo</code> (см. урок 5) или другая папка.</li>
+                    <li><strong>«mv: cannot move 'X': Permission denied».</strong>
+                        Часто бывает при перемещении между разными файловыми
+                        системами (например, с домашней папки на флешку) или
+                        при недостатке прав.</li>
+                    <li><strong>«Я случайно удалил важный файл».</strong>
+                        К сожалению, <code>rm</code> необратим обычными
+                        средствами. Единственный вариант - прекратить запись
+                        на диск и обратиться к специалисту по восстановлению
+                        данных (или использовать <code>extundelete</code>,
+                        <code>testdisk</code> - но успех не гарантирован).
+                        Правило на будущее: перед <code>rm</code> - проверьте
+                        через <code>ls</code>, что удаляете.</li>
+                    <li><strong>«Файл с пробелом в имени не создаётся/удаляется».</strong>
+                        Возьмите имя в кавычки: <code>touch "my file.txt"</code>,
+                        <code>rm "my file.txt"</code>.</li>
+                    <li><strong>«Я перезаписал файл случайно».</strong>
+                        <code>cp</code> без <code>-i</code> перезаписывает молча.
+                        Привыкайте использовать <code>cp -i</code> для важных
+                        файлов или настройте алиас <code>alias cp='cp -i'</code>
+                        в <code>~/.bashrc</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первая - на создание, вторая - на копирование и
+                    перемещение, третья - на удаление, четвёртая - комплексная
+                    (создание структуры проекта). Все действия выполняются в
+                    отдельной папке, чтобы не задеть ничего важного.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Создайте и посмотрите</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В домашней папке создайте:</p>
+                            <ol>
+                                <li>Пустой файл <code>test.txt</code>.</li>
+                                <li>Файл <code>hello.txt</code> с содержимым
+                                    «Привет, Linux!».</li>
+                                <li>Папку <code>practice</code>.</li>
+                            </ol>
+                            <p>Проверьте результат через <code>ls -la</code>.
+                                Убедитесь, что все три объекта созданы.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для пустого файла - <code>touch</code>.
+                                        Для файла с текстом -
+                                        <code>echo "..." &gt; имя</code>. Для
+                                        папки - <code>mkdir</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ cd ~</span><span class="code-row">$ touch test.txt</span><span class="code-row">$ echo "Привет, Linux!" &gt; hello.txt</span><span class="code-row">$ mkdir practice</span><span class="code-row">$ ls -la</span><span class="code-row">total 20</span><span class="code-row">drwxr-xr-x  5 student student 4096 Oct 25 12:00 .</span><span class="code-row">drwxr-xr-x 10 root    root    4096 Oct 20 10:00 ..</span><span class="code-row">-rw-r--r--  1 student student    0 Oct 25 12:00 test.txt</span><span class="code-row">-rw-r--r--  1 student student   15 Oct 25 12:00 hello.txt</span><span class="code-row">drwxr-xr-x  2 student student 4096 Oct 25 12:00 practice</span></code></pre>
+                                    <p>Обратите внимание: у <code>test.txt</code>
+                                        размер 0 (пустой), у <code>hello.txt</code> -
+                                        15 байт (длина строки «Привет, Linux!» в
+                                        кодировке UTF-8). У папки <code>practice</code>
+                                        первый символ <code>d</code> в правах -
+                                        признак директории.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Копирование и перемещение</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Продолжая с предыдущей задачей:</p>
+                            <ol>
+                                <li>Скопируйте <code>hello.txt</code> внутрь
+                                    папки <code>practice</code>.</li>
+                                <li>Переименуйте <code>test.txt</code> в
+                                    <code>empty.txt</code>.</li>
+                                <li>Переместите <code>empty.txt</code> в
+                                    <code>practice</code>.</li>
+                                <li>Проверьте, что в домашней папке остались
+                                    только <code>practice</code> и
+                                    <code>hello.txt</code>.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Копирование - <code>cp</code>, переименование
+                                        и перемещение - <code>mv</code>. В
+                                        перемещении с одновременным
+                                        переименованием можно обойтись одной
+                                        командой <code>mv</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ cp hello.txt practice/</span><span class="code-row">$ mv test.txt empty.txt</span><span class="code-row">$ mv empty.txt practice/</span><span class="code-row">$ ls</span><span class="code-row">hello.txt  practice</span><span class="code-row">$ ls practice/</span><span class="code-row">empty.txt  hello.txt</span></code></pre>
+                                    <p>Всё на месте: два файла в
+                                        <code>practice</code>, два объекта
+                                        в домашней папке. Обратите
+                                        внимание: <code>hello.txt</code>
+                                        существует в двух местах -
+                                        копия независимая, изменения в одной
+                                        не влияют на другую.</p>
+                                    <p>Кстати, шаги 2 и 3 можно было объединить:
+                                        <code>mv test.txt practice/empty.txt</code> -
+                                        переместить и переименовать одной
+                                        командой.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Удаление с проверкой</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Аккуратно удалите созданное:</p>
+                            <ol>
+                                <li>Удалите файл <code>hello.txt</code> из
+                                    домашней папки.</li>
+                                <li>Удалите папку <code>practice</code> целиком
+                                    (со всем содержимым).</li>
+                                <li>Проверьте через <code>ls -la</code>, что
+                                    ничего лишнего не осталось.</li>
+                            </ol>
+                            <p><strong>Важно:</strong> перед удалением папки
+                                выполните <code>ls practice/</code> - убедитесь,
+                                что вы удаляете то, что планировали.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Файл - <code>rm file</code>. Папку -
+                                        <code>rm -r dir</code>. Если хотите
+                                        подтверждение для каждого файла -
+                                        <code>rm -ri dir</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ ls practice/</span><span class="code-row">empty.txt  hello.txt</span><span class="code-row">$ rm hello.txt</span><span class="code-row">$ rm -r practice/</span><span class="code-row">$ ls -la</span><span class="code-row">total 16</span><span class="code-row">drwxr-xr-x  3 student student 4096 Oct 25 12:05 .</span><span class="code-row">drwxr-xr-x 10 root    root    4096 Oct 20 10:00 ..</span><span class="code-row">drwxr-xr-x  2 student student 4096 Oct 25 12:05 Desktop</span><span class="code-row">...</span></code></pre>
+                                    <p>Всё чисто. Обратите внимание:
+                                        <code>ls practice/</code> перед удалением
+                                        - полезная привычка. Даже если вы уверены,
+                                        что в папке, лучше ещё раз проверить.
+                                        Пять секунд проверки - против
+                                        часов восстановления.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Структура проекта</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте структуру для типичного
+                                веб-проекта в домашней папке. Должно получиться
+                                дерево:</p>
+                            <pre class="code-numbered"><code><span class="code-row">myproject/</span><span class="code-row">├── src/</span><span class="code-row">│   ├── css/</span><span class="code-row">│   ├── js/</span><span class="code-row">│   └── images/</span><span class="code-row">├── docs/</span><span class="code-row">└── README.md</span></code></pre>
+                            <p>Плюс внутри каждой папки <code>css</code>,
+                                <code>js</code>, <code>images</code> создайте
+                                по одному пустому файлу: <code>style.css</code>,
+                                <code>app.js</code>, <code>logo.png</code>
+                                соответственно. <code>README.md</code> - с
+                                текстом «# Мой проект».</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>mkdir -p</code> для
+                                        вложенных папок и фигурные скобки для
+                                        нескольких папок сразу. Файлы - через
+                                        <code>touch</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Короткое решение - одной командой на
+                                        папки:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">$ mkdir -p myproject/{src/{css,js,images},docs}</span><span class="code-row">$ touch myproject/src/css/style.css</span><span class="code-row">$ touch myproject/src/js/app.js</span><span class="code-row">$ touch myproject/src/images/logo.png</span><span class="code-row">$ echo "# Мой проект" &gt; myproject/README.md</span><span class="code-row">$ find myproject</span><span class="code-row">myproject</span><span class="code-row">myproject/src</span><span class="code-row">myproject/src/css</span><span class="code-row">myproject/src/css/style.css</span><span class="code-row">myproject/src/js</span><span class="code-row">myproject/src/js/app.js</span><span class="code-row">myproject/src/images</span><span class="code-row">myproject/src/images/logo.png</span><span class="code-row">myproject/docs</span><span class="code-row">myproject/README.md</span></code></pre>
+                                    <p>Команда <code>find myproject</code>
+                                        выводит всё дерево папки. Мы её
+                                        разберём подробно в следующем
+                                        уроке. А пока обратите внимание, что
+                                        вся структура создана <strong>пятью
+                                        командами</strong>. Мышкой вы бы
+                                        кликали минут пять - а тут секунды.</p>
+                                    <p>Конструкция
+                                        <code>{src/{css,js,images},docs}</code>
+                                        - это вложенные фигурные скобки. Bash
+                                        разворачивает их в
+                                        <code>src/css src/js src/images docs</code>
+                                        и передаёт <code>mkdir -p</code>.
+                                        Один вызов - четыре папки.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Научились управлять файлами и папками в терминале. Узнали, что
+                    создание, копирование, перемещение и удаление - это четыре
+                    базовые операции, без которых немыслима никакая работа в
+                    Linux. Познакомились с командами <code>touch</code>,
+                    <code>mkdir</code>, <code>cp</code>, <code>mv</code> и
+                    <code>rm</code>, разобрали их ключи и типичные ошибки.</p>
+
+                <p>Отдельно разобрались с правилами безопасности:
+                    <code>rm</code> необратим, имя с пробелом требует кавычек,
+                    wildcard может натворить бед. Изучили фигурные скобки
+                    <code>{a,b,c}</code> и диапазоны <code>{1..5}</code> -
+                    они сильно сокращают команды при создании структуры
+                    проекта.</p>
+
+                <p>В следующем уроке научимся <strong>читать содержимое файлов</strong>
+                    и <strong>искать</strong> - в файлах и по файловой системе.
+                    Разберём <code>cat</code>, <code>less</code>, <code>find</code>
+                    и <code>grep</code>. Это те инструменты, которыми вы будете
+                    пользоваться постоянно: логи, конфиги, поиск ошибок в
+                    проекте - всё это через них.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-02.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-04.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

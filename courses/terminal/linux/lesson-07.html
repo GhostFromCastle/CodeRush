@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление пакетами - Терминал - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="linux" data-lesson-id="lesson-07">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../courses.html">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 07</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация и структура</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Управление файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Чтение и поиск</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Права доступа и sudo</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson active" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Управление пакетами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Перенаправление и конвейеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Управление пакетами</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В Windows программы обычно скачивают с сайта: находишь установщик,
+                    скачиваешь <code>.exe</code>, запускаешь, жмёшь «Далее-Далее-Готово».
+                    В Linux всё иначе. Здесь программы устанавливаются через
+                    <strong>пакетные менеджеры</strong> - специальные системы,
+                    которые сами находят нужное, скачивают и устанавливают.</p>
+
+                <p>Звучит сложно? На самом деле, проще, чем в Windows. Одна команда
+                    в терминале - и у вас новая программа. Плюс все зависимости
+                    (библиотеки, которые нужны программе) тоже устанавливаются
+                    автоматически. Никаких «найдите на сайте нужную версию
+                    библиотеки» - система всё сделает сама.</p>
+
+                <p>В этом уроке разберёмся, как это работает, какие пакетные
+                    менеджеры существуют, и как пользоваться основными командами.</p>
+
+                <h2>Что такое пакет и репозиторий</h2>
+
+                <p>Прежде чем говорить про команды, разберёмся с двумя ключевыми
+                    понятиями.</p>
+
+                <h3>Пакет</h3>
+
+                <p><strong>Пакет</strong> - это архив с программой, её файлами
+                    (исполняемые, конфиги, документация) и метаданными (название,
+                    версия, что нужно для работы). Пакет - это «коробка» с
+                    программой, готовая к установке.</p>
+
+                <p>У каждого пакета есть имя и версия. Например,
+                    <code>htop 3.2.1</code> или <code>nginx 1.24.0</code>.
+                    Обновление программы - это просто установка более нового
+                    пакета с тем же именем.</p>
+
+                <h3>Репозиторий</h3>
+
+                <p><strong>Репозиторий</strong> - это сервер, где хранится
+                    коллекция пакетов. У каждого дистрибутива Linux есть свои
+                    официальные репозитории: в них пакеты проверены
+                    разработчиками дистрибутива и протестированы на совместимость.</p>
+
+                <p>Когда вы даёте команду «установи программу X», пакетный
+                    менеджер:</p>
+
+                <ol>
+                    <li>Ищет пакет с таким именем в списке доступных (кеш
+                        репозитория).</li>
+                    <li>Определяет, какие ещё пакеты нужны для работы X
+                        (зависимости).</li>
+                    <li>Скачивает все нужные пакеты из репозитория.</li>
+                    <li>Устанавливает их в правильном порядке.</li>
+                    <li>Настраивает программу (например, запускает её службу
+                        или создаёт конфиги).</li>
+                </ol>
+
+                <p>Всё это - одна команда в терминале.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия
+                    </div>
+                    <p>Пакетный менеджер - это как интернет-магазин, только для
+                        программ. Вы говорите «хочу htop», магазин сам находит
+                        нужный товар, проверяет, что есть все аксессуары
+                        (зависимости), и привозит всё одной посылкой. Никаких
+                        «а вот эту батарейку купите отдельно».</p>
+                </div>
+
+                <h2>Семейства дистрибутивов и пакетные менеджеры</h2>
+
+                <p>В мире Linux нет единого пакетного менеджера. Есть несколько
+                    семейств дистрибутивов, у каждого - свой инструмент.</p>
+
+                <h3>Debian / Ubuntu и родственники: apt</h3>
+
+                <p>Самое популярное семейство. Включает Ubuntu, Debian, Linux Mint,
+                    Kali Linux, Pop!_OS и многие другие. Пакеты имеют расширение
+                    <code>.deb</code>, а для управления используются:</p>
+
+                <ul>
+                    <li><strong><code>apt</code></strong> - современный
+                        инструмент, основная команда.</li>
+                    <li><strong><code>dpkg</code></strong> - низкоуровневый
+                        (работает с отдельными <code>.deb</code>-файлами).</li>
+                </ul>
+
+                <p>Мы будем учиться именно на <code>apt</code>, потому что это
+                    самая распространённая система (Ubuntu - самый популярный
+                    дистрибутив для серверов и начинающих).</p>
+
+                <h3>Fedora / RHEL / CentOS: dnf</h3>
+
+                <p>Второе по популярности семейство. Red Hat Enterprise Linux,
+                    Fedora, CentOS, Rocky Linux, AlmaLinux. Пакеты -
+                    <code>.rpm</code>, пакетный менеджер - <code>dnf</code>
+                    (раньше был <code>yum</code>, но он устарел).</p>
+
+                <h3>Arch Linux: pacman</h3>
+
+                <p>Дистрибутив для продвинутых. Пакетный менеджер
+                    <code>pacman</code>. Команды отличаются, но принцип тот же.</p>
+
+                <h3>openSUSE: zypper</h3>
+
+                <p>Ещё одно семейство. Менеджер - <code>zypper</code>.</p>
+
+                <h3>Что это значит для нас</h3>
+
+                <p>В этом уроке мы разберём <code>apt</code> (потому что вы
+                    с высокой вероятностью используете Ubuntu или Debian),
+                    и покажем соответствия для <code>dnf</code> (для Fedora).
+                    Если у вас другой дистрибутив - принцип тот же, команды
+                    спросите в документации своего дистрибутива.</p>
+
+                <h2>Первое, что нужно сделать: apt update</h2>
+
+                <p>Перед установкой чего-либо важно обновить список доступных
+                    пакетов:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt update</span></code></pre>
+
+                <p>Что это делает: скачивает с серверов репозитория свежий
+                    список пакетов - какие версии есть, какие новые появились,
+                    какие обновились. Это <strong>не</strong> обновление самих
+                    программ (для этого другая команда). Это обновление
+                    «каталога», по которому менеджер ищет нужное.</p>
+
+                <p>Представьте, что у вас есть бумажный каталог товаров магазина.
+                    <code>apt update</code> - это когда вы заказываете свежий
+                    каталог, потому что появились новые товары и изменились
+                    цены. Сами товары у вас дома от этого не меняются.</p>
+
+                <p><strong>Почему нужен <code>sudo</code>:</strong> список
+                    хранится в системной папке <code>/var/lib/apt/lists/</code> -
+                    туда может писать только root.</p>
+
+                <h3>Как часто делать apt update</h3>
+
+                <p>Перед любой установкой или обновлением. Плюс раз в неделю,
+                    если хотите держать систему в актуальном состоянии.
+                    Это быстро - обычно 2-5 секунд при хорошем интернете.</p>
+
+                <h2>Поиск пакета: apt search</h2>
+
+                <p>Хотите узнать, есть ли нужная программа в репозитории?
+                    Ищите по ключевому слову:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ apt search htop</span></code></pre>
+
+                <p>Выведет список пакетов, в имени или описании которых есть
+                    «htop». У каждого пакета - имя, версия, краткое описание.</p>
+
+                <p>Поиск по описанию тоже работает. Например, найти все
+                    программы для работы с изображениями:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ apt search "image editor"</span></code></pre>
+
+                <p>Вывод длинный, обычно его прогоняют через
+                    <code>less</code> или ограничивают:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ apt search htop | head</span></code></pre>
+
+                <h2>Информация о пакете: apt show</h2>
+
+                <p>Прежде чем установить пакет, полезно посмотреть, что это
+                    вообще такое:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ apt show htop</span></code></pre>
+
+                <p>Выдаст подробную информацию: версию, размер, зависимости,
+                    автора, ссылку на сайт, полное описание. Можно оценить,
+                    действительно ли это та программа, которая нужна.</p>
+
+                <h2>Установка: apt install</h2>
+
+                <p>Основная команда для установки:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt install htop</span></code></pre>
+
+                <p>Что произойдёт:</p>
+
+                <ol>
+                    <li><code>apt</code> найдёт пакет <code>htop</code>
+                        в своём каталоге.</li>
+                    <li>Проверит зависимости (какие ещё пакеты нужны).</li>
+                    <li>Покажет, что собирается установить, и спросит
+                        подтверждение (обычно <code>Y/n</code>).</li>
+                    <li>Скачает все пакеты.</li>
+                    <li>Установит их и настроит.</li>
+                </ol>
+
+                <p>Через 10-30 секунд программа установлена. Можно запускать:
+                    <code>htop</code>.</p>
+
+                <h3>Несколько пакетов одной командой</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt install htop curl git vim</span></code></pre>
+
+                <p>Установит все четыре пакета (и их зависимости) одной операцией.
+                    Удобно, когда настраиваешь новую систему или новый сервер:
+                    одной командой ставишь весь нужный набор инструментов.</p>
+
+                <h3>Ключ -y: без подтверждения</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt install -y htop</span></code></pre>
+
+                <p>Ключ <code>-y</code> (yes) - автоматически отвечает «да» на все
+                    вопросы. Полезно в скриптах автоматической установки.
+                    В интерактивной работе - не обязательно, лишнее подтверждение
+                    не мешает.</p>
+
+                <h2>Обновление установленных программ: apt upgrade</h2>
+
+                <p>Отдельная команда - для обновления всех установленных программ
+                    до последних версий:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt upgrade</span></code></pre>
+
+                <p>После <code>apt update</code> (который обновил каталог)
+                    эта команда установит свежие версии всех программ, для
+                    которых есть обновления. Покажет список и спросит
+                    подтверждение.</p>
+
+                <h3>Комбинация update + upgrade</h3>
+
+                <p>Классический сценарий обновления системы:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt update</span><span class="code-row">$ sudo apt upgrade</span></code></pre>
+
+                <p>Первая - обновить каталог. Вторая - установить все обновления.
+                    Обычно это делают раз в неделю-две, чтобы система получала
+                    патчи безопасности и новые функции.</p>
+
+                <h3>Ключ -y и здесь</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt upgrade -y</span></code></pre>
+
+                <p>Не спрашивать подтверждения. Для ручной работы лучше без
+                    <code>-y</code> - чтобы видеть, что именно обновляется
+                    и не согласиться, если что-то неожиданное.</p>
+
+                <h2>Удаление: apt remove и apt purge</h2>
+
+                <p>Две команды для удаления, с важной разницей.</p>
+
+                <h3>apt remove - удалить программу</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt remove htop</span></code></pre>
+
+                <p>Удаляет программу и её файлы, но <strong>оставляет
+                        конфигурационные файлы</strong>. Если вы установите
+                    <code>htop</code> снова - все настройки вернутся.</p>
+
+                <p>Это удобно, когда хочется «убрать программу на время»
+                    или «переустановить без сброса настроек».</p>
+
+                <h3>apt purge - удалить полностью</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt purge htop</span></code></pre>
+
+                <p>Удаляет программу <em>вместе с конфигами</em>. Если
+                    установите заново - получите «с нуля», как в первый раз.</p>
+
+                <p>Используйте <code>purge</code>, когда хотите полностью
+                    избавиться от программы. Например, если она больше
+                    не нужна, или если хотите сбросить настройки.</p>
+
+                <h3>apt autoremove - убрать ненужное</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt autoremove</span></code></pre>
+
+                <p>Удаляет пакеты, которые были установлены как зависимости,
+                    но больше не нужны (потому что программа, которой они
+                    требовались, уже удалена). Освобождает место.</p>
+
+                <p>Полезно запускать после <code>remove</code> или
+                    <code>purge</code>. Например: удалили программу -
+                    её библиотеки остались. <code>autoremove</code>
+                    их подчистит.</p>
+
+                <h2>Установка .deb вручную: dpkg</h2>
+
+                <p>Иногда нужно установить программу, которой нет в репозитории -
+                    например, скачали <code>.deb</code>-файл с сайта разработчика.
+                    Для этого есть команда <code>dpkg</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo dpkg -i program.deb</span></code></pre>
+
+                <p>Ключ <code>-i</code> - install. Установит пакет из файла.</p>
+
+                <h3>Проблема с зависимостями</h3>
+
+                <p><code>dpkg</code> не умеет сам скачивать зависимости.
+                    Если пакету нужны библиотеки, которых нет в системе,
+                    установка провалится с ошибкой «dependency problems».</p>
+
+                <p>Решение - «доустановить» недостающее через <code>apt</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt install -f</span></code></pre>
+
+                <p>Ключ <code>-f</code> (fix broken) - «починить сломанное».
+                    <code>apt</code> посмотрит, чего не хватает, и установит
+                    нужные пакеты из репозитория.</p>
+
+                <p>Порядок такой: сначала <code>dpkg -i</code> (установить,
+                    что есть), потом <code>apt install -f</code> (дотянуть
+                    зависимости).</p>
+
+                <h2>Список установленных пакетов: apt list</h2>
+
+                <p>Сколько программ установлено в системе? Какие? Есть команда:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ apt list --installed</span></code></pre>
+
+                <p>Выведет всё установленное - обычно сотни пакетов (базовая
+                    система - это уже 500-1000 пакетов). Вывод длинный,
+                    лучше сразу фильтровать:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ apt list --installed | grep htop</span></code></pre>
+
+                <p>Или проверить конкретный пакет:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ dpkg -l htop</span></code></pre>
+
+                <p><code>dpkg -l</code> (list) - покажет статус, версию,
+                    архитектуру пакета. Если установлен - в первой колонке
+                    будет <code>ii</code> («installed»).</p>
+
+                <h2>Очистка кэша: apt clean</h2>
+
+                <p>Когда <code>apt</code> скачивает пакеты, он сохраняет их
+                    в кэш - на случай, если понадобятся ещё раз. Кэш живёт
+                    в <code>/var/cache/apt/archives/</code>. Со временем
+                    там накапливается много.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt clean</span></code></pre>
+
+                <p>Полностью очищает кэш. Безопасно - если пакет понадобится
+                    снова, apt просто скачает его ещё раз.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt autoclean</span></code></pre>
+
+                <p>Удаляет только устаревшие версии пакетов (те, что уже
+                    не актуальны). Более мягкий вариант - не трогает
+                    свежее, но освобождает место от старого.</p>
+
+                <h2>Соответствия для других дистрибутивов</h2>
+
+                <p>Если вы на Fedora / RHEL (менеджер <code>dnf</code>) -
+                    вот соответствия команд:</p>
+
+                <table class="type-table">
+                    <thead>
+                        <tr>
+                            <th>Задача</th>
+                            <th>apt (Ubuntu/Debian)</th>
+                            <th>dnf (Fedora/RHEL)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Обновить каталог</td>
+                            <td><code>sudo apt update</code></td>
+                            <td><code>sudo dnf check-update</code></td>
+                        </tr>
+                        <tr>
+                            <td>Обновить систему</td>
+                            <td><code>sudo apt upgrade</code></td>
+                            <td><code>sudo dnf upgrade</code></td>
+                        </tr>
+                        <tr>
+                            <td>Установить</td>
+                            <td><code>sudo apt install htop</code></td>
+                            <td><code>sudo dnf install htop</code></td>
+                        </tr>
+                        <tr>
+                            <td>Удалить</td>
+                            <td><code>sudo apt remove htop</code></td>
+                            <td><code>sudo dnf remove htop</code></td>
+                        </tr>
+                        <tr>
+                            <td>Поиск</td>
+                            <td><code>apt search htop</code></td>
+                            <td><code>dnf search htop</code></td>
+                        </tr>
+                        <tr>
+                            <td>Информация</td>
+                            <td><code>apt show htop</code></td>
+                            <td><code>dnf info htop</code></td>
+                        </tr>
+                        <tr>
+                            <td>Список установленных</td>
+                            <td><code>apt list --installed</code></td>
+                            <td><code>dnf list installed</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Если у вас Arch (<code>pacman</code>) - команды ещё
+                    короче (<code>pacman -S</code> для установки,
+                    <code>pacman -Rns</code> для удаления), но принцип
+                    тот же.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Как узнать свой дистрибутив
+                    </div>
+                    <p>Если не знаете, какой у вас дистрибутив - выполните:</p>
+                    <pre class="code-numbered"><code><span class="code-row">$ cat /etc/os-release</span></code></pre>
+                    <p>Увидите имя, версию и кодовое название. По полю
+                        <code>ID</code> поймёте, к какому семейству
+                        относитесь: <code>ubuntu</code> или
+                        <code>debian</code> - используйте <code>apt</code>;
+                        <code>fedora</code> или <code>rhel</code> -
+                        <code>dnf</code>; <code>arch</code> -
+                        <code>pacman</code>.</p>
+                </div>
+
+                <h2>Что не надо делать</h2>
+
+                <p>Несколько типичных ошибок, которые стоит избегать.</p>
+
+                <h3>Не используйте sudo с apt search и apt show</h3>
+
+                <p><code>apt search</code> и <code>apt show</code> только
+                    читают каталог. Им не нужен root. <code>sudo</code>
+                    здесь лишний - только замедлит (потому что спросит
+                    пароль) и ничем не поможет.</p>
+
+                <p><code>sudo</code> нужен только для операций, меняющих
+                    систему: <code>install</code>, <code>remove</code>,
+                    <code>upgrade</code>, <code>update</code>.</p>
+
+                <h3>Не смешивайте apt и dpkg</h3>
+
+                <p>Есть <code>apt</code> (высокоуровневый) и <code>dpkg</code>
+                    (низкоуровневый). Они работают с одной базой, но лучше
+                    пользоваться <code>apt</code> - он умеет работать
+                    с зависимостями. <code>dpkg</code> - только для
+                    случаев, когда пакета нет в репозитории (или для
+                    очень специфических операций вроде <code>dpkg -l</code>).</p>
+
+                <h3>Не скачивайте .deb с сайтов сомнительного качества</h3>
+
+                <p>Установка пакетов из официального репозитория через
+                    <code>apt install</code> - безопасна: пакеты
+                    подписаны, проверены, вы получаете только
+                    проверенные версии. А <code>.deb</code>-файл
+                    откуда-то из интернета может содержать что угодно.
+                    Если очень нужно - хотя бы проверьте источник
+                    (официальный сайт разработчика, а не файлопомойка).</p>
+
+                <h3>Не запускайте apt upgrade с -y вслепую</h3>
+
+                <p>Иногда обновления могут сломать совместимость.
+                    <code>upgrade -y</code> согласится на всё, включая
+                    потенциально рискованные обновления. В ручной работе
+                    лучше видеть, что обновляется.</p>
+
+                <h3>Не добавляйте сторонние репозитории вслепую</h3>
+
+                <p>В интернете много инструкций вида
+                    «<code>sudo add-apt-repository ppa:...</code>». Это
+                    добавляет новый репозиторий, которому apt будет
+                    доверять. Если репозиторий скомпрометирован - вы
+                    можете получить вредоносные пакеты. Добавляйте
+                    только проверенные (официальные PPA крупных
+                    проектов, репозитории от известных компаний).</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>apt update</code>
+                        <span>обновить каталог</span>
+                    </li>
+                    <li>
+                        <code>apt upgrade</code>
+                        <span>обновить систему</span>
+                    </li>
+                    <li>
+                        <code>apt search htop</code>
+                        <span>найти пакет</span>
+                    </li>
+                    <li>
+                        <code>apt show htop</code>
+                        <span>инфо о пакете</span>
+                    </li>
+                    <li>
+                        <code>apt install htop</code>
+                        <span>установить</span>
+                    </li>
+                    <li>
+                        <code>apt remove htop</code>
+                        <span>удалить (конфиги остаются)</span>
+                    </li>
+                    <li>
+                        <code>apt purge htop</code>
+                        <span>удалить полностью</span>
+                    </li>
+                    <li>
+                        <code>apt autoremove</code>
+                        <span>убрать ненужные зависимости</span>
+                    </li>
+                    <li>
+                        <code>dpkg -i pkg.deb</code>
+                        <span>установить из файла</span>
+                    </li>
+                    <li>
+                        <code>apt install -f</code>
+                        <span>починить зависимости</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Типичные проблемы с пакетными менеджерами.</p>
+
+                <ul>
+                    <li><strong>«E: Could not get lock
+                            /var/lib/dpkg/lock-frontend».</strong>
+                        Какая-то другая программа (обычно другой apt
+                        или автообновление) сейчас работает с пакетами.
+                        Подождите 1-2 минуты или проверьте:
+                        <code>sudo lsof /var/lib/dpkg/lock-frontend</code>.
+                        Если процесс реально завис - можно убить его,
+                        но лучше просто подождать.</li>
+                    <li><strong>«E: Unable to locate package htop».</strong>
+                        Пакет не найден. Причины: 1) не сделан
+                        <code>apt update</code> (или давно); 2) в имени
+                        опечатка; 3) пакета нет в вашем репозитории
+                        (бывает для очень новых или экзотических
+                        программ).</li>
+                    <li><strong>«dpkg was interrupted, you must manually run
+                            sudo dpkg --configure -a».</strong>
+                        Предыдущая установка прервалась (закрыли терминал,
+                        отключили питание). Выполните:
+                        <code>sudo dpkg --configure -a</code> - он
+                        доведёт до конца незавершённые операции.
+                        Потом можно продолжать.</li>
+                    <li><strong>«You don't have enough free space in
+                            /var/cache/apt/archives».</strong> Место
+                        кончилось. Очистите кэш:
+                        <code>sudo apt clean</code>. Если всё равно
+                        мало - освободите место другими способами
+                        (см. урок 6, <code>du</code>).</li>
+                    <li><strong>«Hash Sum mismatch» при установке.</strong>
+                        Пакет скачался повреждённым или подменён
+                        прокси. Решение: очистить кэш
+                        (<code>sudo apt clean</code>), обновить
+                        (<code>sudo apt update</code>) и попробовать
+                        снова. Обычно проблема на стороне сети.</li>
+                    <li><strong>«Зависимости сломались после dpkg -i».</strong>
+                        Классика: <code>sudo apt install -f</code>.
+                        Эта команда найдёт и поставит недостающее.</li>
+                    <li><strong>«Как установить программу, которой нет в
+                            apt»?</strong> Варианты: 1) поискать
+                        PPA / сторонний репозиторий (осторожно!);
+                        2) скачать <code>.deb</code> и установить через
+                        <code>dpkg -i</code> + <code>apt install -f</code>;
+                        3) если программа совсем экзотическая - использовать
+                        <code>snap</code> или <code>flatpak</code> (другие
+                        системы установки), но это отдельная тема.</li>
+                    <li><strong>«Не хочу обновлять всё, только один
+                            пакет».</strong> <code>sudo apt install
+                            --only-upgrade имя</code>. Или просто
+                        <code>sudo apt install имя</code> - если версия
+                        новее, apt обновит, если та же - скажет
+                        «already newest version».</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первая - на поиск, вторая - на установку,
+                    третья - на обновление, четвёртая - на удаление.
+                    Все задачи безопасные - устанавливайте и удаляйте
+                    небольшие пакеты, ничего не сломается.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Найдите пакет</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выполните три шага:</p>
+                            <ol>
+                                <li>Обновите каталог пакетов через
+                                    <code>sudo apt update</code>.</li>
+                                <li>Найдите пакет <code>htop</code> через
+                                    <code>apt search htop</code>.</li>
+                                <li>Посмотрите подробную информацию о нём
+                                    через <code>apt show htop</code> -
+                                    версия, размер, зависимости.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Порядок важен: сначала
+                                        <code>update</code> (без sudo не
+                                        сработает), потом уже
+                                        <code>search</code> и
+                                        <code>show</code> (без sudo -
+                                        они только читают).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ sudo apt update</span><span class="code-row">Hit:1 http://archive.ubuntu.com/ubuntu jammy InRelease</span><span class="code-row">Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease</span><span class="code-row">...</span><span class="code-row">Reading package lists... Done</span><span class="code-row"></span><span class="code-row">$ apt search htop</span><span class="code-row">Sorting... Done</span><span class="code-row">Full Text Search... Done</span><span class="code-row">htop/jammy 3.0.5-7build2 amd64</span><span class="code-row">  interactive processes viewer</span><span class="code-row"></span><span class="code-row">$ apt show htop</span><span class="code-row">Package: htop</span><span class="code-row">Version: 3.0.5-7build2</span><span class="code-row">Priority: optional</span><span class="code-row">Section: universe/utils</span><span class="code-row">Installed-Size: 372 kB</span><span class="code-row">Depends: libc6, libncursesw6, libnl-3-200, libnl-genl-3-200</span><span class="code-row">Homepage: https://htop.dev/</span><span class="code-row">Description: interactive processes viewer</span><span class="code-row"> htop is an ncurses-based process viewer ...</span></code></pre>
+                                    <p>Что мы узнали:</p>
+                                    <ul>
+                                        <li><strong>Версия</strong> -
+                                            3.0.5-7build2.</li>
+                                        <li><strong>Размер</strong> - 372 KB
+                                            (сам пакет, с зависимостями
+                                            будет больше).</li>
+                                        <li><strong>Зависимости</strong> -
+                                            libc6, libncursesw6 и другие
+                                            библиотеки. Если их нет -
+                                            <code>apt</code> поставит
+                                            автоматически.</li>
+                                        <li><strong>Сайт</strong> -
+                                            htop.dev (можно зайти и
+                                            почитать подробности).</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Установите программу</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Установите пакет
+                                <code>htop</code> через
+                                <code>sudo apt install htop</code>.
+                                Затем запустите его и проверьте, что
+                                работает.</p>
+                            <p>Внутри <code>htop</code>:</p>
+                            <ol>
+                                <li>Нажмите <code>M</code> - отсортируйте
+                                    процессы по памяти.</li>
+                                <li>Нажмите <code>P</code> - верните
+                                    сортировку по процессору.</li>
+                                <li>Нажмите <code>F10</code> (или
+                                    <code>q</code>) - выйдите.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Если <code>apt install</code> просит
+                                        подтверждение - отвечайте
+                                        <code>Y</code> (или просто Enter,
+                                        если <code>Y</code> выбран по
+                                        умолчанию).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ sudo apt install htop</span><span class="code-row">Reading package lists... Done</span><span class="code-row">Building dependency tree... Done</span><span class="code-row">The following NEW packages will be installed:</span><span class="code-row">  htop</span><span class="code-row">0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.</span><span class="code-row">Need to get 154 kB of archives.</span><span class="code-row">After this operation, 372 kB of additional disk space will be used.</span><span class="code-row">Do you want to continue? [Y/n] Y</span><span class="code-row">Get:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 htop amd64 3.0.5-7build2 [154 kB]</span><span class="code-row">Fetched 154 kB in 1s (154 kB/s)</span><span class="code-row">Selecting previously unselected package htop.</span><span class="code-row">(Reading database ... 123456 files and directories currently installed.)</span><span class="code-row">Preparing to unpack .../htop_3.0.5-7build2_amd64.deb ...</span><span class="code-row">Unpacking htop (3.0.5-7build2) ...</span><span class="code-row">Setting up htop (3.0.5-7build2) ...</span><span class="code-row">Processing triggers for man-db (2.10.2-1) ...</span><span class="code-row"></span><span class="code-row">$ htop</span></code></pre>
+                                    <p>Что произошло по шагам:</p>
+                                    <ol>
+                                        <li>apt нашёл пакет в каталоге.</li>
+                                        <li>Скачал 154 KB из репозитория.</li>
+                                        <li>Распаковал и установил в
+                                            <code>/usr/bin/htop</code>.</li>
+                                        <li>Зарегистрировал man-страницу
+                                            (теперь <code>man htop</code>
+                                            работает).</li>
+                                    </ol>
+                                    <p>Запуск <code>htop</code> без
+                                        <code>sudo</code> - правильно.
+                                        Программа не требует
+                                        административных прав, чтобы
+                                        показывать процессы.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Обновите систему</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Проведите «сеанс обновления»:</p>
+                            <ol>
+                                <li>Выполните <code>sudo apt update</code> -
+                                    обновите каталог.</li>
+                                <li>Выполните <code>sudo apt upgrade</code> -
+                                    обновите установленные пакеты.</li>
+                                <li>Посмотрите, сколько пакетов было
+                                    обновлено.</li>
+                                <li>Очистите кэш через
+                                    <code>sudo apt clean</code>.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>На свежеустановленной системе
+                                        обновлений может быть много
+                                        (десятки пакетов). На системе,
+                                        которую регулярно обновляют -
+                                        ноль или пара.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ sudo apt update</span><span class="code-row">Hit:1 http://archive.ubuntu.com/ubuntu jammy InRelease</span><span class="code-row">Hit:2 http://security.ubuntu.com/ubuntu jammy-security InRelease</span><span class="code-row">All packages are up to date.</span><span class="code-row"></span><span class="code-row">$ sudo apt upgrade</span><span class="code-row">Reading package lists... Done</span><span class="code-row">Building dependency tree... Done</span><span class="code-row">Calculating upgrade... Done</span><span class="code-row">0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.</span><span class="code-row"></span><span class="code-row">$ sudo apt clean</span></code></pre>
+                                    <p>В этом примере система уже свежая -
+                                        обновлений нет. Если вы недавно
+                                        поставили Linux и не обновляли -
+                                        увидите список обновлений
+                                        (десятки пакетов) и apt их
+                                        установит.</p>
+                                    <p><strong>Ключевые цифры</strong> в
+                                        выводе:
+                                        <code>X upgraded, Y newly installed</code>.
+                                        Если X = 0 - всё актуально.
+                                        Если X &gt; 0 - были обновления,
+                                        и они установлены.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Удалите и очистите</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Попрактикуйтесь с удалением:</p>
+                            <ol>
+                                <li>Удалите <code>htop</code> через
+                                    <code>sudo apt remove htop</code>.</li>
+                                <li>Проверьте, что его больше нет:
+                                    <code>htop</code> выдаст
+                                    «command not found».</li>
+                                <li>Удалите конфиги через
+                                    <code>sudo apt purge htop</code>
+                                    (даже если уже remove - purge
+                                    дочистит остатки).</li>
+                                <li>Запустите <code>sudo apt autoremove</code> -
+                                    удалить ненужные зависимости.</li>
+                                <li>Снова установите <code>htop</code> -
+                                    чтобы убедиться, что всё работает.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p><code>remove</code> и
+                                        <code>purge</code> взаимозаменяемы -
+                                        после <code>remove</code> можно
+                                        сразу <code>purge</code> (он
+                                        удалит остатки конфигов).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ sudo apt remove htop</span><span class="code-row">Reading package lists... Done</span><span class="code-row">The following packages will be REMOVED:</span><span class="code-row">  htop</span><span class="code-row">0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.</span><span class="code-row">Do you want to continue? [Y/n] Y</span><span class="code-row">Removing htop (3.0.5-7build2) ...</span><span class="code-row"></span><span class="code-row">$ htop</span><span class="code-row">bash: htop: command not found</span><span class="code-row"></span><span class="code-row">$ sudo apt purge htop</span><span class="code-row"># ничего не удалит - уже удалён remove, но если были конфиги - удалит их</span><span class="code-row"></span><span class="code-row">$ sudo apt autoremove</span><span class="code-row">Reading package lists... Done</span><span class="code-row">0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.</span><span class="code-row"></span><span class="code-row">$ sudo apt install htop</span><span class="code-row"># ... установка заново</span><span class="code-row"></span><span class="code-row">$ htop</span><span class="code-row"># работает</span></code></pre>
+                                    <p>На что обратить внимание:</p>
+                                    <ul>
+                                        <li><strong>remove</strong>
+                                            действительно удаляет
+                                            исполняемый файл - команда
+                                            перестаёт работать.</li>
+                                        <li><strong>purge после remove</strong>
+                                            обычно уже нечего удалять
+                                            (нет конфигов), но если
+                                            программа их создавала -
+                                            purge их дочистит.</li>
+                                        <li><strong>autoremove</strong>
+                                            в примере ничего не удалил -
+                                            у htop зависимости уже были
+                                            установлены системой (libc6,
+                                            libncurses и т.п.). Если бы
+                                            мы ставили что-то с
+                                            экзотическими зависимостями -
+                                            autoremove их бы убрал.</li>
+                                        <li><strong>Установка заново</strong>
+                                            работает мгновенно - пакет
+                                            уже в кэше (или его не
+                                            удалил <code>apt clean</code>).</li>
+                                    </ul>
+                                    <p>Именно так выглядит цикл
+                                        «установил - поигрался -
+                                        удалил - поставил обратно»,
+                                        который вы будете делать
+                                        постоянно при изучении Linux.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с управлением пакетами - тем, как в Linux
+                    устанавливаются, обновляются и удаляются программы. Узнали,
+                    что такое <strong>пакет</strong> и <strong>репозиторий</strong>,
+                    почему это удобнее, чем скачивать установщики с сайтов
+                    вручную.</p>
+
+                <p>Познакомились с семействами дистрибутивов и их пакетными
+                    менеджерами: <code>apt</code> для Ubuntu/Debian,
+                    <code>dnf</code> для Fedora/RHEL, <code>pacman</code> для
+                    Arch, <code>zypper</code> для openSUSE. Разобрали команды
+                    для <code>apt</code> - как основного инструмента -
+                    и составили таблицу соответствий для <code>dnf</code>.</p>
+
+                <p>Освоили базовый цикл работы: <code>apt update</code>
+                    (обновить каталог), <code>apt search</code> (найти пакет),
+                    <code>apt show</code> (посмотреть информацию),
+                    <code>apt install</code> (установить), <code>apt upgrade</code>
+                    (обновить систему), <code>apt remove</code> или
+                    <code>apt purge</code> (удалить), <code>apt autoremove</code>
+                    (убрать ненужное).</p>
+
+                <p>Затронули <code>dpkg -i</code> для установки <code>.deb</code>
+                    вручную и <code>apt install -f</code> для починки
+                    сломанных зависимостей. И разобрали типичные ошибки:
+                    забыли <code>apt update</code>, заблокирован dpkg-lock,
+                    кончилось место в кэше.</p>
+
+                <p>В следующем, финальном уроке курса займёмся
+                    <strong>перенаправлением ввода-вывода и конвейерами</strong>.
+                    Это тема, которая превращает отдельные команды в мощные
+                    цепочки: вывод одной команды передаётся на вход другой,
+                    результат сохраняется в файл, ошибки отделяются от обычного
+                    вывода. После этого урока вы будете понимать «магию»
+                    с символом <code>|</code> и конструкцией
+                    <code>2&gt;/dev/null</code>, которые встречались в
+                    предыдущих уроках.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-06.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-08.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

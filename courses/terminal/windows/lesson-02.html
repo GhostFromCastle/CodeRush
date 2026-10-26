@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Навигация по файловой системе - CodeRush</title>
+    <title>Навигация по файловой системе - Терминал - CodeRush</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
     <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
@@ -94,6 +96,11 @@
                             <span>Основы скриптов в PowerShell</span>
                             <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
                         </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Продвинутый PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
                     </div>
                 </div>
             </aside>
@@ -101,76 +108,385 @@
             <article class="lesson-content">
                 <h1>Навигация по файловой системе</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
                     <span><i class="ph ph-windows-logo"></i> Windows</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
 
-                <p>В прошлом уроке мы научились отдавать команды. Но пока мы находимся в одной папке и не умеем перемещаться по компьютеру. Представьте, что вы в огромном здании, где сотни комнат, и вам нужно попасть в конкретную. Без навигации не обойтись.</p>
+                <p>В прошлом уроке мы научились отдавать команды, но всё это время
+                    сидели в одной папке - домашней директории. Компьютер - это
+                    огромное здание с тысячами комнат, и чтобы что-то найти или
+                    изменить, нужно уметь по нему перемещаться.</p>
 
-                <p>Сегодня мы научимся ходить по папкам, смотреть их содержимое и понимать, где мы находимся в данный момент.</p>
+                <p>Сегодня разберёмся, как ходить по папкам, смотреть, что внутри,
+                    переключаться между дисками, и как не потеряться в этом лабиринте.
+                    Все команды - простые, но именно они используются чаще всего.</p>
 
-                <h2>Где я?</h2>
+                <h2>Как устроена файловая система Windows</h2>
 
-                <p>В любой момент вы можете узнать, в какой папке находитесь. Для этого есть команда <code>cd</code> без аргументов (или <code>pwd</code> в PowerShell). Она выведет полный путь.</p>
+                <p>Прежде чем разбирать команды, полезно понять, как устроены пути
+                    в Windows. Есть два типа путей: <strong>абсолютные</strong> и
+                    <strong>относительные</strong>. Разница важная - без неё вы
+                    будете постоянно путаться.</p>
 
-                <pre class="code-numbered"><code><span class="code-row">cd</span></code></pre>
+                <h3>Абсолютный путь</h3>
 
-                <p>Вы увидите что-то вроде <code>C:\Users\ВашеИмя</code>. Это ваша <strong>текущая директория</strong>.</p>
+                <p>Начинается с буквы диска и двоеточия: <code>C:\</code>,
+                    <code>D:\</code> и так далее. Описывает полный маршрут от корня
+                    диска до нужного места. Не зависит от того, где вы сейчас
+                    находитесь.</p>
 
-                <h2>Команда dir (список файлов)</h2>
-
-                <p>Чтобы посмотреть, что лежит в текущей папке, используется команда <code>dir</code> (от слова directory - папка).</p>
-
-                <pre class="code-numbered"><code><span class="code-row">dir</span></code></pre>
-
-                <p>Терминал выведет список всех файлов и папок. Вы увидите их имена, дату создания и размер.</p>
-
-                <p>Полезные флаги <code>dir</code>:</p>
+                <p>Примеры:</p>
                 <ul>
-                    <li><strong><code>/a</code></strong> - показать скрытые файлы (например, системные).</li>
-                    <li><strong><code>/s</code></strong> - показать файлы во всех вложенных папках.</li>
-                    <li><strong><code>/w</code></strong> - вывести в широком формате (по несколько в строку).</li>
+                    <li><code>C:\Windows\System32</code> - системная папка.</li>
+                    <li><code>D:\Projects\MyApp\src</code> - исходники проекта на диске D.</li>
+                    <li><code>C:\Users\Иван\Documents\report.docx</code> - конкретный файл.</li>
                 </ul>
 
-                <h2>Команда cd (переход по папкам)</h2>
+                <p>Куда бы вы ни перешли командой <code>cd</code>, абсолютный путь
+                    всегда означает одно и то же место. Это как полный почтовый адрес:
+                    страна, город, улица, дом, квартира.</p>
 
-                <p>Команда <code>cd</code> (change directory) меняет текущую папку. Это как войти в комнату.</p>
+                <h3>Относительный путь</h3>
 
-                <p>Чтобы перейти в папку, которая находится внутри текущей:</p>
-                <pre class="code-numbered"><code><span class="code-row">cd Documents</span></code></pre>
+                <p>Начинается <strong>не с</strong> буквы диска. Описывает положение
+                    относительно текущей папки. Понимается только в контексте того,
+                    где вы сейчас.</p>
 
-                <p>Вы вошли в папку «Документы». Теперь можете снова использовать <code>dir</code>, чтобы посмотреть, что внутри.</p>
+                <p>Примеры:</p>
+                <ul>
+                    <li><code>Documents</code> - папка «Документы» внутри текущей.</li>
+                    <li><code>..\Downloads</code> - подняться на уровень вверх,
+                        зайти в «Загрузки».</li>
+                    <li><code>.\script.bat</code> - файл в текущей папке (точка -
+                        «здесь»).</li>
+                </ul>
 
-                <p>Чтобы вернуться на один уровень вверх (в родительскую папку):</p>
-                <pre class="code-numbered"><code><span class="code-row">cd ..</span></code></pre>
-
-                <p>Чтобы перейти в корень текущего диска (например, на диск C):</p>
-                <pre class="code-numbered"><code><span class="code-row">cd \</span></code></pre>
-
-                <h2>Переход на другой диск</h2>
-
-                <p>В Windows есть несколько дисков (C, D, E и т.д.). Если вы находитесь на диске C, и хотите перейти на диск D, просто введите его букву с двоеточием:</p>
-
-                <pre class="code-numbered"><code><span class="code-row">D:</span></code></pre>
-
-                <p>Приглашение командной строки изменится на <code>D:\></code>. Теперь вы работаете с другим диском. Вернуться обратно можно так же: <code>C:</code>.</p>
-
-                <h2>Очистка экрана (cls)</h2>
-
-                <p>После множества команд экран терминала превращается в кашу. Чтобы очистить его и начать «с чистого листа», используется команда <code>cls</code> (clear screen).</p>
-
-                <pre class="code-numbered"><code><span class="code-row">cls</span></code></pre>
-
-                <p>Вся история команд исчезнет, останется только приглашение.</p>
+                <p>Это как описание пути от текущего места: «два квартала прямо,
+                    потом направо». Понятно только тому, кто знает, где он стоит
+                    сейчас.</p>
 
                 <div class="callout">
                     <div class="callout-title">
                         <i class="ph ph-lightbulb"></i>
-                        Подсказка для команд
+                        Как выбрать
                     </div>
-                    <p>Если вы не помните точное название файла или папки, начните вводить его и нажмите <code>Tab</code>. Терминал сам дополнит имя. Например, начните писать <code>cd Doc</code> и нажмите Tab - если такая папка есть, она подставится автоматически.</p>
+                    <p>В скриптах и в командах, которые будут выполняться в разных
+                        местах, - <strong>абсолютные пути</strong>, чтобы не зависеть
+                        от текущей папки. Когда работаете «здесь и сейчас» -
+                        <strong>относительные</strong>, они короче и удобнее.</p>
                 </div>
+
+                <h2>Где я? pwd и cd без аргументов</h2>
+
+                <p>Первая задача при работе в терминале - понять, где вы находитесь.
+                    Это базовая привычка: прежде чем что-то делать, посмотрите,
+                    куда вы попали.</p>
+
+                <p>В <strong>cmd</strong> команда <code>cd</code> без аргументов
+                    выводит текущую папку:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">C:\Users\Иван>cd</span><span class="code-row">C:\Users\Иван</span></code></pre>
+
+                <p>В <strong>PowerShell</strong> <code>cd</code> без аргументов
+                    не делает ничего - просто возвращает вас в новую строку.
+                    Чтобы узнать текущий путь, есть три способа:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">PS C:\Users\Иван> Get-Location</span><span class="code-row"></span><span class="code-row">Path</span><span class="code-row">----</span><span class="code-row">C:\Users\Иван</span><span class="code-row"></span><span class="code-row">PS C:\Users\Иван> pwd</span><span class="code-row"></span><span class="code-row">Path</span><span class="code-row">----</span><span class="code-row">C:\Users\Иван</span></code></pre>
+
+                <p><code>pwd</code> в PowerShell - это алиас (сокращение) на
+                    <code>Get-Location</code>. Работает так же. Название пришло
+                    из Linux и Unix, но прижилось и в PowerShell - коротко
+                    и удобно.</p>
+
+                <p>Третий способ - просто посмотреть на приглашение. Там всегда
+                    виден текущий путь: <code>PS C:\Users\Иван&gt;</code>.</p>
+
+                <h2>Что вокруг? dir и ls</h2>
+
+                <p>Вторая базовая задача - посмотреть, что лежит в текущей папке.
+                    В cmd и PowerShell это делает команда <code>dir</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">dir</span></code></pre>
+
+                <p>Вывод будет примерно таким:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">    Directory: C:\Users\Иван</span><span class="code-row"></span><span class="code-row">Mode                 LastWriteTime         Length Name</span><span class="code-row">----                 -------------         ------ ----</span><span class="code-row">d-----        25.10.2026     12:30                Desktop</span><span class="code-row">d-----        24.10.2026     09:15                Documents</span><span class="code-row">d-----        23.10.2026     18:42                Downloads</span><span class="code-row">-a----        20.10.2026     14:00            512 notes.txt</span></code></pre>
+
+                <p>Колонки:</p>
+                <ul>
+                    <li><strong>Mode</strong> - тип: <code>d</code> - папка,
+                        <code>-</code> - файл, <code>a</code> - архивный атрибут.</li>
+                    <li><strong>LastWriteTime</strong> - дата последнего изменения.</li>
+                    <li><strong>Length</strong> - размер в байтах (только для файлов).</li>
+                    <li><strong>Name</strong> - имя.</li>
+                </ul>
+
+                <p>В PowerShell <code>dir</code> - это алиас на <code>Get-ChildItem</code>.
+                    Работает так же, но под капотом возвращает не текст, а объекты.
+                    Поэтому с результатом можно делать больше (об этом в уроке 6).</p>
+
+                <p>Ещё в PowerShell работает <code>ls</code> - тоже алиас
+                    на <code>Get-ChildItem</code>. Для тех, кто привык к Linux.</p>
+
+                <h3>Полезные флаги dir</h3>
+
+                <p><code>/a</code> - показать скрытые и системные файлы. По умолчанию
+                    они не видны:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">dir /a</span></code></pre>
+
+                <p><code>/b</code> - «bare» (голый список): только имена файлов,
+                    без дат и размеров. Удобно, когда нужен именно список:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">dir /b</span><span class="code-row">Desktop</span><span class="code-row">Documents</span><span class="code-row">Downloads</span><span class="code-row">notes.txt</span></code></pre>
+
+                <p><code>/s</code> - показать файлы во всех вложенных папках
+                    (рекурсивно). Полезно, когда ищете что-то в глубине:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">dir /s notes.txt</span></code></pre>
+
+                <p><code>/w</code> - широкий формат: файлы в несколько колонок.
+                    Экономит место на экране:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">dir /w</span></code></pre>
+
+                <h3>Сортировка: ключ /o</h3>
+
+                <p>По умолчанию <code>dir</code> сортирует по имени. Можно изменить
+                    порядок через ключ <code>/o</code>:</p>
+
+                <ul>
+                    <li><code>dir /o:n</code> - по имени (Name). Это
+                        поведение по умолчанию.</li>
+                    <li><code>dir /o:s</code> - по размеру (Size), от меньшего
+                        к большему.</li>
+                    <li><code>dir /o:-s</code> - по размеру, от большего
+                        к меньшему (минус перед буквой - обратный порядок).</li>
+                    <li><code>dir /o:d</code> - по дате (Date), от старых
+                        к новым.</li>
+                    <li><code>dir /o:-d</code> - по дате, от новых к старым.
+                        Часто используется, чтобы увидеть свежие файлы.</li>
+                </ul>
+
+                <p>Ключи можно комбинировать: <code>dir /a /o:-d</code> -
+                    все файлы (включая скрытые), отсортированные по дате
+                    от новых к старым.</p>
+
+                <h2>Переход: cd</h2>
+
+                <p>Команда <code>cd</code> (change directory) меняет текущую папку.
+                    Основная команда для навигации.</p>
+
+                <h3>Войти в папку</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">cd Documents</span></code></pre>
+
+                <p>Если папка <code>Documents</code> есть в текущей директории -
+                    вы попадёте в неё. Если нет - ошибка «Системе не удаётся найти
+                    указанный путь».</p>
+
+                <p>Можно указать и абсолютный путь - сработает из любого места:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cd C:\Windows\System32</span></code></pre>
+
+                <h3>Вернуться на уровень выше</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">cd ..</span></code></pre>
+
+                <p>Две точки означают «родительская папка». Если вы были
+                    в <code>C:\Users\Иван\Documents</code>, то после
+                    <code>cd ..</code> окажетесь в <code>C:\Users\Иван</code>.</p>
+
+                <p>Можно подняться сразу на два уровня:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cd ..\..</span></code></pre>
+
+                <p>Из <code>C:\Users\Иван\Documents</code> - сразу
+                    в <code>C:\Users</code>. Каждое <code>..</code> плюс
+                    обратный слэш - один уровень вверх.</p>
+
+                <h3>В корень диска</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">cd \</span></code></pre>
+
+                <p>Из любой папки текущего диска - в его корень. Например,
+                    из <code>C:\Users\Иван</code> - в <code>C:\</code>.</p>
+
+                <h3>Домой</h3>
+
+                <p>Вернуться в домашнюю папку можно двумя способами.
+                    Универсальный для cmd:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cd %USERPROFILE%</span></code></pre>
+
+                <p><code>%USERPROFILE%</code> - это переменная окружения, которая
+                    содержит путь к домашней папке. О переменных - чуть ниже.</p>
+
+                <p>В PowerShell проще:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cd ~</span></code></pre>
+
+                <p>Тильда <code>~</code> в PowerShell означает «домашняя папка».
+                    Аналог <code>%USERPROFILE%</code>, но короче и удобнее.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Кавычки при пробелах
+                    </div>
+                    <p>Если в пути есть пробел, его обязательно нужно взять
+                        в кавычки. <code>cd C:\Program Files</code> не сработает -
+                        терминал подумает, что вы хотите перейти в папку
+                        <code>C:\Program</code> с аргументом <code>Files</code>.
+                        Правильно: <code>cd "C:\Program Files"</code>.</p>
+                </div>
+
+                <h2>Переход между дисками</h2>
+
+                <p>В отличие от Linux, где всё начинается с одного корня
+                    <code>/</code>, в Windows несколько независимых дисков:
+                    <code>C:</code>, <code>D:</code>, <code>E:</code> и так далее.
+                    Команда <code>cd</code> не переключает диск - для этого нужна
+                    отдельная конструкция.</p>
+
+                <p>Перейти на диск D:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">D:</span></code></pre>
+
+                <p>Просто буква с двоеточием. Приглашение изменится
+                    с <code>PS C:\Users\Иван&gt;</code> на <code>PS D:\&gt;</code>.
+                    И вы окажетесь в корне диска D. Вернуться обратно:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">C:</span></code></pre>
+
+                <p>Если на диске D вы раньше были в какой-то папке, например
+                    <code>D:\Projects\MyApp</code>, то при переключении обратно
+                    на D вы попадёте в неё, а не в корень. Windows запоминает
+                    последнюю папку на каждом диске.</p>
+
+                <p>В PowerShell есть удобная альтернатива - команда
+                    <code>Set-Location</code> (алиас <code>cd</code>)
+                    с указанием полного пути, которая заодно переключит диск:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cd D:\Projects\MyApp</span></code></pre>
+
+                <p>Это сработает из любого места, без отдельного переключения
+                    диска. В cmd такая конструкция тоже работает, но только
+                    если указать ключ <code>/d</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cd /d D:\Projects\MyApp</span></code></pre>
+
+                <p>Ключ <code>/d</code> - «drive», переключить диск. Без него
+                    cmd сменит только текущую папку на том же диске.</p>
+
+                <h2>Удобные приёмы: pushd и popd</h2>
+
+                <p>Иногда нужно зайти в папку, что-то сделать и вернуться обратно.
+                    Если путь длинный, запоминать исходную папку неудобно. Для
+                    этого есть <code>pushd</code> и <code>popd</code>.</p>
+
+                <p><code>pushd</code> - «запомни текущую папку и перейди в эту»:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">pushd C:\Windows\System32</span></code></pre>
+
+                <p><code>popd</code> - «вернись в папку, которую запомнил»:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">popd</span></code></pre>
+
+                <p>Получается стек: можно <code>pushd</code> несколько раз подряд,
+                    каждый раз переходя в новую папку. Потом столько же раз
+                    <code>popd</code> - и вы вернётесь по шагам.</p>
+
+                <p>Это особенно удобно в скриптах, но и в ручной работе пригодится:
+                    не нужно помнить, откуда вы начали.</p>
+
+                <h2>Переменные окружения: сокращения путей</h2>
+
+                <p>В Windows есть несколько <strong>переменных окружения</strong> -
+                    специальных имён, за которыми скрыты часто используемые пути.
+                    Вместо длинного пути пишете короткое имя - Windows сама
+                    подставит нужное.</p>
+
+                <p>Самые полезные:</p>
+
+                <ul>
+                    <li><code>%USERPROFILE%</code> - домашняя папка пользователя
+                        (<code>C:\Users\Иван</code>).</li>
+                    <li><code>%APPDATA%</code> - папка с настройками приложений
+                        (<code>C:\Users\Иван\AppData\Roaming</code>).</li>
+                    <li><code>%LOCALAPPDATA%</code> - локальные данные приложений
+                        (<code>C:\Users\Иван\AppData\Local</code>).</li>
+                    <li><code>%TEMP%</code> и <code>%TMP%</code> - папка для
+                        временных файлов.</li>
+                    <li><code>%PROGRAMFILES%</code> - папка с установленными
+                        программами (<code>C:\Program Files</code>).</li>
+                    <li><code>%SYSTEMROOT%</code> - папка Windows
+                        (<code>C:\Windows</code>).</li>
+                </ul>
+
+                <p>Использовать очень просто:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cd %APPDATA%</span><span class="code-row">dir %TEMP%</span></code></pre>
+
+                <p>Первая команда перейдёт в папку настроек, вторая покажет
+                    содержимое папки временных файлов. Вам не нужно помнить
+                    полный путь - Windows сама подставит нужный.</p>
+
+                <h3>В PowerShell: $env:</h3>
+
+                <p>В PowerShell доступ к переменным окружения - через префикс
+                    <code>$env:</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cd $env:APPDATA</span><span class="code-row">cd $env:USERPROFILE</span></code></pre>
+
+                <p>Смысл тот же, синтаксис другой. Запомните оба варианта -
+                    в скриптах могут встречаться и <code>%NAME%</code>,
+                    и <code>$env:NAME</code>.</p>
+
+                <p>Посмотреть все переменные окружения:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">set</span></code></pre>
+
+                <p>В cmd - <code>set</code>. В PowerShell - <code>Get-ChildItem env:</code>.
+                    Вывод длинный, но полезно один раз посмотреть, какие переменные
+                    вообще бывают.</p>
+
+                <h2>Дерево папок: tree</h2>
+
+                <p>Если папка большая и вложенная, <code>dir</code> показывает только
+                    один уровень. Чтобы увидеть всю структуру целиком, есть команда
+                    <code>tree</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">tree</span></code></pre>
+
+                <p>Вывод будет примерно таким:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">C:.</span><span class="code-row">├───Desktop</span><span class="code-row">├───Documents</span><span class="code-row">│   ├───Reports</span><span class="code-row">│   └───Notes</span><span class="code-row">├───Downloads</span><span class="code-row">└───Pictures</span></code></pre>
+
+                <p>Наглядно видно иерархию. Полезно для понимания структуры проекта
+                    или перед тем, как что-то перестраивать.</p>
+
+                <p>Флаг <code>/F</code> добавляет файлы (по умолчанию только папки):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">tree /F</span></code></pre>
+
+                <p>Флаг <code>/A</code> - вместо псевдографики использует ASCII-символы.
+                    Полезно, если нужно сохранить дерево в файл и открыть там, где
+                    юникод не поддерживается:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">tree /A</span></code></pre>
+
+                <h2>Очистка экрана: cls</h2>
+
+                <p>После множества команд экран терминала заполняется и становится
+                    трудно читать. Команда <code>cls</code> (clear screen) очищает
+                    экран:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">cls</span></code></pre>
+
+                <p>В PowerShell аналог - <code>Clear-Host</code>, но <code>cls</code>
+                    тоже работает (алиас). Горячая клавиша - <code>Ctrl + L</code>.</p>
 
                 <h2>Шпаргалка</h2>
 
@@ -179,27 +495,63 @@
                 <ul class="operator-list">
                     <li>
                         <code>cd</code>
-                        <span>где я?</span>
+                        <span>где я (в cmd)</span>
+                    </li>
+                    <li>
+                        <code>pwd</code>
+                        <span>где я (в PowerShell)</span>
                     </li>
                     <li>
                         <code>dir</code>
                         <span>список файлов</span>
                     </li>
                     <li>
-                        <code>cd имя_папки</code>
-                        <span>зайти в папку</span>
+                        <code>dir /a</code>
+                        <span>включая скрытые</span>
+                    </li>
+                    <li>
+                        <code>dir /b</code>
+                        <span>только имена</span>
+                    </li>
+                    <li>
+                        <code>dir /o:-d</code>
+                        <span>сначала свежие</span>
+                    </li>
+                    <li>
+                        <code>cd папка</code>
+                        <span>войти в папку</span>
                     </li>
                     <li>
                         <code>cd ..</code>
-                        <span>вернуться назад</span>
+                        <span>на уровень выше</span>
+                    </li>
+                    <li>
+                        <code>cd ..\..</code>
+                        <span>на два уровня выше</span>
                     </li>
                     <li>
                         <code>cd \</code>
                         <span>в корень диска</span>
                     </li>
                     <li>
+                        <code>cd ~</code>
+                        <span>домой (PowerShell)</span>
+                    </li>
+                    <li>
                         <code>D:</code>
                         <span>перейти на диск D</span>
+                    </li>
+                    <li>
+                        <code>pushd / popd</code>
+                        <span>запомнить / вернуться</span>
+                    </li>
+                    <li>
+                        <code>%USERPROFILE%</code>
+                        <span>домашняя папка</span>
+                    </li>
+                    <li>
+                        <code>tree</code>
+                        <span>дерево папок</span>
                     </li>
                     <li>
                         <code>cls</code>
@@ -209,33 +561,69 @@
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные ошибки при навигации.</p>
+                <p>Типичные ситуации при навигации и способы их решить.</p>
 
                 <ul>
-                    <li><strong>«Системе не удаётся найти указанный путь»</strong>. Вы ошиблись в названии папки или пытаетесь зайти в несуществующую директорию. Проверьте, что вы находитесь в правильном месте (используйте <code>dir</code>).</li>
-                    <li><strong>«Синтаксическая ошибка в имени файла»</strong>. Вы забыли кавычки, а в пути к папке есть пробел. Например, папка <code>Program Files</code> содержит пробел. Правильно: <code>cd "Program Files"</code>.</li>
-                    <li><strong>«Не удаётся перейти на диск»</strong>. Вы указали букву диска, которого нет в системе. Проверьте в «Моём компьютере», какие диски у вас есть.</li>
-                    <li><strong>«Команда dir ничего не показывает»</strong>. Вы находитесь в пустой папке. Это нормально.</li>
+                    <li><strong>«Системе не удаётся найти указанный путь».</strong>
+                        Папки нет. Проверьте <code>dir</code> - что вообще есть
+                        в текущей директории. Возможно, опечатка или вы
+                        не в той папке.</li>
+                    <li><strong>«Синтаксическая ошибка в имени файла».</strong>
+                        Скорее всего, в пути пробел, а кавычек нет. Например,
+                        <code>cd C:\Program Files</code> - ошибка. Решение:
+                        <code>cd "C:\Program Files"</code>.</li>
+                    <li><strong>«cd ..\..\.. не работает».</strong> Такого
+                        не может быть - команда работает из любой вложенной
+                        папки. Проверьте, что вы вообще в папке, а не в корне
+                        диска. Из корня <code>..</code> уже некуда идти.</li>
+                    <li><strong>«При переходе на D: он не переключается».</strong>
+                        В cmd <code>cd D:\</code> не переключает диск - только
+                        меняет папку на текущем. Нужно либо <code>D:</code>,
+                        либо <code>cd /d D:\</code>. В PowerShell <code>cd D:\</code>
+                        сработает.</li>
+                    <li><strong>«pwd не работает в cmd».</strong> Правильно -
+                        это команда PowerShell. В cmd используйте <code>cd</code>
+                        без аргументов или <code>echo %CD%</code>.</li>
+                    <li><strong>«Переменные %USERPROFILE% не раскрываются».</strong>
+                        В PowerShell нужен синтаксис <code>$env:USERPROFILE</code>.
+                        <code>%USERPROFILE%</code> в PowerShell останется
+                        буквальной строкой, а не превратится в путь.</li>
+                    <li><strong>«Тильда ~ не работает в cmd».</strong> Правильно,
+                        тильда - особенность PowerShell. В cmd используйте
+                        <code>%USERPROFILE%</code> или <code>cd %HOMEDRIVE%%HOMEPATH%</code>.</li>
+                    <li><strong>«Не могу зайти в папку - Access denied».</strong>
+                        У вас нет прав на эту папку. Например, <code>C:\Windows\System32\config</code>
+                        доступна только администратору. Запустите терминал
+                        от имени администратора.</li>
                 </ul>
 
-                <p>Если что-то не получается - напишите нам в
+                <p>Если что-то не получается или есть вопрос - напишите в
                     <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
                     разберёмся вместе.
                 </p>
 
                 <h2>Практика</h2>
 
-                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+                <p>Четыре задачи. Первые две - базовые, третья и четвёртая
+                    требуют применить несколько команд вместе. У каждой есть
+                    подсказка и разбор.</p>
 
                 <div class="task-list">
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 1. Осмотр дома</span>
+                            <span>Задача 1. Осмотритесь</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Перейдите в вашу домашнюю папку (если вы не там) и выведите список файлов, которые в ней находятся.</p>
+                            <p class="task-desc">Откройте PowerShell и выполните
+                                три шага:</p>
+                            <ol>
+                                <li>Определите, в какой папке вы находитесь.</li>
+                                <li>Посмотрите список файлов в ней.</li>
+                                <li>Проверьте, есть ли скрытые файлы -
+                                    сравните <code>dir</code> и <code>dir /a</code>.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -243,18 +631,27 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Чтобы вернуться домой из любого места, используйте <code>cd %USERPROFILE%</code> или <code>cd ~</code> (в PowerShell). Затем выполните <code>dir</code>.</p>
+                                    <p>Для текущей папки - <code>Get-Location</code>
+                                        или <code>pwd</code>. Для списка файлов -
+                                        <code>dir</code>. Для скрытых -
+                                        <code>dir /a</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">cd %USERPROFILE%</span><span class="code-row">dir</span></code></pre>
-                                    <p>В PowerShell можно написать просто <code>cd ~</code>.</p>
+                                    <pre class="code-numbered"><code><span class="code-row">PS C:\Users\Иван&gt; Get-Location</span><span class="code-row">Path</span><span class="code-row">----</span><span class="code-row">C:\Users\Иван</span><span class="code-row"></span><span class="code-row">PS C:\Users\Иван&gt; dir</span><span class="code-row">Desktop   Documents   Downloads</span><span class="code-row"></span><span class="code-row">PS C:\Users\Иван&gt; dir /a</span><span class="code-row">.config   .gitconfig   AppData   Desktop   Documents   Downloads</span></code></pre>
+                                    <p>Разница: <code>dir /a</code> показывает
+                                        ещё и папки, начинающиеся с точки
+                                        (<code>.config</code>,
+                                        <code>.gitconfig</code>) и системные
+                                        (<code>AppData</code>). Это скрытые
+                                        или системные объекты - обычный
+                                        <code>dir</code> их пропускает.</p>
                                 </div>
                             </details>
                         </div>
@@ -262,11 +659,21 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 2. Вверх по лестнице</span>
+                            <span>Задача 2. Прогулка по диску</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Находясь в домашней папке, поднимитесь на один уровень вверх (в папку <code>Users</code>). Затем посмотрите, какие другие пользователи есть на компьютере (команда <code>dir</code>).</p>
+                            <p class="task-desc">Погуляйте по системе:</p>
+                            <ol>
+                                <li>Из домашней папки перейдите в
+                                    <code>C:\Windows</code>.</li>
+                                <li>Посмотрите, что там лежит (первые
+                                    несколько строк хватит).</li>
+                                <li>Перейдите в <code>C:\Windows\System32\drivers</code>
+                                    одной командой.</li>
+                                <li>Вернитесь обратно в домашнюю папку
+                                    одной командой.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -274,17 +681,30 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Для перехода на уровень вверх используется <code>cd ..</code>. После этого выполните <code>dir</code>.</p>
+                                    <p>Абсолютные пути работают из любого
+                                        места. Домой - <code>cd ~</code>
+                                        (в PowerShell) или
+                                        <code>cd %USERPROFILE%</code>
+                                        (в cmd).</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">cd ..</span><span class="code-row">dir</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">PS C:\Users\Иван&gt; cd C:\Windows</span><span class="code-row"></span><span class="code-row">PS C:\Windows&gt; dir</span><span class="code-row">System32   SysWOW64   Temp   Fonts   ...</span><span class="code-row"></span><span class="code-row">PS C:\Windows&gt; cd C:\Windows\System32\drivers</span><span class="code-row"></span><span class="code-row">PS C:\Windows\System32\drivers&gt; cd ~</span><span class="code-row"></span><span class="code-row">PS C:\Users\Иван&gt;</span></code></pre>
+                                    <p>Обратите внимание: каждый переход -
+                                        одна команда, даже если путь
+                                        длинный. Абсолютный путь экономит
+                                        время: не нужно заходить в папки
+                                        по одной.</p>
+                                    <p>В папке <code>C:\Windows\System32\drivers</code>
+                                        лежат системные драйверы. Их не
+                                        трогают без необходимости - это
+                                        часть операционной системы.</p>
                                 </div>
                             </details>
                         </div>
@@ -292,11 +712,21 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Путешествие на диск D</span>
+                            <span>Задача 3. Дерево и сортировка</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Перейдите на диск <code>D:</code> (если у вас его нет - на любой другой доступный диск, кроме C). Посмотрите его содержимое. Затем вернитесь обратно на диск C.</p>
+                            <p class="task-desc">В домашней папке:</p>
+                            <ol>
+                                <li>Постройте дерево папок без файлов
+                                    (<code>tree</code>) - посмотрите
+                                    структуру.</li>
+                                <li>Постройте дерево с файлами
+                                    (<code>tree /F</code>) - сравните.</li>
+                                <li>Выполните <code>dir /o:-d</code> -
+                                    какие файлы оказались вверху?
+                                    Почему?</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -304,17 +734,36 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Для смены диска просто напишите его букву с двоеточием.</p>
+                                    <p>Ключ <code>/o:-d</code> сортирует
+                                        по дате в обратном порядке -
+                                        самые свежие сверху. Минус перед
+                                        <code>d</code> означает
+                                        «обратный порядок».</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">D:</span><span class="code-row">dir</span><span class="code-row">C:</span></code></pre>
+                                    <p><code>tree</code> показывает только
+                                        папки - структуру. <code>tree /F</code>
+                                        добавляет файлы внутри каждой папки.
+                                        На большом проекте вывод
+                                        <code>tree /F</code> может быть
+                                        огромным - используйте
+                                        <code>tree /F | more</code>
+                                        для постраничного просмотра
+                                        (об этом в уроке 6).</p>
+                                    <p><code>dir /o:-d</code> показывает
+                                        сначала самые новые файлы. Очень
+                                        полезно, когда вы скачали что-то
+                                        и не помните куда: свежие файлы
+                                        будут сверху. То же самое
+                                        <code>dir /o:-d /a</code> - с учётом
+                                        скрытых.</p>
                                 </div>
                             </details>
                         </div>
@@ -322,12 +771,21 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Исправление ошибок</span>
+                            <span>Задача 4. Абсолютный или относительный</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Пользователь хочет перейти в папку <code>Program Files</code>, но получает ошибку. Найдите и исправьте ошибку.</p>
-                            <pre class="code-numbered"><code><span class="code-row">cd C:\Program Files</span></code></pre>
+                            <p class="task-desc">Вы находитесь в
+                                <code>C:\Users\Иван</code>. Для каждой
+                                команды скажите, куда она приведёт.</p>
+                            <ol>
+                                <li><code>cd Documents</code></li>
+                                <li><code>cd ..</code></li>
+                                <li><code>cd ..\..</code></li>
+                                <li><code>cd C:\Users</code></li>
+                                <li><code>cd \Windows</code></li>
+                                <li><code>cd %USERPROFILE%\Desktop</code></li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -335,18 +793,58 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>В названии папки есть пробел. Терминал думает, что вы хотите перейти в две разные папки.</p>
+                                    <p>Абсолютные пути начинаются
+                                        с буквы диска. Относительные -
+                                        нет. <code>..</code> - на уровень
+                                        выше, <code>\</code> в начале -
+                                        корень текущего диска,
+                                        <code>%USERPROFILE%</code> -
+                                        домашняя папка.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">cd "C:\Program Files"</span></code></pre>
-                                    <p>Мы взяли путь в кавычки, чтобы терминал воспринял его как единое целое.</p>
+                                    <ol>
+                                        <li><strong><code>cd Documents</code></strong> -
+                                            относительный путь. Зайдёт в
+                                            <code>C:\Users\Иван\Documents</code>,
+                                            если папка есть.</li>
+                                        <li><strong><code>cd ..</code></strong> -
+                                            на уровень выше:
+                                            <code>C:\Users</code>.</li>
+                                        <li><strong><code>cd ..\..</code></strong> -
+                                            на два уровня выше:
+                                            <code>C:\</code> (корень диска C).</li>
+                                        <li><strong><code>cd C:\Users</code></strong> -
+                                            абсолютный. Приведёт
+                                            в <code>C:\Users</code>
+                                            из любого места.</li>
+                                        <li><strong><code>cd \Windows</code></strong> -
+                                            абсолютный (от корня текущего
+                                            диска). Зайдёт
+                                            в <code>C:\Windows</code>,
+                                            если вы на диске C. Если
+                                            вы на диске D - попадёт
+                                            в <code>D:\Windows</code>,
+                                            где такой папки, скорее всего,
+                                            нет.</li>
+                                        <li><strong><code>cd %USERPROFILE%\Desktop</code></strong> -
+                                            абсолютный (через переменную
+                                            окружения). Зайдёт
+                                            в <code>C:\Users\Иван\Desktop</code>.</li>
+                                    </ol>
+                                    <p>Вывод: абсолютные пути не зависят
+                                        от текущего положения,
+                                        относительные - зависят. Первое
+                                        правило безопасности: если
+                                        команда должна работать «где
+                                        угодно» - используйте абсолютный
+                                        путь.</p>
                                 </div>
                             </details>
                         </div>
@@ -356,16 +854,33 @@
 
                 <h2>Что мы узнали и что дальше</h2>
 
-                <p>Теперь вы можете свободно перемещаться по файловой системе Windows, как заправский системный администратор. Вы узнали:</p>
-                <ul>
-                    <li>Как узнать текущую папку (<code>cd</code>).</li>
-                    <li>Как посмотреть содержимое папки (<code>dir</code>).</li>
-                    <li>Как переходить в другие папки (<code>cd имя</code>) и возвращаться назад (<code>cd ..</code>).</li>
-                    <li>Как переключаться между дисками.</li>
-                    <li>Как очистить экран (<code>cls</code>).</li>
-                </ul>
+                <p>Разобрались с навигацией по файловой системе Windows. Узнали,
+                    чем отличаются <strong>абсолютные и относительные пути</strong>,
+                    научились смотреть текущее положение (<code>Get-Location</code>,
+                    <code>pwd</code> или <code>cd</code> без аргументов в cmd)
+                    и содержимое папки (<code>dir</code> с ключами
+                    <code>/a</code>, <code>/b</code>, <code>/s</code>,
+                    <code>/o</code>).</p>
 
-                <p>Мы научились ходить по папкам, но пока не умеем их создавать, копировать или удалять. В следующем уроке мы разберём <strong>работу с файлами и папками</strong>. Вы научитесь создавать, копировать, перемещать и удалять данные прямо из терминала. До встречи!</p>
+                <p>Освоили переходы: <code>cd</code>, <code>cd ..</code>,
+                    <code>cd ..\..</code>, <code>cd \</code>,
+                    <code>cd ~</code>. Поняли, как переключаться между
+                    дисками (<code>D:</code> или <code>cd /d</code>).
+                    Познакомились с <code>pushd</code> и <code>popd</code> -
+                    удобным способом «запомнить папку и вернуться».</p>
+
+                <p>Узнали, что такое <strong>переменные окружения</strong>:
+                    <code>%USERPROFILE%</code>, <code>%APPDATA%</code>,
+                    <code>%TEMP%</code> - короткие имена для длинных путей.
+                    В PowerShell они доступны через <code>$env:</code>.
+                    И разобрали <code>tree</code> - как увидеть всю структуру
+                    папок сразу.</p>
+
+                <p>В следующем уроке будем учиться <strong>создавать,
+                        копировать, перемещать и удалять</strong> файлы
+                    и папки. Это уже активные действия, которые меняют
+                    файловую систему - поэтому разберёмся с осторожностью
+                    и правилами безопасности.</p>
 
                 <div class="lesson-actions">
                     <a href="lesson-01.html" class="btn-secondary">

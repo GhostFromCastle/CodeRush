@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Введение в PowerShell - CodeRush</title>
+    <title>Введение в PowerShell - Терминал - CodeRush</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
     <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
@@ -94,6 +96,11 @@
                             <span>Основы скриптов в PowerShell</span>
                             <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
                         </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Продвинутый PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
                     </div>
                 </div>
             </aside>
@@ -101,58 +108,539 @@
             <article class="lesson-content">
                 <h1>Введение в PowerShell</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
                     <span><i class="ph ph-windows-logo"></i> Windows</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
 
-                <p>До этого момента мы работали с классической командной строкой (cmd). Она появилась ещё в далёких 80-х и с тех пор почти не менялась. Это отличный инструмент, но у него есть ограничения: он работает только с текстом и не умеет обмениваться сложными данными между командами.</p>
+                <p>До этого момента мы в основном работали с классической командной
+                    строкой - cmd. Она появилась в далёких 80-х и почти не менялась
+                    с тех пор. Отличный инструмент, но у него есть принципиальное
+                    ограничение: он работает только с текстом. Для команды - это
+                    нормально, но для настоящей работы с данными - мало.</p>
 
-                <p>На смену ему пришёл <strong>PowerShell</strong> - современная оболочка от Microsoft. Это не просто улучшенный cmd. Это целый язык программирования и мощнейший инструмент автоматизации, который используют все системные администраторы Windows.</p>
+                <p>На смену ему пришёл <strong>PowerShell</strong> - современная
+                    оболочка от Microsoft. Это не улучшенный cmd, как иногда
+                    думают. Это совершенно другой подход, целый язык
+                    программирования и мощнейший инструмент автоматизации.
+                    В этом уроке разберёмся, что делает его особенным, и научимся
+                    базовым приёмам работы.</p>
 
-                <h2>Чем PowerShell лучше cmd?</h2>
+                <h2>Главное отличие: объекты вместо текста</h2>
 
-                <p>Главное отличие в том, что <strong>PowerShell работает с объектами, а не с текстом</strong>.</p>
+                <p>Это самое важное, что нужно понять про PowerShell.
+                    <strong>Cmd работает с текстом, PowerShell - с объектами</strong>.
+                    Разница кажется абстрактной, но она меняет всё.</p>
 
-                <p>Представьте, что вы просите cmd показать список файлов. Он выводит вам текст на экран. Если вы хотите из этого текста вытащить только имена файлов, вам придётся использовать дополнительные команды (вроде <code>findstr</code>) и разбирать текст вручную.</p>
+                <p>Давайте на конкретном примере. Выполним <code>dir</code>
+                    в cmd:</p>
 
-                <p>PowerShell же передаёт данные в виде объектов. Это как если бы вы получили таблицу Excel, где у каждой ячейки есть имя. Вы можете легко сказать: «Возьми все файлы, отсортируй их по размеру и покажи мне только те, что больше 1 мегабайта».</p>
+                <pre class="code-numbered"><code><span class="code-row">C:\Users\Иван&gt; dir</span><span class="code-row">    Directory: C:\Users\Иван</span><span class="code-row"></span><span class="code-row">Mode                 LastWriteTime         Length Name</span><span class="code-row">----                 -------------         ------ ----</span><span class="code-row">d-----        25.10.2026     12:30                Desktop</span><span class="code-row">-a----        20.10.2026     14:00            512 notes.txt</span></code></pre>
 
-                <h2>Командлеты (Cmdlets)</h2>
+                <p>Это просто строки текста. «d-----», «25.10.2026», «12:30»,
+                    «512» - всё это выведено как символы. Если захотите
+                    отсортировать только файлы размером больше 100 байт -
+                    в cmd это невозможно без дополнительных команд,
+                    которые будут разбирать текст по кусочкам.</p>
 
-                <p>Команды в PowerShell называются <strong>командлетами</strong> (произносится «командлéт»). Они имеют строгий и логичный формат: <strong>Глагол-Существительное</strong>.</p>
+                <p>Теперь <code>dir</code> в PowerShell:</p>
 
+                <pre class="code-numbered"><code><span class="code-row">PS C:\Users\Иван&gt; dir</span><span class="code-row"></span><span class="code-row">    Directory: C:\Users\Иван</span><span class="code-row"></span><span class="code-row">Mode                 LastWriteTime         Length Name</span><span class="code-row">----                 -------------         ------ ----</span><span class="code-row">d-----        25.10.2026     12:30                Desktop</span><span class="code-row">-a----        20.10.2026     14:00            512 notes.txt</span></code></pre>
+
+                <p>Выглядит так же, но под капотом - совершенно другое.
+                    PowerShell вернул не текст, а <strong>два объекта</strong>.
+                    У каждого объекта есть поля: <code>Name</code>,
+                    <code>Length</code>, <code>LastWriteTime</code>,
+                    <code>Mode</code>, <code>CreationTime</code>, <code>Attributes</code>
+                    и ещё десяток других. С этими полями можно работать
+                    напрямую.</p>
+
+                <p>Например, хотите узнать, какие файлы больше 100 байт?
+                    В PowerShell это одна команда:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">dir | Where-Object Length -gt 100</span></code></pre>
+
+                <p>А в cmd так нельзя - там нет никаких полей, только текст.</p>
+
+                <p>Аналогия: cmd показывает вам фотографию таблицы Excel -
+                    можно прочитать глазами, но нельзя отсортировать или
+                    отфильтровать. PowerShell даёт саму таблицу Excel -
+                    с ней можно делать что угодно: сортировать, фильтровать,
+                    вычислять.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Команда <code>dir</code> работает в обеих оболочках,
+                        но в cmd возвращает текст, а в PowerShell - объекты.
+                        Именно поэтому все команды PowerShell умеют
+                        комбинироваться друг с другом: одна команда передаёт
+                        объекты следующей, а не текст.</p>
+                </div>
+
+                <h2>Командлеты: глагол-существительное</h2>
+
+                <p>Команды в PowerShell называются <strong>командлетами</strong>
+                    (cmdlets, произносится «командлéт»). У них строгий формат:
+                    <strong>Глагол-Существительное</strong>. Это не причуда
+                    разработчиков - это язык, на котором можно разговаривать
+                    с системой.</p>
+
+                <p>Основные глаголы:</p>
                 <ul>
-                    <li><strong>Get</strong> (получить) - <code>Get-Process</code> (получить процессы), <code>Get-ChildItem</code> (получить файлы).</li>
-                    <li><strong>Set</strong> (установить) - <code>Set-Location</code> (сменить папку).</li>
-                    <li><strong>Remove</strong> (удалить) - <code>Remove-Item</code> (удалить файл).</li>
+                    <li><strong>Get</strong> - получить (<code>Get-Process</code>,
+                        <code>Get-ChildItem</code>, <code>Get-Date</code>).</li>
+                    <li><strong>Set</strong> - установить
+                        (<code>Set-Location</code>, <code>Set-Content</code>).</li>
+                    <li><strong>New</strong> - создать (<code>New-Item</code>).</li>
+                    <li><strong>Remove</strong> - удалить
+                        (<code>Remove-Item</code>).</li>
+                    <li><strong>Start</strong> - запустить
+                        (<code>Start-Process</code>).</li>
+                    <li><strong>Stop</strong> - остановить
+                        (<code>Stop-Process</code>).</li>
+                    <li><strong>Test</strong> - проверить
+                        (<code>Test-Path</code>, <code>Test-NetConnection</code>).</li>
                 </ul>
 
-                <p>Это делает команды понятными даже новичку. Название команды само говорит о том, что она делает.</p>
+                <p>Посмотреть полный список глаголов:</p>
 
-                <h2>Алиасы (Привычные команды)</h2>
+                <pre class="code-numbered"><code><span class="code-row">Get-Verb</span></code></pre>
 
-                <p>Чтобы вы не скучали по старому cmd, PowerShell поддерживает старые команды. Они называются алиасами (синонимами).</p>
+                <p>Вывод большой, но полезно один раз посмотреть - может
+                    удивить, насколько богатый словарь. Все команды PowerShell
+                    в мире используют одни и те же глаголы - это создаёт единый
+                    язык. Если вы знаете, что хотите «получить» что-то - знаете,
+                    что команда начинается с <code>Get</code>.</p>
 
-                <p>Например, команда <code>dir</code> работает, но внутри PowerShell она просто вызывает <code>Get-ChildItem</code>. Команда <code>cd</code> вызывает <code>Set-Location</code>.</p>
+                <h2>Как искать команды: Get-Command</h2>
 
-                <p>Это очень удобно: можно использовать привычные команды, но при этом работать с мощным движком PowerShell.</p>
+                <p>В PowerShell тысячи команд. Запомнить все невозможно -
+                    да и не нужно. Главное - уметь их <strong>находить</strong>.
+                    Для этого есть <code>Get-Command</code>.</p>
 
-                <h2>Встроенная справка (Get-Help)</h2>
+                <h3>Поиск по имени</h3>
 
-                <p>Вам не нужно заучивать тысячи команд. В PowerShell есть встроенная справка. Если вы не знаете, как работает команда, просто спросите систему:</p>
+                <pre class="code-numbered"><code><span class="code-row">Get-Command Get-Process</span></code></pre>
 
-                <pre class="code-numbered"><code><span class="code-row">Get-Help Get-Process</span></code></pre>
+                <p>Покажет информацию о конкретной команде - если она
+                    существует.</p>
 
-                <p>Вы получите подробное описание команды, всех её параметров и примеры использования. Это как инструкция, встроенная прямо в терминал.</p>
+                <h3>Поиск по шаблону</h3>
 
-                <h2>Поиск команд (Get-Command)</h2>
-
-                <p>Если вы не знаете, какая команда вам нужна, но примерно представляете, что хотите сделать, используйте поиск. Например, хотите найти все команды, связанные с процессами:</p>
+                <p>Самый полезный способ. Если вы примерно представляете,
+                    что ищете, используйте wildcards:</p>
 
                 <pre class="code-numbered"><code><span class="code-row">Get-Command *Process*</span></code></pre>
 
-                <p>PowerShell выдаст список всех команд, в названии которых есть слово «Process».</p>
+                <p>Найдёт все команды, в названии которых есть «Process»:
+                    <code>Get-Process</code>, <code>Stop-Process</code>,
+                    <code>Wait-Process</code>, <code>Debug-Process</code>
+                    и другие. Сразу видно, какие действия можно делать
+                    с процессами.</p>
+
+                <h3>Поиск по глаголу</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Command -Verb Get</span></code></pre>
+
+                <p>Покажет все команды с глаголом <code>Get</code> - их
+                    несколько сотен. Полезно понять, что вообще можно
+                    «получить» в системе.</p>
+
+                <h3>Поиск по существительному</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Command -Noun Process</span></code></pre>
+
+                <p>Покажет все команды, работающие с процессами. Сразу видно
+                    полный набор действий: получить, остановить, ждать,
+                    отладить.</p>
+
+                <p>Комбинация <code>-Verb</code> и <code>-Noun</code> -
+                    очень мощный способ исследования системы. Не знаете,
+                    как что-то сделать - начните с поиска по существительному,
+                    а потом посмотрите, какие глаголы доступны.</p>
+
+                <h2>Справка: Get-Help</h2>
+
+                <p>Вторая незаменимая команда - <code>Get-Help</code>.
+                    Это встроенная документация, всегда под рукой.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Help Get-Process</span></code></pre>
+
+                <p>Покажет описание команды, все её параметры, примеры
+                    использования. Полная справка, как в man-страницах Linux.</p>
+
+                <h3>Только примеры: -Examples</h3>
+
+                <p>Читать полную документацию долго. Часто хочется сразу
+                    увидеть, как команда используется на практике:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Help Get-Process -Examples</span></code></pre>
+
+                <p>Покажет 5-10 готовых примеров с пояснениями. В 90% случаев
+                    этого достаточно, чтобы понять, как применять команду.</p>
+
+                <h3>Полная документация: -Full</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Help Get-Process -Full</span></code></pre>
+
+                <p>Расширенная версия - со всеми техническими деталями,
+                    типами параметров, ссылками на связанные команды.
+                    Для глубокого изучения.</p>
+
+                <h3>Документация в браузере: -Online</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Help Get-Process -Online</span></code></pre>
+
+                <p>Откроет страницу документации в браузере. Удобно, когда
+                    хочется почитать в комфортной обстановке, а не в
+                    терминале.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Обновить справку
+                    </div>
+                    <p>По умолчанию в PowerShell установлена только базовая
+                        справка. Полная - скачивается отдельно командой
+                        <code>Update-Help</code> (нужен запуск от
+                        администратора и интернет). Один раз обновили -
+                        и <code>Get-Help</code> показывает всё.</p>
+                </div>
+
+                <h2>Самая важная команда: Get-Member</h2>
+
+                <p>Если вы запомните из этого урока только одну вещь - пусть
+                    это будет <code>Get-Member</code>. Это <strong>второй
+                    по важности инструмент после <code>Get-Help</code></strong>,
+                    и он открывает всю мощь PowerShell.</p>
+
+                <p><code>Get-Member</code> показывает, <strong>из чего состоит
+                        объект</strong> - какие у него свойства и методы.
+                    Свойства - это данные, методы - это действия, которые
+                    можно с объектом сделать.</p>
+
+                <p>Пример - что можно узнать о процессе?</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Get-Member</span></code></pre>
+
+                <p>Вывод будет огромным - десятки строк. В первой части -
+                    тип объекта (<code>System.Diagnostics.Process</code>),
+                    дальше - свойства и методы:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">   TypeName: System.Diagnostics.Process</span><span class="code-row"></span><span class="code-row">Name           MemberType     Definition</span><span class="code-row">----           ----------     ----------</span><span class="code-row">Id             Property       int Id {get;}</span><span class="code-row">Name           Property       string Name {get;}</span><span class="code-row">CPU            Property       double CPU {get;}</span><span class="code-row">WorkingSet     Property       long WorkingSet {get;}</span><span class="code-row">Path           Property       string Path {get;}</span><span class="code-row">Kill           Method         void Kill()</span><span class="code-row">Start          Method         bool Start()</span><span class="code-row">...</span></code></pre>
+
+                <p>Теперь вы знаете, что у процесса есть поля <code>Id</code>
+                    (PID), <code>Name</code>, <code>CPU</code> (сколько
+                    процессорного времени потратил), <code>WorkingSet</code>
+                    (память), <code>Path</code> (путь к файлу). И что
+                    можно вызвать <code>.Kill()</code> - убить процесс.</p>
+
+                <p>Именно так вы <strong>изучаете систему</strong>. Не по
+                    документации, а через исследование: получили объект,
+                    посмотрели его свойства, поняли, что с ним делать.
+                    Это называется <em>exploratory programming</em> -
+                    исследовательское программирование.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Что такое MemberType
+                    </div>
+                    <p><strong>Property</strong> - свойство, данные.
+                        Например, <code>Name</code> - это имя процесса,
+                        <code>Id</code> - его номер. Свойство можно
+                        прочитать, а иногда и записать.</p>
+                    <p><strong>Method</strong> - метод, действие. Например,
+                        <code>Kill()</code> - убить процесс,
+                        <code>Start()</code> - запустить. Метод вызывается
+                        со скобками: <code>$process.Kill()</code>.</p>
+                </div>
+
+                <h2>Выбор свойств: Select-Object</h2>
+
+                <p>Когда вы получили объект с десятками свойств, а нужны
+                    только три - используйте <code>Select-Object</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Select-Object Name, Id, WorkingSet</span></code></pre>
+
+                <p>Вывод превратится в аккуратную таблицу с тремя колонками.
+                    Десятки лишних свойств отброшены - видно только важное.</p>
+
+                <h3>Первые N строк: -First</h3>
+
+                <p>Если процессов сотня, а нужно посмотреть первые
+                    несколько:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Select-Object -First 5</span></code></pre>
+
+                <p>Покажет первые 5 процессов. Есть и <code>-Last 5</code> -
+                    последние пять.</p>
+
+                <h3>Пропустить N строк: -Skip</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Select-Object -Skip 5 -First 3</span></code></pre>
+
+                <p>Пропустить первые 5, показать следующие 3. Полезно для
+                    «постраничного» вывода.</p>
+
+                <h3>Свои свойства: вычисляемые</h3>
+
+                <p>Можно создавать новые свойства на лету. Например,
+                    показать память в мегабайтах вместо байт:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-Process | Select-Object Name, @{Name='MemoryMB'; Expression={[math]::Round($_.WorkingSet / 1MB, 1)}}</span></code></pre>
+
+                <p>Здесь <code>@{Name=...; Expression={...}}</code> -
+                    это <strong>хеш-таблица</strong>, которая создаёт новое
+                    вычисляемое свойство. <code>$_</code> означает «текущий
+                    объект». В примере мы берём <code>WorkingSet</code>,
+                    делим на 1 МБ и округляем до одного знака.</p>
+
+                <p>Подробно про это - в уроке 8. Пока просто знайте,
+                    что так можно.</p>
+
+                <h2>Сортировка: Sort-Object</h2>
+
+                <p>Одна из самых полезных команд. Сортирует объекты
+                    по указанному свойству:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Sort-Object CPU</span></code></pre>
+
+                <p>По умолчанию - по возрастанию. Чтобы по убыванию -
+                    ключ <code>-Descending</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Sort-Object CPU -Descending</span></code></pre>
+
+                <p>Именно так находят «самые прожорливые» процессы -
+                    по CPU или по памяти. Классическая команда для
+                    диагностики:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Sort-Object WorkingSet -Descending | Select-Object -First 5</span></code></pre>
+
+                <p>«Пять процессов, которые больше всего занимают памяти».
+                    Одной строкой. В cmd для этого нужны отдельные
+                    программы вроде Process Explorer.</p>
+
+                <h3>Сортировка по нескольким свойствам</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Sort-Object Name, CPU</span></code></pre>
+
+                <p>Сначала по имени, потом (при равенстве) - по CPU.</p>
+
+                <h2>Фильтрация: Where-Object</h2>
+
+                <p>Если сортировка меняет порядок, то <strong>фильтрация</strong>
+                    отбрасывает лишнее. Для этого - <code>Where-Object</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Where-Object CPU -gt 10</span></code></pre>
+
+                <p>Покажет процессы, которые потратили больше 10 секунд
+                    процессорного времени. Синтаксис «Свойство -оператор
+                    значение» - это сокращённая форма, появившаяся
+                    в PowerShell 3.</p>
+
+                <p>Операторы сравнения:</p>
+                <ul>
+                    <li><code>-eq</code> - равно (equal).</li>
+                    <li><code>-ne</code> - не равно (not equal).</li>
+                    <li><code>-gt</code> - больше (greater than).</li>
+                    <li><code>-lt</code> - меньше (less than).</li>
+                    <li><code>-ge</code> - больше или равно.</li>
+                    <li><code>-le</code> - меньше или равно.</li>
+                    <li><code>-like</code> - соответствует шаблону
+                        (с <code>*</code>).</li>
+                    <li><code>-match</code> - соответствует регулярному
+                        выражению.</li>
+                </ul>
+
+                <p>Полная форма (старый синтаксис, работает везде):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Where-Object {$_.CPU -gt 10}</span></code></pre>
+
+                <p>Обе формы работают одинаково. Сокращённая - короче,
+                    но не работает для нескольких условий одновременно.
+                    Для сложных условий - полная с <code>$_</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Get-Process | Where-Object {$_.CPU -gt 10 -and $_.WorkingSet -gt 100MB}</span></code></pre>
+
+                <p>«Процессы, которые потратили больше 10 секунд CPU
+                    и занимают больше 100 мегабайт памяти».</p>
+
+                <h2>Подсчёт: Measure-Object</h2>
+
+                <p>Команда для подсчёта и статистики. Например, сколько
+                    процессов сейчас работает:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Measure-Object</span></code></pre>
+
+                <p>Вывод покажет <code>Count</code> - количество.
+                    Плюс по умолчанию <code>Average</code>,
+                    <code>Sum</code>, <code>Minimum</code>, <code>Maximum</code>
+                    для числовых свойств.</p>
+
+                <p>А чтобы посчитать сумму по конкретному свойству:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Measure-Object WorkingSet -Sum</span></code></pre>
+
+                <p>Покажет, сколько всего памяти занимают все процессы
+                    вместе. Полезно для диагностики: если суммарно занято
+                    14 из 16 ГБ - пора чистить.</p>
+
+                <p>Среднее, минимум и максимум:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Measure-Object CPU -Average -Minimum -Maximum</span></code></pre>
+
+                <h2>Форматирование вывода</h2>
+
+                <p>По умолчанию PowerShell сам решает, как показать объекты:
+                    таблицей или списком. Но иногда хочется управлять этим
+                    вручную.</p>
+
+                <h3>Format-Table - таблица</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Format-Table Name, Id, CPU</span></code></pre>
+
+                <p>Аккуратная таблица с указанными колонками. Самый
+                    частый формат для просмотра.</p>
+
+                <h3>Format-List - список</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process -Name chrome | Format-List *</span></code></pre>
+
+                <p>Все свойства в виде списка «Свойство: значение». Полезно,
+                    когда свойств много и в таблицу они не влезают.
+                    Звёздочка <code>*</code> - «показать все свойства».</p>
+
+                <h3>Format-Wide - в колонки</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process | Format-Wide Name -Column 3</span></code></pre>
+
+                <p>Просто имена в три колонки. Компактно, когда нужно
+                    быстро увидеть список.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Важное правило
+                    </div>
+                    <p>Команды <code>Format-*</code> должны идти
+                        <strong>последними</strong> в конвейере. Если
+                        после <code>Format-Table</code> попробовать
+                        ещё что-то сделать - не получится. Причина:
+                        <code>Format-Table</code> превращает объекты
+                        в текст для отображения, и дальше работать
+                        уже не с чем.</p>
+                </div>
+
+                <h2>Write-Host и Write-Output</h2>
+
+                <p>В прошлом уроке мы использовали <code>Write-Host</code>
+                    для вывода текста. Но есть ещё <code>Write-Output</code> -
+                    и разница между ними принципиальная.</p>
+
+                <p><strong><code>Write-Host</code></strong> - пишет текст
+                    <em>напрямую в консоль</em>. Не передаёт его дальше
+                    по конвейеру. Хорош для сообщений пользователю:
+                    «Готово!», «Ошибка!», «Запускаю...».</p>
+
+                <p><strong><code>Write-Output</code></strong> - отправляет
+                    объект <em>в поток вывода</em>. Может быть передан
+                    следующей команде в конвейере. Это «правильный»
+                    способ что-то вернуть.</p>
+
+                <p>Пример, где разница видна:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Write-Host "Привет" | Measure-Object</span><span class="code-row">Привет</span><span class="code-row"></span><span class="code-row">Write-Output "Привет" | Measure-Object</span><span class="code-row">Count    : 1</span></code></pre>
+
+                <p>В первом случае <code>Measure-Object</code> получил
+                    пустоту - <code>Write-Host</code> ничего не передал
+                    дальше. Во втором - получил строку и посчитал
+                    как один объект.</p>
+
+                <p>Правило: если вывод должен идти пользователю (сообщение,
+                    приветствие) - <code>Write-Host</code>. Если результат
+                    работы функции или скрипта - <code>Write-Output</code>
+                    (или вообще без команды, просто значение на строке).</p>
+
+                <h3>Другие Write-* команды</h3>
+
+                <p>Для разных целей - разные команды:</p>
+                <ul>
+                    <li><code>Write-Warning "Внимание"</code> - предупреждение
+                        (жёлтым).</li>
+                    <li><code>Write-Error "Ошибка"</code> - ошибка (красным).
+                        Попадает в отдельный поток ошибок.</li>
+                    <li><code>Write-Verbose "Подробно"</code> - подробное
+                        сообщение. Видно только при <code>-Verbose</code>.</li>
+                    <li><code>Write-Debug "Отладка"</code> - отладочное
+                        сообщение. Видно только при <code>-Debug</code>.</li>
+                </ul>
+
+                <h2>Проверка версии PowerShell</h2>
+
+                <p>В мире существует несколько версий PowerShell, и это
+                    важно. Windows PowerShell (версии 5.1 и ниже) - встроен
+                    во все Windows. PowerShell Core (6 и выше, сейчас
+                    актуальна 7) - ставится отдельно, работает
+                    кроссплатформенно.</p>
+
+                <p>Проверить, какая у вас:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$PSVersionTable</span></code></pre>
+
+                <p>Вывод:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Name                           Value</span><span class="code-row">----                           -----</span><span class="code-row">PSVersion                      5.1.22621.2506</span><span class="code-row">PSEdition                      Desktop</span><span class="code-row">PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0...}</span><span class="code-row">...</span></code></pre>
+
+                <p>Ключевые поля:</p>
+                <ul>
+                    <li><strong>PSVersion</strong> - версия. 5.1 - Windows
+                        PowerShell, 7.x - PowerShell Core.</li>
+                    <li><strong>PSEdition</strong> - Desktop (Windows
+                        PowerShell) или Core (PowerShell 6+).</li>
+                </ul>
+
+                <p>Для нашего курса это не принципиально - все команды
+                    работают в обеих версиях. Но знать, что у вас,
+                    полезно: некоторые новые команды есть только
+                    в PowerShell 7.</p>
+
+                <h2>PowerShell понимает cmd-команды</h2>
+
+                <p>Важное свойство: <strong>PowerShell умеет запускать
+                        большинство cmd-команд</strong>. Это значит, что
+                    вы можете писать <code>ipconfig</code>, <code>ping</code>,
+                    <code>tasklist</code>, <code>taskkill</code>,
+                    <code>dir</code>, <code>cd</code> - и они сработают.</p>
+
+                <p>Технически это работает через <em>алиасы</em>: когда
+                    вы пишете <code>dir</code>, PowerShell понимает, что
+                    это сокращение для <code>Get-ChildItem</code>, и выполняет
+                    её. Результат тот же, но с объектами на выходе.</p>
+
+                <p>Посмотреть все алиасы:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Alias</span></code></pre>
+
+                <p>Найти конкретный:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Alias dir</span><span class="code-row">CommandType     Name         Version    Source</span><span class="code-row">-----------     ----         -------    ------</span><span class="code-row">Alias           dir -&gt; Get-ChildItem</span></code></pre>
+
+                <p>Из вывода видно: <code>dir</code> - это алиас
+                    на <code>Get-ChildItem</code>. Именно поэтому
+                    <code>dir</code> в PowerShell возвращает объекты,
+                    а не текст.</p>
+
+                <p>Что это даёт на практике: вы можете постепенно
+                    переходить с cmd-команд на PowerShell-команды.
+                    Начинаете с привычного <code>dir</code>, постепенно
+                    заменяете на <code>Get-ChildItem</code> - когда
+                    будете готовы. Работает и то, и другое.</p>
 
                 <h2>Шпаргалка</h2>
 
@@ -160,55 +648,153 @@
 
                 <ul class="operator-list">
                     <li>
-                        <code>powershell</code>
-                        <span>запустить оболочку</span>
+                        <code>Get-Command</code>
+                        <span>найти команды</span>
                     </li>
                     <li>
-                        <code>Get-Process</code>
-                        <span>список процессов</span>
+                        <code>Get-Command *Process*</code>
+                        <span>по шаблону</span>
                     </li>
                     <li>
-                        <code>Get-ChildItem</code>
-                        <span>список файлов</span>
+                        <code>Get-Command -Noun Process</code>
+                        <span>по существительному</span>
                     </li>
                     <li>
                         <code>Get-Help</code>
-                        <span>справка по команде</span>
+                        <span>справка</span>
                     </li>
                     <li>
-                        <code>Get-Command</code>
-                        <span>поиск команд</span>
+                        <code>Get-Help -Examples</code>
+                        <span>только примеры</span>
+                    </li>
+                    <li>
+                        <code>Get-Help -Online</code>
+                        <span>в браузере</span>
+                    </li>
+                    <li>
+                        <code>Get-Member</code>
+                        <span>свойства объекта</span>
+                    </li>
+                    <li>
+                        <code>Select-Object</code>
+                        <span>выбрать свойства</span>
+                    </li>
+                    <li>
+                        <code>Sort-Object</code>
+                        <span>сортировка</span>
+                    </li>
+                    <li>
+                        <code>Where-Object</code>
+                        <span>фильтр</span>
+                    </li>
+                    <li>
+                        <code>Measure-Object</code>
+                        <span>подсчёт</span>
+                    </li>
+                    <li>
+                        <code>Format-Table</code>
+                        <span>таблицей</span>
+                    </li>
+                    <li>
+                        <code>Format-List</code>
+                        <span>списком</span>
+                    </li>
+                    <li>
+                        <code>Write-Host</code>
+                        <span>в консоль</span>
+                    </li>
+                    <li>
+                        <code>Write-Output</code>
+                        <span>в поток вывода</span>
+                    </li>
+                    <li>
+                        <code>$PSVersionTable</code>
+                        <span>версия PowerShell</span>
                     </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные проблемы при переходе на PowerShell.</p>
+                <p>Типичные проблемы при первом знакомстве с PowerShell.</p>
 
                 <ul>
-                    <li><strong>«Команда не распознана»</strong>. Вы используете команду из cmd, которой нет в PowerShell, или опечатались в названии. Введите <code>Get-Command *слово*</code>, чтобы найти правильное название.</li>
-                    <li><strong>«Запуск сценариев отключён»</strong>. Если вы пытаетесь запустить скрипт <code>.ps1</code>, система может выдать ошибку безопасности. В следующем уроке мы научимся это исправлять.</li>
-                    <li><strong>«Вывод команды слишком длинный»</strong>. Используйте конвейер <code>|</code> и команду <code>more</code> (например, <code>Get-Process | more</code>), чтобы листать список постранично.</li>
+                    <li><strong>«Команда не распознана».</strong> Опечатка
+                        или команды нет. Помните: <code>Get-Process</code>
+                        с заглавных, но PowerShell не различает регистр
+                        (<code>get-process</code> тоже работает).
+                        Если не уверены - ищите через
+                        <code>Get-Command *слово*</code>.</li>
+                    <li><strong>«Вывод слишком длинный».</strong> Так
+                        и должно быть. <code>Get-Process</code> на
+                        загруженной системе - это сотни строк.
+                        Используйте <code>Select-Object -First 10</code>
+                        или <code>Format-Table</code> или конвейер
+                        с <code>more</code>.</li>
+                    <li><strong>«После Format-Table ничего не
+                            работает».</strong> Правильно - <code>Format-*</code>
+                        превращает объекты в текст, и дальше работать
+                        не с чем. Всегда ставьте <code>Format-*</code>
+                        последней командой в конвейере.</li>
+                    <li><strong>«Get-Help показывает только базовую
+                            справку».</strong> Полная справка
+                        скачивается отдельно: <code>Update-Help</code>
+                        (от администратора). До этого
+                        <code>Get-Help</code> показывает
+                        минимальную информацию.</li>
+                    <li><strong>«Get-Member ничего не показывает».</strong>
+                        Скорее всего, вы применили его к пустому результату.
+                        Проверьте: <code>Get-Process | Get-Member</code> -
+                        есть ли перед ним команда, возвращающая объекты?
+                        Например, <code>Write-Host | Get-Member</code>
+                        ничего не покажет, потому что <code>Write-Host</code>
+                        не возвращает объекты.</li>
+                    <li><strong>«Get-Command *Process* находит слишком
+                            много».</strong> Шаблон жадный - находит
+                        все совпадения. Сузьте: <code>Get-Command *-Process</code>
+                        (глагол + Process) или <code>Get-Command
+                        -Noun Process</code>.</li>
+                    <li><strong>«Write-Host не передаёт данные
+                            дальше».</strong> Так и задумано.
+                        <code>Write-Host</code> - только для вывода
+                        пользователю. Для передачи по конвейеру -
+                        <code>Write-Output</code> (или просто
+                        значение без команды).</li>
+                    <li><strong>«Get-Verb не работает».</strong>
+                        Работает, но только в PowerShell. В cmd этой
+                        команды нет. Убедитесь, что запущен именно
+                        PowerShell - префикс <code>PS</code> в
+                        приглашении.</li>
                 </ul>
 
-                <p>Если что-то не получается - напишите нам в
+                <p>Если что-то не получается или есть вопрос - напишите в
                     <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
                     разберёмся вместе.
                 </p>
 
                 <h2>Практика</h2>
 
-                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+                <p>Четыре задачи. Первые две - на поиск и справку,
+                    третья и четвёртая - на работу с объектами. Все
+                    задачи безопасные, только чтение.</p>
 
                 <div class="task-list">
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 1. Список процессов</span>
+                            <span>Задача 1. Знакомство с системой</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Откройте PowerShell и выведите список всех запущенных процессов, используя правильное название командлета (а не tasklist).</p>
+                            <p class="task-desc">Откройте PowerShell и
+                                ответьте на три вопроса:</p>
+                            <ol>
+                                <li>Какая у вас версия PowerShell?</li>
+                                <li>Сколько всего командлетов с глаголом
+                                    <code>Get</code>?</li>
+                                <li>Какие команды работают с процессами
+                                    (по существительному
+                                    <code>Process</code>)?</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -216,17 +802,43 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Вспомните формат «Глагол-Существительное». Глагол для получения - <code>Get</code>, а существительное - <code>Process</code>.</p>
+                                    <p>Версия - <code>$PSVersionTable</code>.
+                                        Команды с глаголом -
+                                        <code>Get-Command -Verb Get</code>,
+                                        а чтобы посчитать - добавьте
+                                        <code>| Measure-Object</code>.
+                                        По существительному -
+                                        <code>Get-Command -Noun Process</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">Get-Process</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">$PSVersionTable</span><span class="code-row">PSVersion  5.1.22621.2506</span><span class="code-row">PSEdition  Desktop</span><span class="code-row"></span><span class="code-row">Get-Command -Verb Get | Measure-Object</span><span class="code-row">Count : 287</span><span class="code-row"></span><span class="code-row">Get-Command -Noun Process</span><span class="code-row">CommandType     Name              Version    Source</span><span class="code-row">-----------     ----              -------    ------</span><span class="code-row">Cmdlet          Debug-Process</span><span class="code-row">Cmdlet          Get-Process</span><span class="code-row">Cmdlet          Start-Process</span><span class="code-row">Cmdlet          Stop-Process</span><span class="code-row">Cmdlet          Wait-Process</span></code></pre>
+                                    <p>Что вы узнали:</p>
+                                    <ul>
+                                        <li>Версия 5.1 - стандартная
+                                            Windows PowerShell.
+                                            Если бы было 7.x - это
+                                            PowerShell Core.</li>
+                                        <li>Командлетов с глаголом
+                                            <code>Get</code> около 287 -
+                                            очень много возможностей.</li>
+                                        <li>С процессами работают пять
+                                            команд: получить, запустить,
+                                            остановить, ждать, отладить.
+                                            Запомните эти пять -
+                                            они пригодятся.</li>
+                                    </ul>
+                                    <p>Если хотите полный список всех
+                                        командлетов (не только с
+                                        глаголом <code>Get</code>):
+                                        <code>Get-Command -CommandType Cmdlet</code>.
+                                        Их обычно 1500-2000.</p>
                                 </div>
                             </details>
                         </div>
@@ -238,7 +850,17 @@
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Узнайте, какие параметры есть у команды <code>Get-Service</code> (получение служб Windows).</p>
+                            <p class="task-desc">Изучите команду
+                                <code>Get-Service</code> через справку:</p>
+                            <ol>
+                                <li>Откройте примеры использования
+                                    (<code>-Examples</code>).</li>
+                                <li>Посмотрите все параметры
+                                    (<code>-Full</code>).</li>
+                                <li>Найдите, как отфильтровать службы
+                                    по имени (например, только те,
+                                    что начинаются с «win»).</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -246,17 +868,46 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте команду <code>Get-Help</code>.</p>
+                                    <p>Параметр <code>-Name</code> принимает
+                                        шаблоны с <code>*</code>:
+                                        <code>Get-Service -Name "win*"</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">Get-Help Get-Service</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">Get-Help Get-Service -Examples</span><span class="code-row"></span><span class="code-row">Get-Help Get-Service -Full</span><span class="code-row"></span><span class="code-row">Get-Service -Name "win*"</span><span class="code-row">Status   Name               DisplayName</span><span class="code-row">------   ----               -----------</span><span class="code-row">Running  WinDefend          Windows Defender...</span><span class="code-row">Running  Winmgmt            Windows Management...</span><span class="code-row">Running  WlanSvc            WLAN AutoConfig</span><span class="code-row">Running  wuauserv           Windows Update</span></code></pre>
+                                    <p>Что показала справка:</p>
+                                    <ul>
+                                        <li><strong>-Examples</strong> -
+                                            в примерах видно, что
+                                            <code>-Name</code> принимает
+                                            шаблоны. И что можно
+                                            фильтровать через
+                                            <code>Where-Object</code>.</li>
+                                        <li><strong>-Full</strong> -
+                                            десятки параметров, но
+                                            реально используются
+                                            3-4: <code>-Name</code>,
+                                            <code>-DisplayName</code>,
+                                            <code>-DependentServices</code>,
+                                            <code>-RequiredServices</code>.</li>
+                                        <li><strong>Get-Service -Name
+                                                "win*"</strong> - нашёл
+                                            четыре службы с именами,
+                                            начинающимися на «win».
+                                            Аналогично можно
+                                            <code>*update*</code> - все
+                                            службы, где встречается
+                                            «update».</li>
+                                    </ul>
+                                    <p>Это ключевой навык: не запоминать
+                                        параметры, а уметь их
+                                        находить через справку.</p>
                                 </div>
                             </details>
                         </div>
@@ -264,11 +915,27 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Поиск по командам</span>
+                            <span>Задача 3. Изучите объект процесса</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Найдите все команды PowerShell, в названии которых есть слово «Date» (дата).</p>
+                            <p class="task-desc">Разберитесь, из чего
+                                состоит объект процесса:</p>
+                            <ol>
+                                <li>Выполните
+                                    <code>Get-Process | Get-Member</code>
+                                    и посмотрите, какие свойства есть
+                                    у процесса.</li>
+                                <li>Найдите как минимум три свойства,
+                                    которые вам интересны - например,
+                                    <code>CPU</code>, <code>WorkingSet</code>,
+                                    <code>Path</code>.</li>
+                                <li>Проверьте, есть ли метод
+                                    <code>Kill</code> - и что он делает.</li>
+                                <li>Выполните
+                                    <code>Get-Process | Get-Member -MemberType Method</code> -
+                                    сколько методов у процесса?</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -276,18 +943,58 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте <code>Get-Command</code> и маску со звёздочками: <code>*Date*</code>.</p>
+                                    <p>В <code>Get-Member</code> колонка
+                                        <code>MemberType</code> показывает
+                                        тип: <code>Property</code> -
+                                        свойство, <code>Method</code> -
+                                        метод. У процесса десятки свойств
+                                        и методов.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">Get-Command *Date*</span></code></pre>
-                                    <p>Вы увидите команду <code>Get-Date</code>, которую мы использовали в первом уроке.</p>
+                                    <pre class="code-numbered"><code><span class="code-row">Get-Process | Get-Member</span><span class="code-row">   TypeName: System.Diagnostics.Process</span><span class="code-row"></span><span class="code-row">Name           MemberType     Definition</span><span class="code-row">----           ----------     ----------</span><span class="code-row">Id             Property       int Id {get;}</span><span class="code-row">Name           Property       string Name {get;}</span><span class="code-row">CPU            Property       double CPU {get;}</span><span class="code-row">WorkingSet     Property       long WorkingSet {get;}</span><span class="code-row">Path           Property       string Path {get;}</span><span class="code-row">StartTime      Property       datetime StartTime {get;}</span><span class="code-row">Kill           Method         void Kill()</span><span class="code-row">Refresh        Method         void Refresh()</span><span class="code-row">WaitForExit    Method         bool WaitForExit(int)</span><span class="code-row">...</span><span class="code-row"></span><span class="code-row">Get-Process | Get-Member -MemberType Method</span><span class="code-row"># покажет около 20 методов</span></code></pre>
+                                    <p>Что интересного:</p>
+                                    <ul>
+                                        <li><strong>Id</strong> - PID.
+                                            То же, что в
+                                            <code>tasklist</code>.</li>
+                                        <li><strong>CPU</strong> - сколько
+                                            секунд процессорного времени
+                                            потратил. Помогает найти
+                                            «прожорливые» процессы.</li>
+                                        <li><strong>WorkingSet</strong> -
+                                            память в байтах. Делите на
+                                            1 МБ - получаете мегабайты.</li>
+                                        <li><strong>Path</strong> -
+                                            путь к исполняемому
+                                            файлу. Полезно проверить,
+                                            откуда запущена
+                                            программа.</li>
+                                        <li><strong>StartTime</strong> -
+                                            когда процесс запущен.
+                                            Иногда важно: если
+                                            подозрительный процесс
+                                            запущен в 3 часа ночи -
+                                            повод проверить.</li>
+                                        <li><strong>Kill()</strong> -
+                                            метод убить. Прямой
+                                            аналог
+                                            <code>Stop-Process</code>,
+                                            но работает с одним
+                                            конкретным объектом.</li>
+                                    </ul>
+                                    <p>Метод <code>Kill</code> в
+                                        PowerShell используют редко -
+                                        чаще <code>Stop-Process</code>.
+                                        Но знать, что он есть, полезно:
+                                        это часть понимания, как
+                                        устроены объекты.</p>
                                 </div>
                             </details>
                         </div>
@@ -295,11 +1002,22 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Алиасы</span>
+                            <span>Задача 4. Практика конвейеров</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Проверьте, какой настоящей команде PowerShell соответствует привычная команда <code>dir</code>. Используйте <code>Get-Command dir</code> или <code>Get-Alias dir</code>.</p>
+                            <p class="task-desc">Соберите несколько команд
+                                в цепочку:</p>
+                            <ol>
+                                <li>Топ-5 процессов по памяти.</li>
+                                <li>Все процессы, использующие больше
+                                    100 МБ памяти
+                                    (<code>Where-Object WorkingSet -gt 100MB</code>).</li>
+                                <li>Сколько всего процессов работает
+                                    в системе?</li>
+                                <li>Сколько памяти занимают все
+                                    процессы вместе (в мегабайтах)?</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -307,18 +1025,52 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Введите <code>Get-Alias dir</code>. В колонке Definition будет указано настоящее имя.</p>
+                                    <p>Топ-5 - <code>Sort-Object</code> +
+                                        <code>Select-Object -First 5</code>.
+                                        Сумма - <code>Measure-Object -Sum</code>.
+                                        Количество - <code>Measure-Object</code>
+                                        без ключей.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">Get-Alias dir</span></code></pre>
-                                    <p>Вы увидите, что <code>dir</code> - это алиас для <code>Get-ChildItem</code>.</p>
+                                    <pre class="code-numbered"><code><span class="code-row">Get-Process | Sort-Object WorkingSet -Descending | Select-Object -First 5 Name, WorkingSet</span><span class="code-row"></span><span class="code-row">Name           WorkingSet</span><span class="code-row">----           ----------</span><span class="code-row">chrome         1234567890</span><span class="code-row">Code           456789012</span><span class="code-row">explorer       123456789</span><span class="code-row">svchost        98765432</span><span class="code-row">Teams          87654321</span><span class="code-row"></span><span class="code-row">Get-Process | Where-Object WorkingSet -gt 100MB | Select-Object Name, WorkingSet</span><span class="code-row"></span><span class="code-row">Get-Process | Measure-Object</span><span class="code-row">Count    : 247</span><span class="code-row"></span><span class="code-row">Get-Process | Measure-Object WorkingSet -Sum</span><span class="code-row">Count    : 247</span><span class="code-row">Sum      : 45678901234</span></code></pre>
+                                    <p>Что тут важно:</p>
+                                    <ul>
+                                        <li><strong>Топ-5 по памяти</strong>
+                                            - самый частый запрос
+                                            при диагностике. Chrome,
+                                            VS Code, Teams и svchost -
+                                            типичные лидеры.</li>
+                                        <li><strong>Фильтр по памяти</strong>
+                                            показывает только те
+                                            процессы, что едят больше
+                                            100 МБ. Мелкие процессы
+                                            отфильтрованы, легче
+                                            смотреть.</li>
+                                        <li><strong>Measure-Object</strong>
+                                            без ключей даёт количество
+                                            процессов.</li>
+                                        <li><strong>Sum</strong>
+                                            в байтах - большое
+                                            число. Разделите на
+                                            1 ГБ (1073741824) - получите
+                                            гигабайты. Если суммарно
+                                            занимает 12 из 16 ГБ -
+                                            система на грани.</li>
+                                    </ul>
+                                    <p>Комбинации конвейеров -
+                                        главная сила PowerShell.
+                                        В уроке 8 разберём это
+                                        подробнее: как строить
+                                        сложные цепочки, как
+                                        обрабатывать ошибки,
+                                        как писать свои функции.</p>
                                 </div>
                             </details>
                         </div>
@@ -328,15 +1080,52 @@
 
                 <h2>Что мы узнали и что дальше</h2>
 
-                <p>Вы прикоснулись к миру современной автоматизации Windows. Теперь вы знаете:</p>
-                <ul>
-                    <li>Чем PowerShell отличается от cmd.</li>
-                    <li>Что такое командлеты и почему у них формат «Глагол-Существительное».</li>
-                    <li>Как получить справку с помощью <code>Get-Help</code>.</li>
-                    <li>Как искать команды через <code>Get-Command</code>.</li>
-                </ul>
+                <p>Познакомились с PowerShell - современной оболочкой Windows,
+                    которая заменяет cmd во всех новых задачах. Поняли главное
+                    отличие: <strong>cmd работает с текстом, PowerShell -
+                        с объектами</strong>. Разница кажется абстрактной,
+                    но она меняет всё: с объектами можно сортировать,
+                    фильтровать, выбирать нужные свойства.</p>
 
-                <p>В следующем, финальном уроке мы научимся писать собственные <strong>скрипты в PowerShell</strong>. Вы узнаете, как создавать переменные, использовать конвейеры и автоматизировать задачи, которые в cmd требовали десятков строк кода. До встречи!</p>
+                <p>Разобрались с <strong>командлетами</strong> - командами
+                    формата «Глагол-Существительное». Узнали основные
+                    глаголы (<code>Get</code>, <code>Set</code>,
+                    <code>New</code>, <code>Remove</code>, <code>Start</code>,
+                    <code>Stop</code>, <code>Test</code>) и научились
+                    исследовать систему через <code>Get-Verb</code>.</p>
+
+                <p>Освоили <strong>два ключевых инструмента</strong>:
+                    <code>Get-Command</code> для поиска команд (по шаблону,
+                    глаголу, существительному) и <code>Get-Help</code>
+                    для получения справки (с ключами <code>-Examples</code>,
+                    <code>-Full</code>, <code>-Online</code>).
+                    А главное - <code>Get-Member</code>, который показывает,
+                    из чего состоит объект, и открывает всю мощь
+                    PowerShell.</p>
+
+                <p>Научились обрабатывать объекты: <code>Select-Object</code>
+                    (выбрать свойства), <code>Sort-Object</code> (сортировка),
+                    <code>Where-Object</code> (фильтрация),
+                    <code>Measure-Object</code> (подсчёт и статистика).
+                    И разобрались с форматированием:
+                    <code>Format-Table</code>, <code>Format-List</code>,
+                    <code>Format-Wide</code> - с важным правилом, что
+                    <code>Format-*</code> должны идти последними
+                    в конвейере.</p>
+
+                <p>Поняли разницу между <code>Write-Host</code> (для
+                    пользователя) и <code>Write-Output</code> (для
+                    конвейера). Узнали, как проверить версию PowerShell
+                    через <code>$PSVersionTable</code>, и что PowerShell
+                    понимает большинство cmd-команд через алиасы.</p>
+
+                <p>В следующем уроке займёмся <strong>основами скриптов
+                        в PowerShell</strong>. Разберёмся с переменными,
+                    условными операторами, циклами и функциями. Узнаем,
+                    что такое execution policy и как запускать свои
+                    скрипты. А в уроке 8 - углубимся в продвинутые
+                    возможности: работу с объектами, обработку ошибок
+                    и лучшие практики.</p>
 
                 <div class="lesson-actions">
                     <a href="lesson-05.html" class="btn-secondary">

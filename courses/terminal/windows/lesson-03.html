@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Работа с файлами и папками - CodeRush</title>
+    <title>Работа с файлами и папками - Терминал - CodeRush</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
     <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
@@ -94,6 +96,11 @@
                             <span>Основы скриптов в PowerShell</span>
                             <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
                         </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Продвинутый PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
                     </div>
                 </div>
             </aside>
@@ -101,79 +108,394 @@
             <article class="lesson-content">
                 <h1>Работа с файлами и папками</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
                     <span><i class="ph ph-windows-logo"></i> Windows</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
 
-                <p>В прошлом уроке мы научились перемещаться по файловой системе. Но что, если нам нужно не просто посмотреть, а что-то создать или изменить? Представьте, что вы переехали в новую квартиру. Сначала вы расставляете мебель (создаёте папки), потом раскладываете вещи (копируете файлы), а иногда выбрасываете мусор (удаляете лишнее).</p>
+                <p>В прошлых уроках мы научились перемещаться по файловой системе и смотреть,
+                    что в ней есть. Но смотреть - это только половина дела. Настоящая работа
+                    начинается, когда мы <strong>создаём</strong> файлы, <strong>копируем</strong>,
+                    <strong>переименовываем</strong> и <strong>удаляем</strong>. Именно этим
+                    и займёмся сегодня.</p>
 
-                <p>Сегодня мы научимся делать всё это прямо из терминала.</p>
+                <p>Осторожно: часть команд из этого урока <strong>необратимо меняют файловую
+                        систему</strong>. Удалённый через терминал файл не попадает в корзину -
+                    он исчезает навсегда. Поэтому сначала разберёмся с правилами безопасности,
+                    а потом уже будем действовать.</p>
 
-                <h2>Создание папок: mkdir</h2>
+                <h2>Правила безопасности</h2>
 
-                <p>Команда <code>mkdir</code> (make directory) создаёт новую папку. Это как построить новую комнату в доме.</p>
+                <p>Три простых правила, которые спасут вас от потери данных.</p>
 
-                <pre class="code-numbered"><code><span class="code-row">mkdir NewProject</span></code></pre>
+                <h3>Правило 1: сначала проверь, потом делай</h3>
 
-                <p>Эта команда создаст папку <code>NewProject</code> в текущей директории. Если папка уже существует, терминал выдаст ошибку.</p>
+                <p>Перед любой командой, которая меняет файлы, посмотрите <code>cd</code>
+                    (или <code>pwd</code>) и <code>dir</code>. Вы точно в той папке? Вы
+                    точно понимаете, что будете менять? Ошибка в один символ может стоить
+                    дня работы.</p>
 
-                <p>Можно создать сразу несколько папок через пробел:</p>
-                <pre class="code-numbered"><code><span class="code-row">mkdir folder1 folder2 folder3</span></code></pre>
+                <h3>Правило 2: следи за пробелами и кавычками</h3>
 
-                <p>А если добавить флаг <code>/p</code>, можно создавать вложенные папки, даже если родительских ещё нет:</p>
-                <pre class="code-numbered"><code><span class="code-row">mkdir /p Projects\CodeRush\Lessons</span></code></pre>
+                <p><code>del my file.txt</code> попытается удалить два файла: <code>my</code>
+                    и <code>file.txt</code>. А <code>del "my file.txt"</code> - один
+                    файл с пробелом в имени. Разница критична. Если в имени есть
+                    пробел - всегда берите в кавычки.</p>
 
-                <h2>Копирование файлов: copy</h2>
+                <h3>Правило 3: проверяй wildcard перед удалением</h3>
 
-                <p>Команда <code>copy</code> копирует файл из одного места в другое. Вы как будто делаете ксерокопию документа.</p>
-
-                <pre class="code-numbered"><code><span class="code-row">copy file.txt D:\Backup\file.txt</span></code></pre>
-
-                <p>Эта команда скопирует файл <code>file.txt</code> в папку <code>D:\Backup</code>. Если папки назначения нет, будет ошибка.</p>
-
-                <p>Также можно копировать файлы по маске (все файлы с расширением .txt):</p>
-                <pre class="code-numbered"><code><span class="code-row">copy *.txt D:\Backup\</span></code></pre>
-
-                <h2>Перемещение файлов: move</h2>
-
-                <p>Команда <code>move</code> не копирует, а перемещает файл. Это как взять вещь и переставить её в другой шкаф. Исходный файл исчезает.</p>
-
-                <pre class="code-numbered"><code><span class="code-row">move file.txt D:\Archive\file.txt</span></code></pre>
-
-                <p>Этой же командой можно переименовать файл:</p>
-                <pre class="code-numbered"><code><span class="code-row">move old_name.txt new_name.txt</span></code></pre>
-
-                <h2>Удаление файлов: del</h2>
-
-                <p>Команда <code>del</code> (delete) удаляет файлы. Будьте осторожны: в терминале нет «Корзины», файлы удаляются безвозвратно.</p>
-
-                <pre class="code-numbered"><code><span class="code-row">del file.txt</span></code></pre>
-
-                <p>Если добавить флаг <code>/f</code>, можно удалить файл, доступный только для чтения.</p>
-                <pre class="code-numbered"><code><span class="code-row">del /f read_only.txt</span></code></pre>
-
-                <h2>Удаление папок: rmdir</h2>
-
-                <p>Для удаления папок используется команда <code>rmdir</code> (remove directory).</p>
-
-                <pre class="code-numbered"><code><span class="code-row">rmdir EmptyFolder</span></code></pre>
-
-                <p>Эта команда удалит папку, только если она <strong>пуста</strong>. Если внутри есть файлы, терминал выдаст ошибку.</p>
-
-                <p>Чтобы удалить папку вместе со всем содержимым, используется флаг <code>/s</code>:</p>
-                <pre class="code-numbered"><code><span class="code-row">rmdir /s OldFolder</span></code></pre>
-
-                <p>Терминал спросит подтверждение. Если добавить флаг <code>/q</code> (quiet), он удалит всё без лишних вопросов:</p>
-                <pre class="code-numbered"><code><span class="code-row">rmdir /s /q OldFolder</span></code></pre>
+                <p>Команда <code>del *</code> удаляет <strong>все файлы в текущей
+                    папке</strong>. А <code>rd /s /q папка</code> - папку со всем
+                    содержимым без подтверждения. Перед использованием wildcard
+                    (символов <code>*</code> и <code>?</code>) сначала выполните
+                    <code>dir *</code> - посмотрите, что попадёт под действие.</p>
 
                 <div class="callout">
                     <div class="callout-title">
                         <i class="ph ph-warning"></i>
-                        Будьте осторожны!
+                        Корзины нет
                     </div>
-                    <p>Команда <code>rmdir /s /q</code> удаляет папку со всем содержимым без подтверждения. Внимательно проверяйте путь перед нажатием Enter. Восстановить данные будет крайне сложно.</p>
+                    <p>В отличие от проводника Windows, терминал не отправляет файлы
+                        в корзину. <code>del</code> и <code>rd</code> удаляют сразу.
+                        Восстановить потом можно специальными утилитами, но не всегда
+                        успешно. Относитесь к удалению как к безвозвратному
+                        действию.</p>
                 </div>
+
+                <h2>Создание папок: mkdir и md</h2>
+
+                <p>Команда <code>mkdir</code> (make directory) создаёт новую папку.
+                    В Windows работает и короткий алиас <code>md</code> - они
+                    эквивалентны.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">mkdir NewProject</span></code></pre>
+
+                <p>Создали папку <code>NewProject</code> в текущей директории. Если
+                    такая папка уже есть, команда не выдаст ошибку, но и новую не
+                    создаст - просто проигнорирует.</p>
+
+                <p>Можно создать несколько папок сразу:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">mkdir html css js</span></code></pre>
+
+                <p>Появятся три папки в текущем каталоге. Удобно при создании структуры
+                    проекта.</p>
+
+                <h3>Вложенные папки</h3>
+
+                <p>Обычная <code>mkdir a\b\c</code> сработает только если папка
+                    <code>a</code> уже существует. Чтобы создать всю цепочку
+                    с нуля, нужен ключ <code>/p</code> (в cmd) - его ещё называют
+                    «parents»:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">mkdir /p Projects\MyApp\src</span></code></pre>
+
+                <p>Теперь в текущей папке есть <code>Projects</code>, а в ней -
+                    <code>MyApp</code>, а в ней - <code>src</code>. Одна команда -
+                    три уровня вложенности. Очень удобно при развёртывании
+                    структуры нового проекта.</p>
+
+                <p>В PowerShell <code>mkdir</code> - это алиас на <code>New-Item</code>,
+                    и он умеет создавать вложенные папки без всяких ключей:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">mkdir Projects\MyApp\src</span></code></pre>
+
+                <h2>Создание файлов</h2>
+
+                <p>Для создания пустого файла в cmd есть несколько способов. Самый
+                    простой - перенаправление вывода в несуществующий файл:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">type nul &gt; empty.txt</span></code></pre>
+
+                <p><code>type nul</code> - это «ничего не вывести». Знак <code>&gt;</code>
+                    перенаправляет этот пустой вывод в файл. Результат - пустой
+                    файл <code>empty.txt</code>. Если файл уже был - он
+                    перезапишется (станет пустым).</p>
+
+                <p>А если нужен файл с содержимым:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">echo Привет, мир! &gt; hello.txt</span></code></pre>
+
+                <p>В файл <code>hello.txt</code> запишется «Привет, мир!» - и вы сразу
+                    увидите его через <code>type hello.txt</code> (о команде
+                    <code>type</code> чуть ниже).</p>
+
+                <p>Знак <code>&gt;</code> перезаписывает файл. Знак <code>&gt;&gt;</code>
+                    (двойной) дописывает в конец, не стирая старое:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">echo Вторая строка &gt;&gt; hello.txt</span></code></pre>
+
+                <p>Теперь в файле две строки. Это удобный способ вести лог или
+                    накапливать данные без редактора.</p>
+
+                <p>В PowerShell файл создаётся ещё проще - командой
+                    <code>New-Item</code> (алиас <code>ni</code>):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">New-Item -Path "empty.txt" -ItemType File</span></code></pre>
+
+                <h2>Чтение файлов: type и more</h2>
+
+                <p>Прежде чем что-то менять, полезно уметь читать. В cmd для этого
+                    есть <code>type</code> - прямой аналог <code>cat</code>
+                    в Linux:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">type hello.txt</span><span class="code-row">Привет, мир!</span><span class="code-row">Вторая строка</span></code></pre>
+
+                <p>Выводит содержимое файла в терминал. Просто и понятно.</p>
+
+                <p>Минус: если файл длинный (например, лог на тысячи строк) - содержимое
+                    пронесётся перед глазами и останется только конец. Для больших
+                    файлов используют <code>more</code> - постраничный просмотр:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">type bigfile.txt | more</span></code></pre>
+
+                <p>Вертикальная черта <code>|</code> - это конвейер, о котором
+                    подробно в уроке 8. Пока просто запомните: она передаёт
+                    вывод <code>type</code> в <code>more</code>, и тот показывает
+                    по одному экрану за раз. Листать - <code>Space</code>,
+                    выйти - <code>Q</code>.</p>
+
+                <p>В PowerShell <code>type</code> работает как алиас на
+                    <code>Get-Content</code>, а для постраничного просмотра
+                    удобнее <code>more</code> или <code>Out-Host -Paging</code>.</p>
+
+                <h2>Копирование: copy</h2>
+
+                <p>Команда <code>copy</code> копирует файл из одного места в другое.
+                    Исходный файл остаётся на месте.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">copy file.txt D:\Backup\file.txt</span></code></pre>
+
+                <p>Скопировали файл <code>file.txt</code> в <code>D:\Backup</code>.
+                    Если папки назначения нет - будет ошибка.</p>
+
+                <p>Можно не указывать новое имя - тогда сохранится исходное:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">copy file.txt D:\Backup\</span></code></pre>
+
+                <p>А можно, наоборот, скопировать с новым именем в ту же папку:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">copy file.txt file-backup.txt</span></code></pre>
+
+                <h3>Wildcards</h3>
+
+                <p>Копировать можно по маске. Это называется <strong>wildcard</strong> -
+                    шаблон с символами <code>*</code> и <code>?</code>:</p>
+
+                <ul>
+                    <li><code>*</code> - любое количество любых символов.</li>
+                    <li><code>?</code> - ровно один любой символ.</li>
+                </ul>
+
+                <pre class="code-numbered"><code><span class="code-row">copy *.txt D:\Backup\</span></code></pre>
+
+                <p>Скопирует все файлы с расширением <code>.txt</code>. А так:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">copy report?.txt D:\Backup\</span></code></pre>
+
+                <p>Скопирует файлы <code>report1.txt</code>, <code>report2.txt</code>,
+                    <code>reportA.txt</code> - любые с одним символом перед
+                    <code>.txt</code>. Файл <code>report10.txt</code> не
+                    попадёт - там два символа.</p>
+
+                <h3>Перезапись: ключ /Y</h3>
+
+                <p>По умолчанию, если файл назначения уже существует, <code>copy</code>
+                    спросит подтверждение: «Перезаписать? Y/N». Ключ <code>/Y</code>
+                    отключает этот вопрос - перезаписывает без подтверждения:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">copy /Y file.txt D:\Backup\</span></code></pre>
+
+                <p>Удобно в скриптах. Но в ручной работе лучше без <code>/Y</code>:
+                    случайно перезаписать важный файл очень легко.</p>
+
+                <h3>Копирование папок: xcopy</h3>
+
+                <p>У <code>copy</code> есть важное ограничение: он не копирует папки
+                    целиком. Только файлы. Для папок есть отдельная команда
+                    <code>xcopy</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">xcopy source_folder target_folder /E /I</span></code></pre>
+
+                <p>Ключи:</p>
+                <ul>
+                    <li><code>/E</code> - включить все подпапки, включая пустые.</li>
+                    <li><code>/I</code> - если <code>target_folder</code> не существует,
+                        считать его папкой, а не спрашивать.</li>
+                </ul>
+
+                <p>Без этих ключей <code>xcopy</code> копирует только файлы из
+                    верхнего уровня исходной папки. С <code>/E</code> - всю
+                    структуру целиком.</p>
+
+                <p>В PowerShell копирование папок проще - <code>Copy-Item</code>
+                    с ключом <code>-Recurse</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Copy-Item source_folder -Destination target_folder -Recurse</span></code></pre>
+
+                <h2>Перемещение и переименование: move и ren</h2>
+
+                <p>Для перемещения файла в другое место используется <code>move</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">move file.txt D:\Archive\file.txt</span></code></pre>
+
+                <p>Файл исчезнет из текущей папки и появится в <code>D:\Archive</code>.
+                    В отличие от <code>copy</code>, исходного файла больше нет.</p>
+
+                <p>Если новое имя не указано - сохранится старое:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">move file.txt D:\Archive\</span></code></pre>
+
+                <h3>Переименование: ren</h3>
+
+                <p>Отдельная команда для переименования - <code>ren</code> (или
+                    <code>rename</code>):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ren old_name.txt new_name.txt</span></code></pre>
+
+                <p>Файл <code>old_name.txt</code> теперь называется
+                    <code>new_name.txt</code>. Содержимое не изменилось,
+                    только имя.</p>
+
+                <p>Команда <code>ren</code> работает и с папками:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ren OldFolder NewFolder</span></code></pre>
+
+                <p>Важно: <code>ren</code> переименовывает в <em>той же папке</em>,
+                    где находится файл. Путь ко второму имени не нужен. Если
+                    хочется переименовать и переместить одновременно -
+                    используйте <code>move</code>.</p>
+
+                <p>В PowerShell <code>move</code> - алиас на <code>Move-Item</code>,
+                    <code>ren</code> - на <code>Rename-Item</code>. Работают так же,
+                    как в cmd.</p>
+
+                <h2>Удаление файлов: del</h2>
+
+                <p>Команда <code>del</code> (или <code>erase</code>) удаляет файлы.
+                    Без корзины, без подтверждения.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">del file.txt</span></code></pre>
+
+                <p>Файл исчез. Можно удалить несколько сразу:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">del a.txt b.txt c.txt</span></code></pre>
+
+                <h3>По маске</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">del *.tmp</span></code></pre>
+
+                <p>Удалит все файлы <code>.tmp</code> в текущей папке.
+                    Перед этим обязательно проверьте:
+                    <code>dir *.tmp</code> - что попадёт под действие.</p>
+
+                <h3>Удаление во вложенных папках: /s</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">del /s *.bak</span></code></pre>
+
+                <p>Ключ <code>/s</code> - удалить во всех подпапках рекурсивно.
+                    Осторожно: <code>del /s *</code> из корня диска снесёт
+                    практически всё.</p>
+
+                <h3>Файлы только для чтения: /f</h3>
+
+                <p>Если файл помечен атрибутом «только чтение», <code>del</code>
+                    откажется его удалять. Ключ <code>/f</code> (force) снимает
+                    это ограничение:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">del /f readonly.txt</span></code></pre>
+
+                <h3>Без подтверждения: /q</h3>
+
+                <p>При удалении по маске <code>del</code> может спрашивать
+                    подтверждение «Удалить? Y/N» для каждого файла. Ключ
+                    <code>/q</code> (quiet) отключает эти вопросы:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">del /q *.tmp</span></code></pre>
+
+                <p>Используйте только когда точно уверены, что удаляете то, что
+                    планировали.</p>
+
+                <h2>Удаление папок: rmdir и rd</h2>
+
+                <p>Для папок - <code>rmdir</code> (или короткий алиас <code>rd</code>):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">rmdir EmptyFolder</span></code></pre>
+
+                <p>Удалит папку, только если она <strong>пустая</strong>. Если внутри
+                    есть файлы - ошибка.</p>
+
+                <p>Чтобы удалить папку со всем содержимым, нужен ключ <code>/s</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">rmdir /s OldFolder</span></code></pre>
+
+                <p>Терминал спросит подтверждение: «Удалить папку и всё её содержимое?
+                    Y/N». Ключ <code>/q</code> убирает этот вопрос:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">rmdir /s /q OldFolder</span></code></pre>
+
+                <p>Именно эта команда используется в скриптах и в инструкциях
+                    «как удалить папку одной командой». Она радикальна: удаляет
+                    всё без единого вопроса.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Опасная комбинация
+                    </div>
+                    <p><code>rmdir /s /q</code> удаляет папку со всем содержимым
+                        без подтверждения. Ошибка в пути = потеря данных.
+                        Всегда перед такой командой делайте <code>dir</code>
+                        по нужной папке - убедитесь, что удаляете именно её.
+                        И никогда не запускайте <code>rmdir /s /q</code> от
+                        корня диска (<code>C:\</code>, <code>D:\</code>) -
+                        это снесёт всё.</p>
+                </div>
+
+                <h2>Атрибуты файлов: attrib</h2>
+
+                <p>Иногда файл не удаляется или не перезаписывается, хотя должен.
+                    Причина часто в <strong>атрибутах</strong> - специальных флагах,
+                    которые управляют поведением файла.</p>
+
+                <p>Основные атрибуты:</p>
+                <ul>
+                    <li><strong>R</strong> (Read-only) - только чтение. Нельзя
+                        изменить и не удаляется обычной <code>del</code>.</li>
+                    <li><strong>H</strong> (Hidden) - скрытый. Не виден
+                        в <code>dir</code> без ключа <code>/a</code>.</li>
+                    <li><strong>S</strong> (System) - системный. Обычно
+                        у файлов ОС.</li>
+                    <li><strong>A</strong> (Archive) - архивный. Используется
+                        программами резервного копирования.</li>
+                </ul>
+
+                <p>Посмотреть атрибуты:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">attrib file.txt</span><span class="code-row">A    R     C:\Users\Иван\file.txt</span></code></pre>
+
+                <p>Здесь у файла два атрибута: <code>A</code> (архивный) и
+                    <code>R</code> (только чтение).</p>
+
+                <p>Снять атрибут «только чтение»:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">attrib -R file.txt</span></code></pre>
+
+                <p>Поставить обратно:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">attrib +R file.txt</span></code></pre>
+
+                <p>Скрыть файл от <code>dir</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">attrib +H secret.txt</span></code></pre>
+
+                <p>Показать обратно:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">attrib -H secret.txt</span></code></pre>
+
+                <p>Знание <code>attrib</code> часто спасает: если <code>del</code>
+                    не работает, а вы уверены, что файл существует - скорее
+                    всего, дело в атрибуте <code>R</code> или <code>S</code>.</p>
 
                 <h2>Шпаргалка</h2>
 
@@ -181,60 +503,143 @@
 
                 <ul class="operator-list">
                     <li>
-                        <code>mkdir</code>
+                        <code>mkdir папка</code>
                         <span>создать папку</span>
                     </li>
                     <li>
-                        <code>copy</code>
+                        <code>mkdir /p a\b\c</code>
+                        <span>вложенные папки</span>
+                    </li>
+                    <li>
+                        <code>echo текст &gt; file</code>
+                        <span>создать файл с текстом</span>
+                    </li>
+                    <li>
+                        <code>echo текст &gt;&gt; file</code>
+                        <span>дописать в файл</span>
+                    </li>
+                    <li>
+                        <code>type file</code>
+                        <span>прочитать файл</span>
+                    </li>
+                    <li>
+                        <code>type file | more</code>
+                        <span>постранично</span>
+                    </li>
+                    <li>
+                        <code>copy src dst</code>
                         <span>копировать файл</span>
                     </li>
                     <li>
-                        <code>move</code>
-                        <span>переместить файл</span>
+                        <code>xcopy src dst /E</code>
+                        <span>копировать папку</span>
                     </li>
                     <li>
-                        <code>del</code>
+                        <code>move src dst</code>
+                        <span>переместить</span>
+                    </li>
+                    <li>
+                        <code>ren old new</code>
+                        <span>переименовать</span>
+                    </li>
+                    <li>
+                        <code>del file</code>
                         <span>удалить файл</span>
                     </li>
                     <li>
-                        <code>rmdir</code>
-                        <span>удалить папку</span>
+                        <code>del /s *.tmp</code>
+                        <span>по маске во вложенных</span>
                     </li>
                     <li>
-                        <code>rmdir /s /q</code>
-                        <span>удалить папку со всем содержимым</span>
+                        <code>rd папка</code>
+                        <span>удалить пустую папку</span>
+                    </li>
+                    <li>
+                        <code>rd /s /q папка</code>
+                        <span>удалить со всем содержимым</span>
+                    </li>
+                    <li>
+                        <code>attrib file</code>
+                        <span>атрибуты файла</span>
+                    </li>
+                    <li>
+                        <code>*.txt, report?.txt</code>
+                        <span>маски файлов</span>
                     </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные ошибки при работе с файлами.</p>
+                <p>Типичные ошибки при работе с файлами и папками.</p>
 
                 <ul>
-                    <li><strong>«Файл не найден»</strong>. Вы ошиблись в имени файла или находитесь не в той папке. Используйте <code>dir</code>, чтобы проверить содержимое.</li>
-                    <li><strong>«Отказано в доступе»</strong>. Вы пытаетесь удалить или изменить системный файл. Запустите терминал от имени администратора (правая кнопка мыши -> «Запуск от имени администратора»).</li>
-                    <li><strong>«Папка не пуста»</strong>. Вы используете <code>rmdir</code> без флага <code>/s</code> для папки, в которой есть файлы. Добавьте <code>/s</code>.</li>
-                    <li><strong>«Слишком длинное имя файла»</strong>. Windows имеет ограничение на длину пути (около 260 символов). Попробуйте переместить папку ближе к корню диска.</li>
+                    <li><strong>«Файл не найден».</strong> Опечатка в имени или
+                        вы не в той папке. Проверьте <code>dir</code> - что
+                        реально есть в текущей директории. Обратите внимание
+                        на расширения: <code>notes.txt</code> и
+                        <code>notes</code> - разные имена.</li>
+                    <li><strong>«Отказано в доступе».</strong> Одна из трёх причин:
+                        1) файл системный (требуется запуск от администратора),
+                        2) у файла атрибут «только чтение» (снять через
+                        <code>attrib -R</code>), 3) файл занят другой
+                        программой (закройте её).</li>
+                    <li><strong>«Папка не пуста».</strong> Используете
+                        <code>rmdir</code> без <code>/s</code> на папке, внутри
+                        которой есть файлы. Добавьте <code>/s</code>.</li>
+                    <li><strong>«Слишком длинное имя файла».</strong> Windows
+                        имеет ограничение на длину пути - около 260 символов.
+                        Если файл лежит в глубоко вложенной папке, полный путь
+                        может не влезть. Решение: переместите папку ближе
+                        к корню диска или сократите имя.</li>
+                    <li><strong>«Синтаксическая ошибка в имени файла».</strong>
+                        Скорее всего, в пути пробел без кавычек. Возьмите
+                        весь путь в двойные кавычки: <code>copy "C:\Program
+                        Files\file.txt" D:\backup\</code>.</li>
+                    <li><strong><code>del</code> не удаляет файл.</strong>
+                        Проверьте атрибуты: <code>attrib file.txt</code>.
+                        Если стоит <code>R</code> - <code>del /f</code>.
+                        Если <code>S</code> (системный) - запустите терминал
+                        от администратора.</li>
+                    <li><strong><code>copy</code> перезаписал файл без
+                            спроса.</strong> Ключ <code>/Y</code> был указан
+                        или установлен в переменной окружения
+                        <code>COPYCMD</code>. В ручной работе лучше проверять
+                        через <code>dir</code>, существует ли файл назначения.</li>
+                    <li><strong>«Команда rd не работает с непустой папкой».</strong>
+                        Именно так - <code>rd</code> удаляет только пустые.
+                        Для непустых - <code>rd /s</code> (с подтверждением)
+                        или <code>rd /s /q</code> (без).</li>
                 </ul>
 
-                <p>Если что-то не получается - напишите нам в
+                <p>Если что-то не получается или есть вопрос - напишите в
                     <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
                     разберёмся вместе.
                 </p>
 
                 <h2>Практика</h2>
 
-                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+                <p>Четыре задачи. Все действия выполняйте в отдельной папке
+                    (создайте её через <code>mkdir practice</code> и перейдите
+                    в неё), чтобы не задеть ничего важного.</p>
 
                 <div class="task-list">
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 1. Стройка века</span>
+                            <span>Задача 1. Создайте и прочитайте</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Создайте папку с названием <code>TestFolder</code> в вашей текущей директории.</p>
+                            <p class="task-desc">В папке <code>practice</code>:</p>
+                            <ol>
+                                <li>Создайте файл <code>notes.txt</code>
+                                    с текстом «Первая заметка».</li>
+                                <li>Допишите в него вторую строку:
+                                    «Вторая заметка».</li>
+                                <li>Прочитайте файл через <code>type</code>.</li>
+                                <li>Проверьте через <code>dir</code>, что
+                                    размер файла больше нуля.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -242,17 +647,27 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте команду <code>mkdir</code>.</p>
+                                    <p>Создание - <code>echo</code> с
+                                        <code>&gt;</code>. Дописывание -
+                                        <code>echo</code> с <code>&gt;&gt;</code>.
+                                        Чтение - <code>type</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">mkdir TestFolder</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">mkdir practice</span><span class="code-row">cd practice</span><span class="code-row">echo Первая заметка &gt; notes.txt</span><span class="code-row">echo Вторая заметка &gt;&gt; notes.txt</span><span class="code-row">type notes.txt</span><span class="code-row">Первая заметка</span><span class="code-row">Вторая заметка</span><span class="code-row">dir notes.txt</span></code></pre>
+                                    <p>В <code>dir</code> увидите, что размер
+                                        файла - около 30 байт: две строки
+                                        плюс символы перевода строки.
+                                        Если бы вторую строку добавляли
+                                        через <code>&gt;</code> (одинарное) -
+                                        первая бы стёрлась, файл остался бы
+                                        только со второй строкой.</p>
                                 </div>
                             </details>
                         </div>
@@ -260,11 +675,23 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 2. Бэкап важного</span>
+                            <span>Задача 2. Копирование и переименование</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Создайте текстовый файл <code>important.txt</code> с любым содержимым в текущей папке. Скопируйте его в папку <code>TestFolder</code>.</p>
+                            <p class="task-desc">Продолжая с предыдущей задачей:</p>
+                            <ol>
+                                <li>Скопируйте <code>notes.txt</code> в файл
+                                    <code>notes-backup.txt</code>.</li>
+                                <li>Создайте папку <code>archive</code>.</li>
+                                <li>Переместите <code>notes-backup.txt</code>
+                                    в <code>archive</code>.</li>
+                                <li>Переименуйте <code>archive</code>
+                                    в <code>old-notes</code>.</li>
+                                <li>Проверьте через <code>dir</code>
+                                    и <code>dir old-notes</code>, что всё
+                                    на месте.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -272,17 +699,31 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Файл можно создать командой <code>echo текст &gt; important.txt</code>. Затем используйте <code>copy important.txt TestFolder\</code>.</p>
+                                    <p>Копирование - <code>copy</code>,
+                                        перемещение - <code>move</code>,
+                                        переименование - <code>ren</code>.
+                                        Обратите внимание: <code>ren</code>
+                                        для папки не требует пути, только
+                                        новое имя.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">echo "Секретные данные" &gt; important.txt</span><span class="code-row">copy important.txt TestFolder\</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">copy notes.txt notes-backup.txt</span><span class="code-row">mkdir archive</span><span class="code-row">move notes-backup.txt archive\</span><span class="code-row">ren archive old-notes</span><span class="code-row">dir</span><span class="code-row">...  notes.txt  old-notes</span><span class="code-row">dir old-notes</span><span class="code-row">...  notes-backup.txt</span></code></pre>
+                                    <p>Что получилось: в текущей папке остались
+                                        <code>notes.txt</code> (исходный)
+                                        и <code>old-notes</code> (папка).
+                                        Внутри папки - <code>notes-backup.txt</code>.
+                                        Обратите внимание: переименование
+                                        папки через <code>ren</code> не
+                                        требует обратного слэша, а
+                                        перемещение файла в папку -
+                                        требует (<code>archive\</code>).</p>
                                 </div>
                             </details>
                         </div>
@@ -290,11 +731,31 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Переезд</span>
+                            <span>Задача 3. Wildcards и атрибуты</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Переименуйте файл <code>important.txt</code> в <code>archive.txt</code>.</p>
+                            <p class="task-desc">Создайте три файла с разными
+                                расширениями и поработайте с ними:</p>
+                            <ol>
+                                <li>Создайте <code>report1.txt</code>,
+                                    <code>report2.txt</code>,
+                                    <code>report10.txt</code> (любое
+                                    содержимое).</li>
+                                <li>Выполните <code>dir report?.txt</code>
+                                    - какие файлы показаны?</li>
+                                <li>Выполните <code>dir report*.txt</code>
+                                    - в чём разница?</li>
+                                <li>Установите <code>report1.txt</code>
+                                    атрибут «только чтение»
+                                    (<code>attrib +R</code>).</li>
+                                <li>Попробуйте удалить его через
+                                    <code>del report1.txt</code> -
+                                    что произойдёт?</li>
+                                <li>Снимите атрибут
+                                    (<code>attrib -R</code>)
+                                    и удалите нормально.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -302,17 +763,44 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте команду <code>move</code>, указав старое и новое имя файла.</p>
+                                    <p><code>?</code> означает ровно один
+                                        символ, <code>*</code> - любое
+                                        количество. Поэтому
+                                        <code>report?.txt</code> найдёт
+                                        только <code>report1</code>
+                                        и <code>report2</code>, а
+                                        <code>report*.txt</code> - все
+                                        три, включая <code>report10</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">move important.txt archive.txt</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">echo A &gt; report1.txt</span><span class="code-row">echo B &gt; report2.txt</span><span class="code-row">echo C &gt; report10.txt</span><span class="code-row"></span><span class="code-row">dir report?.txt</span><span class="code-row">report1.txt  report2.txt</span><span class="code-row"></span><span class="code-row">dir report*.txt</span><span class="code-row">report1.txt  report2.txt  report10.txt</span><span class="code-row"></span><span class="code-row">attrib +R report1.txt</span><span class="code-row">del report1.txt</span><span class="code-row">Отказано в доступе.</span><span class="code-row"></span><span class="code-row">attrib -R report1.txt</span><span class="code-row">del report1.txt</span></code></pre>
+                                    <p>Что тут важного:</p>
+                                    <ul>
+                                        <li><code>report?.txt</code> нашёл
+                                            только файлы с <em>одним</em>
+                                            символом. <code>report10</code>
+                                            имеет два символа - не подходит.</li>
+                                        <li><code>report*.txt</code> нашёл
+                                            все три - <code>*</code> заменяет
+                                            любое количество символов,
+                                            включая ноль и десять.</li>
+                                        <li>Атрибут <code>R</code> защищает
+                                            файл от удаления - Windows
+                                            не даёт удалить то, что
+                                            помечено «только чтение».
+                                            Это полезно случайно, но
+                                            мешает намеренно.</li>
+                                        <li><code>attrib -R</code> снимает
+                                            защиту, и <code>del</code>
+                                            срабатывает.</li>
+                                    </ul>
                                 </div>
                             </details>
                         </div>
@@ -320,11 +808,27 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Генеральная уборка</span>
+                            <span>Задача 4. Уборка</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Удалите файл <code>archive.txt</code> и папку <code>TestFolder</code> со всем её содержимым.</p>
+                            <p class="task-desc">Аккуратно удалите всё созданное:</p>
+                            <ol>
+                                <li>Перейдите в папку <code>practice</code>
+                                    (если вышли из неё).</li>
+                                <li>Посмотрите через <code>dir /s</code>,
+                                    что внутри - убедитесь, что удаляете
+                                    именно то, что создали.</li>
+                                <li>Удалите папку <code>old-notes</code>
+                                    целиком (со всем содержимым).</li>
+                                <li>Удалите оставшиеся файлы в
+                                    <code>practice</code>.</li>
+                                <li>Вернитесь на уровень выше
+                                    (<code>cd ..</code>) и удалите
+                                    саму папку <code>practice</code>.</li>
+                                <li>Проверьте через <code>dir</code>,
+                                    что от неё ничего не осталось.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -332,17 +836,35 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Для файла используйте <code>del</code>. Для папки - <code>rmdir /s /q</code>.</p>
+                                    <p>Для папки с содержимым -
+                                        <code>rd /s</code>. Для файлов -
+                                        <code>del</code>. Для самой
+                                        <code>practice</code> после
+                                        очистки - <code>rd practice</code>
+                                        (уже пустая, ключ <code>/s</code>
+                                        не нужен).</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">del archive.txt</span><span class="code-row">rmdir /s /q TestFolder</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">cd practice</span><span class="code-row">dir /s</span><span class="code-row">rd /s old-notes</span><span class="code-row">Удалить папку и всё содержимое? Y/N</span><span class="code-row">Y</span><span class="code-row">del notes.txt</span><span class="code-row">del report2.txt</span><span class="code-row">del report10.txt</span><span class="code-row">cd ..</span><span class="code-row">rd practice</span><span class="code-row">dir</span></code></pre>
+                                    <p>Проверка <code>dir /s</code> перед
+                                        удалением - полезная привычка.
+                                        Даже если вы уверены, что в папке,
+                                        лучше ещё раз посмотреть. Пять
+                                        секунд проверки - против часов
+                                        восстановления.</p>
+                                    <p>Обратите внимание: <code>rd /s</code>
+                                        без <code>/q</code> спрашивает
+                                        подтверждение. Это защита от
+                                        случайности. В скриптах используют
+                                        <code>/q</code>, но в ручной работе
+                                        лучше без него.</p>
                                 </div>
                             </details>
                         </div>
@@ -352,15 +874,30 @@
 
                 <h2>Что мы узнали и что дальше</h2>
 
-                <p>Теперь вы можете управлять файлами так же быстро, как заправский хакер из фильмов. Вы узнали:</p>
-                <ul>
-                    <li>Как создавать папки (<code>mkdir</code>).</li>
-                    <li>Как копировать файлы (<code>copy</code>).</li>
-                    <li>Как перемещать и переименовывать файлы (<code>move</code>).</li>
-                    <li>Как удалять файлы (<code>del</code>) и папки (<code>rmdir</code>).</li>
-                </ul>
+                <p>Научились управлять файлами и папками в терминале. Узнали, что
+                    создание, копирование, перемещение и удаление - четыре базовые
+                    операции, без которых немыслима никакая работа. Познакомились
+                    с командами <code>mkdir</code>, <code>copy</code>,
+                    <code>xcopy</code>, <code>move</code>, <code>ren</code>,
+                    <code>del</code> и <code>rd</code>, разобрали их ключи
+                    и типичные ошибки.</p>
 
-                <p>Но терминал умеет работать не только с файлами. Он может управлять программами и процессами, которые запущены в системе. В следующем уроке мы разберём <strong>системные команды</strong>. Вы научитесь смотреть, какие программы сейчас работают, и как их принудительно закрыть, если они зависли. До встречи!</p>
+                <p>Отдельно разобрались с <strong>wildcards</strong> -
+                    масками <code>*</code> и <code>?</code>, которые экономят
+                    время при работе с группами файлов. И с
+                    <strong>атрибутами</strong> через <code>attrib</code> -
+                    почему файл не удаляется и как это исправить.
+                    Научились читать файлы через <code>type</code>
+                    и смотреть большие файлы через <code>more</code>.</p>
+
+                <p>И запомнили три правила безопасности: сначала проверь,
+                    потом делай; следи за пробелами и кавычками; проверяй
+                    wildcard перед удалением.</p>
+
+                <p>В следующем уроке займёмся <strong>системными командами</strong> -
+                    разберёмся с процессами (какие программы работают, как
+                    их завершить), узнаем, как получить полную информацию
+                    о системе, и научимся управлять службами.</p>
 
                 <div class="lesson-actions">
                     <a href="lesson-02.html" class="btn-secondary">

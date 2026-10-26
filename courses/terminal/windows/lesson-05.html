@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сетевые утилиты - CodeRush</title>
+    <title>Сетевые утилиты - Терминал - CodeRush</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
     <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
@@ -94,6 +96,11 @@
                             <span>Основы скриптов в PowerShell</span>
                             <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
                         </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Продвинутый PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
                     </div>
                 </div>
             </aside>
@@ -101,52 +108,516 @@
             <article class="lesson-content">
                 <h1>Сетевые утилиты</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
                     <span><i class="ph ph-windows-logo"></i> Windows</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
 
-                <p>Интернет пропал. Вы открываете браузер, а там ошибка «Нет подключения к интернету». В чём дело? Сломался Wi-Fi роутер, провайдер отключил свет, или просто сайт, на который вы зашли, упал? Терминал может помочь найти виновника за пару секунд.</p>
+                <p>Интернет пропал. Вы открываете браузер, а там - «Нет подключения
+                    к интернету». Что случилось? Сломался Wi-Fi роутер? Провайдер
+                    что-то чинит? Или конкретный сайт лежит, а всё остальное
+                    работает? Пока вы будете открывать-закрывать браузер и тыкать
+                    в настройки, терминал поможет найти ответ за пару секунд.</p>
 
-                <p>Сегодня мы изучим сетевые утилиты. Это как инструменты врача для компьютера: они позволяют поставить диагноз и понять, почему сеть работает плохо.</p>
+                <p>В этом уроке разберём сетевые утилиты Windows - инструменты
+                    диагностики, которые позволяют понять, где именно проблема.
+                    Это как медицинский набор для компьютера: каждый инструмент
+                    отвечает на свой вопрос, а вместе они дают полную картину.</p>
 
-                <h2>Узнаём свой адрес: ipconfig</h2>
+                <h2>Как устроена сеть: немного теории</h2>
 
-                <p>Команда <code>ipconfig</code> (IP Configuration) показывает настройки сетевых адаптеров. Если запустить её без аргументов, вы увидите базовую информацию о вашем подключении.</p>
+                <p>Прежде чем браться за команды, разберёмся с базовыми понятиями.
+                    Без них вывод утилит будет выглядеть как набор непонятных
+                    цифр.</p>
+
+                <h3>IP-адрес</h3>
+
+                <p>У каждого устройства в сети есть <strong>IP-адрес</strong> -
+                    уникальный номер, как почтовый адрес для компьютера. В обычных
+                    домашних сетях используется формат IPv4: четыре числа
+                    от 0 до 255, разделённые точками. Например,
+                    <code>192.168.1.5</code>.</p>
+
+                <p>Адреса бывают двух типов:</p>
+                <ul>
+                    <li><strong>Локальные</strong> - внутри вашей домашней
+                        сети или сети офиса. Обычно начинаются с
+                        <code>192.168.</code> или <code>10.</code>.
+                        У каждого устройства свой, но снаружи его не видно.</li>
+                    <li><strong>Публичные</strong> - «настоящий» адрес в
+                        интернете. Один на всю вашу домашнюю сеть - его
+                        выдаёт провайдер.</li>
+                </ul>
+
+                <h3>DNS</h3>
+
+                <p>Люди запоминают имена сайтов (<code>google.com</code>), а
+                    компьютеры общаются по IP-адресам. <strong>DNS</strong>
+                    (Domain Name System) - это «телефонная книга» интернета,
+                    которая переводит имена в адреса. Когда вы открываете
+                    сайт, компьютер сначала спрашивает у DNS-сервера:
+                    «какой IP у google.com?» - и только потом идёт по
+                    этому адресу.</p>
+
+                <h3>Порт</h3>
+
+                <p>На одном IP-адресе может работать много сервисов сразу.
+                    Чтобы их различать, используется <strong>порт</strong> -
+                    число от 1 до 65535. Например:</p>
+                <ul>
+                    <li><code>80</code> - HTTP (обычный сайт).</li>
+                    <li><code>443</code> - HTTPS (защищённый сайт).</li>
+                    <li><code>22</code> - SSH (удалённое управление).</li>
+                    <li><code>3389</code> - RDP (удалённый рабочий стол).</li>
+                </ul>
+
+                <p>IP-адрес и порт вместе образуют «полный адрес» сервиса:
+                    <code>google.com:443</code> - сайт Google по защищённому
+                    протоколу.</p>
+
+                <h2>Свой адрес: ipconfig</h2>
+
+                <p>Первая команда для диагностики - <code>ipconfig</code>
+                    (IP Configuration). Показывает настройки всех сетевых
+                    адаптеров.</p>
 
                 <pre class="code-numbered"><code><span class="code-row">ipconfig</span></code></pre>
 
-                <p>Здесь самое важное - <strong>IPv4-адрес</strong>. Это уникальный номер вашего компьютера в локальной сети (например, <code>192.168.1.5</code>).</p>
+                <p>Вывод примерно такой:</p>
 
-                <p>Чтобы получить более подробную информацию (включая MAC-адрес и DNS-серверы), используется флаг <code>/all</code>:</p>
+                <pre class="code-numbered"><code><span class="code-row">Адаптер беспроводной локальной сети Беспроводная сеть:</span><span class="code-row"></span><span class="code-row">   DNS-суффикс подключения . . . . . : home</span><span class="code-row">   IPv4-адрес. . . . . . . . . . . . : 192.168.1.5</span><span class="code-row">   Маска подсети . . . . . . . . . . : 255.255.255.0</span><span class="code-row">   Основной шлюз. . . . . . . . . . : 192.168.1.1</span></code></pre>
+
+                <p>Что важно:</p>
+                <ul>
+                    <li><strong>IPv4-адрес</strong> - ваш локальный адрес
+                        в домашней сети.</li>
+                    <li><strong>Основной шлюз</strong> - IP вашего роутера.
+                        Именно через него компьютер выходит в интернет.</li>
+                    <li><strong>Маска подсети</strong> - определяет, какие
+                        адреса «свои», а какие - «чужие». Для домашних
+                        сетей всегда <code>255.255.255.0</code>.</li>
+                </ul>
+
+                <h3>Подробная информация: /all</h3>
 
                 <pre class="code-numbered"><code><span class="code-row">ipconfig /all</span></code></pre>
 
-                <p>А если вы сменили сеть (например, подключились к другому Wi-Fi) и интернет не работает, часто помогает сбросить настройки. Для этого используются команды <code>ipconfig /release</code> (освободить адрес) и <code>ipconfig /renew</code> (запросить новый).</p>
+                <p>Показывает всё: MAC-адрес сетевой карты, DNS-серверы,
+                    DHCP-сервер, время аренды адреса. Полезно, когда нужно
+                    понять, кто выдал вам IP и куда идут DNS-запросы.</p>
+
+                <h3>Обновить IP-адрес: /release и /renew</h3>
+
+                <p>Иногда компьютер «застревает» со старым адресом или
+                    не может получить новый. Помогает «перезагрузка»
+                    сетевых настроек:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ipconfig /release</span><span class="code-row">ipconfig /renew</span></code></pre>
+
+                <p>Первая команда «отпускает» текущий IP-адрес, вторая -
+                    запрашивает новый у роутера. Это первое, что стоит
+                    попробовать, если интернет пропал после смены сети
+                    или перезагрузки роутера.</p>
+
+                <h3>DNS-кеш: /flushdns и /displaydns</h3>
+
+                <p>Когда компьютер узнаёт IP-адрес сайта через DNS, он
+                    запоминает его в <strong>DNS-кеше</strong> - чтобы
+                    в следующий раз не спрашивать заново. Это ускоряет
+                    работу, но иногда приводит к проблемам: сайт переехал
+                    на новый IP, а кеш хранит старый.</p>
+
+                <p>Симптом: сайт не открывается, хотя пинг по IP работает,
+                    и с других устройств всё в порядке. Решение - сбросить
+                    DNS-кеш:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ipconfig /flushdns</span></code></pre>
+
+                <p>Мгновенно очищает кеш. При следующем запросе компьютер
+                    заново спросит у DNS-сервера актуальный адрес.</p>
+
+                <p>Посмотреть, что сейчас в кеше:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ipconfig /displaydns</span></code></pre>
+
+                <p>Покажет список недавно посещённых сайтов и их IP.
+                    Не самое интересное, но иногда помогает понять,
+                    почему браузер упорно лезет не туда.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Когда flushdns спасает
+                    </div>
+                    <p>Типичный сценарий: вы переехали на новый хостинг,
+                        обновили DNS-записи домена, а старый сайт всё
+                        равно открывается - с вашего компьютера. У других
+                        уже новый, у вас - старый. Виноват DNS-кеш.
+                        <code>ipconfig /flushdns</code> решает проблему
+                        за секунду.</p>
+                </div>
 
                 <h2>Проверка связи: ping</h2>
 
-                <p>Команда <code>ping</code> - это ваш главный инструмент диагностики. Она отправляет маленький пакет данных на указанный адрес и ждёт ответа.</p>
+                <p>Основной инструмент диагностики. Отправляет маленький пакет
+                    данных на указанный адрес и ждёт ответа. Если ответ пришёл -
+                    связь есть. Если нет - что-то не так.</p>
 
-                <p>Аналогия: вы кричите в колодец «Эхо!» и слушаете, вернётся ли звук. Если вернётся - связь есть.</p>
+                <p>Аналогия: вы кричите в колодец «Эхо!» и слушаете, вернётся
+                    ли звук. Вернулся - связь есть.</p>
 
                 <pre class="code-numbered"><code><span class="code-row">ping google.com</span></code></pre>
 
-                <p>Если сайт доступен, вы увидите несколько строк с временем ответа (например, <code>time=15ms</code>). Если соединения нет - увидите сообщение «Превышен интервал ожидания для запроса».</p>
+                <p>Вывод:</p>
 
-                <p>По умолчанию <code>ping</code> отправляет 4 пакета и завершается. Чтобы пинговать бесконечно, добавьте флаг <code>-t</code> (остановить можно комбинацией <code>Ctrl+C</code>):</p>
+                <pre class="code-numbered"><code><span class="code-row">Обмен пакетами с google.com [142.250.185.78] с 32 байтами данных:</span><span class="code-row">Ответ от 142.250.185.78: число байт=32 время=15мс TTL=115</span><span class="code-row">Ответ от 142.250.185.78: число байт=32 время=14мс TTL=115</span><span class="code-row">...</span><span class="code-row">Статистика Ping для 142.250.185.78:</span><span class="code-row">    Пакетов: отправлено = 4, получено = 4, потеряно = 0</span></code></pre>
 
-                <pre class="code-numbered"><code><span class="code-row">ping -t 8.8.8.8</span></code></pre>
+                <p>Что важно:</p>
+                <ul>
+                    <li><strong>IP в скобках</strong> - это и есть ответ DNS.
+                        Если тут <code>google.com</code> превратился в IP,
+                        значит, DNS работает.</li>
+                    <li><strong>Ответ от ...</strong> - связь есть.</li>
+                    <li><strong>Время</strong> - задержка ответа в миллисекундах.
+                        Чем меньше, тем лучше. До 50 мс - отлично,
+                        50-150 - нормально, больше 200 - уже «тормозит».</li>
+                    <li><strong>Потеряно 0</strong> - хорошо. Если потеряно
+                        больше - связь нестабильная.</li>
+                </ul>
 
-                <h2>Поиск маршрута: tracert</h2>
+                <h3>Полезные ключи</h3>
 
-                <p>Если <code>ping</code> показывает, что сайт недоступен, нужно понять, <em>где именно</em> обрывается связь. Для этого используется команда <code>tracert</code> (trace route).</p>
+                <ul>
+                    <li><code>ping -n 10 google.com</code> - отправить
+                        <strong>10 пакетов</strong> вместо 4. Полезно,
+                        чтобы оценить стабильность: если из 10 пришло 6 -
+                        связь проблемная.</li>
+                    <li><code>ping -t google.com</code> - пинговать
+                        <strong>бесконечно</strong>, пока не нажмёте
+                        <code>Ctrl + C</code>. Используется, когда нужно
+                        следить за связью в реальном времени.</li>
+                    <li><code>ping -l 1000 google.com</code> - отправить
+                        пакет размером <strong>1000 байт</strong>. По умолчанию
+                        32 байта. Большие пакеты иногда выявляют проблемы,
+                        которые не видны на маленьких.</li>
+                    <li><code>ping -w 2000 google.com</code> - таймаут
+                        <strong>2000 мс</strong> (по умолчанию 4000).
+                        Уменьшают, когда хочется быстро увидеть результат
+                        на медленной сети.</li>
+                </ul>
 
-                <p>Она показывает все промежуточные узлы (роутеры), через которые проходит ваш запрос, прежде чем достичь цели. Это как карта пересадок в метро.</p>
+                <h3>Проверка по IP</h3>
+
+                <p>Если <code>ping google.com</code> не работает - проверьте
+                    напрямую по публичному IP:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ping 8.8.8.8</span></code></pre>
+
+                <p><code>8.8.8.8</code> - публичный DNS-сервер Google,
+                    работает круглосуточно. Если по IP отвечает, а по имени -
+                    нет, значит, проблема в DNS. Если не отвечает ни там,
+                    ни там - проблема в подключении.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Как использовать ping для диагностики
+                    </div>
+                    <p>Порядок проверок, когда «интернета нет»:</p>
+                    <ol>
+                        <li><code>ping 127.0.0.1</code> - проверка,
+                            что сетевой стек самого компьютера жив.
+                            Почти всегда работает.</li>
+                        <li><code>ping 192.168.1.1</code> (адрес вашего
+                            роутера из <code>ipconfig</code>) - проверка
+                            связи с роутером. Если тут проблема -
+                            дело в Wi-Fi или кабеле.</li>
+                        <li><code>ping 8.8.8.8</code> - проверка
+                            выхода в интернет. Если роутер отвечает,
+                            а 8.8.8.8 нет - проблема у провайдера.</li>
+                        <li><code>ping google.com</code> - проверка DNS.
+                            Если 8.8.8.8 отвечает, а google.com - нет,
+                            значит, DNS не работает.</li>
+                    </ol>
+                    <p>Этот алгоритм позволяет за 4 команды локализовать
+                        проблему до конкретного звена.</p>
+                </div>
+
+                <h2>Маршрут: tracert</h2>
+
+                <p>Если <code>ping</code> показывает, что сайт недоступен,
+                    хочется понять, <em>где</em> обрывается связь. Пакеты
+                    от вас до сайта проходят через десятки промежуточных
+                    роутеров - и на каком-то из них может быть проблема.
+                    Для этого есть <code>tracert</code> (trace route).</p>
 
                 <pre class="code-numbered"><code><span class="code-row">tracert google.com</span></code></pre>
 
-                <p>Если вы видите, что первые три узла отвечают, а на четвёртом начинаются «звёздочки» (таймаут), значит, проблема где-то между вашим провайдером и сайтом.</p>
+                <p>Вывод:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Трассировка маршрута к google.com [142.250.185.78]</span><span class="code-row">с максимальным числом прыжков 30:</span><span class="code-row"></span><span class="code-row">  1     1 ms     1 ms     1 ms  192.168.1.1</span><span class="code-row">  2     5 ms     5 ms     4 ms  10.10.0.1</span><span class="code-row">  3    12 ms    11 ms    13 ms  213.180.10.5</span><span class="code-row">  4     *        *        *     Превышен интервал ожидания для запроса.</span><span class="code-row">  ...</span><span class="code-row"> 10    15 ms    14 ms    15 ms  142.250.185.78</span><span class="code-row">Трассировка завершена.</span></code></pre>
+
+                <p>Что видно:</p>
+                <ul>
+                    <li><strong>Прыжок 1</strong> - ваш роутер
+                        (<code>192.168.1.1</code>). Отвечает за 1 мс -
+                        всё в порядке.</li>
+                    <li><strong>Прыжок 2</strong> - уже у провайдера.</li>
+                    <li><strong>Прыжок 3</strong> - магистральный
+                        роутер.</li>
+                    <li><strong>Прыжок 4</strong> - звёздочки и «превышен
+                        интервал». Значит, этот роутер не отвечает на
+                        служебные запросы - необязательно проблема,
+                        но стоит посмотреть дальше.</li>
+                    <li><strong>Прыжок 10</strong> - дошли до Google.</li>
+                </ul>
+
+                <p>Если видите, что все прыжки до 3 отвечают, а начиная
+                    с 4 - одни звёздочки до самого конца, значит, проблема
+                    где-то на стороне провайдера или выше.</p>
+
+                <h3>Полезные ключи</h3>
+
+                <ul>
+                    <li><code>tracert -d google.com</code> - не разрешать
+                        имена узлов, показывать только IP. Работает
+                        заметно быстрее.</li>
+                    <li><code>tracert -h 15 google.com</code> - максимум
+                        <strong>15 прыжков</strong> вместо 30.
+                        Ускоряет, если вы уверены, что цель ближе.</li>
+                    <li><code>tracert -w 1000 google.com</code> - таймаут
+                        ожидания <strong>1000 мс</strong> (по умолчанию
+                        4000). Быстрее завершается на медленных сетях.</li>
+                </ul>
+
+                <h2>Продвинутый вариант: pathping</h2>
+
+                <p><code>tracert</code> показывает маршрут, но не показывает,
+                    сколько пакетов теряется на каждом узле. <code>pathping</code>
+                    делает и то, и другое: сначала строит маршрут, потом
+                    отправляет много пакетов через каждый узел и считает
+                    потери.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">pathping google.com</span></code></pre>
+
+                <p>Работает долго - от 2 до 5 минут, потому что проверяет
+                    каждый узел отдельно с задержкой. Зато если у вас
+                    «интернет работает, но медленно», <code>pathping</code>
+                    покажет, на каком именно узле теряются пакеты.</p>
+
+                <p>Незаменим для диагностики нестабильного соединения,
+                    когда <code>tracert</code> проходит, а по факту
+                    связь рвётся.</p>
+
+                <h2>DNS-запросы: nslookup</h2>
+
+                <p><code>ping</code> показывает, что имя преобразовалось в IP,
+                    но не показывает, <em>как</em> это произошло. Для
+                    детального разбора DNS есть <code>nslookup</code>
+                    (Name Server Lookup).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">nslookup google.com</span><span class="code-row">Server:  UnKnown</span><span class="code-row">Address:  192.168.1.1</span><span class="code-row"></span><span class="code-row">Не заслуживающий доверия ответ:</span><span class="code-row">Name:    google.com</span><span class="code-row">Addresses:  142.250.185.78</span><span class="code-row">          2a00:1450:4010:c0e::64</span></code></pre>
+
+                <p>Что видно:</p>
+                <ul>
+                    <li><strong>Server</strong> - какой DNS-сервер
+                        используется (обычно ваш роутер или сервер
+                        провайдера).</li>
+                    <li><strong>Addresses</strong> - какие IP привязаны
+                        к имени.</li>
+                </ul>
+
+                <h3>Запрос через конкретный сервер</h3>
+
+                <p>Самая полезная функция. Можно спросить конкретный
+                    DNS-сервер, минуя настройки:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">nslookup google.com 8.8.8.8</span></code></pre>
+
+                <p>Запрос пойдёт напрямую к Google DNS. Если тут имя
+                    разрешается, а в обычном <code>nslookup</code> -
+                    нет, значит, ваш роутер или провайдерский DNS
+                    работает плохо. Решение: прописать в настройках
+                    сети <code>8.8.8.8</code> или <code>1.1.1.1</code>
+                    как основной DNS.</p>
+
+                <h3>Другие типы записей</h3>
+
+                <p>По умолчанию <code>nslookup</code> ищет A-запись (IPv4).
+                    Можно запросить другие типы:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">nslookup -type=MX gmail.com</span><span class="code-row">nslookup -type=NS google.com</span><span class="code-row">nslookup -type=TXT google.com</span></code></pre>
+
+                <p>MX - почтовые серверы, NS - DNS-серверы домена, TXT -
+                    текстовые записи (часто проверки владения).</p>
+
+                <h2>Активные соединения: netstat</h2>
+
+                <p>Команда <code>netstat</code> (network statistics)
+                    показывает, какие сетевые соединения сейчас активны
+                    и какие порты открыты.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">netstat -an</span></code></pre>
+
+                <p>Ключи:</p>
+                <ul>
+                    <li><code>-a</code> - все соединения и слушающие
+                        порты.</li>
+                    <li><code>-n</code> - показывать IP и порты числами,
+                        без попытки разрешить имена (быстрее).</li>
+                </ul>
+
+                <p>Вывод:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Активные подключения</span><span class="code-row">  Имя    Локальный адрес        Внешний адрес          Состояние</span><span class="code-row">  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING</span><span class="code-row">  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING</span><span class="code-row">  TCP    192.168.1.5:52341      142.250.185.78:443     ESTABLISHED</span></code></pre>
+
+                <p>Что значат состояния:</p>
+                <ul>
+                    <li><strong>LISTENING</strong> - порт открыт, программа
+                        ждёт подключений (это сервер).</li>
+                    <li><strong>ESTABLISHED</strong> - активное соединение
+                        (клиент подключился к серверу).</li>
+                    <li><strong>TIME_WAIT</strong> - соединение только что
+                        закрылось.</li>
+                    <li><strong>CLOSE_WAIT</strong> - удалённая сторона
+                        закрыла, а ваша ещё нет.</li>
+                </ul>
+
+                <h3>Кто использует порт: -o и -b</h3>
+
+                <p>Ключ <code>-o</code> добавляет колонку с PID процесса:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">netstat -ano</span></code></pre>
+
+                <p>Теперь можно найти подозрительное соединение, посмотреть
+                    PID - и через <code>tasklist</code> (из прошлого урока)
+                    узнать, какая программа его держит.</p>
+
+                <p>Ключ <code>-b</code> сразу показывает имя программы,
+                    но требует прав администратора:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">netstat -abno</span></code></pre>
+
+                <h3>Фильтр по порту</h3>
+
+                <p>Полезный приём - найти, что слушает конкретный порт:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">netstat -ano | findstr ":80 "</span><span class="code-row">netstat -ano | findstr ":443 "</span></code></pre>
+
+                <p>Первая команда покажет процессы, использующие порт 80,
+                    вторая - порт 443. Пробел в конце важен, чтобы
+                    <code>:80</code> не находил также <code>:8000</code>
+                    и <code>:8080</code>.</p>
+
+                <h3>В PowerShell: Get-NetTCPConnection</h3>
+
+                <p>Современный аналог <code>netstat</code> - объекты вместо
+                    текста:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-NetTCPConnection</span><span class="code-row">Get-NetTCPConnection -State Listen</span><span class="code-row">Get-NetTCPConnection -LocalPort 443</span></code></pre>
+
+                <p>Результаты можно фильтровать, сортировать, выбирать
+                    поля - как обычные объекты PowerShell. Об этом
+                    подробнее в уроке 6.</p>
+
+                <h2>Проверка порта: Test-NetConnection</h2>
+
+                <p><code>ping</code> проверяет только доступность IP-адреса.
+                    Но часто нужно проверить, работает ли конкретный
+                    <strong>порт</strong>. Например, доступен ли SSH
+                    на сервере, или открыт ли веб-интерфейс роутера.</p>
+
+                <p>В PowerShell для этого есть <code>Test-NetConnection</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Test-NetConnection google.com -Port 443</span></code></pre>
+
+                <p>Вывод:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ComputerName     : google.com</span><span class="code-row">RemoteAddress    : 142.250.185.78</span><span class="code-row">RemotePort       : 443</span><span class="code-row">TcpTestSucceeded : True</span></code></pre>
+
+                <p><code>TcpTestSucceeded: True</code> - порт открыт и
+                    отвечает. <code>False</code> - порт закрыт или
+                    сервер недоступен.</p>
+
+                <p>Это гораздо точнее, чем <code>ping</code>: сервер может
+                    не отвечать на пинг, но при этом порт 443 работает
+                    нормально.</p>
+
+                <p>Пример для SSH (порт 22):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Test-NetConnection myserver.example.com -Port 22</span></code></pre>
+
+                <h2>Маршрутизация: route print</h2>
+
+                <p>Команда <code>route print</code> показывает таблицу
+                    маршрутизации - правила, по которым Windows решает,
+                    куда отправлять пакеты.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">route print</span></code></pre>
+
+                <p>Вывод содержит:</p>
+                <ul>
+                    <li><strong>Список интерфейсов</strong> - все сетевые
+                        адаптеры с их номерами.</li>
+                    <li><strong>IPv4-таблица маршрутизации</strong> -
+                        правила для IPv4.</li>
+                    <li><strong>Постоянные маршруты</strong> - если вы
+                        когда-то добавляли.</li>
+                </ul>
+
+                <p>В таблице маршрутов каждая строка - правило: «если
+                    адрес попадает в диапазон X, отправить через
+                    шлюз Y». Обычно тут всё стандартно, но если
+                <code>route print</code> показывает что-то странное -
+                возможно, вирус или VPN добавили лишние маршруты.</p>
+
+                <p>Строка с <code>0.0.0.0</code> в колонке «Сетевой адрес» -
+                    это маршрут по умолчанию, через который идёт весь
+                    интернет-трафик. Он должен указывать на ваш роутер.</p>
+
+                <h2>Соседи по сети: arp</h2>
+
+                <p>В локальной сети устройства находят друг друга по
+                    <strong>MAC-адресам</strong> - уникальным номерам
+                    сетевых карт. Соответствие «IP ↔ MAC» хранится
+                    в <strong>ARP-таблице</strong>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">arp -a</span></code></pre>
+
+                <p>Вывод:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Интерфейс: 192.168.1.5 --- 0x4</span><span class="code-row">  Интернет-адрес        Физический адрес      Тип</span><span class="code-row">  192.168.1.1           aa-bb-cc-dd-ee-01     динамический</span><span class="code-row">  192.168.1.7           11-22-33-44-55-66     динамический</span><span class="code-row">  192.168.1.255         ff-ff-ff-ff-ff-ff     статический</span></code></pre>
+
+                <p>Показывает, какие устройства сейчас в вашей локальной
+                    сети и с какими MAC-адресами. Полезно, если нужно
+                    найти чужое устройство в сети или проверить,
+                    не подключился ли кто-то посторонний к вашему
+                    Wi-Fi.</p>
+
+                <p>Адрес <code>192.168.1.255</code> с MAC
+                    <code>ff-ff-ff-ff-ff-ff</code> - широковещательный,
+                    это нормально.</p>
+
+                <h2>HTTP-запросы: Invoke-WebRequest</h2>
+
+                <p>В PowerShell есть команда для работы с веб-запросами -
+                    <code>Invoke-WebRequest</code>. Аналог <code>curl</code>
+                    в Linux. Позволяет скачать страницу или проверить,
+                    что сервер отвечает.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Invoke-WebRequest -Uri https://google.com -Method Head</span></code></pre>
+
+                <p>Запрос <code>HEAD</code> - «отдай только заголовки,
+                    не тело». Показывает код ответа: <code>200 OK</code> -
+                    страница работает, <code>404</code> - не найдена,
+                    <code>500</code> - ошибка сервера.</p>
+
+                <p>Алиас <code>iwr</code> - для краткости:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">iwr https://example.com</span></code></pre>
+
+                <p>Полезно, когда нужно понять, работает ли сайт вообще,
+                    не открывая браузер.</p>
 
                 <h2>Шпаргалка</h2>
 
@@ -155,59 +626,165 @@
                 <ul class="operator-list">
                     <li>
                         <code>ipconfig</code>
-                        <span>мой IP-адрес</span>
+                        <span>мой IP</span>
                     </li>
                     <li>
                         <code>ipconfig /all</code>
-                        <span>подробная информация</span>
+                        <span>подробно</span>
+                    </li>
+                    <li>
+                        <code>ipconfig /flushdns</code>
+                        <span>сбросить DNS-кеш</span>
                     </li>
                     <li>
                         <code>ipconfig /renew</code>
                         <span>обновить IP</span>
                     </li>
                     <li>
-                        <code>ping сайт</code>
-                        <span>проверить связь</span>
+                        <code>ping адрес</code>
+                        <span>есть ли связь</span>
                     </li>
                     <li>
                         <code>ping -t</code>
-                        <span>пинговать бесконечно</span>
+                        <span>бесконечно</span>
                     </li>
                     <li>
-                        <code>tracert сайт</code>
-                        <span>показать маршрут</span>
+                        <code>ping -n 10</code>
+                        <span>10 пакетов</span>
+                    </li>
+                    <li>
+                        <code>tracert адрес</code>
+                        <span>маршрут</span>
+                    </li>
+                    <li>
+                        <code>pathping адрес</code>
+                        <span>маршрут с потерями</span>
+                    </li>
+                    <li>
+                        <code>nslookup имя</code>
+                        <span>DNS-запрос</span>
+                    </li>
+                    <li>
+                        <code>nslookup имя 8.8.8.8</code>
+                        <span>через Google DNS</span>
+                    </li>
+                    <li>
+                        <code>netstat -ano</code>
+                        <span>соединения с PID</span>
+                    </li>
+                    <li>
+                        <code>Test-NetConnection</code>
+                        <span>проверить порт</span>
+                    </li>
+                    <li>
+                        <code>route print</code>
+                        <span>таблица маршрутов</span>
+                    </li>
+                    <li>
+                        <code>arp -a</code>
+                        <span>соседи по сети</span>
+                    </li>
+                    <li>
+                        <code>iwr URL</code>
+                        <span>HTTP-запрос</span>
                     </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные ошибки при работе с сетью.</p>
+                <p>Типичные проблемы при работе с сетью и их решения.</p>
 
                 <ul>
-                    <li><strong>«Превышен интервал ожидания»</strong>. Сайт не отвечает. Возможно, он заблокирован, выключен или у вас нет интернета.</li>
-                    <li><strong>«Не удалось обнаружить узел»</strong>. Команда не может перевести имя сайта (например, google.com) в IP-адрес. Возможно, сбились DNS-настройки. Попробуйте пинговать напрямую по IP (например, <code>ping 8.8.8.8</code>).</li>
-                    <li><strong>«ipconfig показывает 169.254.x.x»</strong>. Это значит, что ваш компьютер не смог получить IP-адрес от роутера. Попробуйте ввести <code>ipconfig /renew</code> или перезагрузить роутер.</li>
-                    <li><strong>«Для продолжения нажмите любую клавишу»</strong>. В Windows некоторые команды выводят много текста и ждут подтверждения. Просто нажмите Enter, чтобы вернуться в консоль.</li>
+                    <li><strong>«Превышен интервал ожидания» при
+                            <code>ping</code>.</strong> Пакеты не доходят.
+                        Возможные причины: сайт действительно недоступен,
+                        у вас нет интернета, или провайдер блокирует
+                        пинг (бывает у крупных сервисов). Проверьте
+                        <code>ping 8.8.8.8</code> - если и тут таймаут,
+                        дело в подключении.</li>
+                    <li><strong>«Не удалось обнаружить узел».</strong>
+                        DNS не смог перевести имя в IP. Проблема
+                        с DNS. Решение: <code>ipconfig /flushdns</code>,
+                        затем проверить <code>nslookup google.com 8.8.8.8</code>.
+                        Если через 8.8.8.8 работает, а без него - нет,
+                        пропишите Google DNS в настройках сети.</li>
+                    <li><strong>«ipconfig показывает 169.254.x.x».</strong>
+                        Компьютер не получил IP от роутера. Это
+                        «самоназначенный» адрес, который Windows
+                        ставит, когда DHCP не отвечает. Решение:
+                        <code>ipconfig /release</code> и
+                        <code>ipconfig /renew</code>. Если не помогает -
+                        перезагрузите роутер.</li>
+                    <li><strong>«tracert показывает звёздочки
+                            до самого конца».</strong> Некоторые роутеры
+                        не отвечают на служебные запросы - это
+                        нормально. Смотрите на последний прыжок:
+                        если дошли до цели - всё в порядке, если нет -
+                        проблема где-то на маршруте.</li>
+                    <li><strong>«pathping работает целую
+                            вечность».</strong> Так и должно быть - он
+                        проверяет каждый узел отдельно. На длинном
+                        маршруте может занять 5-10 минут. Если
+                        нужно быстро - используйте
+                        <code>tracert -d</code>.</li>
+                    <li><strong>«nslookup выдаёт "Не заслуживающий
+                            доверия ответ"».</strong> Это не ошибка.
+                        Так помечаются ответы от кеширующих
+                        DNS-серверов (ваш роутер или провайдер).
+                        Информация корректная, просто источник -
+                        кеш, а не первоисточник.</li>
+                    <li><strong>«netstat -b выдаёт Access denied».</strong>
+                        Ключ <code>-b</code> требует прав
+                        администратора. Либо запустите терминал от
+                        администратора, либо используйте
+                        <code>netstat -ano</code> и ищите PID
+                        через <code>tasklist</code>.</li>
+                    <li><strong>«Test-NetConnection не найден».</strong>
+                        Команда появилась в PowerShell 4.0. На Windows
+                        7 и старых системах её может не быть. Альтернатива:
+                        <code>telnet адрес порт</code> - но telnet
+                        тоже часто отключён. Можно использовать
+                        <code>netstat</code> для проверки, что порт
+                        вообще существует.</li>
+                    <li><strong>«Интернет работает, но сайт не
+                            открывается».</strong> Самая частая
+                        ситуация. Пошагово: 1) <code>ping 8.8.8.8</code> -
+                        проверка связи; 2) <code>ping google.com</code> -
+                        проверка DNS; 3) <code>ipconfig /flushdns</code> -
+                        если DNS, но кеш старый; 4) <code>nslookup
+                        сайт</code> - что говорит DNS; 5) другой
+                        браузер - вдруг проблема в нём; 6) другая
+                        сеть (мобильный интернет) - если там работает,
+                        проблема у провайдера.</li>
                 </ul>
 
-                <p>Если что-то не получается - напишите нам в
+                <p>Если что-то не получается или есть вопрос - напишите в
                     <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
                     разберёмся вместе.
                 </p>
 
                 <h2>Практика</h2>
 
-                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+                <p>Четыре задачи. Первые две - базовые (IP и ping),
+                    третья и четвёртая - на маршрут и DNS. Все задачи
+                    безопасные, никаких изменений в системе.</p>
 
                 <div class="task-list">
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 1. Мой IP</span>
+                            <span>Задача 1. Мой адрес</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Узнайте IP-адрес вашего компьютера в локальной сети.</p>
+                            <p class="task-desc">Выясните три вещи о вашем
+                                подключении:</p>
+                            <ol>
+                                <li>Какой у вас локальный IP-адрес?</li>
+                                <li>Какой IP у вашего роутера (основной
+                                    шлюз)?</li>
+                                <li>Какой DNS-сервер используется?</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -215,17 +792,42 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте команду <code>ipconfig</code>. Найдите строку «IPv4-адрес».</p>
+                                    <p>Все три вещи видны в выводе
+                                        <code>ipconfig /all</code>. В обычном
+                                        <code>ipconfig</code> нет DNS-сервера -
+                                        он появляется только с ключом
+                                        <code>/all</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">ipconfig</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">ipconfig /all</span><span class="code-row"></span><span class="code-row">Адаптер беспроводной локальной сети Беспроводная сеть:</span><span class="code-row">   DNS-суффикс подключения . . . . . : home</span><span class="code-row">   Описание. . . . . . . . . . . . . : Intel(R) Wi-Fi 6 AX200</span><span class="code-row">   Физический адрес. . . . . . . . . : AA-BB-CC-DD-EE-FF</span><span class="code-row">   DHCP включён . . . . . . . . . . : Да</span><span class="code-row">   IPv4-адрес. . . . . . . . . . . . : 192.168.1.5</span><span class="code-row">   Маска подсети . . . . . . . . . . : 255.255.255.0</span><span class="code-row">   Основной шлюз. . . . . . . . . . : 192.168.1.1</span><span class="code-row">   DNS-серверы. . . . . . . . . . . : 192.168.1.1</span></code></pre>
+                                    <p>Что тут важно:</p>
+                                    <ul>
+                                        <li><strong>IPv4</strong> -
+                                            <code>192.168.1.5</code> -
+                                            ваш компьютер в
+                                            домашней сети.</li>
+                                        <li><strong>Основной шлюз</strong> -
+                                            <code>192.168.1.1</code> -
+                                            ваш роутер.</li>
+                                        <li><strong>DNS-сервер</strong> -
+                                            тоже <code>192.168.1.1</code>.
+                                            Обычно так и есть: роутер
+                                            выступает прокси для
+                                            провайдерского DNS.</li>
+                                    </ul>
+                                    <p>Если DNS указывает на что-то
+                                        другое (например, на
+                                        <code>8.8.8.8</code>) - значит,
+                                        кто-то настроил вручную. Обычно
+                                        это делает VPN или
+                                        пользователь.</p>
                                 </div>
                             </details>
                         </div>
@@ -233,11 +835,26 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 2. Есть ли связь?</span>
+                            <span>Задача 2. Проверьте связь</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Проверьте, есть ли у вас интернет, отправив 4 запроса к публичному DNS-серверу Google (IP: <code>8.8.8.8</code>).</p>
+                            <p class="task-desc">Пройдите по цепочке
+                                диагностики:</p>
+                            <ol>
+                                <li>Проверьте связь с роутером -
+                                    <code>ping</code> по адресу из
+                                    предыдущей задачи.</li>
+                                <li>Проверьте связь с интернетом -
+                                    <code>ping 8.8.8.8</code>.</li>
+                                <li>Проверьте DNS - <code>ping
+                                    google.com</code>.</li>
+                                <li>Повторите пинг
+                                    <code>google.com</code> с 10
+                                    пакетами через
+                                    <code>ping -n 10</code> - обратите
+                                    внимание на потери.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -245,17 +862,44 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте <code>ping</code> с указанием IP-адреса.</p>
+                                    <p>Если пункт 2 не работает, но 1 -
+                                        работает, проблема у провайдера.
+                                        Если 2 работает, а 3 - нет,
+                                        проблема в DNS.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">ping 8.8.8.8</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">ping 192.168.1.1</span><span class="code-row">Обмен пакетами с 192.168.1.1:</span><span class="code-row">Ответ от 192.168.1.1: число байт=32 время=1мс TTL=64</span><span class="code-row">...</span><span class="code-row">Потеряно = 0 (0% потерь)</span><span class="code-row"></span><span class="code-row">ping 8.8.8.8</span><span class="code-row">Ответ от 8.8.8.8: число байт=32 время=12мс TTL=115</span><span class="code-row">...</span><span class="code-row"></span><span class="code-row">ping google.com</span><span class="code-row">Обмен пакетами с google.com [142.250.185.78]:</span><span class="code-row">Ответ от 142.250.185.78: время=15мс</span><span class="code-row">...</span><span class="code-row"></span><span class="code-row">ping -n 10 google.com</span><span class="code-row">Пакетов: отправлено = 10, получено = 10, потеряно = 0</span></code></pre>
+                                    <p>Как читать результаты:</p>
+                                    <ul>
+                                        <li><strong>Роутер</strong>
+                                            обычно отвечает за 1 мс
+                                            без потерь. Если тут
+                                            потери - проблема с
+                                            Wi-Fi или кабелем.</li>
+                                        <li><strong>8.8.8.8</strong>
+                                            отвечает за 5-30 мс.
+                                            Больше 100 мс - плохо,
+                                            признаки проблем у
+                                            провайдера.</li>
+                                        <li><strong>google.com</strong>
+                                            отвечает за похожее
+                                            время - значит,
+                                            DNS работает
+                                            нормально.</li>
+                                        <li><strong>Потери 0</strong>
+                                            при 10 пакетах - связь
+                                            стабильная. 1-2 пакета
+                                            - терпимо, но не идеал.
+                                            Больше - надо
+                                            разбираться.</li>
+                                    </ul>
                                 </div>
                             </details>
                         </div>
@@ -263,11 +907,26 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Куда идёт трафик?</span>
+                            <span>Задача 3. Маршрут и DNS</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Проследите маршрут до сайта <code>yandex.ru</code>.</p>
+                            <p class="task-desc">Разберитесь, как ваш
+                                компьютер добирается до сайтов:</p>
+                            <ol>
+                                <li>Постройте маршрут до
+                                    <code>yandex.ru</code> через
+                                    <code>tracert</code>.</li>
+                                <li>Повторите тот же маршрут с
+                                    ключом <code>-d</code> - почувствуйте
+                                    разницу в скорости вывода.</li>
+                                <li>Запросите <code>nslookup</code>
+                                    для <code>yandex.ru</code> - узнайте
+                                    IP.</li>
+                                <li>Запросите тот же домен через
+                                    <code>8.8.8.8</code> -
+                                    совпадает ли ответ?</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -275,17 +934,46 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте команду <code>tracert</code>.</p>
+                                    <p><code>-d</code> в
+                                        <code>tracert</code> отключает
+                                        обратное разрешение имён - вместо
+                                        имён показываются только IP.
+                                        Работает в разы быстрее, потому
+                                        что не делает DNS-запрос
+                                        для каждого прыжка.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">tracert yandex.ru</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">tracert yandex.ru</span><span class="code-row">Трассировка маршрута к yandex.ru [77.88.55.88]:</span><span class="code-row">  1     1 ms   192.168.1.1</span><span class="code-row">  2     5 ms   10.10.0.1</span><span class="code-row">  3    12 ms   213.180.10.5</span><span class="code-row">  4    13 ms   77.88.55.88</span><span class="code-row">Трассировка завершена.</span><span class="code-row"></span><span class="code-row">tracert -d yandex.ru</span><span class="code-row">  1     1 ms   192.168.1.1</span><span class="code-row">  2     5 ms   10.10.0.1</span><span class="code-row">  3    12 ms   213.180.10.5</span><span class="code-row">  4    13 ms   77.88.55.88</span><span class="code-row"></span><span class="code-row">nslookup yandex.ru</span><span class="code-row">Server:  UnKnown</span><span class="code-row">Address:  192.168.1.1</span><span class="code-row">Name:    yandex.ru</span><span class="code-row">Address:  77.88.55.88</span><span class="code-row"></span><span class="code-row">nslookup yandex.ru 8.8.8.8</span><span class="code-row">Server:  dns.google</span><span class="code-row">Address:  8.8.8.8</span><span class="code-row">Name:    yandex.ru</span><span class="code-row">Address:  77.88.55.88</span></code></pre>
+                                    <p>Что тут интересного:</p>
+                                    <ul>
+                                        <li>У <code>yandex.ru</code>
+                                            обычно 4-6 прыжков -
+                                            серверы Яндекса находятся
+                                            в России, близко. У
+                                            сайтов США или Азии
+                                            будет 10-15 прыжков.</li>
+                                        <li><code>tracert -d</code>
+                                            работает быстрее в 2-3
+                                            раза, потому что не делает
+                                            DNS-запросы для каждой
+                                            строки.</li>
+                                        <li><code>nslookup</code>
+                                            через ваш роутер и через
+                                            Google DNS показал
+                                            одинаковый IP - значит,
+                                            DNS работает корректно.
+                                            Если бы ответы
+                                            различались - были бы
+                                            проблемы с кешем или
+                                            роутером.</li>
+                                    </ul>
                                 </div>
                             </details>
                         </div>
@@ -293,12 +981,27 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Исправление ошибок</span>
+                            <span>Задача 4. Соединения и порты</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Пользователь хочет проверить связь с сайтом, но получает синтаксическую ошибку. Почему?</p>
-                            <pre class="code-numbered"><code><span class="code-row">ping google.com -t</span></code></pre>
+                            <p class="task-desc">Проверьте активные соединения
+                                и доступность портов:</p>
+                            <ol>
+                                <li>Откройте браузер и зайдите на любой
+                                    HTTPS-сайт (например, <code>yandex.ru</code>).</li>
+                                <li>В терминале выполните
+                                    <code>netstat -an | findstr ":443"</code> -
+                                    найдите соединения
+                                    <code>ESTABLISHED</code>.</li>
+                                <li>Проверьте, что порт 443 доступен
+                                    на этом же сайте через
+                                    <code>Test-NetConnection yandex.ru -Port 443</code>.</li>
+                                <li>Проверьте недоступный порт -
+                                    например,
+                                    <code>Test-NetConnection yandex.ru -Port 9999</code> -
+                                    что вернёт?</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -306,18 +1009,47 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>В Windows команды и их флаги обычно имеют строгий порядок. Флаг должен идти до или после? Проверьте синтаксис в шпаргалке.</p>
+                                    <p>После того как вы зашли на сайт -
+                                        браузер держит соединение
+                                        открытым несколько минут.
+                                        Именно его вы увидите
+                                        в <code>netstat</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">ping -t google.com</span></code></pre>
-                                    <p>В Windows флаги (ключи) обычно ставятся сразу после самой команды, перед аргументами.</p>
+                                    <pre class="code-numbered"><code><span class="code-row">netstat -an | findstr ":443"</span><span class="code-row">TCP    192.168.1.5:52341    77.88.55.88:443    ESTABLISHED</span><span class="code-row">TCP    192.168.1.5:52342    142.250.185.78:443 ESTABLISHED</span><span class="code-row"></span><span class="code-row">Test-NetConnection yandex.ru -Port 443</span><span class="code-row">ComputerName     : yandex.ru</span><span class="code-row">RemoteAddress    : 77.88.55.88</span><span class="code-row">RemotePort       : 443</span><span class="code-row">TcpTestSucceeded : True</span><span class="code-row"></span><span class="code-row">Test-NetConnection yandex.ru -Port 9999</span><span class="code-row">ComputerName     : yandex.ru</span><span class="code-row">RemoteAddress    : 77.88.55.88</span><span class="code-row">RemotePort       : 9999</span><span class="code-row">TcpTestSucceeded : False</span></code></pre>
+                                    <p>Что тут происходит:</p>
+                                    <ul>
+                                        <li><strong>ESTABLISHED</strong>
+                                            на порту 443 - это
+                                            активные соединения
+                                            браузера с сайтами.
+                                            У каждой вкладки -
+                                            своё.</li>
+                                        <li><strong>Test-NetConnection
+                                            -Port 443</strong> вернул
+                                            <code>True</code> -
+                                            значит, HTTPS-порт
+                                            на сервере Яндекса
+                                            открыт и отвечает.</li>
+                                        <li><strong>Test-NetConnection
+                                            -Port 9999</strong> вернул
+                                            <code>False</code> -
+                                            такого порта нет, что
+                                            логично (это не
+                                            стандартный порт).</li>
+                                    </ul>
+                                    <p>Это гораздо точнее, чем
+                                        <code>ping</code>: сервер
+                                        может игнорировать ICMP-пакеты
+                                        (ping), но порт 443 при
+                                        этом работает нормально.</p>
                                 </div>
                             </details>
                         </div>
@@ -327,14 +1059,44 @@
 
                 <h2>Что мы узнали и что дальше</h2>
 
-                <p>Теперь вы умеете диагностировать сеть лучше многих сотрудников поддержки. Вы узнали:</p>
-                <ul>
-                    <li>Как узнать свой IP-адрес (<code>ipconfig</code>).</li>
-                    <li>Как проверить, жив ли сайт (<code>ping</code>).</li>
-                    <li>Как понять, на каком участке пропадает связь (<code>tracert</code>).</li>
-                </ul>
+                <p>Разобрались с сетевыми утилитами Windows - инструментами,
+                    которые превращают диагностику из угадывания в точную
+                    науку. Узнали, как устроена сеть: IP-адреса, DNS, порты.
+                    Научились смотреть свои настройки через <code>ipconfig</code>
+                    (с ключами <code>/all</code>, <code>/flushdns</code>,
+                    <code>/release</code>, <code>/renew</code>).</p>
 
-                <p>Мы изучили классическую командную строку (cmd). Но Microsoft развивает более мощный инструмент - <strong>PowerShell</strong>. В следующем уроке мы начнём с ним знакомиться. Вы узнаете, чем он отличается от cmd и почему он круче. До встречи!</p>
+                <p>Освоили <strong>диагностику по цепочке</strong>:
+                    <code>ping</code> своего роутера, потом <code>ping 8.8.8.8</code>
+                    (интернет), потом <code>ping google.com</code> (DNS). Четыре
+                    команды - и вы точно знаете, где проблема: у вас, у провайдера
+                    или в DNS. Плюс разобрали ключи <code>-n</code>,
+                    <code>-t</code>, <code>-l</code>, <code>-w</code>.</p>
+
+                <p>Разобрались с <code>tracert</code> (маршрут пакетов)
+                    и <code>pathping</code> (маршрут с подсчётом потерь).
+                    Научились <code>nslookup</code> - как узнать, что
+                    отвечает DNS, и как спросить конкретный DNS-сервер
+                    напрямую. Освоили <code>netstat</code> для активных
+                    соединений, <code>Test-NetConnection</code> для проверки
+                    конкретного порта, <code>route print</code> для таблицы
+                    маршрутизации и <code>arp -a</code> для соседей
+                    по локальной сети.</p>
+
+                <p>И главное - теперь, когда интернет «не работает»,
+                    вы не будете перезагружать роутер наугад. Вы запустите
+                    четыре команды, поймёте причину и только потом
+                    будете действовать.</p>
+
+                <p>В следующем уроке займёмся <strong>введением
+                        в PowerShell</strong>. Узнаем, чем он отличается
+                    от cmd на практике, что такое командлеты и объекты,
+                    как искать нужные команды через <code>Get-Command</code>,
+                    и как получить справку через <code>Get-Help</code>.
+                    Это уже современный уровень работы с Windows -
+                    после него вы будете понимать, почему Microsoft
+                    постепенно отказывается от cmd в пользу
+                    PowerShell.</p>
 
                 <div class="lesson-actions">
                     <a href="lesson-04.html" class="btn-secondary">

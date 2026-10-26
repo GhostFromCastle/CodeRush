@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Системные команды - CodeRush</title>
+    <title>Системные команды - Терминал - CodeRush</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
     <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
@@ -94,6 +96,11 @@
                             <span>Основы скриптов в PowerShell</span>
                             <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
                         </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Продвинутый PowerShell</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
                     </div>
                 </div>
             </aside>
@@ -101,65 +108,411 @@
             <article class="lesson-content">
                 <h1>Системные команды</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
                     <span><i class="ph ph-windows-logo"></i> Windows</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
 
-                <p>Иногда компьютер начинает «тормозить» или зависает. Мы привыкли открывать «Диспетчер задач» через <code>Ctrl+Shift+Esc</code>, чтобы найти проблемную программу и закрыть её. Но всё это можно сделать через терминал, причём быстрее и точнее.</p>
+                <p>Бывало, что компьютер начинал «тормозить», вентилятор гудел
+                    на всю мощь, а окна открывались с задержкой? Мы привыкли в такие
+                    моменты открывать «Диспетчер задач» через <code>Ctrl + Shift + Esc</code>,
+                    находить прожорливую программу и завершать её. Но то же самое
+                    можно делать через терминал - быстрее, точнее и с более
+                    подробной информацией.</p>
 
-                <p>Сегодня мы научимся управлять процессами и узнаем, как получить полную информацию о системе.</p>
+                <p>Сегодня разберёмся с <strong>системными командами</strong>:
+                    как посмотреть, что сейчас работает на компьютере, как узнать
+                    характеристики системы, как корректно завершить зависшую
+                    программу и как управлять переменными окружения и питанием.
+                    Этот урок - про то, что находится «под капотом» привычных
+                    действий.</p>
+
+                <h2>Что такое процесс</h2>
+
+                <p>Прежде чем разбирать команды, поймём главное понятие.
+                    <strong>Процесс</strong> - это запущенная программа. Файл
+                    <code>chrome.exe</code> на диске - это ещё не процесс.
+                    Но когда вы открываете Chrome, Windows загружает программу
+                    в память, выделяет ей ресурсы, присваивает уникальный номер
+                    <strong>PID</strong> (Process ID) - и вот теперь это
+                    процесс.</p>
+
+                <p>Одна и та же программа может быть запущена в нескольких
+                    процессах одновременно. Например, Chrome открывает отдельный
+                    процесс для каждой вкладки, расширения и служебной задачи.
+                    Иногда их набирается десятки - именно поэтому в «Диспетчере
+                    задач» одна и та же <code>chrome.exe</code> повторяется
+                    много раз.</p>
+
+                <p>У каждого процесса есть:</p>
+                <ul>
+                    <li><strong>PID</strong> - уникальный номер в системе.</li>
+                    <li><strong>Имя</strong> - обычно совпадает с именем
+                        исполняемого файла (<code>chrome.exe</code>,
+                        <code>notepad.exe</code>).</li>
+                    <li><strong>Пользователь</strong>, от имени которого он
+                        запущен.</li>
+                    <li><strong>Потребление</strong> - сколько CPU и памяти
+                        занимает.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия
+                    </div>
+                    <p>Программа на диске - это рецепт в кулинарной книге.
+                        Процесс - это повар, который прямо сейчас готовит
+                        по этому рецепту. Один рецепт может готовить несколько
+                        поваров одновременно - так и одна программа может
+                        быть запущена в нескольких процессах.</p>
+                </div>
 
                 <h2>Просмотр процессов: tasklist</h2>
 
-                <p>Команда <code>tasklist</code> показывает список всех запущенных в системе программ (процессов). Это как рентгеновский снимок вашего компьютера, который показывает всё, что сейчас работает.</p>
+                <p>Основная команда для просмотра процессов в cmd -
+                    <code>tasklist</code>. Выводит список всех запущенных
+                    процессов с их PID и потреблением памяти.</p>
 
                 <pre class="code-numbered"><code><span class="code-row">tasklist</span></code></pre>
 
-                <p>Вывод будет содержать несколько колонок:</p>
+                <p>Вывод выглядит примерно так:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Имя образа                     PID Имя сессии       № сеанса       Память</span><span class="code-row">========================= ======== ================ =========== ============</span><span class="code-row">System Idle Process              0 Services                   0          8 КБ</span><span class="code-row">System                           4 Services                   0        148 КБ</span><span class="code-row">explorer.exe                  4821 Console                    1     98 432 КБ</span><span class="code-row">chrome.exe                    7532 Console                    1    123 456 КБ</span><span class="code-row">notepad.exe                   8104 Console                    1      2 048 КБ</span></code></pre>
+
+                <p>Колонки:</p>
                 <ul>
-                    <li><strong>Имя образа</strong> - название программы (например, <code>chrome.exe</code>).</li>
-                    <li><strong>PID</strong> - уникальный номер процесса (Process ID).</li>
-                    <li><strong>Имя сеанса</strong> и <strong>Память</strong> - служебная информация.</li>
+                    <li><strong>Имя образа</strong> - имя исполняемого файла.</li>
+                    <li><strong>PID</strong> - уникальный номер.</li>
+                    <li><strong>Имя сессии</strong> - к какой сессии привязан
+                        (Console - ваш рабочий стол, Services - системные
+                        службы).</li>
+                    <li><strong>№ сеанса</strong> - номер сессии.</li>
+                    <li><strong>Память</strong> - сколько оперативной памяти
+                        занимает.</li>
                 </ul>
 
-                <p>Список может быть очень длинным. Чтобы найти что-то конкретное, используйте фильтр <code>/fi</code> (filter). Например, найдём все процессы браузера Chrome:</p>
+                <h3>Фильтрация по имени</h3>
+
+                <p>Список обычно огромный - сотни строк. Чтобы найти что-то
+                    конкретное, есть ключ <code>/fi</code> (filter):</p>
 
                 <pre class="code-numbered"><code><span class="code-row">tasklist /fi "imagename eq chrome.exe"</span></code></pre>
 
+                <p>Покажет только процессы Chrome. Обратите внимание на кавычки:
+                    без них <code>tasklist</code> не поймёт, где имя, а где
+                    условие.</p>
+
+                <p>Другие полезные фильтры:</p>
+                <ul>
+                    <li><code>/fi "imagename eq notepad.exe"</code> - точное имя.</li>
+                    <li><code>/fi "pid eq 7532"</code> - по PID.</li>
+                    <li><code>/fi "memusage gt 100000"</code> - процессы,
+                        использующие больше 100 МБ (в килобайтах).</li>
+                    <li><code>/fi "status eq running"</code> - только активные.</li>
+                </ul>
+
+                <h3>Подробный вывод: /v</h3>
+
+                <p>Ключ <code>/v</code> (verbose) добавляет много полезных колонок:
+                    состояние, имя пользователя, время использования CPU, заголовок
+                    окна.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">tasklist /v /fi "imagename eq chrome.exe"</span></code></pre>
+
+                <p>Полезно, когда нужно понять, кто именно запустил процесс
+                    и сколько времени он уже работает.</p>
+
+                <h3>Службы в процессе: /svc</h3>
+
+                <p>Ключ <code>/svc</code> показывает, какие службы Windows работают
+                    внутри процесса. Особенно полезен для <code>svchost.exe</code> -
+                    одного процесса, внутри которого могут работать десятки
+                    системных служб.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">tasklist /svc /fi "imagename eq svchost.exe"</span></code></pre>
+
+                <p>Вывод покажет для каждого <code>svchost.exe</code> список служб
+                    внутри. Без этого ключа все <code>svchost.exe</code> выглядят
+                    одинаково, и непонятно, какой из них за что отвечает.</p>
+
+                <h3>В PowerShell: Get-Process</h3>
+
+                <p>В PowerShell аналог <code>tasklist</code> - это
+                    <code>Get-Process</code>. Работает иначе: возвращает не текст,
+                    а объекты. Но для базового просмотра подходит:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process</span></code></pre>
+
+                <p>А чтобы найти конкретный процесс:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process -Name chrome</span></code></pre>
+
+                <p>Или по ID:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process -Id 7532</span></code></pre>
+
+                <p>Объекты удобнее текста: с ними можно сортировать, фильтровать
+                    по любым полям, выбирать только нужные свойства. Об этом
+                    подробно в уроке 6.</p>
+
                 <h2>Завершение процессов: taskkill</h2>
 
-                <p>Если программа зависла и не реагирует на мышку, её нужно «прибить». Для этого есть команда <code>taskkill</code>.</p>
+                <p>Если программа зависла и не реагирует на мышь, нужно её
+                    завершить принудительно. Команда <code>taskkill</code>
+                    делает это.</p>
 
-                <p>Убить процесс можно по его имени (<code>/IM</code> от Image Name) или по номеру (<code>/PID</code>).</p>
+                <h3>По имени</h3>
 
-                <p>Например, принудительно закроем Блокнот:</p>
+                <pre class="code-numbered"><code><span class="code-row">taskkill /IM notepad.exe</span></code></pre>
+
+                <p><code>/IM</code> (Image Name) - завершить по имени файла.
+                    Windows отправит процессу «вежливый» сигнал завершения.
+                    Программа может сохранить данные, закрыть соединения
+                    и корректно завершиться. Если она в состоянии
+                    обработать этот сигнал.</p>
+
+                <h3>По PID</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">taskkill /PID 8104</span></code></pre>
+
+                <p><code>/PID</code> - завершить по уникальному номеру. Удобно,
+                    когда у одной программы несколько процессов, а завершить
+                    нужно только один конкретный.</p>
+
+                <h3>Принудительно: /F</h3>
+
+                <p>Если «вежливый» сигнал не сработал - программа зависла
+                    намертво - нужен ключ <code>/F</code> (force):</p>
 
                 <pre class="code-numbered"><code><span class="code-row">taskkill /IM notepad.exe /F</span></code></pre>
 
-                <p>Ключ <code>/F</code> означает «force» (принудительно). Без него система попытается закрыть программу «вежливо» (что может не сработать, если она зависла).</p>
+                <p>Принудительное завершение. Программа убивается мгновенно,
+                    без шанса что-то сохранить. Несохранённые данные теряются.
+                    Используйте, когда обычное завершение не сработало.</p>
 
-                <p>Если вы знаете PID процесса (например, 1234), можно убить его так:</p>
+                <h3>Убить дерево процессов: /T</h3>
 
-                <pre class="code-numbered"><code><span class="code-row">taskkill /PID 1234 /F</span></code></pre>
+                <p>Многие современные программы - многопроцессные. Chrome,
+                    Firefox, VS Code, Discord запускают десятки дочерних
+                    процессов. Если убить только главный - дочерние могут
+                    остаться висеть в памяти.</p>
 
-                <h2>Информация о системе: systeminfo</h2>
+                <p>Ключ <code>/T</code> (tree) убивает процесс <strong>вместе
+                        со всеми дочерними</strong>:</p>
 
-                <p>Команда <code>systeminfo</code> выводит подробную информацию о вашем компьютере: версию Windows, модель процессора, объём оперативной памяти, дату установки системы и многое другое.</p>
+                <pre class="code-numbered"><code><span class="code-row">taskkill /IM chrome.exe /F /T</span></code></pre>
 
-                <pre class="code-numbered"><code><span class="code-row">systeminfo</span></code></pre>
-
-                <p>Вывод может занять несколько секунд и будет очень длинным. Если вам нужна конкретная строка (например, про память), можно использовать фильтр через конвейер:</p>
-
-                <pre class="code-numbered"><code><span class="code-row">systeminfo | findstr "Память"</span></code></pre>
+                <p>Эта команда - стандартный способ «убить Chrome полностью».
+                    Без <code>/T</code> дочерние процессы остаются и продолжают
+                    занимать память.</p>
 
                 <div class="callout">
                     <div class="callout-title">
                         <i class="ph ph-warning"></i>
-                        Будьте осторожны с taskkill
+                        Осторожно с системными процессами
                     </div>
-                    <p>Не убивайте процессы, в названии которых вы не уверены. Если вы завершите системный процесс (например, <code>explorer.exe</code>), у вас исчезнет рабочий стол и панель задач. Если это случилось, перезагрузите компьютер или запустите <code>explorer.exe</code> заново через «Файл -> Новая задача» в Диспетчере задач.</p>
+                    <p>Не убивайте процессы, в назначении которых не уверены.
+                        Если завершить <code>explorer.exe</code> - исчезнут
+                        рабочий стол, панель задач и окна проводника. Если
+                        убить <code>csrss.exe</code> или <code>wininit.exe</code> -
+                        система рухнет в BSOD и перезагрузится. Общее правило:
+                        если не знаете, что делает процесс, - не трогайте.</p>
                 </div>
+
+                <h3>В PowerShell: Stop-Process</h3>
+
+                <p>В PowerShell правильный способ убить процесс -
+                    <code>Stop-Process</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Stop-Process -Name notepad</span><span class="code-row">Stop-Process -Id 8104 -Force</span></code></pre>
+
+                <p>Без <code>-Force</code> - вежливая попытка, с
+                    <code>-Force</code> - принудительное завершение. Аналог
+                    <code>taskkill /F</code>.</p>
+
+                <p>Часто используют в одну строку с поиском. Например, найти
+                    все процессы с определённым именем и убить их:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-Process -Name chrome | Stop-Process -Force</span></code></pre>
+
+                <h2>Информация о системе: systeminfo</h2>
+
+                <p>Команда <code>systeminfo</code> выводит подробные характеристики
+                    компьютера: версию Windows, модель процессора, объём памяти,
+                    дату установки, сетевые настройки.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">systeminfo</span></code></pre>
+
+                <p>Вывод большой - несколько десятков строк. Иногда ждать
+                    приходится 5-10 секунд, особенно на слабом компьютере.
+                    Это нормально.</p>
+
+                <p>Чтобы найти нужное, можно применить фильтр через конвейер
+                    <code>|</code> и команду <code>findstr</code> (о конвейере
+                    подробно в уроке 8, пока просто используйте):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">systeminfo | findstr /C:"Total Physical Memory"</span></code></pre>
+
+                <p>Ключ <code>/C:</code> - искать именно эту фразу целиком
+                    (с учётом пробелов). Без него <code>findstr</code>
+                    попытается найти отдельные слова.</p>
+
+                <p>По-русски строка называется «Полный объём физической памяти»:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">systeminfo | findstr /C:"Полный объём физической памяти"</span></code></pre>
+
+                <p>Можно искать по нескольким словам через <code>/C:</code>
+                    для каждого:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">systeminfo | findstr /C:"OS Name" /C:"OS Version" /C:"Total Physical Memory"</span></code></pre>
+
+                <h3>Быстрая версия Windows: ver</h3>
+
+                <p>Если нужна только версия Windows - <code>systeminfo</code>
+                    слишком тяжёл. Есть более простая команда:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">ver</span><span class="code-row">Microsoft Windows [Version 10.0.22631.4169]</span></code></pre>
+
+                <p>Мгновенно и по делу.</p>
+
+                <h3>В PowerShell: Get-ComputerInfo</h3>
+
+                <p>Современный аналог <code>systeminfo</code> в PowerShell:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-ComputerInfo</span></code></pre>
+
+                <p>Возвращает не текст, а объект с десятками полей. Можно
+                    выбирать конкретные:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-ComputerInfo -Property OsName, OsVersion, CsTotalPhysicalMemory</span></code></pre>
+
+                <h2>Переменные окружения: set</h2>
+
+                <p>В прошлом уроке мы использовали <code>%USERPROFILE%</code>,
+                    <code>%TEMP%</code> - <strong>переменные окружения</strong>.
+                    Это специальные имена, за которыми скрыты значения (обычно
+                    пути). Windows сама подставляет их в команды.</p>
+
+                <p>Посмотреть все переменные окружения:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">set</span></code></pre>
+
+                <p>Вывод длинный, обычно его фильтруют:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">set USER</span></code></pre>
+
+                <p>Покажет только переменные, начинающиеся с «USER».</p>
+
+                <p>Посмотреть значение одной переменной:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">echo %USERPROFILE%</span></code></pre>
+
+                <h3>Переменная PATH</h3>
+
+                <p>Отдельно стоит переменная <code>PATH</code>. Это список папок,
+                    в которых Windows ищет программы, когда вы вводите их имя.
+                    Если программа находится в одной из этих папок - её можно
+                    запустить без указания полного пути.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">echo %PATH%</span></code></pre>
+
+                <p>Именно поэтому <code>cmd</code> находит <code>ping</code>,
+                    <code>ipconfig</code>, <code>tasklist</code> из любой папки -
+                    они лежат в <code>C:\Windows\System32</code>, а эта папка
+                    включена в <code>PATH</code>.</p>
+
+                <h3>Установить переменную: setx</h3>
+
+                <p><code>set</code> создаёт переменную только на время текущей
+                    сессии - после закрытия терминала она исчезнет. Чтобы
+                    сохранить переменную постоянно, есть <code>setx</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">setx MYVARIABLE "my value"</span></code></pre>
+
+                <p>Теперь <code>MYVARIABLE</code> сохранится и будет доступна
+                    во всех новых сессиях терминала. Не действует только
+                    в текущей - чтобы её увидеть, нужно открыть новый
+                    терминал.</p>
+
+                <p>Ключ <code>/M</code> создаёт переменную на уровне всей системы
+                    (нужен запуск от администратора):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">setx /M MYVARIABLE "my value"</span></code></pre>
+
+                <p>Без <code>/M</code> - только для текущего пользователя.</p>
+
+                <h2>Управление питанием: shutdown</h2>
+
+                <p>Команда <code>shutdown</code> выключает, перезагружает или
+                    переводит компьютер в спящий режим.</p>
+
+                <h3>Выключение</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">shutdown /s /t 0</span></code></pre>
+
+                <p><code>/s</code> - shutdown (выключить). <code>/t 0</code> -
+                    таймаут 0 секунд (немедленно). Без <code>/t</code> Windows
+                    даёт 30 секунд на сохранение работы.</p>
+
+                <h3>Перезагрузка</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">shutdown /r /t 0</span></code></pre>
+
+                <p><code>/r</code> - restart. Полезно, когда терминал удобнее
+                    кнопки «Пуск».</p>
+
+                <h3>Отмена запланированного выключения</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">shutdown /a</span></code></pre>
+
+                <p><code>/a</code> - abort. Отменяет запланированное выключение
+                    или перезагрузку. Работает, если время ещё не вышло.</p>
+
+                <h3>Таймер</h3>
+
+                <p>Можно поставить отложенное выключение. Например, через час
+                    (3600 секунд):</p>
+
+                <pre class="code-numbered"><code><span class="code-row">shutdown /s /t 3600</span></code></pre>
+
+                <p>Windows покажет уведомление, что компьютер выключится через
+                    час. Если передумали - <code>shutdown /a</code>.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Про shutdown в PowerShell
+                    </div>
+                    <p>В PowerShell работает и команда <code>shutdown</code>
+                        (она встроенная, из Windows), и её алиас
+                        <code>Stop-Computer</code> (для выключения),
+                        <code>Restart-Computer</code> (для перезагрузки).
+                        Синтаксис другой, но результат тот же.</p>
+                </div>
+
+                <h2>Утилита wmic (устарела, но встречается)</h2>
+
+                <p>Команда <code>wmic</code> (Windows Management Instrumentation
+                    Command-line) долгое время была главным инструментом
+                    для получения информации о железе и системе. В Windows 11
+                    она помечена как устаревшая и может быть удалена в будущем,
+                    но пока встречается в старых инструкциях.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">wmic cpu get name</span></code></pre>
+
+                <p>Покажет модель процессора. Или:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">wmic os get caption, version</span></code></pre>
+
+                <p>Покажет версию Windows.</p>
+
+                <p>Современный аналог в PowerShell - <code>Get-CimInstance</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">Get-CimInstance Win32_Processor | Select-Object Name</span><span class="code-row">Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version</span></code></pre>
+
+                <p>Работает так же, но на будущее - именно этот способ
+                    рекомендуется вместо <code>wmic</code>.</p>
 
                 <h2>Шпаргалка</h2>
 
@@ -168,18 +521,26 @@
                 <ul class="operator-list">
                     <li>
                         <code>tasklist</code>
-                        <span>список процессов</span>
+                        <span>все процессы</span>
+                    </li>
+                    <li>
+                        <code>tasklist /v</code>
+                        <span>подробно</span>
+                    </li>
+                    <li>
+                        <code>tasklist /svc</code>
+                        <span>службы в процессе</span>
                     </li>
                     <li>
                         <code>tasklist /fi</code>
-                        <span>фильтр процессов</span>
+                        <span>фильтр</span>
                     </li>
                     <li>
-                        <code>taskkill /IM</code>
+                        <code>taskkill /IM name</code>
                         <span>убить по имени</span>
                     </li>
                     <li>
-                        <code>taskkill /PID</code>
+                        <code>taskkill /PID id</code>
                         <span>убить по номеру</span>
                     </li>
                     <li>
@@ -187,40 +548,125 @@
                         <span>принудительно</span>
                     </li>
                     <li>
+                        <code>taskkill /T</code>
+                        <span>с дочерними</span>
+                    </li>
+                    <li>
                         <code>systeminfo</code>
                         <span>информация о системе</span>
+                    </li>
+                    <li>
+                        <code>ver</code>
+                        <span>версия Windows</span>
+                    </li>
+                    <li>
+                        <code>set</code>
+                        <span>все переменные</span>
+                    </li>
+                    <li>
+                        <code>echo %PATH%</code>
+                        <span>пути поиска</span>
+                    </li>
+                    <li>
+                        <code>setx NAME "val"</code>
+                        <span>сохранить переменную</span>
+                    </li>
+                    <li>
+                        <code>shutdown /s /t 0</code>
+                        <span>выключить</span>
+                    </li>
+                    <li>
+                        <code>shutdown /r /t 0</code>
+                        <span>перезагрузить</span>
+                    </li>
+                    <li>
+                        <code>shutdown /a</code>
+                        <span>отменить</span>
                     </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные ошибки при работе с процессами.</p>
+                <p>Типичные проблемы при работе с процессами и системой.</p>
 
                 <ul>
-                    <li><strong>«Отказано в доступе»</strong>. Вы пытаетесь убить системный процесс или программу другого пользователя. Запустите терминал от имени администратора.</li>
-                    <li><strong>«Не удалось найти процесс»</strong>. Вы опечатались в имени программы или она уже закрылась. Проверьте список через <code>tasklist</code>.</li>
-                    <li><strong>«taskkill не убивает процесс»</strong>. Вы забыли добавить ключ <code>/F</code>. Без него программа может проигнорировать запрос на закрытие.</li>
-                    <li><strong>«systeminfo работает очень долго»</strong>. Это нормально. Сбор информации о системе требует времени. Подождите пару секунд.</li>
+                    <li><strong>«Отказано в доступе» при <code>taskkill</code>.</strong>
+                        Процесс принадлежит другому пользователю или системе.
+                        Запустите терминал от имени администратора. Или это
+                        защищённый системный процесс, который нельзя убить
+                        в принципе.</li>
+                    <li><strong>«Не удалось найти процесс».</strong> Опечатка
+                        в имени или процесса уже нет. Проверьте через
+                        <code>tasklist</code>, что он действительно работает.
+                        Учтите: имя процесса должно быть с расширением -
+                        <code>notepad.exe</code>, а не просто
+                        <code>notepad</code>.</li>
+                    <li><strong><code>taskkill</code> без <code>/F</code>
+                            не сработал.</strong> Процесс завис и не
+                        обрабатывает сигнал завершения. Добавьте
+                        <code>/F</code>. Это нормальная практика: сначала
+                        попытка «по-хорошему», потом принудительно.</li>
+                    <li><strong>«Убил Chrome, а память не освободилась».</strong>
+                        Дочерние процессы остались. Используйте
+                        <code>taskkill /IM chrome.exe /F /T</code> -
+                        с ключом <code>/T</code>, который убивает
+                        дерево процессов.</li>
+                    <li><strong>«systeminfo работает очень долго».</strong>
+                        Это нормально, особенно на старых компьютерах.
+                        Сбор информации требует времени - от 5 до 20 секунд.
+                        Если нужна только версия - используйте
+                        <code>ver</code>.</li>
+                    <li><strong>«findstr ничего не находит».</strong>
+                        Скорее всего, не совпадает язык или регистр.
+                        Проверьте точную строку через
+                        <code>systeminfo</code> без фильтра - и копируйте
+                        её. Или используйте <code>/I</code> для поиска
+                        без учёта регистра: <code>findstr /I "memory"</code>.</li>
+                    <li><strong>«setx не работает - просит права».</strong>
+                        С ключом <code>/M</code> нужен запуск от
+                        администратора. Без <code>/M</code> - работает
+                        от обычного пользователя, но сохраняет переменную
+                        только для вас.</li>
+                    <li><strong>«shutdown не выключает компьютер».</strong>
+                        Возможные причины: 1) программа блокирует выключение -
+                        система покажет диалог; 2) у вас нет прав - нужен
+                        администратор; 3) запланированное выключение
+                        отменено другим пользователем или скриптом.</li>
                 </ul>
 
-                <p>Если что-то не получается - напишите нам в
+                <p>Если что-то не получается или есть вопрос - напишите в
                     <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
                     разберёмся вместе.
                 </p>
 
                 <h2>Практика</h2>
 
-                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+                <p>Четыре задачи. Все безопасные: мы смотрим и тренируемся
+                    на программах, которые легко открыть заново (Блокнот,
+                    Калькулятор).</p>
 
                 <div class="task-list">
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 1. Перепись населения</span>
+                            <span>Задача 1. Перепись процессов</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Выведите на экран список всех запущенных процессов в системе.</p>
+                            <p class="task-desc">Откройте терминал и выполните
+                                три шага:</p>
+                            <ol>
+                                <li>Посмотрите все процессы через
+                                    <code>tasklist</code>.</li>
+                                <li>Отфильтруйте только процессы
+                                    <code>explorer.exe</code>.</li>
+                                <li>Посмотрите подробный вывод
+                                    для <code>explorer.exe</code>
+                                    через <code>/v</code>.</li>
+                            </ol>
+                            <p>Обратите внимание: сколько процессов
+                                <code>explorer.exe</code> обычно
+                                работает и почему.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -228,17 +674,37 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте команду <code>tasklist</code> без аргументов.</p>
+                                    <p>Фильтр - <code>/fi "imagename eq
+                                        explorer.exe"</code>. Для подробного
+                                        вывода добавьте <code>/v</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">tasklist</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">tasklist</span><span class="code-row">tasklist /fi "imagename eq explorer.exe"</span><span class="code-row">tasklist /v /fi "imagename eq explorer.exe"</span></code></pre>
+                                    <p>Что вы увидите:</p>
+                                    <ul>
+                                        <li><code>explorer.exe</code> -
+                                            обычно <strong>один</strong>
+                                            процесс. Это проводник
+                                            Windows - рабочий стол,
+                                            панель задач, окна папок.
+                                            Если открыть много окон
+                                            проводника, они могут
+                                            работать в одном процессе.</li>
+                                        <li>В подробном выводе появятся
+                                            колонки «Пользователь»,
+                                            «CPU Time», «Заголовок окна».
+                                            Заголовок покажет, что вы
+                                            видите - например,
+                                            «Мои документы» или
+                                            «Загрузки».</li>
+                                    </ul>
                                 </div>
                             </details>
                         </div>
@@ -246,11 +712,21 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 2. Найти Блокнот</span>
+                            <span>Задача 2. Найдите и завершите</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Запустите Блокнот. Найдите его PID с помощью команды <code>tasklist</code>.</p>
+                            <p class="task-desc">Сделайте цикл «запустил -
+                                нашёл - убил»:</p>
+                            <ol>
+                                <li>Откройте Блокнот через «Пуск».</li>
+                                <li>В терминале найдите его PID через
+                                    <code>tasklist /fi "imagename eq notepad.exe"</code>.</li>
+                                <li>Завершите его командой
+                                    <code>taskkill /PID найденный_номер /F</code>.</li>
+                                <li>Проверьте через <code>tasklist</code>,
+                                    что процесса больше нет.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -258,17 +734,32 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте фильтр: <code>tasklist /fi "imagename eq notepad.exe"</code>. Во второй колонке (PID) будет нужное число.</p>
+                                    <p>PID - вторая колонка в выводе
+                                        <code>tasklist</code>. Число,
+                                        например 8104. Именно его
+                                        подставляйте в
+                                        <code>taskkill /PID</code>.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">tasklist /fi "imagename eq notepad.exe"</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">tasklist /fi "imagename eq notepad.exe"</span><span class="code-row">Имя образа                     PID Имя сессии       ...</span><span class="code-row">notepad.exe                   8104 Console         ...</span><span class="code-row"></span><span class="code-row">taskkill /PID 8104 /F</span><span class="code-row">УСПЕХ: Процесс с идентификатором 8104 завершён.</span><span class="code-row"></span><span class="code-row">tasklist /fi "imagename eq notepad.exe"</span><span class="code-row">ИНФОРМАЦИЯ: нет задач, удовлетворяющих условиям.</span></code></pre>
+                                    <p>Обратите внимание: PID у Блокнота
+                                        будет <em>свой</em> при каждом
+                                        запуске. Windows выдаёт
+                                        случайные номера в диапазоне
+                                        тысяч и десятков тысяч.</p>
+                                    <p>Без <code>/F</code> команда тоже
+                                        обычно сработает для Блокнота -
+                                        он корректно обрабатывает
+                                        сигнал завершения. С <code>/F</code> -
+                                        наверняка, даже если программа
+                                        зависла.</p>
                                 </div>
                             </details>
                         </div>
@@ -276,11 +767,27 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Принудительное закрытие</span>
+                            <span>Задача 3. Убейте дерево Chrome</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Закройте Блокнот (который вы открыли в прошлой задаче) прямо из терминала, не используя мышку.</p>
+                            <p class="task-desc">Если у вас открыт Chrome
+                                или другой современный браузер:</p>
+                            <ol>
+                                <li>Посчитайте, сколько процессов
+                                    <code>chrome.exe</code> работает
+                                    через
+                                    <code>tasklist /fi "imagename eq chrome.exe"</code>.</li>
+                                <li>Завершите <strong>все</strong> одной
+                                    командой с ключами <code>/F /T</code>.</li>
+                                <li>Проверьте, что процессов больше
+                                    не осталось.</li>
+                            </ol>
+                            <p>Если Chrome не установлен - попробуйте
+                                на Firefox (<code>firefox.exe</code>),
+                                Edge (<code>msedge.exe</code>) или
+                                любом другом многопроцессном
+                                приложении.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -288,17 +795,39 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте команду <code>taskkill</code> с флагом <code>/IM notepad.exe</code> и <code>/F</code>.</p>
+                                    <p><code>taskkill /IM chrome.exe /F /T</code> -
+                                        именно в таком порядке: имя,
+                                        force, tree. Параметры можно
+                                        переставлять, но так принято
+                                        писать по привычке.</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">taskkill /IM notepad.exe /F</span></code></pre>
+                                    <pre class="code-numbered"><code><span class="code-row">tasklist /fi "imagename eq chrome.exe"</span><span class="code-row">Имя образа                     PID ...</span><span class="code-row">chrome.exe                    7532 ...</span><span class="code-row">chrome.exe                    7845 ...</span><span class="code-row">chrome.exe                    7912 ...</span><span class="code-row">chrome.exe                    8034 ...</span><span class="code-row">...</span><span class="code-row"></span><span class="code-row">taskkill /IM chrome.exe /F /T</span><span class="code-row">УСПЕХ: Отправлен сигнал завершения процессу "chrome.exe" с идентификатором 7532.</span><span class="code-row">УСПЕХ: Процесс "chrome.exe" с идентификатором 7845 завершён.</span><span class="code-row">...</span></code></pre>
+                                    <p>Что тут важно:</p>
+                                    <ul>
+                                        <li>У Chrome в норме 10-30 процессов:
+                                            главный, по одному на вкладку,
+                                            на расширения, на GPU, на
+                                            служебные задачи.</li>
+                                        <li>Если убить только главный -
+                                            остальные остаются и продолжают
+                                            занимать память, пока Windows
+                                            не решит, что делать.
+                                            <code>/T</code> решает
+                                            проблему радикально.</li>
+                                        <li><code>/F</code> нужен
+                                            потому что Chrome активно
+                                            сопротивляется закрытию
+                                            и может «вежливо» не
+                                            завершиться.</li>
+                                    </ul>
                                 </div>
                             </details>
                         </div>
@@ -310,7 +839,25 @@
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Выведите информацию о вашем компьютере, но оставьте только строку с версией операционной системы.</p>
+                            <p class="task-desc">Соберите данные о своём
+                                компьютере через <code>systeminfo</code>:</p>
+                            <ol>
+                                <li>Выведите версию Windows через
+                                    <code>ver</code>.</li>
+                                <li>Найдите в <code>systeminfo</code>
+                                    строку про объём физической
+                                    памяти - сначала через
+                                    <code>findstr</code> с
+                                    <code>/C:</code>.</li>
+                                <li>Найдите строку про модель
+                                    процессора.</li>
+                                <li>Узнайте через
+                                    <code>echo %USERPROFILE%</code>
+                                    путь к своей домашней папке
+                                    и через <code>set USER</code>
+                                    - переменную с вашим
+                                    именем пользователя.</li>
+                            </ol>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -318,18 +865,42 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте <code>systeminfo | findstr "ОС"</code> (или "OS" в английской версии Windows).</p>
+                                    <p>Точные названия строк зависят
+                                        от языка Windows. В русской
+                                        версии это «Полный объём
+                                        физической памяти» и
+                                        «Процессор(ы)». В английской -
+                                        «Total Physical Memory»
+                                        и «Processor(s)».</p>
                                 </div>
                             </details>
 
                             <details class="faq-item task-nested">
                                 <summary>
-                                    <span>Решение учителя</span>
+                                    <span>Разбор</span>
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">systeminfo | findstr "ОС"</span></code></pre>
-                                    <p>В зависимости от версии Windows, строка может называться «Имя ОС» или «OS Name».</p>
+                                    <pre class="code-numbered"><code><span class="code-row">ver</span><span class="code-row">Microsoft Windows [Version 10.0.22631.4169]</span><span class="code-row"></span><span class="code-row">systeminfo | findstr /C:"Полный объём физической памяти"</span><span class="code-row">Полный объём физической памяти:   16 384 МБ</span><span class="code-row"></span><span class="code-row">systeminfo | findstr /C:"Процессор(ы)"</span><span class="code-row">Процессор(ы):                     1 модель(и) установлена.</span><span class="code-row">                                  [01]: Intel64 Family 6 Model ...</span><span class="code-row"></span><span class="code-row">echo %USERPROFILE%</span><span class="code-row">C:\Users\Иван</span><span class="code-row"></span><span class="code-row">set USER</span><span class="code-row">USERDNSDOMAIN=...</span><span class="code-row">USERDOMAIN=...</span><span class="code-row">USERNAME=Иван</span><span class="code-row">USERPROFILE=C:\Users\Иван</span></code></pre>
+                                    <p>Что полезного узнали:</p>
+                                    <ul>
+                                        <li><strong>Версия Windows</strong> -
+                                            из <code>ver</code>. Быстро
+                                            и без ожидания.</li>
+                                        <li><strong>Объём памяти</strong> -
+                                            16 ГБ. Если бы было меньше 4 ГБ -
+                                            это уже повод задуматься о
+                                            производительности.</li>
+                                        <li><strong>Процессор</strong> -
+                                            модель и характеристики.
+                                            Пригодится при покупке
+                                            нового софта -
+                                            проверить совместимость.</li>
+                                        <li><strong>USERNAME</strong> -
+                                            одна из стандартных
+                                            переменных, которую Windows
+                                            создаёт автоматически.</li>
+                                    </ul>
                                 </div>
                             </details>
                         </div>
@@ -339,15 +910,37 @@
 
                 <h2>Что мы узнали и что дальше</h2>
 
-                <p>Теперь вы можете управлять процессами так же, как опытный системный администратор. Вы узнали:</p>
-                <ul>
-                    <li>Как посмотреть список всех запущенных программ (<code>tasklist</code>).</li>
-                    <li>Как найти процесс по имени с помощью фильтра.</li>
-                    <li>Как принудительно завершить зависшую программу (<code>taskkill</code>).</li>
-                    <li>Как получить информацию о системе (<code>systeminfo</code>).</li>
-                </ul>
+                <p>Разобрались с системными командами - тем, что позволяет заглянуть
+                    «под капот» Windows. Узнали, что такое <strong>процесс</strong>
+                    и <strong>PID</strong>, научились смотреть все запущенные процессы
+                    через <code>tasklist</code> (с ключами <code>/v</code>,
+                    <code>/svc</code>, <code>/fi</code>), и завершать их через
+                    <code>taskkill</code> - как «по-хорошему», так и принудительно
+                    с <code>/F</code> и <code>/T</code> для деревьев процессов.</p>
 
-                <p>Но терминал умеет работать не только с локальным компьютером, но и с сетью. В следующем уроке мы разберём <strong>сетевые утилиты</strong>. Вы научитесь проверять интернет-соединение, узнавать свой IP-адрес и смотреть, какие сайты доступны. До встречи!</p>
+                <p>Разобрались с командой <code>systeminfo</code> - как получить
+                    версию системы, объём памяти, модель процессора. И как
+                    фильтровать её вывод через <code>findstr /C:</code>, чтобы
+                    не тонуть в десятках строк. Плюс быстрая команда
+                    <code>ver</code> на случай, если нужна только версия.</p>
+
+                <p>Поняли, что такое <strong>переменные окружения</strong>:
+                    как посмотреть их через <code>set</code>, как обратиться
+                    к конкретной через <code>echo %NAME%</code>, и как
+                    сохранить свою через <code>setx</code>. Отдельно
+                    разобрались с переменной <code>PATH</code> - почему
+                    <code>cmd</code> находит команды без указания полного
+                    пути.</p>
+
+                <p>И научились управлять питанием через <code>shutdown</code>:
+                    выключение (<code>/s</code>), перезагрузка (<code>/r</code>),
+                    отмена (<code>/a</code>), таймер (<code>/t</code>).</p>
+
+                <p>В следующем уроке займёмся <strong>сетевыми утилитами</strong> -
+                    разберёмся, как проверить интернет-соединение, узнать свой
+                    IP, посмотреть DNS-кеш, найти проблемы с маршрутом и проверить
+                    доступность конкретного порта. Плюс разберём современные
+                    PowerShell-команды для работы с сетью.</p>
 
                 <div class="lesson-actions">
                     <a href="lesson-03.html" class="btn-secondary">

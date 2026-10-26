@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навигация и структура файлов - Терминал - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="linux" data-lesson-id="lesson-02">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../courses.html">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 02</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson active" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация и структура</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Управление файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Чтение и поиск</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Права доступа и sudo</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Управление пакетами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Перенаправление и конвейеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Навигация и структура файлов</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>В прошлом уроке мы научились открывать терминал и выполнять простые
+                    команды. Теперь пора научиться в нём <strong>перемещаться</strong> -
+                    смотреть, где мы находимся, что вокруг, и переходить в другие
+                    папки. Без этого невозможно работать в терминале - как без умения
+                    ходить невозможно гулять.</p>
+
+                <p>В этом уроке разберём структуру файловой системы Linux, команды
+                    <code>pwd</code>, <code>ls</code> и <code>cd</code>, а также
+                    разницу между абсолютными и относительными путями - важное
+                    понятие, без которого вы будете постоянно путаться.</p>
+
+                <h2>Всё есть файл</h2>
+
+                <p>В Linux действует принцип, который часто формулируют как
+                    <strong>«всё есть файл»</strong>. Папки, документы, жёсткие диски,
+                    подключённые устройства, сетевые соединения, даже процессы - всё
+                    представлено в виде файлов и папок в едином дереве.</p>
+
+                <p>Это отличается от Windows, где есть отдельные диски <code>C:\</code>,
+                    <code>D:\</code> и так далее. В Linux одно большое дерево, которое
+                    начинается с корня - символа <code>/</code> (один слэш).</p>
+
+                <p>Дальше в дереве лежат папки верхнего уровня - у каждой своё
+                    назначение. Все остальные папки, которые вы когда-либо увидите,
+                    вложены в одну из них.</p>
+
+                <h2>Структура файловой системы</h2>
+
+                <p>Запомните основные папки верхнего уровня - это как районы в городе.
+                    У каждого своё назначение.</p>
+
+                <h3>/ - корень</h3>
+
+                <p>Самая верхняя точка дерева. Всё начинается здесь. Внутри уже
+                    <code>/home</code>, <code>/etc</code>, <code>/var</code> и другие.</p>
+
+                <h3>/home - домашние папки пользователей</h3>
+
+                <p>Внутри <code>/home</code> лежат папки пользователей. Если ваше имя
+                    <code>student</code>, то ваша домашняя папка - <code>/home/student</code>.
+                    Здесь хранятся ваши документы, загрузки, конфиги, проекты.</p>
+
+                <p>Это аналог «Моих документов» в Windows, только для каждого
+                    пользователя отдельно. Когда вы открываете терминал, вы обычно
+                    сразу попадаете в свою домашнюю папку.</p>
+
+                <h3>/etc - конфигурации системы</h3>
+
+                <p>Здесь лежат конфигурационные файлы всей системы: настройки сети,
+                    пользователи, службы. Почти все <code>.conf</code>-файлы, которые
+                    вы когда-либо редактируете как администратор, будут в
+                    <code>/etc</code>.</p>
+
+                <p>Название историческое - расшифровывается как <em>et cetera</em>
+                    («и так далее»), но фактически это «папка конфигов».</p>
+
+                <h3>/var - переменные данные</h3>
+
+                <p>Здесь хранится то, что меняется во время работы системы: логи
+                    (<code>/var/log</code>), базы данных, кэш, файлы веб-сервера
+                    (<code>/var/www</code>), временные файлы служб.</p>
+
+                <p>Если что-то в системе «разбухло» и занимает всё место - чаще всего
+                    виноват <code>/var/log</code>.</p>
+
+                <h3>/usr - программы пользователя</h3>
+
+                <p>Здесь установлены программы, доступные всем пользователям. Внутри
+                    <code>/usr/bin</code> лежат исполняемые файлы (те самые команды,
+                    которые вы вводите), <code>/usr/lib</code> - библиотеки,
+                    <code>/usr/share</code> - общие данные (документация, шрифты).</p>
+
+                <p>Когда вы ставите программу через пакетный менеджер - она, скорее
+                    всего, окажется именно в <code>/usr</code>.</p>
+
+                <h3>/tmp - временные файлы</h3>
+
+                <p>Сюда пишут временные файлы разные программы. Эта папка обычно
+                    очищается при перезагрузке (или по расписанию). Не храните здесь
+                    ничего важного.</p>
+
+                <h3>/root - домашняя папка root</h3>
+
+                <p>Домашняя папка суперпользователя (root). Не путайте с <code>/</code>
+                    (корень). <code>/root</code> - это отдельная папка, доступ к которой
+                    есть только у root.</p>
+
+                <h3>Другие полезные папки</h3>
+
+                <ul>
+                    <li><code>/bin</code>, <code>/sbin</code> - базовые системные
+                        команды (в современных дистрибутивах часто ссылки на
+                        <code>/usr/bin</code>).</li>
+                    <li><code>/dev</code> - устройства (диски, мыши, терминалы - всё
+                        как файлы).</li>
+                    <li><code>/proc</code>, <code>/sys</code> - виртуальные
+                        файловые системы с информацией о процессах и ядре.</li>
+                    <li><code>/opt</code> - дополнительное программное обеспечение,
+                        устанавливаемое вручную (не через пакетный менеджер).</li>
+                    <li><code>/mnt</code>, <code>/media</code> - точки монтирования
+                        внешних дисков и флешек.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Не запоминайте всё сразу
+                    </div>
+                    <p>Вам не нужно с ходу выучить все папки верхнего уровня. Запомните
+                        основные - <code>/home</code>, <code>/etc</code>,
+                        <code>/var</code>, <code>/usr</code>, <code>/tmp</code>.
+                        Остальные всплывут по мере необходимости.</p>
+                </div>
+
+                <h2>pwd - где я</h2>
+
+                <p>Команда <code>pwd</code> (print working directory) показывает, в
+                    какой папке вы находитесь сейчас. Это первое, что стоит выполнять,
+                    если вы «потерялись» в терминале.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ pwd</span><span class="code-row">/home/student</span></code></pre>
+
+                <p>Вывод - полный путь от корня до текущей папки. Именно так выглядит
+                    любой <strong>абсолютный путь</strong> - он начинается с
+                    <code>/</code>.</p>
+
+                <h2>ls - что вокруг</h2>
+
+                <p>Команда <code>ls</code> (list) показывает содержимое текущей папки.
+                    Самая частая команда в Linux после <code>cd</code>.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls</span><span class="code-row">Desktop  Documents  Downloads  Music  Pictures  Videos</span></code></pre>
+
+                <p>Просто имена файлов и папок, разделённые пробелами. Ничего лишнего.
+                    Но часто этого недостаточно - хочется понять, где файлы, где папки,
+                    сколько они весят, когда изменены. Для этого есть ключи.</p>
+
+                <h3>Основные ключи ls</h3>
+
+                <p><strong><code>-l</code> - длинный формат</strong></p>
+
+                <p>Показывает подробную информацию о каждом элементе:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls -l</span><span class="code-row">drwxr-xr-x 2 student student 4096 Oct 20 14:32 Documents</span><span class="code-row">-rw-r--r-- 1 student student 1024 Oct 21 09:15 notes.txt</span><span class="code-row">drwxr-xr-x 2 student student 4096 Oct 22 18:07 Projects</span></code></pre>
+
+                <p>Что здесь что:</p>
+
+                <ul>
+                    <li><strong>Первый символ</strong> - тип: <code>d</code> -
+                        папка, <code>-</code> - обычный файл, <code>l</code> -
+                        символическая ссылка.</li>
+                    <li><strong>Следующие 9 символов</strong> - права доступа (об этом
+                        подробно в уроке 5).</li>
+                    <li><strong>Число</strong> - количество ссылок на файл.</li>
+                    <li><strong>Владелец</strong> и <strong>группа</strong> -
+                        <code>student student</code>.</li>
+                    <li><strong>Размер</strong> в байтах - 4096, 1024.</li>
+                    <li><strong>Дата и время</strong> изменения.</li>
+                    <li><strong>Имя</strong> файла или папки.</li>
+                </ul>
+
+                <p><strong><code>-a</code> - включая скрытые</strong></p>
+
+                <p>В Linux файлы, начинающиеся с точки, считаются <strong>скрытыми</strong>.
+                    Обычно <code>ls</code> их не показывает - чтобы не засорять вывод.
+                    Ключ <code>-a</code> показывает всё, включая скрытое.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls -a</span><span class="code-row">.  ..  .bashrc  .profile  Desktop  Documents  Downloads</span></code></pre>
+
+                <p>Обратите внимание на <code>.</code> и <code>..</code> - это
+                    специальные «папки», о которых ниже. А <code>.bashrc</code> и
+                    <code>.profile</code> - скрытые конфиги вашей оболочки.</p>
+
+                <p><strong><code>-h</code> - человекочитаемые размеры</strong></p>
+
+                <p>Размеры в байтах неудобны: 1024 байт - это сколько? Ключ
+                    <code>-h</code> (human-readable) выводит в КБ, МБ, ГБ.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls -lh</span><span class="code-row">-rw-r--r-- 1 student student 1.0K Oct 21 09:15 notes.txt</span><span class="code-row">-rw-r--r-- 1 student student 2.5M Oct 20 12:00 movie.mp4</span></code></pre>
+
+                <p><strong>Комбинирование ключей</strong></p>
+
+                <p>Можно совмещать несколько ключей в одной команде:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls -lah</span></code></pre>
+
+                <p>Это то же самое, что <code>ls -l -a -h</code> - подробный вывод,
+                    включая скрытые файлы, с человекочитаемыми размерами. Самая
+                    используемая комбинация в реальной работе.</p>
+
+                <h3>ls с указанием пути</h3>
+
+                <p><code>ls</code> может показать содержимое не только текущей
+                    папки, но и любой другой - достаточно передать путь:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls /etc</span><span class="code-row">$ ls /var/log</span><span class="code-row">$ ls ~/Documents</span></code></pre>
+
+                <p>Первая покажет содержимое <code>/etc</code>, вторая - логов, третья -
+                    папки <code>Documents</code> в вашей домашней директории.</p>
+
+                <h2>cd - переход по папкам</h2>
+
+                <p>Команда <code>cd</code> (change directory) меняет текущую папку.
+                    Именно она используется чаще всего.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cd Documents</span></code></pre>
+
+                <p>Эта команда «заходит» в папку <code>Documents</code>, если она есть
+                    в текущей директории. После выполнения приглашение изменится -
+                    вы увидите, что <code>~</code> заменилась на название папки или
+                    <code>~/Documents</code>.</p>
+
+                <h3>Специальные обозначения путей</h3>
+
+                <p>В Linux есть несколько коротких обозначений для часто используемых
+                    путей. Их нужно знать наизусть - они встречаются везде.</p>
+
+                <ul>
+                    <li><code>.</code> (одна точка) - текущая папка. <code>cd .</code> -
+                        «перейди в текущую» (бессмысленно, но допустимо).</li>
+                    <li><code>..</code> (две точки) - родительская папка, то есть
+                        на уровень выше. <code>cd ..</code> - выйти из текущей
+                        папки наверх.</li>
+                    <li><code>~</code> (тильда) - ваша домашняя папка
+                        (<code>/home/ваше_имя</code>). <code>cd ~</code> - куда
+                        бы вы ни зашли, вернуться домой.</li>
+                    <li><code>/</code> (один слэш) - корень файловой системы.</li>
+                    <li><code>-</code> (дефис) - предыдущая папка, в которой вы
+                        были. Очень удобно для «переключения» между двумя
+                        директориями.</li>
+                </ul>
+
+                <p><strong>Примеры:</strong></p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cd ..</span><span class="code-row">$ cd ../..</span><span class="code-row">$ cd ~</span><span class="code-row">$ cd -</span><span class="code-row">$ cd /</span></code></pre>
+
+                <p>Разберём:</p>
+
+                <ul>
+                    <li><code>cd ..</code> - на уровень выше.</li>
+                    <li><code>cd ../..</code> - на два уровня выше (родитель
+                        родителя).</li>
+                    <li><code>cd ~</code> или просто <code>cd</code> без
+                        аргументов - в домашнюю папку.</li>
+                    <li><code>cd -</code> - вернуться в предыдущую папку.</li>
+                    <li><code>cd /</code> - в корень файловой системы.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Полезная привычка
+                    </div>
+                    <p>Когда вы «потерялись», не паникуйте. Выполните
+                        <code>pwd</code> (где я), потом <code>ls</code>
+                        (что вокруг). Как правило, этого хватает, чтобы понять
+                        ситуацию. А чтобы вернуться домой в любой момент -
+                        просто <code>cd</code> без аргументов.</p>
+                </div>
+
+                <h2>Абсолютные и относительные пути</h2>
+
+                <p>Ключевое понятие, без которого работа с файлами превращается в
+                    мучение. Путь к файлу или папке бывает двух видов.</p>
+
+                <h3>Абсолютный путь</h3>
+
+                <p>Всегда начинается с <code>/</code> (слеша). Описывает полный маршрут
+                    от корня файловой системы до нужного места. Не зависит от того,
+                    где вы сейчас находитесь.</p>
+
+                <p>Примеры:</p>
+
+                <ul>
+                    <li><code>/home/student/Documents/report.pdf</code></li>
+                    <li><code>/etc/nginx/nginx.conf</code></li>
+                    <li><code>/var/log/syslog</code></li>
+                </ul>
+
+                <p>Куда бы вы ни зашли командой <code>cd</code>, абсолютный путь
+                    всегда означает одно и то же место. Это как полный почтовый
+                    адрес: страна, город, улица, дом, квартира.</p>
+
+                <h3>Относительный путь</h3>
+
+                <p>Начинается <strong>не с</strong> <code>/</code>. Описывает
+                    положение относительно текущей папки. Понимается только в
+                    контексте того, где вы сейчас.</p>
+
+                <p>Примеры:</p>
+
+                <ul>
+                    <li><code>Documents/report.pdf</code> - файл <code>report.pdf</code>
+                        в папке <code>Documents</code>, которая лежит в текущей
+                        папке.</li>
+                    <li><code>../Documents/report.pdf</code> - выйти на уровень
+                        выше, зайти в <code>Documents</code>, взять
+                        <code>report.pdf</code>.</li>
+                    <li><code>./script.sh</code> - файл <code>script.sh</code> в
+                        текущей папке (точка - «здесь»).</li>
+                </ul>
+
+                <p>Это как описание пути от текущего места: «два квартала прямо,
+                    потом направо». Понятно только тому, кто знает, где он стоит
+                    сейчас.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Как выбрать
+                    </div>
+                    <p>В скриптах и командах, которые будут выполняться в разных
+                        местах, - <strong>абсолютные пути</strong>, чтобы не зависеть
+                        от текущей папки. Когда работаете «здесь и сейчас» -
+                        <strong>относительные</strong>, они короче и удобнее.</p>
+                </div>
+
+                <h2>Как это работает вместе: пример</h2>
+
+                <p>Представьте, что вы в <code>/home/student</code>. Выполняем:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ pwd</span><span class="code-row">/home/student</span><span class="code-row"></span><span class="code-row">$ ls</span><span class="code-row">Desktop  Documents  Downloads</span><span class="code-row"></span><span class="code-row">$ cd Documents</span><span class="code-row"></span><span class="code-row">$ pwd</span><span class="code-row">/home/student/Documents</span><span class="code-row"></span><span class="code-row">$ ls</span><span class="code-row">notes.txt  report.pdf  projects</span><span class="code-row"></span><span class="code-row">$ cd ..</span><span class="code-row"></span><span class="code-row">$ pwd</span><span class="code-row">/home/student</span></code></pre>
+
+                <p>Мы «зашли» в <code>Documents</code>, посмотрели, что там, и
+                    «вышли» обратно. Простые шаги, но именно так выглядит 90% работы
+                    в терминале.</p>
+
+                <p>Тот же переход можно было сделать через абсолютный путь:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ cd /home/student/Documents</span></code></pre>
+
+                <p>Результат тот же. Разница в том, что относительный
+                    <code>cd Documents</code> сработает только если вы уже в
+                    <code>/home/student</code>. А абсолютный - из любого места.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>/</code>
+                        <span>корень файловой системы</span>
+                    </li>
+                    <li>
+                        <code>/home</code>
+                        <span>домашние папки</span>
+                    </li>
+                    <li>
+                        <code>/etc</code>
+                        <span>конфиги</span>
+                    </li>
+                    <li>
+                        <code>/var</code>
+                        <span>переменные данные, логи</span>
+                    </li>
+                    <li>
+                        <code>/usr</code>
+                        <span>программы</span>
+                    </li>
+                    <li>
+                        <code>pwd</code>
+                        <span>где я</span>
+                    </li>
+                    <li>
+                        <code>ls</code>
+                        <span>что вокруг</span>
+                    </li>
+                    <li>
+                        <code>ls -lah</code>
+                        <span>подробно, со скрытыми</span>
+                    </li>
+                    <li>
+                        <code>cd папка</code>
+                        <span>зайти в папку</span>
+                    </li>
+                    <li>
+                        <code>cd ..</code>
+                        <span>на уровень выше</span>
+                    </li>
+                    <li>
+                        <code>cd ~</code>
+                        <span>домой</span>
+                    </li>
+                    <li>
+                        <code>cd -</code>
+                        <span>вернуться назад</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Типичные проблемы при навигации и их решения.</p>
+
+                <ul>
+                    <li><strong>«cd: no such file or directory».</strong> Такой
+                        папки нет. Проверьте название - возможно, опечатка или
+                        не та буква (заглавная вместо строчной). Linux
+                        чувствителен к регистру: <code>Documents</code> и
+                        <code>documents</code> - разные папки.</li>
+                    <li><strong>«Permission denied».</strong> Папка есть, но у вас
+                        нет прав на неё. Например, попытка зайти в
+                        <code>/root</code> под обычным пользователем. Решение -
+                        использовать <code>sudo</code> (об этом в уроке 5).</li>
+                    <li><strong>«ls показывает не то, что я ожидал».</strong>
+                        Скорее всего, вы не в той папке, где думаете. Выполните
+                        <code>pwd</code>. Возможно, что-то пошло не так и вы
+                        оказались в другом месте.</li>
+                    <li><strong>«Я случайно удалил файл, пока лазил по
+                            папкам».</strong> По одному <code>cd</code> и
+                        <code>ls</code> файлы не удаляются. Если файл
+                        «пропал» - скорее всего, вы просто в другой папке
+                        или файл скрытый. Проверьте через
+                        <code>ls -la</code>.</li>
+                    <li><strong>«Не могу выйти из папки».</strong>
+                        <code>cd ..</code> или <code>cd ~</code> - всегда
+                        работают. Или <code>cd /</code>, чтобы попасть в
+                        корень. Из любой папки можно выйти, кроме случая,
+                        когда что-то сломалось в системе (крайне редко).</li>
+                    <li><strong>«Не понимаю, где я нахожусь».</strong>
+                        <code>pwd</code> - универсальный ответ. Он покажет
+                        полный путь, и сразу станет понятно.</li>
+                    <li><strong>«Почему ls не показывает все файлы».</strong>
+                        Скрытые файлы (начинающиеся с точки) не видны без
+                        ключа <code>-a</code>. Это нормальное поведение,
+                        а не ошибка.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на базовую навигацию, вторые две -
+                    на ключи <code>ls</code> и понимание путей. Все задачи безопасные
+                    (только чтение и переходы), ничего не удалится.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Осмотритесь</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Откройте терминал. Выполните три
+                                шага:</p>
+                            <ol>
+                                <li>Определите, где вы находитесь.</li>
+                                <li>Посмотрите, что лежит в этой папке.</li>
+                                <li>Проверьте, есть ли в этой папке скрытые
+                                    файлы.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p><code>pwd</code> - где я,
+                                        <code>ls</code> - что вокруг,
+                                        <code>ls -a</code> - включая скрытое.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ pwd</span><span class="code-row">/home/student</span><span class="code-row"></span><span class="code-row">$ ls</span><span class="code-row">Desktop  Documents  Downloads  Music</span><span class="code-row"></span><span class="code-row">$ ls -a</span><span class="code-row">.  ..  .bashrc  .profile  Desktop  Documents  Downloads  Music</span></code></pre>
+                                    <p>Вы увидите стандартный набор папок
+                                        в домашней директории и пару скрытых
+                                        конфигов оболочки (<code>.bashrc</code>,
+                                        <code>.profile</code> - о них поговорим
+                                        в следующих уроках).</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Прогулка по системе</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Погуляйте по файловой системе:</p>
+                            <ol>
+                                <li>Из домашней папки перейдите в
+                                    <code>/etc</code>.</li>
+                                <li>Посмотрите, что там лежит (первые 10 строк
+                                    хватит).</li>
+                                <li>Перейдите в <code>/var/log</code>.</li>
+                                <li>Вернитесь обратно в домашнюю папку одной
+                                    командой.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для переходов - <code>cd</code> с
+                                        абсолютным или относительным путём.
+                                        Домой - <code>cd</code> без
+                                        аргументов или <code>cd ~</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ pwd</span><span class="code-row">/home/student</span><span class="code-row"></span><span class="code-row">$ cd /etc</span><span class="code-row"></span><span class="code-row">$ pwd</span><span class="code-row">/etc</span><span class="code-row"></span><span class="code-row">$ ls</span><span class="code-row">apt  bash.bashrc  hosts  nginx  passwd  ssh  systemd</span><span class="code-row"></span><span class="code-row">$ cd /var/log</span><span class="code-row"></span><span class="code-row">$ pwd</span><span class="code-row">/var/log</span><span class="code-row"></span><span class="code-row">$ ls</span><span class="code-row">auth.log  dpkg.log  kern.log  syslog</span><span class="code-row"></span><span class="code-row">$ cd</span><span class="code-row"></span><span class="code-row">$ pwd</span><span class="code-row">/home/student</span></code></pre>
+                                    <p>Обратите внимание: <code>cd</code> без
+                                        аргументов вернул вас в домашнюю
+                                        папку. Это самый быстрый способ
+                                        «вернуться домой» из любой точки.</p>
+                                    <p>В <code>/etc</code> вы увидите много
+                                        конфигов - <code>passwd</code> (список
+                                        пользователей), <code>hosts</code>
+                                        (локальные DNS-записи),
+                                        <code>ssh</code> (конфиг SSH-сервера
+                                        и ключей). Пока просто запомните,
+                                        что конфиги здесь.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Разные варианты ls</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Находясь в домашней папке,
+                                выполните четыре разных варианта
+                                <code>ls</code> и понаблюдайте за разницей:</p>
+                            <ol>
+                                <li>Просто <code>ls</code>.</li>
+                                <li><code>ls -l</code>.</li>
+                                <li><code>ls -a</code>.</li>
+                                <li><code>ls -lah</code>.</li>
+                            </ol>
+                            <p>Ответьте себе: что добавляет каждый ключ?</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сравнивайте выводы по очереди. Разница
+                                        между <code>ls</code> и
+                                        <code>ls -l</code> - в подробности.
+                                        Между <code>ls -l</code> и
+                                        <code>ls -lah</code> - в скрытых
+                                        файлах и читаемых размерах.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ul>
+                                        <li><strong>ls</strong> - просто
+                                            имена. Быстро, но мало
+                                            информации.</li>
+                                        <li><strong>ls -l</strong> -
+                                            подробный формат: права, размер,
+                                            владелец, дата. Видно, что
+                                            файл, а что папка (по первому
+                                            символу).</li>
+                                        <li><strong>ls -a</strong> -
+                                            добавляет скрытые файлы
+                                            (начинающиеся с точки).</li>
+                                        <li><strong>ls -lah</strong> -
+                                            «всё в одном»: подробно,
+                                            со скрытыми, размеры в КБ/МБ.
+                                            Это то, что используют чаще
+                                            всего в реальной работе.</li>
+                                    </ul>
+                                    <p>Ключи можно запомнить так:
+                                        <strong>l</strong> - long (длинный),
+                                        <strong>a</strong> - all (все, включая
+                                        скрытые), <strong>h</strong> - human
+                                        (человеческие размеры).</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Абсолютный или относительный</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Вы находитесь в
+                                <code>/home/student</code>. Для каждой команды
+                                скажите, куда она вас приведёт - и получится ли
+                                вообще.</p>
+                            <ol>
+                                <li><code>cd Documents</code></li>
+                                <li><code>cd /Documents</code></li>
+                                <li><code>cd ~/Documents</code></li>
+                                <li><code>cd ../student/Documents</code></li>
+                                <li><code>cd ../../etc</code></li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Абсолютные пути начинаются с
+                                        <code>/</code>. Относительные -
+                                        нет. <code>..</code> - на уровень
+                                        выше, <code>~</code> - домашняя
+                                        папка.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong><code>cd Documents</code></strong> -
+                                            относительный путь. Зайдёт в
+                                            <code>/home/student/Documents</code>,
+                                            если такая папка есть. Скорее
+                                            всего, есть.</li>
+                                        <li><strong><code>cd /Documents</code></strong> -
+                                            абсолютный путь. Ищет папку
+                                            <code>Documents</code> прямо в
+                                            корне. Скорее всего, её там
+                                            нет - получите ошибку
+                                            <code>No such file or directory</code>.
+                                        </li>
+                                        <li><strong><code>cd ~/Documents</code></strong> -
+                                            абсолютный (тильда разворачивается
+                                            в <code>/home/student</code>).
+                                            Зайдёт в
+                                            <code>/home/student/Documents</code>.</li>
+                                        <li><strong><code>cd ../student/Documents</code></strong> -
+                                            относительный. <code>..</code> из
+                                            <code>/home/student</code> ведёт
+                                            в <code>/home</code>. Дальше
+                                            <code>student/Documents</code> -
+                                            обратно в вашу папку. Итог тот же,
+                                            но через «крюк».</li>
+                                        <li><strong><code>cd ../../etc</code></strong> -
+                                            относительный. Из
+                                            <code>/home/student</code> два
+                                            уровня вверх - в <code>/</code>.
+                                            Дальше <code>etc</code> - попадаем
+                                            в <code>/etc</code>. Работает.</li>
+                                    </ol>
+                                    <p>Вывод: абсолютные пути не зависят от
+                                        текущего положения, относительные -
+                                        зависят. Первое правило безопасности:
+                                        если команда должна работать
+                                        «где угодно» - используйте абсолютный
+                                        путь.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с навигацией по файловой системе Linux. Узнали, что
+                    в Linux всё начинается с корня <code>/</code> и что основные
+                    папки верхнего уровня имеют конкретное назначение:
+                    <code>/home</code> - для пользователей, <code>/etc</code> - для
+                    конфигов, <code>/var</code> - для логов и переменных данных,
+                    <code>/usr</code> - для программ.</p>
+
+                <p>Научились использовать три ключевые команды: <code>pwd</code>
+                    (где я), <code>ls</code> (что вокруг) и <code>cd</code>
+                    (перейти). Познакомились с ключами <code>ls</code> -
+                    <code>-l</code>, <code>-a</code>, <code>-h</code> - и их
+                    комбинацией <code>-lah</code>, которая используется чаще всего.</p>
+
+                <p>И, что важно, разобрались с разницей между абсолютными и
+                    относительными путями. Поняли, что <code>.</code>, <code>..</code>,
+                    <code>~</code>, <code>/</code> и <code>-</code> - это не
+                    случайные символы, а специальные обозначения, которые
+                    сэкономить вам кучу времени.</p>
+
+                <p>Это база, без которой невозможно двигаться дальше. В следующем
+                    уроке будем учиться <strong>создавать, копировать, перемещать
+                        и удалять</strong> файлы и папки. Это уже активные действия,
+                    которые меняют файловую систему, - поэтому разберёмся с
+                    осторожностью и правилами безопасности.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-01.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-03.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

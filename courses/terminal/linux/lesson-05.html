@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Права доступа и sudo - Терминал - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="linux" data-lesson-id="lesson-05">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../courses.html">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 05</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация и структура</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Управление файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Чтение и поиск</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson active" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Права доступа и sudo</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Управление пакетами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Перенаправление и конвейеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Права доступа и sudo</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Наверняка вы уже сталкивались с загадочным сообщением
+                    <code>Permission denied</code>. Или замечали в выводе <code>ls -l</code>
+                    странные буквы <code>rwxr-xr-x</code>. Или слышали про
+                    «запустить с sudo», но не совсем понимали, что это значит.</p>
+
+                <p>В этом уроке разберёмся с одной из самых важных концепций Linux -
+                    <strong>правами доступа</strong>. Именно они делают Linux
+                    многопользовательской и безопасной системой: один пользователь
+                    не может случайно (или намеренно) сломать файлы другого.
+                    Плюс разберём, что такое <code>sudo</code> и когда без него
+                    не обойтись.</p>
+
+                <h2>Зачем вообще права доступа</h2>
+
+                <p>Вспомните, как устроен обычный компьютер под Windows: если вы -
+                    единственный пользователь, вы можете делать всё. Удалить любую
+                    программу, изменить любой файл, залезть в системные папки.
+                    Ограничений почти нет.</p>
+
+                <p>В Linux всё иначе. С самого начала система проектировалась как
+                    <strong>многопользовательская</strong>. На одном сервере могут
+                    одновременно работать десятки людей (через SSH), у каждого -
+                    своя домашняя папка, свои файлы, свои настройки. И ни один из
+                    них не должен видеть или менять данные другого.</p>
+
+                <p>Отсюда и появились <strong>права доступа</strong>. У каждого файла
+                    и папки есть <em>владелец</em> и <em>набор разрешений</em>: кто
+                    может читать, кто может изменять, кто может запускать. Без этих
+                    ограничений многопользовательская система превратилась бы в хаос.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия
+                    </div>
+                    <p>Представьте офис с общими и личными шкафчиками. В общий
+                        шкафчик можно положить что угодно, его содержимое
+                        доступно всем. А личный шкафчик заперт на ключ, и
+                        открыть его может только владелец. Права доступа -
+                        это как раз про то, какой шкафчик общий, какой -
+                        личный, и у кого есть ключи.</p>
+                </div>
+
+                <h2>Как читать права: ls -l разбор</h2>
+
+                <p>Помните, в уроке 2 мы смотрели <code>ls -l</code> и я обещал
+                    разобрать права подробно? Время пришло. Смотрим на вывод:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls -l notes.txt</span><span class="code-row">-rw-r--r-- 1 student student 1024 Oct 25 12:00 notes.txt</span></code></pre>
+
+                <p>Нас интересуют первые 10 символов:
+                    <code>-rw-r--r--</code>. Разберём их по частям.</p>
+
+                <h3>Первый символ - тип файла</h3>
+
+                <p>Самый первый символ показывает, что это за объект:</p>
+
+                <ul>
+                    <li><code>-</code> - обычный файл.</li>
+                    <li><code>d</code> - папка (directory).</li>
+                    <li><code>l</code> - символическая ссылка (как ярлык в Windows).</li>
+                    <li><code>c</code> - символьное устройство (например, терминал).</li>
+                    <li><code>b</code> - блочное устройство (жёсткий диск, флешка).</li>
+                    <li><code>s</code> - сокет (для межпроцессного взаимодействия).</li>
+                    <li><code>p</code> - именованный канал (pipe).</li>
+                </ul>
+
+                <p>В 95% случаев вы будете видеть <code>-</code> (файл) или
+                    <code>d</code> (папка). Остальные типы - редкость, но
+                    встречаются в системных директориях.</p>
+
+                <h3>Девять символов - три группы по три</h3>
+
+                <p>Оставшиеся 9 символов - это и есть права. Они разбиты на
+                    <strong>три тройки</strong>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">- rwx r-x r-x</span><span class="code-row">   ^^^ ^^^ ^^^</span><span class="code-row">   |   |   |</span><span class="code-row">   |   |   └─ права для всех остальных (others)</span><span class="code-row">   |   └───── права для группы (group)</span><span class="code-row">   └───────── права для владельца (owner/user)</span></code></pre>
+
+                <p>То есть у каждого файла есть три «категории» пользователей:</p>
+
+                <ul>
+                    <li><strong>Владелец (user, u)</strong> - тот, кому принадлежит
+                        файл. Обычно это тот, кто его создал.</li>
+                    <li><strong>Группа (group, g)</strong> - группа пользователей,
+                        которой принадлежит файл. В Linux пользователи объединяются
+                        в группы (например, «студенты», «разработчики», «админы»).</li>
+                    <li><strong>Остальные (others, o)</strong> - все прочие
+                        пользователи системы.</li>
+                </ul>
+
+                <p>Для каждой категории указывается три права:</p>
+
+                <ul>
+                    <li><strong>r</strong> (read) - читать. Для файла - открывать
+                        и смотреть содержимое. Для папки - видеть её содержимое
+                        через <code>ls</code>.</li>
+                    <li><strong>w</strong> (write) - писать. Для файла - изменять
+                        содержимое. Для папки - создавать, удалять и переименовывать
+                        файлы внутри.</li>
+                    <li><strong>x</strong> (execute) - выполнять. Для файла -
+                        запускать его как программу. Для папки - заходить внутрь
+                        через <code>cd</code>.</li>
+                </ul>
+
+                <p>Если какое-то право отсутствует - на его месте стоит
+                    <code>-</code> (дефис). Например, <code>r--</code> значит
+                    «только читать», <code>r-x</code> - «читать и выполнять,
+                    но не изменять».</p>
+
+                <h3>Пример: разбираем -rw-r--r--</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">- rw- r-- r--</span></code></pre>
+
+                <p>Читаем по тройкам:</p>
+
+                <ul>
+                    <li><code>-</code> - обычный файл.</li>
+                    <li><code>rw-</code> - владелец может <strong>читать и
+                            писать</strong>, но не выполнять.</li>
+                    <li><code>r--</code> - группа может только <strong>читать</strong>.</li>
+                    <li><code>r--</code> - остальные могут только <strong>читать</strong>.</li>
+                </ul>
+
+                <p>Что это означает на практике? Владелец может открыть файл и
+                    что-то в нём изменить. Все остальные (группа и прочие) могут
+                    только смотреть, но не менять. Никто не может запустить файл
+                    как программу.</p>
+
+                <p>Это типичные права для текстового файла - например,
+                    <code>README.md</code> или заметки.</p>
+
+                <h3>Ещё примеры</h3>
+
+                <p><strong><code>-rwxr-xr-x</code></strong> - обычный файл, владелец
+                    может всё, остальные - читать и выполнять. Так выглядят
+                    программы: ты (владелец) можешь её запускать и менять, а другие
+                    пользователи - только запускать.</p>
+
+                <p><strong><code>drwxr-xr-x</code></strong> - папка, владелец может
+                    всё, остальные - читать и заходить внутрь. Так выглядят
+                    большинство обычных папок.</p>
+
+                <p><strong><code>drwx------</code></strong> - папка, доступная
+                    только владельцу. Так выглядят <code>/root</code> и домашние
+                    папки пользователей (по умолчанию).</p>
+
+                <p><strong><code>-rw-------</code></strong> - файл, который видит
+                    только владелец. Типичные права для приватных ключей SSH,
+                    паролей, личных данных.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Права на папку - это не то же, что на файл
+                    </div>
+                    <p>Для файла <code>r</code>, <code>w</code>, <code>x</code>
+                        означают «читать, писать, запускать». А для папки -
+                        «видеть содержимое, создавать/удалять внутри, заходить
+                        внутрь». Это разные вещи, хотя буквы одинаковые.
+                        Особенно важно: <strong>без права x на папку вы не
+                        сможете в неё зайти</strong>, даже если у вас есть
+                        право r.</p>
+                </div>
+
+                <h2>Числовая запись прав</h2>
+
+                <p>Буквенная запись <code>rwxr-xr-x</code> удобна для чтения, но
+                    длинная. На практике чаще используют <strong>числовую</strong> -
+                    три цифры вроде <code>755</code> или <code>644</code>.</p>
+
+                <p>Как это работает. Каждое право имеет числовой вес:</p>
+
+                <ul>
+                    <li><code>r</code> (read) = <strong>4</strong></li>
+                    <li><code>w</code> (write) = <strong>2</strong></li>
+                    <li><code>x</code> (execute) = <strong>1</strong></li>
+                    <li>отсутствие права = <strong>0</strong></li>
+                </ul>
+
+                <p>Чтобы получить число для одной категории - складываем веса.
+                    Например:</p>
+
+                <ul>
+                    <li><code>rwx</code> = 4 + 2 + 1 = <strong>7</strong></li>
+                    <li><code>rw-</code> = 4 + 2 + 0 = <strong>6</strong></li>
+                    <li><code>r-x</code> = 4 + 0 + 1 = <strong>5</strong></li>
+                    <li><code>r--</code> = 4 + 0 + 0 = <strong>4</strong></li>
+                    <li><code>-wx</code> = 0 + 2 + 1 = <strong>3</strong></li>
+                    <li><code>--x</code> = 0 + 0 + 1 = <strong>1</strong></li>
+                    <li><code>---</code> = 0 + 0 + 0 = <strong>0</strong></li>
+                </ul>
+
+                <p>Теперь всё просто: три цифры = права для владельца, группы и
+                    остальных.</p>
+
+                <p><strong><code>755</code></strong> = <code>rwx r-x r-x</code> -
+                    владелец может всё, остальные - читать и выполнять.</p>
+
+                <p><strong><code>644</code></strong> = <code>rw- r-- r--</code> -
+                    владелец может читать и писать, остальные - только читать.</p>
+
+                <p><strong><code>600</code></strong> = <code>rw- --- ---</code> -
+                    только владелец, и только читать и писать.</p>
+
+                <p><strong><code>700</code></strong> = <code>rwx --- ---</code> -
+                    только владелец, полный доступ.</p>
+
+                <p><strong><code>777</code></strong> = <code>rwx rwx rwx</code> -
+                    вообще все могут всё. <em>Так обычно делать не надо</em> -
+                    это опасно.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Быстрый способ запомнить
+                    </div>
+                    <p>Три популярные комбинации, которые вы будете видеть чаще всего:</p>
+                    <ul>
+                        <li><strong>755</strong> - для папок и программ (обычно).</li>
+                        <li><strong>644</strong> - для обычных файлов (текст, картинки, конфиги).</li>
+                        <li><strong>600</strong> - для приватных файлов (ключи, пароли).</li>
+                    </ul>
+                    <p>Если сомневаетесь - используйте эти три. Для 95% случаев
+                        их достаточно.</p>
+                </div>
+
+                <h2>Изменение прав: chmod</h2>
+
+                <p>Команда <code>chmod</code> (change mode) меняет права доступа.
+                    Два способа записи - числовой и буквенный.</p>
+
+                <h3>Числовой способ</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ chmod 755 script.sh</span></code></pre>
+
+                <p>Устанавливает права <code>rwxr-xr-x</code> для файла
+                    <code>script.sh</code>. Всё, что было раньше, заменяется
+                    целиком.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ chmod 600 secret.key</span></code></pre>
+
+                <p>Устанавливает <code>rw-------</code> - только владелец может
+                    читать и писать.</p>
+
+                <p>Числовой способ удобен, когда вы точно знаете, какие права
+                    хотите установить. Быстро и однозначно.</p>
+
+                <h3>Буквенный способ</h3>
+
+                <p>Более гибкий - позволяет <strong>добавлять или убирать</strong>
+                    отдельные права, не трогая остальные.</p>
+
+                <p>Синтаксис: <code>chmod [кто][операция][права] файл</code></p>
+
+                <ul>
+                    <li><strong>Кто</strong>: <code>u</code> (владелец),
+                        <code>g</code> (группа), <code>o</code> (остальные),
+                        <code>a</code> (все три категории).</li>
+                    <li><strong>Операция</strong>: <code>+</code> (добавить),
+                        <code>-</code> (убрать), <code>=</code> (установить ровно).</li>
+                    <li><strong>Права</strong>: <code>r</code>, <code>w</code>,
+                        <code>x</code>.</li>
+                </ul>
+
+                <p>Примеры:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ chmod +x script.sh</span><span class="code-row">$ chmod u+w notes.txt</span><span class="code-row">$ chmod g-w document.txt</span><span class="code-row">$ chmod o=r-- data.txt</span><span class="code-row">$ chmod a+x bin/program</span></code></pre>
+
+                <p>Разбираем по одной:</p>
+
+                <ul>
+                    <li><code>chmod +x script.sh</code> - добавить право на
+                        выполнение <strong>всем категориям</strong> (потому что
+                        не указали «кому» - значит, для всех). Самый частый
+                        вариант использования.</li>
+                    <li><code>chmod u+w notes.txt</code> - добавить владельцу
+                        право на запись.</li>
+                    <li><code>chmod g-w document.txt</code> - убрать у группы
+                        право на запись.</li>
+                    <li><code>chmod o=r-- data.txt</code> - установить права
+                        остальным ровно <code>r--</code> (только чтение),
+                        независимо от того, что было.</li>
+                    <li><code>chmod a+x bin/program</code> - добавить всем
+                        право на выполнение.</li>
+                </ul>
+
+                <p>Буквенный способ удобен, когда нужно поменять что-то одно,
+                    не задумываясь о полной картине. Например, «сделать файл
+                    исполняемым» - это <code>chmod +x</code>, и не надо
+                    вспоминать, какие там остальные права.</p>
+
+                <h3>Рекурсивное изменение: -R</h3>
+
+                <p>Ключ <code>-R</code> (recursive) применяет права ко всей папке
+                    и всему, что внутри:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ chmod -R 755 project/</span></code></pre>
+
+                <p>Все файлы и папки внутри <code>project/</code> получат права
+                    <code>755</code>. <strong>Осторожно</strong>: это сделает
+                    все файлы исполняемыми, что обычно не нужно. Для проектов
+                    с кодом лучше отдельно ставить права на папки и файлы.</p>
+
+                <h2>Смена владельца: chown</h2>
+
+                <p>Иногда нужно не просто изменить права, а <strong>передать
+                    файл другому пользователю</strong>. Для этого есть
+                    <code>chown</code> (change owner).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ chown maria notes.txt</span></code></pre>
+
+                <p>Теперь <code>notes.txt</code> принадлежит пользователю
+                    <code>maria</code>. Вы (если вы - не root) больше не можете
+                    менять этот файл, даже если раньше были его владельцем.</p>
+
+                <h3>Смена группы: через двоеточие</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ chown maria:developers notes.txt</span></code></pre>
+
+                <p>Владелец - <code>maria</code>, группа - <code>developers</code>.
+                    Двоеточие разделяет пользователя и группу.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ chown :developers notes.txt</span></code></pre>
+
+                <p>Если указать только группу (с двоеточием в начале) - владелец
+                    не меняется, меняется только группа.</p>
+
+                <h3>Рекурсивное изменение: -R</h3>
+
+                <pre class="code-numbered"><code><span class="code-row">$ chown -R maria:developers project/</span></code></pre>
+
+                <p>Меняет владельца и группу всей папки <code>project</code>
+                    и всего, что внутри.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        chgrp - отдельная команда для группы
+                    </div>
+                    <p>Есть отдельная команда <code>chgrp</code>, которая
+                        меняет только группу:</p>
+                    <pre class="code-numbered"><code><span class="code-row">$ chgrp developers notes.txt</span></code></pre>
+                    <p>Результат тот же, что и <code>chown :developers notes.txt</code>.
+                        Но обычно используют именно <code>chown</code> -
+                        одна команда на все случаи.</p>
+                </div>
+
+                <h2>Кто такой root и зачем sudo</h2>
+
+                <p>В Linux есть особый пользователь - <strong>root</strong>
+                    (суперпользователь, «корневой пользователь»). Он существует
+                    не для повседневной работы, а для администрирования.</p>
+
+                <h3>У root есть абсолютно все права</h3>
+
+                <p>Права доступа его не ограничивают. Root может:</p>
+
+                <ul>
+                    <li>Читать и изменять любой файл в системе.</li>
+                    <li>Менять владельца любого файла.</li>
+                    <li>Устанавливать и удалять программы.</li>
+                    <li>Управлять пользователями и группами.</li>
+                    <li>Изменять настройки системы.</li>
+                    <li>Останавливать системные службы.</li>
+                </ul>
+
+                <p>Именно поэтому <strong>работать под root постоянно - плохая
+                    идея</strong>. Одна ошибка в команде может снести систему
+                    целиком. Например, <code>rm -rf /</code> под обычным
+                    пользователем по большей части не сработает («Permission
+                    denied»), а под root - снесёт всё, до чего дотянется.</p>
+
+                <h3>sudo - выполнить команду от имени root</h3>
+
+                <p>Вместо того чтобы заходить под root, современные системы
+                    используют <strong>sudo</strong> (superuser do). Это команда,
+                    которая позволяет <em>обычному пользователю</em> выполнить
+                    <em>одну конкретную команду</em> с правами root.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ sudo apt update</span></code></pre>
+
+                <p>Вы просите систему: «выполни <code>apt update</code> от имени
+                    root». Система спросит ваш пароль (не root-пароль, а ваш
+                    собственный), проверит, есть ли у вас право на sudo, и
+                    выполнит команду.</p>
+
+                <p>После выполнения - вы снова обычный пользователь. Никакой
+                    «сессии root» не остаётся.</p>
+
+                <h3>Чем это лучше, чем «зайти под root»</h3>
+
+                <p>Три причины:</p>
+
+                <ol>
+                    <li><strong>Безопасность.</strong> Root-доступ только на
+                        время одной команды. Случайно оставленный терминал
+                        под root - это дыра в безопасности. А обычный
+                        пользователь ничего страшного не натворит.</li>
+                    <li><strong>Аудит.</strong> Все команды через
+                        <code>sudo</code> записываются в логи. Если что-то
+                        пошло не так - можно понять, кто и что делал.</li>
+                    <li><strong>Осознанность.</strong> Каждый раз, когда
+                        пишете <code>sudo</code>, вы <em>думаете</em>: «а мне
+                        точно нужны root-права для этого?». Это защищает от
+                        случайных разрушительных команд.</li>
+                </ol>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        sudo - это не «сделай красиво»
+                    </div>
+                    <p>Новички иногда думают: «не работает команда - добавлю
+                        sudo». Это <strong>неправильный подход</strong>.
+                        <code>sudo</code> нужен только тогда, когда действие
+                        действительно требует прав администратора
+                        (установка пакетов, изменение системных файлов,
+                        управление службами). Если вы не понимаете, зачем
+                        нужен root для конкретной операции - разберитесь
+                        сначала, потом применяйте.</p>
+                </div>
+
+                <h3>Когда нужен sudo</h3>
+
+                <p>Типичные случаи:</p>
+
+                <ul>
+                    <li>Установка и удаление программ через пакетный менеджер
+                        (<code>apt</code>, <code>dnf</code>).</li>
+                    <li>Изменение системных конфигов в <code>/etc</code>.</li>
+                    <li>Управление службами (<code>systemctl restart nginx</code>).</li>
+                    <li>Работа с привилегированными портами (&lt;1024).</li>
+                    <li>Изменение владельца чужих файлов через <code>chown</code>.</li>
+                    <li>Создание пользователей.</li>
+                </ul>
+
+                <h3>Когда sudo НЕ нужен</h3>
+
+                <p>Если вы работаете со своими файлами в домашней папке -
+                    <code>sudo</code> не нужен. Ни для создания, ни для удаления,
+                    ни для чтения. Ваша домашняя папка - ваша территория, там
+                    вы хозяин.</p>
+
+                <p>Если <code>sudo</code> «не помогает» - значит, проблема не
+                    в правах, а в чём-то другом. Добавление <code>sudo</code>
+                    к команде, которая падает по другой причине, не решит
+                    проблему, а только запутает.</p>
+
+                <h3>Опасность: sudo с командой из интернета</h3>
+
+                <p>Отдельное предупреждение. В интернете часто пишут
+                    «выполните <code>sudo curl ... | bash</code>». Это значит:
+                    «скачай скрипт и выполни его с правами root». Если скрипт
+                    вредоносный - он получит полный контроль над вашей системой.
+                    Никогда не запускайте такие команды, не прочитав скрипт.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ curl https://example.com/install.sh</span></code></pre>
+
+                <p>Сначала посмотрите, что в нём. Поняли, что безопасно -
+                    тогда уже запускайте:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ bash install.sh</span></code></pre>
+
+                <p>Или с <code>sudo</code>, если скрипту действительно нужны
+                    root-права (например, установка в системные директории).</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>rwx</code>
+                        <span>read, write, execute</span>
+                    </li>
+                    <li>
+                        <code>u, g, o</code>
+                        <span>владелец, группа, остальные</span>
+                    </li>
+                    <li>
+                        <code>755</code>
+                        <span>rwxr-xr-x (для папок, программ)</span>
+                    </li>
+                    <li>
+                        <code>644</code>
+                        <span>rw-r--r-- (для файлов)</span>
+                    </li>
+                    <li>
+                        <code>600</code>
+                        <span>rw------- (для приватных)</span>
+                    </li>
+                    <li>
+                        <code>chmod 755 f</code>
+                        <span>установить права числом</span>
+                    </li>
+                    <li>
+                        <code>chmod +x f</code>
+                        <span>добавить исполняемость</span>
+                    </li>
+                    <li>
+                        <code>chown user f</code>
+                        <span>сменить владельца</span>
+                    </li>
+                    <li>
+                        <code>chown user:group f</code>
+                        <span>сменить владельца и группу</span>
+                    </li>
+                    <li>
+                        <code>sudo cmd</code>
+                        <span>выполнить от root</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Типичные проблемы с правами и их решения.</p>
+
+                <ul>
+                    <li><strong>«Permission denied» при попытке зайти в
+                            папку.</strong> Нет права <code>x</code> на эту
+                        папку. Проверьте через <code>ls -ld папка</code>. Если
+                        папка ваша - <code>chmod +x</code> поможет. Если
+                        чужая - только <code>sudo</code> (если вы админ)
+                        или обращение к владельцу.</li>
+                    <li><strong>«Permission denied» при попытке изменить
+                            файл.</strong> Нет права <code>w</code>. Если файл
+                        ваш - <code>chmod u+w файл</code>. Если чужой -
+                        нужен <code>sudo</code> или просьба к владельцу.</li>
+                    <li><strong>«bash: ./script.sh: Permission denied».</strong>
+                        Пытаетесь запустить скрипт, но у него нет права на
+                        выполнение. Решение: <code>chmod +x script.sh</code>.
+                        Это самая частая проблема у новичков - скрипт есть,
+                        а не запускается.</li>
+                    <li><strong>«chmod: changing permissions: Operation not
+                            permitted».</strong> Пытаетесь изменить права
+                        на файл, который не ваш. Только владелец (или root
+                        через <code>sudo</code>) может менять права.
+                        Проверьте через <code>ls -l</code>, кто владелец.</li>
+                    <li><strong>«sudo: command not found».</strong>
+                        <code>sudo</code> не установлен (бывает в минимальных
+                        дистрибутивах). Зайдите под root
+                        (<code>su -</code>) и установите:
+                        <code>apt install sudo</code>.</li>
+                    <li><strong>«user is not in the sudoers file».</strong>
+                        У вас нет прав на sudo. Обычно это значит, что вас
+                        не добавили в группу <code>sudo</code> (или
+                        <code>wheel</code> в некоторых дистрибутивах).
+                        Решение - через root добавить: <code>usermod -aG
+                        sudo username</code>. После этого - перелогиниться.</li>
+                    <li><strong>«Не хочу вводить пароль каждый раз для
+                            sudo».</strong> Можно настроить NOPASSWD в
+                        <code>/etc/sudoers.d/</code> для конкретных команд.
+                        Но это снижает безопасность - делайте только если
+                        понимаете риски. По умолчанию пароль требуется -
+                        и это правильно.</li>
+                    <li><strong>«Как запретить другим читать мой файл».</strong>
+                        <code>chmod 600 файл</code> - только вы сможете
+                        читать и писать. <code>chmod 700 папка</code> -
+                        только вы сможете заходить в папку.</li>
+                    <li><strong>«Случайно снял право читать у самого
+                            себя».</strong> Например, <code>chmod 000 file</code>.
+                        Как владелец - вы всё равно можете изменить права
+                        обратно: <code>chmod 644 file</code>. Владелец не
+                        может быть «заблокирован» от собственного файла -
+                        он всегда может вернуть права через <code>chmod</code>.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на чтение и изменение прав,
+                    третья - на sudo, четвёртая - на реальные сценарии.
+                    Все задачи безопасные.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Расшифруйте права</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой записи прав определите,
+                                что может делать владелец, группа и остальные.</p>
+                            <ol>
+                                <li><code>-rw-r--r--</code></li>
+                                <li><code>-rwxr-xr-x</code></li>
+                                <li><code>-rw-------</code></li>
+                                <li><code>drwxr-xr-x</code></li>
+                                <li><code>drwx------</code></li>
+                                <li><code>-rwxrwxrwx</code></li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Первый символ - тип (<code>-</code> файл,
+                                        <code>d</code> папка). Дальше три
+                                        тройки: владелец, группа, остальные.
+                                        В каждой тройке <code>r</code> -
+                                        читать, <code>w</code> - писать,
+                                        <code>x</code> - выполнять.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong><code>-rw-r--r--</code></strong>
+                                            - обычный файл. Владелец: читать,
+                                            писать. Группа: читать. Остальные:
+                                            читать.</li>
+                                        <li><strong><code>-rwxr-xr-x</code></strong>
+                                            - обычный файл. Владелец: полный
+                                            доступ. Остальные: читать и
+                                            выполнять. Типично для программ.</li>
+                                        <li><strong><code>-rw-------</code></strong>
+                                            - обычный файл. Только владелец:
+                                            читать и писать. Никто больше не
+                                            имеет доступа. Типично для
+                                            приватных ключей.</li>
+                                        <li><strong><code>drwxr-xr-x</code></strong>
+                                            - папка. Владелец: полный доступ.
+                                            Остальные: читать содержимое и
+                                            заходить внутрь. Обычная папка.</li>
+                                        <li><strong><code>drwx------</code></strong>
+                                            - папка. Только владелец.
+                                            Используется для домашних
+                                            директорий по умолчанию.</li>
+                                        <li><strong><code>-rwxrwxrwx</code></strong>
+                                            - обычный файл. Все могут
+                                            читать, писать, выполнять.
+                                            <strong>Опасно</strong> - так
+                                            обычно не надо.</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Попрактикуйтесь с chmod</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте в домашней папке несколько
+                                файлов и меняйте им права:</p>
+                            <ol>
+                                <li>Создайте <code>script.sh</code>. Сделайте его
+                                    исполняемым через <code>chmod +x</code>.</li>
+                                <li>Создайте <code>secret.txt</code>. Установите
+                                    права <code>600</code>.</li>
+                                <li>Создайте <code>public.txt</code>. Установите
+                                    права <code>644</code>.</li>
+                                <li>Создайте папку <code>work</code>. Установите
+                                    права <code>700</code>.</li>
+                                <li>Проверьте через <code>ls -l</code>, что права
+                                    установились правильно.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для создания - <code>touch</code> и
+                                        <code>mkdir</code>. Для прав -
+                                        <code>chmod</code>. Для проверки -
+                                        <code>ls -l</code> или
+                                        <code>ls -ld</code> для папки.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre class="code-numbered"><code><span class="code-row">$ cd ~</span><span class="code-row">$ touch script.sh secret.txt public.txt</span><span class="code-row">$ mkdir work</span><span class="code-row">$ chmod +x script.sh</span><span class="code-row">$ chmod 600 secret.txt</span><span class="code-row">$ chmod 644 public.txt</span><span class="code-row">$ chmod 700 work</span><span class="code-row">$ ls -l</span><span class="code-row">-rwxr-xr-x 1 student student   0 Oct 25 12:00 script.sh</span><span class="code-row">-rw------- 1 student student   0 Oct 25 12:00 secret.txt</span><span class="code-row">-rw-r--r-- 1 student student   0 Oct 25 12:00 public.txt</span><span class="code-row">drwx------ 2 student student 4096 Oct 25 12:00 work</span></code></pre>
+                                    <p>Обратите внимание: после
+                                        <code>chmod +x script.sh</code> права
+                                        стали <code>rwxr-xr-x</code>. Почему
+                                        всем трём категориям? Потому что
+                                        <code>+x</code> без указания «кому»
+                                        применяется ко всем сразу. Если
+                                        хотели только владельцу -
+                                        <code>chmod u+x</code>.</p>
+                                    <p>Права на папку <code>work</code>
+                                        проверяются через
+                                        <code>ls -ld work</code> -
+                                        ключ <code>-d</code> показывает
+                                        информацию о самой папке, а не
+                                        о её содержимом.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. sudo: когда нужен</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для каждой команды определите,
+                                нужен ли <code>sudo</code> или нет. Обоснуйте.</p>
+                            <ol>
+                                <li><code>apt update</code></li>
+                                <li><code>ls ~/Documents</code></li>
+                                <li><code>cat /etc/nginx/nginx.conf</code></li>
+                                <li><code>mkdir ~/projects</code></li>
+                                <li><code>systemctl restart nginx</code></li>
+                                <li><code>touch ~/notes.txt</code></li>
+                                <li><code>chown maria ~/shared.txt</code></li>
+                                <li><code>grep "error" ~/logs/app.log</code></li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Если команда работает с вашими файлами
+                                        в вашей домашней папке - <code>sudo</code>
+                                        не нужен. Если с системными
+                                        (<code>/etc</code>, <code>/var</code>),
+                                        с пакетами или службами -
+                                        нужен.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong><code>apt update</code> -
+                                                нужен sudo.</strong> Управление
+                                            пакетами - админская операция.</li>
+                                        <li><strong><code>ls ~/Documents</code> -
+                                                без sudo.</strong> Ваша папка,
+                                            ваши файлы.</li>
+                                        <li><strong><code>cat /etc/nginx/nginx.conf</code> -
+                                                зависит от прав.</strong> Обычно
+                                            читать конфиг может любой. Если
+                                            выдаёт Permission denied -
+                                            <code>sudo cat</code>.</li>
+                                        <li><strong><code>mkdir ~/projects</code> -
+                                                без sudo.</strong> Создаёте папку
+                                            в своей домашней директории.</li>
+                                        <li><strong><code>systemctl restart nginx</code> -
+                                                нужен sudo.</strong> Управление
+                                            службами - админская операция.</li>
+                                        <li><strong><code>touch ~/notes.txt</code> -
+                                                без sudo.</strong> Ваш файл.</li>
+                                        <li><strong><code>chown maria ~/shared.txt</code> -
+                                                нужен sudo.</strong> Передать
+                                            файл другому пользователю может
+                                            только root. Обычный пользователь
+                                            не может «отдать» свой файл
+                                            кому-то другому - это было бы
+                                            странно.</li>
+                                        <li><strong><code>grep "error" ~/logs/app.log</code> -
+                                                без sudo.</strong> Читаете свой
+                                            лог.</li>
+                                    </ol>
+                                    <p>Общий принцип: работа с вашими файлами
+                                        в вашей домашней папке - без sudo.
+                                        Всё остальное, что касается системы -
+                                        с sudo.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Реальные сценарии</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">В каждой ситуации определите,
+                                что нужно сделать и почему.</p>
+                            <ol>
+                                <li>Вы написали скрипт <code>deploy.sh</code>,
+                                    но при запуске
+                                    <code>./deploy.sh</code> выдаёт
+                                    «Permission denied».</li>
+                                <li>Вы хотите, чтобы файл
+                                    <code>~/.ssh/id_rsa</code> (приватный
+                                    ключ) никто, кроме вас, не мог
+                                    прочитать.</li>
+                                <li>Вы работаете с коллегой над проектом
+                                    в папке <code>~/shared-project</code>
+                                    (в домашней папке коллеги). Вы хотите
+                                    иметь доступ на запись.</li>
+                                <li>Вы хотите установить пакет
+                                    <code>htop</code>.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для каждой ситуации подумайте:
+                                        это про <code>chmod</code>,
+                                        про <code>chown</code>, про
+                                        <code>sudo</code> или про
+                                        комбинацию?</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <ol>
+                                        <li><strong>Скрипт не запускается.</strong>
+                                            Нет права на выполнение. Решение:
+                                            <code>chmod +x deploy.sh</code>.
+                                            Дальше <code>./deploy.sh</code>
+                                            запустится. Именно так делают все
+                                            после скачивания скриптов из
+                                            интернета (git clone, curl и т.д.) -
+                                            права на выполнение не сохраняются,
+                                            их надо ставить вручную.</li>
+                                        <li><strong>Защитить приватный
+                                                ключ.</strong>
+                                            <code>chmod 600 ~/.ssh/id_rsa</code>.
+                                            SSH сам проверяет, что права
+                                            на приватный ключ не шире, чем
+                                            <code>600</code>, и отказывается
+                                            работать, если права слабее.
+                                            Это защита от того, чтобы
+                                            ключ случайно не оказался
+                                            доступен другим.</li>
+                                        <li><strong>Доступ к чужому
+                                                проекту.</strong> Это задача
+                                            для владельца (коллеги), а не для
+                                            вас. Правильный подход: коллега
+                                            сам делает <code>chmod -R
+                                            g+w ~/shared-project</code>
+                                            и добавляет вас в группу, либо
+                                            <code>chown</code> на общую группу.
+                                            Вы сами себе права на чужой
+                                            файл поставить не можете - и
+                                            это правильно. Если нужны
+                                            срочные действия - через
+                                            <code>sudo</code>, но лучше
+                                            договориться с коллегой.</li>
+                                        <li><strong>Установка
+                                                htop.</strong> Пакетный
+                                            менеджер требует root:
+                                            <code>sudo apt install htop</code>
+                                            (Ubuntu/Debian) или
+                                            <code>sudo dnf install htop</code>
+                                            (Fedora). Без sudo не
+                                            установится - программы ставятся
+                                            в системные директории
+                                            <code>/usr</code>, куда у
+                                            обычного пользователя
+                                            доступа нет.</li>
+                                    </ol>
+                                    <p>Общее правило: права на файлы
+                                        контролирует владелец файла
+                                        (или root). Если файл не ваш -
+                                        вы не можете самовольно изменить
+                                        его права, и это правильно.
+                                        В противном случае вся система
+                                        безопасности рухнула бы.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Разобрались с правами доступа - фундаментальной концепцией Linux.
+                    Узнали, что у каждого файла есть три категории пользователей
+                    (владелец, группа, остальные) и три типа прав (read, write,
+                    execute). Научились читать вывод <code>ls -l</code> и понимать
+                    запись <code>rwxr-xr-x</code>.</p>
+
+                <p>Освоили два способа изменения прав через <code>chmod</code>:
+                    числовой (<code>755</code>, <code>644</code>, <code>600</code>) и
+                    буквенный (<code>+x</code>, <code>u+w</code>, <code>g-w</code>).
+                    Поняли, что означают три самые частые комбинации - <code>755</code>
+                    для папок, <code>644</code> для файлов, <code>600</code>
+                    для приватных данных.</p>
+
+                <p>Познакомились с <code>chown</code> для смены владельца и
+                    <code>sudo</code> для выполнения отдельных команд с правами
+                    root. Разобрались, почему постоянно работать под root - плохая
+                    идея, и почему <code>sudo</code> - это правильный компромисс
+                    между удобством и безопасностью.</p>
+
+                <p>И главное: теперь сообщения вида <code>Permission denied</code>
+                    не будут вас пугать. Вы будете понимать, откуда они берутся
+                    и что с ними делать.</p>
+
+                <p>В следующем уроке займёмся <strong>процессами и системным
+                    мониторингом</strong>. Разберёмся, что такое процесс, как
+                    посмотреть, что сейчас работает на системе
+                    (<code>ps</code>, <code>top</code>), как завершить зависшую
+                    программу (<code>kill</code>) и как понять, что именно
+                    нагружает ваш компьютер.</p>
+
+                <div class="lesson-actions">
+                    <a href="lesson-04.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-06.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

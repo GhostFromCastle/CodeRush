@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Введение в терминал Linux - Терминал - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="terminal" data-level="linux" data-lesson-id="lesson-01">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К курсу</a>
+                    <a href="../../../courses.html">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">Терминал</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Linux</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 01</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Linux</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson active" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Введение в терминал</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Навигация и структура</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Управление файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Чтение и поиск</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Права доступа и sudo</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Процессы и мониторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Управление пакетами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Перенаправление и конвейеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Введение в терминал Linux</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~20 минут</span>
+                    <span><i class="ph ph-linux-logo"></i> Linux</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Добро пожаловать на курс по терминалу Linux. Здесь вы научитесь работать с
+                    командной строкой - инструментом, который на первый взгляд кажется
+                    пережитком прошлого, а на деле остаётся основным способом управления
+                    серверами, автоматизации и профессиональной разработки.</p>
+
+                <p>Этот урок - вводный. Мы разберёмся, что такое терминал и оболочка, как
+                    его открыть, из чего состоит приглашение и как выполнить первые команды.
+                    Никакой магии - только понятные шаги.</p>
+
+                <h2>Зачем нужен терминал, если есть мышка</h2>
+
+                <p>Резонный вопрос. У нас есть графические интерфейсы, иконки, меню -
+                    зачем возвращаться к чёрному окну с мигающим курсором?</p>
+
+                <p>Причин несколько, и все они весомые.</p>
+
+                <p><strong>Серверы живут без графики.</strong> Когда вы арендуете сервер у
+                    хостера, вы получаете машину, на которой нет ни мышки, ни рабочего стола.
+                    Единственный способ с ней работать - командная строка. Именно так
+                    администрируют 90% всех серверов в интернете.</p>
+
+                <p><strong>Автоматизация.</strong> Представьте, что вам нужно переименовать
+                    500 файлов или развернуть проект в 20 папок. Мышкой это займёт часы.
+                    Командой - секунды. В терминале можно автоматизировать почти всё.</p>
+
+                <p><strong>Скорость.</strong> Опытный пользователь терминала делает за
+                    секунду то, на что в графическом интерфейсе уходят минуты: переход
+                    по папкам, поиск файлов, изменение прав, запуск программ.</p>
+
+                <p><strong>Удалённая работа.</strong> Настроить сервер из дома через SSH -
+                    это тоже терминал. Никаких проблем с «а у меня Windows на ноутбуке».</p>
+
+                <p>Можно сравнить это с двумя способами общения. Графический интерфейс -
+                    как меню в ресторане: тыкаете в картинку, получаете блюдо. Терминал -
+                    как разговор с официантом: нужно знать язык, но можно заказать что-то,
+                    чего нет в меню.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная мысль
+                    </div>
+                    <p>Терминал - это не «сложнее, чем мышка». Это <strong>другой
+                            инструмент</strong>, который решает другие задачи. Для
+                        обычного пользователя хватает GUI. Для разработчика и
+                        администратора терминал - обязательный навык.</p>
+                </div>
+
+                <h2>Что такое Linux и оболочка</h2>
+
+                <p>Прежде чем идти дальше, разберёмся с терминологией. Здесь часто путаются,
+                    а путаница мешает пониманию.</p>
+
+                <h3>Linux - это операционная система</h3>
+
+                <p>Такая же, как Windows или macOS. Она управляет железом, процессами,
+                    памятью и файлами. Linux используется на большинстве серверов в мире,
+                    на Android-устройствах, в умных телевизорах, роутерах - везде, где
+                    нужна стабильная и гибкая ОС.</p>
+
+                <h3>Терминал - это окно для ввода команд</h3>
+
+                <p>Программа, в которой вы печатаете команды и видите их результаты. Именно
+                    её вы открываете, когда хотите «поработать в консоли». Слово «консоль»
+                    часто используется как синоним терминала.</p>
+
+                <h3>Оболочка (shell) - это программа, которая выполняет команды</h3>
+
+                <p>Между вами и системой. Вы вводите команду - оболочка её разбирает,
+                    находит нужную программу, запускает её и передаёт результат обратно
+                    вам. Терминал - это окно, а оболочка - это «мозг», который общается
+                    с системой.</p>
+
+                <p>Самая популярная оболочка в Linux - <strong>Bash</strong> (Bourne Again
+                    Shell). Её используют по умолчанию в Ubuntu, Debian, Fedora, CentOS
+                    и большинстве дистрибутивов. В этом курсе мы будем работать именно
+                    с Bash - и все команды, которые вы изучите, работают и в других
+                    современных оболочках (zsh, fish) почти без изменений.</p>
+
+                <h2>Как открыть терминал</h2>
+
+                <p>В большинстве дистрибутивов Linux есть «горячая клавиша»:</p>
+
+                <ul>
+                    <li><strong>Ubuntu, Debian, Fedora, Mint</strong> - <code>Ctrl + Alt + T</code>.
+                        Почти всегда работает.</li>
+                    <li><strong>В меню приложений</strong> - ищите приложение с названием
+                        «Terminal», «Konsole», «GNOME Terminal», «xterm».</li>
+                    <li><strong>Через правую кнопку мыши</strong> - во многих файловых
+                        менеджерах есть «Открыть в терминале» прямо в текущей папке.</li>
+                </ul>
+
+                <p>Если у вас <strong>Windows</strong>, но хотите попрактиковаться - есть
+                    <strong>WSL</strong> (Windows Subsystem for Linux). Это настоящий Linux
+                    внутри Windows, устанавливается одной командой в PowerShell с правами
+                    администратора:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">wsl --install</span></code></pre>
+
+                <p>После перезагрузки появится Ubuntu. Терминал Linux будет доступен прямо
+                    из меню «Пуск». Отличный способ учиться без установки второй ОС.</p>
+
+                <p>Если у вас <strong>macOS</strong> - откройте приложение «Терминал» из
+                    папки «Программы → Утилиты» или через Spotlight (Cmd+Space → «Terminal»).
+                    Команды почти все те же, но есть отличия в деталях.</p>
+
+                <h2>Анатомия приглашения</h2>
+
+                <p>Открываем терминал и видим примерно такую строку:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">student@coderush:~$</span></code></pre>
+
+                <p>Это <strong>приглашение</strong> (prompt) - приглашение ко вводу. Оно
+                    показывает, что оболочка готова принять команду. Разберём его по
+                    кусочкам:</p>
+
+                <ul>
+                    <li><code>student</code> - имя текущего пользователя. Ваше имя
+                        будет другим.</li>
+                    <li><code>@</code> - разделитель (просто «собачка», декоративный).</li>
+                    <li><code>coderush</code> - имя компьютера (хоста). У вас будет
+                        своё.</li>
+                    <li><code>:</code> - разделитель.</li>
+                    <li><code>~</code> - текущая папка. Тильда означает «домашняя
+                        директория пользователя». Если вы в другой папке - здесь будет
+                        её путь, например <code>/etc</code> или <code>/var/log</code>.</li>
+                    <li><code>$</code> - конец приглашения. Знак доллара означает, что
+                        вы обычный пользователь. Если бы стоял <code>#</code> - вы были
+                        бы суперпользователем (root).</li>
+                </ul>
+
+                <p>После этого приглашения мигает курсор - там вы печатаете команды и
+                    нажимаете Enter, чтобы их выполнить.</p>
+
+                <h2>Первые команды</h2>
+
+                <p>Начнём с самых простых и полезных. Все они работают без каких-либо
+                    параметров - просто напечатайте и нажмите Enter.</p>
+
+                <h3>whoami - кто я</h3>
+
+                <p>Показывает имя текущего пользователя. Полезно, если вы забыли, под
+                    какой учёткой работаете (бывает, когда подключаешься к серверу
+                    по SSH).</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ whoami</span><span class="code-row">student</span></code></pre>
+
+                <p>Первая строка - команда, вторая - вывод. Дальше в курсе мы будем
+                    показывать так же.</p>
+
+                <h3>hostname - как зовут компьютер</h3>
+
+                <p>Показывает имя текущего хоста. Совпадает с тем, что вы видите в
+                    приглашении после собачки.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ hostname</span><span class="code-row">coderush</span></code></pre>
+
+                <h3>pwd - где я нахожусь</h3>
+
+                <p>Аббревиатура от <em>print working directory</em> - «показать рабочую
+                    директорию». Выводит полный путь к папке, в которой вы сейчас
+                    находитесь.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ pwd</span><span class="code-row">/home/student</span></code></pre>
+
+                <p>Это домашняя папка пользователя <code>student</code> - та самая, что
+                    обозначается тильдой <code>~</code> в приглашении.</p>
+
+                <h3>echo - повтори за мной</h3>
+
+                <p>Выводит на экран то, что ей передали. Казалось бы, бесполезно -
+                    зачем просить компьютер повторить то, что я сам ввёл? Но на самом
+                    деле <code>echo</code> используется постоянно: в скриптах, для
+                    проверки переменных, для создания файлов. Пока просто запомните -
+                    пригодится.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ echo "Привет, Linux!"</span><span class="code-row">Привет, Linux!</span></code></pre>
+
+                <p>Кавычки не обязательны, но если в тексте есть пробелы - лучше их
+                    ставить, иначе оболочка разобьёт фразу на отдельные слова и
+                    выведет их через пробел (что тоже иногда полезно).</p>
+
+                <h3>clear - очистить экран</h3>
+
+                <p>Убирает всё, что было до этого, оставляя чистый экран и приглашение.
+                    Полезно, когда терминал заполнился и хочется «начать заново». Можно
+                    нажать <code>Ctrl + L</code> - то же самое.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ clear</span></code></pre>
+
+                <h3>exit - выйти</h3>
+
+                <p>Закрывает текущую сессию. В обычном окне терминала просто закроет
+                    его. В SSH-сеансе - отключится от сервера. Можно нажать
+                    <code>Ctrl + D</code> - то же самое.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ exit</span></code></pre>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Важно понимать
+                    </div>
+                    <p>Терминал <strong>не выполняет команды сам</strong>. Он передаёт
+                        их оболочке, а та уже ищет программу с нужным именем и
+                        запускает её. Если такой программы нет - вы получите
+                        сообщение <code>command not found</code>. Это нормально и
+                        бывает у всех.</p>
+                </div>
+
+                <h2>История команд</h2>
+
+                <p>Набирать команды с нуля каждый раз - утомительно. К счастью, оболочка
+                    помнит всё, что вы вводили. Есть несколько способов этим
+                    пользоваться.</p>
+
+                <h3>Стрелки вверх-вниз</h3>
+
+                <p>Самое простое. Нажмите <code>↑</code> - появится предыдущая команда.
+                    Ещё раз <code>↑</code> - предпредыдущая. Стрелка <code>↓</code>
+                    двигает обратно. Нашли нужную - жмите Enter, чтобы выполнить, или
+                    отредактируйте перед запуском.</p>
+
+                <h3>history - полный список</h3>
+
+                <p>Показывает все команды текущей сессии с номерами:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ history</span><span class="code-row">    1  whoami</span><span class="code-row">    2  pwd</span><span class="code-row">    3  echo "Привет"</span><span class="code-row">    4  ls</span></code></pre>
+
+                <p>Можно выполнить любую команду из списка по номеру:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ !3</span></code></pre>
+
+                <p>Это запустит команду номер 3 - <code>echo "Привет"</code>.</p>
+
+                <h3>Ctrl + R - поиск по истории</h3>
+
+                <p>Самая мощная фишка. Нажмите <code>Ctrl + R</code> и начните вводить
+                    любое слово из команды, которую ищете. Bash покажет последнее
+                    совпадение. Нажимайте <code>Ctrl + R</code> ещё раз, чтобы искать
+                    дальше вглубь истории. Enter - выполнить найденное, стрелки - выйти
+                    из поиска и отредактировать.</p>
+
+                <p>Например, если вы неделю назад запускали длинную команду для
+                    сборки проекта - не нужно вспоминать её всю. Просто
+                    <code>Ctrl + R</code>, потом «build» - и Bash её найдёт.</p>
+
+                <h2>Автодополнение по Tab</h2>
+
+                <p>Ещё одна незаменимая вещь. Начните печатать команду или путь и
+                    нажмите <code>Tab</code> - оболочка попробует дополнить до
+                    однозначного варианта.</p>
+
+                <p>Пример: вы хотите запустить <code>whoami</code>. Печатаете
+                    <code>who</code>, жмёте <code>Tab</code> - Bash дополнит до
+                    <code>whoami</code>. Быстрее и без опечаток.</p>
+
+                <p>То же самое работает с файлами и папками. Печатаете
+                    <code>cd Doc</code>, жмёте <code>Tab</code> - если в текущей папке
+                    есть единственная папка <code>Documents</code>, Bash подставит
+                    её название целиком.</p>
+
+                <p>Если вариантов несколько - первое нажатие <code>Tab</code> ничего
+                    не дополнит, второе покажет список возможных вариантов. Так вы
+                    быстро поймёте, что именно есть в папке.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Привыкайте к Tab
+                    </div>
+                    <p>Опытные пользователи почти никогда не печатают длинные пути
+                        руками. Они набирают пару символов и жмут <code>Tab</code>.
+                        Это и быстрее, и надёжнее - опечатку в пути вы просто не
+                        сделаете.</p>
+                </div>
+
+                <h2>Справка: man и --help</h2>
+
+                <p>У каждой команды в Linux есть документация. Есть два способа её
+                    получить.</p>
+
+                <h3>man - полное руководство</h3>
+
+                <p>Команда <code>man</code> (от английского <em>manual</em> - «руководство»)
+                    открывает полное описание программы. Например:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ man ls</span></code></pre>
+
+                <p>Откроется текст с описанием, всеми опциями и примерами. Управление -
+                    как в <code>less</code>: стрелками вверх-вниз листаем, клавишей
+                    <code>q</code> закрываем.</p>
+
+                <h3>--help - быстрая справка</h3>
+
+                <p>Почти все команды поддерживают флаг <code>--help</code>. Он выводит
+                    короткую справку прямо в терминал, без открытия отдельной
+                    программы.</p>
+
+                <pre class="code-numbered"><code><span class="code-row">$ ls --help</span></code></pre>
+
+                <p>Это быстрее, чем <code>man</code>, и часто достаточно. Основные опции,
+                    примеры использования, ключи - всё компактно.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Если man не работает
+                    </div>
+                    <p>В некоторых минимальных дистрибутивах <code>man</code> не
+                        установлен по умолчанию. Установить: <code>sudo apt install
+                        man-db</code> в Ubuntu/Debian или <code>sudo dnf install
+                        man-db</code> в Fedora. Но <code>--help</code> работает
+                        всегда.</p>
+                </div>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>whoami</code>
+                        <span>кто я</span>
+                    </li>
+                    <li>
+                        <code>hostname</code>
+                        <span>имя компьютера</span>
+                    </li>
+                    <li>
+                        <code>pwd</code>
+                        <span>где я нахожусь</span>
+                    </li>
+                    <li>
+                        <code>echo</code>
+                        <span>вывести текст</span>
+                    </li>
+                    <li>
+                        <code>clear</code>
+                        <span>очистить экран</span>
+                    </li>
+                    <li>
+                        <code>exit</code>
+                        <span>закрыть терминал</span>
+                    </li>
+                    <li>
+                        <code>history</code>
+                        <span>список команд</span>
+                    </li>
+                    <li>
+                        <code>Ctrl + R</code>
+                        <span>поиск по истории</span>
+                    </li>
+                    <li>
+                        <code>Tab</code>
+                        <span>автодополнение</span>
+                    </li>
+                    <li>
+                        <code>man</code>
+                        <span>документация</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Первый урок, поэтому вместо привычного разбора ошибок - типичные
+                    ситуации, с которыми сталкиваются новички.</p>
+
+                <ul>
+                    <li><strong>«Не могу открыть терминал».</strong> Проверьте
+                        <code>Ctrl + Alt + T</code>. Если не сработало - поищите
+                        приложение с названием «Terminal» в меню. Если совсем нет -
+                        уточните, что у вас за система: возможно, это не Linux, а
+                        что-то другое. В Windows используйте WSL или PowerShell.
+                    </li>
+                    <li><strong>«Пишу команду - выдаёт command not found».</strong>
+                        Скорее всего, опечатка. Проверьте по буквам. Например,
+                        <code>whomai</code> (перепутаны буквы) не сработает.
+                        Ещё вариант - команды нет в системе, надо установить
+                        (об этом в уроке про пакеты).</li>
+                    <li><strong>«Терминал завис, ничего не отвечает».</strong>
+                        Возможно, вы запустили программу, которая ждёт ввода
+                        (например, <code>cat</code> без аргументов). Нажмите
+                        <code>Ctrl + C</code> - это прерывает текущую команду.
+                        Если не помогает - закройте окно.</li>
+                    <li><strong>«Странные символы вместо текста».</strong> Проблема
+                        с кодировкой или локалью. Проверьте: <code>echo $LANG</code>.
+                        Должно быть что-то вроде <code>ru_RU.UTF-8</code> или
+                        <code>en_US.UTF-8</code>. Если пусто или мусор -
+                        настройте локаль.</li>
+                    <li><strong>«Боюсь что-то сломать».</strong> В терминале нельзя
+                        «случайно нажать не туда» и удалить всё. Команды выполняются
+                        только когда вы их ввели и нажали Enter. И даже тогда
+                        большинство команд либо безопасны, либо требуют
+                        подтверждения. Пока вы изучаете базовые команды из этого
+                        курса - риск минимален.</li>
+                    <li><strong>«Не понимаю, что делает команда».</strong> Прочитайте
+                        <code>man команда</code> или <code>команда --help</code>.
+                        Если и там непонятно - не запускайте. Лучше потратить
+                        пять минут на понимание, чем час на восстановление после
+                        неизвестной команды.</li>
+                </ul>
+
+                <p>Если что-то не получается или есть вопрос - напишите в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи. Первые две - на базовые команды, вторые две -
+                    на историю и справку. Все задачи безопасные, никаких данных не
+                    пострадает.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Кто я и где я</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Откройте терминал и определите три
+                                вещи:</p>
+                            <ol>
+                                <li>Под каким пользователем вы работаете.</li>
+                                <li>Как называется ваш компьютер.</li>
+                                <li>В какой папке вы находитесь.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Вспомните три команды из урока:
+                                        <code>whoami</code>, <code>hostname</code>,
+                                        <code>pwd</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Выполните три команды:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">$ whoami</span><span class="code-row">$ hostname</span><span class="code-row">$ pwd</span></code></pre>
+                                    <p>Первая покажет имя пользователя, вторая - имя
+                                        компьютера, третья - полный путь к текущей
+                                        папке.</p>
+                                    <p>Сравните с приглашением в терминале. В
+                                        строке <code>user@host:~$</code>:</p>
+                                    <ul>
+                                        <li><code>user</code> должно совпасть
+                                            с выводом <code>whoami</code>.</li>
+                                        <li><code>host</code> - с выводом
+                                            <code>hostname</code>.</li>
+                                        <li><code>~</code> означает, что
+                                            <code>pwd</code> выведет путь
+                                            к домашней папке (обычно
+                                            <code>/home/имя</code>).</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Поздоровайтесь с Linux</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">С помощью команды <code>echo</code>
+                                выведите на экран любое приветствие. А затем -
+                                своё имя и текущую дату в одной строке.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для простого приветствия хватит
+                                        <code>echo "Привет!"</code>. А чтобы
+                                        добавить текущую дату - можно использовать
+                                        подстановку команды: <code>$(date)</code>.
+                                        Про подстановки мы поговорим в уроке 8,
+                                        но попробовать можно уже сейчас.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Простое приветствие:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">$ echo "Привет, Linux!"</span><span class="code-row">Привет, Linux!</span></code></pre>
+                                    <p>С подстановкой даты:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">$ echo "Меня зовут Иван. Сегодня $(date)"</span><span class="code-row">Меня зовут Иван. Сегодня Sun Oct 25 14:30:00 UTC 2026</span></code></pre>
+                                    <p>Конструкция <code>$(date)</code> -
+                                        это <strong>подстановка команды</strong>.
+                                        Оболочка сначала выполняет <code>date</code>,
+                                        а потом подставляет её результат в строку
+                                        для <code>echo</code>. Так можно
+                                        комбинировать вывод разных команд в одной
+                                        строке. Пригодится в скриптах.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. История и поиск</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Выполните несколько разных команд
+                                подряд (например, <code>whoami</code>,
+                                <code>hostname</code>, <code>pwd</code>,
+                                <code>echo test</code>). Затем:</p>
+                            <ol>
+                                <li>Покажите полный список выполненных команд.</li>
+                                <li>Найдите и выполните одну из старых команд
+                                    через <code>Ctrl + R</code>.</li>
+                            </ol>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Список команд - <code>history</code>.
+                                        Поиск - <code>Ctrl + R</code>, потом
+                                        начните печатать нужное слово.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Список команд:</p>
+                                    <pre class="code-numbered"><code><span class="code-row">$ history</span><span class="code-row">    1  whoami</span><span class="code-row">    2  hostname</span><span class="code-row">    3  pwd</span><span class="code-row">    4  echo test</span><span class="code-row">    5  history</span></code></pre>
+                                    <p>Поиск через <code>Ctrl + R</code>:</p>
+                                    <ol>
+                                        <li>Нажмите <code>Ctrl + R</code>.</li>
+                                        <li>Начните печатать, например, <code>who</code>.</li>
+                                        <li>Bash найдёт <code>whoami</code> из
+                                            истории и подставит в строку.</li>
+                                        <li>Нажмите Enter - выполнится.</li>
+                                    </ol>
+                                    <p>Или можно выполнить по номеру:
+                                        <code>!1</code> запустит первую команду.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Справка и автодополнение</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Сделайте две вещи:</p>
+                            <ol>
+                                <li>Откройте полное руководство по команде
+                                    <code>ls</code> через <code>man</code>,
+                                    посмотрите, какие опции бывают, закройте.</li>
+                                <li>Потом откройте краткую справку через
+                                    <code>ls --help</code> и сравните.</li>
+                            </ol>
+                            <p>Плюс попробуйте <code>Tab</code>-дополнение: начните
+                                печатать <code>wh</code> и нажмите <code>Tab</code>.
+                            </p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В <code>man</code> для выхода нажмите
+                                        <code>q</code>. Внутри - стрелки для
+                                        навигации, <code>/слово</code> - для
+                                        поиска.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Разбор</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Что вы увидите:</p>
+                                    <ul>
+                                        <li><strong>man ls</strong> откроет
+                                            длинный текст с полным описанием
+                                            команды: что она делает, все
+                                            опции по алфавиту, примеры,
+                                            авторы, известные баги. Это
+                                            исчерпывающий документ.</li>
+                                        <li><strong>ls --help</strong>
+                                            выведет короткую справку прямо в
+                                            терминал. Опций меньше, но самое
+                                            главное - есть. Быстро и удобно.</li>
+                                    </ul>
+                                    <p>Практика: для большинства случаев
+                                        достаточно <code>--help</code>.
+                                        <code>man</code> - когда нужно что-то
+                                        нестандартное или хочется понять
+                                        команду глубоко.</p>
+                                    <p>Автодополнение: набрали <code>wh</code>,
+                                        нажали <code>Tab</code> - Bash
+                                        дополнил до <code>whoami</code>.
+                                        Попробуйте набрать <code>ec</code>
+                                        и <code>Tab</code> - получится
+                                        <code>echo</code>. Привыкайте
+                                        использовать <code>Tab</code> везде -
+                                        это сильно ускоряет работу.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Первый урок позади. Мы разобрались, что такое терминал и зачем он
+                    нужен. Поняли разницу между терминалом (окно), оболочкой (Bash) и
+                    операционной системой (Linux). Узнали, как открыть терминал в
+                    разных системах, как выглядит приглашение и что означает каждый
+                    символ в нём.</p>
+
+                <p>Попробовали первые команды: <code>whoami</code>, <code>hostname</code>,
+                    <code>pwd</code>, <code>echo</code>, <code>clear</code>,
+                    <code>exit</code>. Научились пользоваться историей команд,
+                    автодополнением по <code>Tab</code> и справкой через
+                    <code>man</code> и <code>--help</code>.</p>
+
+                <p>Это база, на которой строится всё остальное. Дальше будем учиться
+                    навигации по файловой системе - перемещаться по папкам, смотреть,
+                    что внутри, различать абсолютные и относительные пути. Это уже
+                    полностью практический урок - обещаю.</p>
+
+                <div class="lesson-actions">
+                    <span></span>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-02.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>
