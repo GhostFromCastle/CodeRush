@@ -240,7 +240,7 @@
             <article class="lesson-content">
                 <h1>Декораторы</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-clock"></i> ~60 минут</span>
                     <span><i class="ph ph-fire"></i> Средний уровень</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
@@ -322,6 +322,84 @@
 
                 <p>Теперь <code>say_hello.__name__</code> останется <code>"say_hello"</code>. Считайте это правилом хорошего тона: <strong>всегда используйте <code>@functools.wraps</code> при создании декораторов</strong>.</p>
 
+                <h2>Готовые декораторы из стандартной библиотеки</h2>
+
+                <p>Писать свои декораторы - полезный навык, но в реальной работе вы будете чаще <em>использовать</em> готовые. В Python есть целый набор декораторов «из коробки», которые решают типовые задачи.</p>
+
+                <p>Аналогия: писать свой декоратор - это как точить нож вручную. Иногда нужно, но для большинства задач достаточно взять готовый из ящика на кухне.</p>
+
+                <h3>@functools.lru_cache: кеширование результатов</h3>
+
+                <p>Самый популярный и полезный встроенный декоратор. Он <strong>запоминает результаты</strong> вызовов функции и при повторном вызове с теми же аргументами возвращает сохранённый результат, не вычисляя его заново.</p>
+
+                <p>Аналогия: это как блокнот с решениями. Если вы уже решали этот пример - зачем решать снова? Просто посмотрите в блокнот.</p>
+
+                <p>Классический пример - числа Фибоначчи, где наивная рекурсивная реализация катастрофически медленная:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def fib(n):</span><span class="code-row">    if n &lt; 2:</span><span class="code-row">        return n</span><span class="code-row">    return fib(n - 1) + fib(n - 2)</span><span class="code-row"></span><span class="code-row">print(fib(35))   # вычисляется несколько секунд</span></code></pre>
+
+                <p>Функция <code>fib</code> вызывает саму себя дважды, и каждый раз заново вычисляет уже посчитанные значения. Число <code>fib(30)</code> вычисляется миллионы раз. А теперь добавим один декоратор:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import functools</span><span class="code-row"></span><span class="code-row">@functools.lru_cache(maxsize=None)</span><span class="code-row">def fib(n):</span><span class="code-row">    if n &lt; 2:</span><span class="code-row">        return n</span><span class="code-row">    return fib(n - 1) + fib(n - 2)</span><span class="code-row"></span><span class="code-row">print(fib(35))   # мгновенно</span></code></pre>
+
+                <p>Разница - в тысячи раз. Первый вариант вычисляет <code>fib(35)</code> за несколько секунд, второй - за миллисекунды. А всё потому, что <code>lru_cache</code> запоминает каждый результат: если <code>fib(10)</code> уже посчитан, второй раз он не вычисляется.</p>
+
+                <p>Параметр <code>maxsize</code> задаёт, сколько последних результатов запоминать. <code>None</code> означает «без ограничения». Если поставить <code>maxsize=128</code>, кеш будет хранить только 128 последних значений, а старые будут вытесняться.</p>
+
+                <p>Проверить эффективность кеша можно через метод <code>.cache_info()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(fib.cache_info())</span></code></pre>
+
+                <p>Вы увидите статистику: сколько попаданий в кеш (<code>hits</code>), сколько промахов (<code>misses</code>) и текущий размер кеша.</p>
+
+                <p>В Python 3.9+ появился ещё более простой вариант - <code>@functools.cache</code> (без параметров, всегда без ограничения размера):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from functools import cache</span><span class="code-row"></span><span class="code-row">@cache</span><span class="code-row">def fib(n):</span><span class="code-row">    if n &lt; 2:</span><span class="code-row">        return n</span><span class="code-row">    return fib(n - 1) + fib(n - 2)</span></code></pre>
+
+                <p>Когда использовать <code>lru_cache</code>:</p>
+
+                <ul>
+                    <li>Функция <strong>вычисляет одно и то же значение многократно</strong> с одинаковыми аргументами.</li>
+                    <li>Результат дорогой (сложные вычисления, запросы к внешним источникам).</li>
+                    <li>Аргументы функции <strong>хешируемы</strong> (числа, строки, кортежи - но не списки).</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Не кешируйте изменяемые данные
+                    </div>
+                    <p><code>lru_cache</code> работает только с хешируемыми аргументами. Если функция принимает список или словарь - кеш не сработает и будет ошибка <code>TypeError: unhashable type</code>. Передавайте кортежи вместо списков.</p>
+                </div>
+
+                <h3>Другие готовые декораторы, с которыми вы уже встречались</h3>
+
+                <p>Вы уже не раз пользовались встроенными декораторами, даже если не задумывались об этом. Вот они все вместе:</p>
+
+                <ul>
+                    <li><strong><code>@property</code></strong> (урок 19) - превращает метод в атрибут для чтения. С ним <code>obj.area</code> работает как обычное поле, хотя под капотом вызывается метод.</li>
+                    <li><strong><code>@staticmethod</code></strong> (урок 17, задачник) - метод, который не получает <code>self</code> и не зависит от объекта. Вызывается от класса: <code>MyClass.method()</code>.</li>
+                    <li><strong><code>@classmethod</code></strong> (урок 22, проект) - метод, который получает <code>cls</code> (класс) вместо <code>self</code>. Используется для альтернативных конструкторов.</li>
+                    <li><strong><code>@dataclass</code></strong> (урок 17) - автоматически генерирует <code>__init__</code>, <code>__repr__</code> и <code>__eq__</code> для класса данных.</li>
+                    <li><strong><code>@functools.wraps</code></strong> - сохраняет имя и документацию функции внутри декоратора.</li>
+                    <li><strong><code>@functools.lru_cache</code></strong> - кеширует результаты функции.</li>
+                </ul>
+
+                <p>Все они работают по одному принципу: оборачивают функцию и добавляют ей новое поведение. Когда вы смотрите на код с декораторами, читайте значок <code>@</code> как «примени вот это к функции ниже».</p>
+
+                <h3>Декораторы во фреймворках</h3>
+
+                <p>Когда вы дойдёте до веб-разработки (Flask, FastAPI, Django), декораторы встретятся вам повсюду. Например, типичный маршрут в Flask выглядит так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">@app.route("/hello")</span><span class="code-row">def hello():</span><span class="code-row">    return "Привет!"</span></code></pre>
+
+                <p>Декоратор <code>@app.route</code> «говорит» фреймворку: «Когда пользователь откроет страницу /hello, вызови эту функцию». Функция <code>hello</code> ничего не знает о HTTP-запросах - она просто возвращает строку. Всю работу с маршрутизацией берёт на себя декоратор. Именно это и делает декораторы такими мощными: <strong>они отделяют логику от инфраструктуры</strong>.</p>
+
                 <h2>Шпаргалка</h2>
 
                 <p>Самое важное в одном месте:</p>
@@ -347,6 +425,26 @@
                         <code>@functools.wraps(func)</code>
                         <span>сохранение имени функции</span>
                     </li>
+                    <li>
+                        <code>@functools.lru_cache</code>
+                        <span>кеширование результатов</span>
+                    </li>
+                    <li>
+                        <code>.cache_info()</code>
+                        <span>статистика кеша</span>
+                    </li>
+                    <li>
+                        <code>@property</code>
+                        <span>метод как атрибут</span>
+                    </li>
+                    <li>
+                        <code>@staticmethod</code>
+                        <span>статический метод</span>
+                    </li>
+                    <li>
+                        <code>@classmethod</code>
+                        <span>метод класса</span>
+                    </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
@@ -358,6 +456,10 @@
                     <li><strong>Декорированная функция возвращает <code>None</code></strong>. Внутри <code>wrapper</code> вы вызвали <code>func()</code>, но забыли написать <code>return func()</code> или сохранить результат и вернуть его.</li>
                     <li><strong>«AttributeError»</strong> при обращении к <code>__name__</code> или <code>__doc__</code>. Вы не использовали <code>@functools.wraps</code>.</li>
                     <li><strong>«TypeError: my_decorator() missing 1 required positional argument»</strong>. Вы забыли вернуть <code>wrapper</code> из внешней функции-декоратора. Декоратор должен возвращать функцию, а не результат её вызова.</li>
+                    <li><strong>«TypeError: unhashable type: 'list'»</strong> при использовании <code>@lru_cache</code>. Функция принимает список или словарь, а кеш работает только с хешируемыми аргументами. Передавайте кортежи или frozenset вместо изменяемых коллекций.</li>
+                    <li><strong><code>lru_cache</code> не помогает</strong>. Скорее всего, аргументы функции каждый раз разные, и попаданий в кеш просто нет. Или функция имеет побочные эффекты (пишет в файл, изменяет глобальные переменные) - тогда кешировать её нельзя.</li>
+                    <li><strong>«Память растёт бесконечно»</strong> при использовании <code>@lru_cache(maxsize=None)</code>. Если функция вызывается с миллионами разных аргументов - кеш будет расти до бесконечности. Задайте <code>maxsize</code>, например <code>128</code>, чтобы хранились только последние результаты.</li>
+                    <li><strong>Декоратор съел важную информацию о функции</strong>. Проверьте, что вы используете <code>@functools.wraps(func)</code>. Без него отладчики, IDE и фреймворки будут видеть вместо вашей функции стандартную заглушку <code>wrapper</code>.</li>
                 </ul>
 
                 <p>Если что-то не получается - напишите нам в
@@ -486,16 +588,16 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Защита паролем</span>
+                            <span>Задача 4. Ускоряем Фибоначчи через lru_cache</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Представьте, что у вас есть важная
-                                функция, которую нельзя запускать без пароля. Напишите
-                                декоратор <code>require_password</code>, который
-                                спрашивает у пользователя пароль перед вызовом функции.
-                                Если пароль неверный (например, не «1234»), функция не
-                                выполняется, а выводится сообщение об отказе.</p>
+                            <p class="task-desc">Напишите функцию <code>fib(n)</code>,
+                                которая возвращает n-е число Фибоначчи (0, 1, 1, 2, 3, 5, 8,
+                                13, ...). Замерьте время без кеша для <code>fib(30)</code>,
+                                затем добавьте <code>@functools.lru_cache</code> и замерьте
+                                снова. Выведите статистику кеша через
+                                <code>.cache_info()</code> и покажите разницу во времени.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -503,11 +605,11 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Внутри <code>wrapper</code> спросите пароль через
-                                        <code>input()</code>. Если он не равен <code>"1234"</code>,
-                                        выведите «Доступ запрещён» и сделайте
-                                        <code>return</code> (не вызывайте функцию). Иначе
-                                        вызывайте <code>func()</code>.</p>
+                                    <p>Сначала запустите функцию без декоратора и замерьте
+                                        время через <code>time.time()</code>. Затем добавьте
+                                        <code>@functools.lru_cache(maxsize=None)</code> перед
+                                        <code>def fib</code> и замерьте снова. Статистика:
+                                        <code>fib.cache_info()</code>.</p>
                                 </div>
                             </details>
 
@@ -518,10 +620,15 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">import functools</span><span class="code-row"></span><span class="code-row">def require_password(func):</span><span class="code-row">    @functools.wraps(func)</span><span class="code-row">    def wrapper(*args, **kwargs):</span><span class="code-row">        pwd = input("Введите пароль: ")</span><span class="code-row">        if pwd != "1234":</span><span class="code-row">            print("Доступ запрещён")</span><span class="code-row">            return</span><span class="code-row">        return func(*args, **kwargs)</span><span class="code-row">    return wrapper</span><span class="code-row"></span><span class="code-row">@require_password</span><span class="code-row">def delete_database():</span><span class="code-row">    print("База данных удалена")</span><span class="code-row"></span><span class="code-row">delete_database()</span></code></pre>
-                                    <p>Это простой пример того, как декораторы могут
-                                        использоваться для контроля доступа (в реальных
-                                        системах пароли проверяются иначе, но суть та же).</p>
+                                        class="code-numbered"><code><span class="code-row">import time</span><span class="code-row">import functools</span><span class="code-row"></span><span class="code-row">def fib_slow(n):</span><span class="code-row">    if n &lt; 2:</span><span class="code-row">        return n</span><span class="code-row">    return fib_slow(n - 1) + fib_slow(n - 2)</span><span class="code-row"></span><span class="code-row">@functools.lru_cache(maxsize=None)</span><span class="code-row">def fib_fast(n):</span><span class="code-row">    if n &lt; 2:</span><span class="code-row">        return n</span><span class="code-row">    return fib_fast(n - 1) + fib_fast(n - 2)</span><span class="code-row"></span><span class="code-row">start = time.time()</span><span class="code-row">result1 = fib_slow(30)</span><span class="code-row">time_slow = time.time() - start</span><span class="code-row"></span><span class="code-row">start = time.time()</span><span class="code-row">result2 = fib_fast(30)</span><span class="code-row">time_fast = time.time() - start</span><span class="code-row"></span><span class="code-row">print(f"Без кеша:  {time_slow:.3f} сек")</span><span class="code-row">print(f"С кешем:   {time_fast:.3f} сек")</span><span class="code-row">print(f"Ускорение: {time_slow / time_fast:.0f} раз")</span><span class="code-row">print(fib_fast.cache_info())</span></code></pre>
+                                    <p>На типичном компьютере <code>fib_slow(30)</code>
+                                        занимает около 0.3 секунды, а <code>fib_fast(30)</code> -
+                                        тысячные доли секунды. Ускорение - сотни раз на
+                                        маленьком примере и миллионы раз на <code>fib(35)</code>.
+                                        Статистика <code>cache_info()</code> покажет, что
+                                        попаданий в кеш (<code>hits</code>) было гораздо
+                                        больше, чем промахов (<code>misses</code>) - именно
+                                        за счёт этого и достигается скорость.</p>
                                 </div>
                             </details>
                         </div>
@@ -531,7 +638,7 @@
 
                 <h2>Что мы узнали и что дальше</h2>
 
-                <p>Декораторы - это мощнейший инструмент Python, который позволяет изменять поведение функций, не трогая их код. Они широко используются в веб-фреймворках (например, Flask или Django), в тестировании и во многих библиотеках. Вы узнали:</p>
+                <p>Декораторы - это мощнейший инструмент Python, который позволяет изменять поведение функций, не трогая их код. Они широко используются в веб-фреймворках (Flask, Django, FastAPI), в тестировании и во многих библиотеках. Вы узнали:</p>
 
                 <ul>
                     <li>Что функции в Python являются объектами.</li>
@@ -539,9 +646,16 @@
                     <li>Как применять декораторы через синтаксис <code>@</code>.</li>
                     <li>Как передавать аргументы через <code>*args, **kwargs</code>.</li>
                     <li>Зачем нужен <code>@functools.wraps</code>.</li>
+                    <li>Как работает <code>@functools.lru_cache</code> для кеширования.</li>
+                    <li>Как читать статистику кеша через <code>.cache_info()</code>.</li>
+                    <li>Какие встроенные декораторы вы уже используете
+                        (<code>@property</code>, <code>@staticmethod</code>, <code>@classmethod</code>,
+                        <code>@dataclass</code>).</li>
                 </ul>
 
-                <p>В следующем уроке нас ждет большой и интересный проект. Мы объединим все знания о файлах, ООП и JSON, чтобы создать полноценный <strong>Менеджер задач</strong> с сохранением данных на диск. До встречи!</p>
+                <p>Декораторы - это не «экзотика для избранных», а повседневный инструмент. В любом реальном проекте на Python вы встретите их десятки раз: и свои, и из фреймворков. Понимание того, как они работают, открывает дорогу к профессиональному коду.</p>
+
+                <p>В следующем уроке нас ждет большой и интересный проект. Мы объединим все знания о файлах, ООП, JSON и декораторах, чтобы создать полноценный <strong>Менеджер задач</strong> с сохранением данных на диск. До встречи!</p>
 
                 <div class="lesson-actions">
                     <a href="lesson-20.html" class="btn-secondary">

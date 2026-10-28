@@ -240,7 +240,7 @@
             <article class="lesson-content">
                 <h1>Коллекции: кортежи, множества и словари</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-clock"></i> ~60 минут</span>
                     <span><i class="ph ph-seedling"></i> Начальный уровень</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
@@ -254,7 +254,9 @@
                     книгу удобнее хранить не как список имён и список номеров, а как пары
                     «Имя - Номер». Для всех этих случаев в Python есть другие коллекции:
                     <strong>кортежи</strong>, <strong>множества</strong> и
-                    <strong>словари</strong>.</p>
+                    <strong>словари</strong>. А в конце урока мы познакомимся с модулем
+                    <code>collections</code> - набором готовых инструментов, которые делают
+                    работу с коллекциями ещё удобнее.</p>
 
                 <h2>Кортежи (tuple): неизменяемые списки</h2>
 
@@ -393,9 +395,112 @@
                         попробуете, получите ошибку <code>TypeError: unhashable type</code>.</p>
                 </div>
 
+                <h2>Модуль collections: расширенные коллекции</h2>
+
+                <p>Всё, что мы разобрали до этого момента, - базовые коллекции, встроенные
+                    в Python. Но в стандартной библиотеке есть модуль <strong><code>collections</code></strong>
+                    с готовыми инструментами для типовых задач. Три из них особенно полезны
+                    и встречаются в любом реальном коде.</p>
+
+                <p>Аналогия: базовые коллекции - это как кухонный нож. Им можно сделать всё,
+                    но для нарезки хлеба удобнее хлебный нож, а для чистки овощей - овощечистка.
+                    Модуль <code>collections</code> - это набор таких специализированных
+                    инструментов.</p>
+
+                <h3>Counter: счётчик элементов</h3>
+
+                <p>Одна из самых частых задач - посчитать, сколько раз встречается каждый
+                    элемент. Например, сколько раз каждое слово встречается в тексте.
+                    Обычно для этого используют словарь и цикл:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">words = ["яблоко", "банан", "яблоко", "вишня", "банан", "яблоко"]</span><span class="code-row"></span><span class="code-row">counts = {}</span><span class="code-row">for word in words:</span><span class="code-row">    if word in counts:</span><span class="code-row">        counts[word] += 1</span><span class="code-row">    else:</span><span class="code-row">        counts[word] = 1</span><span class="code-row"></span><span class="code-row">print(counts)   # {'яблоко': 3, 'банан': 2, 'вишня': 1}</span></code></pre>
+
+                <p>Работает, но 6 строк кода - многовато для такой простой задачи.
+                    <code>Counter</code> делает то же самое одной строкой:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from collections import Counter</span><span class="code-row"></span><span class="code-row">words = ["яблоко", "банан", "яблоко", "вишня", "банан", "яблоко"]</span><span class="code-row">counts = Counter(words)</span><span class="code-row"></span><span class="code-row">print(counts)   # Counter({'яблоко': 3, 'банан': 2, 'вишня': 1})</span></code></pre>
+
+                <p><code>Counter</code> - это подкласс словаря, поэтому с ним работают все
+                    методы <code>dict</code>: обращение по ключу, <code>.get()</code>,
+                    <code>.items()</code> и другие. Плюс есть несколько собственных полезных
+                    методов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(counts["яблоко"])              # 3</span><span class="code-row">print(counts.most_common(2))        # [('яблоко', 3), ('банан', 2)]</span><span class="code-row">print(sum(counts.values()))         # 6 (всего элементов)</span></code></pre>
+
+                <p>Метод <code>.most_common(n)</code> возвращает <code>n</code> самых частых
+                    элементов в виде списка кортежей. Это готовый инструмент для анализа
+                    текста, логов, статистики.</p>
+
+                <h3>defaultdict: словарь с автоматическими значениями</h3>
+
+                <p>Помните проблему из начала раздела? Когда мы считали слова, приходилось
+                    писать проверку <code>if word in counts</code> перед каждым обращением.
+                    Иначе на новом слове вылетал бы <code>KeyError</code>.</p>
+
+                <p><code>defaultdict</code> решает эту проблему элегантно: при обращении
+                    к несуществующему ключу он автоматически создаёт его со значением
+                    по умолчанию.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from collections import defaultdict</span><span class="code-row"></span><span class="code-row">words = ["яблоко", "банан", "яблоко", "вишня", "банан", "яблоко"]</span><span class="code-row">counts = defaultdict(int)</span><span class="code-row"></span><span class="code-row">for word in words:</span><span class="code-row">    counts[word] += 1</span><span class="code-row"></span><span class="code-row">print(dict(counts))   # {'яблоко': 3, 'банан': 2, 'вишня': 1}</span></code></pre>
+
+                <p>Что изменилось:</p>
+
+                <ul>
+                    <li>Вместо обычного <code>{}</code> создаём <code>defaultdict(int)</code>.
+                        Аргумент <code>int</code> - это «фабрика» значений по умолчанию.
+                        <code>int()</code> без аргументов возвращает <code>0</code>.</li>
+                    <li>При первом обращении к новому слову <code>counts[word]</code> Python
+                        автоматически создаёт ключ со значением <code>0</code>, и уже
+                        к нему прибавляется <code>1</code>.</li>
+                    <li>Проверка <code>if word in counts</code> больше не нужна - она
+                        исчезла из кода.</li>
+                </ul>
+
+                <p>Вместо <code>int</code> можно передать <code>list</code> - тогда при
+                    обращении к новому ключу создастся пустой список. Это удобно, когда
+                    нужно сгруппировать данные по какому-то признаку:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from collections import defaultdict</span><span class="code-row"></span><span class="code-row">students = [</span><span class="code-row">    ("Алексей", "математика"),</span><span class="code-row">    ("Мария", "физика"),</span><span class="code-row">    ("Алексей", "физика"),</span><span class="code-row">    ("Иван", "математика"),</span><span class="code-row">    ("Мария", "химия")</span><span class="code-row">]</span><span class="code-row"></span><span class="code-row">by_subject = defaultdict(list)</span><span class="code-row"></span><span class="code-row">for name, subject in students:</span><span class="code-row">    by_subject[subject].append(name)</span><span class="code-row"></span><span class="code-row">print(dict(by_subject))</span></code></pre>
+
+                <p>Вывод:</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">{'математика': ['Алексей', 'Иван'], 'физика': ['Мария', 'Алексей'], 'химия': ['Мария']}</span></code></pre>
+
+                <h3>namedtuple: кортеж с именами полей</h3>
+
+                <p>У кортежа есть неудобство: обращаться к элементам приходится по индексам.
+                    Через месяц вы уже не помните, что такое <code>person[0]</code> - имя
+                    или возраст. <code>namedtuple</code> решает эту проблему: он создаёт
+                    кортеж, у которого поля имеют имена, но при этом он остаётся таким же
+                    лёгким и неизменяемым.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from collections import namedtuple</span><span class="code-row"></span><span class="code-row">Person = namedtuple("Person", ["name", "age"])</span><span class="code-row"></span><span class="code-row">p = Person("Алексей", 25)</span><span class="code-row">print(p.name)    # Алексей (обращение по имени!)</span><span class="code-row">print(p.age)     # 25</span><span class="code-row">print(p[0])      # Алексей (по индексу тоже работает)</span></code></pre>
+
+                <p>Ключевая особенность: <code>namedtuple</code> - это тот же неизменяемый
+                    кортеж, но с удобным доступом по именам. Он весит столько же, сколько
+                    обычный кортеж, но код с ним читается гораздо лучше.</p>
+
+                <p>Распаковка тоже работает:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">name, age = p</span><span class="code-row">print(name)   # Алексей</span></code></pre>
+
+                <p>Когда использовать <code>namedtuple</code>? Когда у вас есть данные,
+                    которые <strong>логически связаны</strong>, <strong>не должны меняться</strong>
+                    и <strong>имеют чёткую структуру</strong>: координата, RGB-цвет, запись
+                    из базы данных, точка на графике. Для изменяемых структур лучше подходит
+                    обычный класс (об этом на среднем уровне).</p>
+
                 <h2>Когда что использовать</h2>
 
-                <p>У нас теперь четыре вида коллекций. Как выбрать нужную?</p>
+                <p>У нас теперь семь видов коллекций (с учётом модуля <code>collections</code>).
+                    Как выбрать нужную?</p>
 
                 <ul>
                     <li><strong>Список (list)</strong> - когда важен порядок, элементы
@@ -408,6 +513,11 @@
                     <li><strong>Словарь (dict)</strong> - когда данные связаны как
                         «ключ - значение». <em>Телефонная книга, JSON-подобные данные,
                             настройки приложения.</em></li>
+                    <li><strong>Counter</strong> - когда нужно посчитать количество элементов.</li>
+                    <li><strong>defaultdict</strong> - когда нужен словарь с автоматическими
+                        значениями по умолчанию (особенно для группировки или подсчёта).</li>
+                    <li><strong>namedtuple</strong> - когда нужна структура с именованными
+                        полями, но неизменяемая.</li>
                 </ul>
 
                 <h2>Шпаргалка</h2>
@@ -447,6 +557,26 @@
                         <code>.items()</code>
                         <span>перебор пар</span>
                     </li>
+                    <li>
+                        <code>Counter(seq)</code>
+                        <span>подсчёт элементов</span>
+                    </li>
+                    <li>
+                        <code>.most_common(n)</code>
+                        <span>топ-n самых частых</span>
+                    </li>
+                    <li>
+                        <code>defaultdict(int)</code>
+                        <span>словарь с 0 по умолчанию</span>
+                    </li>
+                    <li>
+                        <code>defaultdict(list)</code>
+                        <span>словарь со списками</span>
+                    </li>
+                    <li>
+                        <code>namedtuple(...)</code>
+                        <span>кортеж с именами</span>
+                    </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
@@ -473,6 +603,25 @@
                         <code>my_collection = {}</code>, это будет пустой <em>словарь</em>,
                         а не множество. Для пустого множества нужно использовать
                         <code>set()</code>.</li>
+                    <li><strong>«NameError: name 'Counter' is not defined»</strong>.
+                        Забыли импорт. В начале файла должна быть строка
+                        <code>from collections import Counter</code> (или
+                        <code>defaultdict</code>, <code>namedtuple</code> - по аналогии).</li>
+                    <li><strong>«NameError: name 'defaultdict' is not defined»</strong>.
+                        Та же причина - забыт импорт из <code>collections</code>.</li>
+                    <li><strong>«KeyError» при обращении к defaultdict</strong>. Такого
+                        не должно случиться - <code>defaultdict</code> автоматически создаёт
+                        ключи. Проверьте, что вы действительно создали объект через
+                        <code>defaultdict(...)</code>, а не через обычный <code>{}</code>.</li>
+                    <li><strong>«AttributeError: 'tuple' object has no attribute 'name'»</strong>.
+                        Вы пытаетесь обратиться к полю по имени у обычного кортежа, а не
+                        у <code>namedtuple</code>. Убедитесь, что создали его через
+                        <code>namedtuple(...)</code>, и что имя поля написано точно так же,
+                        как при создании.</li>
+                    <li><strong>«TypeError: Cannot overwrite attribute ... in namedtuple»</strong>.
+                        Вы пытаетесь изменить атрибут <code>namedtuple</code>. Он неизменяем.
+                        Если нужны изменяемые структуры с полями - используйте обычный класс
+                        или <code>dataclass</code> (на среднем уровне).</li>
                 </ul>
 
                 <p>Если что-то не получается - напишите нам в
@@ -599,14 +748,16 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Анализ текста</span>
+                            <span>Задача 4. Анализ текста через Counter</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
                             <p class="task-desc">Спросите у пользователя предложение.
-                                Разбейте его на слова через <code>split()</code>. Подсчитайте,
-                                сколько раз встречается каждое слово. Выведите результат в
-                                формате «Слово: количество». Используйте словарь.</p>
+                                Разбейте его на слова через <code>split()</code>. С помощью
+                                <code>collections.Counter</code> посчитайте, сколько раз
+                                встречается каждое слово. Выведите три самых частых слова
+                                через <code>.most_common(3)</code> и общее количество слов
+                                в тексте.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -614,10 +765,10 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Создайте пустой словарь <code>counts = {}</code>. В цикле
-                                        по словам проверяйте, есть ли уже слово в словаре.
-                                        Если есть - увеличивайте счётчик. Если нет - создавайте
-                                        новый ключ со значением 1.</p>
+                                    <p>Импортируйте: <code>from collections import Counter</code>.
+                                        Создайте счётчик: <code>counts = Counter(words)</code>.
+                                        Для топа используйте <code>counts.most_common(3)</code>,
+                                        для общего количества - <code>sum(counts.values())</code>.</p>
                                 </div>
                             </details>
 
@@ -628,11 +779,13 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">text = input("Введите предложение: ")</span><span class="code-row">words = text.split()</span><span class="code-row"></span><span class="code-row">counts = {}</span><span class="code-row"></span><span class="code-row">for word in words:</span><span class="code-row">    if word in counts:</span><span class="code-row">        counts[word] += 1</span><span class="code-row">    else:</span><span class="code-row">        counts[word] = 1</span><span class="code-row"></span><span class="code-row">for word, count in counts.items():</span><span class="code-row">    print(f"{word}: {count}")</span></code></pre>
-                                    <p>Это классический алгоритм частотного анализа. Позже вы
-                                        узнаете, что его можно записать короче с помощью метода
-                                        <code>.get(word, 0) + 1</code>, но для понимания
-                                        базовой логики полезно начать с явного условия.</p>
+                                        class="code-numbered"><code><span class="code-row">from collections import Counter</span><span class="code-row"></span><span class="code-row">text = input("Введите предложение: ")</span><span class="code-row">words = text.split()</span><span class="code-row"></span><span class="code-row">counts = Counter(words)</span><span class="code-row"></span><span class="code-row">print("Топ-3 слова:")</span><span class="code-row">for word, count in counts.most_common(3):</span><span class="code-row">    print(f"  {word}: {count} раз")</span><span class="code-row"></span><span class="code-row">print(f"Всего слов: {sum(counts.values())}")</span></code></pre>
+                                    <p>В реальной задаче частотного анализа ещё приводят
+                                        слова к нижнему регистру и убирают знаки препинания -
+                                        иначе «Яблоко» и «яблоко» посчитаются как разные слова.
+                                        Но для базового примера достаточно и этого. Обратите
+                                        внимание, как <code>Counter</code> сократил логику:
+                                        вместо 8-10 строк с проверками мы написали 3 строки.</p>
                                 </div>
                             </details>
                         </div>
@@ -645,8 +798,9 @@
                 <p>Поздравляем! Вы прошли все 11 уроков начального уровня. Это огромный
                     шаг: ещё недавно вы не знали, что такое переменная, а теперь умеете
                     писать игры, работать с текстом, списками, кортежами, множествами и
-                    словарями. Вы понимаете, как устроены циклы, условия и как управлять
-                    случайностями.</p>
+                    словарями. Вы понимаете, как устроены циклы, условия, как управлять
+                    случайностями, и даже познакомились со специализированными коллекциями
+                    из модуля <code>collections</code>.</p>
 
                 <p>Давайте вспомним, что вы освоили:</p>
 
@@ -661,7 +815,8 @@
                     <li>Модуль math и математические вычисления.</li>
                     <li>Понимание изменяемых и неизменяемых типов.</li>
                     <li>Списки (Lists) и их методы.</li>
-                    <li>Кортежи, множества и словари.</li>
+                    <li>Кортежи, множества, словари.</li>
+                    <li>Специализированные коллекции: Counter, defaultdict, namedtuple.</li>
                 </ul>
 
                 <p>На этом начальный уровень завершён. Впереди - <strong>средний

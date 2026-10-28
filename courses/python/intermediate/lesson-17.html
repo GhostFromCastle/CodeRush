@@ -240,7 +240,7 @@
             <article class="lesson-content">
                 <h1>ООП: классы и объекты</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-clock"></i> ~55 минут</span>
                     <span><i class="ph ph-fire"></i> Средний уровень</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
@@ -360,6 +360,103 @@
                         их классы написали разработчики Python, а свои классы вы теперь пишете сами.</p>
                 </div>
 
+                <h2>Декоратор @dataclass: классы данных без бойлерплейта</h2>
+
+                <p>Обратите внимание, сколько кода занимает класс <code>Dog</code>. Восемь строк,
+                    из которых шесть - это повторяющийся шаблон:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">def __init__(self, name, age):</span><span class="code-row">    self.name = name</span><span class="code-row">    self.age = age</span></code></pre>
+
+                <p>И это для двух атрибутов. А если их десять? Писать <code>self.x = x</code>
+                    десять раз - скучно и чревато опечатками. Для таких «классов-хранилищ данных»
+                    в Python есть встроенный декоратор <strong><code>@dataclass</code></strong>
+                    из модуля <code>dataclasses</code>.</p>
+
+                <p>Аналогия: обычный класс - это как заполнять анкету вручную, переписывая каждое
+                    поле дважды (в заголовке и в значении). <code>@dataclass</code> - это как
+                    электронная анкета, где поля создаются автоматически по списку.</p>
+
+                <h3>Как это работает</h3>
+
+                <p>Достаточно перечислить атрибуты с их типами прямо в теле класса:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from dataclasses import dataclass</span><span class="code-row"></span><span class="code-row">@dataclass</span><span class="code-row">class Dog:</span><span class="code-row">    name: str</span><span class="code-row">    age: int</span></code></pre>
+
+                <p>И всё! Python автоматически сгенерирует:</p>
+
+                <ul>
+                    <li><strong><code>__init__</code></strong> - конструктор с параметрами
+                        <code>name</code> и <code>age</code>.</li>
+                    <li><strong><code>__repr__</code></strong> - красивый вывод при печати:
+                        <code>Dog(name='Бадди', age=3)</code>.</li>
+                    <li><strong><code>__eq__</code></strong> - сравнение по значениям полей:
+                        два объекта с одинаковыми <code>name</code> и <code>age</code> будут
+                        равны.</li>
+                </ul>
+
+                <p>Работает всё точно так же, как с обычным классом:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">dog1 = Dog("Бадди", 3)</span><span class="code-row">dog2 = Dog("Бадди", 3)</span><span class="code-row"></span><span class="code-row">print(dog1)             # Dog(name='Бадди', age=3)</span><span class="code-row">print(dog1 == dog2)     # True</span></code></pre>
+
+                <p>Три строки вместо восьми - и это ещё без методов. А если атрибутов десять,
+                    экономия станет драматической.</p>
+
+                <h3>Значения по умолчанию</h3>
+
+                <p>Как и в обычном конструкторе, можно задавать значения по умолчанию:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">@dataclass</span><span class="code-row">class Dog:</span><span class="code-row">    name: str</span><span class="code-row">    age: int = 1</span><span class="code-row">    breed: str = "дворняжка"</span></code></pre>
+
+                <p>Теперь можно создавать объект с одним аргументом:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">puppy = Dog("Рекс")</span><span class="code-row">print(puppy)   # Dog(name='Рекс', age=1, breed='дворняжка')</span></code></pre>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Изменяемые значения по умолчанию
+                    </div>
+                    <p>В <code>@dataclass</code> нельзя писать <code>items: list = []</code>.
+                        Python выдаст ошибку <code>ValueError: mutable default ... is not allowed</code>.
+                        Это та самая ловушка с изменяемыми значениями по умолчанию, о которой
+                        мы говорили в уроке 13. Решение - использовать
+                        <code>field(default_factory=list)</code>:</p>
+                    <pre class="code-numbered"><code><span class="code-row">from dataclasses import dataclass, field</span><span class="code-row"></span><span class="code-row">@dataclass</span><span class="code-row">class ShoppingCart:</span><span class="code-row">    owner: str</span><span class="code-row">    items: list = field(default_factory=list)</span></code></pre>
+                </div>
+
+                <h3>Методы в dataclass</h3>
+
+                <p><code>@dataclass</code> не запрещает писать свои методы - он только
+                    автоматизирует генерацию служебных. Можно добавить любую логику:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">@dataclass</span><span class="code-row">class Dog:</span><span class="code-row">    name: str</span><span class="code-row">    age: int</span><span class="code-row"></span><span class="code-row">    def bark(self):</span><span class="code-row">        print(f"{self.name} говорит: Гав!")</span><span class="code-row"></span><span class="code-row">    def get_human_age(self):</span><span class="code-row">        return self.age * 7</span></code></pre>
+
+                <p>Класс получит и сгенерированный <code>__init__</code>, и наши собственные
+                    методы.</p>
+
+                <h3>Когда использовать @dataclass</h3>
+
+                <p>Правило простое:</p>
+
+                <ul>
+                    <li><strong>Используйте <code>@dataclass</code></strong>, если класс в основном
+                        хранит данные (запись из БД, ответ API, игровой персонаж, координата,
+                        настройки).</li>
+                    <li><strong>Используйте обычный <code>class</code></strong>, если класс - это
+                        сложное поведение с минимальными данными (например, менеджер задач,
+                        который управляет другими объектами) или если нужно тонко контролировать
+                        конструктор.</li>
+                </ul>
+
+                <p>В реальных проектах <code>@dataclass</code> используется очень часто. Это
+                    современный стандарт для моделей данных.</p>
+
                 <h2>Шпаргалка</h2>
 
                 <p>Самое важное в одном месте:</p>
@@ -388,6 +485,18 @@
                     <li>
                         <code>obj.method()</code>
                         <span>вызов метода</span>
+                    </li>
+                    <li>
+                        <code>@dataclass</code>
+                        <span>авто-генерация __init__, __repr__, __eq__</span>
+                    </li>
+                    <li>
+                        <code>name: str</code>
+                        <span>объявление поля в dataclass</span>
+                    </li>
+                    <li>
+                        <code>field(default_factory=list)</code>
+                        <span>изменяемое умолчание</span>
                     </li>
                 </ul>
 
@@ -418,6 +527,17 @@
                         у самого класса, а не у конкретной собаки. Это сработает, если у класса
                         есть атрибуты, но атрибуты объектов доступны только через
                         <code>dog.name</code>.</li>
+                    <li><strong>«ValueError: mutable default &lt;class 'list'&gt; for field items is not allowed»</strong>.
+                        В <code>@dataclass</code> вы пытаетесь указать изменяемое значение по
+                        умолчанию напрямую (<code>items: list = []</code>). Используйте
+                        <code>field(default_factory=list)</code> из модуля <code>dataclasses</code>.</li>
+                    <li><strong>«TypeError: non-default argument follows default argument»</strong>
+                        в <code>@dataclass</code>. Сначала должны идти поля без значения по
+                        умолчанию, а уже потом - со значением. Поменяйте порядок полей.</li>
+                    <li><strong>«Я забыл импортировать @dataclass»</strong>. Ошибка будет
+                        выглядеть как <code>NameError: name 'dataclass' is not defined</code>
+                        или <code>AttributeError</code>. В начале файла обязательно должно быть
+                        <code>from dataclasses import dataclass</code>.</li>
                 </ul>
 
                 <p>Если что-то не получается - напишите нам в
@@ -509,15 +629,18 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Банковский счёт</span>
+                            <span>Задача 3. Студент через @dataclass</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Создайте класс <code>BankAccount</code>
-                                с балансом (начинается с 0). Добавьте метод
-                                <code>deposit(amount)</code>, который увеличивает баланс,
-                                и метод <code>withdraw(amount)</code>, который уменьшает
-                                баланс, но не позволяет уйти в минус.</p>
+                            <p class="task-desc">Создайте <code>@dataclass</code>
+                                <code>Student</code> с полями <code>name: str</code> и
+                                <code>grades: list[float]</code>. По умолчанию список оценок
+                                должен быть пустым (используйте <code>field(default_factory=list)</code>).
+                                Добавьте метод <code>add_grade(grade)</code>, который добавляет
+                                оценку в список, и метод <code>average()</code>, который
+                                возвращает средний балл (или 0, если оценок нет). Создайте
+                                студента и проверьте работу.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -525,10 +648,11 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>В методе <code>withdraw</code> используйте
-                                        <code>if amount &lt;= self.balance:</code>.
-                                        Если денег достаточно - вычитайте, иначе выводите
-                                        сообщение «Недостаточно средств».</p>
+                                    <p>Импортируйте <code>dataclass</code> и <code>field</code>
+                                        из <code>dataclasses</code>. Поле со списком:
+                                        <code>grades: list[float] = field(default_factory=list)</code>.
+                                        В <code>average</code> проверьте <code>if not self.grades:</code> -
+                                        верните 0.</p>
                                 </div>
                             </details>
 
@@ -539,7 +663,10 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">class BankAccount:</span><span class="code-row">    def __init__(self):</span><span class="code-row">        self.balance = 0</span><span class="code-row"></span><span class="code-row">    def deposit(self, amount):</span><span class="code-row">        self.balance += amount</span><span class="code-row">        print(f"Пополнение на {amount}. Баланс: {self.balance}")</span><span class="code-row"></span><span class="code-row">    def withdraw(self, amount):</span><span class="code-row">        if amount &lt;= self.balance:</span><span class="code-row">            self.balance -= amount</span><span class="code-row">            print(f"Снятие {amount}. Баланс: {self.balance}")</span><span class="code-row">        else:</span><span class="code-row">            print("Недостаточно средств")</span><span class="code-row"></span><span class="code-row">acc = BankAccount()</span><span class="code-row">acc.deposit(1000)</span><span class="code-row">acc.withdraw(300)</span><span class="code-row">acc.withdraw(1000)</span></code></pre>
+                                        class="code-numbered"><code><span class="code-row">from dataclasses import dataclass, field</span><span class="code-row"></span><span class="code-row">@dataclass</span><span class="code-row">class Student:</span><span class="code-row">    name: str</span><span class="code-row">    grades: list[float] = field(default_factory=list)</span><span class="code-row"></span><span class="code-row">    def add_grade(self, grade):</span><span class="code-row">        self.grades.append(grade)</span><span class="code-row"></span><span class="code-row">    def average(self):</span><span class="code-row">        if not self.grades:</span><span class="code-row">            return 0</span><span class="code-row">        return sum(self.grades) / len(self.grades)</span><span class="code-row"></span><span class="code-row">student = Student("Алексей")</span><span class="code-row">student.add_grade(5)</span><span class="code-row">student.add_grade(4)</span><span class="code-row">student.add_grade(5)</span><span class="code-row"></span><span class="code-row">print(student)   # Student(name='Алексей', grades=[5, 4, 5])</span><span class="code-row">print(f"Средний балл: {student.average():.2f}")</span></code></pre>
+                                    <p>Обратите внимание: <code>print(student)</code> выводит
+                                        читаемую строку автоматически, без нашего
+                                        <code>__repr__</code>. Это заслуга <code>@dataclass</code>.</p>
                                 </div>
                             </details>
                         </div>
@@ -547,15 +674,18 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Студент</span>
+                            <span>Задача 4. Банковский счёт</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Создайте класс <code>Student</code> с именем
-                                и пустым списком оценок. Добавьте метод <code>add_grade</code>
-                                для добавления оценки, и метод <code>average_grade</code>,
-                                который считает средний балл. Если оценок нет, метод должен
-                                возвращать 0.</p>
+                            <p class="task-desc">Создайте класс <code>BankAccount</code>
+                                с балансом (начинается с 0). Добавьте метод
+                                <code>deposit(amount)</code>, который увеличивает баланс,
+                                и метод <code>withdraw(amount)</code>, который уменьшает
+                                баланс, но не позволяет уйти в минус. Проверьте, что
+                                два счёта с одинаковым балансом равны (используйте
+                                <code>@dataclass</code> и посмотрите, как работает
+                                автоматическое сравнение).</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -563,10 +693,13 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Список оценок создавайте в конструкторе:
-                                        <code>self.grades = []</code>. Для среднего балла
-                                        проверьте, пуст ли список. Если нет - используйте
-                                        <code>sum(self.grades) / len(self.grades)</code>.</p>
+                                    <p>Создайте <code>@dataclass</code> с полем
+                                        <code>balance: float = 0</code>. В методе
+                                        <code>withdraw</code> используйте
+                                        <code>if amount &lt;= self.balance:</code>.
+                                        Проверка равенства: <code>acc1 == acc2</code> -
+                                        сработает автоматически благодаря
+                                        <code>@dataclass</code>.</p>
                                 </div>
                             </details>
 
@@ -577,7 +710,14 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">class Student:</span><span class="code-row">    def __init__(self, name):</span><span class="code-row">        self.name = name</span><span class="code-row">        self.grades = []</span><span class="code-row"></span><span class="code-row">    def add_grade(self, grade):</span><span class="code-row">        self.grades.append(grade)</span><span class="code-row"></span><span class="code-row">    def average_grade(self):</span><span class="code-row">        if not self.grades:</span><span class="code-row">            return 0</span><span class="code-row">        return sum(self.grades) / len(self.grades)</span><span class="code-row"></span><span class="code-row">student = Student("Алексей")</span><span class="code-row">student.add_grade(5)</span><span class="code-row">student.add_grade(4)</span><span class="code-row">student.add_grade(5)</span><span class="code-row"></span><span class="code-row">print(f"{student.name}, средний балл: {student.average_grade():.2f}")</span></code></pre>
+                                        class="code-numbered"><code><span class="code-row">from dataclasses import dataclass</span><span class="code-row"></span><span class="code-row">@dataclass</span><span class="code-row">class BankAccount:</span><span class="code-row">    balance: float = 0</span><span class="code-row"></span><span class="code-row">    def deposit(self, amount):</span><span class="code-row">        self.balance += amount</span><span class="code-row">        print(f"Пополнение на {amount}. Баланс: {self.balance}")</span><span class="code-row"></span><span class="code-row">    def withdraw(self, amount):</span><span class="code-row">        if amount &lt;= self.balance:</span><span class="code-row">            self.balance -= amount</span><span class="code-row">            print(f"Снятие {amount}. Баланс: {self.balance}")</span><span class="code-row">        else:</span><span class="code-row">            print("Недостаточно средств")</span><span class="code-row"></span><span class="code-row">acc1 = BankAccount()</span><span class="code-row">acc2 = BankAccount()</span><span class="code-row"></span><span class="code-row">acc1.deposit(1000)</span><span class="code-row">acc1.withdraw(300)</span><span class="code-row">acc1.withdraw(1000)</span><span class="code-row"></span><span class="code-row">acc2.deposit(700)</span><span class="code-row"></span><span class="code-row">print(acc1 == acc2)   # True (у обоих баланс 700)</span></code></pre>
+                                    <p>Сравнение <code>acc1 == acc2</code> вернуло
+                                        <code>True</code>, потому что у обоих счетов баланс
+                                        равен <code>700</code>. В обычном классе без
+                                        <code>@dataclass</code> пришлось бы писать
+                                        <code>__eq__</code> вручную. Это ещё один
+                                        пример того, насколько <code>@dataclass</code>
+                                        упрощает жизнь.</p>
                                 </div>
                             </details>
                         </div>
@@ -596,11 +736,16 @@
                     <li>Что такое конструктор <code>__init__</code> и как он работает.</li>
                     <li>Зачем нужен параметр <code>self</code> и что он означает.</li>
                     <li>Как создавать атрибуты (данные) и методы (поведение) объекта.</li>
+                    <li>Как использовать <code>@dataclass</code> для автоматической генерации
+                        конструктора, <code>__repr__</code> и <code>__eq__</code>.</li>
+                    <li>Когда выбирать <code>@dataclass</code>, а когда - обычный класс.</li>
                 </ul>
 
                 <p>Классы и объекты позволяют моделировать реальный мир в коде. Вместо набора
                     разрозненных переменных и функций у вас появляются сущности со своим
-                    характером и поведением. Это делает код гораздо понятнее и надёжнее.</p>
+                    характером и поведением. А <code>@dataclass</code> убирает рутину
+                    там, где класс нужен просто для хранения данных - а это половина всех
+                    классов в типичном проекте.</p>
 
                 <p>В следующем уроке мы продолжим изучение ООП и разберём <strong>наследование</strong>.
                     Вы узнаете, как создавать новые классы на основе существующих, чтобы

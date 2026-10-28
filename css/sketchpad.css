@@ -1,0 +1,502 @@
+.sketchpad-section {
+    padding: 40px 0 120px;
+    background: var(--bg-dark);
+    min-height: calc(var(--vh-full) - var(--header-height));
+}
+
+.sketchpad-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.sketchpad-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-light);
+    align-items: flex-end;
+}
+
+.sketchpad-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.sketchpad-file-group {
+    flex-grow: 1;
+    min-width: 300px;
+}
+
+.sketchpad-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sketchpad-label i {
+    color: var(--accent-orange);
+    font-size: 0.95rem;
+}
+
+.sketchpad-tools {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sketchpad-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-light);
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sketchpad-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.sketchpad-btn.active {
+    background: rgba(255, 90, 0, 0.15);
+    border-color: var(--accent-orange);
+    color: var(--accent-orange);
+}
+
+.sketchpad-colors {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.sketchpad-color-input {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.sketchpad-color-input::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.sketchpad-color-input::-webkit-color-swatch {
+    border: none;
+    border-radius: 6px;
+}
+
+.color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+}
+
+.color-swatch.active {
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.sketchpad-custom-color {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--border-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s;
+}
+
+.sketchpad-custom-color:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+.sketchpad-custom-color input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.sketchpad-custom-color i {
+    color: #fff;
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+.sketchpad-range {
+    width: 120px;
+    accent-color: var(--accent-orange);
+    cursor: pointer;
+}
+
+.sketchpad-zoom-value {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: #fff;
+    min-width: 45px;
+    text-align: center;
+}
+
+.sketchpad-input {
+    width: 100%;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.sketchpad-input:focus {
+    border-color: var(--accent-orange);
+}
+
+.sketchpad-export {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.sketchpad-save-btn {
+    flex: 1;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.recording-active {
+    background: #ef4444 !important;
+    border-color: #ef4444 !important;
+    color: #fff !important;
+    animation: recordPulse 1.5s infinite;
+}
+
+@keyframes recordPulse {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.sketchpad-canvas-wrapper {
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    background: #151515;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 0 1px var(--border-light);
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.sketchpad-canvas-wrapper.tool-select {
+    cursor: default;
+}
+
+.sketchpad-canvas-wrapper.tool-select.panning {
+    cursor: grabbing;
+}
+
+#sketchCanvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0 0;
+    cursor: inherit;
+    z-index: 1;
+}
+
+.sketchpad-canvas-wrapper.panning {
+    cursor: grab;
+}
+
+.sketchpad-canvas-wrapper.panning:active {
+    cursor: grabbing;
+}
+
+.sketchpad-cell-input,
+.sketchpad-text-input {
+    position: absolute;
+    z-index: 10;
+    background: #1a1a1a;
+    border: 2px solid var(--accent-orange);
+    border-radius: 4px;
+    color: #fff;
+    font-family: inherit;
+    padding: 2px 4px;
+    outline: none;
+    box-sizing: border-box;
+    transform-origin: 0 0;
+}
+
+.sketchpad-cell-input {
+    font-size: 14px;
+    text-align: center;
+}
+
+.sketchpad-text-input {
+    font-size: 16px;
+    font-weight: 700;
+    resize: none;
+    overflow: hidden;
+    min-width: 100px;
+}
+
+.table-popover {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 12px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.table-popover.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.table-popover-header {
+    font-size: 0.85rem;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 12px;
+    font-family: var(--font-mono);
+}
+
+.table-popover-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 16px);
+    grid-template-rows: repeat(10, 16px);
+    gap: 4px;
+}
+
+.table-popover-cell {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.table-popover-cell.active {
+    background: var(--accent-orange);
+}
+
+.shape-options-popover {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 12px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    width: 160px;
+}
+
+.shape-options-popover.active {
+    display: flex;
+}
+
+.shape-options-popover label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.shape-options-popover input {
+    width: 100%;
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    color: #fff;
+    outline: none;
+    text-align: center;
+}
+
+.text-format-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 12px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    width: 220px;
+}
+
+.text-format-panel.active {
+    display: flex;
+}
+
+.text-format-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.text-format-row select,
+.text-format-row input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-light);
+    color: #fff;
+    padding: 6px;
+    border-radius: 4px;
+    outline: none;
+    font-family: inherit;
+    flex: 1;
+}
+
+.text-align-group {
+    display: flex;
+    gap: 4px;
+}
+
+.sketchpad-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.sketchpad-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sketchpad-modal-content {
+    background: #1a1a1a;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+}
+
+.sketchpad-modal-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.sketchpad-modal-content p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.sketchpad-modal-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.sketchpad-modal-actions button {
+    flex: 1;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .sketchpad-section {
+        padding: 20px 0 80px;
+    }
+
+    .sketchpad-toolbar {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .sketchpad-canvas-wrapper {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    .sketchpad-export {
+        flex-direction: column;
+    }
+
+    .sketchpad-save-btn {
+        width: 100%;
+    }
+}

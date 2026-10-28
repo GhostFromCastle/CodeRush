@@ -240,14 +240,14 @@
             <article class="lesson-content">
                 <h1>Многопоточность и GIL</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-clock"></i> ~55 минут</span>
                     <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
 
                 <p>До этого момента все наши программы работали последовательно: шаг за шагом, строка за строкой. Если программа скачивала данные из интернета, она замирала и ждала. Если считала что-то сложное, она блокировала всё остальное.</p>
 
-                <p>Но современные компьютеры имеют многоядерные процессоры. Было бы логично использовать их все, чтобы программа работала быстрее. Сегодня мы разберёмся, как в Python работают <strong>потоки (threads)</strong> и <strong>процессы (processes)</strong>, что такое загадочный <strong>GIL</strong> и почему в Python не всё так просто с распараллеливанием.</p>
+                <p>Но современные компьютеры имеют многоядерные процессоры. Было бы логично использовать их все, чтобы программа работала быстрее. Сегодня мы разберёмся, как в Python работают <strong>потоки (threads)</strong> и <strong>процессы (processes)</strong>, что такое загадочный <strong>GIL</strong>, и как безопасно передавать данные между потоками через <strong>очереди (queue.Queue)</strong>.</p>
 
                 <h2>Аналогия: кухня ресторана</h2>
 
@@ -293,6 +293,66 @@
 
                 <p>Важное замечание: код с процессами обязательно должен быть обёрнут в <code>if __name__ == "__main__":</code>. Это нужно для корректной работы в Windows.</p>
 
+                <h2>Безопасная передача данных: queue.Queue</h2>
+
+                <p>Допустим, у нас есть потоки, которые производят данные (например, скачивают файлы), и потоки, которые их обрабатывают (например, сохраняют на диск). Если передавать данные через общий список, возникнет проблема: два потока одновременно могут попытаться прочитать или изменить его, и данные перепутаются. Это называется <strong>состояние гонки</strong> (race condition).</p>
+
+                <p>В уроке мы уже использовали <code>Lock</code>, чтобы защитить счётчик. Но для передачи данных между потоками есть более удобное решение - <strong><code>queue.Queue</code></strong> (очередь).</p>
+
+                <p>Аналогия: очередь - это как конвейер на заводе. Один рабочий кладёт деталь на ленту, другой - снимает. Лента сама заботится о том, чтобы детали не сталкивались и не терялись. Потоки могут смело класть и забирать данные - queue сделает всё за вас.</p>
+
+                <p>Главное свойство: <code>Queue</code> <strong>потокобезопасна</strong> (thread-safe). Все операции с ней атомарны, и вам не нужно вручную брать <code>Lock</code>.</p>
+
+                <h3>Основные методы</h3>
+
+                <ul>
+                    <li><strong><code>put(item)</code></strong> - положить элемент в очередь (в конец).</li>
+                    <li><strong><code>get()</code></strong> - забрать элемент из очереди (с начала). Если очередь пуста - блокируется, пока элемент не появится.</li>
+                    <li><strong><code>qsize()</code></strong> - текущее количество элементов.</li>
+                    <li><strong><code>empty()</code></strong> - проверка, пуста ли очередь.</li>
+                    <li><strong><code>task_done()</code></strong> - сообщить, что один элемент обработан (нужно для <code>join()</code>).</li>
+                    <li><strong><code>join()</code></strong> - блокироваться, пока все элементы не будут обработаны.</li>
+                </ul>
+
+                <h3>Классический паттерн «производитель - потребитель»</h3>
+
+                <p>Самый частый сценарий использования <code>Queue</code> - когда одни потоки производят задачи, а другие их выполняют. Вот как это выглядит:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">import threading</span><span class="code-row">import queue</span><span class="code-row">import time</span><span class="code-row"></span><span class="code-row">task_queue = queue.Queue()</span><span class="code-row"></span><span class="code-row">def producer():</span><span class="code-row">    for i in range(5):</span><span class="code-row">        task = f"Задача {i}"</span><span class="code-row">        print(f"Производитель создал: {task}")</span><span class="code-row">        task_queue.put(task)</span><span class="code-row">        time.sleep(0.5)</span><span class="code-row"></span><span class="code-row">def consumer():</span><span class="code-row">    while True:</span><span class="code-row">        task = task_queue.get()</span><span class="code-row">        if task is None:</span><span class="code-row">            break</span><span class="code-row">        print(f"Потребитель взял: {task}")</span><span class="code-row">        time.sleep(1)</span><span class="code-row">        task_queue.task_done()</span><span class="code-row"></span><span class="code-row">p = threading.Thread(target=producer)</span><span class="code-row">c = threading.Thread(target=consumer)</span><span class="code-row"></span><span class="code-row">p.start()</span><span class="code-row">c.start()</span><span class="code-row"></span><span class="code-row">p.join()</span><span class="code-row">task_queue.put(None)</span><span class="code-row">c.join()</span></code></pre>
+
+                <p>Разберём этот код:</p>
+
+                <ul>
+                    <li>Создаётся поток-производитель. Он кладёт в очередь 5 задач с задержкой в 0.5 секунды.</li>
+                    <li>Создаётся поток-потребитель. Он в бесконечном цикле берёт задачи из очереди и обрабатывает их.</li>
+                    <li>Как потребитель узнаёт, что пора заканчивать? Производитель после работы кладёт в очередь специальный <strong>сигнальный объект</strong> (<code>None</code>). Потребитель, увидев его, делает <code>break</code> и завершается.</li>
+                    <li><code>task_done()</code> сообщает очереди, что один элемент успешно обработан. Это нужно, если вы используете <code>queue.join()</code> для ожидания завершения всех задач.</li>
+                </ul>
+
+                <p>Обратите внимание: потребитель спокойно ждёт на <code>get()</code>, когда очередь пуста. Как только производитель кладёт задачу, потребитель моментально просыпается и обрабатывает её. Никаких <code>Lock</code>, никаких ручных проверок - за нас всё делает очередь.</p>
+
+                <h3>queue.Queue с ограничением размера</h3>
+
+                <p>По умолчанию очередь бесконечна. Но можно задать максимальный размер. Если очередь заполнена, <code>put()</code> будет блокироваться, пока не освободится место:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">task_queue = queue.Queue(maxsize=3)</span></code></pre>
+
+                <p>Это удобно, когда производитель генерирует задачи быстрее, чем потребитель их выполняет. Ограничение не даст памяти переполниться.</p>
+
+                <h3>Другие виды очередей</h3>
+
+                <p>В модуле <code>queue</code> есть ещё два класса:</p>
+
+                <ul>
+                    <li><strong><code>LifoQueue</code></strong> - «последним пришёл - первым вышел» (стек). Полезно, когда важнее обработать последние задачи.</li>
+                    <li><strong><code>PriorityQueue</code></strong> - очередь с приоритетами. Элементы - кортежи вида <code>(приоритет, значение)</code>. Забираются элементы с наименьшим приоритетом.</li>
+                </ul>
+
+                <pre class="code-numbered"><code><span class="code-row">import queue</span><span class="code-row"></span><span class="code-row">pq = queue.PriorityQueue()</span><span class="code-row">pq.put((3, "Низкий приоритет"))</span><span class="code-row">pq.put((1, "Высокий приоритет"))</span><span class="code-row">pq.put((2, "Средний приоритет"))</span><span class="code-row"></span><span class="code-row">while not pq.empty():</span><span class="code-row">    priority, task = pq.get()</span><span class="code-row">    print(f"{priority}: {task}")</span></code></pre>
+
+                <p>Вывод:</p>
+                <pre class="code-numbered"><code><span class="code-row">1: Высокий приоритет</span><span class="code-row">2: Средний приоритет</span><span class="code-row">3: Низкий приоритет</span></code></pre>
+
                 <h2>Шпаргалка</h2>
 
                 <p>Самое важное в одном месте:</p>
@@ -326,17 +386,41 @@
                         <code>multiprocessing.Process</code>
                         <span>создать процесс</span>
                     </li>
+                    <li>
+                        <code>queue.Queue()</code>
+                        <span>потокобезопасная очередь</span>
+                    </li>
+                    <li>
+                        <code>.put(item)</code>
+                        <span>положить в очередь</span>
+                    </li>
+                    <li>
+                        <code>.get()</code>
+                        <span>забрать из очереди</span>
+                    </li>
+                    <li>
+                        <code>.task_done()</code>
+                        <span>отметить обработку</span>
+                    </li>
+                    <li>
+                        <code>PriorityQueue</code>
+                        <span>очередь с приоритетами</span>
+                    </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные проблемы при работе с потоками.</p>
+                <p>Разберём типичные проблемы при работе с потоками и очередями.</p>
 
                 <ul>
                     <li><strong>«Многопоточность не ускорила вычисления»</strong>. Это GIL. Потоки не подходят для математических расчётов. Используйте <code>multiprocessing</code>.</li>
                     <li><strong>«Программа завершается сразу, не дожидаясь потоков»</strong>. Вы забыли вызвать <code>.join()</code>. Главный поток программы не ждёт, пока дочерние потоки закончат работу.</li>
                     <li><strong>«RuntimeError при запуске multiprocessing в Windows»</strong>. Вы забыли обернуть код запуска в <code>if __name__ == "__main__":</code>.</li>
-                    <li><strong>«Данные изменились неправильно»</strong>. При работе с потоками есть риск <em>Race Condition</em> (состояние гонки). Если два потока одновременно меняют одну переменную, результат непредсказуем. Для защиты используют <code>threading.Lock()</code>.</li>
+                    <li><strong>«Данные изменились неправильно»</strong>. При работе с общими переменными (без очереди) возникает <em>Race Condition</em>. Используйте <code>threading.Lock()</code> для счётчиков или <code>queue.Queue</code> для передачи данных.</li>
+                    <li><strong>«Потребитель никогда не завершается»</strong>. Вы забыли отправить сигнальный объект (<code>None</code>) в очередь после окончания работы производителя. Без него цикл <code>while True</code> в потребителе будет вечно ждать новые задачи на <code>get()</code>.</li>
+                    <li><strong>«queue.get() блокируется навсегда»</strong>. Если очередь пуста, <code>get()</code> по умолчанию ждёт бесконечно. Если нужно с ограничением по времени - используйте <code>get(timeout=5)</code>. Если нужно неблокирующее чтение - <code>get(block=False)</code> (выбросит <code>queue.Empty</code>, если пусто).</li>
+                    <li><strong>«queue.put() тоже блокируется»</strong>. Если очередь создана с ограничением <code>maxsize</code> и заполнена, <code>put()</code> будет ждать, пока кто-то заберёт элемент. Используйте <code>put(item, timeout=5)</code> или увеличьте размер.</li>
+                    <li><strong>«queue.Queue vs list: зачем усложнять?»</strong>. Список не является потокобезопасным. Если два потока одновременно делают <code>list.pop()</code>, они могут получить один и тот же элемент или упасть с <code>IndexError</code>. Queue решает эту проблему из коробки.</li>
                 </ul>
 
                 <p>Если что-то не получается - напишите нам в
@@ -413,11 +497,11 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Блокировка (Lock)</span>
+                            <span>Задача 3. Producer-Consumer через Queue</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Создайте глобальную переменную <code>counter = 0</code>. Запустите 5 потоков, каждый из которых 100 000 раз увеличивает счётчик на 1. Используйте <code>threading.Lock()</code>, чтобы избежать состояния гонки. Выведите итоговое значение.</p>
+                            <p class="task-desc">Реализуйте паттерн «производитель - потребитель». Производитель кладёт в очередь числа от 1 до 10. Потребитель достаёт их и считает сумму. В конце выведите общую сумму. Используйте <code>queue.Queue</code> и сигнальный объект <code>None</code> для остановки потребителя.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -425,7 +509,7 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Создайте объект блокировки: <code>lock = threading.Lock()</code>. Внутри функции перед изменением переменной захватывайте блокировку: <code>with lock:</code>, а затем делайте <code>counter += 1</code>.</p>
+                                    <p>Создайте <code>q = queue.Queue()</code>. Производитель в цикле делает <code>q.put(i)</code>. После цикла кладёт <code>q.put(None)</code>. Потребитель в цикле <code>while True:</code> вызывает <code>q.get()</code> и проверяет на <code>None</code>. Сумму сохраняйте в переменную и печатайте после выхода из цикла.</p>
                                 </div>
                             </details>
 
@@ -435,8 +519,8 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">import threading</span><span class="code-row"></span><span class="code-row">counter = 0</span><span class="code-row">lock = threading.Lock()</span><span class="code-row"></span><span class="code-row">def increment():</span><span class="code-row">    global counter</span><span class="code-row">    for _ in range(100000):</span><span class="code-row">        with lock:</span><span class="code-row">            counter += 1</span><span class="code-row"></span><span class="code-row">threads = []</span><span class="code-row">for _ in range(5):</span><span class="code-row">    t = threading.Thread(target=increment)</span><span class="code-row">    threads.append(t)</span><span class="code-row">    t.start()</span><span class="code-row"></span><span class="code-row">for t in threads:</span><span class="code-row">    t.join()</span><span class="code-row"></span><span class="code-row">print(f"Итог: {counter}")</span></code></pre>
-                                    <p>Без <code>lock</code> итоговое число почти наверняка было бы меньше 500 000, так как потоки перезаписывали бы результаты друг друга.</p>
+                                    <pre class="code-numbered"><code><span class="code-row">import threading</span><span class="code-row">import queue</span><span class="code-row"></span><span class="code-row">q = queue.Queue()</span><span class="code-row">total = 0</span><span class="code-row"></span><span class="code-row">def producer():</span><span class="code-row">    for i in range(1, 11):</span><span class="code-row">        q.put(i)</span><span class="code-row">    q.put(None)</span><span class="code-row"></span><span class="code-row">def consumer():</span><span class="code-row">    global total</span><span class="code-row">    while True:</span><span class="code-row">        item = q.get()</span><span class="code-row">        if item is None:</span><span class="code-row">            break</span><span class="code-row">        total += item</span><span class="code-row"></span><span class="code-row">p = threading.Thread(target=producer)</span><span class="code-row">c = threading.Thread(target=consumer)</span><span class="code-row"></span><span class="code-row">p.start()</span><span class="code-row">c.start()</span><span class="code-row"></span><span class="code-row">p.join()</span><span class="code-row">c.join()</span><span class="code-row"></span><span class="code-row">print(f"Сумма: {total}")   # Сумма: 55</span></code></pre>
+                                    <p>Обратите внимание: <code>total</code> изменяется только в одном потоке (потребителе). Поэтому <code>Lock</code> не нужен - гонки не будет. Если бы счётчик увеличивали несколько потребителей, пришлось бы защищать его через <code>Lock</code>.</p>
                                 </div>
                             </details>
                         </div>
@@ -444,11 +528,11 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Скачиваем сайты</span>
+                            <span>Задача 4. Несколько потребителей</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Напишите функцию, которая имитирует скачивание сайта (ждёт 1 секунду). Создайте список из 5 разных сайтов и скачайте их все параллельно с помощью потоков. Замерьте время.</p>
+                            <p class="task-desc">Усложните предыдущую задачу: запустите <strong>трёх потребителей</strong>, которые параллельно забирают задачи из одной очереди. Производитель кладёт 10 задач (числа от 1 до 10). Каждый потребитель выводит, какую задачу он взял. Проследите, что задачи распределились между потребителями. Не забудьте отправить три сигнала <code>None</code> - по одному на каждого потребителя.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -456,7 +540,7 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Создайте цикл, который создаёт поток для каждого сайта из списка. Запускайте поток и сразу добавляйте его в список потоков. После цикла пройдитесь по списку потоков и вызовите <code>.join()</code> для каждого.</p>
+                                    <p>Создайте список потребителей: <code>consumers = [threading.Thread(target=consumer, args=(i,)) for i in range(3)]</code>. После работы производителя положите в очередь три <code>None</code> (например, циклом <code>for _ in range(3): q.put(None)</code>). Каждый потребитель останавливается, когда получает <code>None</code>.</p>
                                 </div>
                             </details>
 
@@ -466,8 +550,8 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">import threading</span><span class="code-row">import time</span><span class="code-row"></span><span class="code-row">def download_site(url):</span><span class="code-row">    print(f"Скачиваю {url}")</span><span class="code-row">    time.sleep(1)</span><span class="code-row">    print(f"Готово: {url}")</span><span class="code-row"></span><span class="code-row">sites = ["site1.com", "site2.com", "site3.com", "site4.com", "site5.com"]</span><span class="code-row">threads = []</span><span class="code-row">start = time.time()</span><span class="code-row"></span><span class="code-row">for site in sites:</span><span class="code-row">    t = threading.Thread(target=download_site, args=(site,))</span><span class="code-row">    threads.append(t)</span><span class="code-row">    t.start()</span><span class="code-row"></span><span class="code-row">for t in threads:</span><span class="code-row">    t.join()</span><span class="code-row"></span><span class="code-row">print(f"Общее время: {time.time() - start:.2f} сек")</span></code></pre>
-                                    <p>Выполнение займёт около 1 секунды, хотя сайтов пять. Многопоточность идеально подходит для таких I/O-задач.</p>
+                                    <pre class="code-numbered"><code><span class="code-row">import threading</span><span class="code-row">import queue</span><span class="code-row">import time</span><span class="code-row"></span><span class="code-row">q = queue.Queue()</span><span class="code-row"></span><span class="code-row">def producer():</span><span class="code-row">    for i in range(1, 11):</span><span class="code-row">        print(f"Производитель создал задачу {i}")</span><span class="code-row">        q.put(i)</span><span class="code-row">        time.sleep(0.1)</span><span class="code-row">    for _ in range(3):</span><span class="code-row">        q.put(None)</span><span class="code-row"></span><span class="code-row">def consumer(worker_id):</span><span class="code-row">    while True:</span><span class="code-row">        item = q.get()</span><span class="code-row">        if item is None:</span><span class="code-row">            break</span><span class="code-row">        print(f"Потребитель {worker_id} взял задачу {item}")</span><span class="code-row">        time.sleep(0.3)</span><span class="code-row"></span><span class="code-row">p = threading.Thread(target=producer)</span><span class="code-row">consumers = [threading.Thread(target=consumer, args=(i,)) for i in range(3)]</span><span class="code-row"></span><span class="code-row">p.start()</span><span class="code-row">for c in consumers:</span><span class="code-row">    c.start()</span><span class="code-row"></span><span class="code-row">p.join()</span><span class="code-row">for c in consumers:</span><span class="code-row">    c.join()</span><span class="code-row"></span><span class="code-row">print("Все задачи обработаны")</span></code></pre>
+                                    <p>Три потребителя работают параллельно: пока один обрабатывает задачу 1, второй берёт задачу 2, третий - задачу 3. Благодаря <code>Queue</code> ни одна задача не теряется и не обрабатывается дважды. Именно так работают веб-серверы (каждый запрос - задача в очереди) и системы обработки данных.</p>
                                 </div>
                             </details>
                         </div>
@@ -485,7 +569,12 @@
                     <li>Чем отличаются задачи I/O-bound от CPU-bound.</li>
                     <li>Как использовать <code>multiprocessing</code> для обхода GIL.</li>
                     <li>Как защитить данные от состояния гонки с помощью <code>Lock</code>.</li>
+                    <li>Как безопасно передавать данные между потоками через <code>queue.Queue</code>.</li>
+                    <li>Что такое паттерн «производитель - потребитель» и почему это основа большинства реальных приложений.</li>
+                    <li>Как использовать <code>PriorityQueue</code> для задач с приоритетами.</li>
                 </ul>
+
+                <p>Очереди - это тот инструмент, который вы будете использовать в любом серьёзном многопоточном проекте. Веб-сервер, парсер сайтов, обработчик изображений, система фоновых задач в вебе - везде работает связка «производитель задач + пул потребителей + очередь между ними».</p>
 
                 <p>В следующем уроке мы поговорим об <strong>асинхронности</strong>. Это ещё один способ конкурентного выполнения задач в Python, который не использует потоки и процессы, а работает в рамках одного потока с помощью событийного цикла. Это будет мощный инструмент для веб-разработки. До встречи!</p>
 

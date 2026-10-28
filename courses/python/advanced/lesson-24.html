@@ -240,16 +240,16 @@
             <article class="lesson-content">
                 <h1>Абстракции и протоколы</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-clock"></i> ~55 минут</span>
                     <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
 
-                <p>В прошлом уроке мы разобрали магические методы и увидели, как классы могут вести себя как встроенные типы. Мы продолжаем говорить об объектно-ориентированном программировании (ООП) и проектировании архитектуры.</p>
+                <p>В прошлом уроке мы разобрали магические методы и контекстные менеджеры. Мы продолжаем говорить об объектно-ориентированном программировании и проектировании архитектуры.</p>
 
                 <p>Представьте, что вы пишете программу для зоопарка. У вас есть классы <code>Слон</code>, <code>Тигр</code> и <code>Пингвин</code>. Все они наследуются от класса <code>Животное</code>. Но вот незадача: слон и тигр умеют бегать, а пингвин - нет. Зато пингвин и некоторые птицы умеют плавать. Как описать эту логику, не создавая запутанную иерархию наследования?</p>
 
-                <p>Именно для таких ситуаций в программировании существуют <strong>абстракции</strong> и <strong>протоколы</strong>. Они позволяют описать <em>что</em> объект должен уметь делать, не диктуя строго, <em>кем</em> он при этом является.</p>
+                <p>Именно для таких ситуаций в программировании существуют <strong>абстракции</strong> и <strong>протоколы</strong>. Они позволяют описать <em>что</em> объект должен уметь делать, не диктуя строго, <em>кем</em> он при этом является. А ещё мы разберём <strong>аннотации типов</strong> - современный способ документировать код, который можно проверять автоматически.</p>
 
                 <h2>Проблема жёсткого наследования</h2>
 
@@ -302,6 +302,79 @@
 
                 <p>Здесь класс <code>Flyer</code> описывает протокол. Запись <code>entity: Flyer</code> - это аннотация типов. Она говорит редактору кода и линтерам: «Сюда можно передавать только те объекты, у которых есть метод <code>fly</code>». При этом сам класс <code>Bird</code> не обязан наследоваться от <code>Flyer</code>. Ему достаточно просто иметь метод <code>fly</code>.</p>
 
+                <h2>Аннотации типов: зачем и как</h2>
+
+                <p>Вы только что видели запись <code>entity: Flyer</code>. Это <strong>аннотация типа</strong> - способ указать, какого типа значение ожидается. Python не проверяет аннотации во время выполнения, но они помогают:</p>
+
+                <ul>
+                    <li><strong>Редактору кода</strong> - VS Code подсвечивает ошибки прямо при наборе и подсказывает правильные методы.</li>
+                    <li><strong>Вам через полгода</strong> - глядя на функцию, вы сразу понимаете, что она принимает и что возвращает.</li>
+                    <li><strong>Коллегам</strong> - код становится самодокументируемым.</li>
+                    <li><strong>Инструментам вроде mypy</strong> - они проверяют типы до запуска и находят баги на этапе разработки.</li>
+                </ul>
+
+                <p>Аналогия: аннотации - это как подписи на банках с крупами. Крупа внутри и без подписи остаётся крупой, но когда на полке 30 банок, подписи экономят часы поиска.</p>
+
+                <h3>Базовые аннотации</h3>
+
+                <p>Аннотировать можно аргументы функции и её возвращаемое значение:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">def greet(name: str, age: int) -&gt; str:</span><span class="code-row">    return f"{name}, {age} лет"</span></code></pre>
+
+                <p>Здесь <code>name: str</code> означает, что <code>name</code> должен быть строкой. <code>age: int</code> - числом. А стрелка <code>-&gt; str</code> указывает, что функция вернёт строку.</p>
+
+                <p>Аннотировать можно и переменные:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">score: int = 0</span><span class="code-row">name: str = "Алексей"</span></code></pre>
+
+                <p>Python <strong>не проверяет</strong> типы во время выполнения. Если вы передадите в функцию <code>greet</code> число вместо строки, программа не упадёт: аннотации - это только подсказки. Проверка происходит отдельно, через mypy или встроенный анализатор VS Code.</p>
+
+                <h3>Контейнеры: list, dict, set, tuple</h3>
+
+                <p>С версии Python 3.9 можно писать прямо встроенными типами:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">def average(numbers: list[float]) -&gt; float:</span><span class="code-row">    return sum(numbers) / len(numbers)</span><span class="code-row"></span><span class="code-row">def count_words(text: str) -&gt; dict[str, int]:</span><span class="code-row">    result = {}</span><span class="code-row">    for word in text.split():</span><span class="code-row">        result[word] = result.get(word, 0) + 1</span><span class="code-row">    return result</span></code></pre>
+
+                <p>В <code>list[float]</code> квадратные скобки означают «список, состоящий из float». В <code>dict[str, int]</code> - «словарь, где ключ - строка, а значение - целое число». Это не создаёт никакой новый объект, а лишь описывает содержимое.</p>
+
+                <p>Для старых версий Python (до 3.9) аннотации контейнеров записывались через модуль <code>typing</code>: <code>List[float]</code>, <code>Dict[str, int]</code>. Вы можете встретить такой стиль в чужом коде.</p>
+
+                <h3>Optional: значение или None</h3>
+
+                <p>Очень часто функция может вернуть значение или <code>None</code>. Для таких случаев есть <code>Optional</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">from typing import Optional</span><span class="code-row"></span><span class="code-row">def find_user(user_id: int) -&gt; Optional[str]:</span><span class="code-row">    if user_id == 1:</span><span class="code-row">        return "Алексей"</span><span class="code-row">    return None</span></code></pre>
+
+                <p><code>Optional[str]</code> означает «строка или None». В современном Python 3.10+ можно записать это короче: <code>str | None</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">def find_user(user_id: int) -&gt; str | None:</span><span class="code-row">    if user_id == 1:</span><span class="code-row">        return "Алексей"</span><span class="code-row">    return None</span></code></pre>
+
+                <h3>Union: несколько возможных типов</h3>
+
+                <p>Если аргумент может быть нескольких типов, используют <code>Union</code>:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">from typing import Union</span><span class="code-row"></span><span class="code-row">def parse(value: Union[int, str]) -&gt; int:</span><span class="code-row">    return int(value)</span></code></pre>
+
+                <p>Или короткая форма для Python 3.10+: <code>int | str</code>.</p>
+
+                <h3>Callable: функция как аргумент</h3>
+
+                <p>Иногда мы передаём в функцию другую функцию. Для этого есть <code>Callable</code>. Он указывает, сколько аргументов принимает функция и что возвращает:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">from typing import Callable</span><span class="code-row"></span><span class="code-row">def apply_twice(func: Callable[[int], int], value: int) -&gt; int:</span><span class="code-row">    return func(func(value))</span><span class="code-row"></span><span class="code-row">def square(x: int) -&gt; int:</span><span class="code-row">    return x * x</span><span class="code-row"></span><span class="code-row">print(apply_twice(square, 3))   # 81</span></code></pre>
+
+                <p>Запись <code>Callable[[int], int]</code> означает: «функция, которая принимает int и возвращает int».</p>
+
+                <h3>Как включить проверку типов</h3>
+
+                <p>VS Code с расширением Python умеет подсказывать ошибки на лету, если включить проверку. Поставьте галочку в настройках: <code>Python &gt; Analysis: Type Checking Mode</code> - выберите <code>basic</code> или <code>strict</code>. С этого момента редактор будет подчёркивать несоответствия, не запуская код.</p>
+
+                <p>Отдельный инструмент - утилита <strong>mypy</strong>. Устанавливается через <code>pip install mypy</code> и запускается из терминала:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">mypy my_script.py</span></code></pre>
+
+                <p>Mypy пройдётся по всем аннотациям, сверит их с реальным использованием и выдаст список проблем. Это полезно встраивать в проверку перед коммитом в Git.</p>
+
                 <h2>Шпаргалка</h2>
 
                 <p>Самое важное в одном месте:</p>
@@ -313,31 +386,55 @@
                     </li>
                     <li>
                         <code>@abc.abstractmethod</code>
-                        <span>обязательный для реализации метод</span>
+                        <span>обязательный метод</span>
                     </li>
                     <li>
                         <code>typing.Protocol</code>
-                        <span>описать невидимый интерфейс</span>
+                        <span>описать интерфейс</span>
                     </li>
                     <li>
                         <code>...</code>
-                        <span>заглушка для тела метода (Ellipsis)</span>
+                        <span>заглушка в теле метода</span>
                     </li>
                     <li>
-                        <code>Duck Typing</code>
-                        <span>проверка поведения, а не типа</span>
+                        <code>name: str</code>
+                        <span>аннотация переменной</span>
+                    </li>
+                    <li>
+                        <code>def f(x: int) -&gt; int</code>
+                        <span>аннотация функции</span>
+                    </li>
+                    <li>
+                        <code>list[int], dict[str, int]</code>
+                        <span>аннотация контейнеров</span>
+                    </li>
+                    <li>
+                        <code>Optional[int]</code>
+                        <span>значение или None</span>
+                    </li>
+                    <li>
+                        <code>Union[int, str]</code>
+                        <span>несколько типов</span>
+                    </li>
+                    <li>
+                        <code>Callable[[int], str]</code>
+                        <span>функция-аргумент</span>
                     </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные проблемы при работе с абстракциями и протоколами.</p>
+                <p>Разберём типичные проблемы при работе с абстракциями, протоколами и аннотациями.</p>
 
                 <ul>
                     <li><strong>«TypeError: Can't instantiate abstract class ... with abstract method ...»</strong>. Вы пытаетесь создать объект от абстрактного класса напрямую или от дочернего класса, в котором не реализованы все методы с <code>@abstractmethod</code>.</li>
-                    <li><strong>«Забыл добавить @abstractmethod»</strong>. Если вы не повесите декоратор на метод в абстрактном классе, Python будет считать, что это обычный метод. Наследники смогут его не переопределять, и защита не сработает.</li>
+                    <li><strong>Забыли добавить @abstractmethod</strong>. Если вы не повесите декоратор на метод в абстрактном классе, Python будет считать, что это обычный метод. Наследники смогут его не переопределять, и защита не сработает.</li>
                     <li><strong>«Зачем нужны протоколы, если есть утиная типизация?»</strong>. Сама программа будет работать и без них. Но протоколы делают код самодокументируемым. Открыв функцию <code>def process(db: DatabaseProtocol)</code>, вы сразу видите, какие методы нужны от объекта <code>db</code>, не заглядывая в код функции.</li>
                     <li><strong>«Ошибка при использовании Protocol в старых версиях Python»</strong>. Модуль <code>typing.Protocol</code> появился в Python 3.8. Если у вас версия ниже, используйте модуль <code>typing_extensions</code>.</li>
+                    <li><strong>«Аннотации не работают, программа принимает любой тип»</strong>. Так и задумано. Python не проверяет типы во время выполнения. Аннотации - это документация для людей и инструментов. Для автоматической проверки нужен mypy или встроенный анализатор VS Code.</li>
+                    <li><strong>«TypeError: 'type' object is not subscriptable» на list[int]</strong>. Вы используете Python 3.8 или ниже. Там запись через квадратные скобки у встроенных типов не работает. Используйте <code>typing.List[int]</code> или обновите Python.</li>
+                    <li><strong>«mypy ругается на None, хотя я проверяю if»</strong>. Mypy не всегда понимает сложную логику. Либо упростите код, либо добавьте явную проверку <code>if x is not None:</code>, либо используйте <code>assert x is not None</code> перед использованием.</li>
+                    <li><strong>«mypy не видит мои аннотации»</strong>. Возможно, у вас установлен mypy для другой версии Python. Проверьте командой <code>mypy --version</code> и убедитесь, что версия совпадает с вашей (например, для Python 3.12 нужен свежий mypy).</li>
                 </ul>
 
                 <p>Если что-то не получается - напишите нам в
@@ -414,11 +511,11 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Утиная типизация в действии</span>
+                            <span>Задача 3. Аннотируем функцию</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Напишите функцию <code>start_engine(machine)</code>, которая просто вызывает метод <code>machine.start()</code>. Создайте два независимых класса: <code>Car</code> и <code>Lawnmower</code> (газонокосилка). У каждого должен быть метод <code>start()</code>, который печатает不同的 текст. Передайте объекты обоих классов в функцию.</p>
+                            <p class="task-desc">Напишите функцию <code>total_price(prices, discount)</code>, которая принимает список цен и скидку в процентах, а возвращает итоговую сумму со скидкой. Добавьте аннотации типов: список - это <code>list[float]</code>, скидка - <code>int</code>, результат - <code>float</code>. Внутри используйте <code>sum()</code>. Проверьте на списке [100.0, 200.0, 300.0] со скидкой 10.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -426,7 +523,7 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Классы могут быть совершенно не связаны друг с другом. Главное - наличие метода <code>start</code>. Внутри функции не нужно делать никаких проверок типа, просто вызывайте <code>machine.start()</code>.</p>
+                                    <p>Сигнатура: <code>def total_price(prices: list[float], discount: int) -&gt; float:</code>. Формула: <code>sum(prices) * (1 - discount / 100)</code>.</p>
                                 </div>
                             </details>
 
@@ -436,8 +533,8 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">class Car:</span><span class="code-row">    def start(self):</span><span class="code-row">        print("Двигатель автомобиля заведён")</span><span class="code-row"></span><span class="code-row">class Lawnmower:</span><span class="code-row">    def start(self):</span><span class="code-row">        print("Газонокосилка тарахтит")</span><span class="code-row"></span><span class="code-row">def start_engine(machine):</span><span class="code-row">    machine.start()</span><span class="code-row"></span><span class="code-row">start_engine(Car())</span><span class="code-row">start_engine(Lawnmower())</span></code></pre>
-                                    <p>Функция <code>start_engine</code> работает с любым объектом, у которого есть метод <code>start</code>. Именно так работает большинство встроенных функций Python.</p>
+                                    <pre class="code-numbered"><code><span class="code-row">def total_price(prices: list[float], discount: int) -&gt; float:</span><span class="code-row">    return sum(prices) * (1 - discount / 100)</span><span class="code-row"></span><span class="code-row">print(total_price([100.0, 200.0, 300.0], 10))   # 540.0</span></code></pre>
+                                    <p>Редактор VS Code сразу подскажет вам, что <code>prices</code> - список чисел, и предупредит, если вы случайно передадите туда словарь или строку.</p>
                                 </div>
                             </details>
                         </div>
@@ -445,11 +542,11 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Описываем протокол</span>
+                            <span>Задача 4. Протокол для хранилища</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Используя <code>typing.Protocol</code>, опишите протокол <code>Database</code>, который требует наличия двух методов: <code>connect()</code> и <code>execute(query)</code>. Напишите функцию <code>run_query(db, query)</code>, которая принимает объект, соответствующий этому протоколу, и вызывает его методы.</p>
+                            <p class="task-desc">Опишите протокол <code>Storage</code> с двумя методами: <code>save(key: str, value: str) -&gt; None</code> и <code>load(key: str) -&gt; str | None</code>. Напишите функцию <code>save_username(storage: Storage, username: str)</code>, которая вызывает <code>storage.save("user", username)</code>. Создайте класс <code>MemoryStorage</code>, который реализует протокол (хранит данные в словаре). Проверьте работу.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -457,7 +554,7 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Импортируйте <code>Protocol</code>. Опишите класс <code>Database(Protocol)</code> с нужными методами (внутри можно написать <code>...</code>). В функции <code>run_query</code> используйте аннотацию типов: <code>db: Database</code>.</p>
+                                    <p>Импортируйте <code>Protocol</code> из <code>typing</code>. Опишите методы с аннотациями и заглушкой <code>...</code>. В <code>MemoryStorage</code> используйте атрибут <code>self.data = {}</code>. Метод <code>load</code> возвращает <code>self.data.get(key)</code>.</p>
                                 </div>
                             </details>
 
@@ -467,8 +564,8 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <pre class="code-numbered"><code><span class="code-row">from typing import Protocol</span><span class="code-row"></span><span class="code-row">class Database(Protocol):</span><span class="code-row">    def connect(self):</span><span class="code-row">        ...</span><span class="code-row"></span><span class="code-row">    def execute(self, query):</span><span class="code-row">        ...</span><span class="code-row"></span><span class="code-row">def run_query(db: Database, query: str):</span><span class="code-row">    db.connect()</span><span class="code-row">    db.execute(query)</span><span class="code-row"></span><span class="code-row">class Postgres:</span><span class="code-row">    def connect(self):</span><span class="code-row">        print("Подключение к Postgres")</span><span class="code-row"></span><span class="code-row">    def execute(self, query):</span><span class="code-row">        print(f"Запрос: {query}")</span><span class="code-row"></span><span class="code-row">db = Postgres()</span><span class="code-row">run_query(db, "SELECT * FROM users")</span></code></pre>
-                                    <p>Класс <code>Postgres</code> не наследуется от <code>Database</code>, но соответствует его протоколу. Редакторы кода увидят аннотацию <code>db: Database</code> и подскажут нам, если мы попытаемся вызвать несуществующий метод.</p>
+                                    <pre class="code-numbered"><code><span class="code-row">from typing import Protocol</span><span class="code-row"></span><span class="code-row">class Storage(Protocol):</span><span class="code-row">    def save(self, key: str, value: str) -&gt; None:</span><span class="code-row">        ...</span><span class="code-row"></span><span class="code-row">    def load(self, key: str) -&gt; str | None:</span><span class="code-row">        ...</span><span class="code-row"></span><span class="code-row">class MemoryStorage:</span><span class="code-row">    def __init__(self):</span><span class="code-row">        self.data = {}</span><span class="code-row"></span><span class="code-row">    def save(self, key: str, value: str) -&gt; None:</span><span class="code-row">        self.data[key] = value</span><span class="code-row"></span><span class="code-row">    def load(self, key: str) -&gt; str | None:</span><span class="code-row">        return self.data.get(key)</span><span class="code-row"></span><span class="code-row">def save_username(storage: Storage, username: str) -&gt; None:</span><span class="code-row">    storage.save("user", username)</span><span class="code-row"></span><span class="code-row">storage = MemoryStorage()</span><span class="code-row">save_username(storage, "Алексей")</span><span class="code-row">print(storage.load("user"))   # Алексей</span></code></pre>
+                                    <p>Обратите внимание: <code>MemoryStorage</code> не наследуется от <code>Storage</code>, но полностью соответствует протоколу. Редактор при этом проверяет, что методы <code>save</code> и <code>load</code> имеют правильные сигнатуры. Если завтра вы замените <code>MemoryStorage</code> на <code>FileStorage</code>, функция <code>save_username</code> продолжит работать без изменений.</p>
                                 </div>
                             </details>
                         </div>
@@ -478,17 +575,20 @@
 
                 <h2>Что мы узнали и что дальше</h2>
 
-                <p>Сегодня мы научились проектировать более гибкую архитектуру. Теперь вы знаете:</p>
+                <p>Сегодня мы научились проектировать более гибкую архитектуру и документировать её с помощью типов. Теперь вы знаете:</p>
 
                 <ul>
                     <li>Что такое абстрактные классы (<code>abc.ABC</code>) и зачем нужен <code>@abstractmethod</code>.</li>
                     <li>Как утиная типизация делает Python гибким.</li>
-                    <li>Как описывать «невидимые» интерфейсы с помощью <code>typing.Protocol</code> для улучшения читаемости кода.</li>
+                    <li>Как описывать «невидимые» интерфейсы с помощью <code>typing.Protocol</code>.</li>
+                    <li>Как аннотировать переменные, функции и контейнеры: <code>int</code>, <code>str</code>, <code>list[float]</code>, <code>dict[str, int]</code>.</li>
+                    <li>Как использовать <code>Optional</code>, <code>Union</code>, <code>Callable</code>.</li>
+                    <li>Как включить проверку типов в VS Code и через mypy.</li>
                 </ul>
 
-                <p>Эти концепции являются фундаментом для написания крупных приложений, где важно, чтобы классы и модули общались друг с другом по чётким правилам, не образуя при этом запутанный клубок зависимостей.</p>
+                <p>Аннотации типов - это тот самый приём, который отделяет «код для себя» от «кода для команды». Даже если вы пишете в одиночку, через полгода вы сами скажете себе спасибо за понятные подсказки в редакторе.</p>
 
-                <p>В следующем уроке мы сделаем шаг в сторону от архитектуры и поговорим о производительности. Мы разберём <strong>многопоточность и GIL</strong> (Global Interpreter Lock). Вы узнаете, почему Python иногда работает медленно, как запускать несколько задач одновременно и в каких случаях это действительно помогает. До встречи!</p>
+                <p>В следующем уроке мы сделаем шаг в сторону от архитектуры и поговорим о производительности. Мы разберём <strong>многопоточность и GIL</strong> (Global Interpreter Lock), а заодно научимся обмениваться данными между потоками через <code>queue.Queue</code>. Вы узнаете, почему Python иногда работает медленно, как запускать несколько задач одновременно и в каких случаях это действительно помогает. До встречи!</p>
 
                 <div class="lesson-actions">
                     <a href="lesson-23.html" class="btn-secondary">

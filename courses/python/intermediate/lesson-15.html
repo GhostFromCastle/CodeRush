@@ -240,7 +240,7 @@
             <article class="lesson-content">
                 <h1>Работа с файлами</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-clock"></i> ~75 минут</span>
                     <span><i class="ph ph-fire"></i> Средний уровень</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
@@ -253,7 +253,10 @@
                 <p>Представьте, что вы пишете игру, и хотите сохранить рекорд игрока. Или
                     делаете менеджер задач, где список дел не должен пропадать после выключения
                     компьютера. Для этого нужно научиться сохранять данные на жёсткий диск.
-                    И сегодня мы разберёмся, как Python работает с <strong>файлами</strong>.</p>
+                    Сегодня мы разберёмся, как Python работает с <strong>файлами</strong>
+                    и путями, освоим два популярных формата обмена данными - <strong>JSON</strong>
+                    и <strong>CSV</strong>, - а в конце научимся работать с <strong>датами
+                    и временем</strong>.</p>
 
                 <h2>Открытие файла: open()</h2>
 
@@ -358,6 +361,332 @@
                     строки (<code>\n</code>) в конце, чтобы <code>print</code> не делал
                     двойных пробелов.</p>
 
+                <h2>Современная работа с путями: pathlib</h2>
+
+                <p>До этого мы передавали в <code>open()</code> просто строку с именем файла:
+                    <code>"example.txt"</code>. Это работает, пока все файлы лежат в одной папке.
+                    Но в реальных проектах файлы разложены по подпапкам: <code>data/users.json</code>,
+                    <code>logs/app.log</code>, <code>static/images/logo.png</code>. И тут начинается
+                    путаница с косыми чертами.</p>
+
+                <p>На Windows путь пишется через обратный слеш: <code>data\users.json</code>.
+                    На macOS и Linux - через прямой: <code>data/users.json</code>. Если писать
+                    пути вручную как строки, придётся всё время помнить про эту разницу. А если
+                    ещё нужно собрать путь из частей или создать папку, если её нет, - код
+                    становится громоздким.</p>
+
+                <p>Решение - модуль <strong><code>pathlib</code></strong>, который появился в Python 3.4
+                    и сегодня считается стандартом для работы с путями. Он предоставляет класс
+                    <code>Path</code>, который ведёт себя как объект, а не как строка.</p>
+
+                <p>Аналогия: строка с путём - это как адрес, написанный на салфетке. Объект
+                    <code>Path</code> - это как GPS-навигатор: он сам знает, где поставить
+                    слеш, умеет проверять, существует ли дом, создавать папки и показывать
+                    содержимое.</p>
+
+                <h3>Создание пути</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from pathlib import Path</span><span class="code-row"></span><span class="code-row">file_path = Path("data") / "users.json"</span><span class="code-row">print(file_path)   # data/users.json (или data\users.json на Windows)</span></code></pre>
+
+                <p>Обратите внимание на оператор <code>/</code>. В <code>pathlib</code> он
+                    перегружен: вместо деления он соединяет части пути. При этом Python сам
+                    подставит правильный разделитель для вашей операционной системы. Это значит,
+                    что код <code>Path("data") / "users.json"</code> будет одинаково работать
+                    на любой платформе.</p>
+
+                <h3>Проверки</h3>
+
+                <p>Метод <code>.exists()</code> проверяет, существует ли файл или папка:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">path = Path("data/users.json")</span><span class="code-row"></span><span class="code-row">if path.exists():</span><span class="code-row">    print("Файл найден")</span><span class="code-row">else:</span><span class="code-row">    print("Файла нет")</span></code></pre>
+
+                <p>Если нужно понять, файл это или папка:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">print(path.is_file())   # True, если это файл</span><span class="code-row">print(path.is_dir())    # True, если это папка</span></code></pre>
+
+                <h3>Создание папок</h3>
+
+                <p>Метод <code>.mkdir()</code> создаёт папку. С параметром
+                    <code>parents=True</code> он создаст все промежуточные папки,
+                    а с <code>exist_ok=True</code> не выдаст ошибку, если папка уже есть:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Path("logs/2026").mkdir(parents=True, exist_ok=True)</span></code></pre>
+
+                <p>Одна строка заменяет собой <code>os.makedirs</code> с проверкой
+                    на существование. Если бы мы писали на старом <code>os</code>, код
+                    выглядел бы длиннее и его было бы легче сломать.</p>
+
+                <h3>Быстрое чтение и запись</h3>
+
+                <p>Самое приятное в <code>Path</code> - короткие методы для частых операций:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">file = Path("notes.txt")</span><span class="code-row"></span><span class="code-row">file.write_text("Привет, мир!", encoding="utf-8")</span><span class="code-row">content = file.read_text(encoding="utf-8")</span><span class="code-row">print(content)   # Привет, мир!</span></code></pre>
+
+                <p>Метод <code>.write_text()</code> открывает файл, пишет и закрывает его в одну
+                    строку. <code>.read_text()</code> - так же читает. Под капотом они
+                    используют <code>with open(...)</code>, так что безопасность гарантирована.
+                    Единственный минус - нет режима добавления (<code>"a"</code>). Для добавления
+                    в конец придётся использовать обычный <code>open</code>.</p>
+
+                <h3>Информация о файлах</h3>
+
+                <p>Объект <code>Path</code> умеет возвращать имя, расширение и размер файла:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">file = Path("data/report.csv")</span><span class="code-row"></span><span class="code-row">print(file.name)       # report.csv</span><span class="code-row">print(file.stem)       # report</span><span class="code-row">print(file.suffix)     # .csv</span><span class="code-row">print(file.parent)     # data</span><span class="code-row">print(file.stat().st_size)   # размер в байтах</span></code></pre>
+
+                <p>Это очень удобно, когда нужно, например, перебрать все файлы в папке
+                    и обработать только <code>.json</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">for file in Path("data").iterdir():</span><span class="code-row">    if file.suffix == ".json":</span><span class="code-row">        print(f"Найден JSON: {file.name}")</span></code></pre>
+
+                <p>Метод <code>.iterdir()</code> возвращает все файлы и папки внутри директории.
+                    Это гораздо удобнее, чем связка <code>os.listdir</code> и <code>os.path.join</code>.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        pathlib или os.path?
+                    </div>
+                    <p>Долгое время стандартом был модуль <code>os.path</code> с функциями вроде
+                        <code>os.path.exists()</code>, <code>os.path.join()</code>. Он работает
+                        до сих пор и вы встретите его в чужом коде. Но в новых проектах
+                        <code>pathlib</code> - стандарт: он лаконичнее, объектно-ориентирован
+                        и не требует помнить десятки разных функций.</p>
+                </div>
+
+                <h2>JSON: универсальный формат данных</h2>
+
+                <p>Обычный текст хорош для заметок и простых списков. Но что если нужно
+                    сохранить сложную структуру - например, словарь с настройками или список
+                    объектов с полями? Собирать это вручную из строк - мучение. Для таких задач
+                    придумали <strong>JSON</strong> (JavaScript Object Notation).</p>
+
+                <p>JSON - это текстовый формат, который выглядит почти как словари и списки
+                    Python. Он используется практически везде: в веб-API, в конфигурационных
+                    файлах, для обмена данными между программами.</p>
+
+                <p>Вот как выглядит JSON с данными пользователя:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">{</span><span class="code-row">    "name": "Алексей",</span><span class="code-row">    "age": 25,</span><span class="code-row">    "skills": ["Python", "SQL"],</span><span class="code-row">    "is_active": true</span><span class="code-row">}</span></code></pre>
+
+                <p>Обратите внимание на сходства и отличия от Python:</p>
+                <ul>
+                    <li>Ключи обязательно в двойных кавычках.</li>
+                    <li>Вместо <code>True</code> и <code>False</code> пишется
+                        <code>true</code> и <code>false</code>.</li>
+                    <li><code>None</code> превращается в <code>null</code>.</li>
+                </ul>
+
+                <h3>Сериализация: dumps() и loads()</h3>
+
+                <p>Для работы с JSON в Python есть встроенный модуль <code>json</code>.
+                    Две главные функции:</p>
+
+                <ul>
+                    <li><strong><code>json.dumps(obj)</code></strong> - превращает объект Python
+                        в строку JSON (dump string).</li>
+                    <li><strong><code>json.loads(text)</code></strong> - превращает строку JSON
+                        обратно в объект Python (load string).</li>
+                </ul>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import json</span><span class="code-row"></span><span class="code-row">data = {"name": "Алексей", "age": 25, "skills": ["Python", "SQL"]}</span><span class="code-row"></span><span class="code-row">json_string = json.dumps(data)</span><span class="code-row">print(json_string)</span><span class="code-row"></span><span class="code-row">restored = json.loads(json_string)</span><span class="code-row">print(restored["name"])   # Алексей</span></code></pre>
+
+                <p>Важный момент: по умолчанию <code>dumps()</code> превращает кириллицу
+                    в escape-последовательности вида <code>\u0410</code>. Чтобы сохранить
+                    русские буквы как есть, используйте параметр
+                    <code>ensure_ascii=False</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">json_string = json.dumps(data, ensure_ascii=False)</span></code></pre>
+
+                <p>А параметр <code>indent</code> делает вывод красивым, с отступами. Удобно,
+                    если вы хотите, чтобы файл читал человек:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">json_string = json.dumps(data, ensure_ascii=False, indent=2)</span></code></pre>
+
+                <h3>Запись и чтение JSON-файла</h3>
+
+                <p>Для работы напрямую с файлами есть функции <code>json.dump()</code> и
+                    <code>json.load()</code> (без буквы <code>s</code> на конце). Они
+                    принимают вторым аргументом объект файла:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import json</span><span class="code-row">from pathlib import Path</span><span class="code-row"></span><span class="code-row">data = {</span><span class="code-row">    "name": "Алексей",</span><span class="code-row">    "age": 25,</span><span class="code-row">    "skills": ["Python", "SQL"]</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">with open("user.json", "w", encoding="utf-8") as f:</span><span class="code-row">    json.dump(data, f, ensure_ascii=False, indent=2)</span></code></pre>
+
+                <p>Чтение делается симметрично:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">with open("user.json", "r", encoding="utf-8") as f:</span><span class="code-row">    loaded = json.load(f)</span><span class="code-row">    print(loaded["skills"])   # ['Python', 'SQL']</span></code></pre>
+
+                <h3>Что если файл повреждён?</h3>
+
+                <p>JSON-файл - это обычный текст. Если его случайно отредактировать и нарушить
+                    структуру (например, поставить лишнюю запятую или забыть кавычку),
+                    при чтении возникнет ошибка <code>json.JSONDecodeError</code>. В следующем
+                    уроке мы научимся такие ошибки красиво ловить, а пока просто знайте: если
+                    программа упала с этой ошибкой - проверьте содержимое файла.</p>
+
+                <h2>CSV: таблицы в текстовом виде</h2>
+
+                <p>Второй по популярности формат - <strong>CSV</strong> (Comma-Separated
+                    Values, «значения, разделённые запятыми»). Это просто таблица, где
+                    строки разделены переносами, а колонки - запятыми (или точкой с запятой).</p>
+
+                <p>Пример CSV-файла с оценками студентов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">Имя,Возраст,Оценка</span><span class="code-row">Алексей,25,5</span><span class="code-row">Мария,23,4</span><span class="code-row">Иван,27,3</span></code></pre>
+
+                <p>CSV отлично подходит для простых таблиц и открывается в Excel, Google
+                    Sheets и любой другой программе для работы с данными. Для работы с ним
+                    в Python есть встроенный модуль <code>csv</code>.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Параметр newline=""
+                    </div>
+                    <p>При записи CSV-файла на Windows всегда указывайте
+                        <code>newline=""</code> при открытии файла. Иначе между строками
+                        появятся пустые строки из-за разницы в символах переноса.
+                        Это не баг Python, а особенность операционной системы.</p>
+                </div>
+
+                <h3>Запись: csv.writer</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import csv</span><span class="code-row"></span><span class="code-row">with open("students.csv", "w", encoding="utf-8", newline="") as f:</span><span class="code-row">    writer = csv.writer(f)</span><span class="code-row">    writer.writerow(["Имя", "Возраст", "Оценка"])</span><span class="code-row">    writer.writerow(["Алексей", 25, 5])</span><span class="code-row">    writer.writerow(["Мария", 23, 4])</span></code></pre>
+
+                <p>Метод <code>writerow()</code> принимает список значений и записывает его
+                    как одну строку CSV, автоматически расставляя запятые. Если нужно записать
+                    сразу несколько строк - есть <code>writerows()</code>, который принимает
+                    список списков.</p>
+
+                <h3>Чтение: csv.reader</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">with open("students.csv", "r", encoding="utf-8") as f:</span><span class="code-row">    reader = csv.reader(f)</span><span class="code-row">    for row in reader:</span><span class="code-row">        print(row)</span></code></pre>
+
+                <p>Каждая строка файла превращается в список строк. Даже числа приходят
+                    как строки: <code>["Алексей", "25", "5"]</code>. Если нужны числа -
+                    придётся преобразовывать через <code>int()</code> или <code>float()</code>.</p>
+
+                <h3>Чтение по названиям колонок: csv.DictReader</h3>
+
+                <p>Работать с индексами вроде <code>row[1]</code> неудобно: забыл порядок
+                    колонок - получил баг. Гораздо удобнее обращаться по имени.
+                    <code>DictReader</code> автоматически берёт первую строку файла как
+                    заголовки и возвращает каждую запись как словарь:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">with open("students.csv", "r", encoding="utf-8") as f:</span><span class="code-row">    reader = csv.DictReader(f)</span><span class="code-row">    for row in reader:</span><span class="code-row">        print(f"{row['Имя']}: оценка {row['Оценка']}")</span></code></pre>
+
+                <p>Вывод:</p>
+                <pre
+                    class="code-numbered"><code><span class="code-row">Алексей: оценка 5</span><span class="code-row">Мария: оценка 4</span></code></pre>
+
+                <p>Согласитесь, читать такой код гораздо приятнее. <code>DictReader</code> -
+                    стандартный выбор, когда в файле есть заголовки.</p>
+
+                <h2>Дата и время: модуль datetime</h2>
+
+                <p>Почти любые данные рано или поздно хочется привязать ко времени. В логах
+                    нужна отметка, когда произошло событие. В менеджере задач - дедлайн.
+                    В отчётах - «на момент 15 марта». Для всего этого в Python есть модуль
+                    <strong><code>datetime</code></strong>.</p>
+
+                <p>Аналогия: <code>datetime</code> - это как календарь с часами в одном
+                    флаконе. Один объект хранит и дату, и время, и умеет отвечать на вопросы
+                    вроде «а сколько времени пройдёт до завтра?».</p>
+
+                <h3>Текущие дата и время</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from datetime import datetime, date</span><span class="code-row"></span><span class="code-row">now = datetime.now()</span><span class="code-row">print(now)            # 2026-10-26 14:32:15.123456</span><span class="code-row">print(now.year)       # 2026</span><span class="code-row">print(now.month)      # 10</span><span class="code-row">print(now.day)        # 26</span><span class="code-row">print(now.hour)       # 14</span><span class="code-row"></span><span class="code-row">today = date.today()</span><span class="code-row">print(today)          # 2026-10-26</span></code></pre>
+
+                <p><code>datetime.now()</code> возвращает текущие дату и время.
+                    <code>date.today()</code> - только дату, без часов. У объекта
+                    <code>datetime</code> есть отдельные атрибуты <code>.year</code>,
+                    <code>.month</code>, <code>.day</code>, <code>.hour</code>,
+                    <code>.minute</code>, <code>.second</code>.</p>
+
+                <h3>Форматирование: strftime</h3>
+
+                <p>Хранить дату в виде <code>2026-10-26 14:32:15</code> удобно для машины,
+                    но не для человека. Метод <code>.strftime()</code> (string format time)
+                    превращает дату в строку по указанному шаблону:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">now = datetime.now()</span><span class="code-row"></span><span class="code-row">print(now.strftime("%d.%m.%Y"))       # 26.10.2026</span><span class="code-row">print(now.strftime("%d %B %Y"))       # 26 October 2026</span><span class="code-row">print(now.strftime("%H:%M"))          # 14:32</span><span class="code-row">print(now.strftime("%d.%m.%Y %H:%M")) # 26.10.2026 14:32</span></code></pre>
+
+                <p>Основные коды форматирования:</p>
+
+                <ul>
+                    <li><strong><code>%Y</code></strong> - год четырьмя цифрами (2026).</li>
+                    <li><strong><code>%m</code></strong> - месяц двумя цифрами (01-12).</li>
+                    <li><strong><code>%d</code></strong> - день двумя цифрами (01-31).</li>
+                    <li><strong><code>%H</code></strong> - часы в 24-часовом формате.</li>
+                    <li><strong><code>%M</code></strong> - минуты.</li>
+                    <li><strong><code>%S</code></strong> - секунды.</li>
+                    <li><strong><code>%B</code></strong> - полное название месяца.</li>
+                </ul>
+
+                <h3>Разбор строки в дату: strptime</h3>
+
+                <p>Обратная операция: у нас есть строка с датой, а нужно получить объект
+                    <code>datetime</code>. Метод <code>.strptime()</code> (string parse time)
+                    разбирает строку по шаблону:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">text = "26.10.2026 14:32"</span><span class="code-row">dt = datetime.strptime(text, "%d.%m.%Y %H:%M")</span><span class="code-row"></span><span class="code-row">print(dt)        # 2026-10-26 14:32:00</span><span class="code-row">print(dt.year)   # 2026</span></code></pre>
+
+                <p>Шаблон должен точно совпадать с форматом строки. Если строка записана как
+                    <code>"26/10/2026"</code>, а шаблон вы указали <code>"%d.%m.%Y"</code>,
+                    получите ошибку <code>ValueError</code>.</p>
+
+                <h3>Разница между датами: timedelta</h3>
+
+                <p>Можно вычитать одну дату из другой - получится объект
+                    <strong><code>timedelta</code></strong> (временной интервал):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from datetime import datetime, timedelta</span><span class="code-row"></span><span class="code-row">start = datetime(2026, 1, 1)</span><span class="code-row">end = datetime(2026, 12, 31)</span><span class="code-row"></span><span class="code-row">diff = end - start</span><span class="code-row">print(diff.days)   # 364</span><span class="code-row"></span><span class="code-row">tomorrow = datetime.now() + timedelta(days=1)</span><span class="code-row">print(tomorrow)</span></code></pre>
+
+                <p><code>timedelta</code> можно прибавлять к дате или вычитать из неё. Это
+                    самый удобный способ посчитать «через сколько дней наступит событие» или
+                    «какой день был ровно 30 дней назад».</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">deadline = datetime(2026, 12, 31)</span><span class="code-row">now = datetime.now()</span><span class="code-row"></span><span class="code-row">if deadline &gt; now:</span><span class="code-row">    remaining = deadline - now</span><span class="code-row">    print(f"До дедлайна: {remaining.days} дней")</span><span class="code-row">else:</span><span class="code-row">    print("Дедлайн уже прошёл")</span></code></pre>
+
+                <h3>Дата в JSON</h3>
+
+                <p>JSON не знает о датах - там есть только строки, числа, bool и null. Поэтому
+                    при сохранении в JSON дату превращают в строку через
+                    <code>.isoformat()</code> (стандартный формат ISO 8601):</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import json</span><span class="code-row">from datetime import datetime</span><span class="code-row"></span><span class="code-row">task = {</span><span class="code-row">    "title": "Сдать проект",</span><span class="code-row">    "created_at": datetime.now().isoformat()</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">json_string = json.dumps(task, ensure_ascii=False)</span><span class="code-row">print(json_string)</span></code></pre>
+
+                <p>При чтении дату разбирают обратно через
+                    <code>datetime.fromisoformat()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">restored = json.loads(json_string)</span><span class="code-row">dt = datetime.fromisoformat(restored["created_at"])</span><span class="code-row">print(dt.year)   # 2026</span></code></pre>
+
+                <p>Такой подход - стандарт де-факто: в JSON даты всегда хранят строками
+                    в ISO-формате, а преобразование делают при чтении и записи.</p>
+
                 <h2>Шпаргалка</h2>
 
                 <p>Самое важное в одном месте:</p>
@@ -368,16 +697,8 @@
                         <span>безопасное открытие файла</span>
                     </li>
                     <li>
-                        <code>"r"</code>
-                        <span>чтение (по умолчанию)</span>
-                    </li>
-                    <li>
-                        <code>"w"</code>
-                        <span>запись (стирает старое)</span>
-                    </li>
-                    <li>
-                        <code>"a"</code>
-                        <span>добавление в конец</span>
+                        <code>"r" / "w" / "a"</code>
+                        <span>чтение / запись / добавление</span>
                     </li>
                     <li>
                         <code>encoding="utf-8"</code>
@@ -395,11 +716,71 @@
                         <code>for line in f:</code>
                         <span>читать построчно</span>
                     </li>
+                    <li>
+                        <code>Path("dir") / "file"</code>
+                        <span>собрать путь</span>
+                    </li>
+                    <li>
+                        <code>.exists()</code>
+                        <span>проверить существование</span>
+                    </li>
+                    <li>
+                        <code>.read_text() / .write_text()</code>
+                        <span>быстрое чтение/запись</span>
+                    </li>
+                    <li>
+                        <code>.suffix / .stem</code>
+                        <span>расширение / имя без него</span>
+                    </li>
+                    <li>
+                        <code>json.dumps() / loads()</code>
+                        <span>строка ↔ объект</span>
+                    </li>
+                    <li>
+                        <code>json.dump() / load()</code>
+                        <span>файл ↔ объект</span>
+                    </li>
+                    <li>
+                        <code>ensure_ascii=False</code>
+                        <span>русский в JSON</span>
+                    </li>
+                    <li>
+                        <code>csv.writer / reader</code>
+                        <span>запись и чтение CSV</span>
+                    </li>
+                    <li>
+                        <code>csv.DictReader</code>
+                        <span>CSV по названиям колонок</span>
+                    </li>
+                    <li>
+                        <code>newline=""</code>
+                        <span>при записи CSV на Windows</span>
+                    </li>
+                    <li>
+                        <code>datetime.now()</code>
+                        <span>текущая дата и время</span>
+                    </li>
+                    <li>
+                        <code>.strftime("%d.%m.%Y")</code>
+                        <span>дата в строку</span>
+                    </li>
+                    <li>
+                        <code>strptime(text, fmt)</code>
+                        <span>строку в дату</span>
+                    </li>
+                    <li>
+                        <code>timedelta(days=7)</code>
+                        <span>интервал времени</span>
+                    </li>
+                    <li>
+                        <code>.isoformat()</code>
+                        <span>дата в JSON</span>
+                    </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные проблемы при работе с файлами.</p>
+                <p>Разберём типичные проблемы при работе с файлами, JSON, CSV и датами.</p>
 
                 <ul>
                     <li><strong>«FileNotFoundError: No such file or directory»</strong>.
@@ -419,6 +800,39 @@
                     <li><strong>Весь текст слипся в одну строку</strong>. Метод <code>write()</code>
                         не добавляет перенос автоматически. В конце строки нужно явно
                         указывать <code>\n</code>: <code>f.write("Текст\n")</code>.</li>
+                    <li><strong>«json.JSONDecodeError: Expecting value»</strong>. Ваш JSON-файл
+                        повреждён: лишняя запятая, незакрытая кавычка, пустой файл. Откройте
+                        файл и проверьте структуру. Полезно прогнать содержимое через любой
+                        онлайн-валидатор JSON, чтобы найти ошибку.</li>
+                    <li><strong>JSON содержит «кракозябры» вида \u0410\u043b\u0435...</strong>.
+                        Вы забыли параметр <code>ensure_ascii=False</code> при
+                        <code>json.dump()</code> или <code>json.dumps()</code>.</li>
+                    <li><strong>В CSV-файле появились пустые строки между данными</strong>.
+                        На Windows это классическая проблема. Решение - открывать файл
+                        на запись с параметром <code>newline=""</code>:
+                        <code>open(..., "w", newline="")</code>.</li>
+                    <li><strong>CSV-файл открывается в Excel одной колонкой</strong>.
+                        Скорее всего, у вас в системе разделитель - точка с запятой
+                        (частая ситуация в русской локали). Либо укажите в Excel
+                        разделитель вручную, либо используйте в коде
+                        <code>csv.writer(f, delimiter=";")</code> и
+                        <code>csv.reader(f, delimiter=";")</code>.</li>
+                    <li><strong>«TypeError: unsupported operand type(s) for /: 'str' and 'str'»</strong>
+                        при работе с pathlib. Оператор <code>/</code> перегружен только для
+                        объектов <code>Path</code>. Превратите строку в путь:
+                        <code>Path("data") / "file.json"</code>, а не
+                        <code>"data" / "file.json"</code>.</li>
+                    <li><strong>«FileNotFoundError» при попытке записи через pathlib</strong>.
+                        Если родительской папки не существует, <code>.write_text()</code> упадёт.
+                        Сначала создайте папку: <code>Path("logs").mkdir(parents=True, exist_ok=True)</code>.</li>
+                    <li><strong>«ValueError: time data ... does not match format»</strong>.
+                        Шаблон в <code>strptime</code> не совпадает с форматом строки. Проверьте
+                        каждую часть: если в строке <code>26.10.2026</code>, то шаблон должен
+                        быть <code>%d.%m.%Y</code>, а не <code>%d/%m/%Y</code>.</li>
+                    <li><strong>«TypeError: can't subtract offset-naive and offset-aware datetimes»</strong>.
+                        Одна из дат - с часовым поясом, другая без. Используйте либо только
+                        «наивные» даты (<code>datetime.now()</code>), либо только «осознанные»
+                        (<code>datetime.now(timezone.utc)</code>). Не смешивайте.</li>
                 </ul>
 
                 <p>Если что-то не получается - напишите нам в
@@ -434,14 +848,16 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 1. Первая запись</span>
+                            <span>Задача 1. Дневник с датой</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Напишите программу, которая спрашивает
-                                у пользователя его имя и записывает его в файл
-                                <code>name.txt</code>. Используйте режим <code>"w"</code>
-                                и <code>encoding="utf-8"</code>.</p>
+                            <p class="task-desc">Программа должна спросить три заметки и
+                                добавить их в файл <code>diary.txt</code> с новой строки.
+                                Перед каждой заметкой должна стоять текущая дата в формате
+                                <code>[26.10.2026 14:32]</code>. Используйте режим
+                                <code>"a"</code>, модуль <code>datetime</code> и
+                                <code>pathlib</code>.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -449,10 +865,12 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Сначала получите ввод через <code>input()</code>.
-                                        Затем откройте файл:
-                                        <code>with open("name.txt", "w", encoding="utf-8") as f:</code>
-                                        и запишите туда имя через <code>f.write()</code>.</p>
+                                    <p>Создайте <code>Path("diary.txt")</code>. В цикле
+                                        спрашивайте заметку и получайте текущее время через
+                                        <code>datetime.now().strftime("%d.%m.%Y %H:%M")</code>.
+                                        Открывайте файл через <code>open("a", encoding="utf-8")</code>
+                                        и пишите строку вида
+                                        <code>f"[{now}] {note}\n"</code>.</p>
                                 </div>
                             </details>
 
@@ -463,7 +881,11 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">name = input("Введите имя: ")</span><span class="code-row"></span><span class="code-row">with open("name.txt", "w", encoding="utf-8") as f:</span><span class="code-row">    f.write(name)</span></code></pre>
+                                        class="code-numbered"><code><span class="code-row">from datetime import datetime</span><span class="code-row">from pathlib import Path</span><span class="code-row"></span><span class="code-row">file = Path("diary.txt")</span><span class="code-row"></span><span class="code-row">with open(file, "a", encoding="utf-8") as f:</span><span class="code-row">    for i in range(3):</span><span class="code-row">        note = input(f"Заметка {i + 1}: ")</span><span class="code-row">        now = datetime.now().strftime("%d.%m.%Y %H:%M")</span><span class="code-row">        f.write(f"[{now}] {note}\n")</span></code></pre>
+                                    <p>В файле появятся строки вроде
+                                        <code>[26.10.2026 14:32] Купить хлеб</code>. Если
+                                        запустить программу ещё раз, старые записи сохранятся
+                                        благодаря режиму <code>"a"</code>.</p>
                                 </div>
                             </details>
                         </div>
@@ -471,15 +893,20 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 2. Дневник</span>
+                            <span>Задача 2. JSON-конфиг</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Программа должна спросить три заметки
-                                и добавить их в файл <code>diary.txt</code> с новой строки.
-                                Используйте режим <code>"a"</code> (добавление), чтобы
-                                не стирать предыдущие записи, если запустить программу
-                                несколько раз.</p>
+                            <p class="task-desc">Создайте словарь с настройками приложения:
+                                <code>theme</code> (тема), <code>language</code> (язык),
+                                <code>font_size</code> (размер шрифта) и
+                                <code>last_update</code> (дата последнего обновления в формате
+                                ISO через <code>datetime.now().isoformat()</code>).
+                                Сохраните его в файл <code>config.json</code> в читаемом виде
+                                (с отступами и русскими буквами). Затем прочитайте файл
+                                обратно, разберите строку даты через
+                                <code>datetime.fromisoformat()</code> и выведите год
+                                последнего обновления.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -487,11 +914,11 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Спросите три заметки (можно через цикл
-                                        <code>for i in range(3):</code>). Внутри
-                                        <code>with open(..., "a")</code> используйте
-                                        <code>f.write(заметка + "\n")</code>. Не забудьте
-                                        про символ переноса строки.</p>
+                                    <p>Для записи используйте
+                                        <code>json.dump(data, f, ensure_ascii=False, indent=2)</code>.
+                                        Для чтения - <code>json.load(f)</code>. После чтения
+                                        возьмите <code>loaded["last_update"]</code> и передайте
+                                        в <code>datetime.fromisoformat()</code>.</p>
                                 </div>
                             </details>
 
@@ -502,7 +929,12 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">with open("diary.txt", "a", encoding="utf-8") as f:</span><span class="code-row">    for i in range(3):</span><span class="code-row">        note = input(f"Заметка {i + 1}: ")</span><span class="code-row">        f.write(note + "\n")</span></code></pre>
+                                        class="code-numbered"><code><span class="code-row">import json</span><span class="code-row">from datetime import datetime</span><span class="code-row"></span><span class="code-row">settings = {</span><span class="code-row">    "theme": "тёмная",</span><span class="code-row">    "language": "русский",</span><span class="code-row">    "font_size": 14,</span><span class="code-row">    "last_update": datetime.now().isoformat()</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">with open("config.json", "w", encoding="utf-8") as f:</span><span class="code-row">    json.dump(settings, f, ensure_ascii=False, indent=2)</span><span class="code-row"></span><span class="code-row">with open("config.json", "r", encoding="utf-8") as f:</span><span class="code-row">    loaded = json.load(f)</span><span class="code-row"></span><span class="code-row">updated = datetime.fromisoformat(loaded["last_update"])</span><span class="code-row"></span><span class="code-row">print(f"Тема: {loaded['theme']}")</span><span class="code-row">print(f"Последнее обновление: {updated.year} год")</span></code></pre>
+                                    <p>ISO-формат даты (<code>2026-10-26T14:32:15.123456</code>)
+                                        - это универсальный стандарт, который одинаково
+                                        понимают все языки программирования. Именно поэтому
+                                        его используют в JSON вместо «человеческих» форматов
+                                        вроде <code>26.10.2026</code>.</p>
                                 </div>
                             </details>
                         </div>
@@ -510,14 +942,15 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Чтение файла</span>
+                            <span>Задача 3. Таблица оценок</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Откройте файл <code>diary.txt</code>
-                                (который вы сделали в прошлой задаче) и прочитайте его
-                                построчно в цикле. Выведите каждую строку на экран,
-                                предваряя её номером: «1. Текст».</p>
+                            <p class="task-desc">Создайте CSV-файл <code>grades.csv</code>
+                                с заголовками <code>Имя</code>, <code>Предмет</code>,
+                                <code>Оценка</code>, <code>Дата</code>. Добавьте три записи
+                                с текущей датой в формате <code>26.10.2026</code>.
+                                Не забудьте про <code>newline=""</code>.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -525,10 +958,11 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Используйте <code>enumerate()</code> для
-                                        нумерации строк: <code>for index, line in enumerate(f):</code>.
-                                        Не забудьте <code>line.strip()</code>, чтобы убрать
-                                        лишние переносы.</p>
+                                    <p>Получите дату один раз до цикла:
+                                        <code>today = datetime.now().strftime("%d.%m.%Y")</code>.
+                                        Откройте файл с <code>newline=""</code> и используйте
+                                        <code>writer.writerow()</code> для каждой строки,
+                                        передавая <code>today</code> последним элементом.</p>
                                 </div>
                             </details>
 
@@ -539,10 +973,11 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">with open("diary.txt", "r", encoding="utf-8") as f:</span><span class="code-row">    for index, line in enumerate(f, start=1):</span><span class="code-row">        print(f"{index}. {line.strip()}")</span></code></pre>
-                                    <p>Параметр <code>start=1</code> в <code>enumerate</code>
-                                        делает так, что нумерация начинается с единицы,
-                                        а не с нуля.</p>
+                                        class="code-numbered"><code><span class="code-row">import csv</span><span class="code-row">from datetime import datetime</span><span class="code-row"></span><span class="code-row">today = datetime.now().strftime("%d.%m.%Y")</span><span class="code-row"></span><span class="code-row">with open("grades.csv", "w", encoding="utf-8", newline="") as f:</span><span class="code-row">    writer = csv.writer(f)</span><span class="code-row">    writer.writerow(["Имя", "Предмет", "Оценка", "Дата"])</span><span class="code-row">    writer.writerow(["Алексей", "математика", 5, today])</span><span class="code-row">    writer.writerow(["Мария", "физика", 4, today])</span><span class="code-row">    writer.writerow(["Иван", "информатика", 5, today])</span></code></pre>
+                                    <p>Дата записывается как обычная строка - CSV не
+                                        знает о типах данных. При чтении она вернётся
+                                        строкой, и если понадобится - можно будет
+                                        разобрать через <code>datetime.strptime()</code>.</p>
                                 </div>
                             </details>
                         </div>
@@ -550,14 +985,18 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Копирование файла</span>
+                            <span>Задача 4. Анализ оценок</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Напишите программу, которая копирует
-                                содержимое одного файла в другой. Спросите у пользователя
-                                имена исходного и нового файлов. Прочитайте исходный
-                                и запишите всё в новый.</p>
+                            <p class="task-desc">Прочитайте файл <code>grades.csv</code>
+                                из предыдущей задачи через <code>csv.DictReader</code>.
+                                Посчитайте средний балл по всем студентам и выведите
+                                имена тех, у кого оценка 5. Затем сохраните отчёт в файл
+                                <code>report.json</code> с полями: <code>average</code>
+                                (средний балл), <code>excellent_students</code> (список
+                                имён), <code>generated_at</code> (дата генерации отчёта
+                                в ISO-формате).</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -565,12 +1004,13 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Вам понадобятся два блока <code>with</code>.
-                                        В первом откройте исходный файл на чтение
-                                        (<code>"r"</code>) и сохраните текст в переменную
-                                        через <code>f.read()</code>. Во втором откройте
-                                        новый файл на запись (<code>"w"</code>) и запишите
-                                        туда эту переменную.</p>
+                                    <p>Соберите все оценки в список <code>grades</code>,
+                                        а отличников - в <code>excellent</code>. Средний балл:
+                                        <code>sum(grades) / len(grades)</code>. Для отчёта
+                                        создайте словарь и сохраните через
+                                        <code>json.dump(..., ensure_ascii=False, indent=2)</code>.
+                                        Дату для отчёта получите через
+                                        <code>datetime.now().isoformat()</code>.</p>
                                 </div>
                             </details>
 
@@ -581,11 +1021,12 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">source = input("Исходный файл: ")</span><span class="code-row">target = input("Новый файл: ")</span><span class="code-row"></span><span class="code-row">with open(source, "r", encoding="utf-8") as f:</span><span class="code-row">    content = f.read()</span><span class="code-row"></span><span class="code-row">with open(target, "w", encoding="utf-8") as f:</span><span class="code-row">    f.write(content)</span><span class="code-row"></span><span class="code-row">print("Файл скопирован!")</span></code></pre>
-                                    <p>Обратите внимание: мы сначала полностью прочитали
-                                        файл, закрыли его (блок <code>with</code>
-                                        закончился), и только потом открыли новый.
-                                        Это безопасный подход.</p>
+                                        class="code-numbered"><code><span class="code-row">import csv</span><span class="code-row">import json</span><span class="code-row">from datetime import datetime</span><span class="code-row"></span><span class="code-row">grades = []</span><span class="code-row">excellent = []</span><span class="code-row"></span><span class="code-row">with open("grades.csv", "r", encoding="utf-8") as f:</span><span class="code-row">    reader = csv.DictReader(f)</span><span class="code-row">    for row in reader:</span><span class="code-row">        grade = int(row["Оценка"])</span><span class="code-row">        grades.append(grade)</span><span class="code-row">        if grade == 5:</span><span class="code-row">            excellent.append(row["Имя"])</span><span class="code-row"></span><span class="code-row">average = sum(grades) / len(grades)</span><span class="code-row"></span><span class="code-row">report = {</span><span class="code-row">    "average": round(average, 2),</span><span class="code-row">    "excellent_students": excellent,</span><span class="code-row">    "generated_at": datetime.now().isoformat()</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">with open("report.json", "w", encoding="utf-8") as f:</span><span class="code-row">    json.dump(report, f, ensure_ascii=False, indent=2)</span><span class="code-row"></span><span class="code-row">print(f"Средний балл: {average:.2f}")</span><span class="code-row">print(f"Отличники: {', '.join(excellent)}")</span></code></pre>
+                                    <p>В результате получится сразу два файла: исходный
+                                        CSV с данными и новый JSON с готовым отчётом. Такой
+                                        формат удобен для программ-парсеров: они прочитают
+                                        <code>report.json</code> и выведут статистику
+                                        без повторной обработки таблицы.</p>
                                 </div>
                             </details>
                         </div>
@@ -596,8 +1037,9 @@
                 <h2>Что мы узнали и что дальше</h2>
 
                 <p>Сегодня мы преодолели важнейший барьер - научились сохранять данные на
-                    диск. Теперь ваши программы могут не просто работать в моменте, но и
-                    накапливать информацию, сохранять прогресс и обмениваться данными.
+                    диск в разных форматах, работать с путями и временем. Теперь ваши
+                    программы могут не просто работать в моменте, но и накапливать информацию,
+                    обмениваться данными с другими приложениями и делать привязку ко времени.
                     Вы узнали:</p>
 
                 <ul>
@@ -605,18 +1047,34 @@
                         <code>w</code>, <code>a</code>).</li>
                     <li>Почему конструкция <code>with</code> лучше ручного
                         <code>close()</code>.</li>
-                    <li>Как записывать данные через <code>write()</code> и добавлять
-                        перенос строки <code>\n</code>.</li>
-                    <li>Как читать файлы целиком через <code>read()</code> и
-                        построчно через <code>for line in f:</code>.</li>
-                    <li>Почему так важно указывать <code>encoding="utf-8"</code>.</li>
+                    <li>Как записывать данные через <code>write()</code> и читать
+                        через <code>read()</code> и цикл <code>for line in f:</code>.</li>
+                    <li>Что такое <code>pathlib.Path</code>, как собирать пути через
+                        <code>/</code>, проверять существование через <code>.exists()</code>
+                        и читать/писать файлы через <code>.read_text()</code>/<code>.write_text()</code>.</li>
+                    <li>Что такое JSON, как работают <code>dumps/loads</code> и
+                        <code>dump/load</code>, зачем нужны <code>ensure_ascii</code>
+                        и <code>indent</code>.</li>
+                    <li>Что такое CSV, как писать и читать таблицы через
+                        <code>csv.writer</code> и <code>DictReader</code>.</li>
+                    <li>Как работать с датами через <code>datetime</code>: <code>now()</code>,
+                        <code>strftime()</code>, <code>strptime()</code>,
+                        <code>timedelta</code>, <code>isoformat()</code>.</li>
+                    <li>Почему так важно указывать <code>encoding="utf-8"</code>
+                        и <code>newline=""</code>.</li>
                 </ul>
 
                 <p>Теперь у вас есть фундамент для создания реальных проектов, которым есть
-                    что запомнить. В следующем уроке мы разберём <strong>исключения</strong>.
-                    Вы узнаете, как ловить ошибки вроде «файл не найден», чтобы программа
-                    не падала с ужасными красными сообщениями, а элегантно продолжала
-                    работу. До встречи!</p>
+                    что запомнить. А в уроке 22 вас ждёт большой проект «Менеджер задач»,
+                    где вы примените JSON и <code>datetime</code> на практике - добавите
+                    дату создания каждой задачи.</p>
+
+                <p>В следующем уроке мы разберём <strong>исключения</strong>. Вы узнаете,
+                    как ловить ошибки вроде «файл не найден» или «неверный JSON», чтобы
+                    программа не падала с ужасными красными сообщениями, а элегантно
+                    продолжала работу. А ещё познакомимся с модулем <code>logging</code> -
+                    профессиональным способом вести журнал событий вместо бесконечных
+                    <code>print</code>. До встречи!</p>
 
                 <div class="lesson-actions">
                     <a href="lesson-14.html" class="btn-secondary">

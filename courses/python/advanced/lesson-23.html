@@ -240,7 +240,7 @@
             <article class="lesson-content">
                 <h1>Магические методы</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-clock"></i> ~55 минут</span>
                     <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
@@ -299,6 +299,63 @@
                 <pre
                     class="code-numbered"><code><span class="code-row">class Vector:</span><span class="code-row">    def __init__(self, x, y):</span><span class="code-row">        self.x = x</span><span class="code-row">        self.y = y</span><span class="code-row"></span><span class="code-row">    def __add__(self, other):</span><span class="code-row">        return Vector(self.x + other.x, self.y + other.y)</span><span class="code-row"></span><span class="code-row">    def __str__(self):</span><span class="code-row">        return f"({self.x}, {self.y})"</span><span class="code-row"></span><span class="code-row">v1 = Vector(1, 2)</span><span class="code-row">v2 = Vector(3, 4)</span><span class="code-row">v3 = v1 + v2   # сработает __add__</span><span class="code-row"></span><span class="code-row">print(v3)      # (4, 6)</span></code></pre>
 
+                <h2>Контекстные менеджеры: за пределами with open()</h2>
+
+                <p>Вы уже не раз использовали <code>with open(...)</code> для работы с файлами (урок 15). Это удобный синтаксис, который автоматически закрывает файл даже при ошибках. Но задумывались ли вы, как это работает?</p>
+
+                <p>Всё дело в двух магических методах: <strong><code>__enter__</code></strong> и <strong><code>__exit__</code></strong>. Любой класс, который их определяет, можно использовать в конструкции <code>with</code>. Такие классы называются <strong>контекстными менеджерами</strong>.</p>
+
+                <p>Аналогия: контекстный менеджер - это как турникет в метро. Когда вы проходите через <code>with</code>, срабатывает <code>__enter__</code> (турникет открывается, и вы попадаете на платформу). Когда блок кода заканчивается - срабатывает <code>__exit__</code> (турникет закрывается, вы выходите). И неважно, дошли вы до конца блока или упали с ошибкой посреди - турникет всё равно закроется.</p>
+
+                <h3>Как это работает</h3>
+
+                <ul>
+                    <li><strong><code>__enter__(self)</code></strong> - вызывается при входе в блок <code>with</code>. То, что он вернёт, можно присвоить переменной после <code>as</code>.</li>
+                    <li><strong><code>__exit__(self, exc_type, exc_value, traceback)</code></strong> - вызывается при выходе из блока, <strong>всегда</strong>, даже если внутри произошло исключение. Если вернуть <code>True</code>, исключение будет подавлено (не всплывёт наружу). Если <code>False</code> или <code>None</code> - исключение продолжит распространяться.</li>
+                </ul>
+
+                <p>Пример - свой контекстный менеджер для измерения времени:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import time</span><span class="code-row"></span><span class="code-row">class Timer:</span><span class="code-row">    def __enter__(self):</span><span class="code-row">        self.start = time.time()</span><span class="code-row">        return self</span><span class="code-row"></span><span class="code-row">    def __exit__(self, exc_type, exc_value, traceback):</span><span class="code-row">        self.end = time.time()</span><span class="code-row">        print(f"Затрачено времени: {self.end - self.start:.3f} сек")</span><span class="code-row"></span><span class="code-row">with Timer():</span><span class="code-row">    total = sum(range(1_000_000))</span><span class="code-row">    print(f"Сумма: {total}")</span></code></pre>
+
+                <p>Что происходит:</p>
+                <ol>
+                    <li>При входе в <code>with</code> вызывается <code>__enter__</code>. Он запоминает время старта.</li>
+                    <li>Выполняется код внутри блока (суммирование).</li>
+                    <li>При выходе из <code>with</code> вызывается <code>__exit__</code>. Он запоминает время конца и печатает разницу.</li>
+                </ol>
+
+                <h3>Пример: менеджер для подключения к базе данных</h3>
+
+                <p>Классический сценарий использования контекстного менеджера - управление соединениями. Соединение нужно открыть, использовать и обязательно закрыть, даже если что-то пошло не так.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import sqlite3</span><span class="code-row"></span><span class="code-row">class Database:</span><span class="code-row">    def __init__(self, filename):</span><span class="code-row">        self.filename = filename</span><span class="code-row"></span><span class="code-row">    def __enter__(self):</span><span class="code-row">        self.connection = sqlite3.connect(self.filename)</span><span class="code-row">        print("Подключение установлено")</span><span class="code-row">        return self.connection</span><span class="code-row"></span><span class="code-row">    def __exit__(self, exc_type, exc_value, traceback):</span><span class="code-row">        self.connection.close()</span><span class="code-row">        print("Подключение закрыто")</span><span class="code-row"></span><span class="code-row">with Database("my_data.db") as conn:</span><span class="code-row">    cursor = conn.cursor()</span><span class="code-row">    cursor.execute("SELECT 1")</span><span class="code-row">    print("Запрос выполнен")</span></code></pre>
+
+                <p>Даже если внутри блока <code>with</code> произойдёт ошибка, <code>__exit__</code> всё равно закроет соединение. Это и есть главное преимущество контекстных менеджеров: <strong>гарантированное освобождение ресурсов</strong>.</p>
+
+                <h3>Функция contextlib.contextmanager</h3>
+
+                <p>Писать целый класс ради контекстного менеджера не всегда удобно. В Python есть декоратор <code>@contextlib.contextmanager</code>, который позволяет создать контекстный менеджер из обычной функции-генератора:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from contextlib import contextmanager</span><span class="code-row">import time</span><span class="code-row"></span><span class="code-row">@contextmanager</span><span class="code-row">def timer():</span><span class="code-row">    start = time.time()</span><span class="code-row">    yield</span><span class="code-row">    end = time.time()</span><span class="code-row">    print(f"Затрачено: {end - start:.3f} сек")</span><span class="code-row"></span><span class="code-row">with timer():</span><span class="code-row">    sum(range(1_000_000))</span></code></pre>
+
+                <p>Как это работает:</p>
+                <ul>
+                    <li>Всё, что <strong>до</strong> <code>yield</code>, выполняется при входе в <code>with</code> (аналог <code>__enter__</code>).</li>
+                    <li>Код внутри <code>with</code> выполняется как обычно.</li>
+                    <li>Всё, что <strong>после</strong> <code>yield</code>, выполняется при выходе из <code>with</code> (аналог <code>__exit__</code>).</li>
+                </ul>
+
+                <p>Этот приём работает на генераторах, которые мы разбирали в уроке 20. <code>@contextmanager</code> - стандартный и очень удобный способ писать компактные контекстные менеджеры. Достаточно помнить одно правило: между созданием ресурса (до <code>yield</code>) и его освобождением (после <code>yield</code>) обязательно должен быть <code>try/finally</code>, если ресурс критичный:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from contextlib import contextmanager</span><span class="code-row"></span><span class="code-row">@contextmanager</span><span class="code-row">def open_file(path):</span><span class="code-row">    f = open(path, "r", encoding="utf-8")</span><span class="code-row">    try:</span><span class="code-row">        yield f</span><span class="code-row">    finally:</span><span class="code-row">        f.close()</span></code></pre>
+
+                <p>Без <code>try/finally</code> при ошибке внутри блока <code>with</code> файл остался бы открытым. Именно так и работает встроенный <code>open</code> внутри себя.</p>
+
                 <h2>Шпаргалка</h2>
 
                 <p>Самые полезные магические методы:</p>
@@ -332,11 +389,23 @@
                         <code>__getitem__</code>
                         <span>доступ по индексу []</span>
                     </li>
+                    <li>
+                        <code>__enter__</code>
+                        <span>вход в with</span>
+                    </li>
+                    <li>
+                        <code>__exit__</code>
+                        <span>выход из with</span>
+                    </li>
+                    <li>
+                        <code>@contextmanager</code>
+                        <span>менеджер из функции</span>
+                    </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные ошибки при работе с магическими методами.</p>
+                <p>Разберём типичные ошибки при работе с магическими методами и контекстными менеджерами.</p>
 
                 <ul>
                     <li><strong>«TypeError: 'Vector' object is not callable»</strong>. Вы случайно вызвали магический метод напрямую со скобками: <code>v3 = v1.__add__(v2)()</code>. Скобки в конце не нужны, он вызывается оператором <code>+</code>.</li>
@@ -344,6 +413,9 @@
                     <li><strong>«TypeError: object of type 'Book' has no len()»</strong>. Вы пытаетесь применить <code>len()</code> к объекту, у которого нет метода <code>__len__</code>.</li>
                     <li><strong>Бесконечная рекурсия в <code>__repr__</code></strong>. Внутри <code>__str__</code> вы написали <code>return str(self)</code>. Это вызовет <code>__str__</code> заново. Нужно возвращать строку напрямую через f-строки.</li>
                     <li><strong>Ошибка в <code>__eq__</code></strong>. Если вы определили <code>__eq__</code>, но пытаетесь добавить объекты в <code>set()</code>, вы получите <code>TypeError: unhashable type</code>. Для исправления нужно определить метод <code>__hash__</code> (можно просто <code>return hash((self.x, self.y))</code>).</li>
+                    <li><strong>«AttributeError: __enter__»</strong> при использовании <code>with</code>. Класс, который вы пытаетесь использовать в <code>with</code>, не является контекстным менеджером - у него нет методов <code>__enter__</code> и <code>__exit__</code>.</li>
+                    <li><strong>«Исключение внутри with всё равно всплывает»</strong>. Так и должно быть по умолчанию. <code>__exit__</code> получает информацию об исключении, но не подавляет его. Чтобы подавить - верните из <code>__exit__</code> значение <code>True</code>.</li>
+                    <li><strong>«Ресурс не освободился после ошибки в with»</strong>. Скорее всего, в <code>__exit__</code> или после <code>yield</code> нет <code>try/finally</code>. Если ошибка происходит в коде <em>до</em> <code>yield</code>, <code>__exit__</code> не вызовется. Используйте <code>try/finally</code> в контекстном менеджере.</li>
                 </ul>
 
                 <p>Если что-то не получается - напишите нам в
@@ -433,15 +505,17 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 3. Длина корзины</span>
+                            <span>Задача 3. Свой контекстный менеджер</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Дан класс <code>Playlist</code> со списком
-                                песен <code>songs</code>. Реализуйте метод <code>__len__</code>,
-                                чтобы можно было узнать количество песен через <code>len(playlist)</code>.
-                                Также реализуйте <code>__getitem__</code>, чтобы можно было
-                                обращаться к песням по индексу (<code>playlist[0]</code>).</p>
+                            <p class="task-desc">Создайте класс-контекстный менеджер
+                                <code>Session</code>, который имитирует открытие и
+                                закрытие пользовательской сессии. При входе в
+                                <code>with</code> он должен печатать «Сессия открыта»,
+                                а при выходе - «Сессия закрыта». Внутри блока
+                                <code>with</code> выведите «Работаем...» и проверьте,
+                                что обе служебные строки появились в консоли.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -449,10 +523,13 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p><code>__len__</code> просто возвращает
-                                        <code>len(self.songs)</code>.
-                                        <code>__getitem__(self, index)</code> возвращает
-                                        <code>self.songs[index]</code>.</p>
+                                    <p>Реализуйте методы <code>__enter__</code> и
+                                        <code>__exit__</code>. В <code>__enter__</code>
+                                        напечатайте «Сессия открыта» и верните <code>self</code>.
+                                        В <code>__exit__</code> - напечатайте «Сессия закрыта».
+                                        Параметры <code>__exit__</code> можно назвать
+                                        <code>exc_type</code>, <code>exc_value</code>,
+                                        <code>traceback</code>, но использовать не обязательно.</p>
                                 </div>
                             </details>
 
@@ -463,7 +540,13 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">class Playlist:</span><span class="code-row">    def __init__(self, songs):</span><span class="code-row">        self.songs = songs</span><span class="code-row"></span><span class="code-row">    def __len__(self):</span><span class="code-row">        return len(self.songs)</span><span class="code-row"></span><span class="code-row">    def __getitem__(self, index):</span><span class="code-row">        return self.songs[index]</span><span class="code-row"></span><span class="code-row">pl = Playlist(["Song A", "Song B", "Song C"])</span><span class="code-row">print(len(pl))    # 3</span><span class="code-row">print(pl[1])      # Song B</span></code></pre>
+                                        class="code-numbered"><code><span class="code-row">class Session:</span><span class="code-row">    def __enter__(self):</span><span class="code-row">        print("Сессия открыта")</span><span class="code-row">        return self</span><span class="code-row"></span><span class="code-row">    def __exit__(self, exc_type, exc_value, traceback):</span><span class="code-row">        print("Сессия закрыта")</span><span class="code-row"></span><span class="code-row">with Session():</span><span class="code-row">    print("Работаем...")</span></code></pre>
+                                    <p>Вывод:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Сессия открыта</span><span class="code-row">Работаем...</span><span class="code-row">Сессия закрыта</span></code></pre>
+                                    <p>Если запустить этот код несколько раз - вывод всегда
+                                        будет одинаковым. Методы срабатывают автоматически
+                                        и строго по порядку.</p>
                                 </div>
                             </details>
                         </div>
@@ -471,19 +554,17 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Полноценный вектор</span>
+                            <span>Задача 4. Гарантированное закрытие</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Создайте класс <code>Vector</code> с
-                                координатами x и y. Реализуйте для него:
-                                <ul>
-                                    <li><code>__str__</code> для красивого вывода.</li>
-                                    <li><code>__eq__</code> для сравнения по координатам.</li>
-                                    <li><code>__add__</code> для сложения векторов.</li>
-                                    <li><code>__sub__</code> для вычитания векторов (через оператор <code>-</code>).</li>
-                                </ul>
-                                Проверьте все операции на практике.</p>
+                            <p class="task-desc">Докажите, что <code>__exit__</code>
+                                вызывается даже при исключении. Используйте
+                                <code>Session</code> из предыдущей задачи, но внутри
+                                <code>with</code> намеренно разделите 10 на ноль. Оберните
+                                весь блок в <code>try/except ZeroDivisionError</code>.
+                                Убедитесь, что строка «Сессия закрыта» появилась в консоли
+                                <strong>до</strong> того, как вы поймали исключение.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -491,11 +572,11 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Сложение: <code>return Vector(self.x + other.x, self.y + other.y)</code>.
-                                        Вычитание аналогично, только со знаком минус.
-                                        Не забудьте в <code>__eq__</code> проверить тип
-                                        через <code>isinstance(other, Vector)</code>, чтобы
-                                        не сравнивать вектор со строкой.</p>
+                                    <p>Оберните конструкцию <code>with</code> в
+                                        <code>try</code>, а в <code>except ZeroDivisionError</code>
+                                        напишите <code>print("Ошибка перехвачена")</code>.
+                                        Порядок вывода покажет, что <code>__exit__</code>
+                                        сработал раньше <code>except</code>.</p>
                                 </div>
                             </details>
 
@@ -506,7 +587,15 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">class Vector:</span><span class="code-row">    def __init__(self, x, y):</span><span class="code-row">        self.x = x</span><span class="code-row">        self.y = y</span><span class="code-row"></span><span class="code-row">    def __str__(self):</span><span class="code-row">        return f"Vector({self.x}, {self.y})"</span><span class="code-row"></span><span class="code-row">    def __eq__(self, other):</span><span class="code-row">        if not isinstance(other, Vector):</span><span class="code-row">            return False</span><span class="code-row">        return self.x == other.x and self.y == other.y</span><span class="code-row"></span><span class="code-row">    def __add__(self, other):</span><span class="code-row">        return Vector(self.x + other.x, self.y + other.y)</span><span class="code-row"></span><span class="code-row">    def __sub__(self, other):</span><span class="code-row">        return Vector(self.x - other.x, self.y - other.y)</span><span class="code-row"></span><span class="code-row">v1 = Vector(5, 5)</span><span class="code-row">v2 = Vector(2, 3)</span><span class="code-row"></span><span class="code-row">print(v1 + v2)   # Vector(7, 8)</span><span class="code-row">print(v1 - v2)   # Vector(3, 2)</span><span class="code-row">print(v1 == Vector(5, 5))   # True</span></code></pre>
+                                        class="code-numbered"><code><span class="code-row">class Session:</span><span class="code-row">    def __enter__(self):</span><span class="code-row">        print("Сессия открыта")</span><span class="code-row">        return self</span><span class="code-row"></span><span class="code-row">    def __exit__(self, exc_type, exc_value, traceback):</span><span class="code-row">        print("Сессия закрыта")</span><span class="code-row"></span><span class="code-row">try:</span><span class="code-row">    with Session():</span><span class="code-row">        print("Работаем...")</span><span class="code-row">        10 / 0</span><span class="code-row">except ZeroDivisionError:</span><span class="code-row">    print("Ошибка перехвачена")</span></code></pre>
+                                    <p>Вывод:</p>
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">Сессия открыта</span><span class="code-row">Работаем...</span><span class="code-row">Сессия закрыта</span><span class="code-row">Ошибка перехвачена</span></code></pre>
+                                    <p>Это доказывает главное свойство контекстных менеджеров:
+                                        код очистки в <code>__exit__</code> выполняется
+                                        <strong>всегда</strong>, даже если внутри блока было
+                                        исключение. Именно поэтому <code>with</code> считается
+                                        золотым стандартом управления ресурсами.</p>
                                 </div>
                             </details>
                         </div>
@@ -524,9 +613,13 @@
                     <li>Как реализовать длину через <code>__len__</code> и доступ по индексу через <code>__getitem__</code>.</li>
                     <li>Как перегрузить операторы сложения и вычитания.</li>
                     <li>Как сравнивать объекты по содержимому через <code>__eq__</code>.</li>
+                    <li>Как создавать контекстные менеджеры через <code>__enter__</code>/<code>__exit__</code>.</li>
+                    <li>Как использовать <code>@contextlib.contextmanager</code> для компактных менеджеров на генераторах.</li>
                 </ul>
 
-                <p>В следующем уроке мы продолжим углубляться в архитектуру Python. Вы узнаете об <strong>абстрактных классах и протоколах</strong>, о том, как проектировать интерфейсы и заставлять другие классы следовать правилам. До встречи!</p>
+                <p>Контекстные менеджеры - это одна из тех концепций, которые вы будете использовать ежедневно, даже не задумываясь. Как только в вашем коде появляется ресурс (файл, соединение с базой, блокировка), который нужно <em>гарантированно</em> освободить - это повод написать контекстный менеджер.</p>
+
+                <p>В следующем уроке мы продолжим углубляться в архитектуру Python. Вы узнаете об <strong>абстрактных классах и протоколах</strong>, о том, как проектировать интерфейсы и заставлять другие классы следовать правилам. А ещё разберём аннотации типов - современный способ документировать код, который проверяется автоматически. До встречи!</p>
 
                 <div class="lesson-actions">
                     <a href="../intermediate/lesson-22.html" class="btn-secondary">

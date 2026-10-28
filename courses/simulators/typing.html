@@ -86,6 +86,7 @@
                     <button class="typing-chip active" data-mode="words">Слова</button>
                     <button class="typing-chip" data-mode="time">Время</button>
                     <button class="typing-chip" data-mode="symbols">Знаки</button>
+                    <button class="typing-chip" data-mode="code">Код</button>
                 </div>
 
                 <div class="typing-config-divider"></div>
@@ -116,10 +117,17 @@
                     <span class="typing-config-label">
                         <i class="ph ph-shield-check"></i> Строгий режим
                     </span>
-                    <button class="typing-chip strict-chip" id="strictToggle" data-strict="on">
+                    <button class="typing-chip strict-chip active" id="strictToggle" data-strict="on">
                         <i class="ph ph-lock"></i> Вкл
                     </button>
                 </div>
+            </div>
+
+            <div class="typing-layout-warning" id="layoutWarning" hidden
+                style="align-items: center; gap: 10px; padding: 12px 20px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; color: #fca5a5; font-size: 0.9rem; margin-bottom: 16px; line-height: 1.5;">
+                <i class="ph ph-warning" style="font-size: 1.2rem; flex-shrink: 0;"></i>
+                <span>Похоже, у вас включена другая раскладка клавиатуры. Переключите на нужный язык (обычно
+                    <kbd>Alt</kbd>+<kbd>Shift</kbd> или <kbd>Cmd</kbd>+<kbd>Space</kbd>) и продолжайте.</span>
             </div>
 
             <div class="typing-strict-hint">
@@ -228,6 +236,27 @@
                 <div class="typing-error-list" id="errorHintList"></div>
             </div>
         </div>
+
+        <div class="container" style="margin-top: 60px;">
+            <div class="course-promo" style="padding: 40px; background: linear-gradient(135deg, rgba(255, 90, 0, 0.1) 0%, rgba(255, 90, 0, 0.02) 100%); border: 1px solid rgba(255, 90, 0, 0.3); border-radius: var(--radius-lg); text-align: center; position: relative; overflow: hidden;">
+                
+                <div style="position: absolute; top: -50px; right: -50px; font-size: 150px; color: rgba(255, 90, 0, 0.05); pointer-events: none;">
+                    <i class="ph-fill ph-book-open"></i>
+                </div>
+
+                <div style="position: relative; z-index: 2;">
+                    <div style="width: 64px; height: 64px; border-radius: 20px; background: var(--accent-orange); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 24px; box-shadow: 0 10px 30px rgba(255, 90, 0, 0.3);">
+                        <i class="ph-fill ph-book-open"></i>
+                    </div>
+                    <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px;">Встретили непонятный термин?</h2>
+                    <p style="color: #cccccc; font-size: 1.05rem; line-height: 1.6; max-width: 600px; margin: 0 auto 32px;">
+                        Не беда! Можете посмотреть его значение прямо у нас на сайте: в словарике. Там собраны объяснения из разных областей - от основ программирования и Python до кибербезопасности, - написанные простым языком с бытовыми аналогиями.
+                    </p>
+                    <a href="dictionary.html" class="btn-primary" style="font-size: 1.1rem; padding: 16px 36px;">
+                        Открыть словарь <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 

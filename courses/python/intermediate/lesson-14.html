@@ -240,7 +240,7 @@
             <article class="lesson-content">
                 <h1>Модули и пакеты</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-clock"></i> ~55 минут</span>
                     <span><i class="ph ph-fire"></i> Средний уровень</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
@@ -254,7 +254,8 @@
                     файлы с кодом. А когда модулей становится много и они логически
                     сгруппированы, их объединяют в <strong>пакеты</strong>. Сегодня мы
                     научимся организовывать свой код так, чтобы он был чистым и
-                    структурированным.</p>
+                    структурированным, а также разберём, как правильно подключать чужие
+                    библиотеки и фиксировать их версии.</p>
 
                 <h2>Что такое модуль</h2>
 
@@ -343,7 +344,7 @@
                     модулями называется <strong>пакетом</strong> (package).</p>
 
                 <p>Чтобы Python понял, что это пакет, внутри папки должен быть файл
-                    <code>__init__.py</code> (обычно пустой). Выглядит это так:</p>
+                    <code>__init__.py</code>. Выглядит это так:</p>
 
                 <pre
                     class="code-numbered"><code><span class="code-row">my_project/</span><span class="code-row">│</span><span class="code-row">├── main.py</span><span class="code-row">└── utils/</span><span class="code-row">    ├── __init__.py</span><span class="code-row">    ├── math_helpers.py</span><span class="code-row">    └── string_helpers.py</span></code></pre>
@@ -352,6 +353,35 @@
 
                 <pre
                     class="code-numbered"><code><span class="code-row">from utils import math_helpers</span><span class="code-row">from utils.math_helpers import add</span></code></pre>
+
+                <h3>Зачем нужен __init__.py</h3>
+
+                <p>В старых версиях Python файл <code>__init__.py</code> был обязателен - без
+                    него папка не считалась пакетом. В Python 3.3+ появились «неявные
+                    пространства имён», но <code>__init__.py</code> по-прежнему нужен для
+                    явного указания, что это пакет, и для управления импортом.</p>
+
+                <p>Внутри <code>__init__.py</code> можно:</p>
+
+                <ul>
+                    <li>Оставить файл пустым (базовый вариант).</li>
+                    <li>Указать, что именно экспортировать из пакета: <code>__all__ = ["math_helpers"]</code>.</li>
+                    <li>Импортировать часто используемые функции, чтобы они были доступны
+                        сразу при импорте пакета:</li>
+                </ul>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from .math_helpers import add</span><span class="code-row">from .string_helpers import capitalize</span><span class="code-row"></span><span class="code-row">__all__ = ["add", "capitalize"]</span></code></pre>
+
+                <p>Тогда в главном файле можно писать короче:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">from utils import add   # сработает благодаря __init__.py</span></code></pre>
+
+                <p>Обратите внимание на точку в начале строки <code>from .math_helpers</code>.
+                    Это <strong>относительный импорт</strong> - он означает «ищи модуль в
+                    текущей папке (в этом же пакете)». Относительные импорты работают
+                    только внутри пакетов, а не в обычных скриптах.</p>
 
                 <h2>Сторонние пакеты и pip</h2>
 
@@ -368,6 +398,48 @@
 
                 <p>После этого пакет <code>requests</code> можно импортировать и
                     использовать.</p>
+
+                <h3>Полезные команды pip</h3>
+
+                <p>У <code>pip</code> есть несколько команд, которые пригодятся каждый день:</p>
+
+                <ul>
+                    <li><strong><code>pip install requests</code></strong> - установить пакет.</li>
+                    <li><strong><code>pip install requests==2.28.0</code></strong> - установить
+                        конкретную версию.</li>
+                    <li><strong><code>pip list</code></strong> - показать все установленные
+                        пакеты.</li>
+                    <li><strong><code>pip uninstall requests</code></strong> - удалить пакет.</li>
+                    <li><strong><code>pip freeze</code></strong> - вывести список пакетов
+                        с версиями в формате <code>requirements.txt</code>.</li>
+                </ul>
+
+                <h2>requirements.txt: фиксируем зависимости</h2>
+
+                <p>Представьте, что вы написали проект, который использует пять библиотек.
+                    Вы выложили его на GitHub. Другой разработчик скачал проект - и ему нужно
+                    установить те же пять библиотек. Как он узнает, какие именно?</p>
+
+                <p>Решение - файл <strong><code>requirements.txt</code></strong> в корне
+                    проекта. В нём перечислены все зависимости с версиями:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">requests==2.28.0</span><span class="code-row">pyTelegramBotAPI==4.12.0</span><span class="code-row">pytest==7.4.0</span></code></pre>
+
+                <p>Создать такой файл можно автоматически из установленных пакетов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">pip freeze &gt; requirements.txt</span></code></pre>
+
+                <p>А установить все зависимости разом - одной командой:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">pip install -r requirements.txt</span></code></pre>
+
+                <p>Почему важно фиксировать версии? Потому что пакеты обновляются. Новая
+                    версия библиотеки может изменить поведение или вовсе сломать ваш код.
+                    Если версии зафиксированы, у вас и у коллеги будет одинаковое
+                    окружение, и всё заработает предсказуемо.</p>
 
                 <h2>Виртуальные окружения (venv)</h2>
 
@@ -392,6 +464,22 @@
                     Теперь все <code>pip install</code> будут ставиться внутрь этой папки,
                     не засоряя систему.</p>
 
+                <p>Деактивировать окружение можно командой:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">deactivate</span></code></pre>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Папку venv не нужно коммитить в Git
+                    </div>
+                    <p>Виртуальное окружение весит десятки мегабайт и содержит копии
+                        пакетов. Его никогда не добавляют в репозиторий. Вместо этого
+                        коммитят только <code>requirements.txt</code>, а окружение каждый
+                        разработчик создаёт у себя сам. В корень проекта добавляют файл
+                        <code>.gitignore</code> со строкой <code>venv/</code>.</p>
+                </div>
+
                 <h2>Шпаргалка</h2>
 
                 <p>Самое важное в одном месте:</p>
@@ -414,18 +502,34 @@
                         <span>защита от выполнения при импорте</span>
                     </li>
                     <li>
+                        <code>__init__.py</code>
+                        <span>файл-маркер пакета</span>
+                    </li>
+                    <li>
                         <code>pip install pkg</code>
                         <span>установка пакета</span>
+                    </li>
+                    <li>
+                        <code>pip freeze &gt; requirements.txt</code>
+                        <span>зафиксировать версии</span>
+                    </li>
+                    <li>
+                        <code>pip install -r requirements.txt</code>
+                        <span>установить все зависимости</span>
                     </li>
                     <li>
                         <code>python -m venv venv</code>
                         <span>создать окружение</span>
                     </li>
+                    <li>
+                        <code>deactivate</code>
+                        <span>выйти из окружения</span>
+                    </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные ошибки при работе с модулями.</p>
+                <p>Разберём типичные ошибки при работе с модулями и зависимостями.</p>
 
                 <ul>
                     <li><strong>«ModuleNotFoundError: No module named 'my_module'»</strong>.
@@ -437,13 +541,21 @@
                     <li><strong>«Пакет установлен, но импорт не работает»</strong>. Скорее
                         всего, вы установили пакет в одно виртуальное окружение, а
                         запускаете код в другом (или в глобальном Python). Проверьте,
-                        активировано ли нужное окружение в терминале.</li>
+                        активировано ли нужное окружение в терминале (должно быть
+                        <code>(venv)</code> в начале строки).</li>
                     <li><strong>«pip не является внутренней или внешней командой»</strong>
                         (на Windows). Python не добавлен в PATH. Используйте
                         <code>python -m pip install ...</code> вместо <code>pip install ...</code>.</li>
+                    <li><strong>«ImportError: attempted relative import with no known parent package»</strong>.
+                        Вы используете относительный импорт (<code>from .module import ...</code>)
+                        в файле, который запускается напрямую, а не импортируется как часть
+                        пакета. Относительные импорты работают только внутри пакетов.</li>
                     <li><strong>Циклический импорт</strong>. Файл A импортирует B, а B
                         импортирует A. Python падает с ошибкой. Решение: вынести общий
                         код в третий модуль C и импортировать его из обоих.</li>
+                    <li><strong>«Пакет установился, но при импорте ошибка версии»</strong>.
+                        Возможно, установленная версия несовместима с вашим Python.
+                        Проверьте в документации пакета, какие версии Python поддерживаются.</li>
                 </ul>
 
                 <p>Если что-то не получается - напишите нам в
@@ -622,19 +734,25 @@
                 <ul>
                     <li>Что такое модуль и как импортировать его разными способами.</li>
                     <li>Зачем нужна конструкция <code>if __name__ == "__main__":</code>.</li>
-                    <li>Что такое пакеты и как они устроены.</li>
-                    <li>Как устанавливать сторонние библиотеки через <code>pip</code>.</li>
+                    <li>Что такое пакеты и как устроен файл <code>__init__.py</code>.</li>
+                    <li>Как работают относительные импорты внутри пакетов.</li>
+                    <li>Как устанавливать сторонние библиотеки через <code>pip</code>
+                        и фиксировать их версии в <code>requirements.txt</code>.</li>
                     <li>Зачем нужны виртуальные окружения (<code>venv</code>).</li>
                 </ul>
 
                 <p>Этот урок был важным шагом к профессиональной разработке. В реальных
                     проектах весь код всегда разбит на модули и пакеты - иначе в нём
-                    невозможно разобраться.</p>
+                    невозможно разобраться. А файл <code>requirements.txt</code> и
+                    виртуальное окружение - обязательная часть любого серьёзного проекта.</p>
 
                 <p>В следующем уроке мы займёмся <strong>работой с файлами</strong>. Вы
                     научитесь читать и записывать данные на диск, используя конструкцию
-                    <code>with</code>, которая автоматически закрывает файлы. Это позволит
-                    вашим программам сохранять состояние между запусками. До встречи!</p>
+                    <code>with</code>, которая автоматически закрывает файлы. А ещё мы
+                    разберём два самых популярных формата обмена данными - JSON и CSV.
+                    Это позволит вашим программам не только сохранять состояние между
+                    запусками, но и обмениваться данными с другими приложениями.
+                    До встречи!</p>
 
                 <div class="lesson-actions">
                     <a href="lesson-13.html" class="btn-secondary">

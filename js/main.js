@@ -9,6 +9,10 @@ import { initTrainers } from './trainers.js';
 import { initDictionary } from './dictionary.js';
 import { initBurgerMenu } from './burger-menu.js';
 import { initAnalytics } from './analytics.js';
+import { initProgressManager } from './progress-manager.js';
+import { initChangelog } from './changelog.js';
+import { initRoadmap } from './roadmap.js';
+import { initSketchpad } from './sketchpad.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initAnalytics();
@@ -22,4 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initTrainers();
     initDictionary();
     initBurgerMenu();
+    initProgressManager();
+    initChangelog();
+    initRoadmap();
+    initSketchpad();
 });

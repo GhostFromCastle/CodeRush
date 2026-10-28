@@ -5,16 +5,18 @@ const HISTORY_MAX = 5;
 const TIME_MODE_INITIAL = 100;
 const TIME_MODE_EXTEND_AT = 40;
 const TIME_MODE_EXTEND_BY = 60;
+const CODE_MODE_COUNT = 20;
 
 const FALLBACK_WORDS = {
     ru: ["код", "байт", "цикл", "массив", "строка"],
     en: ["code", "byte", "loop", "array", "string"],
-    symbols: ["12,5", "x = 5;", "print('hi')"]
-};
+    symbols: ["12,5", "x = 5;", "print('hi')"],
+    code: ['def greet(name):', 'return f"Hello, {name}!"', 'print(f"Result: {result}")', 'for i in range(10):', 'if x > 0:',]
+}
 
 const SHIFT_SYMBOLS = '!@#$%^&*()_+{}|:"<>?~';
 
-const WORDS = { ru: [], en: [], symbols: [] };
+const WORDS = { ru: [], en: [], symbols: [], code: [] };
 
 const KEYBOARD_LAYOUT = [
     [
@@ -170,17 +172,22 @@ async function loadWords() {
         WORDS.ru = data.ru;
         WORDS.en = data.en;
         WORDS.symbols = Array.isArray(data.symbols) ? data.symbols : FALLBACK_WORDS.symbols;
+        WORDS.code = Array.isArray(data.code) && data.code.length ? data.code : FALLBACK_WORDS.code;
     } catch (error) {
         console.warn('Не удалось загрузить typing-words.json, используем встроенные слова:', error);
         WORDS.ru = FALLBACK_WORDS.ru;
         WORDS.en = FALLBACK_WORDS.en;
         WORDS.symbols = FALLBACK_WORDS.symbols;
+        WORDS.code = FALLBACK_WORDS.code;
     }
 }
 
 function pickWord() {
     if (state.mode === "symbols") {
         return WORDS.symbols[Math.floor(Math.random() * WORDS.symbols.length)];
+    }
+    if (state.mode === "code") {
+        return WORDS.code[Math.floor(Math.random() * WORDS.code.length)];
     }
     let pool;
     if (state.lang === "mixed") {
@@ -194,6 +201,7 @@ function pickWord() {
 function getTargetCount() {
     if (state.mode === "words") return state.wordCount;
     if (state.mode === "symbols") return 30;
+    if (state.mode === "code") return CODE_MODE_COUNT;
     return TIME_MODE_INITIAL;
 }
 
@@ -287,9 +295,7 @@ function render() {
     els.wordsInner.innerHTML = html;
 
     const typedCount = input.trim() === "" ? 0 : input.split(" ").length;
-    const totalToType = state.mode === "words" ? state.wordCount
-        : state.mode === "symbols" ? getTargetCount()
-            : 0;
+    const totalToType = state.mode === "time" ? 0 : getTargetCount();
     if (totalToType > 0) {
         els.progressDisplay.textContent = `${Math.min(typedCount, totalToType)}/${totalToType}`;
         els.progressFill.style.width = `${Math.min(100, (typedCount / totalToType) * 100)}%`;
@@ -520,6 +526,20 @@ function getTopErrors(n) {
     }
 }
 
+function modeLabel(mode) {
+    if (mode === "words") return "Слова";
+    if (mode === "time") return "Время";
+    if (mode === "symbols") return "Знаки";
+    if (mode === "code") return "Код";
+    return mode;
+}
+
+function langLabel(lang) {
+    if (lang === "ru") return "RU";
+    if (lang === "en") return "EN";
+    return "MIX";
+}
+
 function updateHistoryDisplay() {
     if (!els.historyList) return;
     const history = getHistory();
@@ -529,9 +549,6 @@ function updateHistoryDisplay() {
         return;
     }
     els.historyEmpty.hidden = true;
-
-    const modeLabel = (mode) => mode === "words" ? "Слова" : mode === "time" ? "Время" : "Знаки";
-    const langLabel = (lang) => lang === "ru" ? "RU" : lang === "en" ? "EN" : "MIX";
 
     els.historyList.innerHTML = history.map(item => `
         <div class="typing-history-item">
@@ -663,7 +680,7 @@ function handleKey(e) {
         e.preventDefault();
         const fullText = getFullText();
 
-        if (state.input.length >= fullText.length && state.mode === "words") {
+        if (state.input.length >= fullText.length && state.mode === "time") {
             return;
         }
 
@@ -694,7 +711,7 @@ function handleKey(e) {
             extendWordsIfNeeded();
         }
 
-        if (state.mode === "words" && state.input.length >= fullText.length) {
+        if (state.mode !== "time" && state.input.length >= fullText.length) {
             finish();
         }
     }

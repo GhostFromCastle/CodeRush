@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скетчбук - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../index.html" class="logo">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../../courses.html">Курсы</a>
+                    <a href="../../simulators.html">Тренажёры</a>
+                    <a href="../../index.html#about">О нас</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../../simulators.html">Тренажёры</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Скетчбук</span>
+        </nav>
+    </div>
+
+    <section class="sketchpad-section">
+        <div class="container container-wide">
+            <div class="section-header centered">
+                <div class="section-label">[ Sketchpad ]</div>
+                <h2>Скетчбук <span class="text-orange">CodeRush</span></h2>
+                <p class="section-desc" style="margin-left: auto; margin-right: auto;">
+                    Рисуйте, двигайте объекты, меняйте размеры ячеек и поворачивайте фигуры. Двойной клик для редактирования текста.
+                </p>
+            </div>
+
+            <div class="sketchpad-wrapper">
+                <div class="sketchpad-toolbar">
+                    <div class="sketchpad-group">
+                        <label class="sketchpad-label"><i class="ph ph-pencil-simple"></i> Инструменты</label>
+                        <div class="sketchpad-tools">
+                            <button class="sketchpad-btn" id="toolSelect" title="Курсор (перемещение)">
+                                <i class="ph ph-cursor"></i>
+                            </button>
+                            <button class="sketchpad-btn active" id="toolPen" title="Кисть">
+                                <i class="ph ph-pencil-simple"></i>
+                            </button>
+                            <button class="sketchpad-btn" id="toolEraser" title="Ластик">
+                                <i class="ph ph-eraser"></i>
+                            </button>
+                            <button class="sketchpad-btn" id="toolEyedropper" title="Пипетка">
+                                <i class="ph ph-eyedropper"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="sketchpad-group">
+                        <label class="sketchpad-label"><i class="ph ph-text-t"></i> Текст</label>
+                        <div class="sketchpad-tools">
+                            <button class="sketchpad-btn" id="toolText" title="Добавить текст">
+                                <i class="ph ph-text-t"></i>
+                            </button>
+                        </div>
+                        <div class="text-format-panel" id="textPanel">
+                            <div class="text-format-row">
+                                <select id="fontFamily">
+                                    <option value="Manrope, sans-serif">Manrope</option>
+                                    <option value="JetBrains Mono, monospace">JetBrains Mono</option>
+                                    <option value="Arial, sans-serif">Arial</option>
+                                    <option value="Times New Roman, serif">Times New Roman</option>
+                                </select>
+                            </div>
+                            <div class="text-format-row">
+                                <input type="number" id="fontSize" value="16" min="8" max="200" placeholder="Размер">
+                            </div>
+                            <div class="text-format-row">
+                                <div class="text-align-group">
+                                    <button class="sketchpad-btn" data-align="left" title="По левому краю"><i class="ph ph-text-align-left"></i></button>
+                                    <button class="sketchpad-btn active" data-align="center" title="По центру"><i class="ph ph-text-align-center"></i></button>
+                                    <button class="sketchpad-btn" data-align="right" title="По правому краю"><i class="ph ph-text-align-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sketchpad-group">
+                        <label class="sketchpad-label"><i class="ph ph-shapes"></i> Фигуры</label>
+                        <div class="sketchpad-tools">
+                            <button class="sketchpad-btn" id="toolRect" title="Квадрат">
+                                <i class="ph ph-square"></i>
+                            </button>
+                            <button class="sketchpad-btn" id="toolCircle" title="Круг">
+                                <i class="ph ph-circle"></i>
+                            </button>
+                            <button class="sketchpad-btn" id="toolTriangle" title="Треугольник">
+                                <i class="ph ph-triangle"></i>
+                            </button>
+                            <button class="sketchpad-btn" id="toolPolygon" title="Многоугольник">
+                                <i class="ph ph-polygon"></i>
+                            </button>
+                            <button class="sketchpad-btn" id="toolStar" title="Звезда">
+                                <i class="ph ph-star"></i>
+                            </button>
+                            <button class="sketchpad-btn" id="toolTable" title="Таблица">
+                                <i class="ph ph-table"></i>
+                            </button>
+                            <button class="sketchpad-btn" id="toolClear" title="Очистить холст">
+                                <i class="ph ph-trash"></i>
+                            </button>
+                        </div>
+                        <div class="shape-options-popover" id="shapeOptions">
+                            <label>Количество углов/лучей</label>
+                            <input type="number" id="shapeSides" value="5" min="3" max="20">
+                        </div>
+                        <div class="table-popover" id="tablePopover">
+                            <div class="table-popover-header" id="tableSizeLabel">1 x 1</div>
+                            <div class="table-popover-grid" id="tableGrid"></div>
+                        </div>
+                    </div>
+
+                    <div class="sketchpad-group">
+                        <label class="sketchpad-label"><i class="ph ph-palette"></i> Цвет</label>
+                        <div class="sketchpad-colors" id="colorPicker">
+                            <button class="color-swatch active" data-color="#ffffff" style="background: #ffffff;"></button>
+                            <button class="color-swatch" data-color="#ff5a00" style="background: #ff5a00;"></button>
+                            <button class="color-swatch" data-color="#10b981" style="background: #10b981;"></button>
+                            <button class="color-swatch" data-color="#2563eb" style="background: #2563eb;"></button>
+                            <button class="color-swatch" data-color="#ef4444" style="background: #ef4444;"></button>
+                            <label class="sketchpad-custom-color" title="Выбрать любой цвет">
+                                <input type="color" id="customColor" value="#ffffff">
+                                <i class="ph ph-palette"></i>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="sketchpad-group">
+                        <label class="sketchpad-label"><i class="ph ph-line-weight"></i> Толщина</label>
+                        <input type="range" id="brushSize" min="1" max="50" value="4" class="sketchpad-range">
+                    </div>
+
+                    <div class="sketchpad-group">
+                        <label class="sketchpad-label"><i class="ph ph-arrows-out"></i> Масштаб</label>
+                        <div class="sketchpad-tools">
+                            <button class="sketchpad-btn" id="zoomOut" title="Отдалить">
+                                <i class="ph ph-minus"></i>
+                            </button>
+                            <span class="sketchpad-zoom-value" id="zoomValue">100%</span>
+                            <button class="sketchpad-btn" id="zoomIn" title="Приблизить">
+                                <i class="ph ph-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="sketchpad-group sketchpad-file-group">
+                        <label class="sketchpad-label"><i class="ph ph-floppy-disk"></i> Файл</label>
+                        <input type="text" id="fileName" class="sketchpad-input" placeholder="Название файла" value="my_sketch">
+                        <div class="sketchpad-export">
+                            <button class="btn-secondary sketchpad-save-btn" id="savePng">
+                                <i class="ph ph-file-image"></i> PNG
+                            </button>
+                            <button class="btn-secondary sketchpad-save-btn" id="saveJpg">
+                                <i class="ph ph-file-image"></i> JPG
+                            </button>
+                            <button class="btn-secondary sketchpad-save-btn" id="saveWebp">
+                                <i class="ph ph-file-image"></i> WebP
+                            </button>
+                            <button class="btn-primary sketchpad-save-btn" id="recordVideo">
+                                <i class="ph-fill ph-record"></i> <span id="recordText">Запись</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sketchpad-canvas-wrapper" id="canvasWrapper">
+                    <canvas id="sketchCanvas" tabindex="0"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sketchpad-modal" id="clearModal">
+        <div class="sketchpad-modal-content">
+            <h3>Очистить холст?</h3>
+            <p>Все нарисованные элементы будут удалены. Это действие можно отменить через CTRL+Z.</p>
+            <div class="sketchpad-modal-actions">
+                <button class="btn-secondary" id="clearCancel">Отмена</button>
+                <button class="btn-primary" id="clearConfirm">Очистить</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../../index.html" class="logo">
+                        <i class="ph-fill ph-code"></i>
+                        <span>Code<span class="logo-accent">Rush</span></span>
+                    </a>
+                    <p>Бесплатная образовательная платформа по программированию. Учитесь в своём темпе, без подписок и
+                        дедлайнов.</p>
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer"
+                        class="footer-telegram">
+                        <i class="ph-fill ph-telegram-logo"></i>
+                        <span>@GhostFromCastle</span>
+                    </a>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="../../index.html">Главная</a></li>
+                        <li><a href="../../courses.html">Все курсы</a></li>
+                        <li><a href="../../simulators.html">Тренажёры</a></li>
+                        <li><a href="../../changelog.html">Что нового</a></li>
+                        <li><a href="../../index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Курсы</h4>
+                    <ul>
+                        <li><a href="../../courses.html">Все курсы</a></li>
+                        <li><a href="../csharp/index.html">C# с нуля</a></li>
+                        <li><a href="../cybersecurity/index.html">Кибербезопасность</a></li>
+                        <li><a href="../ai/index.html">Нейросети</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Помощь</h4>
+                    <ul>
+                        <li><a href="../../index.html#faq">Частые вопросы</a></li>
+                        <li><a href="../../terms.html">Правила использования</a></li>
+                        <li><a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Связаться с
+                                нами</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 CodeRush. Сделано с душой.</span>
+                <div class="footer-bottom-links">
+                    <a href="../../changelog.html">Что нового</a>
+                    <a href="../../terms.html">Правила</a>
+                    <a href="../../index.html#faq">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="../../js/main.js"></script>
+</body>
+
+</html>

@@ -240,16 +240,16 @@
             <article class="lesson-content">
                 <h1>Исключения</h1>
                 <div class="lesson-meta">
-                    <span><i class="ph ph-clock"></i> ~40 минут</span>
+                    <span><i class="ph ph-clock"></i> ~55 минут</span>
                     <span><i class="ph ph-fire"></i> Средний уровень</span>
                     <span><i class="ph ph-code"></i> Теория и Практика</span>
                 </div>
 
-                <p>В прошлом уроке мы научились открывать файлы. И вы наверняка уже столкнулись с ситуацией, когда программа с грохотом падала с красной ошибкой <code>FileNotFoundError</code>, если файла не было. Или с ошибкой <code>ValueError</code>, когда пытались превратить текст в число.</p>
+                <p>В прошлом уроке мы научились открывать файлы и работать с JSON. И вы наверняка уже столкнулись с ситуацией, когда программа с грохотом падала с красной ошибкой <code>FileNotFoundError</code>, если файла не было. Или с ошибкой <code>json.JSONDecodeError</code>, когда файл был повреждён.</p>
 
                 <p>До этого момента любая ошибка в коде означала одно: программа аварийно завершается. Конечный пользователь видит страшный стек вызовов, программа закрывается, данные могут потеряться.</p>
 
-                <p>Но хорошее приложение должно быть устойчивым. Если пользователь ввёл букву вместо числа, программа не должна падать. Она должна сказать: «Ой, кажется, вы ошиблись, попробуйте ещё раз». Для этого в Python существует механизм <strong>исключений</strong> (exceptions).</p>
+                <p>Но хорошее приложение должно быть устойчивым. Если пользователь ввёл букву вместо числа, программа не должна падать. Она должна сказать: «Ой, кажется, вы ошиблись, попробуйте ещё раз». Для этого в Python существует механизм <strong>исключений</strong> (exceptions). А для того чтобы записывать все важные события (и ошибки, и успешные операции) в журнал, есть модуль <strong>logging</strong>.</p>
 
                 <h2>Что такое исключение</h2>
 
@@ -291,6 +291,7 @@
                     <li><strong><code>FileNotFoundError</code></strong> - файл не найден.</li>
                     <li><strong><code>IndexError</code></strong> - выход за границы списка.</li>
                     <li><strong><code>KeyError</code></strong> - несуществующий ключ словаря.</li>
+                    <li><strong><code>json.JSONDecodeError</code></strong> - повреждённый JSON (подкласс <code>ValueError</code>).</li>
                 </ul>
 
                 <p>Можно обрабатывать разные ошибки по-разному, используя несколько блоков <code>except</code>:</p>
@@ -336,6 +337,76 @@
 
                 <p>Теперь мы можем ловить именно <code>AgeTooSmallError</code>, не путая его с другими ошибками.</p>
 
+                <h2>Логирование: замена print в серьёзных программах</h2>
+
+                <p>Пока программы маленькие, для отладки хватает <code>print</code>. Но представьте: у вас бот, который работает круглосуточно. Вы не сидите рядом с консолью. Если что-то пойдёт не так в три часа ночи, вы никогда не узнаете об этом, потому что <code>print</code> выводит сообщение в консоль и тут же теряет его.</p>
+
+                <p>Для настоящих проектов существует <strong>логирование</strong> - запись событий в файл (или другое хранилище) с указанием времени, важности и источника. В Python для этого есть встроенный модуль <code>logging</code>.</p>
+
+                <p>Аналогия: <code>print</code> - это как крикнуть что-то в комнате. Услышат только те, кто рядом и в этот момент. Логирование - это как запись в бортовой журнал корабля. Все события фиксируются, у каждого есть время, и журнал можно прочитать потом.</p>
+
+                <h3>Простой пример</h3>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import logging</span><span class="code-row"></span><span class="code-row">logging.basicConfig(level=logging.INFO)</span><span class="code-row"></span><span class="code-row">logging.info("Программа запущена")</span><span class="code-row">logging.warning("Мало свободного места")</span><span class="code-row">logging.error("Не удалось подключиться к базе")</span></code></pre>
+
+                <p>В консоль выведется примерно следующее:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">INFO:root:Программа запущена</span><span class="code-row">WARNING:root:Мало свободного места</span><span class="code-row">ERROR:root:Не удалось подключиться к базе</span></code></pre>
+
+                <h3>Уровни логирования</h3>
+
+                <p>У сообщений есть пять уровней важности (по возрастанию):</p>
+
+                <ul>
+                    <li><strong><code>DEBUG</code></strong> - подробная отладочная информация. Для повседневной работы слишком многословно, включают только при поиске багов.</li>
+                    <li><strong><code>INFO</code></strong> - обычные события: «сервер запущен», «пользователь вошёл».</li>
+                    <li><strong><code>WARNING</code></strong> - что-то подозрительное, но программа продолжает работать: «заканчивается память», «файл скоро устареет».</li>
+                    <li><strong><code>ERROR</code></strong> - операция не удалась: «не удалось сохранить файл», «неверный пароль».</li>
+                    <li><strong><code>CRITICAL</code></strong> - программа не может продолжать работу: «база данных недоступна», «нет прав на запись».</li>
+                </ul>
+
+                <p>Параметр <code>level=logging.INFO</code> в <code>basicConfig</code> говорит: «показывай только сообщения уровня INFO и выше». То есть <code>DEBUG</code> будет проигнорирован. Если поставить <code>level=logging.DEBUG</code>, будут показаны все уровни.</p>
+
+                <h3>Запись в файл</h3>
+
+                <p>Главная сила логирования - в записи в файл. Один параметр в <code>basicConfig</code>, и всё, что вы логируете, будет сохраняться на диск:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import logging</span><span class="code-row"></span><span class="code-row">logging.basicConfig(</span><span class="code-row">    filename="app.log",</span><span class="code-row">    level=logging.INFO,</span><span class="code-row">    format="%(asctime)s [%(levelname)s] %(message)s",</span><span class="code-row">    encoding="utf-8"</span><span class="code-row">)</span><span class="code-row"></span><span class="code-row">logging.info("Программа запущена")</span></code></pre>
+
+                <p>Разберём параметры:</p>
+
+                <ul>
+                    <li><strong><code>filename="app.log"</code></strong> - куда писать. Если не указать, будет выводиться в консоль.</li>
+                    <li><strong><code>level=logging.INFO</code></strong> - минимальный уровень сообщений.</li>
+                    <li><strong><code>format</code></strong> - формат строки. Специальные «маски» вроде <code>%(asctime)s</code> заменяются на время, <code>%(levelname)s</code> - на уровень, <code>%(message)s</code> - на само сообщение.</li>
+                    <li><strong><code>encoding="utf-8"</code></strong> - чтобы русские буквы в файле не превращались в кракозябры.</li>
+                </ul>
+
+                <p>Через месяц работы в файле <code>app.log</code> вы сможете найти всё, что происходило с программой. Каждая строка будет с датой, уровнем и текстом:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">2026-10-26 14:32:11,455 [INFO] Программа запущена</span><span class="code-row">2026-10-26 14:32:15,102 [ERROR] Не удалось сохранить файл</span></code></pre>
+
+                <h3>Логирование с исключениями</h3>
+
+                <p>Самый мощный приём - логировать исключение целиком, вместе со стеком вызовов. Для этого в блоке <code>except</code> вызывают <code>logging.exception()</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">import logging</span><span class="code-row"></span><span class="code-row">logging.basicConfig(</span><span class="code-row">    filename="app.log",</span><span class="code-row">    level=logging.ERROR,</span><span class="code-row">    encoding="utf-8"</span><span class="code-row">)</span><span class="code-row"></span><span class="code-row">try:</span><span class="code-row">    number = int(input("Введите число: "))</span><span class="code-row">    print(10 / number)</span><span class="code-row">except ValueError:</span><span class="code-row">    logging.exception("Пользователь ввёл не число")</span><span class="code-row">except ZeroDivisionError:</span><span class="code-row">    logging.exception("Пользователь ввёл ноль")</span></code></pre>
+
+                <p><code>logging.exception()</code> работает так же, как <code>logging.error()</code>, но <strong>дополнительно записывает полный traceback</strong> - весь стек вызовов, который привёл к ошибке. В файле вы увидите не только «что-то пошло не так», но и «в какой строке, в какой функции».</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        print vs logging
+                    </div>
+                    <p>В учебных скриптах и в <code>print</code> нет ничего плохого. Но как только программа выходит за пределы вашего ноутбука (Telegram-бот, веб-сервер, cron-задача) - она должна логировать свои события в файл. Вы не увидите, что произошло в три часа ночи, если программа упала и потеряла консоль. А в файле всё сохранится.</p>
+                </div>
+
                 <h2>Шпаргалка</h2>
 
                 <p>Самое важное в одном месте:</p>
@@ -365,11 +436,27 @@
                         <code>raise ValueError()</code>
                         <span>вызвать ошибку</span>
                     </li>
+                    <li>
+                        <code>logging.basicConfig()</code>
+                        <span>настроить логи</span>
+                    </li>
+                    <li>
+                        <code>logging.info()</code>
+                        <span>обычное событие</span>
+                    </li>
+                    <li>
+                        <code>logging.error()</code>
+                        <span>ошибка</span>
+                    </li>
+                    <li>
+                        <code>logging.exception()</code>
+                        <span>ошибка + traceback</span>
+                    </li>
                 </ul>
 
                 <h2>Если что-то не работает</h2>
 
-                <p>Разберём типичные ошибки при обработке исключений.</p>
+                <p>Разберём типичные ошибки при обработке исключений и логировании.</p>
 
                 <ul>
                     <li><strong>«Программа всё равно падает, хотя есть try/except»</strong>. Скорее всего, вы ловите не тот тип ошибки. Если вы написали <code>except ValueError</code>, а произошла <code>ZeroDivisionError</code>, программа упадёт. Проверьте тип ошибки в консоли.</li>
@@ -377,6 +464,10 @@
                     <li><strong>«Ошибка возникла, но except её не ловит»</strong>. Возможно, код с ошибкой находится вне блока <code>try</code>. В блок <code>try</code> нужно помещать именно те строки, которые могут упасть.</li>
                     <li><strong>Падение в блоке finally</strong>. Если внутри <code>finally</code> произойдёт ошибка, она перезапишет исходную ошибку из блока <code>try</code>. Будьте осторожны с кодом в <code>finally</code>.</li>
                     <li><strong>«Мой except перехватывает ошибки, которые не должен»</strong>. Вы указали слишком общий класс ошибки. Например, <code>except Exception</code> поймает почти всё. Старайтесь быть максимально конкретными.</li>
+                    <li><strong>«Логи не появляются в файле»</strong>. Проверьте, что <code>basicConfig</code> вызван <strong>до</strong> первого <code>logging.info</code>. А также что вы указали нужный <code>level</code> (сообщения ниже его порога игнорируются).</li>
+                    <li><strong>«basicConfig срабатывает только один раз»</strong>. Это правда. Функция <code>basicConfig</code> настраивает логгер только при первом вызове. Последующие вызовы игнорируются (если не передать <code>force=True</code>). Если нужно перенастроить - используйте <code>logging.basicConfig(..., force=True)</code>.</li>
+                    <li><strong>Русские буквы в логе превращаются в кракозябры</strong>. Забыли параметр <code>encoding="utf-8"</code> в <code>basicConfig</code>.</li>
+                    <li><strong>«В лог попали посторонние сообщения от сторонних библиотек»</strong>. Иногда сторонние библиотеки тоже пишут в корневой логгер. Можно настроить только свой логгер через <code>logging.getLogger(__name__)</code> или отключить чужие через <code>logging.getLogger("urllib3").setLevel(logging.WARNING)</code>.</li>
                 </ul>
 
                 <p>Если что-то не получается - напишите нам в
@@ -510,16 +601,18 @@
 
                     <details class="faq-item task-item">
                         <summary>
-                            <span>Задача 4. Своё исключение</span>
+                            <span>Задача 4. Логирование ошибок</span>
                             <span class="faq-icon"><i class="ph ph-plus"></i></span>
                         </summary>
                         <div class="faq-answer">
-                            <p class="task-desc">Создайте класс исключения
-                                <code>TooYoungError</code>. Напишите функцию
-                                <code>check_age(age)</code>, которая выбрасывает
-                                <code>TooYoungError</code>, если возраст меньше 18.
-                                Оберните вызов функции в <code>try/except</code> и
-                                выведите сообщение об ошибке.</p>
+                            <p class="task-desc">Настройте логирование так, чтобы все
+                                сообщения уровня <code>ERROR</code> и выше записывались
+                                в файл <code>errors.log</code> с датой и уровнем. Напишите
+                                функцию <code>safe_divide(a, b)</code>, которая делит
+                                числа и при делении на ноль логирует ошибку через
+                                <code>logging.exception()</code>, а сама возвращает
+                                <code>None</code>. Проверьте, что в файле появилась
+                                запись.</p>
 
                             <details class="faq-item task-nested">
                                 <summary>
@@ -527,12 +620,13 @@
                                     <span class="faq-icon"><i class="ph ph-plus"></i></span>
                                 </summary>
                                 <div class="faq-answer">
-                                    <p>Класс создаётся так:
-                                        <code>class TooYoungError(Exception): pass</code>.
-                                        В функции используйте
-                                        <code>raise TooYoungError("...")</code>.
-                                        В блоке <code>except TooYoungError as e:</code>
-                                        можно вывести текст ошибки через <code>e</code>.</p>
+                                    <p>В <code>basicConfig</code> укажите
+                                        <code>filename="errors.log"</code>,
+                                        <code>level=logging.ERROR</code>,
+                                        <code>format="%(asctime)s [%(levelname)s] %(message)s"</code>
+                                        и <code>encoding="utf-8"</code>. В функции используйте
+                                        <code>try/except ZeroDivisionError</code> с
+                                        <code>logging.exception()</code> внутри.</p>
                                 </div>
                             </details>
 
@@ -543,11 +637,13 @@
                                 </summary>
                                 <div class="faq-answer">
                                     <pre
-                                        class="code-numbered"><code><span class="code-row">class TooYoungError(Exception):</span><span class="code-row">    pass</span><span class="code-row"></span><span class="code-row">def check_age(age):</span><span class="code-row">    if age &lt; 18:</span><span class="code-row">        raise TooYoungError("Доступ только с 18 лет")</span><span class="code-row">    print("Доступ разрешён")</span><span class="code-row"></span><span class="code-row">try:</span><span class="code-row">    check_age(15)</span><span class="code-row">except TooYoungError as error:</span><span class="code-row">    print(f"Ошибка: {error}")</span></code></pre>
-                                    <p>При запуске программа выведет
-                                        «Ошибка: Доступ только с 18 лет». Своё
-                                        исключение позволяет отделить бизнес-логику
-                                        от технических сбоев.</p>
+                                        class="code-numbered"><code><span class="code-row">import logging</span><span class="code-row"></span><span class="code-row">logging.basicConfig(</span><span class="code-row">    filename="errors.log",</span><span class="code-row">    level=logging.ERROR,</span><span class="code-row">    format="%(asctime)s [%(levelname)s] %(message)s",</span><span class="code-row">    encoding="utf-8"</span><span class="code-row">)</span><span class="code-row"></span><span class="code-row">def safe_divide(a, b):</span><span class="code-row">    try:</span><span class="code-row">        return a / b</span><span class="code-row">    except ZeroDivisionError:</span><span class="code-row">        logging.exception(f"Попытка деления {a} на ноль")</span><span class="code-row">        return None</span><span class="code-row"></span><span class="code-row">print(safe_divide(10, 2))   # 5.0</span><span class="code-row">print(safe_divide(10, 0))   # None</span></code></pre>
+                                    <p>В файле <code>errors.log</code> появится запись
+                                        с датой, уровнем <code>ERROR</code> и полным стеком
+                                        вызовов, включая строку <code>return a / b</code>,
+                                        где произошла ошибка. Даже если программа
+                                        продолжит работу, вы сможете потом разобраться,
+                                        что произошло.</p>
                                 </div>
                             </details>
                         </div>
@@ -557,7 +653,10 @@
 
                 <h2>Что мы узнали и что дальше</h2>
 
-                <p>Теперь ваши программы умеют не падать при первой же ошибке. Вы узнали, как управлять потоком выполнения при возникновении исключительных ситуаций, и как сделать программу дружелюбной к пользователю.</p>
+                <p>Теперь ваши программы умеют не падать при первой же ошибке и вести журнал
+                    событий. Вы узнали, как управлять потоком выполнения при возникновении
+                    исключительных ситуаций, и как сделать программу дружелюбной к
+                    пользователю и удобной для отладки.</p>
 
                 <p>В этом уроке мы разобрали:</p>
                 <ul>
@@ -566,7 +665,13 @@
                     <li>Блоки <code>else</code> и <code>finally</code>.</li>
                     <li>Как генерировать собственные исключения через <code>raise</code>.</li>
                     <li>Как создавать свои классы исключений.</li>
+                    <li>Как использовать модуль <code>logging</code> вместо <code>print</code>: уровни, запись в файл, форматирование, <code>logging.exception</code>.</li>
                 </ul>
+
+                <p>Логирование - это тот навык, который отличает «домашний скрипт» от кода
+                    в продакшене. Начните использовать его уже в своих учебных проектах, и
+                    вы быстро оцените удобство: когда программа падает через неделю после
+                    запуска, у вас будет история событий, а не пустое окно консоли.</p>
 
                 <p>В следующем уроке мы сделаем огромный шаг вперёд и перейдём к <strong>объектно-ориентированному программированию (ООП)</strong>. Мы узнаем, что такое классы и объекты, как создавать свои собственные типы данных со своими свойствами и методами, и почему ООП - это стандарт современной разработки. До встречи!</p>
 
