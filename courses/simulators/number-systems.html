@@ -163,31 +163,52 @@
                 </div>
 
                 <div class="lesson-content ns-theory-content">
-                    <h2>Таблица кодировки (ASCII)</h2>
-                    <p>Каждому символу на клавиатуре соответствует свой числовой код. В двоичной системе этот код занимает 8 бит (или 1 байт). Например, заглавная буква <strong>A</strong> имеет код 65, что в двоичной системе записывается как <code>01000001</code>.</p>
-                    
-                    <table class="type-table">
-                        <thead>
-                            <tr>
-                                <th>Символ</th>
-                                <th>Десятичный код</th>
-                                <th>Двоичный код</th>
-                                <th>Символ</th>
-                                <th>Десятичный код</th>
-                                <th>Двоичный код</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>A</td><td>65</td><td>01000001</td><td>a</td><td>97</td><td>01100001</td></tr>
-                            <tr><td>B</td><td>66</td><td>01000010</td><td>b</td><td>98</td><td>01100010</td></tr>
-                            <tr><td>C</td><td>67</td><td>01000011</td><td>c</td><td>99</td><td>01100011</td></tr>
-                            <tr><td>0</td><td>48</td><td>00110000</td><td>1</td><td>49</td><td>00110001</td></tr>
-                            <tr><td>2</td><td>50</td><td>00110010</td><td>3</td><td>51</td><td>00110011</td></tr>
-                            <tr><td>Пробел</td><td>32</td><td>00100000</td><td>!</td><td>33</td><td>00100001</td></tr>
-                            <tr><td>?</td><td>63</td><td>00111111</td><td>@</td><td>64</td><td>01000000</td></tr>
-                        </tbody>
-                    </table>
-                    <p>Русские буквы кодируются с помощью таблицы Unicode (Windows-1251 или UTF-8), где они занимают больше памяти, но принцип перевода в двоичный код остаётся таким же.</p>
+                    <h2>Таблицы кодировок</h2>
+                    <p>Каждому символу на клавиатуре соответствует числовой код. Английские символы укладываются в 1 байт (8 бит) и кодируются одинаково во всех популярных кодировках. А вот русские буквы - по-разному: в UTF-8 на одну букву уходит 2 байта, а в Windows-1251 - всего 1 байт.</p>
+
+                    <div class="encoding-tables">
+                        <div class="encoding-table-block">
+                            <div class="encoding-table-header">
+                                <h3>
+                                    <i class="ph ph-translate"></i> Русские буквы
+                                </h3>
+                                <select id="ruEncodingSelect" class="encoding-select">
+                                    <option value="utf8">UTF-8 (2 байта)</option>
+                                    <option value="cp1251">Windows-1251 (1 байт)</option>
+                                </select>
+                            </div>
+                            <table class="type-table">
+                                <thead>
+                                    <tr>
+                                        <th>Символ</th>
+                                        <th>Hex</th>
+                                        <th>Двоичный код</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ruEncodingBody"></tbody>
+                            </table>
+                        </div>
+
+                        <div class="encoding-table-block">
+                            <div class="encoding-table-header">
+                                <h3>
+                                    <i class="ph ph-text-aa"></i> Английские символы (ASCII)
+                                </h3>
+                            </div>
+                            <table class="type-table">
+                                <thead>
+                                    <tr>
+                                        <th>Символ</th>
+                                        <th>Dec</th>
+                                        <th>Двоичный код</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="enEncodingBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <p>Именно поэтому один и тот же русский текст в файле UTF-8 занимает примерно в два раза больше места, чем в Windows-1251. Зато UTF-8 поддерживает все языки мира, а Windows-1251 - только кириллицу и ещё несколько алфавитов.</p>
                 </div>
             </div>
 

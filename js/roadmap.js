@@ -21,6 +21,9 @@ function renderCard(item) {
             <div class="roadmap-card-header">
                 <div class="roadmap-card-category">${escapeHtml(item.category || 'Задача')}</div>
                 <div class="roadmap-card-actions">
+                    <button type="button" class="roadmap-card-btn edit-btn" data-id="${item.id}" title="Редактировать">
+                        <i class="ph ph-pencil-simple"></i>
+                    </button>
                     <button type="button" class="roadmap-card-btn delete-btn" data-id="${item.id}" title="Удалить">
                         <i class="ph ph-trash"></i>
                     </button>
@@ -63,10 +66,26 @@ function bindCardEvents(container) {
         });
     });
 
+    container.querySelectorAll('.edit-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.id;
+            const item = state.items.find(i => i.id === id);
+            if (item) openModal(item);
+        });
+    });
+
     container.querySelectorAll('.roadmap-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const id = card.dataset.id;
+            const item = state.items.find(i => i.id === id);
+            if (item) openModal(item);
+        });
+
         card.addEventListener('dragstart', (e) => {
             card.classList.add('dragging');
             e.dataTransfer.setData('text/plain', card.dataset.id);
+            e.dataTransfer.effectAllowed = 'move';
         });
 
         card.addEventListener('dragend', () => {
@@ -95,11 +114,11 @@ function render() {
 
 function bindColumns() {
     document.querySelectorAll('.roadmap-column').forEach(col => {
-        const list = col.querySelector('.roadmap-list');
         const status = col.dataset.status;
 
         col.addEventListener('dragover', (e) => {
             e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
             col.classList.add('drag-over');
         });
 
@@ -113,8 +132,9 @@ function bindColumns() {
             e.preventDefault();
             col.classList.remove('drag-over');
             const id = e.dataTransfer.getData('text/plain');
+            if (!id) return;
             const item = state.items.find(i => i.id === id);
-            
+
             if (item && item.status !== status) {
                 item.status = status;
                 saveState();
@@ -133,6 +153,11 @@ function openModal(item = null) {
     const idInput = document.getElementById('taskId');
     const modalTitle = document.getElementById('modalTitle');
 
+    if (!modal || !form || !titleInput || !descInput || !statusInput || !idInput || !modalTitle) return;
+
+    form.reset();
+    idInput.value = '';
+
     if (item) {
         modalTitle.textContent = 'Редактировать задачу';
         idInput.value = item.id;
@@ -141,8 +166,6 @@ function openModal(item = null) {
         statusInput.value = item.status;
     } else {
         modalTitle.textContent = 'Новая задача';
-        form.reset();
-        idInput.value = '';
     }
 
     modal.classList.add('active');
@@ -151,7 +174,7 @@ function openModal(item = null) {
 
 function closeModal() {
     const modal = document.getElementById('taskModal');
-    modal.classList.remove('active');
+    if (modal) modal.classList.remove('active');
 }
 
 async function loadDefaultData() {
@@ -165,21 +188,32 @@ async function loadDefaultData() {
                 id: item.id || generateId()
             }));
             saveState();
-            render();
+            return true;
         }
+        return false;
     } catch (error) {
         console.warn('Не удалось загрузить данные по умолчанию:', error);
+        return false;
     }
 }
 
 function initForm() {
     const form = document.getElementById('taskForm');
+    if (!form) return;
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const idInput = document.getElementById('taskId');
-        const title = document.getElementById('taskTitle').value.trim();
-        const description = document.getElementById('taskDesc').value.trim();
-        const status = document.getElementById('taskStatus').value;
+        const titleInput = document.getElementById('taskTitle');
+        const descInput = document.getElementById('taskDesc');
+        const statusInput = document.getElementById('taskStatus');
+        if (!idInput || !titleInput || !descInput || !statusInput) return;
+
+        const title = titleInput.value.trim();
+        const description = descInput.value.trim();
+        const status = statusInput.value;
+
+        if (!title) return;
 
         if (idInput.value) {
             const item = state.items.find(i => i.id === idInput.value);
@@ -194,7 +228,7 @@ function initForm() {
                 title,
                 description,
                 status,
-                category: 'Мои планы'
+                category: 'Моя задача'
             });
         }
 
@@ -209,17 +243,22 @@ export async function initRoadmap() {
     if (!board) return;
 
     const stored = localStorage.getItem(STORAGE_KEY);
+    let loaded = false;
+
     if (stored) {
         try {
-            state.items = JSON.parse(stored);
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed)) {
+                state.items = parsed;
+                loaded = true;
+            }
         } catch (e) {
-            state.items = [];
+            console.warn('Повреждённые данные roadmap, восстанавливаем значения по умолчанию');
         }
-    } else {
+    }
+
+    if (!loaded) {
         await loadDefaultData();
-        if (!state.items.length) {
-            state.items = [];
-        }
     }
 
     render();
@@ -228,11 +267,13 @@ export async function initRoadmap() {
 
     document.getElementById('addTaskBtn')?.addEventListener('click', () => openModal());
     document.getElementById('closeModalBtn')?.addEventListener('click', closeModal);
+
     document.getElementById('resetRoadmapBtn')?.addEventListener('click', async () => {
         if (confirm('Сбросить все задачи до стандартных?')) {
             localStorage.removeItem(STORAGE_KEY);
+            state.items = [];
             await loadDefaultData();
-            if (!state.items.length) render();
+            render();
         }
     });
 

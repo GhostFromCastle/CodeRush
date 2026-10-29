@@ -50,6 +50,7 @@ export function initSketchpad() {
     const MIN_ZOOM = 0.05;
     const MAX_ZOOM = 20;
     const MAX_HISTORY = 30;
+    const BG_COLOR = '#151515';
 
     let strokes = [];
     let currentStroke = null;
@@ -90,11 +91,24 @@ export function initSketchpad() {
     let recordedChunks = [];
     let isRecording = false;
 
+    let popoverCloseTimer = null;
+
     const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
     const getDpr = () => window.devicePixelRatio || 1;
 
     function cloneStrokes(arr) {
         return JSON.parse(JSON.stringify(arr));
+    }
+
+    function schedulePopoverClose(popover) {
+        clearTimeout(popoverCloseTimer);
+        popoverCloseTimer = setTimeout(() => {
+            popover.classList.remove('active');
+        }, 200);
+    }
+
+    function cancelPopoverClose() {
+        clearTimeout(popoverCloseTimer);
     }
 
     function setupCanvas() {
@@ -146,12 +160,11 @@ export function initSketchpad() {
         target.lineJoin = 'round';
         target.lineWidth = stroke.size || 1;
 
+        target.globalCompositeOperation = 'source-over';
         if (stroke.tool === 'eraser') {
-            target.globalCompositeOperation = 'destination-out';
-            target.strokeStyle = 'rgba(0,0,0,1)';
-            target.fillStyle = 'rgba(0,0,0,1)';
+            target.strokeStyle = BG_COLOR;
+            target.fillStyle = BG_COLOR;
         } else {
-            target.globalCompositeOperation = 'source-over';
             target.strokeStyle = stroke.color;
             target.fillStyle = stroke.color;
         }
@@ -257,8 +270,8 @@ export function initSketchpad() {
         while (step * zoom > 80) step /= 2;
 
         const dpr = getDpr();
-        const width = canvas.width / dpr;
-        const height = canvas.height / dpr;
+        const width = target.canvas.width / dpr;
+        const height = target.canvas.height / dpr;
 
         const top = -panY / zoom;
         const bottom = (height - panY) / zoom;
@@ -355,15 +368,13 @@ export function initSketchpad() {
     function render() {
         ctx.save();
         ctx.setTransform(1, 0, 0, 1, 0, 0);
-        ctx.fillStyle = '#151515';
+        ctx.fillStyle = BG_COLOR;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.restore();
 
         ctx.save();
         applyTransform(ctx);
-        
         drawGrid(ctx);
-
         for (const s of strokes) drawStrokeTo(ctx, s);
         if (currentStroke) drawStrokeTo(ctx, currentStroke);
         ctx.restore();
@@ -474,20 +485,33 @@ export function initSketchpad() {
         
         if (stroke.tool === 'text') {
             const val = input.value.trim();
-            if (val) {
-                stroke.text = val;
+            if (!val) {
+                if (!isNew) {
+                    const idx = strokes.indexOf(stroke);
+                    if (idx !== -1) {
+                        pushHistory();
+                        strokes.splice(idx, 1);
+                    }
+                }
+            } else {
+                const oldVal = stroke.text || '';
                 if (isNew) {
+                    stroke.text = val;
                     pushHistory();
                     strokes.push(stroke);
-                } else {
+                } else if (val !== oldVal) {
+                    stroke.text = val;
                     pushHistory();
                 }
-            } else if (isNew) {
-                currentStroke = null;
             }
         } else {
-            stroke.cells[`${r},${c}`] = input.value.trim();
-            pushHistory();
+            const key = `${r},${c}`;
+            const newVal = input.value.trim();
+            const oldVal = stroke.cells[key] || '';
+            if (newVal !== oldVal) {
+                stroke.cells[key] = newVal;
+                pushHistory();
+            }
         }
         
         input.remove();
@@ -584,30 +608,45 @@ export function initSketchpad() {
     }
 
     toolTable.addEventListener('mouseenter', () => {
+        cancelPopoverClose();
         tablePopover.classList.add('active');
         shapeOptions.classList.remove('active');
+        textPanel.classList.remove('active');
     });
-
-    tablePopover.addEventListener('mouseleave', () => {
-        if (currentTool !== 'table') tablePopover.classList.remove('active');
+    toolTable.addEventListener('mouseleave', () => {
+        if (currentTool !== 'table') schedulePopoverClose(tablePopover);
     });
+    tablePopover.addEventListener('mouseenter', cancelPopoverClose);
+    tablePopover.addEventListener('mouseleave', () => schedulePopoverClose(tablePopover));
 
     toolPolygon.addEventListener('mouseenter', () => {
+        cancelPopoverClose();
         shapeOptions.classList.add('active');
         tablePopover.classList.remove('active');
+        textPanel.classList.remove('active');
     });
-
     toolStar.addEventListener('mouseenter', () => {
+        cancelPopoverClose();
         shapeOptions.classList.add('active');
         tablePopover.classList.remove('active');
+        textPanel.classList.remove('active');
     });
-
-    shapeOptions.addEventListener('mouseleave', () => {
-        if (currentTool !== 'polygon' && currentTool !== 'star') shapeOptions.classList.remove('active');
+    toolPolygon.addEventListener('mouseleave', () => {
+        if (currentTool !== 'polygon') schedulePopoverClose(shapeOptions);
     });
+    toolStar.addEventListener('mouseleave', () => {
+        if (currentTool !== 'star') schedulePopoverClose(shapeOptions);
+    });
+    shapeOptions.addEventListener('mouseenter', cancelPopoverClose);
+    shapeOptions.addEventListener('mouseleave', () => schedulePopoverClose(shapeOptions));
 
     shapeSidesInput.addEventListener('change', (e) => {
         currentSides = clamp(parseInt(e.target.value, 10) || 5, 3, 20);
+        if (selectedStroke && (selectedStroke.tool === 'polygon' || selectedStroke.tool === 'star')) {
+            selectedStroke.sides = currentSides;
+            pushHistory();
+            render();
+        }
     });
 
     toolText.addEventListener('click', () => {
@@ -711,7 +750,7 @@ export function initSketchpad() {
         setTool('pen', toolPen);
     }
 
-    function checkTableCellResize(p, e) {
+    function checkTableCellResize(p) {
         if (!selectedStroke || selectedStroke.tool !== 'table') return false;
         
         const s = selectedStroke;
@@ -795,7 +834,7 @@ export function initSketchpad() {
                 return;
             }
             
-            if (checkTableCellResize(p, e)) {
+            if (checkTableCellResize(p)) {
                 try { wrapper.setPointerCapture(e.pointerId); } catch (_) {}
                 return;
             }
@@ -834,7 +873,6 @@ export function initSketchpad() {
                     isDraggingObject = true;
                     dragStartX = p.x;
                     dragStartY = p.y;
-                    pushHistory();
                     try { wrapper.setPointerCapture(e.pointerId); } catch (_) {}
                     render();
                     return;
@@ -1147,6 +1185,10 @@ export function initSketchpad() {
         wrapper.classList.toggle('tool-eyedropper', tool === 'eyedropper');
         wrapper.classList.toggle('tool-select', tool === 'select');
         
+        if (tool !== 'table') tablePopover.classList.remove('active');
+        if (tool !== 'polygon' && tool !== 'star') shapeOptions.classList.remove('active');
+        if (tool !== 'text') textPanel.classList.remove('active');
+        
         if (tool !== 'select') {
             selectedStroke = null;
             render();
@@ -1216,7 +1258,10 @@ export function initSketchpad() {
 
     function exportImage(type, quality) {
         const b = getContentBounds();
-        if (!b) { alert('Холст пуст'); return; }
+        if (!b) {
+            alert('Холст пуст - сначала что-нибудь нарисуйте');
+            return;
+        }
 
         const padding = 40;
         const rawW = Math.max(1, (b.maxX - b.minX) + padding * 2);
@@ -1232,7 +1277,7 @@ export function initSketchpad() {
         out.height = outH;
         const t = out.getContext('2d');
 
-        t.fillStyle = '#151515';
+        t.fillStyle = BG_COLOR;
         t.fillRect(0, 0, outW, outH);
 
         t.strokeStyle = 'rgba(255, 255, 255, 0.05)';
@@ -1271,7 +1316,7 @@ export function initSketchpad() {
 
         out.toBlob((blob) => {
             if (!blob) {
-                alert('Не удалось сохранить файл - попробуйте PNG');
+                alert('Не удалось сохранить файл - попробуйте другой формат');
                 return;
             }
             const url = URL.createObjectURL(blob);
@@ -1286,35 +1331,66 @@ export function initSketchpad() {
 
     recordVideo.addEventListener('click', () => {
         if (isRecording) {
-            mediaRecorder.stop();
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+            }
             isRecording = false;
             recordVideo.classList.remove('recording-active');
             recordText.textContent = 'Запись';
             recordVideo.querySelector('i').className = 'ph-fill ph-record';
             return;
         }
+
+        if (typeof MediaRecorder === 'undefined' || typeof canvas.captureStream !== 'function') {
+            alert('Ваш браузер не поддерживает запись видео с холста');
+            return;
+        }
+
         recordedChunks = [];
         const stream = canvas.captureStream(30);
         let mimeType = 'video/webm;codecs=vp9';
-        if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = 'video/webm';
+        if (!MediaRecorder.isTypeSupported(mimeType)) {
+            mimeType = 'video/webm';
+            if (!MediaRecorder.isTypeSupported(mimeType)) {
+                alert('Ваш браузер не поддерживает формат WebM для записи видео');
+                return;
+            }
+        }
+
         try {
             mediaRecorder = new MediaRecorder(stream, { mimeType });
             mediaRecorder.ondataavailable = (e) => {
-                if (e.data.size > 0) recordedChunks.push(e.data);
+                if (e.data && e.data.size > 0) recordedChunks.push(e.data);
             };
             mediaRecorder.onstop = () => {
+                if (recordedChunks.length === 0) {
+                    console.warn('Запись пуста - файл не создан');
+                    return;
+                }
                 const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                if (blob.size === 0) {
+                    console.warn('Blob пустой - файл не создан');
+                    return;
+                }
                 const url = URL.createObjectURL(blob);
                 download(url, getFileName('webm'));
                 setTimeout(() => URL.revokeObjectURL(url), 1000);
             };
-            mediaRecorder.start();
+            mediaRecorder.start(500);
             isRecording = true;
             recordVideo.classList.add('recording-active');
             recordText.textContent = 'Стоп';
             recordVideo.querySelector('i').className = 'ph-fill ph-stop-circle';
         } catch (err) {
-            alert('Ваш браузер не поддерживает запись видео с холста.');
+            console.error('Не удалось начать запись:', err);
+            alert('Ваш браузер не поддерживает запись видео с холста');
+        }
+    });
+
+    window.addEventListener('beforeunload', (e) => {
+        if (isRecording) {
+            e.preventDefault();
+            e.returnValue = '';
         }
     });
 

@@ -52,10 +52,20 @@ async function loadData() {
                 description: "Функция должна складывать два числа.",
                 code: ["function sum(a, b) {", "  return a - b;", "}"],
                 bugLineIndex: 1,
+                correctFixIndex: 1,
                 fixes: ["return a - b;", "return a + b;", "return a * b;"]
             }
         ];
     }
+}
+
+function getCorrectFixIndex(task) {
+    if (!task || !Array.isArray(task.fixes) || task.fixes.length === 0) return 0;
+    const idx = task.correctFixIndex;
+    if (typeof idx === 'number' && Number.isInteger(idx) && idx >= 0 && idx < task.fixes.length) {
+        return idx;
+    }
+    return 1;
 }
 
 function renderLanguageSelector() {
@@ -215,9 +225,10 @@ function showFixes(fixes) {
 function applyFix(fixIndex) {
     if (!state.isFixing) return;
     const task = state.filteredTasks[state.currentIndex];
-    const correctFix = task.fixes[1];
+    const correctIndex = getCorrectFixIndex(task);
+    const correctFix = task.fixes[correctIndex];
 
-    if (task.fixes[fixIndex] === correctFix) {
+    if (fixIndex === correctIndex) {
         els.modal.classList.remove('visible');
         
         const lines = els.codeArea.querySelectorAll('.debug-code-line');

@@ -1,5 +1,18 @@
-const MIN_ENTROPY = 0;
-const MAX_ENTROPY_FOR_BAR = 128;
+const CHARS = {
+    upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    lower: 'abcdefghijklmnopqrstuvwxyz',
+    digits: '0123456789',
+    symbols: '!@#$%^&*()-_=+[]{};:,.<>?'
+};
+
+const COMMON_PASSWORDS = new Set([
+    'password', '123456', '12345678', 'qwerty', 'abc123', 'monkey', 'letmein',
+    'dragon', '111111', 'iloveyou', 'admin', 'welcome', 'login', 'passw0rd',
+    'master', 'hello', 'freedom', 'whatever', 'qazwsx', 'trustno1', '1234567890',
+    'qwerty123', '123456789', '1q2w3e4r', 'sunshine', 'princess', 'football',
+    'baseball', 'shadow', 'superman', 'michael', 'batman', 'computer',
+    'пароль', 'йцукен', 'привет', 'любовь'
+]);
 
 const state = {
     length: 16,
@@ -7,13 +20,6 @@ const state = {
     useLower: true,
     useDigits: true,
     useSymbols: true
-};
-
-const CHARS = {
-    upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    lower: 'abcdefghijklmnopqrstuvwxyz',
-    digits: '0123456789',
-    symbols: '!@#$%^&*()-_=+[]{};:,.<>?'
 };
 
 const els = {};
@@ -36,6 +42,22 @@ function cacheElements() {
     els.resetBtn = document.getElementById('resetBtn');
 }
 
+function randomInt(max) {
+    if (max <= 0) return 0;
+    if (typeof crypto !== 'undefined' && typeof crypto.getRandomValues === 'function') {
+        const values = new Uint32Array(1);
+        const limit = Math.floor(0x100000000 / max) * max;
+        let v;
+        do {
+            crypto.getRandomValues(values);
+            v = values[0];
+        } while (v >= limit);
+        return v % max;
+    }
+    console.warn('crypto.getRandomValues недоступен - используется Math.random (не криптографически стойкий)');
+    return Math.floor(Math.random() * max);
+}
+
 function buildAlphabet() {
     let alphabet = '';
     if (state.useUpper) alphabet += CHARS.upper;
@@ -45,18 +67,39 @@ function buildAlphabet() {
     return alphabet;
 }
 
+function buildGroups() {
+    const groups = [];
+    if (state.useUpper) groups.push(CHARS.upper);
+    if (state.useLower) groups.push(CHARS.lower);
+    if (state.useDigits) groups.push(CHARS.digits);
+    if (state.useSymbols) groups.push(CHARS.symbols);
+    return groups;
+}
+
 function generatePassword() {
-    const alphabet = buildAlphabet();
-    if (!alphabet.length) return '';
+    const groups = buildGroups();
+    if (!groups.length) return '';
 
-    const values = new Uint32Array(state.length);
-    crypto.getRandomValues(values);
+    const all = groups.join('');
+    const length = Math.max(state.length, groups.length);
+    const chars = [];
 
-    let password = '';
-    for (let i = 0; i < state.length; i++) {
-        password += alphabet[values[i] % alphabet.length];
+    for (const group of groups) {
+        chars.push(group[randomInt(group.length)]);
     }
-    return password;
+
+    while (chars.length < length) {
+        chars.push(all[randomInt(all.length)]);
+    }
+
+    for (let i = chars.length - 1; i > 0; i--) {
+        const j = randomInt(i + 1);
+        const tmp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = tmp;
+    }
+
+    return chars.join('');
 }
 
 function calcEntropy(length, alphabetSize) {
@@ -82,8 +125,10 @@ function getStrengthInfo(bits) {
 
 function updateStrength() {
     const alphabet = buildAlphabet();
-    const bits = calcEntropy(state.length, alphabet.length);
-    const info = getStrengthInfo(bits);
+    const bits = alphabet.length === 0 ? 0 : calcEntropy(state.length, alphabet.length);
+    const info = alphabet.length === 0
+        ? { label: 'Выберите набор', color: '#666', percent: 0 }
+        : getStrengthInfo(bits);
 
     els.strengthFill.style.width = info.percent + '%';
     els.strengthFill.style.background = info.color;
@@ -187,17 +232,6 @@ function bindEvents() {
         updateStrength();
     });
 }
-
-// ===== Проверка пароля пользователя =====
-
-const COMMON_PASSWORDS = new Set([
-    'password', '123456', '12345678', 'qwerty', 'abc123', 'monkey', 'letmein',
-    'dragon', '111111', 'iloveyou', 'admin', 'welcome', 'login', 'passw0rd',
-    'master', 'hello', 'freedom', 'whatever', 'qazwsx', 'trustno1', '1234567890',
-    'qwerty123', '123456789', '1q2w3e4r', 'sunshine', 'princess', 'football',
-    'baseball', 'shadow', 'superman', 'michael', 'batman', 'computer',
-    'пароль', 'йцукен', 'привет', 'любовь'
-]);
 
 const checkState = {
     visible: false

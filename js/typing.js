@@ -122,6 +122,7 @@ const state = {
     input: "",
     startTime: null,
     timerInterval: null,
+    pausedAt: null,
     errorCount: 0,
     totalTyped: 0,
     isDone: false,
@@ -156,6 +157,7 @@ function cacheElements() {
     els.errorHintList = document.getElementById("errorHintList");
     els.errorHintEmpty = document.getElementById("errorHintEmpty");
     els.mobileWarning = document.getElementById("mobileWarning");
+    els.layoutWarning = document.getElementById("layoutWarning");
     els.strictToggle = document.getElementById("strictToggle");
     els.keyboard = document.getElementById("keyboard");
     els.chips = document.querySelectorAll('.typing-chip');
@@ -221,7 +223,6 @@ function extendWordsIfNeeded() {
     for (let i = 0; i < TIME_MODE_EXTEND_BY; i++) {
         state.words.push(pickWord());
     }
-    render();
 }
 
 function escapeHtml(str) {
@@ -407,18 +408,31 @@ function updateKeyboard() {
     highlightTargetKey();
 }
 
-function startTimer() {
-    if (state.startTime) return;
-    state.startTime = Date.now();
+function startTimerLoop() {
+    clearInterval(state.timerInterval);
     state.timerInterval = setInterval(() => {
         const elapsed = (Date.now() - state.startTime) / 1000;
         els.timeDisplay.textContent = elapsed.toFixed(1);
         updateStats();
-
         if (state.mode === "time" && elapsed >= state.timeLimit) {
             finish();
         }
     }, 100);
+}
+
+function startTimer() {
+    if (state.startTime) return;
+    state.startTime = Date.now();
+    state.pausedAt = null;
+    startTimerLoop();
+}
+
+function showLayoutWarning() {
+    if (els.layoutWarning) els.layoutWarning.hidden = false;
+}
+
+function hideLayoutWarning() {
+    if (els.layoutWarning) els.layoutWarning.hidden = true;
 }
 
 function calcAccuracy() {
@@ -440,7 +454,9 @@ function calcCleanAccuracy() {
 function calcWpm(elapsedSeconds) {
     const minutes = elapsedSeconds / 60;
     if (minutes <= 0) return 0;
-    const correctChars = state.input.length - state.errorCount;
+    const correctChars = state.strict
+        ? state.input.length
+        : Math.max(0, state.input.length - state.errorCount);
     return Math.round((correctChars / 5) / minutes);
 }
 
@@ -464,6 +480,7 @@ function finish() {
     state.isDone = true;
     clearInterval(state.timerInterval);
     state.timerInterval = null;
+    state.pausedAt = null;
 
     const elapsed = state.startTime ? (Date.now() - state.startTime) / 1000 : 0;
     const wpm = calcWpm(elapsed);
@@ -478,6 +495,7 @@ function finish() {
     els.overlay.classList.add("visible");
     els.section.classList.add("done");
 
+    hideLayoutWarning();
     saveHistory({ wpm, accuracy: acc, cleanAccuracy: cleanAcc, time: elapsed, mode: state.mode, lang: state.lang, date: Date.now() });
     saveSessionErrors();
     updateHistoryDisplay();
@@ -609,6 +627,7 @@ function reset() {
     state.input = "";
     state.startTime = null;
     state.timerInterval = null;
+    state.pausedAt = null;
     state.errorCount = 0;
     state.totalTyped = 0;
     state.isDone = false;
@@ -627,6 +646,7 @@ function reset() {
     els.focusPrompt.classList.remove("hidden");
     els.wordsInner.style.transform = "translateY(0)";
     els.section.classList.remove("done");
+    hideLayoutWarning();
 
     unlockChips();
     generateWords();
@@ -687,9 +707,20 @@ function handleKey(e) {
         if (!state.startTime) startTimer();
 
         const expected = fullText[state.input.length];
+        const expectedCode = charToCode(expected);
+        const isSamePhysicalKey = expectedCode && e.code && expectedCode === e.code;
+        const isWrongChar = normalizeChar(e.key) !== normalizeChar(expected);
+        const shiftMatches = e.shiftKey === needsShift(expected);
+
+        if (isSamePhysicalKey && isWrongChar && shiftMatches) {
+            showLayoutWarning();
+            return;
+        }
+
+        hideLayoutWarning();
         state.totalTyped++;
 
-        if (normalizeChar(e.key) !== normalizeChar(expected)) {
+        if (isWrongChar) {
             state.errorCount++;
             const key = expected === " " ? " " : expected;
             state.sessionErrors[key] = (state.sessionErrors[key] || 0) + 1;
@@ -704,12 +735,13 @@ function handleKey(e) {
         }
 
         state.input += e.key;
-        render();
-        updateStats();
 
         if (state.mode === "time") {
             extendWordsIfNeeded();
         }
+
+        render();
+        updateStats();
 
         if (state.mode !== "time" && state.input.length >= fullText.length) {
             finish();
@@ -794,6 +826,20 @@ function bindEvents() {
     document.addEventListener("keydown", onKeyDownRaw, true);
     document.addEventListener("keyup", onKeyUpRaw, true);
     document.addEventListener("keydown", handleKey);
+
+    document.addEventListener("visibilitychange", () => {
+        if (!state.startTime || state.isDone) return;
+
+        if (document.hidden) {
+            clearInterval(state.timerInterval);
+            state.timerInterval = null;
+            state.pausedAt = Date.now();
+        } else if (state.pausedAt) {
+            state.startTime += Date.now() - state.pausedAt;
+            state.pausedAt = null;
+            startTimerLoop();
+        }
+    });
 }
 
 function checkMobile() {
@@ -807,6 +853,7 @@ function checkMobile() {
 async function init() {
     cacheElements();
     checkMobile();
+    state.strict = els.strictToggle ? els.strictToggle.classList.contains('active') : false;
     await loadWords();
     renderKeyboard();
     bindEvents();

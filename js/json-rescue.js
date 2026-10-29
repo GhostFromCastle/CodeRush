@@ -53,8 +53,25 @@ async function loadData() {
     }
 }
 
-function deepEqual(obj1, obj2) {
-    return JSON.stringify(obj1) === JSON.stringify(obj2);
+function deepEqual(a, b) {
+    if (a === b) return true;
+    if (typeof a !== 'object' || a === null || typeof b !== 'object' || b === null) return false;
+    if (Array.isArray(a) !== Array.isArray(b)) return false;
+    if (Array.isArray(a)) {
+        if (a.length !== b.length) return false;
+        for (let i = 0; i < a.length; i++) {
+            if (!deepEqual(a[i], b[i])) return false;
+        }
+        return true;
+    }
+    const keysA = Object.keys(a);
+    const keysB = Object.keys(b);
+    if (keysA.length !== keysB.length) return false;
+    for (const key of keysA) {
+        if (!Object.prototype.hasOwnProperty.call(b, key)) return false;
+        if (!deepEqual(a[key], b[key])) return false;
+    }
+    return true;
 }
 
 function getRandomTask(level) {
@@ -91,13 +108,24 @@ function clearAlert() {
     els.alertBox.innerHTML = '';
 }
 
-function showSolution() {
-    els.solutionCode.textContent = JSON.stringify(state.currentTask.expected, null, 2);
-    els.solutionBox.hidden = false;
+function lockControls() {
     els.checkBtn.disabled = true;
     els.hintBtn.disabled = true;
     els.giveUpBtn.disabled = true;
     els.textarea.disabled = true;
+}
+
+function unlockControls() {
+    els.checkBtn.disabled = false;
+    els.hintBtn.disabled = false;
+    els.giveUpBtn.disabled = false;
+    els.textarea.disabled = false;
+}
+
+function showSolution() {
+    els.solutionCode.textContent = JSON.stringify(state.currentTask.expected, null, 2);
+    els.solutionBox.hidden = false;
+    lockControls();
 }
 
 function loadNextTask() {
@@ -113,10 +141,7 @@ function loadNextTask() {
         state.strikes = 0;
         clearAlert();
         els.solutionBox.hidden = true;
-        els.checkBtn.disabled = false;
-        els.hintBtn.disabled = false;
-        els.giveUpBtn.disabled = false;
-        els.textarea.disabled = false;
+        unlockControls();
         
         state.currentTask = getRandomTask(state.mode);
         els.taskBadge.textContent = `Сложность: ${state.currentTask.level.toUpperCase()}`;
@@ -188,9 +213,14 @@ function checkJson() {
 
 function bindEvents() {
     els.checkBtn.addEventListener('click', checkJson);
+    
     els.resetBtn.addEventListener('click', () => {
         if (state.currentTask) els.textarea.value = state.currentTask.broken;
+        state.strikes = 0;
         clearAlert();
+        els.solutionBox.hidden = true;
+        unlockControls();
+        updateUI();
     });
     
     els.hintBtn.addEventListener('click', () => {
