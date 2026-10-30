@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замыкания, область видимости и this - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="advanced" data-lesson-id="lesson-19">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 19</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-19.html" class="sidebar-lesson active" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Замыкания, область видимости и this</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Начинающие разработчики пишут код, который работает. Опытные - код, который они понимают.
+    Граница проходит здесь: в понимании области видимости, замыканий и <code>this</code>.
+    Именно эти темы чаще всего спрашивают на собеседованиях - и именно они объясняют
+    поведение, которое иначе кажется магией.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём, как JavaScript ищет переменные.</li>
+    <li>Поймём, что такое hoisting и временная мёртвая зона.</li>
+    <li>Освоим замыкания - и увидим, где они применяются.</li>
+    <li>Разберёмся, чему равно <code>this</code> в разных ситуациях.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Рюкзак: функция уносит с собой переменные из места рождения и достаёт их позже, даже когда это место уже закрыто.</p>
+</div>
+
+<h2>Область видимости</h2>
+
+<p>У переменной есть область, в которой она доступна. В JavaScript таких областей две:
+    <strong>глобальная</strong> и <strong>блочная</strong> (внутри <code>{...}</code>).</p>
+
+<pre class="code-numbered"><code><span class="code-row">const global = &quot;я везде&quot;;</span><span class="code-row"></span><span class="code-row">function outer() {</span><span class="code-row">    const fromOuter = &quot;я в функции&quot;;</span><span class="code-row"></span><span class="code-row">    function inner() {</span><span class="code-row">        const fromInner = &quot;я только здесь&quot;;</span><span class="code-row">        console.log(global);     // доступна</span><span class="code-row">        console.log(fromOuter);  // доступна</span><span class="code-row">        console.log(fromInner);  // доступна</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    inner();</span><span class="code-row">    // console.log(fromInner); // ReferenceError</span><span class="code-row">}</span></code></pre>
+
+<p>Когда код обращается к переменной, движок сначала ищет её в текущем блоке, затем в
+    родительском, затем выше - вплоть до глобальной области. Эта цепочка называется
+    <strong>цепочкой областей видимости</strong>.</p>
+
+<p>Ключевой момент: функция видит переменные <em>того места, где она объявлена</em>, а не того,
+    откуда её вызвали. Это называется лексической областью видимости.</p>
+
+<h2>var, let и const</h2>
+
+<p>Разница не только в возможности переприсваивания:</p>
+
+<pre class="code-numbered"><code><span class="code-row">if (true) {</span><span class="code-row">    var oldStyle = &quot;видна снаружи блока&quot;;</span><span class="code-row">    let blockScoped = &quot;только внутри блока&quot;;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(oldStyle);    // работает</span><span class="code-row">console.log(blockScoped); // ReferenceError</span></code></pre>
+
+<p><code>var</code> игнорирует блоки <code>{}</code> и поднимается до уровня функции. Именно
+    поэтому он приводит к трудноуловимым багам - и поэтому в современном коде его не
+    используют.</p>
+
+<h2>Hoisting и временная мёртвая зона</h2>
+
+<p>Перед выполнением кода движок проходит по нему и регистрирует объявления. Это называется
+    <strong>поднятием</strong> (hoisting). Но ведёт себя оно по-разному:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(a); // undefined - объявление поднято, значение нет</span><span class="code-row">var a = 1;</span><span class="code-row"></span><span class="code-row">// console.log(b); // ReferenceError: Cannot access &#x27;b&#x27; before initialization</span><span class="code-row">let b = 2;</span></code></pre>
+
+<p>С <code>let</code> и <code>const</code> переменная существует с начала блока, но до строки
+    объявления находится в <strong>временной мёртвой зоне</strong> (TDZ). Обращение к ней -
+    ошибка. Это сделано специально: лучше упасть сразу, чем получить <code>undefined</code>
+    и искать причину через десять строк.</p>
+
+<p>Функции, объявленные через <code>function</code>, поднимаются целиком - их можно вызывать
+    до объявления:</p>
+
+<pre class="code-numbered"><code><span class="code-row">sayHi(); // работает</span><span class="code-row"></span><span class="code-row">function sayHi() {</span><span class="code-row">    console.log(&quot;Привет&quot;);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">// sayBye(); // TypeError: sayBye is not a function</span><span class="code-row">const sayBye = () =&gt; console.log(&quot;Пока&quot;);</span></code></pre>
+
+<h2>Замыкание</h2>
+
+<p>Замыкание - это функция, которая запоминает переменные из места своего создания, даже
+    после того как внешняя функция завершилась.</p>
+
+<pre class="code-numbered"><code><span class="code-row">function createCounter() {</span><span class="code-row">    let count = 0;</span><span class="code-row"></span><span class="code-row">    return function () {</span><span class="code-row">        count += 1;</span><span class="code-row">        return count;</span><span class="code-row">    };</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const counter = createCounter();</span><span class="code-row"></span><span class="code-row">console.log(counter()); // 1</span><span class="code-row">console.log(counter()); // 2</span><span class="code-row">console.log(counter()); // 3</span></code></pre>
+
+<p><code>createCounter</code> уже завершилась, но <code>count</code> жив: возвращённая
+    функция держит на него ссылку. Никакой другой код не может изменить эту переменную
+    напрямую - получается приватное состояние.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Где замыкания в реальном коде
+    </div>
+    <p>Обработчики событий, колбэки таймеров, функции-обработчики запросов - всё это
+        замыкания. Когда вы пишете <code>button.addEventListener("click", () =&gt; count++)</code>,
+        стрелочная функция замыкает переменную <code>count</code>. Вы пользуетесь этим
+        постоянно, просто не называли это словом «замыкание».</p>
+</div>
+
+<h2>Замыкание и циклы</h2>
+
+<p>Классическая задача. Что выведет этот код?</p>
+
+<pre class="code-numbered"><code><span class="code-row">for (var i = 0; i &lt; 3; i++) {</span><span class="code-row">    setTimeout(() =&gt; console.log(i), 0);</span><span class="code-row">}</span></code></pre>
+
+<p>Ответ: <code>3, 3, 3</code>. <code>var</code> создаёт одну переменную на весь цикл, и к
+    моменту выполнения колбэков она уже равна трём.</p>
+
+<p>С <code>let</code> всё иначе: для каждой итерации создаётся своя переменная.</p>
+
+<pre class="code-numbered"><code><span class="code-row">for (let i = 0; i &lt; 3; i++) {</span><span class="code-row">    setTimeout(() =&gt; console.log(i), 0);</span><span class="code-row">}</span><span class="code-row">// 0, 1, 2</span></code></pre>
+
+<p>Это одна из главных причин, почему <code>let</code> заменил <code>var</code>.</p>
+
+<h2>Модули через замыкание</h2>
+
+<p>До появления ES-модулей приватность делали так:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const storage = (function () {</span><span class="code-row">    const items = [];</span><span class="code-row"></span><span class="code-row">    return {</span><span class="code-row">        add(item) {</span><span class="code-row">            items.push(item);</span><span class="code-row">        },</span><span class="code-row">        getAll() {</span><span class="code-row">            return [...items];</span><span class="code-row">        },</span><span class="code-row">        count() {</span><span class="code-row">            return items.length;</span><span class="code-row">        }</span><span class="code-row">    };</span><span class="code-row">})();</span><span class="code-row"></span><span class="code-row">storage.add(&quot;яблоко&quot;);</span><span class="code-row">console.log(storage.count()); // 1</span><span class="code-row">console.log(storage.items);   // undefined - снаружи не достать</span></code></pre>
+
+<p>Функция вызывает себя сразу (IIFE) и возвращает только публичный интерфейс. Массив
+    <code>items</code> остаётся внутри замыкания. Современный аналог - модули, о которых
+    поговорим через два урока.</p>
+
+<h2>this: четыре ситуации</h2>
+
+<p><code>this</code> - ссылка на контекст вызова. Значение зависит не от того, где функция
+    объявлена, а от того, <em>как</em> она вызвана.</p>
+
+<h3>1. Метод объекта</h3>
+
+<pre class="code-numbered"><code><span class="code-row">const user = {</span><span class="code-row">    name: &quot;Алексей&quot;,</span><span class="code-row">    greet() {</span><span class="code-row">        console.log(this.name);</span><span class="code-row">    }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">user.greet(); // &quot;Алексей&quot;</span></code></pre>
+
+<p>Если функция вызвана как метод - <code>this</code> указывает на объект перед точкой.</p>
+
+<h3>2. Обычный вызов</h3>
+
+<pre class="code-numbered"><code><span class="code-row">function show() {</span><span class="code-row">    console.log(this);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">show(); // в строгом режиме undefined, иначе window</span></code></pre>
+
+<p>Модули и код классов работают в строгом режиме, поэтому там <code>this</code> будет
+    <code>undefined</code>.</p>
+
+<h3>3. Стрелочная функция</h3>
+
+<p>Своё <code>this</code> стрелочные функции не создают - они берут его из внешнего контекста:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const user = {</span><span class="code-row">    name: &quot;Алексей&quot;,</span><span class="code-row">    greet: () =&gt; {</span><span class="code-row">        console.log(this.name); // undefined</span><span class="code-row">    }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">user.greet();</span></code></pre>
+
+<p>Поэтому методы объекта стрелочными не делают. Исключение - когда нужно специально
+    сохранить внешний <code>this</code> внутри колбэка:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const timer = {</span><span class="code-row">    seconds: 0,</span><span class="code-row">    start() {</span><span class="code-row">        setInterval(() =&gt; {</span><span class="code-row">            this.seconds++; // this из start</span><span class="code-row">            console.log(this.seconds);</span><span class="code-row">        }, 1000);</span><span class="code-row">    }</span><span class="code-row">};</span></code></pre>
+
+<h3>4. Явная привязка</h3>
+
+<p>Методы <code>call</code>, <code>apply</code> и <code>bind</code> позволяют задать
+    <code>this</code> вручную:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function introduce(greeting, punctuation) {</span><span class="code-row">    console.log(`${greeting}, ${this.name}${punctuation}`);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const user = { name: &quot;Алексей&quot; };</span><span class="code-row"></span><span class="code-row">introduce.call(user, &quot;Привет&quot;, &quot;!&quot;);</span><span class="code-row">introduce.apply(user, [&quot;Привет&quot;, &quot;!&quot;]);</span><span class="code-row"></span><span class="code-row">const bound = introduce.bind(user, &quot;Привет&quot;);</span><span class="code-row">bound(&quot;!&quot;); // &quot;Привет, Алексей!&quot;</span></code></pre>
+
+<p><code>call</code> принимает аргументы через запятую, <code>apply</code> - массивом,
+    <code>bind</code> возвращает новую функцию с навсегда привязанным контекстом.</p>
+
+<h2>Потеря this</h2>
+
+<p>Самая частая ошибка - передать метод как колбэк:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const user = {</span><span class="code-row">    name: &quot;Алексей&quot;,</span><span class="code-row">    greet() {</span><span class="code-row">        console.log(this.name);</span><span class="code-row">    }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">setTimeout(user.greet, 100); // undefined</span><span class="code-row"></span><span class="code-row">setTimeout(() =&gt; user.greet(), 100);        // &quot;Алексей&quot;</span><span class="code-row">setTimeout(user.greet.bind(user), 100);     // &quot;Алексей&quot;</span></code></pre>
+
+<p>В первом случае функция вызвана без объекта - <code>this</code> потерян. Лечится
+    обёрткой-стрелкой или <code>bind</code>.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>let / const</code>
+        <span>блочная область видимости</span>
+    </li>
+    <li>
+        <code>var</code>
+        <span>функциональная, устаревшая</span>
+    </li>
+    <li>
+        <code>TDZ</code>
+        <span>нельзя читать до объявления</span>
+    </li>
+    <li>
+        <code>closure</code>
+        <span>функция помнит своё окружение</span>
+    </li>
+    <li>
+        <code>this</code>
+        <span>зависит от способа вызова</span>
+    </li>
+    <li>
+        <code>bind</code>
+        <span>жёстко привязать this</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Cannot access before initialization»</strong>. Временная мёртвая зона:
+        переменная используется до объявления.</li>
+    <li><strong>В цикле все колбэки выводят последнее значение</strong>. Счётчик объявлен
+        через <code>var</code>. Замените на <code>let</code>.</li>
+    <li><strong><code>this</code> равно <code>undefined</code></strong>. Метод вызван без
+        объекта, записан стрелочной функцией или передан как колбэк. Используйте
+        <code>bind</code> или обёртку.</li>
+    <li><strong>Счётчик в замыкании «сбрасывается»</strong>. Функция создаётся заново при
+        каждом вызове внешней функции - состояние нужно выносить наружу.</li>
+    <li><strong>Мутация массива из замыкания видна снаружи</strong>. Возвращайте копию:
+        <code>[...items]</code>, иначе внешний код сможет менять внутреннее состояние.</li>
+    <li><strong>Все кнопки показывают одно и то же число.</strong> Обработчики в цикле замкнули одну переменную. С <code>let</code> в заголовке цикла у каждой итерации своя переменная - проблема исчезает.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Счётчик</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>createCounter(start = 0)</code>,
+                которая возвращает объект с методами <code>increment()</code>,
+                <code>decrement()</code> и <code>value()</code>. Внутреннее число не должно
+                быть доступно напрямую.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Объявите <code>let count = start</code> внутри функции и верните объект
+                        с методами, которые его меняют. Это и есть замыкание.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function createCounter(start = 0) {</span><span class="code-row">    let count = start;</span><span class="code-row"></span><span class="code-row">    return {</span><span class="code-row">        increment: () =&gt; ++count,</span><span class="code-row">        decrement: () =&gt; --count,</span><span class="code-row">        value: () =&gt; count</span><span class="code-row">    };</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const counter = createCounter(5);</span><span class="code-row">counter.increment();</span><span class="code-row">console.log(counter.value()); // 6</span><span class="code-row">console.log(counter.count);   // undefined</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Ошибка с var</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Код ниже выводит три тройки вместо 0, 1, 2. Объясните
+                почему и исправьте его двумя способами: через <code>let</code> и через
+                замыкание с <code>var</code>.</p>
+
+<pre class="code-numbered"><code><span class="code-row">for (var i = 0; i &lt; 3; i++) {</span><span class="code-row">    setTimeout(() =&gt; console.log(i), 0);</span><span class="code-row">}</span></code></pre>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>var</code> создаёт одну переменную на весь цикл. Второй способ -
+                        обернуть тело цикла в функцию, которая вызывается сразу с текущим
+                        значением: <code>(function (j) { ... })(i)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">// Способ 1: let создаёт переменную на каждую итерацию</span><span class="code-row">for (let i = 0; i &lt; 3; i++) {</span><span class="code-row">    setTimeout(() =&gt; console.log(i), 0);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">// Способ 2: замыкание</span><span class="code-row">for (var j = 0; j &lt; 3; j++) {</span><span class="code-row">    (function (value) {</span><span class="code-row">        setTimeout(() =&gt; console.log(value), 0);</span><span class="code-row">    })(j);</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Потерянный this</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Метод <code>user.greet</code> передали в таймер, и он вывел
+                <code>undefined</code>. Исправьте код так, чтобы вывелось имя, не меняя
+                сам объект и не переписывая метод стрелкой.</p>
+
+<pre class="code-numbered"><code><span class="code-row">const user = {</span><span class="code-row">    name: &quot;Алексей&quot;,</span><span class="code-row">    greet() {</span><span class="code-row">        console.log(this.name);</span><span class="code-row">    }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">setTimeout(user.greet, 100);</span></code></pre>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Либо оберните вызов в стрелочную функцию, которая сохраняет контекст,
+                        либо привяжите его через <code>bind(user)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">setTimeout(() =&gt; user.greet(), 100);</span><span class="code-row"></span><span class="code-row">// или</span><span class="code-row">setTimeout(user.greet.bind(user), 100);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Один раз</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>once(fn)</code>, которая возвращает обёртку: исходная функция выполняется только при первом вызове, дальше возвращается сохранённый результат.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Запомните результат в замыкании и проверяйте флаг.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">function once(fn) {</span><span class="code-row">    let called = false;</span><span class="code-row">    let result;</span><span class="code-row"></span><span class="code-row">    return (...args) =&gt; {</span><span class="code-row">        if (!called) {</span><span class="code-row">            called = true;</span><span class="code-row">            result = fn(...args);</span><span class="code-row">        }</span><span class="code-row">        return result;</span><span class="code-row">    };</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы заглянули под капот языка. Теперь вы знаете:</p>
+<ul>
+    <li>Как работает цепочка областей видимости и чем отличается <code>var</code> от
+        <code>let</code>.</li>
+    <li>Что такое hoisting и временная мёртвая зона.</li>
+    <li>Как устроены замыкания и где они применяются.</li>
+    <li>Чему равно <code>this</code> в методах, обычных и стрелочных функциях.</li>
+</ul>
+
+<p>Но откуда у объектов вообще берутся методы? Почему <code>[] instanceof Array</code>
+    работает, а у любого массива есть <code>map</code>? Ответ - в прототипах. В следующем
+    уроке разберём прототипную цепочку и классы - современную обёртку над ней.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="../intermediate/lesson-18.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-20.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прототипы и классы - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="advanced" data-lesson-id="lesson-20">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 20</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson active" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Прототипы и классы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>В JavaScript нет «настоящих» классов в том смысле, в каком они есть в C# или Java. Всё
+    объектное устройство языка построено на прототипах. Классы, появившиеся в ES6, - это
+    удобный синтаксис поверх той же прототипной модели.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём, что такое прототип и прототипная цепочка.</li>
+    <li>Научимся создавать объекты через <code>Object.create</code>.</li>
+    <li>Освоим классы: конструктор, методы, геттеры, статику.</li>
+    <li>Поймём наследование и приватные поля.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Чертёж и дом: класс - чертёж, объект - построенный по нему дом. По одному чертежу можно построить сколько угодно домов.</p>
+</div>
+
+<h2>Прототипная цепочка</h2>
+
+<p>Каждый объект в JavaScript хранит ссылку на другой объект - свой прототип. Если свойства
+    нет в самом объекте, движок ищет его в прототипе, затем в прототипе прототипа и так
+    далее, пока не дойдёт до <code>null</code>.</p>
+
+<pre class="code-numbered"><code><span class="code-row">const animal = {</span><span class="code-row">    eats: true,</span><span class="code-row">    breathe() {</span><span class="code-row">        console.log(&quot;Дышу&quot;);</span><span class="code-row">    }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">const rabbit = Object.create(animal);</span><span class="code-row">rabbit.jumps = true;</span><span class="code-row"></span><span class="code-row">console.log(rabbit.jumps);   // true - своё свойство</span><span class="code-row">console.log(rabbit.eats);    // true - из прототипа</span><span class="code-row">rabbit.breathe();            // метод из прототипа</span></code></pre>
+
+<p>Схематично цепочка выглядит так:</p>
+
+<pre class="code-numbered"><code><span class="code-row">rabbit</span><span class="code-row">  └── [[Prototype]]: animal</span><span class="code-row">        └── [[Prototype]]: Object.prototype</span><span class="code-row">              └── [[Prototype]]: null</span></code></pre>
+
+<p>Именно поэтому у любого объекта есть <code>toString</code> и <code>hasOwnProperty</code>:
+    они лежат в <code>Object.prototype</code>.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-info"></i>
+        Свойство против прототипа
+    </div>
+    <p><code>rabbit.hasOwnProperty("jumps")</code> вернёт <code>true</code>, а
+        <code>rabbit.hasOwnProperty("eats")</code> - <code>false</code>: второе свойство
+        унаследовано. Это важно, когда вы перебираете объект своим кодом и не хотите
+        трогать чужие свойства.</p>
+</div>
+
+<h2>Функции-конструкторы</h2>
+
+<p>До появления классов объекты создавали функциями-конструкторами. Полезно понимать этот
+    механизм, потому что классы работают ровно так же:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function User(name, age) {</span><span class="code-row">    this.name = name;</span><span class="code-row">    this.age = age;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">User.prototype.greet = function () {</span><span class="code-row">    console.log(`Привет, ${this.name}`);</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">const user = new User(&quot;Алексей&quot;, 25);</span><span class="code-row">user.greet(); // &quot;Привет, Алексей&quot;</span></code></pre>
+
+<p>Ключевое слово <code>new</code> делает четыре вещи: создаёт пустой объект, привязывает к
+    нему <code>this</code>, выполняет тело функции и возвращает объект. Методы кладут в
+    <code>prototype</code>, чтобы они были общими и не копировались в каждый экземпляр.</p>
+
+<h2>Классы</h2>
+
+<p>Тот же код, записанный классом:</p>
+
+<pre class="code-numbered"><code><span class="code-row">class User {</span><span class="code-row">    constructor(name, age) {</span><span class="code-row">        this.name = name;</span><span class="code-row">        this.age = age;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    greet() {</span><span class="code-row">        console.log(`Привет, ${this.name}`);</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const user = new User(&quot;Алексей&quot;, 25);</span><span class="code-row">user.greet();</span></code></pre>
+
+<p>Методы класса автоматически попадают в прототип. Внутри класса всегда действует строгий
+    режим. Вызывать класс без <code>new</code> нельзя - будет ошибка.</p>
+
+<h2>Поля и приватность</h2>
+
+<pre class="code-numbered"><code><span class="code-row">class Counter {</span><span class="code-row">    count = 0;          // публичное поле</span><span class="code-row">    #step = 1;          // приватное поле</span><span class="code-row"></span><span class="code-row">    constructor(step) {</span><span class="code-row">        this.#step = step;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    increment() {</span><span class="code-row">        this.count += this.#step;</span><span class="code-row">        return this.count;</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const counter = new Counter(2);</span><span class="code-row">counter.increment();</span><span class="code-row">console.log(counter.count); // 2</span><span class="code-row">console.log(counter.#step); // SyntaxError: приватное поле</span></code></pre>
+
+<p>Приватные поля начинаются с <code>#</code> и доступны только внутри класса. Это
+    настоящее сокрытие, а не договорённость: обратиться снаружи невозможно даже через
+    квадратные скобки.</p>
+
+<h2>Геттеры и сеттеры</h2>
+
+<p>Позволяют управлять доступом к свойству:</p>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>class Temperature {
+    #celsius;
+
+    constructor(celsius) {
+        this.#celsius = celsius;
+    }
+
+    get fahrenheit() {
+        return this.#celsius * 9 / 5 + 32;
+    }
+
+    set fahrenheit(value) {
+        this.#celsius = (value - 32) * 5 / 9;
+    }
+
+    get celsius() {
+        return this.#celsius;
+    }
+}
+
+const t = new Temperature(25);
+console.log(t.fahrenheit); // 77
+
+t.fahrenheit = 212;
+console.log(t.celsius); // 100</code></pre>
+</div>
+
+<p>Снаружи это выглядит как обычное свойство, но внутри выполняется вычисление. Удобно для
+    валидации: в сеттере можно проверить значение и выбросить ошибку.</p>
+
+<h2>Статические члены</h2>
+
+<p>Принадлежат классу, а не экземпляру:</p>
+
+<pre class="code-numbered"><code><span class="code-row">class MathHelper {</span><span class="code-row">    static PI = 3.14159;</span><span class="code-row"></span><span class="code-row">    static circleArea(radius) {</span><span class="code-row">        return MathHelper.PI * radius ** 2;</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(MathHelper.circleArea(2)); // 12.56636</span></code></pre>
+
+<p>Статические методы - это утилиты, которым не нужно состояние экземпляра. Классический
+    пример - <code>Array.from</code> или <code>Object.keys</code>.</p>
+
+<h2>Наследование</h2>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        return `${this.name} издаёт звук`;
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name);          // обязательно до this
+        this.breed = breed;
+    }
+
+    speak() {
+        return `${this.name} лает`;
+    }
+}
+
+const dog = new Dog(&quot;Рекс&quot;, &quot;овчарка&quot;);
+console.log(dog.speak());         // &quot;Рекс лает&quot;
+console.log(dog instanceof Dog);  // true
+console.log(dog instanceof Animal); // true</code></pre>
+</div>
+
+<p><code>super(name)</code> вызывает конструктор родителя. Если конструктор в наследнике не
+    объявлен, он создаётся автоматически и передаёт все аргументы родителю.</p>
+
+<p><code>instanceof</code> проверяет всю цепочку прототипов, поэтому собака является и
+    <code>Dog</code>, и <code>Animal</code>, и <code>Object</code>.</p>
+
+<h2>Когда классы не нужны</h2>
+
+<p>Классы - инструмент, а не цель. Если у вас нет состояния и нескольких экземпляров,
+    достаточно функций и объектов:</p>
+
+<pre class="code-numbered"><code><span class="code-row">// Избыточно</span><span class="code-row">class MathUtils {</span><span class="code-row">    static double(n) { return n * 2; }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">// Достаточно</span><span class="code-row">const double = (n) =&gt; n * 2;</span></code></pre>
+
+<p>Правило: класс оправдан, когда есть данные и поведение, которые живут вместе, и когда
+    таких сущностей может быть много.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>Object.create(proto)</code>
+        <span>объект с заданным прототипом</span>
+    </li>
+    <li>
+        <code>class</code>
+        <span>синтаксис над прототипами</span>
+    </li>
+    <li>
+        <code>constructor</code>
+        <span>инициализация экземпляра</span>
+    </li>
+    <li>
+        <code>extends / super</code>
+        <span>наследование</span>
+    </li>
+    <li>
+        <code>#field</code>
+        <span>приватное поле</span>
+    </li>
+    <li>
+        <code>get / set</code>
+        <span>управляемый доступ к свойству</span>
+    </li>
+    <li>
+        <code>static</code>
+        <span>принадлежит классу</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Class constructor cannot be invoked without 'new'»</strong>. Класс вызван
+        как функция. Нужен <code>new User(...)</code>.</li>
+    <li><strong>«Must call super constructor before accessing this»</strong>. В наследнике
+        используется <code>this</code> до <code>super()</code>.</li>
+    <li><strong>Метод потерялся при передаче в колбэк</strong>. Потерян <code>this</code> -
+        оберните вызов или используйте <code>bind</code>.</li>
+    <li><strong>Приватное поле «не определено»</strong>. Поле объявлено в наследнике, а
+        используется в родителе (или наоборот). Приватные поля не наследуются.</li>
+    <li><strong><code>instanceof</code> вернул <code>false</code></strong>. Объект создан
+        не через <code>new</code> этого класса или является обычным объектным литералом.</li>
+    <li><strong>Метод «потерял» this.</strong> Метод передали в таймер или обработчик как функцию - контекст потерялся. Лечится обёрткой <code>() =&gt; obj.method()</code> или <code>bind</code>.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Класс User</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте класс <code>User</code> с полями <code>name</code>
+                и <code>email</code> и методом <code>getInfo()</code>, который возвращает
+                строку «Имя (email)». Создайте два экземпляра и выведите информацию.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Поля задаются в <code>constructor</code> через <code>this</code>.
+                        Метод достаточно объявить внутри класса - он автоматически попадёт
+                        в прототип.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">class User {</span><span class="code-row">    constructor(name, email) {</span><span class="code-row">        this.name = name;</span><span class="code-row">        this.email = email;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    getInfo() {</span><span class="code-row">        return `${this.name} (${this.email})`;</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const alex = new User(&quot;Алексей&quot;, &quot;alex@example.com&quot;);</span><span class="code-row">const maria = new User(&quot;Мария&quot;, &quot;maria@example.com&quot;);</span><span class="code-row"></span><span class="code-row">console.log(alex.getInfo());</span><span class="code-row">console.log(maria.getInfo());</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Наследование</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте класс <code>Admin</code>, наследующий
+                <code>User</code>, с дополнительным полем <code>permissions</code> (массив)
+                и методом <code>can(action)</code>, который проверяет наличие права.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Не забудьте <code>super(name, email)</code> до обращения к
+                        <code>this</code>. Для проверки подойдёт
+                        <code>this.permissions.includes(action)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">class Admin extends User {</span><span class="code-row">    constructor(name, email, permissions) {</span><span class="code-row">        super(name, email);</span><span class="code-row">        this.permissions = permissions;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    can(action) {</span><span class="code-row">        return this.permissions.includes(action);</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const admin = new Admin(&quot;Аня&quot;, &quot;anya@example.com&quot;, [&quot;edit&quot;, &quot;delete&quot;]);</span><span class="code-row">console.log(admin.getInfo());  // унаследованный метод</span><span class="code-row">console.log(admin.can(&quot;edit&quot;)); // true</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Приватный счётчик</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте класс <code>BankAccount</code> с приватным полем
+                <code>#balance</code>, методами <code>deposit(amount)</code>,
+                <code>withdraw(amount)</code> и геттером <code>balance</code>. Попытка снять
+                больше, чем есть, должна выбрасывать ошибку.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>В <code>withdraw</code> проверьте <code>amount &gt; this.#balance</code>
+                        и вызовите <code>throw new Error(...)</code>. Геттер объявляется
+                        словом <code>get</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>class BankAccount {
+    #balance = 0;
+
+    deposit(amount) {
+        this.#balance += amount;
+        return this.#balance;
+    }
+
+    withdraw(amount) {
+        if (amount &gt; this.#balance) {
+            throw new Error(&quot;Недостаточно средств&quot;);
+        }
+        this.#balance -= amount;
+        return this.#balance;
+    }
+
+    get balance() {
+        return this.#balance;
+    }
+}
+
+const account = new BankAccount();
+account.deposit(1000);
+account.withdraw(300);
+console.log(account.balance); // 700</code></pre>
+</div>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Товар со скидкой</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте класс <code>Product</code> с ценой и процентом скидки. Добавьте геттер <code>finalPrice</code>, который возвращает цену со скидкой.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Геттер объявляется словом <code>get</code> и читается как обычное свойство.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">class Product {</span><span class="code-row">    constructor(title, price, discount = 0) {</span><span class="code-row">        this.title = title;</span><span class="code-row">        this.price = price;</span><span class="code-row">        this.discount = discount;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    get finalPrice() {</span><span class="code-row">        return this.price * (1 - this.discount / 100);</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const laptop = new Product(&quot;Ноутбук&quot;, 75000, 10);</span><span class="code-row">console.log(laptop.finalPrice); // 67500</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы поняли объектную модель языка. Теперь вы знаете:</p>
+<ul>
+    <li>Как работает прототипная цепочка и почему методы общие.</li>
+    <li>Чем класс отличается от функции-конструктора.</li>
+    <li>Как работают приватные поля, геттеры и статика.</li>
+    <li>Как строить наследование через <code>extends</code> и <code>super</code>.</li>
+</ul>
+
+<p>Программа растёт, и вместе с ней растёт вероятность ошибок: сеть падает, данные приходят
+    не те, пользователь вводит что попало. В следующем уроке разберём, как ловить и
+    обрабатывать ошибки, как отлаживать код в DevTools и как разбивать проект на
+    <strong>модули</strong>.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-19.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-21.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

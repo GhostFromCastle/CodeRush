@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Данные в браузере: JSON и localStorage - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="advanced" data-lesson-id="lesson-22">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 22</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson active" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Данные в браузере: JSON и localStorage</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Любое обновление страницы стирает состояние: список задач, выбранный фильтр, черновик
+    сообщения. Пользователь возвращается - и всё пропало. В этом уроке научимся сохранять
+    данные в браузере и строить приложение вокруг одного источника правды.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём сериализацию через <code>JSON</code>.</li>
+    <li>Освоим <code>localStorage</code> и <code>sessionStorage</code>.</li>
+    <li>Поймём, какие данные хранить нельзя.</li>
+    <li>Разберём паттерн «состояние → рендер».</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Блокнот на холодильнике: записи видны только в этом доме и исчезают, если блокнот выбросить.</p>
+</div>
+
+<h2>JSON</h2>
+
+<p>JSON (JavaScript Object Notation) - текстовый формат обмена данными. Он похож на
+    JavaScript-объект, но строже: ключи всегда в двойных кавычках, нет функций, нет
+    комментариев.</p>
+
+<pre class="code-numbered"><code><span class="code-row">const user = {</span><span class="code-row">    name: &quot;Алексей&quot;,</span><span class="code-row">    age: 25,</span><span class="code-row">    skills: [&quot;JavaScript&quot;, &quot;CSS&quot;],</span><span class="code-row">    address: { city: &quot;Москва&quot; }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">const json = JSON.stringify(user);</span><span class="code-row">console.log(json);</span><span class="code-row">// {&quot;name&quot;:&quot;Алексей&quot;,&quot;age&quot;:25,&quot;skills&quot;:[&quot;JavaScript&quot;,&quot;CSS&quot;],&quot;address&quot;:{&quot;city&quot;:&quot;Москва&quot;}}</span><span class="code-row"></span><span class="code-row">const parsed = JSON.parse(json);</span><span class="code-row">console.log(parsed.name); // &quot;Алексей&quot;</span></code></pre>
+
+<p>Для читаемого вида есть третий аргумент - отступ:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(JSON.stringify(user, null, 2));</span></code></pre>
+
+<h2>Что теряется при сериализации</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const data = {</span><span class="code-row">    fn: () =&gt; console.log(&quot;привет&quot;),</span><span class="code-row">    undef: undefined,</span><span class="code-row">    nan: NaN,</span><span class="code-row">    date: new Date(&quot;2026-01-01&quot;)</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">console.log(JSON.stringify(data));</span><span class="code-row">// {&quot;nan&quot;:null,&quot;date&quot;:&quot;2026-01-01T00:00:00.000Z&quot;}</span></code></pre>
+
+<ul>
+    <li>Функции и <code>undefined</code> <strong>исчезают</strong> из объекта.</li>
+    <li><code>NaN</code> и <code>Infinity</code> превращаются в <code>null</code>.</li>
+    <li><code>Date</code> становится строкой - при обратном разборе это уже не дата.</li>
+</ul>
+
+<p>Поэтому правило: храните в JSON только простые данные - строки, числа, булевы значения,
+    массивы и объекты.</p>
+
+<h2>localStorage</h2>
+
+<p>Хранилище на стороне браузера. Данные живут, пока их не удалят, - перезагрузка и закрытие
+    вкладки им не мешают.</p>
+
+<pre class="code-numbered"><code><span class="code-row">localStorage.setItem(&quot;theme&quot;, &quot;dark&quot;);</span><span class="code-row"></span><span class="code-row">const theme = localStorage.getItem(&quot;theme&quot;); // &quot;dark&quot;</span><span class="code-row">console.log(theme);</span><span class="code-row"></span><span class="code-row">localStorage.removeItem(&quot;theme&quot;);</span><span class="code-row">localStorage.clear(); // удалить всё</span></code></pre>
+
+<p>Важное ограничение: <strong>хранить можно только строки</strong>. Число превратится
+    в строку, объект - в <code>"[object Object]"</code>. Поэтому сложные данные прогоняют
+    через JSON:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const settings = { theme: &quot;dark&quot;, fontSize: 16 };</span><span class="code-row"></span><span class="code-row">localStorage.setItem(&quot;settings&quot;, JSON.stringify(settings));</span><span class="code-row"></span><span class="code-row">const raw = localStorage.getItem(&quot;settings&quot;);</span><span class="code-row">const restored = raw ? JSON.parse(raw) : null;</span><span class="code-row"></span><span class="code-row">console.log(restored.fontSize); // 16</span></code></pre>
+
+<h2>Чтение с защитой</h2>
+
+<p><code>JSON.parse</code> выбрасывает ошибку на повреждённых данных. А повреждённые данные
+    в хранилище - реальность: пользователь мог отредактировать их вручную или старая версия
+    приложения записала другой формат.</p>
+
+<pre class="code-numbered"><code><span class="code-row">function loadSettings() {</span><span class="code-row">    const fallback = { theme: &quot;light&quot;, fontSize: 16 };</span><span class="code-row"></span><span class="code-row">    try {</span><span class="code-row">        const raw = localStorage.getItem(&quot;settings&quot;);</span><span class="code-row">        if (!raw) return fallback;</span><span class="code-row"></span><span class="code-row">        return { ...fallback, ...JSON.parse(raw) };</span><span class="code-row">    } catch (error) {</span><span class="code-row">        console.warn(&quot;Настройки повреждены, используем значения по умолчанию&quot;);</span><span class="code-row">        return fallback;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+<p>Обратите внимание на <code>{ ...fallback, ...JSON.parse(raw) }</code>: если в сохранённых
+    данных не хватает поля, подставится значение по умолчанию.</p>
+
+<h2>sessionStorage</h2>
+
+<p>Точно такой же API, но данные живут до закрытия вкладки:</p>
+
+<pre class="code-numbered"><code><span class="code-row">sessionStorage.setItem(&quot;draft&quot;, &quot;незаконченный текст&quot;);</span></code></pre>
+
+<p>Подходит для черновиков и пошаговых форм, которые не должны переживать закрытие
+    вкладки.</p>
+
+<h2>Ограничения и безопасность</h2>
+
+<ul>
+    <li><strong>Объём</strong> - около 5 МБ на домен. Для больших данных есть IndexedDB.</li>
+    <li><strong>Синхронность</strong> - операции блокируют поток. Не сохраняйте мегабайты
+        на каждое нажатие клавиши.</li>
+    <li><strong>Доступность</strong> - в приватном режиме некоторых браузеров хранилище
+        может быть недоступно. Оборачивайте вызовы в <code>try/catch</code>.</li>
+    <li><strong>Привязка к домену</strong> - данные одного сайта недоступны другому.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Не храните секреты
+    </div>
+    <p><code>localStorage</code> читается любым JavaScript на странице. Если злоумышленник
+        сможет внедрить свой скрипт (XSS), он заберёт всё, что там лежит. Пароли, номера
+        карт и долгоживущие токены авторизации там хранить нельзя. Для сессионных токенов
+        используют <code>HttpOnly</code>-cookie, недоступные из JavaScript.</p>
+</div>
+
+<h2>Паттерн «состояние → рендер»</h2>
+
+<p>Самая частая проблема начинающих: данные и интерфейс живут отдельно. Где-то в переменной
+    массив задач, а в DOM - список, и они постепенно расходятся. Через неделю никто не
+    понимает, что чему соответствует.</p>
+
+<p>Решение - один источник правды и функция отрисовки:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const state = {</span><span class="code-row">    items: loadItems(),</span><span class="code-row">    filter: &quot;all&quot;</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">function render() {</span><span class="code-row">    const visible = filterItems(state.items, state.filter);</span><span class="code-row"></span><span class="code-row">    list.innerHTML = &quot;&quot;;</span><span class="code-row"></span><span class="code-row">    visible.forEach((item) =&gt; {</span><span class="code-row">        const li = document.createElement(&quot;li&quot;);</span><span class="code-row">        li.textContent = item.text;</span><span class="code-row">        li.classList.toggle(&quot;done&quot;, item.done);</span><span class="code-row">        list.append(li);</span><span class="code-row">    });</span><span class="code-row"></span><span class="code-row">    empty.hidden = visible.length &gt; 0;</span><span class="code-row">}</span></code></pre>
+
+<p>Правило: <strong>любое изменение данных заканчивается вызовом <code>render()</code></strong>.
+    Интерфейс никогда не правится «точечно» в обход состояния. Такой подход называется
+    односторонним потоком данных, и именно на нём построены React, Vue и Angular.</p>
+
+<p>Обновление делают неизменяемым - создавая новый массив, а не меняя старый:</p>
+
+<pre class="code-numbered"><code><span class="code-row">// плохо: мутация</span><span class="code-row">state.items.push(newItem);</span><span class="code-row"></span><span class="code-row">// хорошо: новый массив</span><span class="code-row">state.items = [...state.items, newItem];</span></code></pre>
+
+<p>Почему «хорошо»? Потому что так проще сравнивать состояния, откатывать изменения и
+    понимать, что именно поменялось. Привычка пригодится в любом современном фреймворке.</p>
+
+<h2>Дебаунс для записи</h2>
+
+<p>Если сохранять данные на каждое нажатие клавиши, браузер будет писать в хранилище сотни
+    раз в минуту. Немного терпения экономит ресурсы:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function debounce(fn, delay = 300) {</span><span class="code-row">    let timerId;</span><span class="code-row"></span><span class="code-row">    return (...args) =&gt; {</span><span class="code-row">        clearTimeout(timerId);</span><span class="code-row">        timerId = setTimeout(() =&gt; fn(...args), delay);</span><span class="code-row">    };</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const saveDraft = debounce((text) =&gt; {</span><span class="code-row">    sessionStorage.setItem(&quot;draft&quot;, text);</span><span class="code-row">}, 500);</span><span class="code-row"></span><span class="code-row">input.addEventListener(&quot;input&quot;, () =&gt; saveDraft(input.value));</span></code></pre>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>JSON.stringify</code>
+        <span>объект в строку</span>
+    </li>
+    <li>
+        <code>JSON.parse</code>
+        <span>строка в объект</span>
+    </li>
+    <li>
+        <code>setItem</code>
+        <span>сохранить строку</span>
+    </li>
+    <li>
+        <code>getItem</code>
+        <span>прочитать или null</span>
+    </li>
+    <li>
+        <code>removeItem</code>
+        <span>удалить ключ</span>
+    </li>
+    <li>
+        <code>sessionStorage</code>
+        <span>до закрытия вкладки</span>
+    </li>
+    <li>
+        <code>render()</code>
+        <span>перерисовать из состояния</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>В хранилище лежит <code>[object Object]</code></strong>. Забыли
+        <code>JSON.stringify</code> перед сохранением.</li>
+    <li><strong><code>JSON.parse</code> падает</strong>. В хранилище невалидный JSON или
+        <code>null</code>. Всегда проверяйте, что <code>getItem</code> вернул не
+        <code>null</code>, и оборачивайте разбор в <code>try/catch</code>.</li>
+    <li><strong>Данные не сохраняются</strong>. Код выполняется на другом домене, в
+        приватном режиме или хранилище переполнено. Проверьте исключение в консоли.</li>
+    <li><strong>После перезагрузки интерфейс пустой, а данные есть</strong>. Забыли вызвать
+        <code>render()</code> при старте приложения.</li>
+    <li><strong>Изменения не видны</strong>. Вы изменили копию массива, а не состояние.
+        Проверьте, что результат <code>filter</code> или <code>map</code> присвоен обратно.</li>
+    <li><strong>Настройки пропали после очистки кэша.</strong> <code>localStorage</code> живёт в браузере, а не на сервере: очистка данных сайта удаляет и его. Для важных данных нужен сервер и резервные копии.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Сохранить настройки</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сохраните объект <code>{ theme: "dark", fontSize: 18 }</code>
+                в <code>localStorage</code> под ключом <code>settings</code>, затем прочитайте
+                его обратно и выведите тему в консоль.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сохраняйте строку: <code>JSON.stringify(settings)</code>. Читайте через
+                        <code>JSON.parse(localStorage.getItem("settings"))</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const settings = { theme: &quot;dark&quot;, fontSize: 18 };</span><span class="code-row"></span><span class="code-row">localStorage.setItem(&quot;settings&quot;, JSON.stringify(settings));</span><span class="code-row"></span><span class="code-row">const restored = JSON.parse(localStorage.getItem(&quot;settings&quot;));</span><span class="code-row">console.log(restored.theme); // &quot;dark&quot;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Защищённое чтение</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>loadList(key)</code>, которая всегда
+                возвращает массив. Если ключа нет, данные повреждены или там лежит не массив -
+                возвращается пустой массив.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Проверьте <code>Array.isArray(parsed)</code> после разбора. Всю логику
+                        оберните в <code>try/catch</code> и возвращайте <code>[]</code> при
+                        любой проблеме.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function loadList(key) {</span><span class="code-row">    try {</span><span class="code-row">        const raw = localStorage.getItem(key);</span><span class="code-row">        if (!raw) return [];</span><span class="code-row"></span><span class="code-row">        const parsed = JSON.parse(raw);</span><span class="code-row">        return Array.isArray(parsed) ? parsed : [];</span><span class="code-row">    } catch (error) {</span><span class="code-row">        console.warn(&quot;Повреждённые данные:&quot;, key);</span><span class="code-row">        return [];</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Черновик с дебаунсом</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сделайте текстовое поле, содержимое которого сохраняется
+                в <code>sessionStorage</code> не чаще раза в 500 мс. При загрузке страницы
+                текст должен восстанавливаться.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Используйте функцию <code>debounce</code> из урока. При старте
+                        прочитайте значение и присвойте его <code>input.value</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const input = document.querySelector(&quot;#draft&quot;);</span><span class="code-row"></span><span class="code-row">function debounce(fn, delay) {</span><span class="code-row">    let timerId;</span><span class="code-row">    return (...args) =&gt; {</span><span class="code-row">        clearTimeout(timerId);</span><span class="code-row">        timerId = setTimeout(() =&gt; fn(...args), delay);</span><span class="code-row">    };</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const save = debounce((text) =&gt; {</span><span class="code-row">    sessionStorage.setItem(&quot;draft&quot;, text);</span><span class="code-row">}, 500);</span><span class="code-row"></span><span class="code-row">input.value = sessionStorage.getItem(&quot;draft&quot;) ?? &quot;&quot;;</span><span class="code-row">input.addEventListener(&quot;input&quot;, () =&gt; save(input.value));</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Счётчик посещений</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Увеличивайте счётчик в <code>localStorage</code> при каждой загрузке страницы и выводите его в консоль.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Прочитайте значение, приведите к числу, прибавьте единицу и сохраните обратно.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">const key = &quot;visits&quot;;</span><span class="code-row">const current = Number(localStorage.getItem(key)) || 0;</span><span class="code-row">const next = current + 1;</span><span class="code-row"></span><span class="code-row">localStorage.setItem(key, String(next));</span><span class="code-row">console.log(`Вы заходили ${next} раз`);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Данные теперь переживают перезагрузку. Вы знаете:</p>
+<ul>
+    <li>Как сериализовать объекты и что при этом теряется.</li>
+    <li>Как работать с <code>localStorage</code> и безопасно читать из него.</li>
+    <li>Почему секреты нельзя хранить в браузере.</li>
+    <li>Как устроен паттерн «состояние → рендер».</li>
+</ul>
+
+<p>Данные в браузере теперь переживают перезагрузку. Но реальные приложения работают ещё
+и с файлами: аватарки, документы, экспорт отчётов. В следующем уроке разберём
+<strong>File API</strong> - выбор файлов, превью изображений, drag & drop и скачивание.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-21.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-23.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

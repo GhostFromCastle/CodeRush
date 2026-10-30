@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Асинхронность: таймеры и промисы - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="intermediate" data-lesson-id="lesson-15">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 15</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson active" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Асинхронность: таймеры и промисы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>JavaScript однопоточный: он выполняет одну инструкцию за раз. Но при этом страница не
+    замирает, пока грузится картинка или идёт запрос к серверу. Секрет в асинхронности.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберёмся, что такое асинхронный код и зачем он нужен.</li>
+    <li>Познакомимся с таймерами <code>setTimeout</code> и <code>setInterval</code>.</li>
+    <li>Поймём, как работают промисы.</li>
+    <li>Научимся писать асинхронный код через <code>async/await</code>.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Очередь в кассу: кассир не бросает текущего покупателя, а берёт следующего, когда освободится. Event loop работает так же.</p>
+</div>
+
+<h2>Проблема синхронного кода</h2>
+
+<p>Синхронный код выполняется по порядку и блокирует всё остальное. Представьте, что
+    вычисление занимает две секунды:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function heavyCalculation() {</span><span class="code-row">    const start = Date.now();</span><span class="code-row">    while (Date.now() - start &lt; 2000) {</span><span class="code-row">        // имитация тяжёлой работы</span><span class="code-row">    }</span><span class="code-row">    return &quot;готово&quot;;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(&quot;Старт&quot;);</span><span class="code-row">console.log(heavyCalculation());</span><span class="code-row">console.log(&quot;Финиш&quot;);</span></code></pre>
+
+<p>Всё это время страница не реагирует: не нажимаются кнопки, не прокручивается список,
+    не проигрываются анимации. Один поток занят.</p>
+
+<p>Асинхронный код решает проблему: тяжёлую операцию поручают браузеру, а сами продолжают
+    работать. Когда операция завершится, браузер вернётся с результатом.</p>
+
+<h2>setTimeout и setInterval</h2>
+
+<p>Простейшие асинхронные функции - таймеры:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;Первый&quot;);</span><span class="code-row"></span><span class="code-row">setTimeout(() =&gt; {</span><span class="code-row">    console.log(&quot;Третий - через 2 секунды&quot;);</span><span class="code-row">}, 2000);</span><span class="code-row"></span><span class="code-row">console.log(&quot;Второй&quot;);</span></code></pre>
+
+<p>Порядок вывода: «Первый», «Второй», «Третий». <code>setTimeout</code> не останавливает
+    программу - он только регистрирует задачу, которую браузер выполнит позже.</p>
+
+<p><code>setInterval</code> повторяет вызов с заданным интервалом. Его нужно останавливать
+    вручную, иначе он будет работать бесконечно:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let seconds = 0;</span><span class="code-row"></span><span class="code-row">const timer = setInterval(() =&gt; {</span><span class="code-row">    seconds++;</span><span class="code-row">    console.log(`${seconds} сек`);</span><span class="code-row"></span><span class="code-row">    if (seconds === 5) {</span><span class="code-row">        clearInterval(timer);</span><span class="code-row">    }</span><span class="code-row">}, 1000);</span></code></pre>
+
+<h2>Как это работает: стек и очередь</h2>
+
+<p>У JavaScript есть <strong>стек вызовов</strong> - там выполняется текущий код - и
+    <strong>очередь задач</strong>, куда попадают колбэки таймеров и сетевых запросов.
+    Когда стек пустеет, движок берёт следующую задачу из очереди. Этот механизм называется
+    <strong>event loop</strong>, цикл событий.</p>
+
+<p>Отсюда классический вопрос на собеседовании:</p>
+
+<pre class="code-numbered"><code><span class="code-row">setTimeout(() =&gt; console.log(&quot;таймер&quot;), 0);</span><span class="code-row">console.log(&quot;код&quot;);</span></code></pre>
+
+<p>Сначала выведется «код», потом «таймер». Ноль миллисекунд не означает «прямо сейчас»:
+    колбэк всё равно попадёт в очередь и выполнится после текущего кода.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-info"></i>
+        Микрозадачи
+    </div>
+    <p>У промисов своя очередь - очередь микрозадач. Она обрабатывается раньше таймеров,
+        поэтому <code>Promise.resolve().then(...)</code> сработает до
+        <code>setTimeout(..., 0)</code>. На практике это важно, когда важен точный порядок
+        вывода.</p>
+</div>
+
+<h2>Промисы</h2>
+
+<p>Промис (Promise) - объект, представляющий результат операции, которая завершится
+    в будущем. У него три состояния:</p>
+
+<ul>
+    <li><strong>pending</strong> - ожидание.</li>
+    <li><strong>fulfilled</strong> - успешно выполнено.</li>
+    <li><strong>rejected</strong> - завершилось ошибкой.</li>
+</ul>
+
+<p>Создать промис можно вручную - например, обернув таймер:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function delay(ms) {</span><span class="code-row">    return new Promise((resolve) =&gt; {</span><span class="code-row">        setTimeout(resolve, ms);</span><span class="code-row">    });</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">delay(1000).then(() =&gt; {</span><span class="code-row">    console.log(&quot;Прошла секунда&quot;);</span><span class="code-row">});</span></code></pre>
+
+<p>Функция внутри <code>new Promise</code> получает два колбэка: <code>resolve</code>
+    (успех) и <code>reject</code> (ошибка). Их вызывают, когда операция завершилась.</p>
+
+<h2>then, catch, finally</h2>
+
+<pre class="code-numbered"><code><span class="code-row">delay(500)</span><span class="code-row">    .then(() =&gt; {</span><span class="code-row">        console.log(&quot;Шаг 1&quot;);</span><span class="code-row">        return delay(500);</span><span class="code-row">    })</span><span class="code-row">    .then(() =&gt; {</span><span class="code-row">        console.log(&quot;Шаг 2&quot;);</span><span class="code-row">    })</span><span class="code-row">    .catch((error) =&gt; {</span><span class="code-row">        console.error(&quot;Что-то пошло не так:&quot;, error);</span><span class="code-row">    })</span><span class="code-row">    .finally(() =&gt; {</span><span class="code-row">        console.log(&quot;Выполнится в любом случае&quot;);</span><span class="code-row">    });</span></code></pre>
+
+<ul>
+    <li><strong><code>then</code></strong> - обработчик успеха. Если вернуть из него промис,
+        следующий <code>then</code> дождётся его завершения.</li>
+    <li><strong><code>catch</code></strong> - обработчик ошибки. Ловит ошибки всей цепочки
+        выше.</li>
+    <li><strong><code>finally</code></strong> - выполняется всегда: удобно для скрытия
+        индикатора загрузки.</li>
+</ul>
+
+<h2>Promise.all и другие комбинаторы</h2>
+
+<p>Если несколько операций независимы, их не нужно выполнять по очереди - это медленно.
+    <code>Promise.all</code> запускает их параллельно и ждёт все:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const results = await Promise.all([</span><span class="code-row">    delay(1000),</span><span class="code-row">    delay(1000),</span><span class="code-row">    delay(1000)</span><span class="code-row">]);</span><span class="code-row">// итого ~1 секунда, а не 3</span></code></pre>
+
+<ul>
+    <li><strong><code>Promise.all</code></strong> - ждёт все; если хотя бы один упал,
+        результат тоже ошибка.</li>
+    <li><strong><code>Promise.allSettled</code></strong> - ждёт все и возвращает статус
+        каждого, не прерываясь на ошибке.</li>
+    <li><strong><code>Promise.race</code></strong> - возвращает первый завершившийся
+        (успех или ошибку).</li>
+</ul>
+
+<h2>async и await</h2>
+
+<p>Цепочки <code>then</code> читаются тяжело. Синтаксис <code>async/await</code> позволяет
+    писать асинхронный код как обычный, последовательный:</p>
+
+<pre class="code-numbered"><code><span class="code-row">async function loadData() {</span><span class="code-row">    console.log(&quot;Загружаем...&quot;);</span><span class="code-row"></span><span class="code-row">    await delay(1000);</span><span class="code-row">    console.log(&quot;Шаг 1 готов&quot;);</span><span class="code-row"></span><span class="code-row">    await delay(1000);</span><span class="code-row">    console.log(&quot;Шаг 2 готов&quot;);</span><span class="code-row"></span><span class="code-row">    return &quot;Готово&quot;;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">loadData();</span></code></pre>
+
+<p>Правила простые:</p>
+<ul>
+    <li><code>async</code> перед функцией делает её асинхронной.</li>
+    <li><code>await</code> приостанавливает выполнение <em>этой</em> функции до завершения
+        промиса, не блокируя страницу.</li>
+    <li>Любая <code>async</code>-функция всегда возвращает промис. Даже если внутри
+        <code>return 5</code>, снаружи это будет <code>Promise</code>.</li>
+</ul>
+
+<h2>Обработка ошибок</h2>
+
+<p>С <code>await</code> ошибки ловят обычным <code>try/catch</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function riskyTask() {</span><span class="code-row">    return new Promise((resolve, reject) =&gt; {</span><span class="code-row">        setTimeout(() =&gt; reject(new Error(&quot;Сервер недоступен&quot;)), 500);</span><span class="code-row">    });</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">async function run() {</span><span class="code-row">    try {</span><span class="code-row">        await riskyTask();</span><span class="code-row">        console.log(&quot;Успех&quot;);</span><span class="code-row">    } catch (error) {</span><span class="code-row">        console.error(&quot;Поймали ошибку:&quot;, error.message);</span><span class="code-row">    } finally {</span><span class="code-row">        console.log(&quot;Завершили попытку&quot;);</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">run();</span></code></pre>
+
+<p>Без <code>try/catch</code> отклонённый промис приведёт к необработанной ошибке
+    (unhandled rejection) - в консоли появится предупреждение, а программа продолжит работу
+    в непредсказуемом состоянии.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Не забывайте await
+    </div>
+    <p>Если написать <code>const data = loadData();</code> без <code>await</code>, в
+        <code>data</code> окажется промис, а не результат. Ошибка тихая: код не падает,
+        но дальше всё ломается. Если переменная ведёт себя как
+        <code>[object Promise]</code> - ищите пропущенный <code>await</code>.</p>
+</div>
+
+<h2>Последовательно или параллельно</h2>
+
+<pre class="code-numbered"><code><span class="code-row">// Медленно: 3 секунды</span><span class="code-row">const a = await delay(1000);</span><span class="code-row">const b = await delay(1000);</span><span class="code-row">const c = await delay(1000);</span><span class="code-row"></span><span class="code-row">// Быстро: 1 секунда</span><span class="code-row">const [x, y, z] = await Promise.all([</span><span class="code-row">    delay(1000),</span><span class="code-row">    delay(1000),</span><span class="code-row">    delay(1000)</span><span class="code-row">]);</span></code></pre>
+
+<p>Правило: если операции не зависят друг от друга - запускайте параллельно. Если вторая
+    использует результат первой - только последовательно.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>setTimeout</code>
+        <span>выполнить один раз позже</span>
+    </li>
+    <li>
+        <code>setInterval</code>
+        <span>повторять с интервалом</span>
+    </li>
+    <li>
+        <code>new Promise</code>
+        <span>создать промис</span>
+    </li>
+    <li>
+        <code>.then / .catch</code>
+        <span>обработка результата и ошибки</span>
+    </li>
+    <li>
+        <code>async / await</code>
+        <span>асинхронный код как синхронный</span>
+    </li>
+    <li>
+        <code>Promise.all</code>
+        <span>параллельное выполнение</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong><code>[object Promise]</code> вместо данных</strong>. Пропущен
+        <code>await</code> или забыт <code>.then</code>.</li>
+    <li><strong>«await is only valid in async functions»</strong>. <code>await</code> можно
+        использовать только внутри <code>async</code>-функции (или на верхнем уровне модуля).</li>
+    <li><strong>«Unhandled promise rejection»</strong>. Нет <code>catch</code> или
+        <code>try/catch</code>. Ошибку нужно обработать.</li>
+    <li><strong>Код выполняется быстрее, чем приходит ответ</strong>. Асинхронный результат
+        доступен только внутри <code>then</code> или после <code>await</code> - не после
+        вызова функции.</li>
+    <li><strong><code>setInterval</code> не останавливается</strong>. Сохраните его
+        идентификатор и вызовите <code>clearInterval</code>.</li>
+    <li><strong>Код «побежал дальше» до получения данных.</strong> Забыли <code>await</code> - и в переменной оказался промис. Это не ошибка выполнения, поэтому её легко не заметить.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Задержка</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>sleep(ms)</code>, которая возвращает
+                промис и завершается через заданное время. Используйте её так:
+                <code>await sleep(1000); console.log("Прошла секунда");</code></p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Внутри <code>new Promise</code> вызовите <code>setTimeout(resolve, ms)</code>.
+                        <code>resolve</code> можно передать как колбэк напрямую.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function sleep(ms) {</span><span class="code-row">    return new Promise((resolve) =&gt; setTimeout(resolve, ms));</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">async function run() {</span><span class="code-row">    await sleep(1000);</span><span class="code-row">    console.log(&quot;Прошла секунда&quot;);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">run();</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Параллельно или по очереди</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Есть три задачи по одной секунде. Напишите два варианта:
+                последовательный (около 3 секунд) и параллельный (около 1 секунды). Замерьте
+                время через <code>Date.now()</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>В последовательном варианте три <code>await sleep(1000)</code> подряд.
+                        В параллельном - <code>await Promise.all([...])</code> с тремя
+                        вызовами сразу.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function sleep(ms) {</span><span class="code-row">    return new Promise((resolve) =&gt; setTimeout(resolve, ms));</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">async function sequential() {</span><span class="code-row">    const start = Date.now();</span><span class="code-row">    await sleep(1000);</span><span class="code-row">    await sleep(1000);</span><span class="code-row">    await sleep(1000);</span><span class="code-row">    console.log(`Последовательно: ${Date.now() - start} мс`);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">async function parallel() {</span><span class="code-row">    const start = Date.now();</span><span class="code-row">    await Promise.all([sleep(1000), sleep(1000), sleep(1000)]);</span><span class="code-row">    console.log(`Параллельно: ${Date.now() - start} мс`);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">sequential().then(parallel);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Поймать ошибку</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>riskyLoad()</code>, которая через
+                секунду отклоняет промис с ошибкой «Нет соединения». Обработайте ошибку через
+                <code>try/catch</code> и выведите сообщение, а в <code>finally</code> -
+                «Загрузка завершена».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Внутри промиса вызовите <code>reject(new Error("Нет соединения"))</code>.
+                        В <code>catch</code> доступно свойство <code>error.message</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function riskyLoad() {</span><span class="code-row">    return new Promise((resolve, reject) =&gt; {</span><span class="code-row">        setTimeout(() =&gt; reject(new Error(&quot;Нет соединения&quot;)), 1000);</span><span class="code-row">    });</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">async function run() {</span><span class="code-row">    try {</span><span class="code-row">        await riskyLoad();</span><span class="code-row">        console.log(&quot;Данные получены&quot;);</span><span class="code-row">    } catch (error) {</span><span class="code-row">        console.error(&quot;Ошибка:&quot;, error.message);</span><span class="code-row">    } finally {</span><span class="code-row">        console.log(&quot;Загрузка завершена&quot;);</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">run();</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Таймаут для промиса</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>withTimeout(promise, ms)</code>, которая отклоняется с ошибкой «Таймаут», если промис не завершился за указанное время.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сравните два промиса через <code>Promise.race</code>: исходный и таймер, который отклоняется.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">function withTimeout(promise, ms) {</span><span class="code-row">    const timeout = new Promise((_, reject) =&gt; {</span><span class="code-row">        setTimeout(() =&gt; reject(new Error(&quot;Таймаут&quot;)), ms);</span><span class="code-row">    });</span><span class="code-row"></span><span class="code-row">    return Promise.race([promise, timeout]);</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы научились работать с асинхронным кодом. Теперь вы знаете:</p>
+<ul>
+    <li>Почему синхронные тяжёлые операции блокируют страницу.</li>
+    <li>Как работают таймеры и цикл событий.</li>
+    <li>Что такое промис и как им пользоваться.</li>
+    <li>Как писать понятный асинхронный код через <code>async/await</code>.</li>
+</ul>
+
+<p>Промисы и таймеры - это фундамент. Но настоящее применение асинхронности - сетевые
+    запросы. В следующем уроке научимся получать данные с сервера через <code>fetch</code>,
+    обрабатывать ошибки и показывать результат на странице.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-14.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-16.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

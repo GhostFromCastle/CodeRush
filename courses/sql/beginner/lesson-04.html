@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHERE: фильтруем строки - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="beginner" data-lesson-id="lesson-04">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 04</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson active" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>WHERE: фильтруем строки</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Выборка всех строк нужна редко. Обычно требуется «заказы за март», «пользователи старше
+    18», «товары дешевле 5000». За это отвечает <code>WHERE</code>.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём операторы сравнения.</li>
+    <li>Научимся комбинировать условия через <code>AND</code>, <code>OR</code>, <code>NOT</code>.</li>
+    <li>Освоим <code>BETWEEN</code>, <code>IN</code> и <code>LIKE</code>.</li>
+    <li>Поймём, почему <code>NULL</code> ломает обычные сравнения.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Фильтр в кофемашине: пропускает только то, что подходит под условие, остальное остаётся в контейнере.</p>
+</div>
+
+<h2>Сравнения</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name, age</span><span class="code-row">FROM users</span><span class="code-row">WHERE age &gt;= 18;</span></code></pre>
+
+<p>Доступны привычные операторы:</p>
+
+<pre class="code-numbered"><code><span class="code-row">=       равно</span><span class="code-row">&lt;&gt;      не равно (можно !=)</span><span class="code-row">&gt;       больше</span><span class="code-row">&lt;       меньше</span><span class="code-row">&gt;=      больше или равно</span><span class="code-row">&lt;=      меньше или равно</span></code></pre>
+
+<p>Текст заключается в <strong>одинарные</strong> кавычки. Двойные в стандартном SQL
+    означают имена столбцов, и запрос может неожиданно сломаться:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT * FROM users WHERE name = &#x27;Анна&#x27;;</span></code></pre>
+
+<h2>Несколько условий</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT *</span><span class="code-row">FROM products</span><span class="code-row">WHERE price &gt; 1000 AND price &lt; 40000;</span></code></pre>
+
+<p><code>AND</code> требует, чтобы выполнялись оба условия, <code>OR</code> - хотя бы одно.
+    <code>NOT</code> инвертирует:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT *</span><span class="code-row">FROM products</span><span class="code-row">WHERE NOT price &gt; 1000;</span></code></pre>
+
+<p>Приоритет: <code>NOT</code> → <code>AND</code> → <code>OR</code>. Поэтому скобки важны:</p>
+
+<pre class="code-numbered"><code><span class="code-row">-- неправильно: найдёт все товары дешевле 5000 ИЛИ любой ноутбук</span><span class="code-row">WHERE price &lt; 5000 OR title = &#x27;Ноутбук&#x27; AND stock &gt; 0</span><span class="code-row"></span><span class="code-row">-- правильно: явно группируем</span><span class="code-row">WHERE (price &lt; 5000 OR title = &#x27;Ноутбук&#x27;) AND stock &gt; 0</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Правило скобок
+    </div>
+    <p>Если в условии смешаны <code>AND</code> и <code>OR</code> - ставьте скобки, даже когда
+        кажется, что приоритет понятен. Через месяц вы сами не вспомните, что имели в виду,
+        а база выполнит не то, что вы ждали.</p>
+</div>
+
+<h2>Диапазон: BETWEEN</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT *</span><span class="code-row">FROM products</span><span class="code-row">WHERE price BETWEEN 1000 AND 40000;</span></code></pre>
+
+<p><code>BETWEEN</code> включает границы: это то же самое, что <code>price &gt;= 1000 AND
+    price &lt;= 40000</code>. С датами работает так же, но с оговоркой: если время хранится
+    с часами и минутами, верхняя граница «2026-10-30» отсечёт всё после полуночи. Надёжнее
+    сравнивать с <code>&lt; следующим днём</code>.</p>
+
+<h2>Список: IN</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT *</span><span class="code-row">FROM users</span><span class="code-row">WHERE name IN (&#x27;Анна&#x27;, &#x27;Борис&#x27;, &#x27;Вера&#x27;);</span></code></pre>
+
+<p>Это короче, чем три раза писать <code>OR</code>. Внутри <code>IN</code> может быть и
+    подзапрос - об этом в среднем уровне.</p>
+
+<p><code>NOT IN</code> исключает список, но с ним есть ловушка:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT * FROM users WHERE age NOT IN (25, 31);</span></code></pre>
+
+<p>Строки, где <code>age IS NULL</code>, в результат <strong>не попадут</strong>. Причина -
+    логика трёхзначности: сравнение с NULL даёт не «истину» и не «ложь», а «неизвестно».</p>
+
+<h2>Поиск по шаблону: LIKE</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT * FROM users WHERE name LIKE &#x27;А%&#x27;;    -- начинается на А</span><span class="code-row">SELECT * FROM users WHERE email LIKE &#x27;%@example.com&#x27;; -- заканчивается на</span><span class="code-row">SELECT * FROM users WHERE name LIKE &#x27;_нна&#x27;;  -- ровно один символ перед &quot;нна&quot;</span></code></pre>
+
+<ul>
+    <li><strong><code>%</code></strong> - любое количество символов, включая ноль.</li>
+    <li><strong><code>_</code></strong> - ровно один символ.</li>
+</ul>
+
+<p>Важная разница между СУБД: в SQLite и MySQL <code>LIKE</code> по умолчанию не учитывает
+    регистр для латиницы, в PostgreSQL - учитывает. Для надёжности приводите обе стороны
+    к одному регистру:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT * FROM users WHERE LOWER(name) LIKE &#x27;а%&#x27;;</span></code></pre>
+
+<h2>NULL</h2>
+
+<p><code>NULL</code> - это не «ноль» и не «пустая строка», а отсутствие значения. Поэтому:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT * FROM users WHERE age = NULL;      -- 0 строк, всегда</span><span class="code-row">SELECT * FROM users WHERE age IS NULL;     -- правильно</span><span class="code-row">SELECT * FROM users WHERE age IS NOT NULL; -- есть возраст</span></code></pre>
+
+<p>Любая арифметика с NULL даёт NULL: <code>NULL + 5</code> - это NULL. Агрегаты ведут себя
+    особым образом - об этом в следующем уроке.</p>
+
+<h2>Порядок условий и производительность</h2>
+
+<p>Современные базы сами переставляют условия, поэтому «поставить более строгое первым» не
+    даёт выигрыша. Важнее другое: не применять функции к столбцу в условии, если хотите
+    использовать индекс.</p>
+
+<pre class="code-numbered"><code><span class="code-row">-- индекс по email не поможет</span><span class="code-row">WHERE LOWER(email) = &#x27;anna@example.com&#x27;</span><span class="code-row"></span><span class="code-row">-- поможет, если данные уже в нижнем регистре</span><span class="code-row">WHERE email = &#x27;anna@example.com&#x27;</span></code></pre>
+
+<p>Индексы разберём отдельно на среднем уровне.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>WHERE</code>
+        <span>фильтр строк</span>
+    </li>
+    <li>
+        <code>AND / OR / NOT</code>
+        <span>логика условий</span>
+    </li>
+    <li>
+        <code>BETWEEN</code>
+        <span>диапазон включительно</span>
+    </li>
+    <li>
+        <code>IN</code>
+        <span>значение из списка</span>
+    </li>
+    <li>
+        <code>LIKE</code>
+        <span>поиск по шаблону</span>
+    </li>
+    <li>
+        <code>IS NULL</code>
+        <span>проверка отсутствия</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«No such column: Анна»</strong>. Текст в двойных кавычках. Строки - только
+        в одинарных.</li>
+    <li><strong><code>WHERE age = NULL</code> ничего не находит</strong>. Так и должно быть.
+        Используйте <code>IS NULL</code>.</li>
+    <li><strong>Условие с OR находит лишнее</strong>. Не хватает скобок: <code>AND</code>
+        выполняется раньше <code>OR</code>.</li>
+    <li><strong>LIKE не находит слово в другом регистре</strong>. В PostgreSQL нужен
+        <code>ILIKE</code> или <code>LOWER()</code>.</li>
+    <li><strong>NOT IN пропускает строки</strong>. В списке или в столбце есть NULL - добавьте
+        <code>AND age IS NOT NULL</code>.</li>
+    <li><strong>«Поиск по имени не находит клиента».</strong> В базе «анна», а ищут «Анна». В SQLite <code>LIKE</code> обычно не учитывает регистр, в PostgreSQL - учитывает. Надёжнее приводить обе стороны к одному регистру.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Совершеннолетние</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите имена пользователей от 18 до 30 лет включительно,
+                отсортированные по возрасту.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Подойдёт <code>BETWEEN 18 AND 30</code> или два сравнения через
+                        <code>AND</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT name, age</span><span class="code-row">FROM users</span><span class="code-row">WHERE age BETWEEN 18 AND 30</span><span class="code-row">ORDER BY age;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Поиск по почте</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Найдите всех пользователей, чья почта заканчивается на
+                <code>@example.com</code>, и тех, чьё имя начинается на «А» или «Б».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Два условия: <code>email LIKE '%@example.com'</code> и
+                        <code>(name LIKE 'А%' OR name LIKE 'Б%')</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT name, email</span><span class="code-row">FROM users</span><span class="code-row">WHERE email LIKE &#x27;%@example.com&#x27;</span><span class="code-row">  AND (name LIKE &#x27;А%&#x27; OR name LIKE &#x27;Б%&#x27;);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Товары в наличии</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Добавьте в <code>products</code> столбец <code>stock</code>
+                (если ещё нет) и найдите товары дешевле 20 000, которые есть на складе.
+                Товары с <code>NULL</code> в остатке считайте отсутствующими.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Условие: <code>price &lt; 20000 AND stock &gt; 0</code>. Именно
+                        <code>&gt; 0</code>, а не <code>&lt;&gt; 0</code>: NULL не пройдёт
+                        ни то, ни другое, но <code>&gt; 0</code> честнее по смыслу.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">ALTER TABLE products ADD COLUMN stock INTEGER DEFAULT 0;</span><span class="code-row"></span><span class="code-row">UPDATE products SET stock = 5 WHERE title = &#x27;Мышь&#x27;;</span><span class="code-row"></span><span class="code-row">SELECT title, price, stock</span><span class="code-row">FROM products</span><span class="code-row">WHERE price &lt; 20000 AND stock &gt; 0;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Ноутбуки или дешёвые</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Найдите товары, в названии которых есть «Ноут», либо цену меньше 1000. Отсортируйте по цене.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Смешаны <code>OR</code> и <code>LIKE</code> - скобки помогут не запутаться.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">SELECT title, price</span><span class="code-row">FROM products</span><span class="code-row">WHERE title LIKE &#x27;%Ноут%&#x27; OR price &lt; 1000</span><span class="code-row">ORDER BY price;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Фильтровать данные вы умеете. Теперь вы знаете:</p>
+<ul>
+    <li>Как сравнивать числа, строки и даты.</li>
+    <li>Как комбинировать условия и почему нужны скобки.</li>
+    <li>Как искать по диапазону, списку и шаблону.</li>
+    <li>Почему <code>NULL</code> требует особых проверок.</li>
+</ul>
+
+<p>Следующий урок - про итоги: сколько всего заказов, какая средняя цена, сколько купил
+    каждый клиент. Разберём агрегатные функции, <code>GROUP BY</code> и <code>HAVING</code>.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-03.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-05.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

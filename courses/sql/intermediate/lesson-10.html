@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREATE, ALTER и нормализация - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="intermediate" data-lesson-id="lesson-10">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 10</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson active" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>CREATE, ALTER и нормализация</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>До сих пор мы работали с готовыми таблицами. Пора научиться проектировать свои. Это навык,
+    который отличает разработчика, умеющего писать запросы, от того, кто умеет строить
+    приложение, которое не развалится через полгода.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём <code>CREATE TABLE</code>, <code>ALTER TABLE</code> и <code>DROP TABLE</code>.</li>
+    <li>Поймём, зачем нужны три нормальные формы.</li>
+    <li>Превратим плохую таблицу в хорошую схему.</li>
+    <li>Узнаем, когда денормализация оправдана.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Кладовка: если одну вещь кладут в пять коробок, порядок теряется. Нормализация - это подписанные полки.</p>
+</div>
+
+<h2>CREATE TABLE</h2>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE categories (</span><span class="code-row">    id    INTEGER PRIMARY KEY,</span><span class="code-row">    title TEXT NOT NULL UNIQUE</span><span class="code-row">);</span><span class="code-row"></span><span class="code-row">CREATE TABLE products (</span><span class="code-row">    id          INTEGER PRIMARY KEY,</span><span class="code-row">    category_id INTEGER NOT NULL,</span><span class="code-row">    title       TEXT NOT NULL,</span><span class="code-row">    price       INTEGER NOT NULL CHECK (price &gt;= 0),</span><span class="code-row">    FOREIGN KEY (category_id) REFERENCES categories (id)</span><span class="code-row">);</span></code></pre>
+
+<p>Порядок важен: нельзя сослаться на таблицу, которой ещё нет. Сначала создаём справочник
+    категорий, потом товары.</p>
+
+<h2>ALTER TABLE</h2>
+
+<p>Схема меняется со временем. Основные операции:</p>
+
+<pre class="code-numbered"><code><span class="code-row">ALTER TABLE products ADD COLUMN description TEXT;</span><span class="code-row">ALTER TABLE products RENAME COLUMN title TO name;</span><span class="code-row">ALTER TABLE products ADD COLUMN stock INTEGER NOT NULL DEFAULT 0;</span></code></pre>
+
+<p>Удаление столбца поддерживается в SQLite с версии 3.35, в MySQL и PostgreSQL -
+    <code>ALTER TABLE products DROP COLUMN description;</code>.</p>
+
+<p>Добавить обязательный столбец в непустую таблицу можно только с <code>DEFAULT</code>:
+    иначе у существующих строк не будет значения.</p>
+
+<h2>DROP TABLE</h2>
+
+<pre class="code-numbered"><code><span class="code-row">DROP TABLE IF EXISTS temp_data;</span></code></pre>
+
+<p><code>IF EXISTS</code> спасает от ошибки, если таблицы нет. Удаление таблицы необратимо:
+    данные исчезают вместе со структурой.</p>
+
+<h2>Плохая схема</h2>
+
+<p>Представьте таблицу заказов, которую «слепили» в Excel и перенесли в базу:</p>
+
+<table>
+    <thead>
+        <tr><th>order_id</th><th>customer</th><th>phone</th><th>products</th><th>total</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td>Анна</td><td>+79990000001</td><td>Ноутбук, Мышь</td><td>76500</td></tr>
+        <tr><td>2</td><td>Борис</td><td>+79990000002</td><td>Монитор</td><td>30000</td></tr>
+        <tr><td>3</td><td>Анна</td><td>+79990000001</td><td>Кабель</td><td>400</td></tr>
+    </tbody>
+</table>
+
+<p>Проблемы:</p>
+<ul>
+    <li>Телефон Анны дублируется. Изменится - придётся править несколько строк.</li>
+    <li>В одной ячейке список товаров. Нельзя посчитать, сколько продано мышей.</li>
+    <li>Итого хранится отдельно и может разойтись с реальной суммой позиций.</li>
+</ul>
+
+<h2>Первая нормальная форма (1NF)</h2>
+
+<p><strong>В каждой ячейке - одно неделимое значение.</strong> Списки в столбце запрещены:
+    для них нужна отдельная таблица.</p>
+
+<pre class="code-numbered"><code><span class="code-row">-- было: products = &#x27;Ноутбук, Мышь&#x27;</span><span class="code-row">-- стало: отдельные строки в order_items</span></code></pre>
+
+<h2>Вторая нормальная форма (2NF)</h2>
+
+<p><strong>Каждый неключевой столбец зависит от всего ключа, а не от его части.</strong>
+    Проблема появляется в таблицах с составным ключом.</p>
+
+<p>Если ключ <code>(order_id, product_id)</code>, а в строке лежит название товара, то
+    название зависит только от <code>product_id</code>. Значит, его место - в таблице
+    <code>products</code>.</p>
+
+<h2>Третья нормальная форма (3NF)</h2>
+
+<p><strong>Нет транзитивных зависимостей:</strong> неключевой столбец не должен зависеть от
+    другого неключевого.</p>
+
+<p>В заказе хранится <code>customer_id</code> и <code>customer_phone</code>. Телефон зависит
+    от клиента, а не от заказа - это нарушение. Телефон должен жить в <code>customers</code>.</p>
+
+<h2>Хорошая схема</h2>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE customers (</span><span class="code-row">    id    INTEGER PRIMARY KEY,</span><span class="code-row">    name  TEXT NOT NULL,</span><span class="code-row">    phone TEXT UNIQUE</span><span class="code-row">);</span><span class="code-row"></span><span class="code-row">CREATE TABLE orders (</span><span class="code-row">    id          INTEGER PRIMARY KEY,</span><span class="code-row">    customer_id INTEGER NOT NULL,</span><span class="code-row">    created_at  TEXT NOT NULL DEFAULT CURRENT_DATE,</span><span class="code-row">    FOREIGN KEY (customer_id) REFERENCES customers (id)</span><span class="code-row">);</span><span class="code-row"></span><span class="code-row">CREATE TABLE order_items (</span><span class="code-row">    order_id   INTEGER NOT NULL,</span><span class="code-row">    product_id INTEGER NOT NULL,</span><span class="code-row">    quantity   INTEGER NOT NULL CHECK (quantity &gt; 0),</span><span class="code-row">    price      INTEGER NOT NULL CHECK (price &gt;= 0),</span><span class="code-row">    PRIMARY KEY (order_id, product_id),</span><span class="code-row">    FOREIGN KEY (order_id) REFERENCES orders (id) ON DELETE CASCADE,</span><span class="code-row">    FOREIGN KEY (product_id) REFERENCES products (id)</span><span class="code-row">);</span></code></pre>
+
+<p>Обратите внимание на <code>price</code> в <code>order_items</code>: он дублирует цену
+    товара намеренно. Цена в каталоге может измениться, а в заказе должна остаться той,
+    по которой покупали. Это не ошибка, а фиксация факта.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Нормализация - не религия
+    </div>
+    <p>Иногда схему сознательно денормализуют: хранят итог заказа, чтобы не считать его каждый
+        раз, или дублируют имя товара в отчёте. Это допустимо, если вы понимаете цену -
+        данные нужно синхронизировать. Правило: сначала нормальная схема, потом осознанная
+        денормализация под конкретную нагрузку.</p>
+</div>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>CREATE TABLE</code>
+        <span>создать таблицу</span>
+    </li>
+    <li>
+        <code>ALTER TABLE</code>
+        <span>изменить схему</span>
+    </li>
+    <li>
+        <code>DROP TABLE</code>
+        <span>удалить таблицу</span>
+    </li>
+    <li>
+        <code>1NF</code>
+        <span>атомарные значения</span>
+    </li>
+    <li>
+        <code>2NF</code>
+        <span>зависимость от всего ключа</span>
+    </li>
+    <li>
+        <code>3NF</code>
+        <span>без транзитивных зависимостей</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Table already exists»</strong>. Используйте <code>CREATE TABLE IF NOT
+        EXISTS</code> или удалите старую.</li>
+    <li><strong>«Cannot add a NOT NULL column with default value NULL»</strong>. Добавляйте
+        обязательный столбец с <code>DEFAULT</code> или сначала заполните данные.</li>
+    <li><strong>Не удаётся удалить таблицу</strong>. На неё ссылаются внешние ключи. Сначала
+        уберите зависимости.</li>
+    <li><strong>После нормализации запросы стали сложнее</strong>. Это нормальная плата за
+        отсутствие дублей. Сложность уходит в <code>JOIN</code>, который база выполняет
+        эффективно.</li>
+    <li><strong>«Переименовали группу - правили 200 строк».</strong> Признак плохой схемы: одно и то же значение хранится многократно. Нормализация убирает эту рутину.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Библиотека</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Спроектируйте схему из трёх таблиц: <code>authors</code>,
+                <code>books</code>, <code>loans</code> (выдачи книг). Продумайте ключи
+                и связи.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>У книги один автор - <code>books.author_id</code>. Выдача связывает
+                        книгу и читателя, поэтому нужна ещё таблица <code>readers</code>.
+                        В <code>loans</code> храните даты выдачи и возврата.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-azuresqldatabase-plain code-example-icon"></i>
+        <span>SQL</span>
+    </div>
+    <pre class="code-example-body"><code>CREATE TABLE authors (
+    id   INTEGER PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE books (
+    id        INTEGER PRIMARY KEY,
+    author_id INTEGER NOT NULL,
+    title     TEXT NOT NULL,
+    year      INTEGER,
+    FOREIGN KEY (author_id) REFERENCES authors (id)
+);
+
+CREATE TABLE readers (
+    id   INTEGER PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE loans (
+    id         INTEGER PRIMARY KEY,
+    book_id    INTEGER NOT NULL,
+    reader_id  INTEGER NOT NULL,
+    taken_at   TEXT NOT NULL DEFAULT CURRENT_DATE,
+    returned_at TEXT,
+    FOREIGN KEY (book_id) REFERENCES books (id),
+    FOREIGN KEY (reader_id) REFERENCES readers (id)
+);</code></pre>
+</div>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Найдите нарушение</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">В таблице <code>orders</code> есть столбцы: <code>id</code>,
+                <code>customer_id</code>, <code>customer_email</code>,
+                <code>product_list</code>, <code>total</code>. Какие нормальные формы нарушены?</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>product_list</code> - список в ячейке (1NF).
+                        <code>customer_email</code> зависит от клиента, а не от заказа (3NF).</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Нарушены 1NF (список товаров в одной ячейке) и 3NF (email клиента -
+                        зависимость от другого неключевого поля). Решение: таблицы
+                        <code>order_items</code> и <code>customers</code>, в заказе остаётся
+                        только <code>customer_id</code>. <code>total</code> можно оставить
+                        как кэш, но тогда его нужно пересчитывать при изменении позиций.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Измените схему</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Добавьте в <code>products</code> столбец <code>description</code>
+                и столбец <code>is_active</code> со значением по умолчанию 1. Затем
+                переименуйте <code>title</code> в <code>name</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Три команды <code>ALTER TABLE</code>. Для логического флага в SQLite
+                        используют <code>INTEGER DEFAULT 1</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">ALTER TABLE products ADD COLUMN description TEXT;</span><span class="code-row">ALTER TABLE products ADD COLUMN is_active INTEGER NOT NULL DEFAULT 1;</span><span class="code-row">ALTER TABLE products RENAME COLUMN title TO name;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Разделить группы</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Есть таблица <code>students(id, name, group_name)</code>. Вынесите группы в отдельную таблицу <code>groups</code> и свяжите их.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Создайте <code>groups</code>, заполните уникальными названиями, добавьте <code>group_id</code> и обновите значения.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">CREATE TABLE groups (</span><span class="code-row">    id    INTEGER PRIMARY KEY,</span><span class="code-row">    title TEXT NOT NULL UNIQUE</span><span class="code-row">);</span><span class="code-row"></span><span class="code-row">INSERT INTO groups (title)</span><span class="code-row">SELECT DISTINCT group_name FROM students;</span><span class="code-row"></span><span class="code-row">ALTER TABLE students ADD COLUMN group_id INTEGER;</span><span class="code-row"></span><span class="code-row">UPDATE students</span><span class="code-row">SET group_id = (SELECT id FROM groups WHERE title = students.group_name);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы умеете проектировать схему. Теперь вы знаете:</p>
+<ul>
+    <li>Как создавать, менять и удалять таблицы.</li>
+    <li>Что такое 1NF, 2NF и 3NF на практических примерах.</li>
+    <li>Почему цена в заказе дублируется намеренно.</li>
+    <li>Когда денормализация оправдана.</li>
+</ul>
+
+<p>Следующий урок - про функции: как склеивать строки, работать с датами, обрабатывать NULL
+    и строить условия через <code>CASE</code>.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-09.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-11.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

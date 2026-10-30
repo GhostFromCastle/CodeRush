@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Транзакции и ACID - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="advanced" data-lesson-id="lesson-13">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 13</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson active" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Транзакции и ACID</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Представьте перевод денег между счетами. Он состоит из двух действий: списать с одного
+    счёта и зачислить на другой. Если между ними что-то сломается, деньги исчезнут.
+    Транзакции гарантируют, что такого не произойдёт.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Освоим <code>BEGIN</code>, <code>COMMIT</code> и <code>ROLLBACK</code>.</li>
+    <li>Разберём свойства ACID.</li>
+    <li>Поймём уровни изоляции и аномалии чтения.</li>
+    <li>Узнаем, что такое дедлок.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Банковский перевод: списать и зачислить - одно действие. Если посередине отключили свет, половины быть не должно.</p>
+</div>
+
+<h2>Что такое транзакция</h2>
+
+<p>Транзакция - это группа операций, которая выполняется целиком или не выполняется вовсе.</p>
+
+<pre class="code-numbered"><code><span class="code-row">BEGIN;</span><span class="code-row"></span><span class="code-row">UPDATE accounts SET balance = balance - 1000 WHERE id = 1;</span><span class="code-row">UPDATE accounts SET balance = balance + 1000 WHERE id = 2;</span><span class="code-row"></span><span class="code-row">COMMIT;</span></code></pre>
+
+<p>Если между <code>BEGIN</code> и <code>COMMIT</code> произойдёт ошибка или вы выполните
+    <code>ROLLBACK</code>, оба изменения отменятся.</p>
+
+<pre class="code-numbered"><code><span class="code-row">BEGIN;</span><span class="code-row"></span><span class="code-row">DELETE FROM orders WHERE customer_id = 5;</span><span class="code-row"></span><span class="code-row">-- передумали</span><span class="code-row">ROLLBACK;</span></code></pre>
+
+<h2>ACID</h2>
+
+<p>Четыре свойства, которые отличают настоящую транзакционную базу от набора файлов:</p>
+
+<ul>
+    <li><strong>Atomicity (атомарность).</strong> Всё или ничего. Не бывает перевода, где
+        деньги списались, но не зачислились.</li>
+    <li><strong>Consistency (согласованность).</strong> Транзакция переводит базу из одного
+        корректного состояния в другое: ограничения и внешние ключи соблюдаются.</li>
+    <li><strong>Isolation (изолированность).</strong> Параллельные транзакции не видят
+        незавершённых изменений друг друга.</li>
+    <li><strong>Durability (долговечность).</strong> После <code>COMMIT</code> данные переживут
+        даже внезапное отключение питания.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Autocommit
+    </div>
+    <p>По умолчанию большинство клиентов работает в режиме autocommit: каждая команда
+        фиксируется сразу. Чтобы объединить несколько операций, транзакцию открывают явно
+        через <code>BEGIN</code>. В SQLite команда <code>BEGIN</code> называется именно так,
+        в MySQL можно писать <code>START TRANSACTION</code>.</p>
+</div>
+
+<h2>SAVEPOINT</h2>
+
+<p>Внутри транзакции можно ставить точки сохранения и откатываться к ним:</p>
+
+<pre class="code-numbered"><code><span class="code-row">BEGIN;</span><span class="code-row"></span><span class="code-row">INSERT INTO orders (customer_id, price) VALUES (1, 5000);</span><span class="code-row">SAVEPOINT after_order;</span><span class="code-row"></span><span class="code-row">INSERT INTO order_items (order_id, product_id, quantity) VALUES (1, 99, 1);</span><span class="code-row">ROLLBACK TO after_order;</span><span class="code-row"></span><span class="code-row">COMMIT;</span></code></pre>
+
+<p>Заказ останется, а неудавшаяся позиция - нет. Удобно в длинных операциях, где часть
+    шагов можно смело отбросить.</p>
+
+<h2>Уровни изоляции</h2>
+
+<p>Когда две транзакции работают одновременно, возможны аномалии:</p>
+
+<table>
+    <thead>
+        <tr><th>Аномалия</th><th>Что происходит</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Dirty read</td><td>Видно изменение, которое ещё не зафиксировано</td></tr>
+        <tr><td>Non-repeatable read</td><td>Два одинаковых чтения дают разные данные</td></tr>
+        <tr><td>Phantom read</td><td>Между чтениями появились новые строки</td></tr>
+    </tbody>
+</table>
+
+<p>Уровни изоляции определяют, какие аномалии допустимы:</p>
+
+<ul>
+    <li><strong>READ UNCOMMITTED</strong> - видны даже незафиксированные изменения. Почти не
+        используется.</li>
+    <li><strong>READ COMMITTED</strong> - по умолчанию в PostgreSQL. Dirty read исключён.</li>
+    <li><strong>REPEATABLE READ</strong> - по умолчанию в MySQL. Повторное чтение той же
+        строки даёт тот же результат.</li>
+    <li><strong>SERIALIZABLE</strong> - максимальная строгость, транзакции ведут себя так,
+        будто выполнялись по очереди. Медленнее.</li>
+</ul>
+
+<pre class="code-numbered"><code><span class="code-row">BEGIN;</span><span class="code-row">SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;</span><span class="code-row">-- ...</span><span class="code-row">COMMIT;</span></code></pre>
+
+<p>Чем строже уровень, тем меньше аномалий и тем больше блокировок и ожиданий.</p>
+
+<h2>Блокировки и дедлок</h2>
+
+<p>При изменении строки база ставит блокировку. Пока транзакция не завершилась, другая не
+    сможет изменить ту же строку.</p>
+
+<p>Дедлок - ситуация, когда две транзакции ждут друг друга:</p>
+
+<pre class="code-numbered"><code><span class="code-row">Транзакция A: заблокировала строку 1, ждёт строку 2</span><span class="code-row">Транзакция B: заблокировала строку 2, ждёт строку 1</span></code></pre>
+
+<p>База обнаруживает такое и откатывает одну из транзакций с ошибкой
+    <code>deadlock detected</code>. Лечится порядком: всегда блокируйте строки в одном
+    и том же порядке и держите транзакции короткими.</p>
+
+<h2>Практические правила</h2>
+
+<ul>
+    <li><strong>Короткие транзакции.</strong> Не держите открытую транзакцию, пока пользователь
+        думает или идёт запрос к внешнему API.</li>
+    <li><strong>Не ждите внутри транзакции.</strong> Сначала подготовьте данные, потом
+        открывайте.</li>
+    <li><strong>Обрабатывайте ошибки.</strong> При исключении обязательно <code>ROLLBACK</code>,
+        иначе блокировки останутся висеть.</li>
+    <li><strong>Одинаковый порядок.</strong> Это снижает риск дедлоков.</li>
+</ul>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>BEGIN</code>
+        <span>начать транзакцию</span>
+    </li>
+    <li>
+        <code>COMMIT</code>
+        <span>зафиксировать</span>
+    </li>
+    <li>
+        <code>ROLLBACK</code>
+        <span>отменить</span>
+    </li>
+    <li>
+        <code>SAVEPOINT</code>
+        <span>точка отката</span>
+    </li>
+    <li>
+        <code>ACID</code>
+        <span>свойства транзакции</span>
+    </li>
+    <li>
+        <code>SERIALIZABLE</code>
+        <span>строгий уровень изоляции</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Изменения «пропали»</strong>. Транзакция не была зафиксирована. Проверьте,
+        что вызывали <code>COMMIT</code>.</li>
+    <li><strong>«database is locked»</strong>. Другая транзакция держит блокировку.
+        Найдите долгий процесс и завершите его.</li>
+    <li><strong>«deadlock detected»</strong>. Порядок блокировок разный. Упорядочьте операции.</li>
+    <li><strong>ROLLBACK не сработал</strong>. В autocommit-режиме каждая команда уже
+        зафиксирована - нужен явный <code>BEGIN</code>.</li>
+    <li><strong>Транзакция висит после ошибки</strong>. В PostgreSQL после ошибки транзакция
+        переходит в состояние aborted: нужен <code>ROLLBACK</code> перед продолжением.</li>
+    <li><strong>«Деньги списались дважды».</strong> Пользователь дважды нажал кнопку, и два запроса прошли параллельно. Транзакция сама это не решит - нужна защита от повторной отправки (идемпотентность).</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Перевод</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте таблицу <code>accounts</code> с двумя счетами по 10 000.
+                Переведите 3 000 с первого на второй в транзакции. Проверьте итоговую сумму
+                до и после.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сумма всех балансов должна остаться 20 000. Если после перевода она
+                        другая - транзакция собрана неверно.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">BEGIN;</span><span class="code-row"></span><span class="code-row">UPDATE accounts SET balance = balance - 3000 WHERE id = 1;</span><span class="code-row">UPDATE accounts SET balance = balance + 3000 WHERE id = 2;</span><span class="code-row"></span><span class="code-row">COMMIT;</span><span class="code-row"></span><span class="code-row">SELECT SUM(balance) AS total FROM accounts; -- 20000</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Ошибка посередине</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">В той же транзакции после списания попробуйте зачислить деньги
+                на несуществующий счёт. Что произойдёт с первым изменением? Проверьте через
+                <code>ROLLBACK</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Обновится 0 строк - ошибки не будет. Проверяйте количество затронутых
+                        строк, иначе транзакция «успешно» спишет деньги в никуда.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">BEGIN;</span><span class="code-row"></span><span class="code-row">UPDATE accounts SET balance = balance - 3000 WHERE id = 1;</span><span class="code-row"></span><span class="code-row">-- счёт 999 не существует: обновится 0 строк</span><span class="code-row">UPDATE accounts SET balance = balance + 3000 WHERE id = 999;</span><span class="code-row"></span><span class="code-row">ROLLBACK;</span><span class="code-row"></span><span class="code-row">SELECT * FROM accounts; -- балансы не изменились</span></code></pre>
+                    <p>В реальном коде после <code>UPDATE</code> проверяют, что затронута хотя бы
+                        одна строка, и только тогда фиксируют транзакцию.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Точка сохранения</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">В одной транзакции добавьте заказ и две позиции. После первой
+                позиции поставьте <code>SAVEPOINT</code>, вторую сделайте ошибочной и откатитесь
+                к точке. Зафиксируйте транзакцию - должны остаться заказ и одна позиция.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>ROLLBACK TO SAVEPOINT имя;</code> отменяет только действия после
+                        точки, не всю транзакцию.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">BEGIN;</span><span class="code-row"></span><span class="code-row">INSERT INTO orders (id, customer_id, price) VALUES (100, 1, 5000);</span><span class="code-row">INSERT INTO order_items (order_id, product_id, quantity) VALUES (100, 1, 1);</span><span class="code-row">SAVEPOINT after_first_item;</span><span class="code-row"></span><span class="code-row">INSERT INTO order_items (order_id, product_id, quantity) VALUES (100, 999, 1); -- ошибка</span><span class="code-row">ROLLBACK TO after_first_item;</span><span class="code-row"></span><span class="code-row">COMMIT;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Перевод с проверкой</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Спишите 5000 со счёта 1 и зачислите на счёт 2. Если на первом недостаточно денег - откатите транзакцию.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сначала <code>UPDATE ... WHERE id = 1 AND balance &gt;= 5000</code>, затем проверьте, что обновилась строка.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">BEGIN;</span><span class="code-row"></span><span class="code-row">UPDATE accounts</span><span class="code-row">SET balance = balance - 5000</span><span class="code-row">WHERE id = 1 AND balance &gt;= 5000;</span><span class="code-row"></span><span class="code-row">-- если изменено 0 строк, откатываемся</span><span class="code-row">ROLLBACK;</span><span class="code-row"></span><span class="code-row">-- иначе</span><span class="code-row">-- UPDATE accounts SET balance = balance + 5000 WHERE id = 2;</span><span class="code-row">-- COMMIT;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Транзакции больше не магия. Теперь вы знаете:</p>
+<ul>
+    <li>Как выполнить группу операций атомарно.</li>
+    <li>Что означают четыре свойства ACID.</li>
+    <li>Какие бывают аномалии и уровни изоляции.</li>
+    <li>Откуда берутся дедлоки и как их избегать.</li>
+</ul>
+
+<p>Следующий урок - про оконные функции. Они позволяют считать рейтинги, накопительные итоги
+    и сравнения с предыдущей строкой, не сворачивая данные в группы.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="../intermediate/lesson-12.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-14.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Установка и первый запрос - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="beginner" data-lesson-id="lesson-02">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 02</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson active" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Установка и первый запрос</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Теория закончилась: пора запустить настоящую базу. В этом уроке мы поставим SQLite,
+    создадим таблицу и выполним первый запрос. Всё, что нужно, - браузер или бесплатная
+    программа.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Поставим SQLite и клиент для работы с ним.</li>
+    <li>Создадим таблицу и наполним её данными.</li>
+    <li>Выполним первый <code>SELECT</code> и прочитаем результат.</li>
+    <li>Разберёмся с регистром, точкой с запятой и комментариями.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Кухня: сначала ставят плиту, потом готовят. Сначала СУБД, потом запросы.</p>
+</div>
+
+<h2>Два способа начать</h2>
+
+<p><strong>Способ 1. Онлайн-песочница.</strong> Ничего устанавливать не нужно: откройте
+    SQLite Online в браузере, нажмите «Create table» и работайте. Подходит для первых
+    экспериментов.</p>
+
+<p><strong>Способ 2. Локально.</strong> Скачайте <a href="https://sqlitebrowser.org/"
+        target="_blank" rel="noopener noreferrer">DB Browser for SQLite</a> - бесплатную
+    программу с графическим интерфейсом. Создайте новый файл базы, например
+    <code>shop.db</code>, и перейдите на вкладку «Execute SQL».</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-info"></i>
+        Почему SQLite
+    </div>
+    <p>SQLite не требует сервера: вся база - один файл. Это идеально для обучения и для
+        небольших приложений. Синтаксис почти совпадает с PostgreSQL и MySQL, поэтому
+        перейти на них потом будет легко.</p>
+</div>
+
+<h2>Создаём таблицу</h2>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE users (</span><span class="code-row">    id      INTEGER PRIMARY KEY,</span><span class="code-row">    name    TEXT    NOT NULL,</span><span class="code-row">    email   TEXT    UNIQUE,</span><span class="code-row">    age     INTEGER</span><span class="code-row">);</span></code></pre>
+
+<p>Что здесь написано:</p>
+<ul>
+    <li><code>CREATE TABLE users</code> - создать таблицу с именем <code>users</code>.</li>
+    <li><code>id INTEGER PRIMARY KEY</code> - целое число, уникальный идентификатор строки.</li>
+    <li><code>name TEXT NOT NULL</code> - текст, обязательное поле.</li>
+    <li><code>email TEXT UNIQUE</code> - текст, значения не должны повторяться.</li>
+    <li><code>age INTEGER</code> - целое число, может быть пустым.</li>
+</ul>
+
+<p>Подробно типы и ограничения разберём на среднем уровне. Пока достаточно понимать, что
+    таблица - это описание столбцов с правилами.</p>
+
+<h2>Добавляем данные</h2>
+
+<pre class="code-numbered"><code><span class="code-row">INSERT INTO users (name, email, age) VALUES</span><span class="code-row">    (&#x27;Анна&#x27;,  &#x27;anna@example.com&#x27;,  25),</span><span class="code-row">    (&#x27;Борис&#x27;, &#x27;boris@example.com&#x27;, 31),</span><span class="code-row">    (&#x27;Вера&#x27;,  &#x27;vera@example.com&#x27;,  19),</span><span class="code-row">    (&#x27;Глеб&#x27;,  &#x27;gleb@example.com&#x27;,  NULL);</span></code></pre>
+
+<p>Поле <code>id</code> мы не указывали - база сама присвоит номера 1, 2, 3, 4.
+    У Глеба возраст неизвестен, поэтому <code>NULL</code> - «значение отсутствует».</p>
+
+<h2>Первый запрос</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT * FROM users;</span></code></pre>
+
+<p>Звёздочка означает «все столбцы». Результат:</p>
+
+<table>
+    <thead>
+        <tr><th>id</th><th>name</th><th>email</th><th>age</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td>Анна</td><td>anna@example.com</td><td>25</td></tr>
+        <tr><td>2</td><td>Борис</td><td>boris@example.com</td><td>31</td></tr>
+        <tr><td>3</td><td>Вера</td><td>vera@example.com</td><td>19</td></tr>
+        <tr><td>4</td><td>Глеб</td><td>gleb@example.com</td><td>NULL</td></tr>
+    </tbody>
+</table>
+
+<p>Запрос состоит из двух частей: <code>SELECT *</code> - что взять, <code>FROM users</code> -
+    откуда. Дальше мы будем добавлять условия, сортировку и группировку.</p>
+
+<h2>Регистр, точки с запятой и комментарии</h2>
+
+<p>SQL не чувствителен к регистру команд: <code>select</code>, <code>SELECT</code> и
+    <code>Select</code> - одно и то же. Но имена таблиц в некоторых СУБД учитывают регистр,
+    поэтому договоримся писать команды заглавными, а имена - строчными.</p>
+
+<pre class="code-numbered"><code><span class="code-row">-- однострочный комментарий</span><span class="code-row"></span><span class="code-row">/*</span><span class="code-row">   Многострочный комментарий</span><span class="code-row">*/</span><span class="code-row"></span><span class="code-row">SELECT name FROM users;  -- точка с запятой завершает запрос</span></code></pre>
+
+<p>Точка с запятой нужна, если вы выполняете несколько запросов подряд. В клиентах с кнопкой
+    «Execute» она часто необязательна, но привычка полезна: без неё ошибки появляются в самый
+    неподходящий момент.</p>
+
+<h2>Что вернула база</h2>
+
+<p>Результат <code>SELECT</code> - это всегда таблица, даже если в ней одна строка или ноль
+    строк. Ноль строк - не ошибка: значит, под условие ничего не подошло.</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT * FROM users WHERE age &gt; 100;</span></code></pre>
+
+<p>Результат: пустая таблица с теми же столбцами. Это важно запомнить: «нет данных» и
+    «ошибка» - разные вещи.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>CREATE TABLE</code>
+        <span>создать таблицу</span>
+    </li>
+    <li>
+        <code>INSERT INTO</code>
+        <span>добавить строки</span>
+    </li>
+    <li>
+        <code>SELECT *</code>
+        <span>все столбцы</span>
+    </li>
+    <li>
+        <code>FROM users</code>
+        <span>источник данных</span>
+    </li>
+    <li>
+        <code>NULL</code>
+        <span>отсутствующее значение</span>
+    </li>
+    <li>
+        <code>--</code>
+        <span>комментарий</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Table users already exists»</strong>. Таблица уже создана. Удалите её
+        (<code>DROP TABLE users;</code>) или используйте другое имя.</li>
+    <li><strong>«NOT NULL constraint failed»</strong>. Пытаетесь вставить строку без
+        обязательного поля.</li>
+    <li><strong>«UNIQUE constraint failed»</strong>. Такой email уже есть - ограничение
+        сработало правильно.</li>
+    <li><strong>Русский текст превратился в кракозябры</strong>. Файл базы или клиент
+        сохранён не в UTF-8. В онлайн-песочнице такого обычно нет.</li>
+    <li><strong>Запрос выполнился, но данных нет</strong>. Возможно, вы вставили строки в
+        другую базу или не нажали «Write changes» в DB Browser.</li>
+    <li><strong>«Клиент открыл базу, а таблиц нет».</strong> Он смотрит другой файл: SQLite хранит всё в одном <code>.db</code>, и его нужно открыть именно тот, с которым работали вы.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Первая таблица</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте таблицу <code>products</code> с полями:
+                <code>id</code> (ключ), <code>title</code> (текст, обязательное),
+                <code>price</code> (целое число) и добавьте три товара.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Структура как у <code>users</code>, только другие столбцы. В
+                        <code>INSERT</code> перечислите <code>title</code> и <code>price</code>,
+                        а <code>id</code> база заполнит сама.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE products (</span><span class="code-row">    id    INTEGER PRIMARY KEY,</span><span class="code-row">    title TEXT NOT NULL,</span><span class="code-row">    price INTEGER</span><span class="code-row">);</span><span class="code-row"></span><span class="code-row">INSERT INTO products (title, price) VALUES</span><span class="code-row">    (&#x27;Ноутбук&#x27;, 75000),</span><span class="code-row">    (&#x27;Мышь&#x27;, 1500),</span><span class="code-row">    (&#x27;Монитор&#x27;, 30000);</span><span class="code-row"></span><span class="code-row">SELECT * FROM products;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Пустой результат</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выполните <code>SELECT * FROM products WHERE price &gt; 100000;</code>.
+                Объясните, почему результат пустой и почему это не ошибка.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Ни один товар не дороже 100 000. База честно вернула ноль строк.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Пустая таблица в ответе означает «под условие ничего не подошло».
+                        Ошибка выглядела бы иначе: например, «no such column» или
+                        «syntax error».</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. NULL</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Добавьте в <code>users</code> пользователя без возраста.
+                Затем выполните два запроса: <code>WHERE age = NULL</code> и
+                <code>WHERE age IS NULL</code>. Объясните разницу.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>NULL</code> - это не значение, а отсутствие значения. Сравнение
+                        с ним через <code>=</code> не даёт истины.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">INSERT INTO users (name, email) VALUES (&#x27;Дина&#x27;, &#x27;dina@example.com&#x27;);</span><span class="code-row"></span><span class="code-row">SELECT * FROM users WHERE age = NULL;   -- 0 строк</span><span class="code-row">SELECT * FROM users WHERE age IS NULL;  -- Дина и Глеб</span></code></pre>
+                    <p>Для проверки на NULL используют только <code>IS NULL</code> и
+                        <code>IS NOT NULL</code>. Подробнее - в уроке про WHERE.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Пересоздать таблицу</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Удалите таблицу <code>products</code> и создайте заново, заменив цену на <code>REAL</code> (дробную).</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Используйте <code>DROP TABLE</code> и <code>CREATE TABLE</code>. Помните: данные удалятся вместе с таблицей.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">DROP TABLE products;</span><span class="code-row"></span><span class="code-row">CREATE TABLE products (</span><span class="code-row">    id    INTEGER PRIMARY KEY,</span><span class="code-row">    title TEXT NOT NULL,</span><span class="code-row">    price REAL</span><span class="code-row">);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>База работает, данные на месте. Вы знаете:</p>
+<ul>
+    <li>Как поставить SQLite и открыть клиент.</li>
+    <li>Как создать таблицу с ключом и ограничениями.</li>
+    <li>Как добавить строки и выбрать их через <code>SELECT</code>.</li>
+    <li>Что пустой результат - это не ошибка.</li>
+</ul>
+
+<p>Следующий шаг - научиться выбирать не всё подряд. Разберём, как брать нужные столбцы,
+    переименовывать их, убирать дубли и сортировать результат.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-01.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-03.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

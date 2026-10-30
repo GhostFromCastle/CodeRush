@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Даты и время - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="intermediate" data-lesson-id="lesson-18">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 18</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson active" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Даты и время</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Даты - одна из самых коварных тем в программировании. В JavaScript месяц март - это
+    <code>2</code>, воскресенье - это <code>0</code>, а «сегодня» зависит от часового пояса
+    пользователя. Разберёмся, как со всем этим работать без боли.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Научимся создавать даты и читать их части.</li>
+    <li>Поймём разницу между локальным временем и UTC.</li>
+    <li>Освоим форматирование через <code>Intl</code>.</li>
+    <li>Научимся считать разницу и прибавлять дни.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Часовые пояса как табло в аэропорту: момент один, а подписи в Москве и Нью-Йорке разные.</p>
+</div>
+
+<h2>Создание даты</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const now = new Date();               // текущий момент</span><span class="code-row">const fromMs = new Date(0);           // 1 января 1970, UTC</span><span class="code-row">const fromString = new Date(&quot;2026-10-30T12:00:00&quot;);</span><span class="code-row">const fromParts = new Date(2026, 9, 30); // 30 октября 2026</span></code></pre>
+
+<p>Обратите внимание на <code>new Date(2026, 9, 30)</code>: месяц указывается
+    <strong>с нуля</strong>. Девятка - это октябрь. Это историческая особенность, и забыть
+    о ней очень легко.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Месяцы с нуля, дни недели тоже
+    </div>
+    <p><code>getMonth()</code> возвращает 0 для января и 11 для декабря.
+        <code>getDay()</code> возвращает 0 для воскресенья и 6 для субботы. Если строите
+        календарь или выбираете дату - проверяйте себя на конкретных примерах.</p>
+</div>
+
+<h2>Чтение частей</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const date = new Date(2026, 9, 30, 14, 45);</span><span class="code-row"></span><span class="code-row">console.log(date.getFullYear()); // 2026</span><span class="code-row">console.log(date.getMonth());    // 9  - октябрь</span><span class="code-row">console.log(date.getDate());     // 30 - день месяца</span><span class="code-row">console.log(date.getDay());      // 5  - пятница</span><span class="code-row">console.log(date.getHours());    // 14</span><span class="code-row">console.log(date.getMinutes());  // 45</span></code></pre>
+
+<p>Для UTC есть параллельный набор методов: <code>getUTCFullYear</code>,
+    <code>getUTCMonth</code> и так далее. Они не зависят от часового пояса устройства.</p>
+
+<h2>Timestamp</h2>
+
+<p>Внутри дата хранится как количество миллисекунд с 1 января 1970 года UTC:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const date = new Date(&quot;2026-10-30T00:00:00Z&quot;);</span><span class="code-row"></span><span class="code-row">console.log(date.getTime());      // 1793318400000</span><span class="code-row">console.log(Date.now());          // текущий timestamp</span><span class="code-row">console.log(new Date(1793318400000).toISOString());</span><span class="code-row">// &quot;2026-10-30T00:00:00.000Z&quot;</span></code></pre>
+
+<p>Timestamp удобен для сравнения и хранения: это просто число.</p>
+
+<h2>Форматирование</h2>
+
+<p>Встроенные методы вроде <code>toString()</code> дают нечитаемый результат. Для вывода
+    людям используйте <code>Intl.DateTimeFormat</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const date = new Date(2026, 9, 30, 14, 45);</span><span class="code-row"></span><span class="code-row">console.log(new Intl.DateTimeFormat(&quot;ru-RU&quot;).format(date));</span><span class="code-row">// &quot;30.10.2026&quot;</span><span class="code-row"></span><span class="code-row">console.log(new Intl.DateTimeFormat(&quot;ru-RU&quot;, {</span><span class="code-row">    day: &quot;numeric&quot;,</span><span class="code-row">    month: &quot;long&quot;,</span><span class="code-row">    year: &quot;numeric&quot;</span><span class="code-row">}).format(date));</span><span class="code-row">// &quot;30 октября 2026 г.&quot;</span><span class="code-row"></span><span class="code-row">console.log(date.toLocaleDateString(&quot;ru-RU&quot;));</span><span class="code-row">console.log(date.toLocaleTimeString(&quot;ru-RU&quot;, { hour: &quot;2-digit&quot;, minute: &quot;2-digit&quot; }));</span></code></pre>
+
+<p>Для относительных формулировок есть <code>Intl.RelativeTimeFormat</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const rtf = new Intl.RelativeTimeFormat(&quot;ru-RU&quot;, { numeric: &quot;auto&quot; });</span><span class="code-row"></span><span class="code-row">console.log(rtf.format(-1, &quot;day&quot;));  // &quot;вчера&quot;</span><span class="code-row">console.log(rtf.format(3, &quot;day&quot;));   // &quot;через 3 дня&quot;</span></code></pre>
+
+<h2>Арифметика дат</h2>
+
+<p>Даты складываются как числа - через миллисекунды:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const start = new Date(2026, 0, 1);</span><span class="code-row">const end = new Date(2026, 11, 31);</span><span class="code-row"></span><span class="code-row">const diffMs = end - start;</span><span class="code-row">const diffDays = diffMs / (1000 * 60 * 60 * 24);</span><span class="code-row"></span><span class="code-row">console.log(Math.round(diffDays)); // 364</span></code></pre>
+
+<p>Прибавить дни можно через <code>setDate</code>. Метод сам корректно перейдёт на
+    следующий месяц:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function addDays(date, days) {</span><span class="code-row">    const copy = new Date(date);</span><span class="code-row">    copy.setDate(copy.getDate() + days);</span><span class="code-row">    return copy;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(addDays(new Date(2026, 0, 30), 5)); // 4 февраля 2026</span></code></pre>
+
+<p>Обратите внимание на копию: <code>setDate</code> <strong>меняет</strong> объект. Если
+    исходная дата нужна дальше, копируйте её через <code>new Date(date)</code>.</p>
+
+<h2>Сравнение</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const a = new Date(2026, 0, 1);</span><span class="code-row">const b = new Date(2026, 5, 1);</span><span class="code-row"></span><span class="code-row">console.log(a &lt; b);                 // true</span><span class="code-row">console.log(a.getTime() === b.getTime()); // false</span></code></pre>
+
+<p>Сравнивать даты через <code>===</code> нельзя: это разные объекты, даже если момент
+    совпадает. Сравнивайте либо операторами (они приводят к числу), либо через
+    <code>getTime()</code>.</p>
+
+<h2>Разбор даты из строки</h2>
+
+<p>Формат <code>YYYY-MM-DD</code> понимается как UTC, а <code>DD.MM.YYYY</code> - нет.
+    Надёжнее разобрать вручную:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function parseRuDate(value) {</span><span class="code-row">    const [day, month, year] = value.split(&quot;.&quot;).map(Number);</span><span class="code-row"></span><span class="code-row">    if (!day || !month || !year) return null;</span><span class="code-row"></span><span class="code-row">    const date = new Date(year, month - 1, day);</span><span class="code-row"></span><span class="code-row">    // защита от 31.02, которая &quot;переедет&quot; в март</span><span class="code-row">    if (date.getDate() !== day || date.getMonth() !== month - 1) {</span><span class="code-row">        return null;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return date;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(parseRuDate(&quot;30.10.2026&quot;)); // корректная дата</span><span class="code-row">console.log(parseRuDate(&quot;31.02.2026&quot;)); // null</span></code></pre>
+
+<h2>Проверка на валидность</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const date = new Date(&quot;не дата&quot;);</span><span class="code-row"></span><span class="code-row">console.log(date.toString());        // &quot;Invalid Date&quot;</span><span class="code-row">console.log(Number.isNaN(date.getTime())); // true</span></code></pre>
+
+<p>Невалидная дата не выбрасывает ошибку - она просто становится «Invalid Date».
+    Проверяйте через <code>Number.isNaN(date.getTime())</code>.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>new Date()</code>
+        <span>текущий момент</span>
+    </li>
+    <li>
+        <code>getTime()</code>
+        <span>миллисекунды с 1970</span>
+    </li>
+    <li>
+        <code>getMonth()</code>
+        <span>месяц с нуля</span>
+    </li>
+    <li>
+        <code>toISOString()</code>
+        <span>строка в UTC</span>
+    </li>
+    <li>
+        <code>Intl.DateTimeFormat</code>
+        <span>формат для людей</span>
+    </li>
+    <li>
+        <code>setDate()</code>
+        <span>прибавить дни (мутирует)</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Месяц на единицу меньше</strong>. Так устроен JavaScript: январь - это
+        <code>0</code>. При выводе прибавляйте единицу.</li>
+    <li><strong>Дата «уехала» на день назад</strong>. Строка без времени трактуется как UTC,
+        а локальное время может быть раньше. Задавайте дату частями или добавляйте время.</li>
+    <li><strong>Исходная дата изменилась</strong>. <code>setDate</code>, <code>setMonth</code>
+        и <code>setFullYear</code> мутируют объект. Копируйте перед изменением.</li>
+    <li><strong>«Invalid Date»</strong>. Строка не распознана. Разбирайте вручную и проверяйте
+        через <code>Number.isNaN</code>.</li>
+    <li><strong>Разница в днях дробная</strong>. Часовой пояс даёт дробную часть -
+        округляйте через <code>Math.round</code> или считайте по UTC.</li>
+    <li><strong>Дедлайн «съехал» на день.</strong> Дата без времени трактуется как UTC, а у пользователя другой часовой пояс. Для важных дат задавайте время явно или работайте в UTC.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Возраст</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>getAge(birthDate)</code>, которая
+                принимает дату рождения и возвращает полное количество лет на сегодня.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Вычтите годы, а затем проверьте, был ли уже день рождения в этом году:
+                        если месяц или день ещё не наступили, уменьшите результат на единицу.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function getAge(birthDate) {</span><span class="code-row">    const today = new Date();</span><span class="code-row">    let age = today.getFullYear() - birthDate.getFullYear();</span><span class="code-row"></span><span class="code-row">    const monthDiff = today.getMonth() - birthDate.getMonth();</span><span class="code-row">    const dayDiff = today.getDate() - birthDate.getDate();</span><span class="code-row"></span><span class="code-row">    if (monthDiff &lt; 0 || (monthDiff === 0 &amp;&amp; dayDiff &lt; 0)) {</span><span class="code-row">        age -= 1;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return age;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(getAge(new Date(2000, 4, 15)));</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Красивая дата</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите текущую дату в формате «30 октября 2026, пятница»
+                через <code>Intl.DateTimeFormat</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Передайте в настройки <code>day: "numeric"</code>,
+                        <code>month: "long"</code>, <code>year: "numeric"</code> и
+                        <code>weekday: "long"</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const formatter = new Intl.DateTimeFormat(&quot;ru-RU&quot;, {</span><span class="code-row">    day: &quot;numeric&quot;,</span><span class="code-row">    month: &quot;long&quot;,</span><span class="code-row">    year: &quot;numeric&quot;,</span><span class="code-row">    weekday: &quot;long&quot;</span><span class="code-row">});</span><span class="code-row"></span><span class="code-row">console.log(formatter.format(new Date()));</span><span class="code-row">// &quot;30 октября 2026 г., пятница&quot;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Дедлайн</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Дан дедлайн. Выведите, сколько дней осталось, и текст
+                «просрочено», если дата уже прошла.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Разница в миллисекундах делится на
+                        <code>1000 * 60 * 60 * 24</code>. Округлите вверх через
+                        <code>Math.ceil</code> и проверьте знак.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function daysLeft(deadline) {</span><span class="code-row">    const diff = deadline - new Date();</span><span class="code-row">    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));</span><span class="code-row"></span><span class="code-row">    if (days &lt; 0) return &quot;просрочено&quot;;</span><span class="code-row">    if (days === 0) return &quot;сегодня&quot;;</span><span class="code-row"></span><span class="code-row">    return `осталось ${days} дн.`;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(daysLeft(new Date(2026, 11, 31)));</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. До Нового года</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Посчитайте, сколько дней осталось до 1 января следующего года.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Разница дат - это миллисекунды. Разделите на <code>1000 * 60 * 60 * 24</code> и округлите вверх.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">const now = new Date();</span><span class="code-row">const nextYear = new Date(now.getFullYear() + 1, 0, 1);</span><span class="code-row"></span><span class="code-row">const days = Math.ceil((nextYear - now) / (1000 * 60 * 60 * 24));</span><span class="code-row">console.log(days);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Даты больше не пугают. Вы знаете:</p>
+<ul>
+    <li>Как создавать даты и читать их части.</li>
+    <li>Почему месяцы считаются с нуля и где ещё прячутся такие сюрпризы.</li>
+    <li>Как форматировать даты для людей через <code>Intl</code>.</li>
+    <li>Как считать разницу и прибавлять дни, не мутируя исходную дату.</li>
+</ul>
+
+<p>Средний уровень закончен. Дальше - продвинутый: замыкания, <code>this</code>, прототипы
+    и классы. А затем - файлы, анимации, тесты и безопасность. Начнём с того, что отличает
+    уверенного разработчика от новичка: понимания, как JavaScript хранит переменные.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-17.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../advanced/lesson-19.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

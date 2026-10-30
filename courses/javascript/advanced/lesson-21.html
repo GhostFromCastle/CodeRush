@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибки, отладка и модули - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="advanced" data-lesson-id="lesson-21">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 21</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson active" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Ошибки, отладка и модули</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Ошибки - не признак плохого разработчика. Плохой разработчик - тот, чья программа падает
+    с непонятным сообщением и молча ломается у пользователя. В этом уроке научимся
+    обрабатывать сбои, находить причины и структурировать код.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Освоим <code>try/catch/finally</code> и <code>throw</code>.</li>
+    <li>Разберём типы ошибок и что делать с сообщением.</li>
+    <li>Научимся отлаживать через DevTools.</li>
+    <li>Разобьём проект на ES-модули.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Пожарная сигнализация: датчик замечает дым (throw), сирена предупреждает (catch), журнал хранит причину. Без журнала пожар был, а разбираться не с чем.</p>
+</div>
+
+<h2>try/catch</h2>
+
+<pre class="code-numbered"><code><span class="code-row">try {</span><span class="code-row">    const data = JSON.parse(&quot;{ некорректный json }&quot;);</span><span class="code-row">    console.log(data);</span><span class="code-row">} catch (error) {</span><span class="code-row">    console.error(&quot;Не удалось разобрать JSON:&quot;, error.message);</span><span class="code-row">} finally {</span><span class="code-row">    console.log(&quot;Блок завершён&quot;);</span><span class="code-row">}</span></code></pre>
+
+<ul>
+    <li><strong><code>try</code></strong> - код, который может упасть.</li>
+    <li><strong><code>catch</code></strong> - что делать, если упало. Ошибка приходит
+        аргументом.</li>
+    <li><strong><code>finally</code></strong> - выполнится в любом случае: закрыть
+        соединение, скрыть спиннер, снять блокировку.</li>
+</ul>
+
+<p>Важно: <code>try/catch</code> ловит только синхронные ошибки. Ошибка внутри
+    <code>setTimeout</code> или отклонённый промис без <code>await</code> в этот блок не
+    попадёт:</p>
+
+<pre class="code-numbered"><code><span class="code-row">try {</span><span class="code-row">    setTimeout(() =&gt; {</span><span class="code-row">        throw new Error(&quot;Эта ошибка не будет поймана&quot;);</span><span class="code-row">    }, 0);</span><span class="code-row">} catch (error) {</span><span class="code-row">    console.log(&quot;Сюда не попадём&quot;);</span><span class="code-row">}</span></code></pre>
+
+<h2>throw и свои ошибки</h2>
+
+<p>Вы можете выбрасывать ошибки сами - например, при нарушении бизнес-правила:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function withdraw(balance, amount) {</span><span class="code-row">    if (amount &lt;= 0) {</span><span class="code-row">        throw new RangeError(&quot;Сумма должна быть положительной&quot;);</span><span class="code-row">    }</span><span class="code-row">    if (amount &gt; balance) {</span><span class="code-row">        throw new Error(&quot;Недостаточно средств&quot;);</span><span class="code-row">    }</span><span class="code-row">    return balance - amount;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">try {</span><span class="code-row">    withdraw(100, 500);</span><span class="code-row">} catch (error) {</span><span class="code-row">    console.log(error.name);    // &quot;Error&quot;</span><span class="code-row">    console.log(error.message); // &quot;Недостаточно средств&quot;</span><span class="code-row">}</span></code></pre>
+
+<p>Встроенные типы ошибок: <code>Error</code>, <code>TypeError</code>,
+    <code>RangeError</code>, <code>SyntaxError</code>, <code>ReferenceError</code>.
+    Для прикладных ситуаций часто создают свой класс:</p>
+
+<pre class="code-numbered"><code><span class="code-row">class ValidationError extends Error {</span><span class="code-row">    constructor(field, message) {</span><span class="code-row">        super(message);</span><span class="code-row">        this.name = &quot;ValidationError&quot;;</span><span class="code-row">        this.field = field;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Не глотайте ошибки
+    </div>
+    <p><code>catch (e) {}</code> без единой строки - худшее, что можно сделать. Ошибка
+        исчезает, а причина бага остаётся. Как минимум логируйте её через
+        <code>console.error</code>. Если ошибка не обрабатывается осмысленно - дайте ей
+        всплыть выше.</p>
+</div>
+
+<h2>Отладка в DevTools</h2>
+
+<p>Кроме <code>console.log</code> есть инструменты, которые экономят часы:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.table(users);        // массив объектов в виде таблицы</span><span class="code-row">console.group(&quot;Загрузка&quot;);   // сгруппировать вывод</span><span class="code-row">console.log(&quot;шаг 1&quot;);</span><span class="code-row">console.groupEnd();</span><span class="code-row">console.time(&quot;запрос&quot;);      // замер времени</span><span class="code-row">console.timeEnd(&quot;запрос&quot;);</span><span class="code-row">console.trace();             // стек вызовов</span></code></pre>
+
+<p>Но главный инструмент - <strong>точки останова</strong>. В DevTools откройте вкладку
+    Sources, найдите файл и кликните на номер строки. Выполнение остановится, и вы сможете
+    посмотреть значения переменных, пройти код по шагам и понять, где именно всё пошло не
+    так.</p>
+
+<p>В коде можно поставить и жёсткую остановку:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function calculate(a, b) {</span><span class="code-row">    debugger; // выполнение остановится здесь при открытых DevTools</span><span class="code-row">    return a + b;</span><span class="code-row">}</span></code></pre>
+
+<p>Не забудьте удалить <code>debugger</code> перед публикацией - иначе браузер с открытыми
+    инструментами будет останавливаться у каждого пользователя.</p>
+
+<h2>Строгий режим</h2>
+
+<p>В строгом режиме некоторые неаккуратные конструкции становятся ошибками: присваивание
+    необъявленной переменной, удаление переменной, дублирование параметров. Включается
+    директивой в начале файла:</p>
+
+<pre class="code-numbered"><code><span class="code-row">&quot;use strict&quot;;</span><span class="code-row"></span><span class="code-row">// name = &quot;Алексей&quot;; // ReferenceError вместо создания глобальной переменной</span></code></pre>
+
+<p>В ES-модулях и классах строгий режим включён автоматически, поэтому отдельная директива
+    нужна только в старых скриптах.</p>
+
+<h2>ES-модули</h2>
+
+<p>Пока весь код лежит в одном файле, проект растёт в неуправляемую свалку. Модули решают
+    это: каждый файл отвечает за своё, а связи описаны явно.</p>
+
+<pre class="code-numbered"><code><span class="code-row">// js/utils.js</span><span class="code-row">export function formatPrice(value) {</span><span class="code-row">    return `${value.toLocaleString(&quot;ru-RU&quot;)} ₽`;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">export const TAX_RATE = 0.2;</span></code></pre>
+
+<pre class="code-numbered"><code><span class="code-row">// js/cart.js</span><span class="code-row">import { formatPrice, TAX_RATE } from &quot;./utils.js&quot;;</span><span class="code-row"></span><span class="code-row">export function calculateTotal(items) {</span><span class="code-row">    const sum = items.reduce((total, item) =&gt; total + item.price, 0);</span><span class="code-row">    return formatPrice(sum * (1 + TAX_RATE));</span><span class="code-row">}</span></code></pre>
+
+<pre class="code-numbered"><code><span class="code-row">// js/main.js</span><span class="code-row">import { calculateTotal } from &quot;./cart.js&quot;;</span><span class="code-row"></span><span class="code-row">console.log(calculateTotal([{ price: 1000 }, { price: 500 }]));</span></code></pre>
+
+<p>Подключение в HTML:</p>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;script type=&quot;module&quot; src=&quot;js/main.js&quot;&gt;&lt;/script&gt;</span></code></pre>
+
+<p>Правила, о которых легко забыть:</p>
+
+<ul>
+    <li><strong>Атрибут <code>type="module"</code> обязателен.</strong> Без него
+        <code>import</code> вызовет синтаксическую ошибку.</li>
+    <li><strong>Расширение <code>.js</code> в пути нужно указывать.</strong>
+        <code>"./utils"</code> не сработает.</li>
+    <li><strong>Модули подключаются по HTTP, а не через <code>file://</code>.</strong>
+        Открывайте проект через локальный сервер.</li>
+    <li><strong>Модули выполняются один раз</strong>, сколько бы раз их ни импортировали.</li>
+    <li><strong>Переменные модуля не попадают в <code>window</code></strong> - это плюс,
+        меньше глобального мусора.</li>
+</ul>
+
+<h2>Export default</h2>
+
+<pre class="code-numbered"><code><span class="code-row">// js/api.js</span><span class="code-row">export default function fetchUsers() {</span><span class="code-row">    return fetch(&quot;/api/users&quot;).then((r) =&gt; r.json());</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">// импорт</span><span class="code-row">import fetchUsers from &quot;./api.js&quot;;</span></code></pre>
+
+<p><code>default</code> удобен, когда модуль отдаёт одну главную сущность. Для наборов
+    утилит лучше именованные экспорты: они подсказываются автодополнением и переименовываются
+    автоматически.</p>
+
+<h2>Структура проекта</h2>
+
+<p>Разумный минимум для небольшого приложения:</p>
+
+<pre class="code-numbered"><code><span class="code-row">project/</span><span class="code-row">├── index.html</span><span class="code-row">├── css/</span><span class="code-row">│   └── style.css</span><span class="code-row">└── js/</span><span class="code-row">    ├── main.js        точка входа</span><span class="code-row">    ├── api.js         запросы к серверу</span><span class="code-row">    ├── storage.js     работа с localStorage</span><span class="code-row">    ├── ui.js          рендер и DOM</span><span class="code-row">    └── utils.js       общие функции</span></code></pre>
+
+<p>Правило простое: файл должен отвечать на один вопрос. <code>api.js</code> знает, откуда
+    брать данные. <code>storage.js</code> - как их сохранять. <code>ui.js</code> - как
+    показывать. <code>main.js</code> связывает всё вместе.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>try / catch</code>
+        <span>поймать ошибку</span>
+    </li>
+    <li>
+        <code>finally</code>
+        <span>выполнить всегда</span>
+    </li>
+    <li>
+        <code>throw</code>
+        <span>выбросить ошибку</span>
+    </li>
+    <li>
+        <code>error.message</code>
+        <span>текст ошибки</span>
+    </li>
+    <li>
+        <code>debugger</code>
+        <span>точка останова</span>
+    </li>
+    <li>
+        <code>export / import</code>
+        <span>модули</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Ошибка не ловится</strong>. Она возникла асинхронно - нужен
+        <code>try/catch</code> вокруг <code>await</code> или <code>.catch()</code>.</li>
+    <li><strong>«Cannot use import statement outside a module»</strong>. В теге
+        <code>&lt;script&gt;</code> нет <code>type="module"</code>.</li>
+    <li><strong>«Failed to resolve module specifier»</strong>. В пути нет
+        <code>./</code> или расширения <code>.js</code>.</li>
+    <li><strong>Модуль не грузится при открытии файла напрямую</strong>. Запустите локальный
+        сервер: <code>python -m http.server</code> или расширение Live Server.</li>
+    <li><strong>Ошибка «проглотилась» и ничего не видно</strong>. Пустой <code>catch</code>.
+        Логируйте <code>error</code> целиком, а не только <code>message</code> - в стеке
+        видно, откуда пришла проблема.</li>
+    <li><strong>Ошибка исчезла бесследно.</strong> В обработчике стоит пустой <code>catch {}</code>. Программа не падает, но причина бага потеряна - логируйте <code>error</code> целиком.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Безопасный JSON</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>safeParse(text)</code>, которая
+                возвращает объект или <code>null</code>, если JSON некорректный. Ошибка не
+                должна доходить до консоли как необработанная.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Оберните <code>JSON.parse</code> в <code>try/catch</code> и верните
+                        <code>null</code> из блока <code>catch</code>. Проверьте на строке
+                        <code>"{bad}"</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function safeParse(text) {</span><span class="code-row">    try {</span><span class="code-row">        return JSON.parse(text);</span><span class="code-row">    } catch (error) {</span><span class="code-row">        console.warn(&quot;Некорректный JSON:&quot;, error.message);</span><span class="code-row">        return null;</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(safeParse(&#x27;{&quot;ok&quot;: true}&#x27;)); // { ok: true }</span><span class="code-row">console.log(safeParse(&quot;{bad}&quot;));        // null</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Своя ошибка</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте класс <code>ValidationError</code>, наследующий
+                <code>Error</code>, с полем <code>field</code>. Напишите функцию
+                <code>validateAge(age)</code>, которая выбрасывает такую ошибку, если возраст
+                меньше 0 или больше 120.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>В конструкторе вызовите <code>super(message)</code> и задайте
+                        <code>this.name = "ValidationError"</code>. Поймайте ошибку в
+                        <code>try/catch</code> и выведите <code>error.field</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">class ValidationError extends Error {</span><span class="code-row">    constructor(field, message) {</span><span class="code-row">        super(message);</span><span class="code-row">        this.name = &quot;ValidationError&quot;;</span><span class="code-row">        this.field = field;</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">function validateAge(age) {</span><span class="code-row">    if (age &lt; 0 || age &gt; 120) {</span><span class="code-row">        throw new ValidationError(&quot;age&quot;, &quot;Возраст должен быть от 0 до 120&quot;);</span><span class="code-row">    }</span><span class="code-row">    return true;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">try {</span><span class="code-row">    validateAge(200);</span><span class="code-row">} catch (error) {</span><span class="code-row">    console.error(`${error.field}: ${error.message}`);</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Разбейте на модули</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Возьмите любой свой код из предыдущих уроков и разложите его
+                на три файла: <code>utils.js</code> (чистые функции),
+                <code>ui.js</code> (работа с DOM) и <code>main.js</code> (точка входа).
+                Подключите через <code>type="module"</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>В <code>utils.js</code> поставьте <code>export</code> перед нужными
+                        функциями. В <code>main.js</code> импортируйте их и вызовите.
+                        Откройте страницу через локальный сервер, иначе модули не загрузятся.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">// js/utils.js</span><span class="code-row">export function formatPrice(value) {</span><span class="code-row">    return `${value.toLocaleString(&quot;ru-RU&quot;)} ₽`;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">// js/ui.js</span><span class="code-row">import { formatPrice } from &quot;./utils.js&quot;;</span><span class="code-row"></span><span class="code-row">export function renderTotal(element, total) {</span><span class="code-row">    element.textContent = `Итого: ${formatPrice(total)}`;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">// js/main.js</span><span class="code-row">import { renderTotal } from &quot;./ui.js&quot;;</span><span class="code-row"></span><span class="code-row">const total = 4500;</span><span class="code-row">renderTotal(document.querySelector(&quot;.total&quot;), total);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Безопасное деление</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>safeDivide(a, b)</code>, которая выбрасывает <code>Error</code> с понятным текстом при делении на ноль, а иначе возвращает результат. Поймайте ошибку.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Проверьте <code>b === 0</code> и вызовите <code>throw new Error(...)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">function safeDivide(a, b) {</span><span class="code-row">    if (b === 0) {</span><span class="code-row">        throw new Error(&quot;На ноль делить нельзя&quot;);</span><span class="code-row">    }</span><span class="code-row">    return a / b;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">try {</span><span class="code-row">    console.log(safeDivide(10, 0));</span><span class="code-row">} catch (error) {</span><span class="code-row">    console.error(error.message);</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Теперь ваш код умеет падать красиво и находить причины. Вы знаете:</p>
+<ul>
+    <li>Как ловить ошибки и почему пустой <code>catch</code> - зло.</li>
+    <li>Как создавать собственные типы ошибок.</li>
+    <li>Как отлаживать через точки останова, а не только <code>console.log</code>.</li>
+    <li>Как разбивать проект на модули.</li>
+</ul>
+
+<p>Осталось два шага: научиться сохранять данные между перезагрузками и собрать всё
+    вместе в настоящем приложении. В следующем уроке разберём <strong>JSON и
+    localStorage</strong>, а также паттерн «состояние → рендер», на котором строятся
+    современные интерфейсы.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-20.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-22.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

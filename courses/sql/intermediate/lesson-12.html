@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Индексы и EXPLAIN - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="intermediate" data-lesson-id="lesson-12">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 12</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson active" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Индексы и EXPLAIN</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Запрос, который на сотне строк выполняется мгновенно, на миллионе может занять минуты.
+    Причина обычно одна: база перебирает всю таблицу. Индексы решают эту проблему - но не
+    всегда и не бесплатно.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Поймём, что такое индекс и как он устроен.</li>
+    <li>Научимся создавать индексы под конкретные запросы.</li>
+    <li>Разберём случаи, когда индекс не помогает.</li>
+    <li>Научимся читать план выполнения через <code>EXPLAIN</code>.</li>
+</ul>
+
+<h2>Аналогия</h2>
+
+<p>Представьте книгу на тысячу страниц без оглавления. Найти упоминание «Байкал» можно только
+    перелистывая всё подряд. Оглавление и алфавитный указатель - это индекс: отдельная
+    структура, которая позволяет прыгнуть сразу в нужное место.</p>
+
+<p>В базе индекс - это отсортированная структура (обычно B-дерево), где хранятся значения
+    столбца и ссылки на строки.</p>
+
+<h2>Создание индекса</h2>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE INDEX idx_orders_customer</span><span class="code-row">ON orders (customer_id);</span></code></pre>
+
+<p>После этого запрос</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT * FROM orders WHERE customer_id = 1;</span></code></pre>
+
+<p>не будет перебирать таблицу: база найдёт нужные строки через индекс.</p>
+
+<p>Уникальный индекс заодно запрещает дубли:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE UNIQUE INDEX idx_users_email ON users (email);</span></code></pre>
+
+<p>Он делает то же, что ограничение <code>UNIQUE</code>, но может быть создан на существующей
+    таблице.</p>
+
+<h2>Составные индексы</h2>
+
+<p>Индекс может включать несколько столбцов:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE INDEX idx_orders_customer_date</span><span class="code-row">ON orders (customer_id, created_at);</span></code></pre>
+
+<p>Он поможет запросам, где фильтр начинается с <code>customer_id</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">WHERE customer_id = 1                                  -- работает</span><span class="code-row">WHERE customer_id = 1 AND created_at &gt; &#x27;2026-01-01&#x27;    -- работает</span><span class="code-row">WHERE created_at &gt; &#x27;2026-01-01&#x27;                        -- НЕ работает</span></code></pre>
+
+<p>Правило «левого префикса»: индекс используется, если условие накрывает его начало.
+    Порядок столбцов в индексе поэтому важен - первым ставят самый избирательный и самый
+    частый в фильтрах.</p>
+
+<h2>Когда индекс не помогает</h2>
+
+<ul>
+    <li><strong>Функция над столбцом.</strong> <code>WHERE LOWER(email) = 'a@b.c'</code> не
+        использует обычный индекс по <code>email</code>. Нужен функциональный индекс
+        или хранение нормализованного значения.</li>
+    <li><strong>Поиск по подстроке.</strong> <code>LIKE '%анна%'</code> не может использовать
+        B-дерево: неизвестно, с чего начинать. <code>LIKE 'Анна%'</code> - может.</li>
+    <li><strong>Низкая избирательность.</strong> Индекс по столбцу «пол» бесполезен: он вернёт
+        половину таблицы, и база всё равно пойдёт читать строки.</li>
+    <li><strong>Маленькая таблица.</strong> На сотне строк дешевле прочитать всё целиком.</li>
+    <li><strong>Несовпадение типов.</strong> <code>WHERE id = '5'</code> может помешать
+        использованию индекса в строгих СУБД.</li>
+</ul>
+
+<h2>Цена индекса</h2>
+
+<p>Индекс ускоряет чтение, но замедляет запись: при каждом <code>INSERT</code>,
+    <code>UPDATE</code> и <code>DELETE</code> его нужно обновить. Он занимает место на диске.</p>
+
+<p>Поэтому не стоит индексировать всё подряд. Практическое правило: индексы нужны на
+    столбцах, по которым часто фильтруют и соединяют таблицы, а также на внешних ключах.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Внешние ключи индексируются не везде
+    </div>
+    <p>PostgreSQL и MySQL автоматически создают индекс для внешнего ключа, SQLite - нет.
+        Если в SQLite часто ищут заказы по <code>customer_id</code>, индекс стоит создать
+        вручную.</p>
+</div>
+
+<h2>EXPLAIN</h2>
+
+<p>Самый надёжный способ узнать, использует ли база индекс, - посмотреть план запроса:</p>
+
+<pre class="code-numbered"><code><span class="code-row">EXPLAIN QUERY PLAN</span><span class="code-row">SELECT * FROM orders WHERE customer_id = 1;</span></code></pre>
+
+<p>В SQLite вывод будет примерно таким:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SEARCH orders USING INDEX idx_orders_customer (customer_id=?)</span></code></pre>
+
+<p>Слово <code>SEARCH</code> с индексом - хороший знак. <code>SCAN orders</code> означает
+    полный перебор.</p>
+
+<p>В PostgreSQL:</p>
+
+<pre class="code-numbered"><code><span class="code-row">EXPLAIN ANALYZE</span><span class="code-row">SELECT * FROM orders WHERE customer_id = 1;</span></code></pre>
+
+<p><code>ANALYZE</code> выполняет запрос и показывает реальное время и количество строк.
+    Ищите в плане <code>Seq Scan</code> (перебор) там, где ожидали индекс.</p>
+
+<h2>Как подбирать индекс</h2>
+
+<ol>
+    <li>Найдите медленный запрос (лог медленных запросов или <code>EXPLAIN</code>).</li>
+    <li>Посмотрите, по каким столбцам идёт фильтр и соединение.</li>
+    <li>Создайте индекс начиная с самого избирательного столбца.</li>
+    <li>Повторите <code>EXPLAIN</code> и сравните.</li>
+    <li>Проверьте, не ухудшилась ли запись.</li>
+</ol>
+
+<p>Не создавайте индексы «на всякий случай»: каждый из них нужно обслуживать.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>CREATE INDEX</code>
+        <span>создать индекс</span>
+    </li>
+    <li>
+        <code>UNIQUE INDEX</code>
+        <span>индекс без дублей</span>
+    </li>
+    <li>
+        <code>составной индекс</code>
+        <span>порядок столбцов важен</span>
+    </li>
+    <li>
+        <code>EXPLAIN</code>
+        <span>план запроса</span>
+    </li>
+    <li>
+        <code>SCAN</code>
+        <span>полный перебор</span>
+    </li>
+    <li>
+        <code>SEARCH</code>
+        <span>поиск по индексу</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Индекс создан, но запрос медленный</strong>. Проверьте <code>EXPLAIN</code>:
+        возможно, условие не покрывает левый префикс индекса.</li>
+    <li><strong>«Index already exists»</strong>. Дайте другое имя или используйте
+        <code>IF NOT EXISTS</code> (не во всех СУБД).</li>
+    <li><strong>Запись стала медленнее</strong>. Слишком много индексов. Удалите неиспользуемые:
+        <code>DROP INDEX idx_name;</code></li>
+    <li><strong>LIKE не ускоряется</strong>. Поиск по подстроке требует полнотекстового индекса
+        (FTS в SQLite, GIN в PostgreSQL).</li>
+    <li><strong>«Индекс есть, а запрос всё равно медленный».</strong> В условии функция над столбцом (<code>LOWER(email)</code>) или поиск с <code>%</code> в начале - индекс не применяется. Смотрите <code>EXPLAIN</code>, а не догадывайтесь.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Индекс для заказов</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте индекс, который ускорит поиск заказов конкретного
+                клиента за период. Проверьте план запроса до и после.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Составной индекс: <code>(customer_id, created_at)</code>. Порядок именно
+                        такой: сначала клиент, потом дата.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">CREATE INDEX idx_orders_customer_date</span><span class="code-row">ON orders (customer_id, created_at);</span><span class="code-row"></span><span class="code-row">EXPLAIN QUERY PLAN</span><span class="code-row">SELECT * FROM orders</span><span class="code-row">WHERE customer_id = 1</span><span class="code-row">  AND created_at &gt;= &#x27;2026-01-01&#x27;;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Найдите бесполезный индекс</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Есть индекс <code>CREATE INDEX idx_name ON users(name)</code>.
+                Какие из запросов его используют, а какие нет?</p>
+
+<pre class="code-numbered"><code><span class="code-row">A: WHERE name = &#x27;Анна&#x27;</span><span class="code-row">B: WHERE LOWER(name) = &#x27;анна&#x27;</span><span class="code-row">C: WHERE name LIKE &#x27;Ан%&#x27;</span><span class="code-row">D: WHERE name LIKE &#x27;%нна&#x27;</span></code></pre>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Индекс работает, когда сравнивается сам столбец или его начало.
+                        Функция и поиск с <code>%</code> в начале мешают.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><strong>A</strong> и <strong>C</strong> используют индекс.
+                        <strong>B</strong> - нет, потому что функция над столбцом.
+                        <strong>D</strong> - нет, поиск по подстроке требует полного перебора
+                        или отдельного полнотекстового индекса.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Замер</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сгенерируйте таблицу на 100 000 строк, замерьте время запроса
+                без индекса и с ним. Используйте <code>EXPLAIN</code> и секундомер клиента.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>В SQLite можно вставить данные из рекурсивного CTE (разберём позже)
+                        или сгенерировать CSV. Главное - сравнить <code>SCAN</code> и
+                        <code>SEARCH</code> в плане.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">-- до индекса</span><span class="code-row">EXPLAIN QUERY PLAN SELECT * FROM big WHERE code = 777;</span><span class="code-row">-- SCAN big</span><span class="code-row"></span><span class="code-row">CREATE INDEX idx_big_code ON big (code);</span><span class="code-row"></span><span class="code-row">-- после</span><span class="code-row">EXPLAIN QUERY PLAN SELECT * FROM big WHERE code = 777;</span><span class="code-row">-- SEARCH big USING INDEX idx_big_code (code=?)</span></code></pre>
+                    <p>На 100 000 строк разница обычно заметна уже в миллисекундах, а на миллионах
+                        строк - в десятки раз.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Индекс по статусу и дате</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте индекс, который ускорит отчёт «оплаченные заказы за период». Проверьте план запроса.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Составной индекс: сначала статус, затем дата.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">CREATE INDEX idx_orders_status_date ON orders (status, created_at);</span><span class="code-row"></span><span class="code-row">EXPLAIN QUERY PLAN</span><span class="code-row">SELECT * FROM orders</span><span class="code-row">WHERE status = &#x27;paid&#x27;</span><span class="code-row">  AND created_at &gt;= &#x27;2026-01-01&#x27;;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы понимаете, откуда берётся скорость. Теперь вы знаете:</p>
+<ul>
+    <li>Как устроен индекс и зачем он нужен.</li>
+    <li>Как создавать обычные, уникальные и составные индексы.</li>
+    <li>В каких случаях индекс бесполезен.</li>
+    <li>Как читать план запроса.</li>
+</ul>
+
+<p>Средний уровень закончен. Дальше - продвинутый: транзакции, оконные функции, CTE
+    и финальный проект с реальной схемой интернет-магазина.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-11.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../advanced/lesson-13.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

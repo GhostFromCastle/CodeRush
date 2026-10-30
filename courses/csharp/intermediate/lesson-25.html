@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Многомерные массивы - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="intermediate" data-lesson-id="lesson-25">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Средний</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 25</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+                        <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson active" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Полиморфизм</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Интерфейсы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Абстрактные классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-33.html" class="sidebar-lesson" data-lesson-id="lesson-33">
+                            <span class="sidebar-lesson-num">33</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-34.html" class="sidebar-lesson" data-lesson-id="lesson-34">
+                            <span class="sidebar-lesson-num">34</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-35.html" class="sidebar-lesson" data-lesson-id="lesson-35">
+                            <span class="sidebar-lesson-num">35</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-36.html" class="sidebar-lesson" data-lesson-id="lesson-36">
+                            <span class="sidebar-lesson-num">36</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Многомерные массивы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>До этого момента мы работали с обычными массивами, которые можно представить как одну длинную полку с
+                    ячейками. Но что, если нам нужно хранить данные в виде таблицы? Например, расписание занятий,
+                    игровое поле для шахмат или результаты турнира.</p>
+
+                <p>Для таких случаев в C# существуют <strong>многомерные массивы</strong>. Сегодня мы научимся создавать
+                    двумерные таблицы, заполнять их и обходить с помощью вложенных циклов. А в следующем уроке соберём
+                    на них игру «Крестики-нолики».</p>
+
+                <h2>Что такое двумерный массив</h2>
+
+                <p>Обычный массив - это линия. Двумерный массив - это сетка. Как страница в Excel: у неё есть строки и
+                    столбцы.</p>
+
+                <p>Аналогия: представьте себе шкаф. В одномерном массиве у нас была одна полка с ячейками,
+                    пронумерованными слева направо. В двумерном массиве у нас несколько полок друг над другом, и на
+                    каждой полке есть свои ячейки. Чтобы найти нужную вещь, нужно знать номер полки (строка) и номер
+                    ячейки на ней (столбец).</p>
+
+                <p>В программировании такие массивы называют <strong>матрицами</strong> или <strong>сетками</strong>.
+                    Каждая ячейка имеет два индекса: <code>[строка, столбец]</code>.</p>
+
+                <h2>Создание двумерного массива</h2>
+
+                <p>Синтаксис очень похож на обычный массив, но с добавлением запятой в квадратных скобках:</p>
+
+                <pre class="code-numbered"><code><span class="code-row">int[,] grid = new int[3, 4];</span></code></pre>
+
+                <p>Что это значит:</p>
+                <ul>
+                    <li><code>int[,]</code> - тип «двумерный массив целых чисел».</li>
+                    <li><code>grid</code> - имя массива.</li>
+                    <li><code>new int[3, 4]</code> - создаём таблицу, в которой 3 строки и 4 столбца.</li>
+                </ul>
+
+                <p>Визуально это выглядит так (все ячейки пока заполнены нулями по умолчанию):</p>
+                <pre><code>0 0 0 0
+0 0 0 0
+0 0 0 0</code></pre>
+
+                <h3>Инициализация значениями</h3>
+
+                <p>Как и в случае с одномерным массивом, таблицу можно сразу заполнить данными:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[,] matrix = </span><span class="code-row">{</span><span class="code-row">    { 1, 2, 3 },</span><span class="code-row">    { 4, 5, 6 },</span><span class="code-row">    { 7, 8, 9 }</span><span class="code-row">};</span></code></pre>
+
+                <p>Здесь мы создали матрицу 3x3. Внешние фигурные скобки обозначают весь массив, а внутренние скобки на
+                    каждой строке - это одна строка таблицы.</p>
+                <pre><code>1 2 3
+4 5 6
+7 8 9</code></pre>
+
+                <h2>Как обращаться к элементам</h2>
+
+                <p>Чтобы достать или изменить значение, нужно указать два индекса: сначала строку, потом столбец. Оба
+                    начинаются с нуля.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[,] matrix = </span><span class="code-row">{</span><span class="code-row">    { 1, 2, 3 },</span><span class="code-row">    { 4, 5, 6 },</span><span class="code-row">    { 7, 8, 9 }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">Console.WriteLine(matrix[0, 0]);</span><span class="code-row">Console.WriteLine(matrix[1, 2]);</span><span class="code-row"></span><span class="code-row">matrix[2, 1] = 100;</span></code></pre>
+
+                <p>Разберём:</p>
+                <ul>
+                    <li><code>matrix[0, 0]</code> - это первая строка, первый столбец. Значение 1.</li>
+                    <li><code>matrix[1, 2]</code> - это вторая строка (индекс 1), третий столбец (индекс 2). Значение 6.
+                    </li>
+                    <li>Запись <code>matrix[2, 1] = 100</code> заменит число 8 на 100.</li>
+                </ul>
+
+                <h2>Свойство Length и метод GetLength</h2>
+
+                <p>У многомерных массивов есть интересная особенность. Свойство <code>.Length</code> показывает
+                    <strong>общее количество ячеек</strong> во всей таблице. Для матрицы 3x3 это будет 9, а для 3x4 -
+                    12.</p>
+
+                <p>Но чтобы узнать количество строк или столбцов отдельно, используется метод <code>GetLength</code> с
+                    указанием измерения:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[,] matrix = new int[3, 4];</span><span class="code-row"></span><span class="code-row">Console.WriteLine(matrix.Length);</span><span class="code-row">Console.WriteLine(matrix.GetLength(0));</span><span class="code-row">Console.WriteLine(matrix.GetLength(1));</span></code></pre>
+
+                <p>Результат:</p>
+                <pre><code>12
+3
+4</code></pre>
+                <ul>
+                    <li><code>GetLength(0)</code> - количество строк (первое измерение).</li>
+                    <li><code>GetLength(1)</code> - количество столбцов (второе измерение).</li>
+                </ul>
+
+                <h2>Перебор с помощью вложенных циклов</h2>
+
+                <p>Чтобы пройтись по всем ячейкам таблицы, одного цикла недостаточно. Нам понадобится <strong>цикл в
+                        цикле</strong>. Внешний цикл будет идти по строкам, а внутренний - по столбцам внутри каждой
+                    строки.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[,] matrix = </span><span class="code-row">{</span><span class="code-row">    { 1, 2, 3 },</span><span class="code-row">    { 4, 5, 6 },</span><span class="code-row">    { 7, 8, 9 }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">for (int i = 0; i < matrix.GetLength(0); i++)</span><span class="code-row">{</span><span class="code-row">    for (int j = 0; j < matrix.GetLength(1); j++)</span><span class="code-row">    {</span><span class="code-row">        Console.Write(matrix[i, j] + " ");</span><span class="code-row">    }</span><span class="code-row">    Console.WriteLine();</span><span class="code-row">}</span></code></pre>
+
+                <p>Обратите внимание на логику:</p>
+                <ol>
+                    <li>Внешний цикл (<code>i</code>) отвечает за строки.</li>
+                    <li>Внутри него внутренний цикл (<code>j</code>) перебирает элементы текущей строки.</li>
+                    <li>Мы используем <code>Console.Write</code> (без перевода строки), чтобы вывести элементы в одну
+                        линию через пробел.</li>
+                    <li>После того как внутренний цикл завершился (строка закончилась), мы вызываем
+                        <code>Console.WriteLine()</code> без аргументов, чтобы перейти на новую строку.</li>
+                </ol>
+
+                <p>На экране появится красивая таблица:</p>
+                <pre><code>1 2 3 
+4 5 6 
+7 8 9 </code></pre>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Аналогия с часами
+                    </div>
+                    <p>Вложенные циклы работают как часовая стрелка и минутная. Минутная стрелка (внутренний цикл)
+                        делает полный круг, пока часовая (внешний цикл) сдвигается на одно деление.</p>
+                </div>
+
+                <h2>Заполнение массива с клавиатуры</h2>
+
+                <p>Давайте напишем программу, которая создаёт таблицу и позволяет пользователю заполнить её вручную:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">int[,] matrix = new int[2, 3];</span><span class="code-row"></span><span class="code-row">for (int i = 0; i < matrix.GetLength(0); i++)</span><span class="code-row">{</span><span class="code-row">    for (int j = 0; j < matrix.GetLength(1); j++)</span><span class="code-row">    {</span><span class="code-row">        Console.Write($"Введи элемент [{i},{j}]: ");</span><span class="code-row">        matrix[i, j] = int.Parse(Console.ReadLine());</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.WriteLine("Твоя таблица:");</span><span class="code-row">for (int i = 0; i < matrix.GetLength(0); i++)</span><span class="code-row">{</span><span class="code-row">    for (int j = 0; j < matrix.GetLength(1); j++)</span><span class="code-row">    {</span><span class="code-row">        Console.Write(matrix[i, j] + "\t");</span><span class="code-row">    }</span><span class="code-row">    Console.WriteLine();</span><span class="code-row">}</span></code></pre>
+
+                <p>Здесь мы использовали символ <code>\t</code> при выводе. Это символ табуляции, который выравнивает
+                    столбцы так же, как клавиша Tab на клавиатуре.</p>
+
+                <h2>Где это используется</h2>
+
+                <p>Двумерные массивы - это фундамент для:</p>
+                <ul>
+                    <li><strong>Игр.</strong> Шахматная доска, поле для «Сапёра» или «Крестиков-ноликов» - всё это
+                        матрицы.</li>
+                    <li><strong>Графики и изображения.</strong> Экран монитора или фотография - это, по сути, двумерная
+                        сетка из пикселей.</li>
+                    <li><strong>Работа с таблицами.</strong> Excel-файлы, базы данных и CSV-файлы легко ложатся в
+                        двумерные массивы.</li>
+                </ul>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>int[,] arr = new int[3, 4];</code>
+                        <span>создать таблицу 3x4</span>
+                    </li>
+                    <li>
+                        <code>arr[0, 1]</code>
+                        <span>элемент в 0-й строке, 1-м столбце</span>
+                    </li>
+                    <li>
+                        <code>arr.Length</code>
+                        <span>общее количество ячеек</span>
+                    </li>
+                    <li>
+                        <code>arr.GetLength(0)</code>
+                        <span>количество строк</span>
+                    </li>
+                    <li>
+                        <code>arr.GetLength(1)</code>
+                        <span>количество столбцов</span>
+                    </li>
+                    <li>
+                        <code>for (i) for (j)</code>
+                        <span>перебор всей таблицы</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные ошибки при работе с многомерными массивами.</p>
+
+                <ul>
+                    <li><strong>«IndexOutOfRangeException».</strong> Вы обратились к ячейке, которой не существует.
+                        Помните, что индексы начинаются с 0. Если строк 3, последний индекс строки - 2.</li>
+                    <li><strong>«Wrong number of indices inside []; expected 2».</strong> Вы пытаетесь обратиться к
+                        двумерному массиву только по одному индексу (например, <code>arr[0]</code>). Нужно указывать
+                        оба: <code>arr[0, 0]</code>.</li>
+                    <li><strong>Путаница строк и столбцов.</strong> Всегда помните: <code>arr[i, j]</code> означает
+                        строку <code>i</code> и столбец <code>j</code>. Если внешний цикл у вас отвечает за строки, то
+                        он должен использовать <code>GetLength(0)</code>.</li>
+                    <li><strong>«Cannot implicitly convert type 'int[,]' to 'int[]'».</strong> Двумерный и одномерный
+                        массивы - разные типы. Их нельзя просто так присвоить друг другу.</li>
+                    <li><strong>Таблица выводится в одну строку.</strong> Вы забыли добавить
+                        <code>Console.WriteLine()</code> после внутреннего цикла. Он нужен для перевода строки.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Создание и вывод</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте двумерный массив размером 2 строки на 4 столбца. Заполните его
+                                любыми числами при создании. Выведите его на экран в виде таблицы.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте массив через фигурные скобки (как в теории). Для вывода используйте два
+                                        вложенных цикла <code>for</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">int[,] grid = </span><span class="code-row">{</span><span class="code-row">    { 10, 20, 30, 40 },</span><span class="code-row">    { 50, 60, 70, 80 }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">for (int i = 0; i < grid.GetLength(0); i++)</span><span class="code-row">{</span><span class="code-row">    for (int j = 0; j < grid.GetLength(1); j++)</span><span class="code-row">    {</span><span class="code-row">        Console.Write(grid[i, j] + " ");</span><span class="code-row">    }</span><span class="code-row">    Console.WriteLine();</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Сумма всех элементов</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Дан двумерный массив чисел. Найдите сумму всех его элементов и выведите
+                                результат.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте переменную <code>sum = 0</code> перед циклами. Внутри вложенных циклов
+                                        прибавляйте текущий элемент к <code>sum</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">int[,] matrix = </span><span class="code-row">{</span><span class="code-row">    { 1, 2, 3 },</span><span class="code-row">    { 4, 5, 6 }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">int sum = 0;</span><span class="code-row"></span><span class="code-row">for (int i = 0; i < matrix.GetLength(0); i++)</span><span class="code-row">{</span><span class="code-row">    for (int j = 0; j < matrix.GetLength(1); j++)</span><span class="code-row">    {</span><span class="code-row">        sum += matrix[i, j];</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Сумма: {sum}");</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Поиск максимума</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Найдите максимальный элемент в двумерном массиве. Выведите его значение
+                                и индексы (строку и столбец), где он находится.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Сначала предположите, что максимум - это элемент <code>[0, 0]</code>. Создайте
+                                        переменные для хранения самого значения, а также для <code>maxRow</code> и
+                                        <code>maxCol</code>. В цикле, если находите элемент больше, обновляйте все три
+                                        переменные.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">int[,] matrix = </span><span class="code-row">{</span><span class="code-row">    { 15, 42, 8 },</span><span class="code-row">    { 99, 23, 11 },</span><span class="code-row">    { 5, 7, 100 }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">int max = matrix[0, 0];</span><span class="code-row">int maxRow = 0;</span><span class="code-row">int maxCol = 0;</span><span class="code-row"></span><span class="code-row">for (int i = 0; i < matrix.GetLength(0); i++)</span><span class="code-row">{</span><span class="code-row">    for (int j = 0; j < matrix.GetLength(1); j++)</span><span class="code-row">    {</span><span class="code-row">        if (matrix[i, j] > max)</span><span class="code-row">        {</span><span class="code-row">            max = matrix[i, j];</span><span class="code-row">            maxRow = i;</span><span class="code-row">            maxCol = j;</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">Console.WriteLine($"Максимум: {max} в ячейке [{maxRow}, {maxCol}]");</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Таблица умножения</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Создайте двумерный массив размером 9x9. Заполните его таблицей
+                                умножения (элемент в ячейке [i, j] равен (i+1) * (j+1)). Выведите её на экран.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте вложенные циклы, чтобы сначала заполнить массив. Внутри цикла пишите
+                                        <code>table[i, j] = (i + 1) * (j + 1);</code>. Затем пройдитесь по нему ещё раз,
+                                        чтобы вывести.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">int[,] table = new int[9, 9];</span><span class="code-row"></span><span class="code-row">for (int i = 0; i < 9; i++)</span><span class="code-row">{</span><span class="code-row">    for (int j = 0; j < 9; j++)</span><span class="code-row">    {</span><span class="code-row">        table[i, j] = (i + 1) * (j + 1);</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">for (int i = 0; i < 9; i++)</span><span class="code-row">{</span><span class="code-row">    for (int j = 0; j < 9; j++)</span><span class="code-row">    {</span><span class="code-row">        Console.Write(table[i, j] + "\t");</span><span class="code-row">    }</span><span class="code-row">    Console.WriteLine();</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы освоили двумерные массивы. Узнали, как создавать таблицы, обращаться к элементам по двум
+                    индексам (<code>[строка, столбец]</code>) и перебирать их с помощью вложенных циклов. Разобрались с
+                    методами <code>GetLength</code> и поняли, что многомерные массивы - это основа для игр и работы с
+                    табличными данными.</p>
+
+                <p>В следующем, финальном уроке среднего уровня мы применим все полученные знания на практике и напишем
+                    игру «Крестики-нолики». Это будет настоящий проект, где мы используем и методы, и двумерные массивы,
+                    и проверку условий, и обработку ошибок.</p>
+
+                                <div class="lesson-actions">
+                    <a href="lesson-24.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-26.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

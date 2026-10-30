@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зачем нужны базы данных и что такое SQL - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="beginner" data-lesson-id="lesson-01">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 01</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson active" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Зачем нужны базы данных и что такое SQL</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~20 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Почти каждая программа рано или поздно упирается в данные: пользователи, заказы, сообщения,
+    оценки, товары. Сначала их хватает в файле или таблице Excel. Потом появляется второй
+    пользователь, третий, данные начинают дублироваться - и всё разваливается.</p>
+
+<p>В этом уроке мы разберёмся:</p>
+<ul>
+    <li>Что такое база данных и чем она отличается от файла.</li>
+    <li>Из чего состоит таблица: строки, столбцы, типы.</li>
+    <li>Что такое SQL и почему его называют декларативным.</li>
+    <li>Какие СУБД существуют и с какой начать.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Картотека в библиотеке: ящики - таблицы, карточки - строки, подписи на карточке - столбцы.</p>
+</div>
+
+<h2>Проблема обычных файлов</h2>
+
+<p>Представьте магазин, который хранит заказы в CSV-файле:</p>
+
+<pre class="code-numbered"><code><span class="code-row">order_id,customer,phone,product,price</span><span class="code-row">1,Анна,89990000001,Ноутбук,75000</span><span class="code-row">2,Борис,89990000002,Мышь,1500</span><span class="code-row">3,Анна,89990000001,Монитор,30000</span></code></pre>
+
+<p>Пока строк десять, всё хорошо. Но дальше начинается:</p>
+
+<ul>
+    <li><strong>Дубли.</strong> Телефон Анны записан трижды. Изменился номер - править три
+        строки и надеяться, что не пропустил четвёртую.</li>
+    <li><strong>Ошибки формата.</strong> Кто-то ввёл цену как «30 000», кто-то как «30000 ₽»,
+        и сумма уже не считается.</li>
+    <li><strong>Одновременный доступ.</strong> Два менеджера открыли файл, оба сохранили -
+        один заказ потерян.</li>
+    <li><strong>Скорость.</strong> Найти заказы за март среди миллиона строк - это минуты
+        ожидания.</li>
+</ul>
+
+<p>База данных решает всё это: она хранит данные в структурированном виде, следит за
+    целостностью, умеет быстро искать и позволяет работать многим пользователям сразу.</p>
+
+<h2>Таблица, строка, столбец</h2>
+
+<p>Реляционная база хранит данные в таблицах. Таблица - это набор однотипных записей.
+    У неё есть столбцы (поля) с фиксированным типом и строки (записи):</p>
+
+<table>
+    <thead>
+        <tr><th>id</th><th>name</th><th>email</th><th>age</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td>Анна</td><td>anna@example.com</td><td>25</td></tr>
+        <tr><td>2</td><td>Борис</td><td>boris@example.com</td><td>31</td></tr>
+        <tr><td>3</td><td>Вера</td><td>vera@example.com</td><td>19</td></tr>
+    </tbody>
+</table>
+
+<ul>
+    <li><strong>Столбец</strong> описывает свойство: имя, почта, возраст.</li>
+    <li><strong>Строка</strong> описывает один объект: конкретного пользователя.</li>
+    <li><strong>Тип</strong> у столбца фиксирован: в <code>age</code> не получится записать
+        «двадцать пять».</li>
+</ul>
+
+<h2>Связи между таблицами</h2>
+
+<p>Данные почти никогда не живут в одной таблице. Заказы ссылаются на пользователей,
+    товары - на категории. Связь делается через <strong>ключ</strong>: в таблице заказов
+    хранится <code>customer_id</code> - номер пользователя из другой таблицы.</p>
+
+<table>
+    <thead>
+        <tr><th>id</th><th>customer_id</th><th>product</th><th>price</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td>1</td><td>Ноутбук</td><td>75000</td></tr>
+        <tr><td>2</td><td>2</td><td>Мышь</td><td>1500</td></tr>
+        <tr><td>3</td><td>1</td><td>Монитор</td><td>30000</td></tr>
+    </tbody>
+</table>
+
+<p>Теперь данные о пользователе хранятся в одном месте. Изменился телефон - меняем одну
+    строку, и это изменение видят все заказы.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        База данных и таблица - не одно и то же
+    </div>
+    <p>База данных - это контейнер, в котором лежат таблицы, индексы, представления и правила.
+        Таблица - одна сущность внутри базы. В одном проекте обычно десятки таблиц в одной
+        базе, а не отдельная база на каждую сущность.</p>
+</div>
+
+<h2>Что такое SQL</h2>
+
+<p>SQL (Structured Query Language) - язык запросов к реляционным базам. Он декларативный:
+    вы описываете, <em>что</em> хотите получить, а не <em>как</em> это искать.</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name, email</span><span class="code-row">FROM users</span><span class="code-row">WHERE age &gt;= 18</span><span class="code-row">ORDER BY name;</span></code></pre>
+
+<p>Читается почти как английский: «выбери имя и почту из пользователей, где возраст не меньше
+    18, отсортировано по имени». Как именно база будет искать строки - её дело. Она может
+    перебрать таблицу, может воспользоваться индексом - результат одинаковый.</p>
+
+<p>Команды SQL делятся на группы:</p>
+
+<ul>
+    <li><strong>DDL</strong> - определение структуры: <code>CREATE</code>, <code>ALTER</code>,
+        <code>DROP</code>.</li>
+    <li><strong>DML</strong> - работа с данными: <code>INSERT</code>, <code>UPDATE</code>,
+        <code>DELETE</code>.</li>
+    <li><strong>DQL</strong> - выборка: <code>SELECT</code>.</li>
+    <li><strong>DCL</strong> - права доступа: <code>GRANT</code>, <code>REVOKE</code>.</li>
+</ul>
+
+<h2>Какие СУБД бывают</h2>
+
+<table>
+    <thead>
+        <tr><th>СУБД</th><th>Где встречается</th><th>Особенность</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>SQLite</td><td>телефоны, десктопные программы</td><td>Вся база в одном файле, не нужен сервер</td></tr>
+        <tr><td>PostgreSQL</td><td>веб-проекты, аналитика</td><td>Мощная, бесплатная, строгая</td></tr>
+        <tr><td>MySQL / MariaDB</td><td>веб-хостинги, WordPress</td><td>Популярная, много готовых решений</td></tr>
+        <tr><td>SQL Server</td><td>корпоративные системы, .NET</td><td>Экосистема Microsoft</td></tr>
+    </tbody>
+</table>
+
+<p>Синтаксис базового SQL у них почти одинаковый. На курсе мы используем <strong>SQLite</strong>:
+    он ставится за минуту и не требует настройки сервера. Все примеры будут работать и в
+    PostgreSQL, небольшие отличия мы оговариваем отдельно.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>таблица</code>
+        <span>набор однотипных записей</span>
+    </li>
+    <li>
+        <code>строка</code>
+        <span>одна запись</span>
+    </li>
+    <li>
+        <code>столбец</code>
+        <span>свойство с типом</span>
+    </li>
+    <li>
+        <code>ключ</code>
+        <span>связь между таблицами</span>
+    </li>
+    <li>
+        <code>SELECT</code>
+        <span>выбрать данные</span>
+    </li>
+    <li>
+        <code>СУБД</code>
+        <span>программа, управляющая базой</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«У меня не запускается SQL»</strong>. SQL - не программа, а язык. Нужна СУБД
+        или онлайн-песочница, например SQLite Online.</li>
+    <li><strong>«Ошибка near SELECT»</strong>. Чаще всего пропущена точка с запятой в конце
+        предыдущего запроса.</li>
+    <li><strong>Данные не совпадают с ожиданием</strong>. Проверьте тип столбца: число,
+        записанное как текст, сравнивается иначе.</li>
+    <li><strong>«Нет такой таблицы»</strong>. Проверьте имя: регистр в разных СУБД учитывается
+        по-разному, а таблица могла быть создана в другой базе.</li>
+    <li><strong>«Excel тормозит на 50 тысячах строк».</strong> Это не повод покупать более мощный компьютер: таблица достигла предела, где нужна база с индексами и запросами.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Спроектируйте таблицу</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Опишите на бумаге таблицу <code>books</code> для библиотеки:
+                какие столбцы нужны, какие типы у них будут и какой столбец станет ключом.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Минимум: идентификатор, название, автор, год издания, количество копий.
+                        Ключом обычно делают числовой <code>id</code>, потому что название может
+                        повторяться.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">id          INTEGER  (ключ)</span><span class="code-row">title       TEXT</span><span class="code-row">author      TEXT</span><span class="code-row">year        INTEGER</span><span class="code-row">copies      INTEGER</span></code></pre>
+                    <p>Год и количество копий - числа, значит <code>INTEGER</code>. Всё
+                        остальное - текст.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Найдите дубли</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">В CSV-файле магазина у одного клиента три разных телефона,
+                а у двух клиентов совпадает почта. Объясните, как таблица
+                <code>customers</code> с ключом решает обе проблемы.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Данные хранятся один раз, а заказы ссылаются на <code>customer_id</code>.
+                        Изменение телефона затрагивает одну строку.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Клиент описывается ровно одной строкой. Если телефон изменился - правим
+                        одно поле, и все заказы автоматически показывают новый номер. Почту
+                        можно защитить ограничением <code>UNIQUE</code> - база не даст создать
+                        второго клиента с тем же адресом.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Выберите СУБД</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Для трёх проектов выберите подходящую СУБД и объясните выбор:
+                мобильное приложение для заметок, интернет-магазин на 50 000 заказов в день,
+                учебный проект на ноутбуке.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Смотрите на нагрузку и на то, нужен ли отдельный сервер базы данных.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><strong>Заметки</strong> - SQLite: база лежит в одном файле рядом с
+                        приложением. <strong>Магазин</strong> - PostgreSQL или MySQL: нужны
+                        одновременные подключения, репликация и резервные копии.
+                        <strong>Учебный проект</strong> - SQLite: ноль настройки, можно начать
+                        через минуту.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Схема для блога</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Какие таблицы понадобятся для блога с авторами, статьями и комментариями? Назовите их и укажите связи.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сущности обычно совпадают с существительными из описания задачи.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Минимум три таблицы: <code>authors</code>, <code>posts</code> (с <code>author_id</code>) и <code>comments</code> (с <code>post_id</code> и <code>author_id</code>). Связи «один ко многим»: автор пишет много статей, статья собирает много комментариев.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы поняли, зачем вообще нужны базы. Теперь вы знаете:</p>
+<ul>
+    <li>Чем база отличается от таблицы и от файла.</li>
+    <li>Из чего состоит таблица и как связать две таблицы ключом.</li>
+    <li>Что SQL декларативный и из каких групп команд состоит.</li>
+    <li>Какую СУБД выбрать для старта.</li>
+</ul>
+
+<p>В следующем уроке поставим SQLite, создадим первую таблицу и выполним первый настоящий
+    запрос - своими руками, а не на картинке.</p>
+
+
+                <div class="lesson-actions">
+                    <span></span>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-02.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

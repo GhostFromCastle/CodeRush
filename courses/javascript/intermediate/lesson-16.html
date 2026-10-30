@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch и работа с API - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="intermediate" data-lesson-id="lesson-16">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 16</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson active" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Fetch и работа с API</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Данные редко лежат в самом коде. Курсы валют, погода, список товаров, сообщения - всё это
+    приходит с сервера. В браузере за это отвечает <code>fetch</code>.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём, как устроен HTTP-запрос.</li>
+    <li>Научимся получать данные через <code>fetch</code>.</li>
+    <li>Поймём, как правильно обрабатывать ошибки.</li>
+    <li>Покажем загруженные данные на странице.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Курьер: вы даёте адрес, ждёте посылку и обязательно проверяете накладную. Сам факт, что кто-то приехал, ещё не значит, что привезли нужное.</p>
+</div>
+
+<h2>Как устроен запрос</h2>
+
+<p>Браузер общается с сервером по протоколу HTTP. У каждого запроса есть:</p>
+
+<ul>
+    <li><strong>Метод</strong> - что мы хотим сделать: <code>GET</code> (получить),
+        <code>POST</code> (создать), <code>PUT</code> (обновить), <code>DELETE</code> (удалить).</li>
+    <li><strong>URL</strong> - адрес ресурса.</li>
+    <li><strong>Заголовки</strong> - служебная информация: формат данных, токен авторизации.</li>
+    <li><strong>Тело</strong> - данные запроса (для POST и PUT).</li>
+</ul>
+
+<p>Ответ содержит <strong>статус</strong> и тело. Статусы делятся на группы:</p>
+
+<pre class="code-numbered"><code><span class="code-row">200-299 - успех</span><span class="code-row">300-399 - перенаправление</span><span class="code-row">400-499 - ошибка на стороне клиента (404 - не найдено, 401 - не авторизован)</span><span class="code-row">500-599 - ошибка на сервере</span></code></pre>
+
+<h2>Первый запрос</h2>
+
+<pre class="code-numbered"><code><span class="code-row">async function loadUsers() {</span><span class="code-row">    const response = await fetch(&quot;https://jsonplaceholder.typicode.com/users&quot;);</span><span class="code-row">    const users = await response.json();</span><span class="code-row"></span><span class="code-row">    console.log(users);</span><span class="code-row">}</span></code></pre>
+
+<p>Обратите внимание: два <code>await</code>. Первый ждёт, пока сервер ответит заголовками.
+    Второй - пока тело ответа прочитается и превратится в JavaScript-объект.</p>
+
+<p><code>response.json()</code> - только один из способов прочитать тело. Есть ещё
+    <code>text()</code> для обычного текста и <code>blob()</code> для файлов. Тело можно
+    прочитать <strong>только один раз</strong>.</p>
+
+<h2>Проверка статуса</h2>
+
+<p>Главная ловушка <code>fetch</code>: он не считает ошибкой ответы 404 или 500.
+    Промис успешно завершается, просто данные оказываются не теми:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const response = await fetch(&quot;/api/missing&quot;);</span><span class="code-row">console.log(response.ok);     // false</span><span class="code-row">console.log(response.status); // 404</span></code></pre>
+
+<p>Поэтому статус проверяют вручную:</p>
+
+<pre class="code-numbered"><code><span class="code-row">async function loadUsers() {</span><span class="code-row">    const response = await fetch(&quot;https://jsonplaceholder.typicode.com/users&quot;);</span><span class="code-row"></span><span class="code-row">    if (!response.ok) {</span><span class="code-row">        throw new Error(`Ошибка ${response.status}: ${response.statusText}`);</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return response.json();</span><span class="code-row">}</span></code></pre>
+
+<p>Теперь <code>catch</code> поймает и сетевую ошибку, и ответ 500.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        fetch не выбрасывает ошибку на 404
+    </div>
+    <p>Это самая частая причина багов в первых проектах: код пытается прочитать
+        <code>response.json()</code> у страницы ошибки, получает исключение парсинга и
+        показывает пользователю что-то невнятное. Проверка <code>response.ok</code> -
+        обязательный шаг.</p>
+</div>
+
+<h2>Полный пример с обработкой ошибок</h2>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>async function loadUsers() {
+    const status = document.querySelector(&quot;.status&quot;);
+    const list = document.querySelector(&quot;.users&quot;);
+
+    status.textContent = &quot;Загрузка...&quot;;
+    list.innerHTML = &quot;&quot;;
+
+    try {
+        const response = await fetch(&quot;https://jsonplaceholder.typicode.com/users&quot;);
+
+        if (!response.ok) {
+            throw new Error(`Сервер ответил ${response.status}`);
+        }
+
+        const users = await response.json();
+
+        users.forEach((user) =&gt; {
+            const item = document.createElement(&quot;li&quot;);
+            item.textContent = `${user.name} (${user.email})`;
+            list.append(item);
+        });
+
+        status.textContent = `Загружено: ${users.length}`;
+    } catch (error) {
+        status.textContent = &quot;Не удалось загрузить данные&quot;;
+        console.error(error);
+    }
+}
+
+loadUsers();</code></pre>
+</div>
+
+<p>Обратите внимание на три состояния интерфейса: загрузка, успех и ошибка. Пользователь
+    всегда должен понимать, что происходит.</p>
+
+<h2>Отправка данных</h2>
+
+<p>Для POST нужен второй аргумент с настройками:</p>
+
+<pre class="code-numbered"><code><span class="code-row">async function createUser(user) {</span><span class="code-row">    const response = await fetch(&quot;https://jsonplaceholder.typicode.com/users&quot;, {</span><span class="code-row">        method: &quot;POST&quot;,</span><span class="code-row">        headers: {</span><span class="code-row">            &quot;Content-Type&quot;: &quot;application/json&quot;</span><span class="code-row">        },</span><span class="code-row">        body: JSON.stringify(user)</span><span class="code-row">    });</span><span class="code-row"></span><span class="code-row">    if (!response.ok) {</span><span class="code-row">        throw new Error(`Не удалось создать пользователя: ${response.status}`);</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return response.json();</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">createUser({ name: &quot;Алексей&quot;, email: &quot;alex@example.com&quot; })</span><span class="code-row">    .then((created) =&gt; console.log(&quot;Создан:&quot;, created))</span><span class="code-row">    .catch((error) =&gt; console.error(error));</span></code></pre>
+
+<p><code>JSON.stringify</code> превращает объект в строку, потому что по сети передаются
+    именно строки. Заголовок <code>Content-Type</code> сообщает серверу формат.</p>
+
+<h2>Отмена запроса</h2>
+
+<p>Если пользователь ушёл со страницы или ввёл новый запрос, старый ответ уже не нужен.
+    Для отмены используется <code>AbortController</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const controller = new AbortController();</span><span class="code-row"></span><span class="code-row">fetch(&quot;https://jsonplaceholder.typicode.com/users&quot;, {</span><span class="code-row">    signal: controller.signal</span><span class="code-row">})</span><span class="code-row">    .then((response) =&gt; response.json())</span><span class="code-row">    .then((data) =&gt; console.log(data))</span><span class="code-row">    .catch((error) =&gt; {</span><span class="code-row">        if (error.name === &quot;AbortError&quot;) {</span><span class="code-row">            console.log(&quot;Запрос отменён&quot;);</span><span class="code-row">        } else {</span><span class="code-row">            console.error(error);</span><span class="code-row">        }</span><span class="code-row">    });</span><span class="code-row"></span><span class="code-row">// например, через 100 мс</span><span class="code-row">setTimeout(() =&gt; controller.abort(), 100);</span></code></pre>
+
+<p>Это особенно полезно в поиске с автодополнением: пока пользователь печатает, предыдущий
+    запрос отменяется, и на страницу не приходит устаревший ответ.</p>
+
+<h2>CORS</h2>
+
+<p>Браузер запрещает странице обращаться к чужим доменам, если сервер это не разрешил.
+    Такая защита называется CORS. В консоли это выглядит так:</p>
+
+<pre class="code-numbered"><code><span class="code-row">Access to fetch at &#x27;https://example.com/api&#x27; from origin &#x27;http://localhost&#x27;</span><span class="code-row">has been blocked by CORS policy</span></code></pre>
+
+<p>Важно понимать: это ограничение браузера, а не ошибка вашего кода. Решается оно на
+    стороне сервера - он должен прислать заголовок
+    <code>Access-Control-Allow-Origin</code>. Обойти его из JavaScript нельзя, и это
+    правильно: иначе любой сайт мог бы читать ваши данные.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Где тренироваться
+    </div>
+    <p>Для учебных запросов удобны публичные API: <code>jsonplaceholder.typicode.com</code>
+        для тестовых данных и <code>api.github.com</code> для реальных. Оба отдают JSON
+        и разрешают запросы с любого домена.</p>
+</div>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>fetch(url)</code>
+        <span>отправить GET-запрос</span>
+    </li>
+    <li>
+        <code>response.ok</code>
+        <span>статус 200-299</span>
+    </li>
+    <li>
+        <code>response.json()</code>
+        <span>прочитать JSON</span>
+    </li>
+    <li>
+        <code>method: "POST"</code>
+        <span>отправка данных</span>
+    </li>
+    <li>
+        <code>JSON.stringify</code>
+        <span>объект в строку</span>
+    </li>
+    <li>
+        <code>AbortController</code>
+        <span>отмена запроса</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Unexpected token &lt; in JSON»</strong>. Сервер вернул HTML (например,
+        страницу 404), а вы пытаетесь прочитать её как JSON. Проверяйте
+        <code>response.ok</code> до <code>response.json()</code>.</li>
+    <li><strong>«Failed to fetch»</strong>. Нет сети, неверный адрес или запрос заблокирован
+        CORS. Откройте вкладку Network в DevTools - там видно реальную причину.</li>
+    <li><strong>«Body has already been read»</strong>. <code>json()</code> или
+        <code>text()</code> вызваны дважды. Тело читается один раз - сохраните результат
+        в переменную.</li>
+    <li><strong>Данные пришли, но список пустой</strong>. Проверьте структуру ответа:
+        часто данные лежат не в корне, а в поле вроде <code>data.items</code>.</li>
+    <li><strong>Запрос уходит при каждом нажатии клавиши</strong>. Добавьте задержку
+        (debounce) и <code>AbortController</code>.</li>
+    <li><strong>Сервер вернул 404, а <code>catch</code> не сработал.</strong> <code>fetch</code> не считает HTTP-ошибку исключением. Проверяйте <code>response.ok</code> вручную - иначе приложение будет уверено, что всё хорошо.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Список пользователей</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Загрузите пользователей с
+                <code>https://jsonplaceholder.typicode.com/users</code> и выведите их имена
+                в <code>&lt;ul class="users"&gt;</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>После <code>await response.json()</code> у вас массив объектов.
+                        Пройдитесь по нему <code>forEach</code>, создавая <code>li</code>
+                        через <code>createElement</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">async function loadUsers() {</span><span class="code-row">    const response = await fetch(&quot;https://jsonplaceholder.typicode.com/users&quot;);</span><span class="code-row"></span><span class="code-row">    if (!response.ok) {</span><span class="code-row">        throw new Error(`Ошибка ${response.status}`);</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    const users = await response.json();</span><span class="code-row">    const list = document.querySelector(&quot;.users&quot;);</span><span class="code-row"></span><span class="code-row">    users.forEach((user) =&gt; {</span><span class="code-row">        const item = document.createElement(&quot;li&quot;);</span><span class="code-row">        item.textContent = user.name;</span><span class="code-row">        list.append(item);</span><span class="code-row">    });</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">loadUsers().catch((error) =&gt; console.error(error));</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Обработать плохой статус</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сделайте запрос на несуществующий адрес
+                <code>https://jsonplaceholder.typicode.com/nothing-here</code> и выведите
+                в консоль понятное сообщение об ошибке, а не «Unexpected token».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Проверьте <code>response.ok</code> и выбросьте ошибку через
+                        <code>throw new Error(...)</code> до чтения JSON. Оберните вызов
+                        в <code>try/catch</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">async function loadMissing() {</span><span class="code-row">    try {</span><span class="code-row">        const response = await fetch(</span><span class="code-row">            &quot;https://jsonplaceholder.typicode.com/nothing-here&quot;</span><span class="code-row">        );</span><span class="code-row"></span><span class="code-row">        if (!response.ok) {</span><span class="code-row">            throw new Error(`Страница не найдена (${response.status})`);</span><span class="code-row">        }</span><span class="code-row"></span><span class="code-row">        const data = await response.json();</span><span class="code-row">        console.log(data);</span><span class="code-row">    } catch (error) {</span><span class="code-row">        console.error(&quot;Не удалось получить данные:&quot;, error.message);</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">loadMissing();</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Индикатор загрузки</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Добавьте к предыдущей задаче три состояния: во время запроса
+                показывайте «Загрузка...», при успехе - количество пользователей, при ошибке -
+                «Не удалось загрузить».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Меняйте <code>textContent</code> элемента статуса до запроса, после
+                        успеха и в блоке <code>catch</code>. Блок <code>finally</code>
+                        подойдёт, чтобы скрыть спиннер.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">async function loadUsers() {</span><span class="code-row">    const status = document.querySelector(&quot;.status&quot;);</span><span class="code-row">    status.textContent = &quot;Загрузка...&quot;;</span><span class="code-row"></span><span class="code-row">    try {</span><span class="code-row">        const response = await fetch(&quot;https://jsonplaceholder.typicode.com/users&quot;);</span><span class="code-row">        if (!response.ok) throw new Error(response.status);</span><span class="code-row"></span><span class="code-row">        const users = await response.json();</span><span class="code-row">        status.textContent = `Пользователей: ${users.length}`;</span><span class="code-row">    } catch (error) {</span><span class="code-row">        status.textContent = &quot;Не удалось загрузить&quot;;</span><span class="code-row">        console.error(error);</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">loadUsers();</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Повторить запрос</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>fetchWithRetry(url, attempts)</code>, которая повторяет запрос при ошибке до <code>attempts</code> раз.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Оберните <code>fetch</code> в цикл с <code>try/catch</code> и пробрасывайте ошибку, если попытки закончились.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">async function fetchWithRetry(url, attempts = 3) {</span><span class="code-row">    for (let i = 1; i &lt;= attempts; i++) {</span><span class="code-row">        try {</span><span class="code-row">            const response = await fetch(url);</span><span class="code-row">            if (!response.ok) throw new Error(response.status);</span><span class="code-row">            return await response.json();</span><span class="code-row">        } catch (error) {</span><span class="code-row">            if (i === attempts) throw error;</span><span class="code-row">        }</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы связали страницу с внешним миром. Теперь вы знаете:</p>
+<ul>
+    <li>Как устроены HTTP-запросы и статусы ответов.</li>
+    <li>Как получать и отправлять данные через <code>fetch</code>.</li>
+    <li>Почему <code>response.ok</code> обязательно проверять.</li>
+    <li>Как отменять запросы и показывать состояния загрузки.</li>
+</ul>
+
+<p>Осталось две темы, без которых не обходится ни одна форма и ни один фильтр. Первая -
+    <strong>регулярные выражения</strong>: ими проверяют телефоны, почту и форматы дат одной
+    короткой строкой. Вторая - <strong>даты</strong>: их считают, форматируют и сравнивают
+    в каждом проекте. Начнём с регулярок.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-15.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-17.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

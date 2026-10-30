@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTE, представления и триггеры - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="advanced" data-lesson-id="lesson-15">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 15</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson active" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>CTE, представления и триггеры</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Большие запросы читаются тяжело: вложенные подзапросы, повторяющиеся вычисления, длинные
+    цепочки. CTE и представления позволяют разбить логику на именованные шаги - как функции
+    в обычном коде.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Освоим <code>WITH</code> и несколько CTE в одном запросе.</li>
+    <li>Разберём рекурсивные запросы.</li>
+    <li>Научимся создавать представления.</li>
+    <li>Поймём, зачем нужны триггеры.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Черновик и готовая копия: VIEW пересобирается при каждом открытии, MATERIALIZED VIEW - распечатанная копия, которую нужно обновлять.</p>
+</div>
+
+<h2>CTE: WITH</h2>
+
+<pre class="code-numbered"><code><span class="code-row">WITH totals AS (</span><span class="code-row">    SELECT</span><span class="code-row">        customer_id,</span><span class="code-row">        SUM(price) AS total</span><span class="code-row">    FROM orders</span><span class="code-row">    GROUP BY customer_id</span><span class="code-row">)</span><span class="code-row">SELECT *</span><span class="code-row">FROM totals</span><span class="code-row">WHERE total &gt; 50000;</span></code></pre>
+
+<p>Читается сверху вниз: сначала «посчитаем итоги по клиентам», потом «покажем крупных».
+    То же самое можно записать подзапросом, но с именем понятнее.</p>
+
+<p>Несколько CTE разделяются запятыми:</p>
+
+<pre class="code-numbered"><code><span class="code-row">WITH totals AS (</span><span class="code-row">    SELECT customer_id, SUM(price) AS total</span><span class="code-row">    FROM orders</span><span class="code-row">    GROUP BY customer_id</span><span class="code-row">),</span><span class="code-row">big AS (</span><span class="code-row">    SELECT * FROM totals WHERE total &gt; 50000</span><span class="code-row">)</span><span class="code-row">SELECT u.name, b.total</span><span class="code-row">FROM big AS b</span><span class="code-row">JOIN users AS u ON u.id = b.customer_id</span><span class="code-row">ORDER BY b.total DESC;</span></code></pre>
+
+<p>Второй CTE видит результат первого. Это похоже на конвейер.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        CTE не всегда материализуется
+    </div>
+    <p>В PostgreSQL до версии 12 CTE выполнялся отдельно и мог быть медленнее подзапроса.
+        Сейчас планировщик обычно встраивает его. Если запрос с CTE неожиданно медленный -
+        проверьте <code>EXPLAIN</code>.</p>
+</div>
+
+<h2>Рекурсивный CTE</h2>
+
+<p>Позволяет обходить иерархии: категории с подкатегориями, сотрудников с подчинёнными,
+    дерево комментариев.</p>
+
+<pre class="code-numbered"><code><span class="code-row">WITH RECURSIVE tree AS (</span><span class="code-row">    -- база рекурсии: корневые категории</span><span class="code-row">    SELECT id, title, parent_id, 1 AS level</span><span class="code-row">    FROM categories</span><span class="code-row">    WHERE parent_id IS NULL</span><span class="code-row"></span><span class="code-row">    UNION ALL</span><span class="code-row"></span><span class="code-row">    -- шаг: присоединяем дочерние</span><span class="code-row">    SELECT c.id, c.title, c.parent_id, t.level + 1</span><span class="code-row">    FROM categories AS c</span><span class="code-row">    JOIN tree AS t ON c.parent_id = t.id</span><span class="code-row">)</span><span class="code-row">SELECT * FROM tree;</span></code></pre>
+
+<p>Первый <code>SELECT</code> задаёт стартовые строки. Второй выполняется снова и снова,
+    пока не перестанет возвращать новые строки. Важно предусмотреть условие остановки -
+    иначе запрос уйдёт в бесконечность.</p>
+
+<h2>Представления</h2>
+
+<p>Представление (VIEW) - сохранённый запрос, который выглядит как таблица:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE VIEW customer_totals AS</span><span class="code-row">SELECT</span><span class="code-row">    u.id,</span><span class="code-row">    u.name,</span><span class="code-row">    COALESCE(SUM(o.price), 0) AS total</span><span class="code-row">FROM users AS u</span><span class="code-row">LEFT JOIN orders AS o ON o.customer_id = u.id</span><span class="code-row">GROUP BY u.id, u.name;</span></code></pre>
+
+<p>Теперь можно писать:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT * FROM customer_totals WHERE total &gt; 50000;</span></code></pre>
+
+<p>Представление не хранит данные - оно выполняет запрос каждый раз. Зато:</p>
+
+<ul>
+    <li>сложная логика живёт в одном месте;</li>
+    <li>можно ограничить доступ: дать пользователю представление без чувствительных
+        столбцов;</li>
+    <li>схема может меняться, а код приложения - нет.</li>
+</ul>
+
+<p>Удалить: <code>DROP VIEW customer_totals;</code></p>
+
+<h2>Триггеры</h2>
+
+<p>Триггер - код, который выполняется автоматически при вставке, изменении или удалении.
+    Классический пример - обновление времени изменения:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TRIGGER products_updated_at</span><span class="code-row">AFTER UPDATE ON products</span><span class="code-row">FOR EACH ROW</span><span class="code-row">BEGIN</span><span class="code-row">    UPDATE products</span><span class="code-row">    SET updated_at = CURRENT_TIMESTAMP</span><span class="code-row">    WHERE id = OLD.id;</span><span class="code-row">END;</span></code></pre>
+
+<p>В SQLite триггеры создаются так же, но тело пишут между <code>BEGIN</code> и
+    <code>END</code> без изменения <code>NEW.updated_at</code> напрямую (в SQLite нет
+    <code>BEFORE UPDATE ... SET</code> для NEW, поэтому используют <code>AFTER UPDATE</code>
+    с дополнительным <code>UPDATE</code>).</p>
+
+<p>Другой частый сценарий - журнал изменений:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE audit_log (</span><span class="code-row">    id         INTEGER PRIMARY KEY,</span><span class="code-row">    table_name TEXT,</span><span class="code-row">    row_id     INTEGER,</span><span class="code-row">    action     TEXT,</span><span class="code-row">    changed_at TEXT DEFAULT CURRENT_TIMESTAMP</span><span class="code-row">);</span></code></pre>
+
+<p>Триггер на <code>DELETE</code> пишет туда строку с данными об удалении.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Триггеры - осторожно
+    </div>
+    <p>Логика в триггерах невидима: разработчик делает <code>INSERT</code>, а происходят ещё
+        пять действий. Отлаживать такое тяжело. Используйте триггеры для аудита и простых
+        инвариантов, а бизнес-логику держите в приложении.</p>
+</div>
+
+<h2>Материализованные представления</h2>
+
+<p>Обычное представление пересчитывается каждый раз. Материализованное хранит результат
+    на диске и обновляется по команде:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE MATERIALIZED VIEW sales_monthly AS</span><span class="code-row">SELECT STRFTIME(&#x27;%Y-%m&#x27;, created_at) AS month, SUM(price) AS revenue</span><span class="code-row">FROM orders</span><span class="code-row">GROUP BY month;</span><span class="code-row"></span><span class="code-row">REFRESH MATERIALIZED VIEW sales_monthly;</span></code></pre>
+
+<p>Есть в PostgreSQL и Oracle. В MySQL и SQLite аналога нет - используют таблицу с
+    периодическим пересчётом.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>WITH name AS</code>
+        <span>именованный подзапрос</span>
+    </li>
+    <li>
+        <code>WITH RECURSIVE</code>
+        <span>обход иерархии</span>
+    </li>
+    <li>
+        <code>CREATE VIEW</code>
+        <span>сохранить запрос</span>
+    </li>
+    <li>
+        <code>CREATE TRIGGER</code>
+        <span>автодействие</span>
+    </li>
+    <li>
+        <code>MATERIALIZED VIEW</code>
+        <span>кэш результата</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«no such table» в CTE</strong>. CTE существует только внутри одного запроса.
+        Для повторного использования нужно представление.</li>
+    <li><strong>Рекурсивный запрос не завершается</strong>. Нет условия остановки или данные
+        содержат цикл.</li>
+    <li><strong>VIEW медленное</strong>. Оно выполняет запрос каждый раз. Для тяжёлой
+        аналитики используйте материализованное представление или таблицу-кэш.</li>
+    <li><strong>Триггер не срабатывает</strong>. Проверьте момент (<code>BEFORE</code> /
+        <code>AFTER</code>) и событие (<code>INSERT</code> / <code>UPDATE</code> /
+        <code>DELETE</code>).</li>
+    <li><strong>«VIEW стал тормозить на больших данных».</strong> Представление выполняет запрос каждый раз. Для тяжёлой аналитики делают материализованное представление или таблицу-кэш с пересчётом по расписанию.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Разбейте запрос</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Перепишите запрос с вложенным подзапросом из урока про
+                оконные функции (топ-2 заказа клиента) через CTE.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Вынесите <code>SELECT</code> с <code>ROW_NUMBER</code> в
+                        <code>WITH ranked AS (...)</code>, затем снаружи
+                        <code>WHERE rn &lt;= 2</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">WITH ranked AS (</span><span class="code-row">    SELECT</span><span class="code-row">        id,</span><span class="code-row">        customer_id,</span><span class="code-row">        price,</span><span class="code-row">        ROW_NUMBER() OVER (</span><span class="code-row">            PARTITION BY customer_id ORDER BY price DESC</span><span class="code-row">        ) AS rn</span><span class="code-row">    FROM orders</span><span class="code-row">)</span><span class="code-row">SELECT *</span><span class="code-row">FROM ranked</span><span class="code-row">WHERE rn &lt;= 2;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Дерево категорий</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте таблицу <code>categories</code> с полем
+                <code>parent_id</code> и заполните три уровня. Выведите дерево с уровнем
+                вложенности через рекурсивный CTE.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>База рекурсии - строки с <code>parent_id IS NULL</code>. Шаг -
+                        соединение <code>c.parent_id = t.id</code> и
+                        <code>t.level + 1</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">WITH RECURSIVE tree AS (</span><span class="code-row">    SELECT id, title, parent_id, 1 AS level</span><span class="code-row">    FROM categories</span><span class="code-row">    WHERE parent_id IS NULL</span><span class="code-row"></span><span class="code-row">    UNION ALL</span><span class="code-row"></span><span class="code-row">    SELECT c.id, c.title, c.parent_id, t.level + 1</span><span class="code-row">    FROM categories AS c</span><span class="code-row">    JOIN tree AS t ON c.parent_id = t.id</span><span class="code-row">)</span><span class="code-row">SELECT level, title FROM tree ORDER BY level, title;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Представление для отчёта</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте представление <code>monthly_sales</code> с выручкой
+                по месяцам. Затем получите из него три лучших месяца.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>CREATE VIEW monthly_sales AS SELECT ... GROUP BY month;</code>,
+                        затем обычный <code>SELECT ... ORDER BY revenue DESC LIMIT 3</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">CREATE VIEW monthly_sales AS</span><span class="code-row">SELECT</span><span class="code-row">    STRFTIME(&#x27;%Y-%m&#x27;, created_at) AS month,</span><span class="code-row">    SUM(price) AS revenue</span><span class="code-row">FROM orders</span><span class="code-row">GROUP BY month;</span><span class="code-row"></span><span class="code-row">SELECT * FROM monthly_sales</span><span class="code-row">ORDER BY revenue DESC</span><span class="code-row">LIMIT 3;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Представление с топом</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте представление <code>top_customers</code> с тремя клиентами, потратившими больше всех, и выведите его.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Внутри представления используйте <code>GROUP BY</code>, <code>ORDER BY</code> и <code>LIMIT 3</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">CREATE VIEW top_customers AS</span><span class="code-row">SELECT</span><span class="code-row">    c.name,</span><span class="code-row">    SUM(o.price) AS total</span><span class="code-row">FROM customers AS c</span><span class="code-row">JOIN orders AS o ON o.customer_id = c.id</span><span class="code-row">GROUP BY c.id, c.name</span><span class="code-row">ORDER BY total DESC</span><span class="code-row">LIMIT 3;</span><span class="code-row"></span><span class="code-row">SELECT * FROM top_customers;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Сложные запросы стали понятными. Теперь вы знаете:</p>
+<ul>
+    <li>Как разбивать запрос на шаги через <code>WITH</code>.</li>
+    <li>Как обходить иерархии рекурсивным CTE.</li>
+    <li>Как сохранять запросы как представления.</li>
+    <li>Зачем нужны триггеры и когда их лучше избегать.</li>
+</ul>
+
+<p>Остался финальный проект. Соберём схему интернет-магазина и напишем аналитические запросы,
+    которые в реальной работе просят на собеседованиях и в первый месяц стажировки.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-14.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-16.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

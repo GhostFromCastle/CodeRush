@@ -8,7 +8,7 @@ const FALLBACK_DATA = {
     courses: [
         { id: 'csharp', title: 'C# с нуля до профи', description: 'От первого Console.WriteLine до ООП, LINQ и асинхронности. Основной язык .NET-разработки.', icon: 'devicon-csharp-plain', gradient: 'purple-gradient', tags: ['3 уровня', '18 уроков'], category: 'backend', level: 'beginner-friendly' },
         { id: 'python', title: 'Python для начинающих', description: 'Самый дружелюбный язык для старта в программировании. Синтаксис, структуры данных, ООП.', icon: 'devicon-python-plain', gradient: 'blue-gradient', tags: ['3 уровня', '15 уроков'], category: 'backend', level: 'beginner-friendly' },
-        { id: 'javascript', title: 'JavaScript в браузере', description: 'Язык веба: от переменных до асинхронности, DOM и работы с API.', icon: 'devicon-javascript-plain', gradient: 'orange-gradient', tags: ['3 уровня', '16 уроков'], category: 'frontend', level: 'beginner-friendly' },
+        { id: 'javascript', title: 'JavaScript в браузере', description: 'Язык веба: от переменных до асинхронности, DOM и работы с API.', icon: 'devicon-javascript-plain', gradient: 'orange-gradient', tags: ['3 уровня', '27 уроков'], category: 'frontend', level: 'beginner-friendly' },
         { id: 'algorithms', title: 'Алгоритмы и структуры данных', description: 'Сортировки, поиск, деревья, графы. То, что спрашивают на собеседованиях.', icon: 'ph ph-graph', gradient: 'green-gradient', tags: ['3 уровня', '14 уроков'], category: 'fundamentals', level: 'intermediate' }
     ],
     filters: {
@@ -72,8 +72,15 @@ function renderCourses(grid, courses, animate = true) {
             `<span class="tag">${escapeHtml(tag)}</span>`
         ).join('');
 
+        const isSoon = course.status === 'soon';
+        const tagName = isSoon ? 'div' : 'a';
+        const href = isSoon ? '' : ` href="courses/${encodeURIComponent(course.id)}/index.html"`;
+        const footer = isSoon
+            ? '<span>Скоро</span><i class="ph ph-hourglass"></i>'
+            : '<span>Начать курс</span><i class="ph ph-arrow-right"></i>';
+
         return `
-            <a href="courses/${encodeURIComponent(course.id)}/index.html" class="catalog-card">
+            <${tagName}${href} class="catalog-card${isSoon ? ' is-soon' : ''}">
                 <div class="catalog-card-visual ${escapeHtml(course.gradient)}">
                     <i class="${escapeHtml(course.icon)}"></i>
                 </div>
@@ -82,11 +89,10 @@ function renderCourses(grid, courses, animate = true) {
                     <h3>${escapeHtml(course.title)}</h3>
                     <p>${escapeHtml(course.description)}</p>
                     <div class="card-footer">
-                        <span>Начать курс</span>
-                        <i class="ph ph-arrow-right"></i>
+                        ${footer}
                     </div>
                 </div>
-            </a>
+            </${tagName}>
         `;
     }).join('');
 

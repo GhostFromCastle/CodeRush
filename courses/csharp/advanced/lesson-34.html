@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юнит-тестирование - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="advanced" data-lesson-id="lesson-34">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 34</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+                        <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Полиморфизм</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Интерфейсы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Абстрактные классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-33.html" class="sidebar-lesson" data-lesson-id="lesson-33">
+                            <span class="sidebar-lesson-num">33</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-34.html" class="sidebar-lesson active" data-lesson-id="lesson-34">
+                            <span class="sidebar-lesson-num">34</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-35.html" class="sidebar-lesson" data-lesson-id="lesson-35">
+                            <span class="sidebar-lesson-num">35</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-36.html" class="sidebar-lesson" data-lesson-id="lesson-36">
+                            <span class="sidebar-lesson-num">36</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Юнит-тестирование</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+                <p>Представьте, что вы пишете калькулятор. Всё работает: <code>2 + 2 = 4</code>,
+                    <code>10 - 3 = 7</code>. Вы довольны, отдаёте заказчику. А через неделю выясняется,
+                    что при делении на ноль программа падает, а если ввести отрицательное число -
+                    показывает ерунду. Пользователи злятся, заказчик в ярости, вы правите код
+                    в спешке и в процессе ломаете что-то ещё.</p>
+
+                <p>Этой ситуации можно было избежать. Именно для этого существует
+                    <strong>юнит-тестирование</strong> - практика, при которой каждая маленькая
+                    часть программы (метод, функция) проверяется автоматическими тестами.
+                    Тестами, которые вы запускаете одной командой за доли секунды и сразу
+                    видите: всё работает или что-то сломалось.</p>
+
+                <h2>Что такое юнит-тест</h2>
+
+                <p><strong>Юнит</strong> (от английского <em>unit</em> - «единица») - это самая
+                    маленькая логическая единица кода. Обычно - один метод. <strong>Юнит-тест</strong> -
+                    это программа, которая вызывает этот метод с определёнными входными данными
+                    и проверяет, что результат совпадает с ожидаемым.</p>
+
+                <p>Аналогия: представьте, что вы собираете автомобиль. Юнит-тесты - это проверка
+                    каждой детали отдельно на стенде: работает ли двигатель, крутятся ли колёса,
+                    загораются ли фары. Прежде чем собрать весь автомобиль и поехать, вы убедились,
+                    что каждая деталь исправна. Если что-то не так - вы сразу знаете,
+                    <em>что именно</em>.</p>
+
+                <p>Без тестов проверка выглядит так: собрали всю машину, завели, поехали -
+                    что-то скрипит. А что именно? Двигатель? Подвеска? Коробка передач? Приходится
+                    всё разбирать и искать наугад.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-lightbulb"></i>
+                        Главная идея
+                    </div>
+                    <p>Юнит-тест - это код, который проверяет другой код. Вы пишете его один раз,
+                        а запускаете сотни раз в процессе разработки. И каждый раз он отвечает
+                        на один вопрос: <strong>«Этот метод всё ещё работает так, как должен?»</strong>.
+                        Если да - все тесты зелёные. Если что-то сломалось - тест краснеет,
+                        и вы сразу знаете, где искать.</p>
+                </div>
+
+                <h2>Зачем это нужно</h2>
+
+                <p>Многие новички думают, что тесты - это «лишняя работа, которую навязывают сеньоры».
+                    На самом деле тесты экономят время и нервы. Вот реальные сценарии:</p>
+
+                <ul>
+                    <li><strong>Рефакторинг без страха.</strong> Помните урок 27? Вы хотите
+                        улучшить код, но боитесь что-то сломать. С тестами этот страх исчезает:
+                        после каждого изменения запускаете тесты. Все зелёные - ничего не сломали.</li>
+                    <li><strong>Добавление новой функции.</strong> Нужно добавить новый способ
+                        оплаты, не затронув существующие? Тесты покажут, что старые способы
+                        по-прежнему работают.</li>
+                    <li><strong>Поиск багов.</strong> Пришёл баг-репорт: «При пустом списке программа
+                        падает». Вы пишете тест, который воспроизводит ситуацию. Смотрите -
+                        тест красный, баг подтверждён. Правите код, пока тест не станет зелёным.
+                        Теперь баг гарантированно не вернётся.</li>
+                    <li><strong>Документация.</strong> Тесты - это лучшая документация. Открыли
+                        тест-файл, посмотрели - сразу видно, как работает метод и какие
+                        входные данные он ожидает.</li>
+                    <li><strong>Уверенность при сдаче проекта.</strong> Не «я думаю, всё работает»,
+                        а «я проверил 50 тестов, все проходят».</li>
+                </ul>
+
+                <h2>Фреймворк xUnit</h2>
+
+                <p>В мире .NET есть несколько популярных фреймворков для тестирования: NUnit, MSTest
+                    и <strong>xUnit</strong>. xUnit - современный стандарт, его используют
+                    в ASP.NET Core, в большинстве open-source проектов и во многих компаниях.
+                    На нём и остановимся.</p>
+
+                <p>Юнит-тесты обычно живут в отдельном проекте, а не в основном. Это логично:
+                    тестовый код не должен попадать в релизную сборку. Структура типичного
+                    решения выглядит так:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">MyApp/              <- основной проект (классы, логика)</span><span class="code-row">MyApp.Tests/        <- тестовый проект (юнит-тесты)</span><span class="code-row">MyApp.sln           <- файл решения</span></code></pre>
+
+                <p>Чтобы создать тестовый проект, в Visual Studio нужно выбрать тип
+                    «xUnit Test Project», а через консоль - выполнить:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">dotnet new xunit -o MyApp.Tests</span></code></pre>
+
+                <p>И добавить ссылку на основной проект:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">dotnet add reference ../MyApp/MyApp.csproj</span></code></pre>
+
+                <p>Теперь в тестовом проекте можно ссылаться на классы из основного.</p>
+
+                <h2>Схема Arrange-Act-Assert</h2>
+
+                <p>Любой хороший юнит-тест строится по одной и той же схеме из трёх шагов.
+                    Запомните её: <strong>AAA</strong> - Arrange, Act, Assert.</p>
+
+                <ul>
+                    <li><strong>Arrange</strong> (подготовка) - создать все объекты
+                        и входные данные, которые нужны для теста.</li>
+                    <li><strong>Act</strong> (действие) - вызвать тестируемый метод
+                        с подготовленными данными.</li>
+                    <li><strong>Assert</strong> (проверка) - убедиться, что результат
+                        совпадает с ожидаемым.</li>
+                </ul>
+
+                <p>Давайте напишем первый тест. Сначала - код, который будем тестировать:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">public class Calculator</span><span class="code-row">{</span><span class="code-row">    public int Add(int a, int b)</span><span class="code-row">    {</span><span class="code-row">        return a + b;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    public int Divide(int a, int b)</span><span class="code-row">    {</span><span class="code-row">        if (b == 0)</span><span class="code-row">            throw new DivideByZeroException();</span><span class="code-row">        return a / b;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>И тест для метода <code>Add</code>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">using Xunit;</span><span class="code-row"></span><span class="code-row">public class CalculatorTests</span><span class="code-row">{</span><span class="code-row">    [Fact]</span><span class="code-row">    public void Add_TwoPositiveNumbers_ReturnsSum()</span><span class="code-row">    {</span><span class="code-row">        // Arrange</span><span class="code-row">        var calculator = new Calculator();</span><span class="code-row">        int a = 2;</span><span class="code-row">        int b = 3;</span><span class="code-row"></span><span class="code-row">        // Act</span><span class="code-row">        int result = calculator.Add(a, b);</span><span class="code-row"></span><span class="code-row">        // Assert</span><span class="code-row">        Assert.Equal(5, result);</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Разберём, что здесь важно:</p>
+
+                <ul>
+                    <li><strong><code>[Fact]</code></strong> - атрибут, который говорит xUnit:
+                        «Это тест, запусти его». Без него метод просто не будет вызван.</li>
+                    <li><strong>Имя теста</strong> - <code>Add_TwoPositiveNumbers_ReturnsSum</code>.
+                        Соглашение об именовании: <em>Метод_Условие_Ожидание</em>. Глядя
+                        на имя, сразу понятно, что проверяется.</li>
+                    <li><strong>Assert.Equal</strong> - проверка, что первое значение равно
+                        второму. Если не равно - тест падает с сообщением, где именно ошибка.</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Комментарии в тестах
+                    </div>
+                    <p>Обычно в коде мы избегаем комментариев, но в тестах пометки
+                        <code>// Arrange</code>, <code>// Act</code>, <code>// Assert</code> -
+                        это стандарт индустрии. Они помогают читать тест и видны всем
+                        разработчикам. Это редкое исключение, где комментарии уместны.</p>
+                </div>
+
+                <h2>Основные Assert-методы</h2>
+
+                <p><code>Assert</code> - это набор методов для проверки. Вот самые полезные:</p>
+
+                <ul>
+                    <li><strong><code>Assert.Equal(expected, actual)</code></strong> - проверяет,
+                        что два значения равны. Работает с числами, строками, объектами
+                        и коллекциями.</li>
+                    <li><strong><code>Assert.NotEqual(a, b)</code></strong> - проверяет, что
+                        значения <em>не</em> равны.</li>
+                    <li><strong><code>Assert.True(condition)</code></strong> -
+                        проверяет, что условие истинно.</li>
+                    <li><strong><code>Assert.False(condition)</code></strong> - что ложно.</li>
+                    <li><strong><code>Assert.Null(obj)</code></strong> - что объект
+                        равен <code>null</code>.</li>
+                    <li><strong><code>Assert.NotNull(obj)</code></strong> - что не равен.</li>
+                    <li><strong><code>Assert.Contains(item, collection)</code></strong> -
+                        что коллекция содержит элемент.</li>
+                    <li><strong><code>Assert.Throws&lt;T&gt;(action)</code></strong> -
+                        что вызов метода выбрасывает определённое исключение.</li>
+                </ul>
+
+                <p>Пример с проверкой исключения:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">[Fact]</span><span class="code-row">public void Divide_ByZero_ThrowsException()</span><span class="code-row">{</span><span class="code-row">    // Arrange</span><span class="code-row">    var calculator = new Calculator();</span><span class="code-row"></span><span class="code-row">    // Act & Assert</span><span class="code-row">    Assert.Throws&lt;DivideByZeroException&gt;(() =&gt; calculator.Divide(10, 0));</span><span class="code-row">}</span></code></pre>
+
+                <p>Метод <code>Assert.Throws</code> принимает лямбда-выражение и проверяет,
+                    что при его выполнении выбрасывается именно указанное исключение. Если
+                    исключение не выброшено или выброшено другое - тест падает.</p>
+
+                <h2>Теории: много тестов в одном</h2>
+
+                <p>Что, если нужно проверить один и тот же метод на разных входных данных?
+                    Например, <code>Add</code> для положительных, отрицательных, нулей,
+                    больших чисел. Писать десять почти одинаковых тестов - скучно и неэффективно.</p>
+
+                <p>Для этого в xUnit есть атрибут <strong><code>[Theory]</code></strong> в паре
+                    с <strong><code>[InlineData]</code></strong>:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">[Theory]</span><span class="code-row">[InlineData(2, 3, 5)]</span><span class="code-row">[InlineData(-1, 1, 0)]</span><span class="code-row">[InlineData(0, 0, 0)]</span><span class="code-row">[InlineData(100, 200, 300)]</span><span class="code-row">public void Add_VariousInputs_ReturnsCorrectSum(int a, int b, int expected)</span><span class="code-row">{</span><span class="code-row">    var calculator = new Calculator();</span><span class="code-row">    int result = calculator.Add(a, b);</span><span class="code-row">    Assert.Equal(expected, result);</span><span class="code-row">}</span></code></pre>
+
+                <p>Что здесь происходит:</p>
+
+                <ul>
+                    <li><strong><code>[Theory]</code></strong> - помечает метод как
+                        параметризованный тест.</li>
+                    <li><strong><code>[InlineData]</code></strong> - набор входных
+                        данных для одного прогона. Можно указать много таких атрибутов.</li>
+                    <li>Метод принимает параметры <code>a</code>, <code>b</code>,
+                        <code>expected</code> - по числу значений в <code>InlineData</code>.</li>
+                </ul>
+
+                <p>В Test Explorer вы увидите не один тест, а четыре отдельных прогона.
+                    Если один из них упадёт, вы сразу узнаете, какие именно входные данные
+                    вызвали проблему.</p>
+
+                <h2>Граничные случаи: ищем баги</h2>
+
+                <p>Самое ценное в тестах - это проверка <strong>граничных случаев</strong>.
+                    Именно там чаще всего прячутся баги. Начинающие разработчики обычно
+                    проверяют «нормальную» работу, но забывают про крайности. А зря.</p>
+
+                <p>Для любого метода полезно проверять:</p>
+
+                <ul>
+                    <li><strong>Ноль.</strong> Что будет с <code>0</code>? Ноль - это отдельный
+                        случай почти везде.</li>
+                    <li><strong>Отрицательные числа.</strong> Метод работает только с
+                        положительными? А что если передать отрицательное?</li>
+                    <li><strong>Пустые коллекции.</strong> Что делает метод с пустым массивом?
+                        Не падает ли?</li>
+                    <li><strong>Границы диапазонов.</strong> Если допустимы значения
+                        от 0 до 100, проверьте 0, 100, -1 и 101.</li>
+                    <li><strong>Null.</strong> Метод принимает объект - что будет,
+                        если передать <code>null</code>?</li>
+                    <li><strong>Очень большие значения.</strong> <code>int.MaxValue</code>,
+                        миллион записей, гигабайтная строка.</li>
+                </ul>
+
+                <p>Пример: тестируем метод расчёта скидки, который возвращает скидку
+                    в процентах для суммы покупки.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">public int CalculateDiscount(decimal amount)</span><span class="code-row">{</span><span class="code-row">    if (amount &lt; 1000) return 0;</span><span class="code-row">    if (amount &lt; 5000) return 5;</span><span class="code-row">    return 10;</span><span class="code-row">}</span></code></pre>
+
+                <p>Хороший набор тестов:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">[Theory]</span><span class="code-row">[InlineData(0, 0)]          // Ноль</span><span class="code-row">[InlineData(999, 0)]        // Рядом с границей снизу</span><span class="code-row">[InlineData(1000, 5)]       // Сама граница</span><span class="code-row">[InlineData(1001, 5)]       // Рядом с границей сверху</span><span class="code-row">[InlineData(4999, 5)]       // Рядом со второй границей</span><span class="code-row">[InlineData(5000, 10)]      // Вторая граница</span><span class="code-row">[InlineData(1000000, 10)]   // Большое значение</span><span class="code-row">public void CalculateDiscount_Boundaries_ReturnsCorrectPercentage(decimal amount, int expected)</span><span class="code-row">{</span><span class="code-row">    var calculator = new DiscountCalculator();</span><span class="code-row">    int result = calculator.CalculateDiscount(amount);</span><span class="code-row">    Assert.Equal(expected, result);</span><span class="code-row">}</span></code></pre>
+
+                <p>Видите, как много граничных случаев? Именно такие тесты ловят баги,
+                    которые не видны при «обычной» проверке.</p>
+
+                <h2>Что такое моки</h2>
+
+                <p>Иногда тестируемый метод зависит от внешних вещей: базы данных, HTTP-запросов,
+                    файловой системы. В юнит-тесте мы <strong>не хотим</strong> трогать
+                    настоящую базу данных. Это медленно, требует настройки, а иногда опасно
+                    (что если тест запишет что-то в продакшн-базу?).</p>
+
+                <p>Для таких случаев используют <strong>моки</strong> (от английского <em>mock</em> -
+                    «имитация»). Мок - это поддельный объект, который ведёт себя как настоящий,
+                    но возвращает заранее заданные данные. В C# для этого чаще всего используют
+                    библиотеку <strong>Moq</strong>.</p>
+
+                <p>Аналогия: когда пилоты тренируются на симуляторе, они работают не с настоящим
+                    самолётом, а с имитацией. Симулятор ведёт себя как настоящий самолёт,
+                    но если вы разобьётесь - ничего страшного не произойдёт. Мок - это
+                    такой симулятор для кода.</p>
+
+                <p>Пример: тестируем сервис, который получает пользователя из базы
+                    и возвращает его имя в верхнем регистре.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">public interface IUserRepository</span><span class="code-row">{</span><span class="code-row">    User GetById(int id);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">public class UserService</span><span class="code-row">{</span><span class="code-row">    private readonly IUserRepository repo;</span><span class="code-row"></span><span class="code-row">    public UserService(IUserRepository repository)</span><span class="code-row">    {</span><span class="code-row">        repo = repository;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    public string GetUserNameInUpperCase(int id)</span><span class="code-row">    {</span><span class="code-row">        User user = repo.GetById(id);</span><span class="code-row">        return user?.Name?.ToUpper();</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+                <p>Тест с моком:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">using Moq;</span><span class="code-row"></span><span class="code-row">[Fact]</span><span class="code-row">public void GetUserNameInUpperCase_ReturnsUpperCaseName()</span><span class="code-row">{</span><span class="code-row">    // Arrange</span><span class="code-row">    var mockRepo = new Mock&lt;IUserRepository&gt;();</span><span class="code-row">    mockRepo.Setup(r =&gt; r.GetById(1))</span><span class="code-row">        .Returns(new User { Name = "alexey" });</span><span class="code-row"></span><span class="code-row">    var service = new UserService(mockRepo.Object);</span><span class="code-row"></span><span class="code-row">    // Act</span><span class="code-row">    string result = service.GetUserNameInUpperCase(1);</span><span class="code-row"></span><span class="code-row">    // Assert</span><span class="code-row">    Assert.Equal("ALEXEY", result);</span><span class="code-row">}</span></code></pre>
+
+                <p>Что произошло:</p>
+
+                <ul>
+                    <li><code>new Mock&lt;IUserRepository&gt;()</code> - создали поддельный
+                        репозиторий, который выглядит как настоящий, но ничего не делает.</li>
+                    <li><code>Setup(r =&gt; r.GetById(1)).Returns(...)</code> - сказали моку:
+                        «Когда тебя попросят пользователя с id=1, верни вот этот объект».</li>
+                    <li><code>mockRepo.Object</code> - это и есть поддельный объект,
+                        который можно передать в <code>UserService</code>.</li>
+                </ul>
+
+                <p>Тест работает мгновенно, ничего не пишет в реальную базу данных и не зависит
+                    от состояния внешнего мира. Мок - мощный инструмент для изоляции тестов.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-info"></i>
+                        Moq нужно установить
+                    </div>
+                    <p>В отличие от xUnit, Moq - сторонняя библиотека. Она не идёт в комплекте
+                        с .NET. Установить её можно через NuGet:</p>
+                    <pre
+                        class="code-numbered"><code><span class="code-row">dotnet add package Moq</span></code></pre>
+                    <p>Или в Visual Studio через «Manage NuGet Packages» у тестового проекта.</p>
+                </div>
+
+                <h2>Сколько тестов писать</h2>
+
+                <p>Единого ответа нет. Но есть несколько принципов, которыми пользуются опытные
+                    разработчики:</p>
+
+                <ul>
+                    <li><strong>Тестируйте важную логику.</strong> Расчёты, бизнес-правила,
+                        алгоритмы - обязательно. Геттеры и сеттеры свойств - не нужно.</li>
+                    <li><strong>Проверяйте граничные случаи.</strong> Ноль, отрицательные
+                        числа, пустые коллекции, null.</li>
+                    <li><strong>Один тест - одна проверка.</strong> Не смешивайте проверку
+                        нескольких сценариев в одном тесте. Если упадёт - непонятно,
+                        что именно сломалось.</li>
+                    <li><strong>Тесты должны быть быстрыми.</strong> Весь набор - за секунды,
+                        не минуты. Если тесты медленные - их не будут запускать.</li>
+                    <li><strong>Тесты должны быть независимыми.</strong> Результат одного
+                        не должен влиять на другой. Не используйте общее состояние между
+                        тестами.</li>
+                </ul>
+
+                <p>Хорошая практика - <strong>покрытие около 70-80%</strong> для важной логики.
+                    Стремиться к 100% обычно бессмысленно: часть кода (например, тривиальные
+                    геттеры) тестировать не нужно, а время тратится.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>Юнит-тест</code>
+                        <span>проверка одного метода</span>
+                    </li>
+                    <li>
+                        <code>xUnit</code>
+                        <span>современный фреймворк тестирования</span>
+                    </li>
+                    <li>
+                        <code>AAA</code>
+                        <span>Arrange, Act, Assert</span>
+                    </li>
+                    <li>
+                        <code>[Fact]</code>
+                        <span>одиночный тест</span>
+                    </li>
+                    <li>
+                        <code>[Theory] + [InlineData]</code>
+                        <span>тест с разными данными</span>
+                    </li>
+                    <li>
+                        <code>Assert.Equal</code>
+                        <span>проверка равенства</span>
+                    </li>
+                    <li>
+                        <code>Assert.Throws</code>
+                        <span>проверка исключения</span>
+                    </li>
+                    <li>
+                        <code>Moq</code>
+                        <span>поддельные зависимости</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при работе с юнит-тестами.</p>
+
+                <ul>
+                    <li><strong>«Тест не находится в Test Explorer».</strong> Проверьте:
+                        есть ли атрибут <code>[Fact]</code> или <code>[Theory]</code>,
+                        публичный ли класс (с ключевым словом <code>public</code>), публичный ли
+                        метод, есть ли ссылка на пакет xUnit.</li>
+                    <li><strong>«Не могу обратиться к классу из основного проекта».</strong>
+                        Нужно добавить ссылку через <code>dotnet add reference</code>.
+                        В Visual Studio - правой кнопкой по тестовому проекту → Add → Project
+                        Reference.</li>
+                    <li><strong>«Тест падает, но я не понимаю почему».</strong> Смотрите
+                        сообщение об ошибке. xUnit выводит ожидаемое и фактическое значения.
+                        Если этого мало - используйте <code>Assert.Equal</code> с кастомным
+                        сообщением: <code>Assert.Equal(expected, actual)</code> - в выводе
+                        увидите оба значения.</li>
+                    <li><strong>«Тесты работают в одном порядке, но падают в другом».</strong>
+                        Тесты должны быть независимы друг от друга. Если один тест меняет
+                        общее состояние (статическое поле, файл, базу) - другой может упасть.
+                        Каждый тест должен быть самодостаточным.</li>
+                    <li><strong>«Тест проходит случайно».</strong> Возможно, вы тестируете
+                        что-то, что зависит от времени, случайных чисел или порядка
+                        выполнения. Тесты должны быть <strong>детерминированными</strong>:
+                        один и тот же код с одними и теми же данными всегда даёт
+                        один и тот же результат.</li>
+                    <li><strong>«Не хочу писать тесты, это долго».</strong> Первые пару
+                        раз - да. Но после 10-20 тестов вы поймёте шаблон, и на написание
+                        теста будет уходить минута. А экономить он будет часы отладки.</li>
+                    <li><strong>«У меня 100% покрытие, но всё равно есть баги».</strong>
+                        Покрытие показывает, какой код <em>запускался</em> тестами, но не
+                        гарантирует, что все сценарии проверены. Тесты на «нормальный»
+                        сценарий не ловят баги на граничных случаях. Думайте о тестах
+                        как о сценариях, а не о покрытии.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Первый тест</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Дан класс <code>StringHelper</code> с методом
+                                <code>Reverse(string s)</code>, который переворачивает строку.
+                                Напишите юнит-тест, который проверяет, что
+                                <code>Reverse("hello")</code> возвращает <code>"olleh"</code>.
+                                Используйте схему Arrange-Act-Assert и атрибут <code>[Fact]</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Структура: создайте объект <code>StringHelper</code> (Arrange),
+                                        вызовите <code>Reverse("hello")</code> (Act), проверьте
+                                        результат через <code>Assert.Equal("olleh", result)</code>
+                                        (Assert).</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">using Xunit;</span><span class="code-row"></span><span class="code-row">public class StringHelperTests</span><span class="code-row">{</span><span class="code-row">    [Fact]</span><span class="code-row">    public void Reverse_SimpleWord_ReturnsReversed()</span><span class="code-row">    {</span><span class="code-row">        // Arrange</span><span class="code-row">        var helper = new StringHelper();</span><span class="code-row"></span><span class="code-row">        // Act</span><span class="code-row">        string result = helper.Reverse("hello");</span><span class="code-row"></span><span class="code-row">        // Assert</span><span class="code-row">        Assert.Equal("olleh", result);</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Граничные случаи</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Для того же метода <code>Reverse</code> напишите
+                                тесты, которые проверяют граничные случаи: пустая строка,
+                                строка из одного символа, строка-палиндром (читается одинаково
+                                в обе стороны), строка с пробелами.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>[Theory]</code> и <code>[InlineData]</code>,
+                                        чтобы не писать отдельный тест на каждый случай. Например:
+                                        <code>[InlineData("", "")]</code>,
+                                        <code>[InlineData("a", "a")]</code>,
+                                        <code>[InlineData("шалаш", "шалаш")]</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">[Theory]</span><span class="code-row">[InlineData("", "")]</span><span class="code-row">[InlineData("a", "a")]</span><span class="code-row">[InlineData("шалаш", "шалаш")]</span><span class="code-row">[InlineData("hello world", "dlrow olleh")]</span><span class="code-row">[InlineData("12345", "54321")]</span><span class="code-row">public void Reverse_VariousInputs_ReturnsReversed(string input, string expected)</span><span class="code-row">{</span><span class="code-row">    var helper = new StringHelper();</span><span class="code-row">    string result = helper.Reverse(input);</span><span class="code-row">    Assert.Equal(expected, result);</span><span class="code-row">}</span></code></pre>
+                                    <p>Обратите внимание: одним методом проверили пять разных
+                                        сценариев. Если один из них сломается - xUnit покажет,
+                                        какой именно.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Проверка исключения</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Дан класс <code>AgeValidator</code> с методом
+                                <code>Validate(int age)</code>. Метод выбрасывает
+                                <code>ArgumentException</code>, если возраст отрицательный
+                                или больше 150. Напишите два теста: что для корректного возраста
+                                (например, 30) исключение не выбрасывается, и что для
+                                некорректного (-5) выбрасывается <code>ArgumentException</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Для проверки исключения используйте
+                                        <code>Assert.Throws&lt;ArgumentException&gt;(() =&gt; ...)</code>.
+                                        Для корректного вызова просто вызовите метод - если он
+                                        не выбросит исключение, тест пройдёт. Но лучше явно
+                                        записать результат, чтобы тест что-то проверял.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">public class AgeValidatorTests</span><span class="code-row">{</span><span class="code-row">    [Fact]</span><span class="code-row">    public void Validate_ValidAge_DoesNotThrow()</span><span class="code-row">    {</span><span class="code-row">        var validator = new AgeValidator();</span><span class="code-row">        var exception = Record.Exception(() =&gt; validator.Validate(30));</span><span class="code-row">        Assert.Null(exception);</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    [Theory]</span><span class="code-row">    [InlineData(-5)]</span><span class="code-row">    [InlineData(151)]</span><span class="code-row">    [InlineData(200)]</span><span class="code-row">    public void Validate_InvalidAge_ThrowsArgumentException(int age)</span><span class="code-row">    {</span><span class="code-row">        var validator = new AgeValidator();</span><span class="code-row">        Assert.Throws&lt;ArgumentException&gt;(() =&gt; validator.Validate(age));</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                                    <p>Метод <code>Record.Exception</code> из xUnit записывает
+                                        исключение, если оно было выброшено, или возвращает
+                                        <code>null</code>, если нет. Это удобный способ
+                                        проверить, что исключения <em>не было</em>.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Тестирование с моком</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Дан интерфейс <code>IEmailSender</code> с методом
+                                <code>Send(string to, string message)</code>. Есть класс
+                                <code>WelcomeService</code>, который при регистрации пользователя
+                                вызывает <code>IEmailSender.Send</code> с приветственным
+                                сообщением. Напишите тест с моком, который проверяет,
+                                что при вызове <code>WelcomeService.Welcome("test@mail.com")</code>
+                                метод <code>Send</code> был вызван ровно один раз.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>Moq</code>. Создайте
+                                        <code>Mock&lt;IEmailSender&gt;</code>, передайте
+                                        <code>mock.Object</code> в конструктор
+                                        <code>WelcomeService</code>. После вызова
+                                        <code>Welcome</code> проверьте:
+                                        <code>mock.Verify(m =&gt; m.Send(It.IsAny&lt;string&gt;(), It.IsAny&lt;string&gt;()), Times.Once)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">public interface IEmailSender</span><span class="code-row">{</span><span class="code-row">    void Send(string to, string message);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">public class WelcomeService</span><span class="code-row">{</span><span class="code-row">    private readonly IEmailSender sender;</span><span class="code-row"></span><span class="code-row">    public WelcomeService(IEmailSender s)</span><span class="code-row">    {</span><span class="code-row">        sender = s;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    public void Welcome(string email)</span><span class="code-row">    {</span><span class="code-row">        sender.Send(email, "Добро пожаловать!");</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">[Fact]</span><span class="code-row">public void Welcome_NewUser_SendsEmailOnce()</span><span class="code-row">{</span><span class="code-row">    // Arrange</span><span class="code-row">    var mockSender = new Mock&lt;IEmailSender&gt;();</span><span class="code-row">    var service = new WelcomeService(mockSender.Object);</span><span class="code-row"></span><span class="code-row">    // Act</span><span class="code-row">    service.Welcome("test@mail.com");</span><span class="code-row"></span><span class="code-row">    // Assert</span><span class="code-row">    mockSender.Verify(</span><span class="code-row">        m =&gt; m.Send(It.IsAny&lt;string&gt;(), It.IsAny&lt;string&gt;()),</span><span class="code-row">        Times.Once);</span><span class="code-row">}</span></code></pre>
+                                    <p><code>It.IsAny&lt;string&gt;()</code> означает «любая
+                                        строка». Мы не проверяем конкретное содержимое
+                                        письма - только факт, что оно было отправлено
+                                        один раз. Если метод вызовет <code>Send</code>
+                                        дважды или ни разу - тест упадёт.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы разобрались с юнит-тестированием - практикой, которая превращает
+                    разработку из «надеюсь, работает» в «я знаю, что работает». Узнали, что
+                    такое xUnit, как устроена схема Arrange-Act-Assert, как писать
+                    параметризованные тесты через <code>[Theory]</code> и как подменять
+                    внешние зависимости через моки.</p>
+
+                <p>Разобрали:</p>
+
+                <ul>
+                    <li>Что такое юнит-тест и зачем он нужен.</li>
+                    <li>Схему AAA: Arrange, Act, Assert - три шага любого теста.</li>
+                    <li>Атрибуты <code>[Fact]</code> и <code>[Theory]</code> с
+                        <code>[InlineData]</code>.</li>
+                    <li>Основные <code>Assert</code>-методы: <code>Equal</code>,
+                        <code>Throws</code>, <code>Null</code> и другие.</li>
+                    <li>Проверку граничных случаев - где прячутся самые опасные баги.</li>
+                    <li>Моки через Moq - для тестирования кода с зависимостями.</li>
+                </ul>
+
+                <p>Теперь ваши проекты защищены от регрессий. Вы можете смело рефакторить,
+                    добавлять новую функциональность, менять архитектуру - и при этом быть
+                    уверенным, что старое не сломалось. Это и есть уровень профессиональной
+                    разработки.</p>
+
+                <p>В следующем уроке мы перейдём от теории к большому проекту. Создадим
+                    настоящего <strong>Telegram-бота</strong> с нуля: подключимся к API,
+                    обработаем команды, добавим состояние и напишем тесты. Это первая работа,
+                    которую можно смело показывать в портфолио.</p>
+
+                                <div class="lesson-actions">
+                    <a href="lesson-33.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-35.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

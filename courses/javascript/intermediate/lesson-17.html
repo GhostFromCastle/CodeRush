@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регулярные выражения - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="intermediate" data-lesson-id="lesson-17">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 17</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson active" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Регулярные выражения</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Регулярные выражения - это язык описания шаблонов текста. Одна короткая строка вроде
+    <code>/\d{3}-\d{2}/</code> заменяет десяток условий с <code>includes</code> и
+    <code>slice</code>. Выглядят они пугающе, но на деле это просто набор правил: «цифра,
+        цифра, дефис, цифра...».</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Научимся читать и составлять простые регулярки.</li>
+    <li>Разберём методы <code>test</code>, <code>match</code>, <code>replace</code>.</li>
+    <li>Поймём флаги и группы.</li>
+    <li>Соберём готовые шаблоны для телефона, даты и slug.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Трафарет: одна форма подходит ко множеству надписей. Регулярное выражение - трафарет для текста.</p>
+</div>
+
+<h2>Зачем это нужно</h2>
+
+<p>Сравните две проверки телефона:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const phone = &quot;+79991234567&quot;;</span><span class="code-row"></span><span class="code-row">// без регулярки</span><span class="code-row">const digits = phone.slice(2);</span><span class="code-row">const ok = phone.startsWith(&quot;+7&quot;) &amp;&amp; digits.length === 10 &amp;&amp; !isNaN(Number(digits));</span><span class="code-row"></span><span class="code-row">// с регуляркой</span><span class="code-row">const okRegex = /^\+7\d{10}$/.test(phone);</span></code></pre>
+
+<p>Второй вариант короче и точнее: он проверяет всю строку целиком, а не только длину.</p>
+
+<h2>Создание и метод test</h2>
+
+<p>Регулярное выражение записывают между слешами. Метод <code>test</code> возвращает
+    <code>true</code> или <code>false</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const hasDigits = /\d/;</span><span class="code-row"></span><span class="code-row">console.log(hasDigits.test(&quot;abc123&quot;)); // true</span><span class="code-row">console.log(hasDigits.test(&quot;abc&quot;));    // false</span></code></pre>
+
+<p>Второй способ - конструктор <code>new RegExp</code>. Он нужен, когда шаблон собирается
+    из переменной:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const word = &quot;кот&quot;;</span><span class="code-row">const regex = new RegExp(word, &quot;i&quot;);</span><span class="code-row"></span><span class="code-row">console.log(regex.test(&quot;У нас живёт КОТ&quot;)); // true</span></code></pre>
+
+<h2>Флаги</h2>
+
+<pre class="code-numbered"><code><span class="code-row">/\d/      // первое совпадение</span><span class="code-row">/\d/g     // все совпадения (global)</span><span class="code-row">/кот/i    // без учёта регистра (insensitive)</span><span class="code-row">/^кот/m   // ^ и $ работают в каждой строке (multiline)</span></code></pre>
+
+<p>Флаг <code>g</code> критичен для <code>match</code> и <code>replace</code>: без него
+    вы получите только первое совпадение.</p>
+
+<h2>Классы символов</h2>
+
+<pre class="code-numbered"><code><span class="code-row">\d      цифра 0-9</span><span class="code-row">\D      не цифра</span><span class="code-row">\w      буква, цифра или _</span><span class="code-row">\s      пробел, таб, перевод строки</span><span class="code-row">.       любой символ, кроме перевода строки</span><span class="code-row">[abc]   любой из символов a, b, c</span><span class="code-row">[^abc]  любой, кроме a, b, c</span><span class="code-row">[а-я]   диапазон: любая русская строчная буква</span></code></pre>
+
+<p>Пример: проверим, что в строке есть хотя бы одна заглавная латинская буква:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(/[A-Z]/.test(&quot;приветМир&quot;)); // true</span><span class="code-row">console.log(/[A-Z]/.test(&quot;привет мир&quot;)); // false</span></code></pre>
+
+<h2>Квантификаторы: сколько раз</h2>
+
+<pre class="code-numbered"><code><span class="code-row">\d?      ноль или один раз</span><span class="code-row">\d*      ноль или больше</span><span class="code-row">\d+      один или больше</span><span class="code-row">\d{3}    ровно три</span><span class="code-row">\d{2,5}  от двух до пяти</span><span class="code-row">\d{2,}   два или больше</span></code></pre>
+
+<p>Квантификатор применяется к предыдущему символу или группе:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(/^\d{3}-\d{2}-\d{2}$/.test(&quot;123-45-67&quot;)); // true</span><span class="code-row">console.log(/^\d{3}-\d{2}-\d{2}$/.test(&quot;123-456-7&quot;)); // false</span></code></pre>
+
+<h2>Якоря</h2>
+
+<pre class="code-numbered"><code><span class="code-row">^    начало строки</span><span class="code-row">$    конец строки</span><span class="code-row">\b   граница слова</span></code></pre>
+
+<p>Без якорей проверка «найдено где-то внутри» может пропустить мусор:
+    <code>/\d+/.test("abc123def")</code> вернёт <code>true</code>. Если нужна строгая
+    проверка формата - оборачивайте шаблон в <code>^...$</code>.</p>
+
+<h2>Группы и альтернация</h2>
+
+<pre class="code-numbered"><code><span class="code-row">// альтернация: или</span><span class="code-row">console.log(/^(да|нет)$/.test(&quot;да&quot;)); // true</span><span class="code-row"></span><span class="code-row">// группа захвата</span><span class="code-row">const date = &quot;2026-10-30&quot;;</span><span class="code-row">const match = date.match(/^(\d{4})-(\d{2})-(\d{2})$/);</span><span class="code-row"></span><span class="code-row">console.log(match[1]); // &quot;2026&quot;</span><span class="code-row">console.log(match[2]); // &quot;10&quot;</span><span class="code-row">console.log(match[3]); // &quot;30&quot;</span></code></pre>
+
+<p>Именованные группы читаются лучше:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const result = date.match(/^(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})$/);</span><span class="code-row"></span><span class="code-row">console.log(result.groups.year);  // &quot;2026&quot;</span><span class="code-row">console.log(result.groups.month); // &quot;10&quot;</span></code></pre>
+
+<h2>Методы строк с регулярками</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const text = &quot;Цены: 100, 250 и 399 рублей&quot;;</span><span class="code-row"></span><span class="code-row">console.log(text.match(/\d+/g));      // [&quot;100&quot;, &quot;250&quot;, &quot;399&quot;]</span><span class="code-row">console.log(text.search(/\d+/));      // индекс первого числа</span><span class="code-row"></span><span class="code-row">console.log(&quot;2026-10-30&quot;.replace(/(\d{4})-(\d{2})-(\d{2})/, &quot;$3.$2.$1&quot;));</span><span class="code-row">// &quot;30.10.2026&quot;</span><span class="code-row"></span><span class="code-row">console.log(&quot;a1b2c3&quot;.split(/\d/));    // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;&quot;]</span></code></pre>
+
+<p><code>matchAll</code> возвращает все совпадения вместе с группами - удобно для разбора
+    текста:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const pairs = &quot;яблоко: 3, груша: 5&quot;;</span><span class="code-row">const regex = /(?&lt;fruit&gt;\w+):\s*(?&lt;count&gt;\d+)/g;</span><span class="code-row"></span><span class="code-row">for (const match of pairs.matchAll(regex)) {</span><span class="code-row">    console.log(`${match.groups.fruit} - ${match.groups.count}`);</span><span class="code-row">}</span></code></pre>
+
+<h2>Готовые шаблоны</h2>
+
+<p>Простейшая проверка почты (не идеальная, но рабочая для форм):</p>
+
+<pre class="code-numbered"><code><span class="code-row">const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;</span><span class="code-row"></span><span class="code-row">console.log(emailRegex.test(&quot;alex@example.com&quot;)); // true</span><span class="code-row">console.log(emailRegex.test(&quot;alex@example&quot;));     // false</span></code></pre>
+
+<p>Российский телефон:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const phoneRegex = /^\+7\d{10}$/;</span></code></pre>
+
+<p>Slug для адреса страницы:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function slugify(title) {</span><span class="code-row">    return title</span><span class="code-row">        .toLowerCase()</span><span class="code-row">        .trim()</span><span class="code-row">        .replace(/\s+/g, &quot;-&quot;)</span><span class="code-row">        .replace(/[^a-zа-я0-9-]/g, &quot;&quot;);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(slugify(&quot;Как выучить JavaScript за месяц&quot;));</span><span class="code-row">// &quot;как-выучить-javascript-за-месяц&quot;</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Три классические ловушки
+    </div>
+    <p><strong>1.</strong> Флаг <code>g</code> у регулярки хранит состояние: повторный
+        <code>test</code> с тем же объектом может вернуть <code>false</code>. Создавайте
+        регулярку заново или не используйте <code>g</code> с <code>test</code>.
+        <strong>2.</strong> Точка не совпадает с переводом строки - для этого есть флаг
+        <code>s</code>. <strong>3.</strong> Сложные вложенные квантификаторы вроде
+        <code>(a+)+$</code> могут «подвесить» страницу на неудачной строке - это называется
+        катастрофическим бэктрекингом.</p>
+</div>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>\d</code>
+        <span>цифра</span>
+    </li>
+    <li>
+        <code>\w</code>
+        <span>буква, цифра, _</span>
+    </li>
+    <li>
+        <code>\s</code>
+        <span>пробельный символ</span>
+    </li>
+    <li>
+        <code>+ * ? {n,m}</code>
+        <span>количество повторений</span>
+    </li>
+    <li>
+        <code>^ $</code>
+        <span>начало и конец строки</span>
+    </li>
+    <li>
+        <code>test</code>
+        <span>есть ли совпадение</span>
+    </li>
+    <li>
+        <code>match</code>
+        <span>найти совпадения</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Регулярка «не находит» очевидное</strong>. Проверьте флаг <code>i</code>
+        и регистр, а также якоря: возможно, шаблон требует совпадения всей строки.</li>
+    <li><strong><code>test</code> то <code>true</code>, то <code>false</code></strong>.
+        У регулярки с флагом <code>g</code> сохраняется позиция поиска. Уберите
+        <code>g</code> или создавайте выражение заново.</li>
+    <li><strong><code>/</code> внутри шаблона ломает код</strong>. Экранируйте:
+        <code>\/</code>, либо используйте <code>new RegExp("/")</code>.</li>
+    <li><strong>Обратный слеш «съедается»</strong>. В строковом литерале нужен двойной:
+        <code>"\\d+"</code>, а в литерале регулярки - одинарный: <code>/\d+/</code>.</li>
+    <li><strong><code>match</code> вернул <code>null</code></strong>. Совпадений нет -
+        проверяйте результат до обращения к <code>[0]</code>.</li>
+    <li><strong>Регулярка работает в консоли, но «ломается» на форме.</strong> Если у выражения флаг <code>g</code>, оно запоминает позицию поиска между вызовами. Для проверки одного значения флаг не нужен.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Телефон</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>isPhone(value)</code>, которая
+                принимает номер в формате <code>+79991234567</code> и возвращает
+                <code>true</code> только для корректного номера.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Шаблон: <code>^\+7\d{10}$</code>. Не забудьте экранировать плюс -
+                        в регулярках он означает квантификатор.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function isPhone(value) {</span><span class="code-row">    return /^\+7\d{10}$/.test(value.trim());</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(isPhone(&quot;+79991234567&quot;));  // true</span><span class="code-row">console.log(isPhone(&quot;89991234567&quot;));   // false</span><span class="code-row">console.log(isPhone(&quot;+7999123456&quot;));   // false</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Все числа из текста</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Из строки «Заказ 12, доставка 350 рублей, скидка 15%»
+                получите массив чисел и посчитайте их сумму.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>match(/\d+/g)</code> вернёт массив строк. Преобразуйте каждую
+                        через <code>Number</code> и сложите через <code>reduce</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const text = &quot;Заказ 12, доставка 350 рублей, скидка 15%&quot;;</span><span class="code-row"></span><span class="code-row">const numbers = text.match(/\d+/g).map(Number);</span><span class="code-row">const sum = numbers.reduce((total, n) =&gt; total + n, 0);</span><span class="code-row"></span><span class="code-row">console.log(numbers); // [12, 350, 15]</span><span class="code-row">console.log(sum);     // 377</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Дата в другом формате</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Превратите <code>"2026-10-30"</code> в
+                <code>"30.10.2026"</code> одной строкой с <code>replace</code>
+                и группами захвата.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Шаблон: <code>/(\d{4})-(\d{2})-(\d{2})/</code>, замена:
+                        <code>"$3.$2.$1"</code>. Группы нумеруются с единицы.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const iso = &quot;2026-10-30&quot;;</span><span class="code-row"></span><span class="code-row">const ru = iso.replace(/(\d{4})-(\d{2})-(\d{2})/, &quot;$3.$2.$1&quot;);</span><span class="code-row">console.log(ru); // &quot;30.10.2026&quot;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Проверка пароля</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Проверьте пароль: не короче 8 символов, содержит хотя бы одну букву и одну цифру.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Можно сделать три отдельные регулярки и объединить результаты через <code>&&</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">function isStrongPassword(value) {</span><span class="code-row">    return value.length &gt;= 8</span><span class="code-row">        &amp;&amp; /[A-Za-zА-Яа-я]/.test(value)</span><span class="code-row">        &amp;&amp; /\d/.test(value);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(isStrongPassword(&quot;qwerty12&quot;)); // true</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Регулярки перестали быть шифром. Вы знаете:</p>
+<ul>
+    <li>Из чего состоит шаблон: классы, квантификаторы, якоря.</li>
+    <li>Как искать, извлекать и заменять части текста.</li>
+    <li>Как работают группы и флаги.</li>
+    <li>Где лежат три главные ловушки и как их обойти.</li>
+</ul>
+
+<p>Следующий урок - про время. Как получить текущую дату, посчитать возраст, отформатировать
+    дату по-русски и не попасться на то, что месяцы в JavaScript считаются с нуля.
+    Разберём <strong>даты и <code>Intl</code></strong>.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-16.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-18.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

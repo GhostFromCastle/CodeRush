@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOIN: соединяем таблицы - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="intermediate" data-lesson-id="lesson-07">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 07</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson active" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>JOIN: соединяем таблицы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>В реальной базе данные разложены по таблицам: пользователи отдельно, заказы отдельно,
+    товары отдельно. Чтобы получить осмысленный ответ, их нужно соединить. За это отвечает
+    <code>JOIN</code> - самая важная тема в SQL после <code>SELECT</code>.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Поймём, зачем нужно соединение и как работает <code>ON</code>.</li>
+    <li>Разберём <code>INNER</code>, <code>LEFT</code>, <code>RIGHT</code> и <code>FULL</code>.</li>
+    <li>Научимся соединять таблицу с самой собой.</li>
+    <li>Разберём три ловушки, из-за которых результат получается неверным.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Два списка: гости и рассадка. JOIN сшивает их по имени гостя, чтобы за столом оказался нужный человек.</p>
+</div>
+
+<h2>Две таблицы</h2>
+
+<table>
+    <thead>
+        <tr><th>users.id</th><th>users.name</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td>Анна</td></tr>
+        <tr><td>2</td><td>Борис</td></tr>
+        <tr><td>3</td><td>Вера</td></tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr><th>orders.id</th><th>orders.customer_id</th><th>orders.price</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>10</td><td>1</td><td>75000</td></tr>
+        <tr><td>11</td><td>1</td><td>30000</td></tr>
+        <tr><td>12</td><td>2</td><td>1500</td></tr>
+    </tbody>
+</table>
+
+<p>У Веры заказов нет. Если написать <code>SELECT * FROM orders</code>, мы увидим только
+    номера клиентов, но не имена. Нужно соединить таблицы по правилу
+    <code>orders.customer_id = users.id</code>.</p>
+
+<h2>INNER JOIN</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    users.name,</span><span class="code-row">    orders.id   AS order_id,</span><span class="code-row">    orders.price</span><span class="code-row">FROM orders</span><span class="code-row">INNER JOIN users ON users.id = orders.customer_id;</span></code></pre>
+
+<table>
+    <thead>
+        <tr><th>name</th><th>order_id</th><th>price</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Анна</td><td>10</td><td>75000</td></tr>
+        <tr><td>Анна</td><td>11</td><td>30000</td></tr>
+        <tr><td>Борис</td><td>12</td><td>1500</td></tr>
+    </tbody>
+</table>
+
+<p><code>INNER JOIN</code> оставляет только те пары строк, для которых условие выполнено.
+    Вера не попала в результат: у неё нет заказов. Анна попала дважды: у неё два заказа.</p>
+
+<p>Ключевое слово <code>INNER</code> можно опустить - <code>JOIN</code> по умолчанию означает
+    именно внутреннее соединение.</p>
+
+<h2>Алиасы таблиц</h2>
+
+<p>Когда таблиц несколько, писать полные имена утомительно. Дадим короткие псевдонимы:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    u.name,</span><span class="code-row">    o.id AS order_id,</span><span class="code-row">    o.price</span><span class="code-row">FROM orders AS o</span><span class="code-row">JOIN users AS u ON u.id = o.customer_id;</span></code></pre>
+
+<p>Обратите внимание: <code>AS</code> для таблиц пишут почти всегда, даже если имя короткое.
+    В запросах на пять таблиц это спасает читаемость.</p>
+
+<h2>LEFT JOIN</h2>
+
+<p>Если нужны все пользователи, включая тех, кто ничего не купил, используется левое
+    соединение:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    u.name,</span><span class="code-row">    o.id AS order_id</span><span class="code-row">FROM users AS u</span><span class="code-row">LEFT JOIN orders AS o ON o.customer_id = u.id;</span></code></pre>
+
+<table>
+    <thead>
+        <tr><th>name</th><th>order_id</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Анна</td><td>10</td></tr>
+        <tr><td>Анна</td><td>11</td></tr>
+        <tr><td>Борис</td><td>12</td></tr>
+        <tr><td>Вера</td><td>NULL</td></tr>
+    </tbody>
+</table>
+
+<p><code>LEFT JOIN</code> берёт все строки из левой таблицы и подставляет совпадения из правой.
+    Если совпадений нет - вместо них <code>NULL</code>.</p>
+
+<p>Найти клиентов без заказов можно так:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT u.name</span><span class="code-row">FROM users AS u</span><span class="code-row">LEFT JOIN orders AS o ON o.customer_id = u.id</span><span class="code-row">WHERE o.id IS NULL;</span></code></pre>
+
+<h2>RIGHT и FULL</h2>
+
+<p><code>RIGHT JOIN</code> - зеркальный: все строки из правой таблицы. На практике его почти
+    не используют: любой правый join переписывается как левый с перестановкой таблиц, а читать
+    слева направо привычнее.</p>
+
+<p><code>FULL OUTER JOIN</code> возвращает все строки из обеих таблиц, подставляя NULL там,
+    где пары нет. В SQLite он появился только в версии 3.39, в MySQL его нет - эмулируют через
+    <code>UNION</code> левого и правого соединений.</p>
+
+<h2>Соединение таблицы с собой</h2>
+
+<p>Иногда связь идёт внутри одной таблицы. Пример: у сотрудника есть руководитель, который
+    тоже сотрудник.</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    e.name  AS employee,</span><span class="code-row">    m.name  AS manager</span><span class="code-row">FROM employees AS e</span><span class="code-row">LEFT JOIN employees AS m ON m.id = e.manager_id;</span></code></pre>
+
+<p>Без алиасов база не поймёт, о каком <code>employees</code> идёт речь. Псевдонимы
+    <code>e</code> и <code>m</code> делают запрос однозначным.</p>
+
+<h2>Три таблицы и больше</h2>
+
+<p>Соединения выстраиваются цепочкой. Каждый следующий <code>JOIN</code> присоединяется
+    к результату предыдущих:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    u.name,</span><span class="code-row">    o.id          AS order_id,</span><span class="code-row">    p.title,</span><span class="code-row">    oi.quantity</span><span class="code-row">FROM orders AS o</span><span class="code-row">JOIN users AS u       ON u.id = o.customer_id</span><span class="code-row">JOIN order_items AS oi ON oi.order_id = o.id</span><span class="code-row">JOIN products AS p     ON p.id = oi.product_id;</span></code></pre>
+
+<p>Читается так: «взять заказы, добавить к ним клиента, затем позиции заказа, затем товар
+    для каждой позиции».</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Три ловушки JOIN
+    </div>
+    <p><strong>1.</strong> Забыли <code>ON</code> - получили декартово произведение: каждая
+        строка с каждой. На тысячах строк это миллионы результатов и зависший сервер.
+        <strong>2.</strong> Условие на правую таблицу написали в <code>WHERE</code> вместо
+        <code>ON</code> - и <code>LEFT JOIN</code> превратился во внутренний.
+        <strong>3.</strong> Соединили «один ко многим» и считаете сумму - строка заказа
+        размножилась по позициям, и сумма задвоилась.</p>
+</div>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>JOIN ... ON</code>
+        <span>внутреннее соединение</span>
+    </li>
+    <li>
+        <code>LEFT JOIN</code>
+        <span>все строки левой таблицы</span>
+    </li>
+    <li>
+        <code>IS NULL</code>
+        <span>найти отсутствующие связи</span>
+    </li>
+    <li>
+        <code>AS u</code>
+        <span>алиас таблицы</span>
+    </li>
+    <li>
+        <code>FULL JOIN</code>
+        <span>все строки обеих таблиц</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Слишком много строк</strong>. Скорее всего, пропущено условие <code>ON</code>
+        или связь неверная.</li>
+    <li><strong>LEFT JOIN ведёт себя как INNER</strong>. Условие по правой таблице стоит в
+        <code>WHERE</code> - перенесите его в <code>ON</code>.</li>
+    <li><strong>«Ambiguous column name»</strong>. Столбец есть в обеих таблицах - укажите
+        алиас: <code>u.id</code>, <code>o.id</code>.</li>
+    <li><strong>Суммы завышены</strong>. Дубли из-за связи «один ко многим». Считайте
+        через подзапрос или <code>DISTINCT</code>.</li>
+    <li><strong>FULL JOIN не работает</strong>. В MySQL его нет, в старом SQLite - тоже.
+        Используйте <code>UNION</code>.</li>
+    <li><strong>«После JOIN сумма удвоилась».</strong> Один заказ соединили с пятью позициями - и его сумма посчиталась пять раз. Считайте деньги на уровне заказа, а не позиции.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Заказы с именами</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите имя клиента, номер заказа и цену для всех заказов,
+                отсортировав по цене от большей к меньшей.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>FROM orders o JOIN users u ON u.id = o.customer_id</code>,
+                        затем <code>ORDER BY o.price DESC</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT u.name, o.id AS order_id, o.price</span><span class="code-row">FROM orders AS o</span><span class="code-row">JOIN users AS u ON u.id = o.customer_id</span><span class="code-row">ORDER BY o.price DESC;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Клиенты без покупок</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Найдите всех пользователей, у которых нет ни одного заказа.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>LEFT JOIN</code> от пользователей к заказам и условие
+                        <code>WHERE o.id IS NULL</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT u.id, u.name</span><span class="code-row">FROM users AS u</span><span class="code-row">LEFT JOIN orders AS o ON o.customer_id = u.id</span><span class="code-row">WHERE o.id IS NULL;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Сумма по клиентам</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Посчитайте сумму заказов каждого клиента, включая тех, у кого
+                заказов нет (у них должно быть 0, а не NULL).</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>LEFT JOIN</code> + <code>GROUP BY u.id, u.name</code> +
+                        <code>COALESCE(SUM(o.price), 0)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    u.name,</span><span class="code-row">    COALESCE(SUM(o.price), 0) AS total</span><span class="code-row">FROM users AS u</span><span class="code-row">LEFT JOIN orders AS o ON o.customer_id = u.id</span><span class="code-row">GROUP BY u.id, u.name</span><span class="code-row">ORDER BY total DESC;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Товары в категориях</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите название категории и количество товаров в ней, включая пустые категории.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>LEFT JOIN</code> от категорий к товарам и <code>COUNT(p.id)</code>, чтобы пустая категория дала 0, а не 1.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    c.title,</span><span class="code-row">    COUNT(p.id) AS products_count</span><span class="code-row">FROM categories AS c</span><span class="code-row">LEFT JOIN products AS p ON p.category_id = c.id</span><span class="code-row">GROUP BY c.id, c.title</span><span class="code-row">ORDER BY products_count DESC;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Соединения больше не пугают. Теперь вы знаете:</p>
+<ul>
+    <li>Как работает <code>JOIN ... ON</code> и чем отличается от <code>LEFT JOIN</code>.</li>
+    <li>Как найти строки без пары через <code>IS NULL</code>.</li>
+    <li>Как соединять таблицу с собой и строить цепочки из нескольких таблиц.</li>
+    <li>Какие три ошибки чаще всего портят результат.</li>
+</ul>
+
+<p>Следующий урок - про подзапросы: когда запрос вкладывают внутрь другого и как это заменяет
+    сложные соединения.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="../beginner/lesson-06.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-08.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Циклы: for и while - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="beginner" data-lesson-id="lesson-04">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 04</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson active" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Циклы: for и while</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Представьте, что нужно вывести числа от 1 до 100. Копировать <code>console.log</code> сто
+    раз - плохая идея. Для повторяющихся действий в программировании есть циклы.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём цикл <code>for</code> и его три части.</li>
+    <li>Научимся работать с <code>while</code> и <code>do...while</code>.</li>
+    <li>Поймём, как выйти из цикла досрочно и как пропустить итерацию.</li>
+    <li>Соберём таблицу умножения вложенными циклами.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Беговая дорожка: шаг за шагом, пока не пройдена дистанция. Счётчик i показывает, какой круг сейчас.</p>
+</div>
+
+<h2>Цикл for</h2>
+
+<p>Самый частый цикл в JavaScript. У него три части, разделённые точкой с запятой:</p>
+
+<pre class="code-numbered"><code><span class="code-row">for (let i = 1; i &lt;= 5; i++) {</span><span class="code-row">    console.log(i);</span><span class="code-row">}</span></code></pre>
+
+<p>Разберём по частям:</p>
+<ul>
+    <li><strong><code>let i = 1</code></strong> - начальное значение. Выполняется один раз,
+        перед циклом.</li>
+    <li><strong><code>i &lt;= 5</code></strong> - условие. Проверяется перед каждой итерацией.
+        Как только станет ложным, цикл закончится.</li>
+    <li><strong><code>i++</code></strong> - шаг. Выполняется после каждой итерации.</li>
+</ul>
+
+<p>Результат: на экране появятся числа 1, 2, 3, 4, 5 - каждое с новой строки.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Почему i
+    </div>
+    <p>Традиция из математики: <code>i</code> - сокращение от index или iteration. Если циклов
+        несколько, используют <code>i</code>, <code>j</code>, <code>k</code>. Для вложенных
+        циклов по массивам часто берут осмысленные имена: <code>row</code>, <code>col</code>,
+        <code>userIndex</code>.</p>
+</div>
+
+<h2>Обратный отсчёт и шаг</h2>
+
+<p>Цикл не обязан идти вверх на единицу. Можно вниз:</p>
+
+<pre class="code-numbered"><code><span class="code-row">for (let i = 5; i &gt;= 1; i--) {</span><span class="code-row">    console.log(i);</span><span class="code-row">}</span><span class="code-row">console.log(&quot;Поехали!&quot;);</span></code></pre>
+
+<p>А можно двигаться с шагом 2 или любым другим:</p>
+
+<pre class="code-numbered"><code><span class="code-row">for (let i = 0; i &lt;= 10; i += 2) {</span><span class="code-row">    console.log(i); // 0, 2, 4, 6, 8, 10</span><span class="code-row">}</span></code></pre>
+
+<h2>Цикл while</h2>
+
+<p><code>while</code> выполняет блок, пока условие истинно. Он удобен, когда заранее неизвестно,
+    сколько будет итераций:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let balance = 100;</span><span class="code-row">let days = 0;</span><span class="code-row"></span><span class="code-row">while (balance &gt; 0) {</span><span class="code-row">    balance -= 30;</span><span class="code-row">    days++;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(`Денег хватило на ${days} дня`);</span></code></pre>
+
+<p>Здесь мы не знаем заранее, сколько раз вычтем 30 из 100 - это выясняется по ходу.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Бесконечный цикл
+    </div>
+    <p>Если условие никогда не станет ложным, цикл будет выполняться вечно, а вкладка -
+        зависнет. Классическая ошибка - забыть изменить счётчик внутри <code>while</code>.
+        Если это случилось, закройте вкладку: остановить такой цикл из консоли почти
+        невозможно.</p>
+</div>
+
+<h2>Цикл do...while</h2>
+
+<p>Почти как <code>while</code>, но условие проверяется <em>после</em> тела цикла. Значит,
+    тело выполнится хотя бы один раз:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let attempt = 0;</span><span class="code-row"></span><span class="code-row">do {</span><span class="code-row">    attempt++;</span><span class="code-row">    console.log(`Попытка ${attempt}`);</span><span class="code-row">} while (attempt &lt; 3);</span></code></pre>
+
+<p>Такой цикл удобен для меню или запроса пароля: показать один раз нужно всегда, а
+    повторять - только при необходимости.</p>
+
+<h2>break и continue</h2>
+
+<p>Два оператора управления циклом:</p>
+
+<ul>
+    <li><strong><code>break</code></strong> - полностью прерывает цикл.</li>
+    <li><strong><code>continue</code></strong> - пропускает остаток текущей итерации и переходит
+        к следующей.</li>
+</ul>
+
+<pre class="code-numbered"><code><span class="code-row">for (let i = 1; i &lt;= 10; i++) {</span><span class="code-row">    if (i === 7) {</span><span class="code-row">        break; // дальше не идём</span><span class="code-row">    }</span><span class="code-row">    if (i % 2 === 0) {</span><span class="code-row">        continue; // чётные пропускаем</span><span class="code-row">    }</span><span class="code-row">    console.log(i); // 1, 3, 5</span><span class="code-row">}</span></code></pre>
+
+<p>Читается так: «если дошли до семёрки - выходим. Чётные пропускаем. Остальные выводим».</p>
+
+<h2>Вложенные циклы</h2>
+
+<p>Цикл внутри цикла - нормальная ситуация. Внешний проходит по строкам, внутренний - по
+    столбцам:</p>
+
+<pre class="code-numbered"><code><span class="code-row">for (let i = 1; i &lt;= 3; i++) {</span><span class="code-row">    for (let j = 1; j &lt;= 3; j++) {</span><span class="code-row">        console.log(`${i} x ${j} = ${i * j}`);</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+<p>Внутренний цикл полностью выполняется на каждой итерации внешнего. Для трёх на три
+    получится девять строк. Именно так строят таблицы умножения, сетки и матрицы.</p>
+
+<h2>Перебор массива</h2>
+
+<p>Циклы чаще всего используют для работы с коллекциями. С массивами удобнее особая форма
+    <code>for...of</code>, которая выдаёт сразу значения, а не индексы:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const fruits = [&quot;яблоко&quot;, &quot;банан&quot;, &quot;груша&quot;];</span><span class="code-row"></span><span class="code-row">for (const fruit of fruits) {</span><span class="code-row">    console.log(fruit);</span><span class="code-row">}</span></code></pre>
+
+<p>Подробно массивы разберём через два урока, а пока запомните: если нужен индекс -
+используйте обычный <code>for</code>; если только значения - <code>for...of</code>.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>for (init; cond; step)</code>
+        <span>цикл с известным числом итераций</span>
+    </li>
+    <li>
+        <code>while (cond)</code>
+        <span>цикл, пока условие истинно</span>
+    </li>
+    <li>
+        <code>do ... while</code>
+        <span>хотя бы одна итерация гарантирована</span>
+    </li>
+    <li>
+        <code>break</code>
+        <span>выйти из цикла</span>
+    </li>
+    <li>
+        <code>continue</code>
+        <span>пропустить итерацию</span>
+    </li>
+    <li>
+        <code>for...of</code>
+        <span>перебор значений массива</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Вкладка зависла</strong>. Бесконечный цикл: условие никогда не станет ложным.
+        Проверьте, меняется ли счётчик внутри тела.</li>
+    <li><strong>Цикл выполнился на один раз больше или меньше</strong>. Классическая ошибка
+        «на единицу»: сравните <code>&lt;</code> и <code>&lt;=</code>. Для массива из пяти
+        элементов индексы идут от 0 до 4, то есть <code>i &lt; 5</code>.</li>
+    <li><strong>«Assignment to constant variable»</strong> в цикле. Счётчик объявлен через
+        <code>const</code>. В заголовке <code>for</code> нужен <code>let</code>.</li>
+    <li><strong><code>break</code> не выходит из вложенного цикла целиком</strong>. Он
+        прерывает только тот цикл, в котором написан. Для выхода из обоих используют метки
+        или флаг - но лучше переписать алгоритм.</li>
+    <li><strong>Цикл ничего не выводит</strong>. Проверьте начальное значение и условие:
+        возможно, оно ложно с самого начала.</li>
+    <li><strong>Вкладка зависла после запуска.</strong> Скорее всего, бесконечный цикл: счётчик не меняется или условие всегда истинно. Закройте вкладку и проверьте, что внутри цикла есть изменение переменной условия.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Сумма чисел</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Посчитайте сумму всех чисел от 1 до 100 и выведите результат.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Заведите переменную <code>sum = 0</code> до цикла и прибавляйте к ней
+                        <code>i</code> на каждой итерации. Не создавайте переменную внутри
+                        цикла - она будет обнуляться.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">let sum = 0;</span><span class="code-row"></span><span class="code-row">for (let i = 1; i &lt;= 100; i++) {</span><span class="code-row">    sum += i;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(sum); // 5050</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. FizzBuzz</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Классическая задача с собеседований. Выведите числа от 1 до 15,
+                но вместо чисел, кратных 3, печатайте «Fizz», вместо кратных 5 - «Buzz»,
+                а вместо кратных и 3, и 5 - «FizzBuzz».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Проверка на кратность 15 должна идти первой. Иначе для числа 15 сработает
+                        ветка с тройкой и выведет просто «Fizz». Используйте остаток от деления.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">for (let i = 1; i &lt;= 15; i++) {</span><span class="code-row">    if (i % 15 === 0) {</span><span class="code-row">        console.log(&quot;FizzBuzz&quot;);</span><span class="code-row">    } else if (i % 3 === 0) {</span><span class="code-row">        console.log(&quot;Fizz&quot;);</span><span class="code-row">    } else if (i % 5 === 0) {</span><span class="code-row">        console.log(&quot;Buzz&quot;);</span><span class="code-row">    } else {</span><span class="code-row">        console.log(i);</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Таблица умножения</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите таблицу умножения от 2 до 5 в виде строк
+                «2 x 2 = 4», «2 x 3 = 6» и так далее. Понадобятся два вложенных цикла.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Внешний цикл - первый множитель (от 2 до 5), внутренний - второй
+                        (тоже от 2 до 5). Вывод соберите шаблонной строкой.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">for (let i = 2; i &lt;= 5; i++) {</span><span class="code-row">    for (let j = 2; j &lt;= 5; j++) {</span><span class="code-row">        console.log(`${i} x ${j} = ${i * j}`);</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Сумма чётных</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Посчитайте сумму чётных чисел от 1 до 20, используя <code>continue</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Нечётные пропускайте через <code>continue</code>, чётные прибавляйте к сумме.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">let sum = 0;</span><span class="code-row"></span><span class="code-row">for (let i = 1; i &lt;= 20; i++) {</span><span class="code-row">    if (i % 2 !== 0) continue;</span><span class="code-row">    sum += i;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(sum); // 110</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Теперь программа умеет повторять действия. Вы знаете:</p>
+<ul>
+    <li>Как устроен цикл <code>for</code> и что означают его три части.</li>
+    <li>Чем отличается <code>while</code> от <code>do...while</code>.</li>
+    <li>Как досрочно выйти из цикла и как пропустить итерацию.</li>
+    <li>Как работают вложенные циклы.</li>
+</ul>
+
+<p>Кода становится больше, и в нём появляются повторы: одна и та же формула, один и тот же
+    вывод, одна и та же проверка. Хорошая программа не повторяется - она выносит общую логику
+    в отдельный блок, который можно вызвать по имени. В следующем уроке разберём
+    <strong>функции</strong> - главный инструмент структурирования кода.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-03.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-05.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

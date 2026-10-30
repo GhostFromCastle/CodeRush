@@ -916,6 +916,41 @@
             "tags": ["Управление", "Работа в команде"],
             "definition": "Senior. Опытный специалист. Он не только пишет сложный код, но и проектирует архитектуру, принимает стратегические решения и обучает других.",
             "code": ""
+        },
+        {
+            "term": "Hoisting (Поднятие)",
+            "category": "JavaScript",
+            "tags": ["JavaScript", "Основы"],
+            "definition": "Поведение JavaScript, при котором объявления переменных и функций как бы поднимаются в начало области видимости. У var значение при этом остаётся undefined, а let и const до строки объявления находятся в «временной мёртвой зоне» и выбрасывают ошибку.",
+            "code": "console.log(a); // undefined\nvar a = 1;\n\n// console.log(b); // ReferenceError\nlet b = 2;"
+        },
+        {
+            "term": "Деструктуризация",
+            "category": "JavaScript",
+            "tags": ["JavaScript", "Основы"],
+            "definition": "Короткий способ достать значения из объекта или массива в отдельные переменные. Вместо десяти строк с obj.key пишут одну: const { name, age } = user.",
+            "code": "const user = { name: 'Алексей', age: 25 };\nconst { name, age } = user;\n\nconst [first, ...rest] = [1, 2, 3];"
+        },
+        {
+            "term": "Регулярное выражение (Regex)",
+            "category": "JavaScript",
+            "tags": ["JavaScript", "Текст"],
+            "definition": "Шаблон для поиска и проверки текста. Записывается между слешами и позволяет одной строкой описать формат телефона, почты или даты.",
+            "code": "const phone = '+79991234567';\nconst ok = /^\\+7\\d{10}$/.test(phone); // true"
+        },
+        {
+            "term": "Debounce",
+            "category": "JavaScript",
+            "tags": ["JavaScript", "Производительность"],
+            "definition": "Приём, при котором функция вызывается только после паузы в событиях. Пока пользователь печатает, таймер перезапускается, и запрос уходит один раз - когда он остановился.",
+            "code": "function debounce(fn, delay = 300) {\n    let id;\n    return (...args) => {\n        clearTimeout(id);\n        id = setTimeout(() => fn(...args), delay);\n    };\n}"
+        },
+        {
+            "term": "Делегирование событий",
+            "category": "JavaScript",
+            "tags": ["JavaScript", "DOM"],
+            "definition": "Приём, когда обработчик вешают не на каждый элемент, а на общий контейнер. Событие всплывает вверх, а внутри обработчика вычисляют, по чему именно кликнули. Так работают списки, в которые добавляются новые элементы.",
+            "code": "list.addEventListener('click', (event) => {\n    const button = event.target.closest('.delete');\n    if (button) button.closest('li').remove();\n});"
         }
     ]
 }

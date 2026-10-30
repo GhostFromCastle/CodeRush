@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSERT, UPDATE, DELETE - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="beginner" data-lesson-id="lesson-06">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 06</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson active" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>INSERT, UPDATE, DELETE</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Читать данные - половина работы. Вторая половина - их менять: добавлять заказы, править
+    цены, удалять устаревшее. В этом уроке освоим три команды, с которыми нужно обращаться
+    особенно аккуратно.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Научимся добавлять одну и несколько строк.</li>
+    <li>Разберём <code>UPDATE</code> и правило «всегда с WHERE».</li>
+    <li>Поймём, чем опасен <code>DELETE</code> без условия.</li>
+    <li>Узнаем, как вернуть удалённое через транзакцию.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Редактор документа: добавить абзац, исправить, удалить. Но без «Сохранить» (WHERE) можно случайно стереть весь текст.</p>
+</div>
+
+<h2>INSERT</h2>
+
+<pre class="code-numbered"><code><span class="code-row">INSERT INTO products (title, price, stock)</span><span class="code-row">VALUES (&#x27;Клавиатура&#x27;, 3500, 10);</span></code></pre>
+
+<p>Порядок значений должен совпадать с порядком столбцов в скобках. Столбцы, которые не
+    указаны, получают значение по умолчанию или <code>NULL</code>. <code>id</code> обычно
+    заполняется автоматически.</p>
+
+<p>Несколько строк одной командой - быстрее, чем несколько отдельных:</p>
+
+<pre class="code-numbered"><code><span class="code-row">INSERT INTO products (title, price, stock) VALUES</span><span class="code-row">    (&#x27;Наушники&#x27;, 4500, 7),</span><span class="code-row">    (&#x27;Веб-камера&#x27;, 5200, 3),</span><span class="code-row">    (&#x27;Кабель USB&#x27;, 400, 50);</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        INSERT ... SELECT
+    </div>
+    <p>Можно вставить результат другого запроса:
+        <code>INSERT INTO archive (id, title) SELECT id, title FROM products WHERE stock = 0;</code>.
+        Так делают резервные копии и перенос данных между таблицами.</p>
+</div>
+
+<h2>UPDATE</h2>
+
+<pre class="code-numbered"><code><span class="code-row">UPDATE products</span><span class="code-row">SET price = 3990</span><span class="code-row">WHERE title = &#x27;Клавиатура&#x27;;</span></code></pre>
+
+<p>Обновлять можно несколько полей сразу:</p>
+
+<pre class="code-numbered"><code><span class="code-row">UPDATE products</span><span class="code-row">SET price = price * 1.1,</span><span class="code-row">    stock = stock - 1</span><span class="code-row">WHERE id = 2;</span></code></pre>
+
+<p>Обратите внимание: в правой части можно использовать текущее значение столбца.</p>
+
+<h2>Правило номер один</h2>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        UPDATE и DELETE без WHERE меняют всю таблицу
+    </div>
+    <p><code>UPDATE products SET price = 0;</code> обнулит цены у всех товаров.
+        <code>DELETE FROM products;</code> удалит все строки. СУБД не спросит подтверждения -
+        она просто выполнит команду. Перед запуском всегда проверяйте то же условие через
+        <code>SELECT</code>.</p>
+</div>
+
+<p>Рабочий приём: сначала посмотреть, что попадёт под условие, и только потом менять.</p>
+
+<pre class="code-numbered"><code><span class="code-row">-- 1. Проверяем</span><span class="code-row">SELECT * FROM products WHERE title = &#x27;Клавиатура&#x27;;</span><span class="code-row"></span><span class="code-row">-- 2. Убедились, что строка одна - обновляем</span><span class="code-row">UPDATE products SET price = 3990 WHERE title = &#x27;Клавиатура&#x27;;</span></code></pre>
+
+<h2>DELETE</h2>
+
+<pre class="code-numbered"><code><span class="code-row">DELETE FROM products</span><span class="code-row">WHERE stock = 0;</span></code></pre>
+
+<p>Удаляет строки, подходящие под условие. Если нужно очистить таблицу полностью, есть
+    отдельная команда <code>TRUNCATE TABLE products;</code> (в SQLite её нет - там используют
+    <code>DELETE FROM products;</code>).</p>
+
+<p>Важно: <code>DELETE</code> удаляет строки, но не саму таблицу. Для таблицы есть
+    <code>DROP TABLE</code>.</p>
+
+<h2>RETURNING</h2>
+
+<p>В PostgreSQL и SQLite можно сразу увидеть, что изменилось:</p>
+
+<pre class="code-numbered"><code><span class="code-row">INSERT INTO products (title, price) VALUES (&#x27;Мышка&#x27;, 1200)</span><span class="code-row">RETURNING id, title;</span><span class="code-row"></span><span class="code-row">UPDATE products SET price = 1200 WHERE title = &#x27;Мышка&#x27;</span><span class="code-row">RETURNING id, price;</span><span class="code-row"></span><span class="code-row">DELETE FROM products WHERE id = 7</span><span class="code-row">RETURNING *;</span></code></pre>
+
+<p>В MySQL аналога нет: после вставки читают <code>LAST_INSERT_ID()</code>, после изменения -
+    делают отдельный <code>SELECT</code>.</p>
+
+<h2>Ошибся? Откат</h2>
+
+<p>Если клиент поддерживает транзакции, ошибку можно отменить:</p>
+
+<pre class="code-numbered"><code><span class="code-row">BEGIN;</span><span class="code-row">DELETE FROM products;</span><span class="code-row">-- поняли, что сделали глупость</span><span class="code-row">ROLLBACK;</span></code></pre>
+
+<p>Транзакции подробно разберём на продвинутом уровне. Пока запомните: <code>BEGIN</code>
+    начинает, <code>COMMIT</code> фиксирует, <code>ROLLBACK</code> отменяет всё с момента
+    начала.</p>
+
+<h2>Upsert: вставить или обновить</h2>
+
+<p>Часто нужно «добавить, а если уже есть - обновить». В SQLite и PostgreSQL:</p>
+
+<pre class="code-numbered"><code><span class="code-row">INSERT INTO products (id, title, price)</span><span class="code-row">VALUES (1, &#x27;Ноутбук&#x27;, 79000)</span><span class="code-row">ON CONFLICT (id) DO UPDATE SET price = excluded.price;</span></code></pre>
+
+<p>В MySQL это <code>INSERT ... ON DUPLICATE KEY UPDATE</code>. Приём полезен при синхронизации
+    данных из внешних источников.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>INSERT INTO</code>
+        <span>добавить строки</span>
+    </li>
+    <li>
+        <code>UPDATE ... SET</code>
+        <span>изменить значения</span>
+    </li>
+    <li>
+        <code>DELETE FROM</code>
+        <span>удалить строки</span>
+    </li>
+    <li>
+        <code>WHERE</code>
+        <span>обязательно для правок</span>
+    </li>
+    <li>
+        <code>RETURNING</code>
+        <span>показать изменённое</span>
+    </li>
+    <li>
+        <code>ROLLBACK</code>
+        <span>отменить транзакцию</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«NOT NULL constraint failed»</strong>. Не передано обязательное поле.</li>
+    <li><strong>«UNIQUE constraint failed»</strong>. Такое значение уже есть. Проверьте
+        ключ или уникальный столбец.</li>
+    <li><strong>Обновились все строки</strong>. Забыли <code>WHERE</code>. Откатите
+        транзакцию, если она была открыта, или восстанавливайте из резервной копии.</li>
+    <li><strong>«FOREIGN KEY constraint failed»</strong>. Удаляете строку, на которую
+        ссылаются другие таблицы. Сначала уберите зависимые записи или настройте каскад.</li>
+    <li><strong>UPDATE не нашёл строк</strong>. Условие не совпало: проверьте регистр,
+        пробелы и тип значения.</li>
+    <li><strong>«Обновились все товары».</strong> Забыли <code>WHERE</code> - и <code>UPDATE</code> прошёлся по всей таблице. Привычка сначала выполнить тот же фильтр через <code>SELECT</code> спасает от таких историй.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Новый товар</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Добавьте товар «Микрофон» с ценой 6500 и остатком 4, затем
+                выведите его через <code>SELECT</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>После <code>INSERT</code> выполните
+                        <code>SELECT * FROM products WHERE title = 'Микрофон';</code></p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">INSERT INTO products (title, price, stock)</span><span class="code-row">VALUES (&#x27;Микрофон&#x27;, 6500, 4);</span><span class="code-row"></span><span class="code-row">SELECT * FROM products WHERE title = &#x27;Микрофон&#x27;;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Подорожание</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Поднимите цену всех товаров дешевле 1000 на 15%. Сначала
+                проверьте через <code>SELECT</code>, какие строки попадут под условие.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>SET price = price * 1.15</code> и условие
+                        <code>WHERE price &lt; 1000</code>. Округление можно сделать через
+                        <code>ROUND(price * 1.15)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT title, price FROM products WHERE price &lt; 1000;</span><span class="code-row"></span><span class="code-row">UPDATE products</span><span class="code-row">SET price = ROUND(price * 1.15)</span><span class="code-row">WHERE price &lt; 1000;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Безопасное удаление</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Удалите товары без остатка. Перед удалением посчитайте их
+                количество, а после - убедитесь, что остальные товары на месте. Выполните
+                всё в транзакции.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>BEGIN;</code> → <code>SELECT COUNT(*)</code> →
+                        <code>DELETE ... WHERE stock = 0 OR stock IS NULL</code> →
+                        <code>SELECT COUNT(*)</code> → <code>COMMIT;</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">BEGIN;</span><span class="code-row"></span><span class="code-row">SELECT COUNT(*) AS before_delete FROM products;</span><span class="code-row"></span><span class="code-row">DELETE FROM products</span><span class="code-row">WHERE stock = 0 OR stock IS NULL;</span><span class="code-row"></span><span class="code-row">SELECT COUNT(*) AS after_delete FROM products;</span><span class="code-row"></span><span class="code-row">COMMIT;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Изменить и вернуть</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Поднимите цену товара с <code>id = 3</code> на 10% и сразу выведите новое значение через <code>RETURNING</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Синтаксис: <code>UPDATE ... SET ... WHERE ... RETURNING ...</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">UPDATE products</span><span class="code-row">SET price = ROUND(price * 1.1)</span><span class="code-row">WHERE id = 3</span><span class="code-row">RETURNING id, title, price;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы умеете менять данные. Теперь вы знаете:</p>
+<ul>
+    <li>Как вставлять одну строку и пачку строк.</li>
+    <li>Как обновлять поля, используя их текущие значения.</li>
+    <li>Почему <code>WHERE</code> - обязательная часть <code>UPDATE</code> и <code>DELETE</code>.</li>
+    <li>Как откатить опасную операцию транзакцией.</li>
+</ul>
+
+<p>Начальный уровень закончен: вы можете создавать таблицы, наполнять их, выбирать,
+    фильтровать, считать и менять данные. Дальше - самое важное в SQL: соединение таблиц.
+    В реальной базе данные всегда разложены по нескольким таблицам, и <code>JOIN</code>
+    собирает их обратно.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-05.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../intermediate/lesson-07.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

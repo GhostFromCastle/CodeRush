@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проект: Telegram-бот - C# с нуля до профи - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="csharp" data-level="advanced" data-lesson-id="lesson-35">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">C# с нуля до профи</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Продвинутый</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 35</span>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="lesson-layout">
+                        <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Ввод данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Циклы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Строки и char</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Случайные числа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Угадай число</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Списки и словари</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Switch</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Методы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы с возвратом</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Классы и объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Инкапсуляция</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Исключения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Проект: Менеджер задач</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Math и Random</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>StringBuilder</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Многомерные массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Проект: Крестики-нолики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Наследование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Полиморфизм</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Интерфейсы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Абстрактные классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Generics и делегаты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-28.html" class="sidebar-lesson" data-lesson-id="lesson-28">
+                            <span class="sidebar-lesson-num">28</span>
+                            <span>LINQ и коллекции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-29.html" class="sidebar-lesson" data-lesson-id="lesson-29">
+                            <span class="sidebar-lesson-num">29</span>
+                            <span>Асинхронность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-30.html" class="sidebar-lesson" data-lesson-id="lesson-30">
+                            <span class="sidebar-lesson-num">30</span>
+                            <span>Паттерны проектирования</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-31.html" class="sidebar-lesson" data-lesson-id="lesson-31">
+                            <span class="sidebar-lesson-num">31</span>
+                            <span>Рефакторинг</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-32.html" class="sidebar-lesson" data-lesson-id="lesson-32">
+                            <span class="sidebar-lesson-num">32</span>
+                            <span>Работа с файлами</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-33.html" class="sidebar-lesson" data-lesson-id="lesson-33">
+                            <span class="sidebar-lesson-num">33</span>
+                            <span>JSON и сериализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-34.html" class="sidebar-lesson" data-lesson-id="lesson-34">
+                            <span class="sidebar-lesson-num">34</span>
+                            <span>Юнит-тестирование</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-35.html" class="sidebar-lesson active" data-lesson-id="lesson-35">
+                            <span class="sidebar-lesson-num">35</span>
+                            <span>Проект: Telegram-бот</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-36.html" class="sidebar-lesson" data-lesson-id="lesson-36">
+                            <span class="sidebar-lesson-num">36</span>
+                            <span>Финальный проект</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Проект: Telegram-бот</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~60 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Проект</span>
+                </div>
+
+                <p>Теория - это отлично. Мы прошли generics, LINQ, асинхронность, паттерны, тесты.
+                    Но настоящий навык появляется, когда садишься и делаешь что-то работающее
+                    своими руками. Сегодня - именно такой урок.</p>
+
+                <p>Мы создадим <strong>Telegram-бота</strong> с нуля. Не просто «привет, мир»,
+                    а рабочую программу, которая запускается на сервере (или на вашем компьютере),
+                    отвечает на команды, обрабатывает сообщения и может быть расширена в
+                    полноценный сервис. Такой бот - это первая работа, которую можно смело
+                    показывать в портфолио.</p>
+
+                <h2>Что умеет Telegram Bot API</h2>
+
+                <p>Telegram-боты - это специальные аккаунты, которыми управляет программа,
+                    а не человек. С точки зрения Telegram это обычный пользователь, но за него
+                    отвечает ваш код.</p>
+
+                <p>Ботов используют для всего:</p>
+
+                <ul>
+                    <li><strong>Уведомления.</strong> Боты сообщают о заказах, статусах сборки,
+                        сбоях в системе.</li>
+                    <li><strong>Поддержка.</strong> Помогают пользователям отвечать на типовые
+                        вопросы.</li>
+                    <li><strong>Игры.</strong> Простые текстовые и кнопочные игры.</li>
+                    <li><strong>Интеграции.</strong> Бот получает данные от одного сервиса и
+                        отправляет в Telegram.</li>
+                    <li><strong>Автоматизация.</strong> Бот напоминает о задачах, ведёт списки
+                        покупок, отслеживает цены.</li>
+                </ul>
+
+                <p>Мы сделаем основу, из которой можно вырастить любое из этих направлений.</p>
+
+                <h2>Шаг 1. Получаем токен через BotFather</h2>
+
+                <p>Чтобы программа могла управлять ботом, ей нужен <strong>токен</strong> - длинная
+                    строка вида <code>123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ</code>. Это как пароль
+                    от бота: кто знает токен, тот и управляет.</p>
+
+                <p>Получить его можно через специального бота <strong>@BotFather</strong> в
+                    Telegram. Это официальный бот от Telegram, через который создают всех
+                    ботов.</p>
+
+                <p>Процесс простой:</p>
+
+                <ol>
+                    <li>Открываете Telegram, ищете <strong>@BotFather</strong>, начинаете с ним
+                        диалог.</li>
+                    <li>Пишете команду <code>/newbot</code>.</li>
+                    <li>Он спрашивает имя бота - это отображаемое имя, например
+                        «Мой первый бот».</li>
+                    <li>Он спрашивает username - это уникальное имя с суффиксом
+                        <code>_bot</code>, например <code>my_first_coderush_bot</code>.
+                        Оно должно быть свободно.</li>
+                    <li>Если всё хорошо - BotFather присылает токен. <strong>Сохраните его
+                            в надёжное место</strong>, это единственный экземпляр.</li>
+                </ol>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Не публикуйте токен
+                    </div>
+                    <p>Токен - это ключ от вашего бота. Если он попадёт в открытый доступ
+                        (например, вы закоммитите его в GitHub), любой сможет управлять
+                        вашим ботом. Никогда не храните токен в исходном коде напрямую.
+                        О правильном хранении - чуть ниже.</p>
+                </div>
+
+                <h2>Шаг 2. Создаём проект и подключаем библиотеку</h2>
+
+                <p>Создайте новый консольный проект:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">dotnet new console -o MyFirstBot</span><span class="code-row">cd MyFirstBot</span></code></pre>
+
+                <p>Теперь установите официальную (ну, почти - поддерживается сообществом)
+                    библиотеку для работы с Telegram Bot API. Она называется
+                    <strong>Telegram.Bot</strong>:
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">dotnet add package Telegram.Bot</span></code></pre>
+
+                <p>Это добавит зависимость в <code>.csproj</code> и подтянет все нужные
+                    пакеты. На момент этого урока актуальная версия - 22.x.</p>
+
+                <h2>Шаг 3. Хранение токена</h2>
+
+                <p>Правильный способ - не писать токен в код, а хранить в конфигурации
+                    или переменной окружения. Это защищает от случайной публикации
+                    и позволяет легко менять токен в разных окружениях.</p>
+
+                <p>Самый простой вариант - файл <code>appsettings.json</code>. Создайте
+                    его рядом с программой:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">{</span><span class="code-row">  "BotToken": "123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ"</span><span class="code-row">}</span></code></pre>
+
+                <p>И добавьте в проект NuGet-пакет для чтения конфигурации:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">dotnet add package Microsoft.Extensions.Configuration.Json</span></code></pre>
+
+                <p>А в проекте пропишите, что этот файл нужно копировать в папку
+                    с приложением:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">&lt;ItemGroup&gt;</span><span class="code-row">    &lt;None Update="appsettings.json"&gt;</span><span class="code-row">        &lt;CopyToOutputDirectory&gt;PreserveNewest&lt;/CopyToOutputDirectory&gt;</span><span class="code-row">    &lt;/None&gt;</span><span class="code-row">&lt;/ItemGroup&gt;</span></code></pre>
+
+                <p>И не забудьте добавить <code>appsettings.json</code> в
+                    <code>.gitignore</code>, если используете Git.</p>
+
+                <h2>Шаг 4. Простой эхо-бот</h2>
+
+                <p>Теперь - код. Начнём с самого простого: бот отвечает на любое сообщение
+                    тем же текстом. Так мы убедимся, что связь работает.</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">using Microsoft.Extensions.Configuration;</span><span class="code-row">using Telegram.Bot;</span><span class="code-row">using Telegram.Bot.Polling;</span><span class="code-row">using Telegram.Bot.Types;</span><span class="code-row">using Telegram.Bot.Types.Enums;</span><span class="code-row"></span><span class="code-row">var config = new ConfigurationBuilder()</span><span class="code-row">    .AddJsonFile("appsettings.json")</span><span class="code-row">    .Build();</span><span class="code-row"></span><span class="code-row">string token = config["BotToken"];</span><span class="code-row">var bot = new TelegramBotClient(token);</span><span class="code-row"></span><span class="code-row">using var cts = new CancellationTokenSource();</span><span class="code-row"></span><span class="code-row">var options = new ReceiverOptions</span><span class="code-row">{</span><span class="code-row">    AllowedUpdates = new[] { UpdateType.Message }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">bot.StartReceiving(</span><span class="code-row">    updateHandler: HandleUpdateAsync,</span><span class="code-row">    errorHandler: HandleErrorAsync,</span><span class="code-row">    receiverOptions: options,</span><span class="code-row">    cancellationToken: cts.Token</span><span class="code-row">);</span><span class="code-row"></span><span class="code-row">var me = await bot.GetMe();</span><span class="code-row">Console.WriteLine($"Бот @{me.Username} запущен. Нажмите Enter для остановки.");</span><span class="code-row">Console.ReadLine();</span><span class="code-row">cts.Cancel();</span><span class="code-row"></span><span class="code-row">async Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken ct)</span><span class="code-row">{</span><span class="code-row">    if (update.Message is not { Text: { } text } message) return;</span><span class="code-row"></span><span class="code-row">    await client.SendMessage(message.Chat.Id, text, cancellationToken: ct);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">async Task HandleErrorAsync(ITelegramBotClient client, Exception ex, CancellationToken ct)</span><span class="code-row">{</span><span class="code-row">    Console.WriteLine($"Ошибка: {ex.Message}");</span><span class="code-row">    await Task.CompletedTask;</span><span class="code-row">}</span></code></pre>
+
+                <p>Разберём, что происходит:</p>
+
+                <ul>
+                    <li><strong><code>ConfigurationBuilder</code></strong> читает токен из
+                        <code>appsettings.json</code>.</li>
+                    <li><strong><code>new TelegramBotClient(token)</code></strong> - создаём
+                        клиента, через которого будем общаться с Telegram.</li>
+                    <li><strong><code>ReceiverOptions</code></strong> ограничивает типы
+                        событий - нам интересны только сообщения.</li>
+                    <li><strong><code>StartReceiving</code></strong> запускает фоновый цикл,
+                        который слушает Telegram и вызывает наш <code>HandleUpdateAsync</code>
+                        при каждом новом сообщении.</li>
+                    <li><strong><code>GetMe()</code></strong> - получаем информацию о боте
+                        (его username), чтобы убедиться, что токен рабочий.</li>
+                    <li><strong><code>HandleUpdateAsync</code></strong> - главный обработчик.
+                        Через pattern matching проверяем, что пришло именно текстовое
+                        сообщение, и отвечаем тем же текстом.</li>
+                </ul>
+
+                <p>Запустите программу, откройте своего бота в Telegram, напишите что угодно -
+                    и он ответит тем же. Поздравляем, вы только что написали своего первого
+                    бота!</p>
+
+                <h2>Шаг 5. Обработка команд</h2>
+
+                <p>Эхо-бот - это хорошо, но настоящий бот понимает команды. В Telegram команды
+                    начинаются с косой черты: <code>/start</code>, <code>/help</code>,
+                    <code>/stop</code> и так далее. Обычно на <code>/start</code> бот
+                    приветствует пользователя и рассказывает, что умеет.</p>
+
+                <p>Обновим обработчик:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">async Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken ct)</span><span class="code-row">{</span><span class="code-row">    if (update.Message is not { Text: { } text } message) return;</span><span class="code-row"></span><span class="code-row">    long chatId = message.Chat.Id;</span><span class="code-row"></span><span class="code-row">    string reply = text switch</span><span class="code-row">    {</span><span class="code-row">        "/start" =&gt; "Привет! Я простой бот. Напиши что-нибудь, и я повторю.",</span><span class="code-row">        "/help" =&gt; "Доступные команды:\n/start - приветствие\n/help - справка",</span><span class="code-row">        _ =&gt; $"Ты написал: {text}"</span><span class="code-row">    };</span><span class="code-row"></span><span class="code-row">    await client.SendMessage(chatId, reply, cancellationToken: ct);</span><span class="code-row">}</span></code></pre>
+
+                <p>Обратите внимание на <code>switch expression</code> - это современный синтаксис
+                    C# для обработки нескольких случаев. Читается гораздо лучше, чем цепочка
+                    из <code>if / else if</code>.</p>
+
+                <p>Проверьте: при <code>/start</code> бот должен здороваться, при
+                    <code>/help</code> - показывать справку, а на всё остальное - повторять
+                    текст с приставкой «Ты написал:».</p>
+
+                <h2>Шаг 6. Отправка сообщений с разметкой</h2>
+
+                <p>Telegram поддерживает разные форматы сообщений: жирный текст, курсив,
+                    код, ссылки. Чтобы их использовать, нужно передать параметр
+                    <code>parseMode</code>:
+                </p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">string reply = "Это &lt;b&gt;жирный&lt;/b&gt; и &lt;i&gt;курсивный&lt;/i&gt; текст.";</span><span class="code-row">await client.SendMessage(</span><span class="code-row">    chatId,</span><span class="code-row">    reply,</span><span class="code-row">    parseMode: ParseMode.Html,</span><span class="code-row">    cancellationToken: ct</span><span class="code-row">);</span></code></pre>
+
+                <p>Основные теги:</p>
+
+                <ul>
+                    <li><code>&lt;b&gt;...&lt;/b&gt;</code> - жирный.</li>
+                    <li><code>&lt;i&gt;...&lt;/i&gt;</code> - курсив.</li>
+                    <li><code>&lt;code&gt;...&lt;/code&gt;</code> - моноширинный (для кода).</li>
+                    <li><code>&lt;pre&gt;...&lt;/pre&gt;</code> - блок кода.</li>
+                    <li><code>&lt;a href="..."&gt;...&lt;/a&gt;</code> - ссылка.</li>
+                </ul>
+
+                <p>Также можно использовать Markdown через <code>ParseMode.MarkdownV2</code>,
+                    но у него более капризный синтаксис - нужно экранировать многие символы.
+                    HTML проще.</p>
+
+                <h2>Шаг 7. Хранение состояния</h2>
+
+                <p>Что если бот должен помнить, что пользователь сказал раньше? Например,
+                    вести список покупок или викторину. Простое поле класса подойдёт
+                    только для одного пользователя, а если их сотни - нужно хранить
+                    состояние для каждого.</p>
+
+                <p>Классический способ - словарь в памяти:</p>
+
+                <pre
+                    class="code-numbered"><code><span class="code-row">var states = new Dictionary&lt;long, int&gt;();</span><span class="code-row"></span><span class="code-row">async Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken ct)</span><span class="code-row">{</span><span class="code-row">    if (update.Message is not { Text: { } text } message) return;</span><span class="code-row">    long chatId = message.Chat.Id;</span><span class="code-row"></span><span class="code-row">    if (!states.ContainsKey(chatId))</span><span class="code-row">    {</span><span class="code-row">        states[chatId] = 0;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    states[chatId]++;</span><span class="code-row">    await client.SendMessage(chatId, $"Ты написал {states[chatId]} сообщений.", cancellationToken: ct);</span><span class="code-row">}</span></code></pre>
+
+                <p>Для серьёзных ботов состояния хранят в базе данных или Redis, чтобы они
+                    не терялись при перезапуске. Но для простых сценариев словарь
+                    в памяти - отличное начало.</p>
+
+                <div class="callout">
+                    <div class="callout-title">
+                        <i class="ph ph-warning"></i>
+                        Память не бесконечна
+                    </div>
+                    <p>Словарь в памяти растёт с каждым новым пользователем. Если у бота
+                        тысячи пользователей - словарь займёт много памяти, а при перезапуске
+                        всё состояние потеряется. Для продакшена - база данных, файлы или Redis.
+                        Для учебного проекта словарь - нормально.</p>
+                </div>
+
+                <h2>Как это работает под капотом</h2>
+
+                <p>Стоит понимать, что происходит, когда бот получает сообщение. Telegram Bot API
+                    работает по двум схемам:</p>
+
+                <ul>
+                    <li><strong>Long Polling</strong> - ваш бот сам спрашивает Telegram:
+                        «Есть новые сообщения?». Если есть - получает и обрабатывает,
+                        если нет - ждёт несколько секунд и спрашивает снова. Просто,
+                        но чуть менее эффективно.</li>
+                    <li><strong>Webhook</strong> - Telegram сам отправляет сообщения
+                        на ваш сервер по указанному URL. Быстрее, но требует публичного
+                        адреса и HTTPS.</li>
+                </ul>
+
+                <p>Библиотека <code>Telegram.Bot</code> по умолчанию использует long polling -
+                    именно поэтому наш код «просто работает» без всяких серверов. Для учебного
+                    проекта этого достаточно. Для настоящего продакшена чаще выбирают webhook,
+                    но это уже тема для отдельного разговора.</p>
+
+                <h2>Шпаргалка</h2>
+
+                <p>Самое важное в одном месте:</p>
+
+                <ul class="operator-list">
+                    <li>
+                        <code>@BotFather</code>
+                        <span>создание бота и получение токена</span>
+                    </li>
+                    <li>
+                        <code>Telegram.Bot</code>
+                        <span>библиотека для работы с API</span>
+                    </li>
+                    <li>
+                        <code>TelegramBotClient</code>
+                        <span>основной класс клиента</span>
+                    </li>
+                    <li>
+                        <code>StartReceiving</code>
+                        <span>запуск получения сообщений</span>
+                    </li>
+                    <li>
+                        <code>HandleUpdateAsync</code>
+                        <span>обработчик входящих</span>
+                    </li>
+                    <li>
+                        <code>SendMessage</code>
+                        <span>отправка сообщения</span>
+                    </li>
+                    <li>
+                        <code>ParseMode.Html</code>
+                        <span>разметка в сообщениях</span>
+                    </li>
+                </ul>
+
+                <h2>Если что-то не работает</h2>
+
+                <p>Разберём типичные проблемы при работе с Telegram-ботами.</p>
+
+                <ul>
+                    <li><strong>«401 Unauthorized».</strong> Токен неверный или устарел.
+                        Проверьте, что скопировали его полностью, без лишних пробелов
+                        и переносов. Если сомневаетесь - зайдите в @BotFather и отзовите
+                        старый токен через <code>/revoke</code>, потом создайте
+                        новый.</li>
+                    <li><strong>«409 Conflict: terminated by other getUpdates request».</strong>
+                        Бот запущен в двух местах одновременно. Например, вы забыли
+                        закрыть прошлый экземпляр программы, а теперь запустили новый.
+                        Telegram не позволяет двум программам одновременно читать
+                        сообщения одного бота. Закройте старую программу.</li>
+                    <li><strong>«Бот не отвечает на сообщения».</strong> Проверьте
+                        по порядку: 1) программа запущена и не упала; 2) в консоли
+                        есть сообщение «Бот @username запущен»; 3) вы пишете
+                        именно этому боту (по username), а не в общий чат;
+                        4) в логах не появляется ошибок. Если всё так - попробуйте
+                        перезапустить программу.</li>
+                    <li><strong>«StartReceiving ничего не делает».</strong>
+                        Возможно, вы забыли <code>Console.ReadLine()</code> в конце -
+                        программа сразу завершается, не успев обработать ни одного
+                        сообщения. Или не создали <code>CancellationTokenSource</code> -
+                        тогда отмена невозможна, но приём сообщений работает.</li>
+                    <li><strong>«Не работает кириллица в коде».</strong> Убедитесь,
+                        что файл сохранён в кодировке UTF-8. Visual Studio делает это
+                        автоматически, но при копировании через блокнот кодировка
+                        может сбиться.</li>
+                    <li><strong>«Токен попал в GitHub».</strong> Немедленно отзовите его
+                        через @BotFather командой <code>/revoke</code>. Бот получит
+                        новый токен, старый перестанет работать. Удалите коммит с
+                        токеном из истории через <code>git filter-repo</code> или
+                        специальные инструменты вроде BFG Repo-Cleaner.</li>
+                    <li><strong>«Сообщения приходят с задержкой».</strong> Long polling
+                        использует интервал ожидания (обычно 30 секунд). Иногда это
+                        даёт задержку до нескольких секунд. Для мгновенной реакции
+                        используют webhook, но для учебных проектов задержка в 1-2
+                        секунды незаметна.</li>
+                </ul>
+
+                <p>Если что-то не получается - напишите нам в
+                    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                    разберёмся вместе.
+                </p>
+
+                <h2>Практика</h2>
+
+                <p>Четыре задачи по возрастающей сложности. У каждой есть подсказка и решение
+                    учителя. Все задачи - продолжение нашего эхо-бота.</p>
+
+                <div class="task-list">
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 1. Команда /time</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Добавьте команду <code>/time</code>, которая
+                                отвечает текущим временем в формате
+                                <code>ЧЧ:мм:сс</code>. Время должно быть в момент отправки
+                                ответа, а не при запуске бота.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>В <code>switch expression</code> добавьте новый case
+                                        <code>"/time"</code>. В нём вызовите
+                                        <code>DateTime.Now.ToString("HH:mm:ss")</code>.
+                                        Обратите внимание: строка формируется при каждом
+                                        вызове обработчика, а не один раз при старте.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">string reply = text switch</span><span class="code-row">{</span><span class="code-row">    "/start" =&gt; "Привет! Я простой бот.",</span><span class="code-row">    "/help" =&gt; "Команды:\n/start\n/help\n/time",</span><span class="code-row">    "/time" =&gt; $"Сейчас {DateTime.Now:HH:mm:ss}",</span><span class="code-row">    _ =&gt; $"Ты написал: {text}"</span><span class="code-row">};</span></code></pre>
+                                    <p>Формат <code>HH:mm:ss</code> - 24-часовой, с ведущими
+                                        нулями. Для 12-часового используйте <code>hh:mm:ss</code>
+                                        вместе с <code>tt</code> для AM/PM.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 2. Трансформация текста</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Добавьте две команды: <code>/upper</code>
+                                и <code>/lower</code>. После них пользователь пишет текст,
+                                и бот возвращает этот текст в верхнем или нижнем регистре.
+                                Например: <code>/upper привет</code> → <code>ПРИВЕТ</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Команды со аргументами проверяются через
+                                        <code>StartsWith</code>. Например:
+                                        <code>if (text.StartsWith("/upper "))</code>.
+                                        Дальше отрезаете префикс командой
+                                        <code>text.Substring(7)</code> и применяете
+                                        <code>ToUpper()</code>. Для <code>/lower</code> -
+                                        аналогично с <code>ToLower()</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">string reply;</span><span class="code-row"></span><span class="code-row">if (text.StartsWith("/upper "))</span><span class="code-row">{</span><span class="code-row">    reply = text.Substring(7).ToUpper();</span><span class="code-row">}</span><span class="code-row">else if (text.StartsWith("/lower "))</span><span class="code-row">{</span><span class="code-row">    reply = text.Substring(7).ToLower();</span><span class="code-row">}</span><span class="code-row">else</span><span class="code-row">{</span><span class="code-row">    reply = text switch</span><span class="code-row">    {</span><span class="code-row">        "/start" =&gt; "Привет! Я умею менять регистр: /upper текст и /lower текст",</span><span class="code-row">        _ =&gt; $"Ты написал: {text}"</span><span class="code-row">    };</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">await client.SendMessage(chatId, reply, cancellationToken: ct);</span></code></pre>
+                                    <p>Обратите внимание на порядок: сначала проверяем команды
+                                        с аргументами (через <code>StartsWith</code>), потом
+                                        точные команды через <code>switch</code>. Такой подход
+                                        позволяет легко расширять список команд.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 3. Случайный факт</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Добавьте команду <code>/fact</code>, которая
+                                при каждом вызове возвращает случайный факт из заранее
+                                подготовленного списка. Например, про котиков или про
+                                программирование - на ваш выбор. Подготовьте минимум пять
+                                фактов.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Создайте массив строк с фактами. Для получения
+                                        случайного используйте <code>Random.Shared</code> -
+                                        это потокобезопасный экземпляр <code>Random</code>,
+                                        который не нужно создавать заново. Индекс -
+                                        <code>Random.Shared.Next(facts.Length)</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">string[] facts = new[]</span><span class="code-row">{</span><span class="code-row">    "Первый факт про котиков.",</span><span class="code-row">    "Второй факт про программирование.",</span><span class="code-row">    "Третий факт про космос.",</span><span class="code-row">    "Четвёртый факт про историю.",</span><span class="code-row">    "Пятый факт про еду."</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">string reply = text switch</span><span class="code-row">{</span><span class="code-row">    "/fact" =&gt; facts[Random.Shared.Next(facts.Length)],</span><span class="code-row">    _ =&gt; $"Ты написал: {text}"</span><span class="code-row">};</span></code></pre>
+                                    <p>Массив можно объявить как локальную переменную в
+                                        <code>Main</code> или как статическое поле класса.
+                                        Для простого бота сойдёт и локальная переменная.
+                                        <code>Random.Shared</code> доступен с .NET 6 и не
+                                        требует создания экземпляра.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                    <details class="faq-item task-item">
+                        <summary>
+                            <span>Задача 4. Логирование в файл</span>
+                            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p class="task-desc">Добавьте логирование: при каждом входящем
+                                сообщении записывайте в файл <code>bot_log.txt</code> строку
+                                в формате <code>[дата и время] @username: текст</code>.
+                                Если у пользователя нет username (бывает, если он его не
+                                задал), пишите <code>id:12345</code> вместо
+                                <code>@username</code>.</p>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Подсказка</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <p>Используйте <code>File.AppendAllText</code> из урока
+                                        28. Дата - <code>DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")</code>.
+                                        Username в объекте сообщения лежит в
+                                        <code>message.From.Username</code>. Если он
+                                        <code>null</code> - используйте
+                                        <code>message.From.Id</code>.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-item task-nested">
+                                <summary>
+                                    <span>Решение учителя</span>
+                                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                                </summary>
+                                <div class="faq-answer">
+                                    <pre
+                                        class="code-numbered"><code><span class="code-row">async Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken ct)</span><span class="code-row">{</span><span class="code-row">    if (update.Message is not { Text: { } text } message) return;</span><span class="code-row"></span><span class="code-row">    string user = message.From?.Username is { } name</span><span class="code-row">        ? $"@{name}"</span><span class="code-row">        : $"id:{message.From?.Id}";</span><span class="code-row"></span><span class="code-row">    string logLine = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {user}: {text}\n";</span><span class="code-row">    File.AppendAllText("bot_log.txt", logLine);</span><span class="code-row"></span><span class="code-row">    long chatId = message.Chat.Id;</span><span class="code-row">    string reply = text switch</span><span class="code-row">    {</span><span class="code-row">        "/start" =&gt; "Привет! Я бот с логированием.",</span><span class="code-row">        _ =&gt; $"Ты написал: {text}"</span><span class="code-row">    };</span><span class="code-row"></span><span class="code-row">    await client.SendMessage(chatId, reply, cancellationToken: ct);</span><span class="code-row">}</span></code></pre>
+                                    <p>Обратите внимание: логирование стоит <strong>до</strong>
+                                        отправки ответа. Если отправка упадёт (например, из-за
+                                        проблем с сетью), мы всё равно зафиксируем входящее
+                                        сообщение. Это стандартная практика - сначала
+                                        логировать событие, потом действовать.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </details>
+
+                </div>
+
+                <h2>Что мы узнали и что дальше</h2>
+
+                <p>Сегодня мы прошли путь от «теории» до реального работающего бота. Узнали:</p>
+
+                <ul>
+                    <li>Как получить токен через <strong>@BotFather</strong>.</li>
+                    <li>Как подключить библиотеку <strong>Telegram.Bot</strong> и настроить
+                        её.</li>
+                    <li>Как безопасно хранить токен в конфигурации, а не в коде.</li>
+                    <li>Как создать клиента и запустить получение сообщений через
+                        <code>StartReceiving</code>.</li>
+                    <li>Как обрабатывать команды и текстовые сообщения.</li>
+                    <li>Как отправлять сообщения с HTML-разметкой.</li>
+                    <li>Как хранить простое состояние между сообщениями.</li>
+                    <li>Что такое long polling и webhook.</li>
+                </ul>
+
+                <p>С этим багажом можно делать практически любого бота: для учёта расходов,
+                    для напоминаний, для автоматизации, для развлечения. Дальнейшее развитие
+                    зависит только от вашей фантазии и готовности углубляться в конкретные API.</p>
+
+                <p>В следующем, финальном уроке курса мы соберём всё, что прошли, в
+                    <strong>большой итоговый проект</strong>. Это будет не ещё один
+                    «учебный пример», а приложение, которое использует и файлы, и JSON,
+                    и асинхронность, и тесты, и архитектурные паттерны. Мы покажем, как
+                    из маленьких кирпичиков складывается настоящая программа, и подведём
+                    итог всему курсу.</p>
+
+                                <div class="lesson-actions">
+                    <a href="lesson-34.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-36.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

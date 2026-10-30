@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Файлы в браузере: File API и drag & drop - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="advanced" data-lesson-id="lesson-23">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 23</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-23.html" class="sidebar-lesson active" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Файлы в браузере: File API и drag & drop</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Пользователи загружают аватары, прикрепляют документы, перетаскивают картинки в окно.
+    Всё это делается в браузере - без сервера, на первом этапе. В этом уроке разберём
+    File API: выбор файлов, превью, drag & drop и скачивание.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Научимся читать выбранные файлы.</li>
+    <li>Сделаем превью изображения до загрузки на сервер.</li>
+    <li>Разберём зону drag & drop.</li>
+    <li>Научимся скачивать файлы, созданные в браузере.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Пропускной пункт: сначала проверяют документы и размер багажа, и только потом пускают. Файл проходит те же проверки.</p>
+</div>
+
+<h2>Выбор файла</h2>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;input type=&quot;file&quot; class=&quot;file-input&quot; accept=&quot;image/*&quot;&gt;</span><span class="code-row">&lt;input type=&quot;file&quot; class=&quot;file-multiple&quot; multiple&gt;</span></code></pre>
+
+<pre class="code-numbered"><code><span class="code-row">const input = document.querySelector(&quot;.file-input&quot;);</span><span class="code-row"></span><span class="code-row">input.addEventListener(&quot;change&quot;, () =&gt; {</span><span class="code-row">    const file = input.files[0];</span><span class="code-row">    if (!file) return;</span><span class="code-row"></span><span class="code-row">    console.log(file.name); // &quot;photo.jpg&quot;</span><span class="code-row">    console.log(file.size); // размер в байтах</span><span class="code-row">    console.log(file.type); // &quot;image/jpeg&quot;</span><span class="code-row">});</span></code></pre>
+
+<p><code>input.files</code> - это список <code>FileList</code>. При <code>multiple</code>
+    файлов может быть несколько; перебрать их можно через <code>for...of</code> или
+    <code>Array.from(input.files)</code>.</p>
+
+<p>Атрибут <code>accept</code> подсказывает браузеру, какие файлы показывать в диалоге.
+    Это именно подсказка: пользователь всё равно может выбрать другой файл, поэтому тип
+    нужно проверять в коде.</p>
+
+<h2>Чтение файла</h2>
+
+<p>Современный способ - метод <code>text()</code>, <code>arrayBuffer()</code> или
+    <code>blob()</code> у самого файла:</p>
+
+<pre class="code-numbered"><code><span class="code-row">async function readFile(file) {</span><span class="code-row">    const text = await file.text();</span><span class="code-row">    console.log(text.slice(0, 200));</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">input.addEventListener(&quot;change&quot;, () =&gt; {</span><span class="code-row">    const file = input.files[0];</span><span class="code-row">    if (file) readFile(file);</span><span class="code-row">});</span></code></pre>
+
+<p>Старый способ - <code>FileReader</code>. Он всё ещё встречается в проектах:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const reader = new FileReader();</span><span class="code-row"></span><span class="code-row">reader.addEventListener(&quot;load&quot;, () =&gt; {</span><span class="code-row">    console.log(reader.result);</span><span class="code-row">});</span><span class="code-row"></span><span class="code-row">reader.readAsText(file);</span></code></pre>
+
+<p>Для нового кода выбирайте <code>file.text()</code>: короче и работает с
+    <code>await</code>.</p>
+
+<h2>Превью изображения</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const input = document.querySelector(&quot;.avatar-input&quot;);</span><span class="code-row">const preview = document.querySelector(&quot;.avatar-preview&quot;);</span><span class="code-row"></span><span class="code-row">input.addEventListener(&quot;change&quot;, () =&gt; {</span><span class="code-row">    const file = input.files[0];</span><span class="code-row">    if (!file || !file.type.startsWith(&quot;image/&quot;)) return;</span><span class="code-row"></span><span class="code-row">    const url = URL.createObjectURL(file);</span><span class="code-row">    preview.src = url;</span><span class="code-row"></span><span class="code-row">    preview.addEventListener(&quot;load&quot;, () =&gt; {</span><span class="code-row">        URL.revokeObjectURL(url);</span><span class="code-row">    }, { once: true });</span><span class="code-row">});</span></code></pre>
+
+<p><code>URL.createObjectURL</code> создаёт временную ссылку на файл в памяти. Такие ссылки
+    нужно освобождать через <code>revokeObjectURL</code>, иначе память будет расти - особенно
+    если пользователь выбирает файлы многократно.</p>
+
+<h2>Проверка файла</h2>
+
+<pre class="code-numbered"><code><span class="code-row">function validateFile(file) {</span><span class="code-row">    const maxSize = 2 * 1024 * 1024; // 2 МБ</span><span class="code-row">    const allowed = [&quot;image/jpeg&quot;, &quot;image/png&quot;, &quot;image/webp&quot;];</span><span class="code-row"></span><span class="code-row">    if (!allowed.includes(file.type)) {</span><span class="code-row">        return &quot;Поддерживаются только JPEG, PNG и WebP&quot;;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    if (file.size &gt; maxSize) {</span><span class="code-row">        return &quot;Файл больше 2 МБ&quot;;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    return null;</span><span class="code-row">}</span></code></pre>
+
+<p>Проверка на клиенте нужна для удобства. Настоящая проверка - на сервере: размер, тип и
+    содержимое файла легко подделать.</p>
+
+<h2>Drag & drop</h2>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;div class=&quot;dropzone&quot;&gt;Перетащите файлы сюда&lt;/div&gt;</span></code></pre>
+
+<pre class="code-numbered"><code><span class="code-row">const zone = document.querySelector(&quot;.dropzone&quot;);</span><span class="code-row"></span><span class="code-row">zone.addEventListener(&quot;dragover&quot;, (event) =&gt; {</span><span class="code-row">    event.preventDefault(); // без этого drop не сработает</span><span class="code-row">    zone.classList.add(&quot;is-over&quot;);</span><span class="code-row">});</span><span class="code-row"></span><span class="code-row">zone.addEventListener(&quot;dragleave&quot;, () =&gt; {</span><span class="code-row">    zone.classList.remove(&quot;is-over&quot;);</span><span class="code-row">});</span><span class="code-row"></span><span class="code-row">zone.addEventListener(&quot;drop&quot;, (event) =&gt; {</span><span class="code-row">    event.preventDefault();</span><span class="code-row">    zone.classList.remove(&quot;is-over&quot;);</span><span class="code-row"></span><span class="code-row">    const files = Array.from(event.dataTransfer.files);</span><span class="code-row">    console.log(files.map((file) =&gt; file.name));</span><span class="code-row">});</span></code></pre>
+
+<p>Ключевой момент - <code>preventDefault</code> в <code>dragover</code>. Без него браузер
+    считает элемент «не принимающим» и событие <code>drop</code> не возникнет. Это самая
+    частая причина «drag & drop не работает».</p>
+
+<h2>Скачивание файла из браузера</h2>
+
+<p>Можно сформировать файл прямо в памяти и отдать пользователю:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function downloadJson(data, filename) {</span><span class="code-row">    const json = JSON.stringify(data, null, 2);</span><span class="code-row">    const blob = new Blob([json], { type: &quot;application/json&quot; });</span><span class="code-row"></span><span class="code-row">    const url = URL.createObjectURL(blob);</span><span class="code-row">    const link = document.createElement(&quot;a&quot;);</span><span class="code-row"></span><span class="code-row">    link.href = url;</span><span class="code-row">    link.download = filename;</span><span class="code-row">    link.click();</span><span class="code-row"></span><span class="code-row">    URL.revokeObjectURL(url);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">downloadJson({ name: &quot;Алексей&quot; }, &quot;user.json&quot;);</span></code></pre>
+
+<p>Тот же приём работает для CSV, текста и картинок. <code>link.download</code> задаёт имя
+    файла; без него браузер может открыть содержимое вместо скачивания.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>input.files</code>
+        <span>выбранные файлы</span>
+    </li>
+    <li>
+        <code>file.name / size / type</code>
+        <span>сведения о файле</span>
+    </li>
+    <li>
+        <code>file.text()</code>
+        <span>прочитать как текст</span>
+    </li>
+    <li>
+        <code>URL.createObjectURL</code>
+        <span>временная ссылка</span>
+    </li>
+    <li>
+        <code>revokeObjectURL</code>
+        <span>освободить память</span>
+    </li>
+    <li>
+        <code>drop</code>
+        <span>файлы перетащены</span>
+    </li>
+    <li>
+        <code>Blob</code>
+        <span>файл в памяти</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong><code>drop</code> не срабатывает</strong>. Нет
+        <code>preventDefault</code> в <code>dragover</code>.</li>
+    <li><strong>Превью не появляется</strong>. Ссылка создана, но не присвоена
+        <code>src</code>, или файл не изображение.</li>
+    <li><strong>Страница «съедает» перетаскивание</strong>. Обработчики нужно вешать
+        и на <code>document</code>, если зона большая: иначе браузер откроет файл вместо
+        вашей логики.</li>
+    <li><strong>Память растёт</strong>. Не вызываете <code>revokeObjectURL</code>.</li>
+    <li><strong>Файл читается как пустая строка</strong>. Читаете <code>.value</code>
+        у <code>input[type=file]</code> - там всегда пусто, нужен <code>.files[0]</code>.</li>
+    <li><strong>Тот же файл не выбирается второй раз.</strong> Браузер считает, что значение поля не изменилось. Сбросьте <code>input.value = ""</code> после обработки - и диалог снова сработает.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Превью аватара</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сделайте поле выбора изображения и <code>img</code> рядом.
+                При выборе файла показывайте превью и выводите размер в килобайтах.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>(file.size / 1024).toFixed(1)</code> даст килобайты.
+                        Ссылку создавайте через <code>URL.createObjectURL(file)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const input = document.querySelector(&quot;.avatar-input&quot;);</span><span class="code-row">const preview = document.querySelector(&quot;.avatar-preview&quot;);</span><span class="code-row">const info = document.querySelector(&quot;.avatar-info&quot;);</span><span class="code-row"></span><span class="code-row">input.addEventListener(&quot;change&quot;, () =&gt; {</span><span class="code-row">    const file = input.files[0];</span><span class="code-row">    if (!file) return;</span><span class="code-row"></span><span class="code-row">    preview.src = URL.createObjectURL(file);</span><span class="code-row">    info.textContent = `${(file.size / 1024).toFixed(1)} КБ`;</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Зона перетаскивания</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сделайте зону, которая подсвечивается при перетаскивании
+                файла и выводит список имён после отпускания. Поддержите несколько файлов.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Три события: <code>dragover</code> (с <code>preventDefault</code>),
+                        <code>dragleave</code> и <code>drop</code>. Файлы лежат в
+                        <code>event.dataTransfer.files</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const zone = document.querySelector(&quot;.dropzone&quot;);</span><span class="code-row">const list = document.querySelector(&quot;.file-list&quot;);</span><span class="code-row"></span><span class="code-row">zone.addEventListener(&quot;dragover&quot;, (event) =&gt; {</span><span class="code-row">    event.preventDefault();</span><span class="code-row">    zone.classList.add(&quot;is-over&quot;);</span><span class="code-row">});</span><span class="code-row"></span><span class="code-row">zone.addEventListener(&quot;dragleave&quot;, () =&gt; zone.classList.remove(&quot;is-over&quot;));</span><span class="code-row"></span><span class="code-row">zone.addEventListener(&quot;drop&quot;, (event) =&gt; {</span><span class="code-row">    event.preventDefault();</span><span class="code-row">    zone.classList.remove(&quot;is-over&quot;);</span><span class="code-row"></span><span class="code-row">    list.innerHTML = &quot;&quot;;</span><span class="code-row"></span><span class="code-row">    for (const file of event.dataTransfer.files) {</span><span class="code-row">        const item = document.createElement(&quot;li&quot;);</span><span class="code-row">        item.textContent = `${file.name} (${Math.round(file.size / 1024)} КБ)`;</span><span class="code-row">        list.append(item);</span><span class="code-row">    }</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Скачать настройки</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сделайте кнопку, которая скачивает текущие настройки
+                приложения в файл <code>settings.json</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Соберите <code>Blob</code> с типом <code>application/json</code>,
+                        создайте ссылку и вызовите <code>click()</code>. Не забудьте
+                        освободить URL.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function downloadJson(data, filename) {</span><span class="code-row">    const blob = new Blob([JSON.stringify(data, null, 2)], {</span><span class="code-row">        type: &quot;application/json&quot;</span><span class="code-row">    });</span><span class="code-row"></span><span class="code-row">    const url = URL.createObjectURL(blob);</span><span class="code-row">    const link = document.createElement(&quot;a&quot;);</span><span class="code-row"></span><span class="code-row">    link.href = url;</span><span class="code-row">    link.download = filename;</span><span class="code-row">    link.click();</span><span class="code-row">    URL.revokeObjectURL(url);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">document.querySelector(&quot;.export&quot;).addEventListener(&quot;click&quot;, () =&gt; {</span><span class="code-row">    downloadJson({ theme: &quot;dark&quot;, fontSize: 16 }, &quot;settings.json&quot;);</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Строки из CSV</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Пользователь выбирает CSV-файл. Выведите количество строк в нём.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Прочитайте файл через <code>await file.text()</code> и разбейте по переводу строки.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">const input = document.querySelector(&quot;.csv&quot;);</span><span class="code-row"></span><span class="code-row">input.addEventListener(&quot;change&quot;, async () =&gt; {</span><span class="code-row">    const file = input.files[0];</span><span class="code-row">    if (!file) return;</span><span class="code-row"></span><span class="code-row">    const text = await file.text();</span><span class="code-row">    const rows = text.trim().split(&quot;\n&quot;);</span><span class="code-row">    console.log(`Строк: ${rows.length}`);</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Браузер умеет работать с файлами без сервера. Вы знаете:</p>
+<ul>
+    <li>Как читать выбранные файлы и проверять их тип и размер.</li>
+    <li>Как показать превью изображения и не утекать памятью.</li>
+    <li>Как сделать зону drag & drop.</li>
+    <li>Как сформировать и скачать файл прямо из JavaScript.</li>
+</ul>
+
+<p>Следующий урок - про анимации. Разберём, почему <code>setInterval</code> плохо подходит
+    для движения, как работает <code>requestAnimationFrame</code> и что такое время кадра.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-22.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-24.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

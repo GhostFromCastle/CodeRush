@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Агрегаты, GROUP BY и HAVING - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="beginner" data-lesson-id="lesson-05">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 05</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson active" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Агрегаты, GROUP BY и HAVING</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>До сих пор мы смотрели на отдельные строки. Но чаще нужны итоги: сколько пользователей,
+    какая средняя цена, сколько заказов у каждого клиента. Для этого в SQL есть агрегатные
+    функции и группировка.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Освоим <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code>.</li>
+    <li>Поймём, как NULL влияет на подсчёты.</li>
+    <li>Научимся группировать строки через <code>GROUP BY</code>.</li>
+    <li>Разберём разницу между <code>WHERE</code> и <code>HAVING</code>.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Бухгалтерия: не важно, сколько чеков в пачке, - важен итог по пачке. GROUP BY собирает чеки в такие пачки.</p>
+</div>
+
+<h2>Пять агрегатов</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    COUNT(*)   AS total_users,</span><span class="code-row">    AVG(age)   AS avg_age,</span><span class="code-row">    MIN(age)   AS min_age,</span><span class="code-row">    MAX(age)   AS max_age</span><span class="code-row">FROM users;</span></code></pre>
+
+<table>
+    <thead>
+        <tr><th>total_users</th><th>avg_age</th><th>min_age</th><th>max_age</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>4</td><td>25.0</td><td>19</td><td>31</td></tr>
+    </tbody>
+</table>
+
+<ul>
+    <li><strong><code>COUNT(*)</code></strong> - количество строк.</li>
+    <li><strong><code>SUM</code></strong> - сумма значений.</li>
+    <li><strong><code>AVG</code></strong> - среднее.</li>
+    <li><strong><code>MIN</code> / <code>MAX</code></strong> - минимум и максимум.</li>
+</ul>
+
+<p>Агрегат без <code>GROUP BY</code> всегда возвращает ровно одну строку - даже если в таблице
+    ноль записей.</p>
+
+<h2>COUNT(*) и COUNT(column)</h2>
+
+<p>Разница принципиальная:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    COUNT(*)      AS rows_total,</span><span class="code-row">    COUNT(age)    AS ages_filled</span><span class="code-row">FROM users;</span></code></pre>
+
+<table>
+    <thead>
+        <tr><th>rows_total</th><th>ages_filled</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>4</td><td>2</td></tr>
+    </tbody>
+</table>
+
+<p><code>COUNT(*)</code> считает строки, <code>COUNT(age)</code> - только непустые значения.
+    Все агрегаты, кроме <code>COUNT(*)</code>, игнорируют <code>NULL</code>. Поэтому
+    <code>AVG(age)</code> делит на количество известных возрастов, а не на количество строк.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Среднее по NULL
+    </div>
+    <p>Если из десяти пользователей возраст известен у трёх, <code>AVG(age)</code> посчитает
+        среднее по трём. Иногда это именно то, что нужно, а иногда - нет. Если пустые значения
+        надо считать нулями, используйте <code>AVG(COALESCE(age, 0))</code>.</p>
+</div>
+
+<h2>GROUP BY</h2>
+
+<p>Группировка разбивает строки на группы и считает агрегат для каждой:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    customer_id,</span><span class="code-row">    COUNT(*)  AS orders_count,</span><span class="code-row">    SUM(price) AS total</span><span class="code-row">FROM orders</span><span class="code-row">GROUP BY customer_id;</span></code></pre>
+
+<table>
+    <thead>
+        <tr><th>customer_id</th><th>orders_count</th><th>total</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td>2</td><td>105000</td></tr>
+        <tr><td>2</td><td>1</td><td>1500</td></tr>
+    </tbody>
+</table>
+
+<p>Правило, которое нельзя нарушать: <strong>в <code>SELECT</code> могут быть только столбцы
+    из <code>GROUP BY</code> и агрегаты</strong>.</p>
+
+<pre class="code-numbered"><code><span class="code-row">-- ошибка: name не входит в группировку</span><span class="code-row">SELECT name, COUNT(*)</span><span class="code-row">FROM users</span><span class="code-row">GROUP BY age;</span></code></pre>
+
+<p>Логика простая: в группе из пяти строк пять разных имён, и база не знает, какое показать.
+    Некоторые СУБД (MySQL в старых настройках, SQLite) молча вернут случайное - и это худший
+    вариант, потому что ошибка не видна.</p>
+
+<h2>HAVING</h2>
+
+<p><code>WHERE</code> фильтрует строки до группировки, <code>HAVING</code> - группы после:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    customer_id,</span><span class="code-row">    SUM(price) AS total</span><span class="code-row">FROM orders</span><span class="code-row">WHERE price &gt; 1000          -- отбрасываем дешёвые заказы</span><span class="code-row">GROUP BY customer_id</span><span class="code-row">HAVING SUM(price) &gt; 50000;  -- оставляем только крупных клиентов</span></code></pre>
+
+<p>Порядок выполнения запроса:</p>
+
+<pre class="code-numbered"><code><span class="code-row">FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT</span></code></pre>
+
+<p>Отсюда следует: агрегат нельзя использовать в <code>WHERE</code> (он ещё не посчитан),
+    но можно в <code>HAVING</code>.</p>
+
+<h2>Сортировка групп</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    customer_id,</span><span class="code-row">    SUM(price) AS total</span><span class="code-row">FROM orders</span><span class="code-row">GROUP BY customer_id</span><span class="code-row">ORDER BY total DESC</span><span class="code-row">LIMIT 1;</span></code></pre>
+
+<p>Так находят лучшего клиента. Обратите внимание: сортируем по псевдониму <code>total</code> -
+    в <code>ORDER BY</code> это допустимо.</p>
+
+<h2>Полезные приёмы</h2>
+
+<p>Количество уникальных значений:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT COUNT(DISTINCT customer_id) AS active_customers</span><span class="code-row">FROM orders;</span></code></pre>
+
+<p>Несколько агрегатов по разным столбцам:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    COUNT(*)          AS orders,</span><span class="code-row">    SUM(price)        AS revenue,</span><span class="code-row">    ROUND(AVG(price)) AS avg_check,</span><span class="code-row">    MIN(price)        AS cheapest,</span><span class="code-row">    MAX(price)        AS most_expensive</span><span class="code-row">FROM orders;</span></code></pre>
+
+<p><code>ROUND</code> округляет результат - подробнее в уроке про функции.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>COUNT(*)</code>
+        <span>число строк</span>
+    </li>
+    <li>
+        <code>SUM</code>
+        <span>сумма</span>
+    </li>
+    <li>
+        <code>AVG</code>
+        <span>среднее</span>
+    </li>
+    <li>
+        <code>MIN / MAX</code>
+        <span>минимум и максимум</span>
+    </li>
+    <li>
+        <code>GROUP BY</code>
+        <span>группировка</span>
+    </li>
+    <li>
+        <code>HAVING</code>
+        <span>фильтр групп</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Column must appear in GROUP BY»</strong>. В <code>SELECT</code> есть столбец,
+        которого нет в группировке. Добавьте его в <code>GROUP BY</code> или уберите из
+        выборки.</li>
+    <li><strong>«Misuse of aggregate function»</strong>. Агрегат в <code>WHERE</code>. Нужен
+        <code>HAVING</code>.</li>
+    <li><strong>AVG считает не то</strong>. Часть значений - NULL. Проверьте
+        <code>COUNT(column)</code> против <code>COUNT(*)</code>.</li>
+    <li><strong>COUNT(DISTINCT ...) медленный</strong>. Это нормально на больших таблицах;
+        помогает индекс.</li>
+    <li><strong>Группировка по дате не работает</strong>. Дата хранится со временем - сначала
+        обрежьте до дня через <code>DATE(created_at)</code>.</li>
+    <li><strong>«Средний чек посчитали неправильно».</strong> Усреднили позиции, а не заказы: заказ из пяти дешёвых товаров весит столько же, сколько заказ из одного дорогого. Сначала считайте сумму заказа, потом среднее.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Статистика пользователей</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите одним запросом: общее число пользователей, число
+                известных возрастов, средний и максимальный возраст.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Четыре агрегата в одном <code>SELECT</code>: <code>COUNT(*)</code>,
+                        <code>COUNT(age)</code>, <code>AVG(age)</code>, <code>MAX(age)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    COUNT(*)   AS total,</span><span class="code-row">    COUNT(age) AS known_ages,</span><span class="code-row">    AVG(age)   AS avg_age,</span><span class="code-row">    MAX(age)   AS max_age</span><span class="code-row">FROM users;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Выручка по клиентам</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Посчитайте для каждого <code>customer_id</code> количество
+                заказов и общую сумму. Отсортируйте по сумме от большей к меньшей.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>GROUP BY customer_id</code>, агрегаты <code>COUNT(*)</code> и
+                        <code>SUM(price)</code>, затем <code>ORDER BY total DESC</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    customer_id,</span><span class="code-row">    COUNT(*)   AS orders_count,</span><span class="code-row">    SUM(price) AS total</span><span class="code-row">FROM orders</span><span class="code-row">GROUP BY customer_id</span><span class="code-row">ORDER BY total DESC;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Крупные клиенты</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Оставьте только клиентов, у которых больше одного заказа
+                и сумма покупок выше 50 000.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Оба условия относятся к группам, значит нужен <code>HAVING</code>:
+                        <code>HAVING COUNT(*) &gt; 1 AND SUM(price) &gt; 50000</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    customer_id,</span><span class="code-row">    COUNT(*)   AS orders_count,</span><span class="code-row">    SUM(price) AS total</span><span class="code-row">FROM orders</span><span class="code-row">GROUP BY customer_id</span><span class="code-row">HAVING COUNT(*) &gt; 1 AND SUM(price) &gt; 50000;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Средняя цена по категориям</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите <code>category_id</code>, количество товаров и среднюю цену, округлённую до целого.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Группировка по <code>category_id</code>, агрегаты <code>COUNT(*)</code> и <code>ROUND(AVG(price))</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    category_id,</span><span class="code-row">    COUNT(*)           AS products_count,</span><span class="code-row">    ROUND(AVG(price))  AS avg_price</span><span class="code-row">FROM products</span><span class="code-row">GROUP BY category_id;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Считать итоги вы умеете. Теперь вы знаете:</p>
+<ul>
+    <li>Как работают пять основных агрегатов и что делают с NULL.</li>
+    <li>Как группировать строки и фильтровать группы.</li>
+    <li>Почему столбцы в <code>SELECT</code> должны быть в <code>GROUP BY</code>.</li>
+    <li>В каком порядке выполняется запрос.</li>
+</ul>
+
+<p>До сих пор мы только читали. Следующий урок - про изменение данных:
+    <code>INSERT</code>, <code>UPDATE</code> и <code>DELETE</code>. Разберёмся, как не удалить
+    лишнее и что делать, если всё-таки удалили.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-04.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-06.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

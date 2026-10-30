@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финальный проект: база интернет-магазина - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="advanced" data-lesson-id="lesson-16">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 16</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson active" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Финальный проект: база интернет-магазина</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Это финальный урок курса. Мы соберём базу интернет-магазина целиком: спроектируем схему,
+    наполним её данными и напишем шесть аналитических запросов, которые встречаются в реальной
+    работе.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Спроектируем схему из пяти таблиц.</li>
+    <li>Создадим её с ключами и ограничениями.</li>
+    <li>Наполним тестовыми данными.</li>
+    <li>Напишем отчёты: выручка, топ товаров, средний чек, LTV и не только.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Сборка мебели: сначала чертёж (схема), потом детали (данные), потом инструкция (запросы). Пропущенный чертёж гарантирует лишние болты.</p>
+</div>
+
+<h2>Требования</h2>
+
+<p>Магазин продаёт товары из категорий. Клиенты оформляют заказы, в каждом заказе несколько
+    позиций. Нужно уметь отвечать на вопросы:</p>
+
+<ul>
+    <li>Сколько выручки принёс каждый месяц?</li>
+    <li>Какие товары продаются лучше всего?</li>
+    <li>Какой средний чек?</li>
+    <li>Сколько потратил каждый клиент за всё время?</li>
+    <li>Какие товары ни разу не покупали?</li>
+    <li>Как менялась выручка месяц к месяцу?</li>
+</ul>
+
+<h2>Схема</h2>
+
+<pre class="code-numbered"><code><span class="code-row">categories ──&lt; products ──&lt; order_items &gt;── orders &gt;── customers</span></code></pre>
+
+<ul>
+    <li><strong>categories</strong> - справочник категорий.</li>
+    <li><strong>products</strong> - товары, ссылаются на категорию.</li>
+    <li><strong>customers</strong> - клиенты.</li>
+    <li><strong>orders</strong> - заказы, ссылаются на клиента.</li>
+    <li><strong>order_items</strong> - позиции заказа, связывают заказ и товар.</li>
+</ul>
+
+<p>Таблица <code>order_items</code> - классический пример связи «многие ко многим»: один
+    заказ содержит много товаров, один товар встречается во многих заказах.</p>
+
+<h2>Шаг 1. Создаём таблицы</h2>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-azuresqldatabase-plain code-example-icon"></i>
+        <span>SQL</span>
+    </div>
+    <pre class="code-example-body"><code>CREATE TABLE categories (
+    id    INTEGER PRIMARY KEY,
+    title TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE products (
+    id          INTEGER PRIMARY KEY,
+    category_id INTEGER NOT NULL,
+    title       TEXT    NOT NULL,
+    price       INTEGER NOT NULL CHECK (price &gt;= 0),
+    FOREIGN KEY (category_id) REFERENCES categories (id)
+);
+
+CREATE TABLE customers (
+    id    INTEGER PRIMARY KEY,
+    name  TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE orders (
+    id          INTEGER PRIMARY KEY,
+    customer_id INTEGER NOT NULL,
+    created_at  TEXT    NOT NULL,
+    status      TEXT    NOT NULL DEFAULT &#x27;paid&#x27;
+                CHECK (status IN (&#x27;new&#x27;, &#x27;paid&#x27;, &#x27;cancelled&#x27;)),
+    FOREIGN KEY (customer_id) REFERENCES customers (id)
+);
+
+CREATE TABLE order_items (
+    order_id   INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    quantity   INTEGER NOT NULL CHECK (quantity &gt; 0),
+    price      INTEGER NOT NULL CHECK (price &gt;= 0),
+    PRIMARY KEY (order_id, product_id),
+    FOREIGN KEY (order_id)   REFERENCES orders (id)   ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products (id)
+);</code></pre>
+</div>
+
+<p>Цена хранится и в <code>products</code>, и в <code>order_items</code>. Это осознанное
+    решение: цена товара может измениться, а в заказе должна остаться та, по которой
+    покупали.</p>
+
+<h2>Шаг 2. Наполняем данные</h2>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-azuresqldatabase-plain code-example-icon"></i>
+        <span>SQL</span>
+    </div>
+    <pre class="code-example-body"><code>INSERT INTO categories (id, title) VALUES
+    (1, &#x27;Электроника&#x27;),
+    (2, &#x27;Аксессуары&#x27;);
+
+INSERT INTO products (id, category_id, title, price) VALUES
+    (1, 1, &#x27;Ноутбук&#x27;,   75000),
+    (2, 1, &#x27;Монитор&#x27;,   30000),
+    (3, 2, &#x27;Мышь&#x27;,       1500),
+    (4, 2, &#x27;Клавиатура&#x27;, 3500),
+    (5, 2, &#x27;Кабель&#x27;,      400);
+
+INSERT INTO customers (id, name, email) VALUES
+    (1, &#x27;Анна&#x27;,  &#x27;anna@example.com&#x27;),
+    (2, &#x27;Борис&#x27;, &#x27;boris@example.com&#x27;),
+    (3, &#x27;Вера&#x27;,  &#x27;vera@example.com&#x27;);
+
+INSERT INTO orders (id, customer_id, created_at, status) VALUES
+    (1, 1, &#x27;2026-01-05&#x27;, &#x27;paid&#x27;),
+    (2, 1, &#x27;2026-02-11&#x27;, &#x27;paid&#x27;),
+    (3, 2, &#x27;2026-02-20&#x27;, &#x27;paid&#x27;),
+    (4, 2, &#x27;2026-03-02&#x27;, &#x27;cancelled&#x27;),
+    (5, 3, &#x27;2026-03-15&#x27;, &#x27;paid&#x27;);
+
+INSERT INTO order_items (order_id, product_id, quantity, price) VALUES
+    (1, 1, 1, 75000),
+    (1, 3, 2,  1500),
+    (2, 2, 1, 30000),
+    (3, 3, 1,  1500),
+    (4, 4, 1,  3500),
+    (5, 1, 1, 75000),
+    (5, 5, 3,   400);</code></pre>
+</div>
+
+<h2>Запрос 1. Выручка по месяцам</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    STRFTIME(&#x27;%Y-%m&#x27;, o.created_at) AS month,</span><span class="code-row">    SUM(oi.quantity * oi.price)     AS revenue</span><span class="code-row">FROM orders AS o</span><span class="code-row">JOIN order_items AS oi ON oi.order_id = o.id</span><span class="code-row">WHERE o.status = &#x27;paid&#x27;</span><span class="code-row">GROUP BY month</span><span class="code-row">ORDER BY month;</span></code></pre>
+
+<p>Обратите внимание на <code>WHERE status = 'paid'</code>: отменённые заказы не должны
+    попадать в выручку. Это первое, что забывают уточнить в реальных задачах.</p>
+
+<h2>Запрос 2. Топ товаров</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    p.title,</span><span class="code-row">    SUM(oi.quantity) AS sold,</span><span class="code-row">    SUM(oi.quantity * oi.price) AS revenue</span><span class="code-row">FROM order_items AS oi</span><span class="code-row">JOIN products AS p ON p.id = oi.product_id</span><span class="code-row">JOIN orders AS o   ON o.id = oi.order_id</span><span class="code-row">WHERE o.status = &#x27;paid&#x27;</span><span class="code-row">GROUP BY p.id, p.title</span><span class="code-row">ORDER BY sold DESC;</span></code></pre>
+
+<h2>Запрос 3. Средний чек</h2>
+
+<pre class="code-numbered"><code><span class="code-row">WITH order_totals AS (</span><span class="code-row">    SELECT</span><span class="code-row">        o.id,</span><span class="code-row">        SUM(oi.quantity * oi.price) AS total</span><span class="code-row">    FROM orders AS o</span><span class="code-row">    JOIN order_items AS oi ON oi.order_id = o.id</span><span class="code-row">    WHERE o.status = &#x27;paid&#x27;</span><span class="code-row">    GROUP BY o.id</span><span class="code-row">)</span><span class="code-row">SELECT ROUND(AVG(total), 2) AS avg_order_value</span><span class="code-row">FROM order_totals;</span></code></pre>
+
+<p>Средний чек - это среднее от суммы заказа, а не среднее по позициям. Поэтому сначала
+    считаем итог каждого заказа, потом усредняем.</p>
+
+<h2>Запрос 4. Сколько потратил каждый клиент</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    c.name,</span><span class="code-row">    COALESCE(SUM(oi.quantity * oi.price), 0) AS lifetime_value</span><span class="code-row">FROM customers AS c</span><span class="code-row">LEFT JOIN orders AS o      ON o.customer_id = c.id AND o.status = &#x27;paid&#x27;</span><span class="code-row">LEFT JOIN order_items AS oi ON oi.order_id = o.id</span><span class="code-row">GROUP BY c.id, c.name</span><span class="code-row">ORDER BY lifetime_value DESC;</span></code></pre>
+
+<p><code>LEFT JOIN</code> нужен, чтобы клиенты без покупок тоже попали в отчёт с нулём.
+    Условие <code>status = 'paid'</code> стоит в <code>ON</code>, а не в <code>WHERE</code> -
+    иначе левое соединение превратится во внутреннее.</p>
+
+<h2>Запрос 5. Товары без продаж</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT p.title</span><span class="code-row">FROM products AS p</span><span class="code-row">LEFT JOIN order_items AS oi ON oi.product_id = p.id</span><span class="code-row">WHERE oi.product_id IS NULL;</span></code></pre>
+
+<h2>Запрос 6. Динамика месяц к месяцу</h2>
+
+<pre class="code-numbered"><code><span class="code-row">WITH monthly AS (</span><span class="code-row">    SELECT</span><span class="code-row">        STRFTIME(&#x27;%Y-%m&#x27;, o.created_at) AS month,</span><span class="code-row">        SUM(oi.quantity * oi.price)     AS revenue</span><span class="code-row">    FROM orders AS o</span><span class="code-row">    JOIN order_items AS oi ON oi.order_id = o.id</span><span class="code-row">    WHERE o.status = &#x27;paid&#x27;</span><span class="code-row">    GROUP BY month</span><span class="code-row">)</span><span class="code-row">SELECT</span><span class="code-row">    month,</span><span class="code-row">    revenue,</span><span class="code-row">    revenue - LAG(revenue) OVER (ORDER BY month) AS diff,</span><span class="code-row">    ROUND(</span><span class="code-row">        100.0 * (revenue - LAG(revenue) OVER (ORDER BY month))</span><span class="code-row">        / LAG(revenue) OVER (ORDER BY month),</span><span class="code-row">        1</span><span class="code-row">    ) AS growth_percent</span><span class="code-row">FROM monthly</span><span class="code-row">ORDER BY month;</span></code></pre>
+
+<h2>Что можно улучшить</h2>
+
+<ul>
+    <li><strong>Индексы.</strong> <code>orders(customer_id)</code>,
+        <code>order_items(product_id)</code>, <code>orders(created_at)</code>.</li>
+    <li><strong>Статусы.</strong> Вынести в отдельную таблицу-справочник вместо
+        <code>CHECK</code>.</li>
+    <li><strong>Мягкое удаление.</strong> Столбец <code>deleted_at</code> вместо физического
+        удаления клиентов.</li>
+    <li><strong>История цен.</strong> Отдельная таблица
+        <code>product_prices</code> с датами действия.</li>
+    <li><strong>Представления.</strong> Сохранить готовые отчёты как <code>VIEW</code>.</li>
+</ul>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>JOIN ... ON</code>
+        <span>связать таблицы по ключу</span>
+    </li>
+    <li>
+        <code>GROUP BY</code>
+        <span>итоги по группам</span>
+    </li>
+    <li>
+        <code>HAVING</code>
+        <span>фильтр групп</span>
+    </li>
+    <li>
+        <code>LEFT JOIN ... IS NULL</code>
+        <span>найти отсутствующие связи</span>
+    </li>
+    <li>
+        <code>WITH</code>
+        <span>разбить запрос на шаги</span>
+    </li>
+    <li>
+        <code>LAG</code>
+        <span>сравнить с предыдущей строкой</span>
+    </li>
+    <li>
+        <code>WHERE status = 'paid'</code>
+        <span>не забыть про отменённые заказы</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Суммы завышены в два раза».</strong> Соединили заказы с позициями и посчитали '
+        <code>SUM(price)</code> по строкам заказа. Сначала считайте итог заказа в подзапросе.</li>
+    <li><strong>«В отчёте меньше клиентов, чем в базе».</strong> Использован <code>INNER JOIN</code>: '
+        'клиенты без заказов отсеклись. Для полного списка нужен <code>LEFT JOIN</code>.</li>
+    <li><strong>«LEFT JOIN превратился в обычный».</strong> Условие по правой таблице попало в '
+        '<code>WHERE</code> - перенесите его в <code>ON</code>.</li>
+    <li><strong>«Выручка не сходится с бухгалтерией».</strong> Не исключены отменённые заказы или '
+        'не учтены возвраты. Проверяйте статусы в каждом отчёте.</li>
+    <li><strong>«Запрос на миллионе строк не возвращается».</strong> Нет индексов по '
+        <code>created_at</code> и <code>customer_id</code>. Посмотрите <code>EXPLAIN</code>.</li>
+    <li><strong>«Отчёт не учитывает отменённые заказы».</strong> В выручке они не должны участвовать, а в истории клиента - должны. Статус нужно проверять осознанно в каждом отчёте, а не копировать условие из соседнего запроса.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Продажи по категориям</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Посчитайте выручку по категориям за оплаченные заказы.
+                Отсортируйте по убыванию.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Соедините <code>order_items → products → categories</code>, сгруппируйте
+                        по <code>categories.title</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    c.title AS category,</span><span class="code-row">    SUM(oi.quantity * oi.price) AS revenue</span><span class="code-row">FROM order_items AS oi</span><span class="code-row">JOIN products AS p   ON p.id = oi.product_id</span><span class="code-row">JOIN categories AS c ON c.id = p.category_id</span><span class="code-row">JOIN orders AS o     ON o.id = oi.order_id</span><span class="code-row">WHERE o.status = &#x27;paid&#x27;</span><span class="code-row">GROUP BY c.id, c.title</span><span class="code-row">ORDER BY revenue DESC;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Средний чек по клиенту</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите имя клиента и его средний чек. Клиенты без заказов
+                должны быть в отчёте со значением 0.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сначала CTE с суммой каждого заказа, затем соединение с клиентами и
+                        <code>COALESCE(AVG(total), 0)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">WITH order_totals AS (</span><span class="code-row">    SELECT</span><span class="code-row">        o.id,</span><span class="code-row">        o.customer_id,</span><span class="code-row">        SUM(oi.quantity * oi.price) AS total</span><span class="code-row">    FROM orders AS o</span><span class="code-row">    JOIN order_items AS oi ON oi.order_id = o.id</span><span class="code-row">    WHERE o.status = &#x27;paid&#x27;</span><span class="code-row">    GROUP BY o.id, o.customer_id</span><span class="code-row">)</span><span class="code-row">SELECT</span><span class="code-row">    c.name,</span><span class="code-row">    COALESCE(ROUND(AVG(t.total), 2), 0) AS avg_check</span><span class="code-row">FROM customers AS c</span><span class="code-row">LEFT JOIN order_totals AS t ON t.customer_id = c.id</span><span class="code-row">GROUP BY c.id, c.name;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Своя схема</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Придумайте свою предметную область - библиотека, кино,
+                фитнес - и повторите весь путь: схема, ограничения, данные, три отчёта.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Начните с вопросов, на которые хотите отвечать. Таблицы появятся сами:
+                        сущности - это то, что упоминается в вопросах, связи - то, что их
+                        соединяет.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Универсального решения нет. Проверьте себя: есть ли первичные ключи,
+                        нет ли дублей, не хранится ли в ячейке список, работают ли отчёты на
+                        пустой базе.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Купленные однажды</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Найдите товары, которые покупали ровно один раз (в оплаченных заказах).</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сгруппируйте позиции по товару и оставьте те, где <code>SUM(quantity) = 1</code> или <code>COUNT(DISTINCT order_id) = 1</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    p.title,</span><span class="code-row">    COUNT(DISTINCT oi.order_id) AS orders_count</span><span class="code-row">FROM order_items AS oi</span><span class="code-row">JOIN products AS p ON p.id = oi.product_id</span><span class="code-row">JOIN orders AS o   ON o.id = oi.order_id</span><span class="code-row">WHERE o.status = &#x27;paid&#x27;</span><span class="code-row">GROUP BY p.id, p.title</span><span class="code-row">HAVING COUNT(DISTINCT oi.order_id) = 1;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что дальше</h2>
+
+<p>Курс закончен. Вы прошли путь от «что такое таблица» до аналитики на связанной схеме:</p>
+
+<ul>
+    <li><code>SELECT</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>JOIN</code>.</li>
+    <li>Проектирование схемы, ключи и ограничения.</li>
+    <li>Функции, нормализация, индексы и планы запросов.</li>
+    <li>Транзакции, оконные функции, CTE и представления.</li>
+</ul>
+
+<p>Куда двигаться:</p>
+
+<ul>
+    <li><strong>PostgreSQL.</strong> Установите локально и повторите курс: добавите
+        <code>EXPLAIN ANALYZE</code>, JSONB, полнотекстовый поиск.</li>
+    <li><strong>ORM.</strong> Изучите Prisma, SQLAlchemy или Entity Framework - они генерируют
+        SQL, и понимать его обязательно.</li>
+    <li><strong>Оптимизация.</strong> Читайте планы запросов и учитесь их улучшать.</li>
+    <li><strong>Аналитика.</strong> Оконные функции - ваш вход в отчётность и BI.</li>
+</ul>
+
+<p>Главный совет: возьмите реальные данные - выгрузку из банка, статистику своего проекта -
+и постройте на них отчёты. Один законченный проект учит больше, чем десять просмотренных
+курсов.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-15.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../index.html" class="btn-secondary">
+                        К списку курсов <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

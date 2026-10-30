@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Методы массивов и строк - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="intermediate" data-lesson-id="lesson-14">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 14</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson active" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Методы массивов и строк</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>До сих пор для работы с массивами мы писали циклы вручную. В JavaScript есть методы,
+    которые делают то же самое, но короче и понятнее: <code>map</code>, <code>filter</code>,
+    <code>reduce</code> и другие. В реальном коде вы будете встречать их постоянно.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Научимся преобразовывать массив через <code>map</code>.</li>
+    <li>Разберём фильтрацию и поиск.</li>
+    <li>Сведём массив к одному значению через <code>reduce</code>.</li>
+    <li>Познакомимся с основными строковыми методами.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Конвейер: на каждом этапе деталь либо преобразуется, либо отбирается, либо собирается в общий итог.</p>
+</div>
+
+<h2>map: преобразовать каждый элемент</h2>
+
+<p><code>map</code> проходит по массиву и возвращает <strong>новый</strong> массив той же длины,
+    где каждый элемент - результат функции:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const prices = [100, 200, 300];</span><span class="code-row"></span><span class="code-row">const withVat = prices.map((price) =&gt; price * 1.2);</span><span class="code-row">console.log(withVat); // [120, 240, 360]</span><span class="code-row"></span><span class="code-row">const labels = prices.map((price) =&gt; `${price} ₽`);</span><span class="code-row">console.log(labels); // [&quot;100 ₽&quot;, &quot;200 ₽&quot;, &quot;300 ₽&quot;]</span></code></pre>
+
+<p>Ключевое слово - «новый». Исходный массив не меняется. Если забыть <code>return</code>
+    в колбэке, получится массив из <code>undefined</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const broken = prices.map((price) =&gt; {</span><span class="code-row">    price * 1.2; // забыли return</span><span class="code-row">});</span><span class="code-row">console.log(broken); // [undefined, undefined, undefined]</span></code></pre>
+
+<h2>filter: оставить подходящие</h2>
+
+<p><code>filter</code> возвращает новый массив только из тех элементов, для которых колбэк
+    вернул <code>true</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const numbers = [5, 12, 8, 130, 44];</span><span class="code-row"></span><span class="code-row">const big = numbers.filter((n) =&gt; n &gt; 10);</span><span class="code-row">console.log(big); // [12, 130, 44]</span></code></pre>
+
+<p>Часто фильтруют массив объектов:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const products = [</span><span class="code-row">    { title: &quot;Ноутбук&quot;, price: 75000, inStock: true },</span><span class="code-row">    { title: &quot;Мышь&quot;, price: 1500, inStock: true },</span><span class="code-row">    { title: &quot;Монитор&quot;, price: 30000, inStock: false }</span><span class="code-row">];</span><span class="code-row"></span><span class="code-row">const available = products.filter((p) =&gt; p.inStock &amp;&amp; p.price &lt; 40000);</span><span class="code-row">console.log(available); // [{ title: &quot;Мышь&quot;, ... }]</span></code></pre>
+
+<h2>find и findIndex</h2>
+
+<p><code>find</code> возвращает <strong>первый подходящий элемент</strong>, а не массив.
+    Если ничего не найдено - <code>undefined</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const users = [</span><span class="code-row">    { id: 1, name: &quot;Аня&quot; },</span><span class="code-row">    { id: 2, name: &quot;Борис&quot; }</span><span class="code-row">];</span><span class="code-row"></span><span class="code-row">const user = users.find((u) =&gt; u.id === 2);</span><span class="code-row">console.log(user.name); // &quot;Борис&quot;</span><span class="code-row"></span><span class="code-row">const missing = users.find((u) =&gt; u.id === 99);</span><span class="code-row">console.log(missing); // undefined</span></code></pre>
+
+<p><code>findIndex</code> работает так же, но возвращает индекс или <code>-1</code>.</p>
+
+<h2>some и every</h2>
+
+<p>Два метода для проверки условий:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const scores = [4, 5, 3, 5];</span><span class="code-row"></span><span class="code-row">console.log(scores.some((s) =&gt; s === 5));  // true - есть хотя бы одна пятёрка</span><span class="code-row">console.log(scores.every((s) =&gt; s &gt;= 3));  // true - все не ниже тройки</span></code></pre>
+
+<p><code>some</code> останавливается на первом совпадении, <code>every</code> - на первом
+    несовпадении. Оба возвращают <code>boolean</code>, а не массив.</p>
+
+<h2>reduce: свести к одному значению</h2>
+
+<p>Самый мощный и самый непонятный метод. Он проходит по массиву, накапливая результат
+    в аккумуляторе:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const numbers = [10, 20, 30];</span><span class="code-row"></span><span class="code-row">const sum = numbers.reduce((acc, n) =&gt; acc + n, 0);</span><span class="code-row">console.log(sum); // 60</span></code></pre>
+
+<p>Разберём по шагам. Второй аргумент <code>0</code> - начальное значение аккумулятора.
+    Дальше на каждой итерации:</p>
+
+<ul>
+    <li><code>acc = 0</code>, <code>n = 10</code> → возвращается <code>10</code>.</li>
+    <li><code>acc = 10</code>, <code>n = 20</code> → <code>30</code>.</li>
+    <li><code>acc = 30</code>, <code>n = 30</code> → <code>60</code>.</li>
+</ul>
+
+<p><strong>Всегда передавайте начальное значение.</strong> Без него <code>reduce</code>
+    возьмёт первый элемент как аккумулятор - и на пустом массиве выбросит ошибку.</p>
+
+<p>Через <code>reduce</code> можно собрать и объект:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const cart = [</span><span class="code-row">    { title: &quot;Ноутбук&quot;, price: 75000, count: 1 },</span><span class="code-row">    { title: &quot;Мышь&quot;, price: 1500, count: 2 }</span><span class="code-row">];</span><span class="code-row"></span><span class="code-row">const total = cart.reduce((sum, item) =&gt; sum + item.price * item.count, 0);</span><span class="code-row">console.log(total); // 78000</span></code></pre>
+
+<h2>sort с объектами</h2>
+
+<p>Сортировка массива объектов требует явного компаратора:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const products = [</span><span class="code-row">    { title: &quot;Монитор&quot;, price: 30000 },</span><span class="code-row">    { title: &quot;Мышь&quot;, price: 1500 },</span><span class="code-row">    { title: &quot;Ноутбук&quot;, price: 75000 }</span><span class="code-row">];</span><span class="code-row"></span><span class="code-row">const cheapFirst = [...products].sort((a, b) =&gt; a.price - b.price);</span><span class="code-row">console.log(cheapFirst[0].title); // &quot;Мышь&quot;</span></code></pre>
+
+<p>Копия через spread здесь не случайна: <code>sort</code> меняет исходный массив. Если
+    оригинальный порядок важен, копируйте перед сортировкой.</p>
+
+<h2>Цепочки вызовов</h2>
+
+<p>Методы возвращают новые массивы, поэтому их можно выстраивать в цепочку. Читается она
+    сверху вниз, как последовательность действий:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const products = [</span><span class="code-row">    { title: &quot;Ноутбук&quot;, price: 75000, inStock: true },</span><span class="code-row">    { title: &quot;Мышь&quot;, price: 1500, inStock: true },</span><span class="code-row">    { title: &quot;Монитор&quot;, price: 30000, inStock: false },</span><span class="code-row">    { title: &quot;Кабель&quot;, price: 500, inStock: true }</span><span class="code-row">];</span><span class="code-row"></span><span class="code-row">const result = products</span><span class="code-row">    .filter((p) =&gt; p.inStock)</span><span class="code-row">    .map((p) =&gt; p.title)</span><span class="code-row">    .sort();</span><span class="code-row"></span><span class="code-row">console.log(result); // [&quot;Кабель&quot;, &quot;Мышь&quot;, &quot;Ноутбук&quot;]</span></code></pre>
+
+<p>Такой код описывает <em>что</em> нужно получить, а не <em>как</em> перебирать элементы.
+    Это главное преимущество декларативного стиля.</p>
+
+<h2>Строковые методы</h2>
+
+<p>Строки неизменяемы: любой метод возвращает новую строку, а исходная остаётся прежней.</p>
+
+<pre class="code-numbered"><code><span class="code-row">const text = &quot;  JavaScript - это круто  &quot;;</span><span class="code-row"></span><span class="code-row">console.log(text.trim());              // &quot;JavaScript - это круто&quot;</span><span class="code-row">console.log(text.toUpperCase());       // &quot;  JAVASCRIPT - ЭТО КРУТО  &quot;</span><span class="code-row">console.log(text.toLowerCase());</span><span class="code-row">console.log(text.includes(&quot;круто&quot;));   // true</span><span class="code-row">console.log(text.startsWith(&quot;  Java&quot;)); // true</span><span class="code-row">console.log(text.slice(2, 12));        // &quot;JavaScript&quot;</span></code></pre>
+
+<p>Разбиение и сборка:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const csv = &quot;яблоко,банан,груша&quot;;</span><span class="code-row"></span><span class="code-row">const fruits = csv.split(&quot;,&quot;);</span><span class="code-row">console.log(fruits);        // [&quot;яблоко&quot;, &quot;банан&quot;, &quot;груша&quot;]</span><span class="code-row">console.log(fruits.join(&quot; | &quot;)); // &quot;яблоко | банан | груша&quot;</span></code></pre>
+
+<p>Замена и дополнение:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const phone = &quot;8 (999) 123-45-67&quot;;</span><span class="code-row">console.log(phone.replaceAll(&quot; &quot;, &quot;&quot;)); // &quot;8(999)123-45-67&quot;</span><span class="code-row"></span><span class="code-row">const code = &quot;42&quot;;</span><span class="code-row">console.log(code.padStart(5, &quot;0&quot;)); // &quot;00042&quot;</span><span class="code-row">console.log(&quot;=&quot;.repeat(10));        // &quot;==========&quot;</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        replace заменяет только первое совпадение
+    </div>
+    <p><code>replace("а", "о")</code> заменит лишь первую «а». Для замены всех вхождений
+        используйте <code>replaceAll</code> или регулярное выражение с флагом <code>g</code>.</p>
+</div>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>map</code>
+        <span>преобразовать каждый элемент</span>
+    </li>
+    <li>
+        <code>filter</code>
+        <span>оставить подходящие</span>
+    </li>
+    <li>
+        <code>find</code>
+        <span>первый подходящий элемент</span>
+    </li>
+    <li>
+        <code>some / every</code>
+        <span>проверка условия</span>
+    </li>
+    <li>
+        <code>reduce</code>
+        <span>свести к одному значению</span>
+    </li>
+    <li>
+        <code>sort</code>
+        <span>сортировка (мутирует!)</span>
+    </li>
+    <li>
+        <code>trim</code>
+        <span>убрать пробелы по краям</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Массив из <code>undefined</code></strong>. В <code>map</code> забыли
+        <code>return</code> или использовали фигурные скобки без него.</li>
+    <li><strong><code>filter</code> вернул пустой массив</strong>. Условие никогда не истинно.
+        Проверьте типы: строка <code>"1500"</code> и число <code>1500</code> сравниваются
+        по-разному.</li>
+    <li><strong>«Reduce of empty array with no initial value»</strong>. Не передан начальный
+        аккумулятор. Добавьте <code>, 0</code> вторым аргументом.</li>
+    <li><strong>Исходный массив изменился</strong>. <code>sort</code>, <code>reverse</code>,
+        <code>splice</code> мутируют массив. Копируйте через <code>[...arr]</code>.</li>
+    <li><strong><code>toUpperCase</code> «не сработал»</strong>. Он возвращает новую строку,
+        а не меняет старую. Присвойте результат:
+        <code>text = text.toUpperCase()</code>.</li>
+    <li><strong>После <code>map</code> список остался прежним.</strong> Метод вернул новый массив, а результат никуда не присвоили. <code>map</code>, <code>filter</code> и <code>slice</code> не меняют исходный массив - это не ошибка, а их свойство.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Имена в верхнем регистре</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Дан массив имён <code>["аня", "борис", "вера"]</code>.
+                Получите массив с именами в верхнем регистре, без изменения оригинала.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Подойдёт <code>map</code> со стрелочной функцией:
+                        <code>name.toUpperCase()</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const names = [&quot;аня&quot;, &quot;борис&quot;, &quot;вера&quot;];</span><span class="code-row"></span><span class="code-row">const upper = names.map((name) =&gt; name.toUpperCase());</span><span class="code-row">console.log(upper); // [&quot;АНЯ&quot;, &quot;БОРИС&quot;, &quot;ВЕРА&quot;]</span><span class="code-row">console.log(names); // [&quot;аня&quot;, &quot;борис&quot;, &quot;вера&quot;]</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Фильтр по цене</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Дан массив товаров с полями <code>title</code> и
+                <code>price</code>. Получите названия товаров дешевле 5000, отсортированные
+                по возрастанию цены.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сначала <code>filter</code> по цене, затем <code>sort</code>
+                        с компаратором <code>a.price - b.price</code>, и только потом
+                        <code>map</code> в названия. Порядок важен: после <code>map</code>
+                        сортировать будет нечего.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const products = [</span><span class="code-row">    { title: &quot;Ноутбук&quot;, price: 75000 },</span><span class="code-row">    { title: &quot;Мышь&quot;, price: 1500 },</span><span class="code-row">    { title: &quot;Кабель&quot;, price: 500 },</span><span class="code-row">    { title: &quot;Монитор&quot;, price: 30000 }</span><span class="code-row">];</span><span class="code-row"></span><span class="code-row">const titles = products</span><span class="code-row">    .filter((p) =&gt; p.price &lt; 5000)</span><span class="code-row">    .sort((a, b) =&gt; a.price - b.price)</span><span class="code-row">    .map((p) =&gt; p.title);</span><span class="code-row"></span><span class="code-row">console.log(titles); // [&quot;Кабель&quot;, &quot;Мышь&quot;]</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Сумма корзины</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">В корзине три товара с полями <code>price</code> и
+                <code>count</code>. Посчитайте итоговую сумму через <code>reduce</code>.
+                Пустая корзина должна давать 0.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Аккумулятор начинается с нуля, а на каждом шаге прибавляется
+                        <code>item.price * item.count</code>. Именно начальное значение
+                        спасает от ошибки на пустой корзине.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const cart = [</span><span class="code-row">    { price: 1500, count: 2 },</span><span class="code-row">    { price: 500, count: 1 },</span><span class="code-row">    { price: 75000, count: 1 }</span><span class="code-row">];</span><span class="code-row"></span><span class="code-row">const total = cart.reduce((sum, item) =&gt; sum + item.price * item.count, 0);</span><span class="code-row">console.log(total); // 78500</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Группировка по букве</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сгруппируйте массив имён по первой букве: <code>{ "А": ["Анна", "Алексей"], "Б": ["Борис"] }</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Подойдёт <code>reduce</code> с объектом-аккумулятором.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">const names = [&quot;Анна&quot;, &quot;Борис&quot;, &quot;Алексей&quot;];</span><span class="code-row"></span><span class="code-row">const grouped = names.reduce((acc, name) =&gt; {</span><span class="code-row">    const letter = name[0];</span><span class="code-row">    acc[letter] = acc[letter] || [];</span><span class="code-row">    acc[letter].push(name);</span><span class="code-row">    return acc;</span><span class="code-row">}, {});</span><span class="code-row"></span><span class="code-row">console.log(grouped);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы освоили основной инструмент работы с данными. Теперь вы знаете:</p>
+<ul>
+    <li>Как преобразовывать массив через <code>map</code> и отбирать элементы через
+        <code>filter</code>.</li>
+    <li>Как искать один элемент и проверять условия.</li>
+    <li>Как сводить массив к одному значению через <code>reduce</code>.</li>
+    <li>Как работать со строками: обрезать, менять регистр, разбивать и собирать.</li>
+</ul>
+
+<p>До этого весь наш код выполнялся мгновенно, строка за строкой. Но в реальности почти
+    всё требует времени: запрос к серверу, таймер, загрузка файла. Если ждать синхронно,
+    страница замрёт. В следующем уроке разберём <strong>асинхронность</strong> - таймеры,
+    промисы и <code>async/await</code>.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-13.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-15.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

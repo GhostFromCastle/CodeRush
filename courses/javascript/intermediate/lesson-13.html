@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Современный синтаксис ES6+ - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="intermediate" data-lesson-id="lesson-13">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 13</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson active" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Современный синтаксис ES6+</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>JavaScript развивается, и с 2015 года язык получил много синтаксического сахара. Он не
+    добавляет новых возможностей, но делает код короче и понятнее. В этом уроке - приёмы,
+    которые встречаются в каждом современном проекте.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём деструктуризацию объектов и массивов.</li>
+    <li>Поймём разницу между spread и rest.</li>
+    <li>Научимся безопасно обращаться к вложенным данным через <code>?.</code> и <code>??</code>.</li>
+    <li>Познакомимся с <code>Map</code> и <code>Set</code>.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Швейцарский нож: те же инструменты, что и раньше, но компактнее и всегда под рукой.</p>
+</div>
+
+<h2>Деструктуризация объектов</h2>
+
+<p>Мы уже видели базовую форму. Добавим детали:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const user = {</span><span class="code-row">    name: &quot;Алексей&quot;,</span><span class="code-row">    age: 25,</span><span class="code-row">    address: { city: &quot;Москва&quot; }</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">const { name, age } = user;</span><span class="code-row">const { address: { city } } = user;   // вложенная</span><span class="code-row">const { name: userName } = user;      // переименование</span><span class="code-row">const { email = &quot;нет&quot; } = user;       // значение по умолчанию</span></code></pre>
+
+<p>Значение по умолчанию срабатывает, только если свойства нет или оно
+    <code>undefined</code>. Если там <code>null</code> или пустая строка, останется как есть.</p>
+
+<h2>Деструктуризация массивов</h2>
+
+<p>Работает по позиции, а не по имени:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;];</span><span class="code-row"></span><span class="code-row">const [first, second] = colors;</span><span class="code-row">console.log(first, second); // red green</span><span class="code-row"></span><span class="code-row">const [, , third] = colors;  // пропускаем первые два</span><span class="code-row">console.log(third);          // blue</span><span class="code-row"></span><span class="code-row">const [head, ...tail] = colors;</span><span class="code-row">console.log(head); // red</span><span class="code-row">console.log(tail); // [&quot;green&quot;, &quot;blue&quot;]</span></code></pre>
+
+<p>Этот приём часто используется для обмена значений:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let a = 1;</span><span class="code-row">let b = 2;</span><span class="code-row"></span><span class="code-row">[a, b] = [b, a];</span><span class="code-row">console.log(a, b); // 2 1</span></code></pre>
+
+<h2>Spread: разворачиваем</h2>
+
+<p>Три точки перед коллекцией «раскрывают» её содержимое:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const first = [1, 2, 3];</span><span class="code-row">const second = [4, 5];</span><span class="code-row"></span><span class="code-row">const all = [...first, ...second];</span><span class="code-row">console.log(all); // [1, 2, 3, 4, 5]</span><span class="code-row"></span><span class="code-row">const user = { name: &quot;Алексей&quot;, age: 25 };</span><span class="code-row">const updated = { ...user, age: 26, city: &quot;Москва&quot; };</span><span class="code-row">console.log(updated); // { name: &quot;Алексей&quot;, age: 26, city: &quot;Москва&quot; }</span></code></pre>
+
+<p>В объектах свойства применяются по порядку: если ключ встречается дважды, побеждает
+    последний. Именно поэтому <code>{ ...user, age: 26 }</code> обновляет возраст, не меняя
+    остальное.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Копия неглубокая
+    </div>
+    <p><code>{ ...user }</code> копирует только верхний уровень. Вложенный
+        <code>user.address</code> останется той же ссылкой: изменение адреса в копии изменит
+        и оригинал. Для глубокого копирования используют <code>structuredClone(obj)</code>.</p>
+</div>
+
+<h2>Rest: собираем</h2>
+
+<p>Те же три точки, но в другом месте - в параметрах функции - собирают аргументы в массив:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function sum(...numbers) {</span><span class="code-row">    return numbers.reduce((total, n) =&gt; total + n, 0);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(sum(1, 2, 3, 4)); // 10</span></code></pre>
+
+<p>Rest всегда идёт последним. Такой приём удобен для функций с произвольным числом
+    аргументов:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function logMessage(level, ...messages) {</span><span class="code-row">    console.log(`[${level}]`, ...messages);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">logMessage(&quot;INFO&quot;, &quot;сервер&quot;, &quot;запущен&quot;);</span></code></pre>
+
+<h2>Опциональная цепочка ?.</h2>
+
+<p>Классическая проблема: данные приходят с сервера неполными. Попытка прочитать
+    <code>user.address.city</code>, когда адреса нет, обрушит программу. Оператор
+    <code>?.</code> решает это элегантно:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const user = { name: &quot;Алексей&quot; };</span><span class="code-row"></span><span class="code-row">console.log(user.address?.city);      // undefined, без ошибки</span><span class="code-row">console.log(user.address?.city?.name); // undefined</span></code></pre>
+
+<p>Он же работает с вызовами функций и индексами массива:</p>
+
+<pre class="code-numbered"><code><span class="code-row">user.greet?.();        // вызов, только если метод существует</span><span class="code-row">items?.[0];            // безопасный доступ по индексу</span></code></pre>
+
+<p>Важно: <code>?.</code> защищает только тот шаг, где стоит. Если нужна защита всей цепочки,
+    ставьте его на каждом потенциально пустом звене.</p>
+
+<h2>Оператор ??</h2>
+
+<p>Для значений по умолчанию часто используют <code>||</code>, но у него есть недостаток:
+    <code>0</code>, <code>""</code> и <code>false</code> считаются ложными и тоже
+    заменяются. Оператор <code>??</code> подставляет значение только при
+    <code>null</code> и <code>undefined</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const count = 0;</span><span class="code-row"></span><span class="code-row">console.log(count || 10);  // 10 - неправильно, ноль потерян</span><span class="code-row">console.log(count ?? 10);  // 0  - правильно</span></code></pre>
+
+<p>Правило простое: если ноль и пустая строка - валидные значения, используйте
+    <code>??</code>.</p>
+
+<h2>Сокращённые свойства и вычисляемые ключи</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const name = &quot;Алексей&quot;;</span><span class="code-row">const age = 25;</span><span class="code-row"></span><span class="code-row">const user = { name, age }; // вместо { name: name, age: age }</span><span class="code-row"></span><span class="code-row">const field = &quot;email&quot;;</span><span class="code-row">const data = {</span><span class="code-row">    [field]: &quot;alex@example.com&quot; // ключ из переменной</span><span class="code-row">};</span><span class="code-row"></span><span class="code-row">console.log(data.email); // &quot;alex@example.com&quot;</span></code></pre>
+
+<h2>Map</h2>
+
+<p><code>Map</code> - коллекция «ключ: значение», где ключом может быть что угодно, не только
+    строка. В отличие от обычного объекта, она сохраняет порядок вставки и знает свой размер:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const visits = new Map();</span><span class="code-row"></span><span class="code-row">visits.set(&quot;Аня&quot;, 3);</span><span class="code-row">visits.set(&quot;Борис&quot;, 7);</span><span class="code-row"></span><span class="code-row">console.log(visits.get(&quot;Аня&quot;));  // 3</span><span class="code-row">console.log(visits.has(&quot;Вера&quot;)); // false</span><span class="code-row">console.log(visits.size);        // 2</span><span class="code-row"></span><span class="code-row">visits.delete(&quot;Борис&quot;);</span><span class="code-row"></span><span class="code-row">for (const [name, count] of visits) {</span><span class="code-row">    console.log(`${name}: ${count}`);</span><span class="code-row">}</span></code></pre>
+
+<p>Когда использовать <code>Map</code> вместо объекта? Когда ключи динамические, часто
+    добавляются и удаляются, или когда нужен именно размер коллекции.</p>
+
+<h2>Set</h2>
+
+<p><code>Set</code> - коллекция уникальных значений. Идеально для удаления дубликатов:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const numbers = [1, 2, 2, 3, 3, 3];</span><span class="code-row"></span><span class="code-row">const unique = [...new Set(numbers)];</span><span class="code-row">console.log(unique); // [1, 2, 3]</span><span class="code-row"></span><span class="code-row">const tags = new Set([&quot;js&quot;, &quot;css&quot;]);</span><span class="code-row">tags.add(&quot;html&quot;);</span><span class="code-row">tags.add(&quot;js&quot;); // уже есть - ничего не изменится</span><span class="code-row"></span><span class="code-row">console.log(tags.size);        // 3</span><span class="code-row">console.log(tags.has(&quot;css&quot;));  // true</span></code></pre>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>const { a, b } = obj</code>
+        <span>деструктуризация объекта</span>
+    </li>
+    <li>
+        <code>const [a, b] = arr</code>
+        <span>деструктуризация массива</span>
+    </li>
+    <li>
+        <code>...arr</code>
+        <span>развернуть или собрать</span>
+    </li>
+    <li>
+        <code>obj?.prop</code>
+        <span>безопасный доступ</span>
+    </li>
+    <li>
+        <code>value ?? default</code>
+        <span>значение по умолчанию для null</span>
+    </li>
+    <li>
+        <code>new Map()</code>
+        <span>коллекция ключ-значение</span>
+    </li>
+    <li>
+        <code>new Set()</code>
+        <span>коллекция уникальных значений</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong><code>||</code> подставил значение вместо нуля</strong>. Используйте
+        <code>??</code>.</li>
+    <li><strong>Изменился оригинал после spread</strong>. Копия поверхностная: вложенные
+        объекты общие. Нужен <code>structuredClone</code>.</li>
+    <li><strong>«Rest parameter must be last»</strong>. <code>...rest</code> может стоять
+        только последним в списке параметров.</li>
+    <li><strong><code>?.</code> не спасает</strong>. Он защищает только свой шаг цепочки.
+        Ставьте его на каждом звене, которое может быть пустым.</li>
+    <li><strong><code>Set</code> не удалил дубликаты объектов</strong>. Он сравнивает по
+        ссылке: два одинаковых по содержанию объекта - разные значения.</li>
+    <li><strong>Ноль превратился в 16.</strong> Для значения по умолчанию использовали <code>||</code>, а он считает 0 и пустую строку ложными. Если ноль - валидное значение, нужен <code>??</code>.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Настройки</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Есть объект настроек <code>{ theme: "dark", fontSize: 0 }</code>.
+                Напишите функцию <code>getSettings(userSettings)</code>, которая возвращает
+                настройки с дефолтами <code>{ theme: "light", fontSize: 16 }</code>. Ноль должен
+                сохраняться.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Соберите результат через spread и <code>??</code>:
+                        <code>{ theme: userSettings.theme ?? "light", ... }</code>. Не используйте
+                        <code>||</code>, иначе ноль превратится в 16.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function getSettings(userSettings = {}) {</span><span class="code-row">    return {</span><span class="code-row">        theme: userSettings.theme ?? &quot;light&quot;,</span><span class="code-row">        fontSize: userSettings.fontSize ?? 16</span><span class="code-row">    };</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(getSettings({ theme: &quot;dark&quot;, fontSize: 0 }));</span><span class="code-row">// { theme: &quot;dark&quot;, fontSize: 0 }</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Сумма аргументов</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>sumAll</code>, которая принимает любое
+                количество чисел и возвращает их сумму. Проверьте на
+                <code>sumAll(1, 2, 3, 4, 5)</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Используйте rest-параметр <code>...numbers</code> и метод
+                        <code>reduce</code> с начальным значением 0.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function sumAll(...numbers) {</span><span class="code-row">    return numbers.reduce((total, n) =&gt; total + n, 0);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(sumAll(1, 2, 3, 4, 5)); // 15</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Уникальные теги</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Дан массив тегов с повторами:
+                <code>["js", "css", "js", "html", "css"]</code>. Получите массив уникальных
+                значений, отсортированный по алфавиту.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>new Set(tags)</code> уберёт повторы, spread превратит обратно
+                        в массив, <code>sort()</code> отсортирует строки по алфавиту.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const tags = [&quot;js&quot;, &quot;css&quot;, &quot;js&quot;, &quot;html&quot;, &quot;css&quot;];</span><span class="code-row"></span><span class="code-row">const unique = [...new Set(tags)].sort();</span><span class="code-row">console.log(unique); // [&quot;css&quot;, &quot;html&quot;, &quot;js&quot;]</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Настройки с приоритетом</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Объедините настройки по умолчанию <code>{ theme: "light", size: 16 }</code> и пользовательские <code>{ theme: "dark" }</code> так, чтобы пользовательское значение победило.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Spread применяет свойства по порядку: побеждает последнее.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">const defaults = { theme: &quot;light&quot;, size: 16 };</span><span class="code-row">const user = { theme: &quot;dark&quot; };</span><span class="code-row"></span><span class="code-row">const settings = { ...defaults, ...user };</span><span class="code-row">console.log(settings); // { theme: &quot;dark&quot;, size: 16 }</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Код стал короче и безопаснее. Вы знаете:</p>
+<ul>
+    <li>Как доставать данные из объектов и массивов деструктуризацией.</li>
+    <li>Чем spread отличается от rest.</li>
+    <li>Как безопасно читать вложенные свойства и задавать значения по умолчанию.</li>
+    <li>Зачем нужны <code>Map</code> и <code>Set</code>.</li>
+</ul>
+
+<p>В следующем уроке займёмся коллекциями всерьёз: разберём <code>map</code>,
+    <code>filter</code>, <code>reduce</code> и другие методы, которые заменяют половину
+    циклов в реальном коде.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-12.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-14.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оконные функции - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="advanced" data-lesson-id="lesson-14">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 14</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson active" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Оконные функции</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Обычная группировка сворачивает строки: было сто заказов - осталась одна строка на клиента.
+    Но часто нужно и сохранить каждую строку, и добавить к ней расчёт по группе: место в
+    рейтинге, накопительную сумму, разницу с предыдущим днём. Для этого есть оконные функции.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём синтаксис <code>OVER</code> и <code>PARTITION BY</code>.</li>
+    <li>Освоим <code>ROW_NUMBER</code>, <code>RANK</code> и <code>DENSE_RANK</code>.</li>
+    <li>Научимся считать накопительные итоги.</li>
+    <li>Познакомимся с <code>LAG</code> и <code>LEAD</code>.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Классный журнал: оценки остаются у каждого ученика, но рядом можно посчитать средний балл по классу, не убирая сами оценки.</p>
+</div>
+
+<h2>Чем отличается от GROUP BY</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    customer_id,</span><span class="code-row">    id,</span><span class="code-row">    price,</span><span class="code-row">    SUM(price) OVER (PARTITION BY customer_id) AS customer_total</span><span class="code-row">FROM orders;</span></code></pre>
+
+<p>В результате остаются все заказы, и у каждого появляется сумма по его клиенту. С
+    <code>GROUP BY</code> мы получили бы по одной строке на клиента и потеряли детали.</p>
+
+<h2>Синтаксис OVER</h2>
+
+<pre class="code-numbered"><code><span class="code-row">функция(...) OVER (</span><span class="code-row">    PARTITION BY столбец   -- разбить на группы</span><span class="code-row">    ORDER BY столбец       -- порядок внутри группы</span><span class="code-row">)</span></code></pre>
+
+<p><code>PARTITION BY</code> - это «разделить на окна», аналог <code>GROUP BY</code>, но строки
+    не схлопываются. <code>ORDER BY</code> внутри окна задаёт порядок расчёта.</p>
+
+<h2>Нумерация строк</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    customer_id,</span><span class="code-row">    id,</span><span class="code-row">    price,</span><span class="code-row">    ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY price DESC) AS row_num,</span><span class="code-row">    RANK()       OVER (PARTITION BY customer_id ORDER BY price DESC) AS rank_num,</span><span class="code-row">    DENSE_RANK() OVER (PARTITION BY customer_id ORDER BY price DESC) AS dense_num</span><span class="code-row">FROM orders;</span></code></pre>
+
+<p>Разница видна на одинаковых значениях. Пусть цены заказов: 75000, 30000, 30000, 1500.</p>
+
+<table>
+    <thead>
+        <tr><th>price</th><th>ROW_NUMBER</th><th>RANK</th><th>DENSE_RANK</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>75000</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>30000</td><td>2</td><td>2</td><td>2</td></tr>
+        <tr><td>30000</td><td>3</td><td>2</td><td>2</td></tr>
+        <tr><td>1500</td><td>4</td><td>4</td><td>3</td></tr>
+    </tbody>
+</table>
+
+<ul>
+    <li><code>ROW_NUMBER</code> всегда даёт уникальные номера.</li>
+    <li><code>RANK</code> при равенстве даёт одинаковый номер и пропускает следующий.</li>
+    <li><code>DENSE_RANK</code> не пропускает: 1, 2, 2, 3.</li>
+</ul>
+
+<p>Типичная задача «последний заказ каждого клиента»:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT *</span><span class="code-row">FROM (</span><span class="code-row">    SELECT</span><span class="code-row">        o.*,</span><span class="code-row">        ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY created_at DESC) AS rn</span><span class="code-row">    FROM orders AS o</span><span class="code-row">) AS t</span><span class="code-row">WHERE rn = 1;</span></code></pre>
+
+<h2>Агрегаты как оконные функции</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    id,</span><span class="code-row">    customer_id,</span><span class="code-row">    price,</span><span class="code-row">    SUM(price) OVER (PARTITION BY customer_id) AS total_by_customer,</span><span class="code-row">    SUM(price) OVER ()                        AS grand_total,</span><span class="code-row">    ROUND(</span><span class="code-row">        100.0 * price / SUM(price) OVER (PARTITION BY customer_id),</span><span class="code-row">        1</span><span class="code-row">    ) AS percent_of_customer</span><span class="code-row">FROM orders;</span></code></pre>
+
+<ul>
+    <li><code>OVER ()</code> - окно на всю таблицу.</li>
+    <li><code>PARTITION BY</code> - окно на группу.</li>
+    <li>Агрегат не сворачивает строки, а повторяется в каждой.</li>
+</ul>
+
+<h2>Накопительный итог</h2>
+
+<p><code>ORDER BY</code> внутри окна превращает агрегат в накопительный:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    created_at,</span><span class="code-row">    price,</span><span class="code-row">    SUM(price) OVER (ORDER BY created_at) AS running_total</span><span class="code-row">FROM orders</span><span class="code-row">ORDER BY created_at;</span></code></pre>
+
+<table>
+    <thead>
+        <tr><th>created_at</th><th>price</th><th>running_total</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>2026-01-05</td><td>1500</td><td>1500</td></tr>
+        <tr><td>2026-01-10</td><td>30000</td><td>31500</td></tr>
+        <tr><td>2026-01-15</td><td>75000</td><td>106500</td></tr>
+    </tbody>
+</table>
+
+<p>Именно так строят графики выручки, где каждая точка - сумма с начала периода.</p>
+
+<h2>LAG и LEAD</h2>
+
+<p>Позволяют заглянуть в предыдущую или следующую строку:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    created_at,</span><span class="code-row">    price,</span><span class="code-row">    LAG(price)  OVER (ORDER BY created_at) AS prev_price,</span><span class="code-row">    LEAD(price) OVER (ORDER BY created_at) AS next_price,</span><span class="code-row">    price - LAG(price) OVER (ORDER BY created_at) AS diff</span><span class="code-row">FROM orders</span><span class="code-row">ORDER BY created_at;</span></code></pre>
+
+<p>Так считают рост выручки месяц к месяцу и находят аномальные скачки.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Окно вычисляется после WHERE
+    </div>
+    <p>Нельзя фильтровать по результату оконной функции в <code>WHERE</code>: она вычисляется
+        позже. Оборачивайте запрос в подзапрос или CTE и фильтруйте снаружи - как в примере
+        с <code>rn = 1</code>.</p>
+</div>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>OVER ()</code>
+        <span>окно на всю таблицу</span>
+    </li>
+    <li>
+        <code>PARTITION BY</code>
+        <span>разбить на группы</span>
+    </li>
+    <li>
+        <code>ROW_NUMBER</code>
+        <span>уникальный номер</span>
+    </li>
+    <li>
+        <code>RANK / DENSE_RANK</code>
+        <span>рейтинг с повторами</span>
+    </li>
+    <li>
+        <code>LAG / LEAD</code>
+        <span>предыдущая / следующая строка</span>
+    </li>
+    <li>
+        <code>ORDER BY в OVER</code>
+        <span>накопительный итог</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Window function not allowed here»</strong>. Оконная функция стоит в
+        <code>WHERE</code>. Используйте подзапрос.</li>
+    <li><strong>ROW_NUMBER выдаёт не тот порядок</strong>. Проверьте <code>ORDER BY</code>
+        внутри <code>OVER</code>.</li>
+    <li><strong>Накопительный итог скачет</strong>. Даты с одинаковым временем дают
+        неопределённый порядок. Добавьте второй столбец в <code>ORDER BY</code>.</li>
+    <li><strong>Оконные функции недоступны</strong>. В очень старых версиях MySQL и SQLite
+        их не было. Обновите СУБД.</li>
+    <li><strong>«Отчёт по месяцам считает не то».</strong> Группировали по дате со временем: каждая секунда стала отдельной группой. Обрежьте дату до месяца.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Топ заказов клиента</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Для каждого клиента пронумеруйте заказы по убыванию цены и
+                выведите только два самых дорогих.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY price DESC)</code>
+                        в подзапросе, затем фильтр <code>WHERE rn &lt;= 2</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT customer_id, id, price, rn</span><span class="code-row">FROM (</span><span class="code-row">    SELECT</span><span class="code-row">        id,</span><span class="code-row">        customer_id,</span><span class="code-row">        price,</span><span class="code-row">        ROW_NUMBER() OVER (</span><span class="code-row">            PARTITION BY customer_id ORDER BY price DESC</span><span class="code-row">        ) AS rn</span><span class="code-row">    FROM orders</span><span class="code-row">) AS t</span><span class="code-row">WHERE rn &lt;= 2;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Доля в выручке</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Для каждого заказа выведите его цену и процент от общей суммы
+                всех заказов, округлённый до одного знака.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>ROUND(100.0 * price / SUM(price) OVER (), 1)</code>. Именно
+                        <code>100.0</code>, чтобы деление было дробным.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    id,</span><span class="code-row">    price,</span><span class="code-row">    ROUND(100.0 * price / SUM(price) OVER (), 1) AS percent</span><span class="code-row">FROM orders</span><span class="code-row">ORDER BY price DESC;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Динамика по месяцам</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Посчитайте выручку по месяцам и разницу с предыдущим месяцем
+                через <code>LAG</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сначала агрегируйте по месяцу в CTE, затем примените
+                        <code>LAG(revenue) OVER (ORDER BY month)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">WITH monthly AS (</span><span class="code-row">    SELECT</span><span class="code-row">        STRFTIME(&#x27;%Y-%m&#x27;, created_at) AS month,</span><span class="code-row">        SUM(price) AS revenue</span><span class="code-row">    FROM orders</span><span class="code-row">    GROUP BY month</span><span class="code-row">)</span><span class="code-row">SELECT</span><span class="code-row">    month,</span><span class="code-row">    revenue,</span><span class="code-row">    revenue - LAG(revenue) OVER (ORDER BY month) AS diff</span><span class="code-row">FROM monthly</span><span class="code-row">ORDER BY month;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Доля в накопительной выручке</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Для каждого заказа выведите накопительную сумму по дате и её долю от общей выручки в процентах.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Два окна: одно с <code>ORDER BY</code> для накопления, второе <code>OVER ()</code> для общего итога.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    id,</span><span class="code-row">    created_at,</span><span class="code-row">    price,</span><span class="code-row">    SUM(price) OVER (ORDER BY created_at, id) AS running_total,</span><span class="code-row">    ROUND(</span><span class="code-row">        100.0 * SUM(price) OVER (ORDER BY created_at, id)</span><span class="code-row">        / SUM(price) OVER (),</span><span class="code-row">        1</span><span class="code-row">    ) AS percent</span><span class="code-row">FROM orders</span><span class="code-row">WHERE status = &#x27;paid&#x27;</span><span class="code-row">ORDER BY created_at, id;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Оконные функции открыли новый уровень аналитики. Теперь вы знаете:</p>
+<ul>
+    <li>Чем окно отличается от группировки.</li>
+    <li>Как нумеровать строки и строить рейтинги.</li>
+    <li>Как считать накопительные итоги и доли.</li>
+    <li>Как сравнивать строку с предыдущей.</li>
+</ul>
+
+<p>Следующий урок - про CTE и представления: как разбить сложный запрос на понятные шаги
+    и сохранить его как объект базы.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-13.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-15.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

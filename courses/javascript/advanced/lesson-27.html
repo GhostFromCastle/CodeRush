@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финальный проект: TODO-приложение - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="advanced" data-lesson-id="lesson-27">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 27</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson active" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Финальный проект: TODO-приложение</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~45 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Это финальный урок курса. Мы соберём приложение целиком: от структуры файлов до
+    сохранения задач между перезагрузками. Здесь встретится всё, что мы прошли: DOM,
+    события, массивы, методы, модули, ошибки и хранилище.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Спроектируем структуру проекта и состояние.</li>
+    <li>Напишем рендер списка задач.</li>
+    <li>Добавим добавление, переключение и удаление.</li>
+    <li>Сделаем фильтры и сохранение в браузере.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Кухня: состояние - продукты, render - готовка, события - заказы официанта. Повар не бегает в зал, а работает с тем, что принесли.</p>
+</div>
+
+<h2>Что получится</h2>
+
+<p>Приложение «Список задач»: поле ввода, список, три фильтра и счётчик. Задачи сохраняются
+    в <code>localStorage</code>, поэтому после перезагрузки ничего не пропадает.</p>
+
+<h2>Структура проекта</h2>
+
+<pre class="code-numbered"><code><span class="code-row">todo/</span><span class="code-row">├── index.html</span><span class="code-row">├── css/</span><span class="code-row">│   └── style.css</span><span class="code-row">└── js/</span><span class="code-row">    ├── main.js       точка входа</span><span class="code-row">    ├── storage.js    чтение и запись в localStorage</span><span class="code-row">    └── render.js     отрисовка списка</span></code></pre>
+
+<p>Три файла - не «оверинжиниринг», а граница ответственности. Хранилище не знает про DOM,
+    отрисовка не знает, откуда взялись данные. Менять и тестировать такое приложение
+    заметно проще.</p>
+
+<h2>Шаг 1. Разметка</h2>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Мои задачи&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+    &lt;script type=&quot;module&quot; src=&quot;js/main.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main class=&quot;app&quot;&gt;
+        &lt;h1&gt;Мои задачи&lt;/h1&gt;
+
+        &lt;form class=&quot;todo-form&quot;&gt;
+            &lt;input
+                class=&quot;todo-input&quot;
+                type=&quot;text&quot;
+                placeholder=&quot;Что нужно сделать?&quot;
+                autocomplete=&quot;off&quot;
+                required
+            &gt;
+            &lt;button type=&quot;submit&quot; class=&quot;todo-add&quot;&gt;Добавить&lt;/button&gt;
+        &lt;/form&gt;
+
+        &lt;div class=&quot;todo-filters&quot;&gt;
+            &lt;button type=&quot;button&quot; data-filter=&quot;all&quot; class=&quot;is-active&quot;&gt;Все&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-filter=&quot;active&quot;&gt;Активные&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-filter=&quot;done&quot;&gt;Выполненные&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;ul class=&quot;todo-list&quot;&gt;&lt;/ul&gt;
+        &lt;p class=&quot;todo-empty&quot;&gt;Пока пусто. Добавьте первую задачу.&lt;/p&gt;
+        &lt;p class=&quot;todo-summary&quot;&gt;&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+
+<p>Обратите внимание: в разметке нет ни одной задачи. Список строится полностью из
+    JavaScript - это нормально для динамического интерфейса.</p>
+
+<h2>Шаг 2. Хранилище</h2>
+
+<pre class="code-numbered"><code><span class="code-row">// js/storage.js</span><span class="code-row">const KEY = &quot;coderush-todos&quot;;</span><span class="code-row"></span><span class="code-row">export function loadTodos() {</span><span class="code-row">    try {</span><span class="code-row">        const raw = localStorage.getItem(KEY);</span><span class="code-row">        if (!raw) return [];</span><span class="code-row"></span><span class="code-row">        const parsed = JSON.parse(raw);</span><span class="code-row">        return Array.isArray(parsed) ? parsed : [];</span><span class="code-row">    } catch (error) {</span><span class="code-row">        console.warn(&quot;Не удалось прочитать задачи:&quot;, error.message);</span><span class="code-row">        return [];</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">export function saveTodos(todos) {</span><span class="code-row">    try {</span><span class="code-row">        localStorage.setItem(KEY, JSON.stringify(todos));</span><span class="code-row">    } catch (error) {</span><span class="code-row">        console.warn(&quot;Не удалось сохранить задачи:&quot;, error.message);</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+<p>Два уровня защиты: от повреждённого JSON и от переполненного хранилища. Приложение не
+    должно падать из-за проблем с <code>localStorage</code>.</p>
+
+<h2>Шаг 3. Состояние</h2>
+
+<pre class="code-numbered"><code><span class="code-row">// js/main.js</span><span class="code-row">import { loadTodos, saveTodos } from &quot;./storage.js&quot;;</span><span class="code-row"></span><span class="code-row">const state = {</span><span class="code-row">    todos: loadTodos(),</span><span class="code-row">    filter: &quot;all&quot;</span><span class="code-row">};</span></code></pre>
+
+<p>Всё приложение работает с этим объектом. Никаких «скрытых» данных в DOM - только здесь.</p>
+
+<h2>Шаг 4. Рендер</h2>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>// js/render.js
+export function renderTodos(elements, todos, filter) {
+    const visible = todos.filter((todo) =&gt; {
+        if (filter === &quot;active&quot;) return !todo.done;
+        if (filter === &quot;done&quot;) return todo.done;
+        return true;
+    });
+
+    elements.list.innerHTML = &quot;&quot;;
+
+    visible.forEach((todo) =&gt; {
+        const item = document.createElement(&quot;li&quot;);
+        item.className = &quot;todo-item&quot;;
+        item.classList.toggle(&quot;is-done&quot;, todo.done);
+        item.dataset.id = todo.id;
+
+        const label = document.createElement(&quot;label&quot;);
+        label.className = &quot;todo-label&quot;;
+
+        const checkbox = document.createElement(&quot;input&quot;);
+        checkbox.type = &quot;checkbox&quot;;
+        checkbox.checked = todo.done;
+        checkbox.className = &quot;todo-toggle&quot;;
+
+        const text = document.createElement(&quot;span&quot;);
+        text.className = &quot;todo-text&quot;;
+        text.textContent = todo.text;
+
+        label.append(checkbox, text);
+
+        const remove = document.createElement(&quot;button&quot;);
+        remove.type = &quot;button&quot;;
+        remove.className = &quot;todo-remove&quot;;
+        remove.textContent = &quot;×&quot;;
+        remove.setAttribute(&quot;aria-label&quot;, &quot;Удалить задачу&quot;);
+
+        item.append(label, remove);
+        elements.list.append(item);
+    });
+
+    elements.empty.hidden = visible.length &gt; 0;
+    elements.summary.textContent = summary(todos);
+}
+
+function summary(todos) {
+    const done = todos.filter((todo) =&gt; todo.done).length;
+    return `Выполнено ${done} из ${todos.length}`;
+}</code></pre>
+</div>
+
+<p>Обратите внимание: текст задачи вставляется через <code>textContent</code>, а не
+    <code>innerHTML</code>. Пользователь может ввести <code>&lt;script&gt;</code> - и это
+    останется текстом, а не кодом.</p>
+
+<h2>Шаг 5. Действия</h2>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>// js/main.js
+function addTodo(text) {
+    const todo = {
+        id: crypto.randomUUID(),
+        text: text.trim(),
+        done: false
+    };
+
+    state.todos = [...state.todos, todo];
+    update();
+}
+
+function toggleTodo(id) {
+    state.todos = state.todos.map((todo) =&gt;
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+    );
+    update();
+}
+
+function removeTodo(id) {
+    state.todos = state.todos.filter((todo) =&gt; todo.id !== id);
+    update();
+}
+
+function update() {
+    saveTodos(state.todos);
+    render();
+}</code></pre>
+</div>
+
+<p>Все три функции меняют состояние <strong>неизменяемо</strong>: создают новые массивы и
+    объекты. Ни одна не трогает DOM напрямую - этим занимается <code>render</code>.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        crypto.randomUUID
+    </div>
+    <p>Современный способ получить уникальный идентификатор. Он встроен в браузер и не
+        требует библиотек. В старых окружениях используют счётчик или
+        <code>Date.now()</code> - но с ростом приложения коллизии становятся реальной
+        проблемой.</p>
+</div>
+
+<h2>Шаг 6. Связываем всё</h2>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>// js/main.js
+import { loadTodos, saveTodos } from &quot;./storage.js&quot;;
+import { renderTodos } from &quot;./render.js&quot;;
+
+const state = {
+    todos: loadTodos(),
+    filter: &quot;all&quot;
+};
+
+const elements = {
+    form: document.querySelector(&quot;.todo-form&quot;),
+    input: document.querySelector(&quot;.todo-input&quot;),
+    list: document.querySelector(&quot;.todo-list&quot;),
+    empty: document.querySelector(&quot;.todo-empty&quot;),
+    summary: document.querySelector(&quot;.todo-summary&quot;),
+    filters: document.querySelector(&quot;.todo-filters&quot;)
+};
+
+function render() {
+    renderTodos(elements, state.todos, state.filter);
+}
+
+function update() {
+    saveTodos(state.todos);
+    render();
+}
+
+function addTodo(text) {
+    const todo = {
+        id: crypto.randomUUID(),
+        text: text.trim(),
+        done: false
+    };
+
+    state.todos = [...state.todos, todo];
+    update();
+}
+
+function toggleTodo(id) {
+    state.todos = state.todos.map((todo) =&gt;
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+    );
+    update();
+}
+
+function removeTodo(id) {
+    state.todos = state.todos.filter((todo) =&gt; todo.id !== id);
+    update();
+}
+
+elements.form.addEventListener(&quot;submit&quot;, (event) =&gt; {
+    event.preventDefault();
+
+    const text = elements.input.value.trim();
+    if (!text) return;
+
+    addTodo(text);
+    elements.form.reset();
+    elements.input.focus();
+});
+
+elements.list.addEventListener(&quot;click&quot;, (event) =&gt; {
+    const item = event.target.closest(&quot;.todo-item&quot;);
+    if (!item) return;
+
+    const id = item.dataset.id;
+
+    if (event.target.classList.contains(&quot;todo-toggle&quot;)) {
+        toggleTodo(id);
+    }
+
+    if (event.target.classList.contains(&quot;todo-remove&quot;)) {
+        removeTodo(id);
+    }
+});
+
+elements.filters.addEventListener(&quot;click&quot;, (event) =&gt; {
+    const button = event.target.closest(&quot;[data-filter]&quot;);
+    if (!button) return;
+
+    state.filter = button.dataset.filter;
+
+    elements.filters.querySelectorAll(&quot;[data-filter]&quot;).forEach((btn) =&gt; {
+        btn.classList.toggle(&quot;is-active&quot;, btn === button);
+    });
+
+    render();
+});
+
+render();</code></pre>
+</div>
+
+<p>Разберём ключевые решения:</p>
+
+<ul>
+    <li><strong>Один обработчик на список.</strong> Делегирование: задачи добавляются и
+        удаляются, но обработчик навешен один раз и работает для всех.</li>
+    <li><strong><code>closest</code></strong> защищает от клика по вложенному элементу.</li>
+    <li><strong><code>dataset.id</code></strong> связывает DOM-элемент с записью в состоянии.</li>
+    <li><strong><code>event.preventDefault()</code></strong> не даёт форме перезагрузить
+        страницу.</li>
+    <li><strong>Финальный <code>render()</code></strong> отрисовывает сохранённые задачи при
+        загрузке.</li>
+</ul>
+
+<h2>Шаг 7. Стили</h2>
+
+<p>Минимальный CSS, чтобы приложение выглядело как приложение, а не как документ:</p>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>/* css/style.css */
+body {
+    font-family: system-ui, sans-serif;
+    background: #f5f5f7;
+    margin: 0;
+    padding: 40px 16px;
+    color: #1c1c1e;
+}
+
+.app {
+    max-width: 520px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.todo-form {
+    display: flex;
+    gap: 8px;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #d1d1d6;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.todo-item.is-done .todo-text {
+    text-decoration: line-through;
+    color: #8e8e93;
+}
+
+.todo-empty {
+    color: #8e8e93;
+    text-align: center;
+}
+
+.todo-summary {
+    font-size: 13px;
+    color: #8e8e93;
+}
+
+[hidden] {
+    display: none !important;
+}</code></pre>
+</div>
+
+<h2>Как проверить</h2>
+
+<p>Из-за ES-модулей открыть <code>index.html</code> двойным щелчком не получится: браузер
+    заблокирует импорты на <code>file://</code>. Запустите локальный сервер из папки
+    проекта:</p>
+
+<pre class="code-numbered"><code><span class="code-row">python -m http.server 8000</span></code></pre>
+
+<p>И откройте <code>http://localhost:8000</code>. Проверьте сценарий:</p>
+
+<ol>
+    <li>Добавьте три задачи.</li>
+    <li>Отметьте одну выполненной.</li>
+    <li>Переключите фильтры - список должен меняться.</li>
+    <li>Перезагрузите страницу - задачи и статусы на месте.</li>
+    <li>Удалите задачу - счётчик обновился.</li>
+</ol>
+
+<h2>Что можно улучшить</h2>
+
+<p>Проект рабочий, но это только начало. Вот естественные следующие шаги:</p>
+
+<ul>
+    <li><strong>Редактирование.</strong> Двойной клик по тексту - и он превращается в поле
+        ввода.</li>
+    <li><strong>Сортировка.</strong> Новые задачи сверху или выполненные в конце.</li>
+    <li><strong>Массовые действия.</strong> «Очистить выполненные» одной кнопкой.</li>
+    <li><strong>Клавиатура.</strong> Escape отменяет редактирование, Enter сохраняет.</li>
+    <li><strong>Доступность.</strong> <code>aria-label</code>, работа с экранным
+        диктором, видимый фокус.</li>
+    <li><strong>Синхронизация.</strong> Отправка задач на сервер через <code>fetch</code>.</li>
+</ul>
+
+<h2>Куда двигаться дальше</h2>
+
+<p>Вы прошли путь от <code>console.log</code> до полноценного приложения. Что изучать
+    следующим:</p>
+
+<ul>
+    <li><strong>TypeScript.</strong> Типы поверх JavaScript. Ловит половину ошибок ещё до
+        запуска кода и обязателен в большинстве команд.</li>
+    <li><strong>React, Vue или Svelte.</strong> Фреймворки, которые автоматизируют то, что
+        вы делали руками: рендер из состояния и обновление DOM.</li>
+    <li><strong>Node.js.</strong> Тот же язык на сервере: API, базы данных, авторизация.</li>
+    <li><strong>Тестирование.</strong> Vitest или Jest - чтобы изменения не ломали уже
+        работающее.</li>
+    <li><strong>Инструменты.</strong> Git, npm, сборщики (Vite), линтеры (ESLint) и
+        форматтеры (Prettier).</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Главный совет
+    </div>
+    <p>Не пытайтесь выучить всё сразу. Возьмите одно приложение и доведите его до конца:
+        с обработкой ошибок, пустыми состояниями и понятным интерфейсом. Один законченный
+        проект учит больше, чем десять начатых курсов.</p>
+</div>
+
+<h2>Шпаргалка</h2>
+
+<p>Всё приложение держится на пяти понятиях:</p>
+
+<ul class="operator-list">
+    <li>
+        <code>state</code>
+        <span>единственный источник данных</span>
+    </li>
+    <li>
+        <code>render()</code>
+        <span>рисует интерфейс из состояния</span>
+    </li>
+    <li>
+        <code>update()</code>
+        <span>сохраняет и перерисовывает</span>
+    </li>
+    <li>
+        <code>localStorage</code>
+        <span>переживает перезагрузку</span>
+    </li>
+    <li>
+        <code>closest</code>
+        <span>делегирование событий</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«После перезагрузки пусто».</strong> Забыли вызвать <code>render()</code> при старте или '
+        'не сохранили состояние в <code>localStorage</code>.</li>
+    <li><strong>«Задача удаляется, но возвращается».</strong> Изменение applied к копии массива, а не '
+        'к <code>state.todos</code>. Проверьте, что результат <code>filter</code> присвоен обратно.</li>
+    <li><strong>«Клик по кнопке удаляет не ту задачу».</strong> <code>dataset.id</code> читается '
+        'у соседнего элемента: ищите <code>closest(".todo-item")</code> от <code>event.target</code>.</li>
+    <li><strong>«Счётчик не совпадает со списком».</strong> Считаете по DOM, а не по состоянию. '
+        'Любые цифры должны выводиться из <code>state.todos</code>.</li>
+    <li><strong>«Задачи пропали после смены браузера».</strong> <code>localStorage</code> привязан '
+        'к конкретному браузеру и устройству. Для синхронизации нужен сервер.</li>
+    <li><strong>После перезагрузки всё пропало.</strong> Состояние жило только в памяти. Любое приложение, которое обещает «сохранить», должно писать данные в хранилище или на сервер - иначе закрытая вкладка стирает работу.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Очистить выполненные</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Добавьте кнопку «Очистить выполненные», которая удаляет все
+                задачи с <code>done: true</code>. Кнопка должна быть неактивна, если таких
+                задач нет.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Отфильтруйте состояние: <code>state.todos.filter(t =&gt; !t.done)</code>.
+                        Для неактивного состояния используйте свойство
+                        <code>disabled</code> у кнопки, обновляя его в <code>render()</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function clearCompleted() {</span><span class="code-row">    state.todos = state.todos.filter((todo) =&gt; !todo.done);</span><span class="code-row">    update();</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">// в render():</span><span class="code-row">const hasDone = state.todos.some((todo) =&gt; todo.done);</span><span class="code-row">elements.clearBtn.disabled = !hasDone;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Редактирование по двойному клику</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">При двойном клике по тексту задачи замените его на поле
+                ввода. Enter сохраняет новое значение, Escape отменяет изменения.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Слушайте <code>dblclick</code> на списке через делегирование.
+                        Замените <code>span</code> на <code>input</code>, сохраните в
+                        <code>keydown</code> и не забудьте вызвать <code>update()</code>,
+                        чтобы состояние и хранилище обновились.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>function editTodo(id, text) {
+    state.todos = state.todos.map((todo) =&gt;
+        todo.id === id ? { ...todo, text } : todo
+    );
+    update();
+}
+
+elements.list.addEventListener(&quot;dblclick&quot;, (event) =&gt; {
+    const textEl = event.target.closest(&quot;.todo-text&quot;);
+    if (!textEl) return;
+
+    const item = textEl.closest(&quot;.todo-item&quot;);
+    const input = document.createElement(&quot;input&quot;);
+    input.value = textEl.textContent;
+
+    textEl.replaceWith(input);
+    input.focus();
+
+    input.addEventListener(&quot;keydown&quot;, (event) =&gt; {
+        if (event.key === &quot;Enter&quot;) {
+            editTodo(item.dataset.id, input.value.trim() || textEl.textContent);
+        }
+        if (event.key === &quot;Enter&quot; || event.key === &quot;Escape&quot;) {
+            render();
+        }
+    });
+});</code></pre>
+</div>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Свой проект</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Возьмите любую идею - трекер расходов, список книг, таймер
+                Помодоро - и сделайте её по той же схеме: состояние, рендер, действия,
+                сохранение. Главное требование: приложение должно работать после перезагрузки
+                страницы.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Начните с трёх вопросов: какие данные я храню, какие действия пользователь
+                        может совершить, как выглядит пустое состояние. Дальше код пишется почти
+                        сам.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Универсального решения здесь нет - и это правильно. Ориентируйтесь на
+                        структуру TODO-приложения: отдельный модуль хранилища, отдельный рендер,
+                        единое состояние. Если через неделю вы сами поймёте свой код - значит,
+                        получилось.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Счётчик в заголовке</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выводите в <code>document.title</code> количество активных задач: «Мои задачи (3)». Обновляйте заголовок при каждом изменении списка.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Вызовите обновление внутри <code>render()</code> - там уже есть актуальное состояние.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">function updateTitle(todos) {</span><span class="code-row">    const active = todos.filter((todo) =&gt; !todo.done).length;</span><span class="code-row">    document.title = `Мои задачи (${active})`;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">// вызовите внутри render()</span><span class="code-row">updateTitle(state.todos);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали</h2>
+
+<p>Финальный проект собрал воедино весь курс:</p>
+<ul>
+    <li>Структура файлов и ES-модули.</li>
+    <li>Единое состояние и неизменяемые обновления.</li>
+    <li>Рендер из состояния и делегирование событий.</li>
+    <li>Безопасная работа с пользовательским вводом.</li>
+    <li>Сохранение данных в <code>localStorage</code>.</li>
+</ul>
+
+<p>Это не учебный пример «на двадцать строк» - по такой схеме устроены реальные интерфейсы,
+    просто в больших проектах её автоматизируют фреймворки. Понимание того, что происходит
+    под капотом, отличает разработчика, который умеет чинить чужой код, от того, кто умеет
+    только повторять туториалы.</p>
+
+<p>Спасибо, что прошли курс до конца. Дальше - только практика: берите идеи, ломайте,
+    переписывайте и снова запускайте. Именно так и растёт уровень.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-26.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../index.html" class="btn-secondary">
+                        К списку курсов <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

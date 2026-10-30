@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Безопасность и производительность - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="advanced" data-lesson-id="lesson-26">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 26</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson active" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Безопасность и производительность</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~35 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Фронтенд-разработчик отвечает не только за красоту, но и за безопасность пользователя.
+    Большинство атак на веб-приложения начинаются с доверия к пользовательскому вводу.
+    В этом уроке - базовый минимум, который обязан знать любой разработчик.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём XSS - самую частую уязвимость интерфейсов.</li>
+    <li>Научимся безопасно вставлять пользовательские данные.</li>
+    <li>Поймём, что такое CSP и почему HTTPS обязателен.</li>
+    <li>Разберём производительность: debounce, throttle, ленивую загрузку.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Дом: замок на двери (CSP), ключи не под ковриком (секреты в localStorage), гостей проверяем на входе (валидация).</p>
+</div>
+
+<h2>XSS: внедрение кода</h2>
+
+<p>XSS (Cross-Site Scripting) - ситуация, когда злоумышленник заставляет страницу выполнить
+    свой JavaScript. Самый простой путь - <code>innerHTML</code> с пользовательским текстом:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const input = document.querySelector(&quot;.comment&quot;);</span><span class="code-row"></span><span class="code-row">// ОПАСНО</span><span class="code-row">commentBox.innerHTML = input.value;</span></code></pre>
+
+<p>Если пользователь введёт <code>&lt;img src=x onerror="alert(document.cookie)"&gt;</code>,
+    код выполнится в браузере всех, кто откроет страницу. Так крадут токены, подменяют
+    содержимое и уводят пользователей на фальшивые формы.</p>
+
+<h2>Как защищаться</h2>
+
+<p><strong>1. Используйте <code>textContent</code> вместо <code>innerHTML</code>.</strong>
+    Текст останется текстом, теги не выполнятся:</p>
+
+<pre class="code-numbered"><code><span class="code-row">commentBox.textContent = input.value; // безопасно</span></code></pre>
+
+<p><strong>2. Не склеивайте HTML из данных.</strong> Если нужна разметка - создавайте
+    элементы и задавайте свойства:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const link = document.createElement(&quot;a&quot;);</span><span class="code-row">link.href = url;</span><span class="code-row">link.textContent = title;</span></code></pre>
+
+<p><strong>3. Проверяйте адреса.</strong> Ссылка с <code>javascript:</code> в
+    <code>href</code> тоже выполнит код:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function isSafeUrl(value) {</span><span class="code-row">    try {</span><span class="code-row">        const url = new URL(value, location.origin);</span><span class="code-row">        return url.protocol === &quot;http:&quot; || url.protocol === &quot;https:&quot;;</span><span class="code-row">    } catch {</span><span class="code-row">        return false;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+<p><strong>4. Санитизация.</strong> Если HTML всё-таки нужен (редактор, комментарии
+    с разметкой), используйте проверенную библиотеку вроде DOMPurify. Писать свой
+    «чистильщик» регулярками нельзя: обход находится за пару минут.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Никогда не доверяйте клиенту
+    </div>
+    <p>Любая проверка в браузере - только удобство. Пользователь может открыть DevTools,
+        изменить данные и отправить запрос напрямую. Валидация, проверка прав и лимиты
+        обязаны быть на сервере.</p>
+</div>
+
+<h2>CSP</h2>
+
+<p>Content Security Policy - заголовок, который запрещает выполнять сторонние скрипты.
+    Даже если XSS-вставка произошла, браузер её заблокирует:</p>
+
+<pre class="code-numbered"><code><span class="code-row">Content-Security-Policy: default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; img-src &#x27;self&#x27; https:;</span></code></pre>
+
+<p>Настраивается на сервере или в мета-теге. Начинать стоит с отчётов о нарушениях,
+    а не с жёсткого запрета всего - иначе сломается половина сайта.</p>
+
+<h2>Что ещё важно</h2>
+
+<ul>
+    <li><strong>HTTPS.</strong> Без него данные передаются открытым текстом, а браузер
+        помечает сайт как небезопасный.</li>
+    <li><strong>Секреты не в коде.</strong> Токены и ключи API не хранят в JavaScript:
+        любой посетитель увидит их в исходниках.</li>
+    <li><strong><code>localStorage</code> не для токенов.</strong> Он доступен любому
+        скрипту на странице. Для сессий используют <code>HttpOnly</code>-cookie.</li>
+    <li><strong>Не используйте <code>eval</code>.</strong> Он выполняет произвольный код
+        и ломает оптимизации движка.</li>
+    <li><strong>Обновляйте зависимости.</strong> <code>npm audit</code> показывает известные
+        уязвимости в пакетах.</li>
+</ul>
+
+<h2>Производительность: с чего начать</h2>
+
+<p>Оптимизировать нужно то, что измерено. Откройте DevTools → Lighthouse и посмотрите
+    на реальные цифры. Обычно самые большие проблемы - картинки, блокирующий JS и лишние
+    перерисовки.</p>
+
+<h2>debounce и throttle</h2>
+
+<p>Два приёма, которые экономият запросы и вычисления:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function debounce(fn, delay = 300) {</span><span class="code-row">    let timerId;</span><span class="code-row">    return (...args) =&gt; {</span><span class="code-row">        clearTimeout(timerId);</span><span class="code-row">        timerId = setTimeout(() =&gt; fn(...args), delay);</span><span class="code-row">    };</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">function throttle(fn, limit = 200) {</span><span class="code-row">    let waiting = false;</span><span class="code-row">    return (...args) =&gt; {</span><span class="code-row">        if (waiting) return;</span><span class="code-row">        fn(...args);</span><span class="code-row">        waiting = true;</span><span class="code-row">        setTimeout(() =&gt; { waiting = false; }, limit);</span><span class="code-row">    };</span><span class="code-row">}</span></code></pre>
+
+<p>Разница на пальцах:</p>
+
+<ul>
+    <li><strong>debounce</strong> - «подожди, пока пользователь закончит». Поиск с
+        автодополнением, проверка имени.</li>
+    <li><strong>throttle</strong> - «не чаще одного раза в N мс». Прокрутка, движение мыши,
+        изменение размера окна.</li>
+</ul>
+
+<pre class="code-numbered"><code><span class="code-row">const search = document.querySelector(&quot;#search&quot;);</span><span class="code-row"></span><span class="code-row">search.addEventListener(&quot;input&quot;, debounce((event) =&gt; {</span><span class="code-row">    console.log(&quot;Ищем:&quot;, event.target.value);</span><span class="code-row">}, 400));</span></code></pre>
+
+<h2>Ленивая загрузка</h2>
+
+<p>Браузер умеет откладывать загрузку изображений без библиотек:</p>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;img src=&quot;photo.jpg&quot; loading=&quot;lazy&quot; width=&quot;600&quot; height=&quot;400&quot; alt=&quot;...&quot;&gt;</span></code></pre>
+
+<p>Атрибуты <code>width</code> и <code>height</code> обязательны: они резервируют место
+    и не дают странице «прыгать» при загрузке. Это называется layout shift.</p>
+
+<h2>Батчинг DOM-операций</h2>
+
+<p>Каждое изменение DOM может вызвать пересчёт layout. Дешевле собрать всё и вставить
+    один раз:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const fragment = document.createDocumentFragment();</span><span class="code-row"></span><span class="code-row">items.forEach((item) =&gt; {</span><span class="code-row">    const li = document.createElement(&quot;li&quot;);</span><span class="code-row">    li.textContent = item;</span><span class="code-row">    fragment.append(li);</span><span class="code-row">});</span><span class="code-row"></span><span class="code-row">list.append(fragment); // одна вставка вместо сотни</span></code></pre>
+
+<p>Ещё лучше - вообще не трогать DOM в цикле: собрать HTML-строку из безопасных данных
+    и вставить один раз, либо использовать виртуализацию для больших списков.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Правило трёх секунд
+    </div>
+    <p>Пользователь уходит, если страница не показала контент за несколько секунд.
+        Поэтому критичный CSS инлайнят, шрифты подключают с <code>font-display: swap</code>,
+        а тяжёлые скрипты - с <code>defer</code>. Сначала покажите хоть что-то, потом
+        догружайте остальное.</p>
+</div>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>textContent</code>
+        <span>безопасная вставка текста</span>
+    </li>
+    <li>
+        <code>DOMPurify</code>
+        <span>санитизация HTML</span>
+    </li>
+    <li>
+        <code>CSP</code>
+        <span>политика загрузки ресурсов</span>
+    </li>
+    <li>
+        <code>debounce</code>
+        <span>после паузы</span>
+    </li>
+    <li>
+        <code>throttle</code>
+        <span>не чаще раза в N мс</span>
+    </li>
+    <li>
+        <code>loading="lazy"</code>
+        <span>отложенная загрузка</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Пользовательский текст сломал вёрстку</strong>. Используется
+        <code>innerHTML</code>. Замените на <code>textContent</code>.</li>
+    <li><strong>После включения CSP всё сломалось</strong>. Запрещены инлайновые скрипты
+        и стили. Выносите их в файлы или добавляйте nonce.</li>
+    <li><strong>Поиск отправляет запрос на каждую букву</strong>. Нужен
+        <code>debounce</code>.</li>
+    <li><strong>Страница дёргается при загрузке картинок</strong>. Не указаны
+        <code>width</code> и <code>height</code>.</li>
+    <li><strong>Lighthouse ругается на неиспользуемый JS</strong>. Подключайте модули
+        по требованию, используйте динамический <code>import()</code>.</li>
+    <li><strong>Сайт «взломали» через комментарий.</strong> Пользовательский текст вставили через <code>innerHTML</code>, и чужой скрипт выполнился у всех посетителей. Это XSS, и лечится он <code>textContent</code> или санитизацией.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Безопасный комментарий</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Есть поле ввода и блок для комментария. Сделайте так,
+                чтобы текст с тегами отображался как текст, а не выполнялся.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Используйте <code>textContent</code>. Проверьте на строке
+                        <code>&lt;img src=x onerror=alert(1)&gt;</code> - она должна
+                        появиться как текст.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const input = document.querySelector(&quot;.comment-input&quot;);</span><span class="code-row">const box = document.querySelector(&quot;.comment-box&quot;);</span><span class="code-row"></span><span class="code-row">document.querySelector(&quot;.send&quot;).addEventListener(&quot;click&quot;, () =&gt; {</span><span class="code-row">    box.textContent = input.value;</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Поиск с задержкой</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сделайте поле поиска, которое выводит в консоль введённый
+                текст не чаще чем через 400 мс после последнего нажатия.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Используйте готовую функцию <code>debounce</code> из урока: она
+                        очищает предыдущий таймер и запускает новый.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function debounce(fn, delay = 400) {</span><span class="code-row">    let timerId;</span><span class="code-row">    return (...args) =&gt; {</span><span class="code-row">        clearTimeout(timerId);</span><span class="code-row">        timerId = setTimeout(() =&gt; fn(...args), delay);</span><span class="code-row">    };</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const search = document.querySelector(&quot;#search&quot;);</span><span class="code-row"></span><span class="code-row">search.addEventListener(&quot;input&quot;, debounce((event) =&gt; {</span><span class="code-row">    console.log(&quot;Запрос:&quot;, event.target.value);</span><span class="code-row">}, 400));</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Аудит страницы</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Откройте свой проект, запустите Lighthouse в режиме
+                Performance и выпишите три самые большие проблемы. Исправьте хотя бы одну -
+                например, добавьте <code>loading="lazy"</code> и размеры изображениям.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Lighthouse находится во вкладке Lighthouse в DevTools. Запускайте
+                        в режиме инкогнито, чтобы расширения не искажали результат.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Универсального ответа нет: у каждого проекта свои узкие места.
+                        Ориентируйтесь на отчёт и правьте по одной проблеме за раз,
+                        замеряя результат после каждого изменения.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Экранирование</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>escapeHtml(text)</code>, которая заменяет <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code> и кавычки на HTML-сущности.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Воспользуйтесь <code>replace</code> с регуляркой и словарём замен.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">function escapeHtml(text) {</span><span class="code-row">    const map = { &quot;&amp;&quot;: &quot;&amp;amp;&quot;, &quot;&lt;&quot;: &quot;&amp;lt;&quot;, &quot;&gt;&quot;: &quot;&amp;gt;&quot;, &#x27;&quot;&#x27;: &quot;&amp;quot;&quot; };</span><span class="code-row">    return String(text).replace(/[&amp;&lt;&gt;&quot;]/g, (ch) =&gt; map[ch]);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(escapeHtml(&quot;&lt;b&gt;привет&lt;/b&gt;&quot;)); // &amp;lt;b&amp;gt;привет&amp;lt;/b&amp;gt;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы закрыли важный пробел. Теперь вы знаете:</p>
+<ul>
+    <li>Как работает XSS и почему <code>textContent</code> безопаснее.</li>
+    <li>Что такое CSP и почему валидация на клиенте - не защита.</li>
+    <li>Как debounce и throttle экономят ресурсы.</li>
+    <li>Какие приёмы ускоряют загрузку и отрисовку.</li>
+</ul>
+
+<p>Остался финальный проект. Соберём TODO-приложение целиком: структура, состояние, рендер,
+    события, фильтры и сохранение. Это будет ваш первый проект без «учебных» упрощений.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-25.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-27.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

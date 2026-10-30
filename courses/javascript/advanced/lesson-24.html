@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анимации и requestAnimationFrame - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="advanced" data-lesson-id="lesson-24">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Глубокое погружение</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 24</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-24.html" class="sidebar-lesson active" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Анимации и requestAnimationFrame</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-rocket"></i> Продвинутый уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Анимация - это не украшение, а способ объяснить интерфейс: показать, откуда пришло окно,
+    подтвердить нажатие, провести взгляд к важному. В браузере есть три инструмента:
+    CSS-переходы, CSS-анимации и JavaScript с <code>requestAnimationFrame</code>.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Поймём, когда хватает CSS, а когда нужен JavaScript.</li>
+    <li>Освоим <code>requestAnimationFrame</code> и время кадра.</li>
+    <li>Сделаем движение, не зависящее от частоты обновления экрана.</li>
+    <li>Познакомимся с Web Animations API и доступностью.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Киноплёнка: кадры сменяют друг друга через равные промежутки времени. Если шаг разный, движение начинает дёргаться.</p>
+</div>
+
+<h2>Три способа анимировать</h2>
+
+<p><strong>CSS-переход</strong> - когда нужно плавно изменить свойство по событию:</p>
+
+<pre class="code-numbered"><code><span class="code-row">.card {</span><span class="code-row">    transition: transform 0.2s ease;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">.card:hover {</span><span class="code-row">    transform: translateY(-4px);</span><span class="code-row">}</span></code></pre>
+
+<p><strong>CSS-анимация</strong> - когда есть последовательность состояний:</p>
+
+<pre class="code-numbered"><code><span class="code-row">@keyframes pulse {</span><span class="code-row">    0%   { opacity: 1; }</span><span class="code-row">    50%  { opacity: 0.4; }</span><span class="code-row">    100% { opacity: 1; }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">.skeleton {</span><span class="code-row">    animation: pulse 1.2s infinite;</span><span class="code-row">}</span></code></pre>
+
+<p><strong>JavaScript</strong> нужен, когда анимация зависит от данных: счётчик, прогресс
+    загрузки, движение за курсором, физика, прокрутка.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Правило выбора
+    </div>
+    <p>Если анимацию можно описать CSS - описывайте CSS. Браузер выполняет такие анимации
+        в отдельном потоке, и они не тормозят, даже когда JavaScript занят. JS берите только
+        там, где нужны вычисления на каждом кадре.</p>
+</div>
+
+<h2>Почему не setInterval</h2>
+
+<p>Первая идея новичка - двигать элемент таймером:</p>
+
+<pre class="code-numbered"><code><span class="code-row">// так делать не надо</span><span class="code-row">setInterval(() =&gt; {</span><span class="code-row">    position += 2;</span><span class="code-row">    box.style.transform = `translateX(${position}px)`;</span><span class="code-row">}, 16);</span></code></pre>
+
+<p>Проблемы: таймер не синхронизирован с экраном, кадры могут пропускаться, а на вкладке
+    в фоне он продолжает работать. Правильный инструмент - <code>requestAnimationFrame</code>.</p>
+
+<h2>requestAnimationFrame</h2>
+
+<pre class="code-numbered"><code><span class="code-row">function animate(timestamp) {</span><span class="code-row">    // timestamp - время с момента открытия страницы, в миллисекундах</span><span class="code-row">    console.log(timestamp);</span><span class="code-row">    requestAnimationFrame(animate);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">requestAnimationFrame(animate);</span></code></pre>
+
+<p>Браузер вызывает функцию перед перерисовкой кадра - обычно 60 раз в секунду, но на
+    мониторах 120 Гц чаще. Поэтому двигать объект «на 2 пикселя за кадр» неправильно:
+    на разных экранах скорость будет разной.</p>
+
+<h2>Время кадра</h2>
+
+<p>Считать нужно в единицах времени, а не в кадрах. Разница между кадрами называется
+    <em>delta</em>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let position = 0;</span><span class="code-row">let lastTime = null;</span><span class="code-row">const speed = 120; // пикселей в секунду</span><span class="code-row"></span><span class="code-row">function move(timestamp) {</span><span class="code-row">    if (lastTime === null) lastTime = timestamp;</span><span class="code-row"></span><span class="code-row">    const delta = (timestamp - lastTime) / 1000; // секунды</span><span class="code-row">    lastTime = timestamp;</span><span class="code-row"></span><span class="code-row">    position += speed * delta;</span><span class="code-row"></span><span class="code-row">    box.style.transform = `translateX(${position}px)`;</span><span class="code-row"></span><span class="code-row">    if (position &lt; 400) {</span><span class="code-row">        requestAnimationFrame(move);</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">requestAnimationFrame(move);</span></code></pre>
+
+<p>Теперь скорость одинакова и на 60 Гц, и на 120 Гц, и при просадках производительности.</p>
+
+<h2>Плавное появление: easing</h2>
+
+<p>Линейное движение выглядит механически. Функция плавности делает старт и финиш мягче:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function easeOutCubic(t) {</span><span class="code-row">    return 1 - Math.pow(1 - t, 3);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">function animateOpacity(element) {</span><span class="code-row">    const duration = 400;</span><span class="code-row">    const start = performance.now();</span><span class="code-row"></span><span class="code-row">    function frame(now) {</span><span class="code-row">        const progress = Math.min((now - start) / duration, 1);</span><span class="code-row">        element.style.opacity = easeOutCubic(progress);</span><span class="code-row"></span><span class="code-row">        if (progress &lt; 1) requestAnimationFrame(frame);</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    requestAnimationFrame(frame);</span><span class="code-row">}</span></code></pre>
+
+<p><code>progress</code> всегда от 0 до 1. Функция плавности превращает его в другое число
+    от 0 до 1, но с нужной кривой. Тот же приём используют CSS-функции
+    <code>ease-in-out</code>, <code>cubic-bezier</code>.</p>
+
+<h2>Остановка анимации</h2>
+
+<p><code>requestAnimationFrame</code> возвращает идентификатор, который можно отменить:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let frameId;</span><span class="code-row"></span><span class="code-row">function loop() {</span><span class="code-row">    // ...</span><span class="code-row">    frameId = requestAnimationFrame(loop);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">function stop() {</span><span class="code-row">    cancelAnimationFrame(frameId);</span><span class="code-row">}</span></code></pre>
+
+<p>Обязательно останавливайте цикл, когда он больше не нужен: при уходе со страницы, закрытии
+    модалки, достижении цели. Иначе браузер будет считать кадры впустую.</p>
+
+<h2>Web Animations API</h2>
+
+<p>Современная альтернатива - метод <code>element.animate</code>. Он даёт управление
+    анимацией из JS, но выполняет её браузер:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const animation = box.animate(</span><span class="code-row">    [</span><span class="code-row">        { transform: &quot;translateX(0)&quot;, opacity: 1 },</span><span class="code-row">        { transform: &quot;translateX(300px)&quot;, opacity: 0.5 }</span><span class="code-row">    ],</span><span class="code-row">    {</span><span class="code-row">        duration: 600,</span><span class="code-row">        easing: &quot;ease-out&quot;,</span><span class="code-row">        fill: &quot;forwards&quot;</span><span class="code-row">    }</span><span class="code-row">);</span><span class="code-row"></span><span class="code-row">animation.pause();</span><span class="code-row">animation.play();</span><span class="code-row">animation.reverse();</span><span class="code-row">animation.finished.then(() =&gt; console.log(&quot;Готово&quot;));</span></code></pre>
+
+<p>Для большинства задач «показать/скрыть/подвинуть» этого достаточно, и код получается
+    короче, чем ручной цикл.</p>
+
+<h2>Доступность</h2>
+
+<p>Не все любят анимацию. Некоторым движение вызывает головокружение, у других включён
+    режим экономии энергии. Уважайте системную настройку:</p>
+
+<pre class="code-numbered"><code><span class="code-row">@media (prefers-reduced-motion: reduce) {</span><span class="code-row">    * {</span><span class="code-row">        animation-duration: 0.01ms !important;</span><span class="code-row">        transition-duration: 0.01ms !important;</span><span class="code-row">    }</span><span class="code-row">}</span></code></pre>
+
+<p>В JavaScript проверить настройку можно так:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const reduced = window.matchMedia(&quot;(prefers-reduced-motion: reduce)&quot;).matches;</span></code></pre>
+
+<h2>Производительность</h2>
+
+<ul>
+    <li><strong>Анимируйте <code>transform</code> и <code>opacity</code>.</strong> Они не
+        вызывают пересчёт вёрстки.</li>
+    <li><strong>Избегайте <code>width</code>, <code>top</code>, <code>left</code>,
+        <code>margin</code>.</strong> Каждый кадр будет пересчитывать layout.</li>
+    <li><strong>Не читайте и не пишите DOM вперемешку.</strong> Сначала все чтения, потом
+        все записи - иначе браузер вынужден пересчитывать layout на каждом шаге.</li>
+    <li><strong>Останавливайте невидимые анимации.</strong> Вкладка в фоне и так тормозит
+        таймеры, но JS-цикл всё равно расходует ресурсы.</li>
+</ul>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>requestAnimationFrame</code>
+        <span>кадр перед перерисовкой</span>
+    </li>
+    <li>
+        <code>cancelAnimationFrame</code>
+        <span>остановить цикл</span>
+    </li>
+    <li>
+        <code>delta</code>
+        <span>время между кадрами</span>
+    </li>
+    <li>
+        <code>element.animate</code>
+        <span>анимация через API</span>
+    </li>
+    <li>
+        <code>transform / opacity</code>
+        <span>дешёвые свойства</span>
+    </li>
+    <li>
+        <code>prefers-reduced-motion</code>
+        <span>уважение к настройкам</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Анимация дёргается</strong>. Используется <code>setInterval</code> или
+        анимируются свойства, вызывающие layout.</li>
+    <li><strong>На одном компьютере быстрее, чем на другом</strong>. Скорость задана
+        «в пикселях за кадр», а не в секунду.</li>
+    <li><strong>Цикл продолжает работать после закрытия окна</strong>. Нет
+        <code>cancelAnimationFrame</code>.</li>
+    <li><strong>Элемент «прыгает» в конце</strong>. Значение не ограничено единицей:
+        используйте <code>Math.min(progress, 1)</code>.</li>
+    <li><strong>Анимация не запускается</strong>. Функция вызывается, но не передаётся
+        в <code>requestAnimationFrame</code>, либо элемент имеет
+        <code>display: none</code>.</li>
+    <li><strong>Анимация тормозит на слабом ноутбуке.</strong> Анимируются <code>width</code> или <code>top</code> - браузер пересчитывает вёрстку каждый кадр. <code>transform</code> и <code>opacity</code> дешевле.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Прогресс-бар</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сделайте полосу, которая заполняется от 0 до 100% за две
+                секунды. Используйте <code>requestAnimationFrame</code>, а не CSS-переход.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Запомните время старта через <code>performance.now()</code>, считайте
+                        прогресс как отношение прошедшего времени к длительности и
+                        ограничивайте его единицей.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const bar = document.querySelector(&quot;.bar&quot;);</span><span class="code-row">const duration = 2000;</span><span class="code-row">const start = performance.now();</span><span class="code-row"></span><span class="code-row">function frame(now) {</span><span class="code-row">    const progress = Math.min((now - start) / duration, 1);</span><span class="code-row">    bar.style.width = `${progress * 100}%`;</span><span class="code-row"></span><span class="code-row">    if (progress &lt; 1) requestAnimationFrame(frame);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">requestAnimationFrame(frame);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Плавный счётчик</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Число на странице должно плавно увеличиваться от 0 до 1000
+                за полторы секунды. В конце должно остаться ровно 1000.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Считайте прогресс, умножайте на 1000 и округляйте через
+                        <code>Math.round</code>. Не забудьте про финальное значение при
+                        <code>progress === 1</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const counter = document.querySelector(&quot;.counter&quot;);</span><span class="code-row">const duration = 1500;</span><span class="code-row">const start = performance.now();</span><span class="code-row"></span><span class="code-row">function frame(now) {</span><span class="code-row">    const progress = Math.min((now - start) / duration, 1);</span><span class="code-row">    counter.textContent = Math.round(progress * 1000);</span><span class="code-row"></span><span class="code-row">    if (progress &lt; 1) requestAnimationFrame(frame);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">requestAnimationFrame(frame);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Плавное появление</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>fadeIn(element)</code>, которая
+                плавно меняет прозрачность от 0 до 1 за 300 мс с замедлением в конце.
+                Если у пользователя включён режим уменьшенной анимации - показывайте сразу.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Проверьте <code>matchMedia("(prefers-reduced-motion: reduce)")</code>.
+                        Для кривой подойдёт <code>1 - (1 - t) ** 3</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function fadeIn(element) {</span><span class="code-row">    const reduced = matchMedia(&quot;(prefers-reduced-motion: reduce)&quot;).matches;</span><span class="code-row"></span><span class="code-row">    if (reduced) {</span><span class="code-row">        element.style.opacity = 1;</span><span class="code-row">        return;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    const start = performance.now();</span><span class="code-row">    const duration = 300;</span><span class="code-row"></span><span class="code-row">    function frame(now) {</span><span class="code-row">        const progress = Math.min((now - start) / duration, 1);</span><span class="code-row">        element.style.opacity = 1 - Math.pow(1 - progress, 3);</span><span class="code-row"></span><span class="code-row">        if (progress &lt; 1) requestAnimationFrame(frame);</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    requestAnimationFrame(frame);</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Пульсация кнопки</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сделайте так, чтобы кнопка при нажатии плавно уменьшалась и возвращалась обратно.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Подойдёт <code>element.animate</code> с двумя кадрами и <code>fill: "none"</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">const button = document.querySelector(&quot;.pulse&quot;);</span><span class="code-row"></span><span class="code-row">button.addEventListener(&quot;click&quot;, () =&gt; {</span><span class="code-row">    button.animate(</span><span class="code-row">        [{ transform: &quot;scale(1)&quot; }, { transform: &quot;scale(0.92)&quot; }, { transform: &quot;scale(1)&quot; }],</span><span class="code-row">        { duration: 250, easing: &quot;ease-out&quot; }</span><span class="code-row">    );</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Анимация теперь под контролем. Вы знаете:</p>
+<ul>
+    <li>Когда достаточно CSS, а когда нужен JavaScript.</li>
+    <li>Как работает <code>requestAnimationFrame</code> и зачем нужно время кадра.</li>
+    <li>Как сделать движение одинаковым на любом экране.</li>
+    <li>Какие свойства анимировать дёшево и как уважать настройки доступности.</li>
+</ul>
+
+<p>Следующий урок - про качество. Как убедиться, что код работает после изменений, как
+    настроить проект с помощью npm и Vite и зачем нужны линтеры. Разберём
+    <strong>тестирование и инструменты</strong>.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-23.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-25.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

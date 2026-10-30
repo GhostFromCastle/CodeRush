@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM: находим и меняем элементы - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="intermediate" data-lesson-id="lesson-10">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 10</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-10.html" class="sidebar-lesson active" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>DOM: находим и меняем элементы</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>До этого момента весь наш код жил в консоли. Пора выйти в мир: JavaScript создан именно
+    для того, чтобы менять страницу. Для этого он работает с DOM.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберёмся, что такое DOM и как браузер его строит.</li>
+    <li>Научимся находить элементы через <code>querySelector</code>.</li>
+    <li>Поменяем текст, классы и стили.</li>
+    <li>Создадим новые элементы прямо из кода.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Дом: HTML - это чертёж, DOM - уже построенный дом, а JavaScript - прораб, который может переставить мебель и достроить комнату.</p>
+</div>
+
+<h2>Что такое DOM</h2>
+
+<p>Когда браузер читает HTML, он превращает его в дерево объектов - <strong>Document Object
+    Model</strong>. Каждый тег становится узлом этого дерева, а JavaScript получает доступ
+    к нему как к обычному объекту.</p>
+
+<p>Схематично страница выглядит так:</p>
+
+<pre class="code-numbered"><code><span class="code-row">document</span><span class="code-row">└── html</span><span class="code-row">    ├── head</span><span class="code-row">    │   └── title</span><span class="code-row">    └── body</span><span class="code-row">        ├── h1</span><span class="code-row">        └── ul</span><span class="code-row">            ├── li</span><span class="code-row">            └── li</span></code></pre>
+
+<p><code>document</code> - корень, точка входа ко всему, что есть на странице. Через него
+    мы и будем искать элементы.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-info"></i>
+        DOM - это не HTML
+    </div>
+    <p>HTML - это текст файла. DOM - это живая структура в памяти браузера. Когда вы меняете
+        DOM через JavaScript, файл на диске не меняется: при перезагрузке страницы всё
+        вернётся к исходному виду.</p>
+</div>
+
+<h2>Находим элементы</h2>
+
+<p>Два метода закрывают почти все задачи:</p>
+
+<pre class="code-numbered"><code><span class="code-row">// Первый подходящий элемент или null</span><span class="code-row">const title = document.querySelector(&quot;h1&quot;);</span><span class="code-row"></span><span class="code-row">// Все подходящие элементы - коллекция NodeList</span><span class="code-row">const items = document.querySelectorAll(&quot;.card&quot;);</span></code></pre>
+
+<p>Внутри скобок - любой CSS-селектор: тег, класс, идентификатор, атрибут, вложенность.</p>
+
+<pre class="code-numbered"><code><span class="code-row">document.querySelector(&quot;#main&quot;);          // по id</span><span class="code-row">document.querySelector(&quot;.card&quot;);          // по классу</span><span class="code-row">document.querySelector(&quot;nav a.active&quot;);   // вложенный селектор</span><span class="code-row">document.querySelector(&#x27;[data-id=&quot;7&quot;]&#x27;);  // по атрибуту</span></code></pre>
+
+<p>Если элемент не найден, <code>querySelector</code> вернёт <code>null</code>. Обращение
+    к свойству <code>null</code> вызовет ошибку - поэтому результат стоит проверять:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const title = document.querySelector(&quot;h1&quot;);</span><span class="code-row"></span><span class="code-row">if (title) {</span><span class="code-row">    title.textContent = &quot;Новый заголовок&quot;;</span><span class="code-row">}</span></code></pre>
+
+<p><code>querySelectorAll</code> возвращает <code>NodeList</code> - не совсем массив, но
+    с работающим <code>forEach</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const items = document.querySelectorAll(&quot;.card&quot;);</span><span class="code-row"></span><span class="code-row">items.forEach((item) =&gt; {</span><span class="code-row">    item.classList.add(&quot;visible&quot;);</span><span class="code-row">});</span></code></pre>
+
+<h2>Меняем текст и разметку</h2>
+
+<p>Самый безопасный способ изменить содержимое - <code>textContent</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const title = document.querySelector(&quot;h1&quot;);</span><span class="code-row">title.textContent = &quot;Добро пожаловать!&quot;;</span></code></pre>
+
+<p>Он вставляет именно текст: если внутри встретятся символы <code>&lt;b&gt;</code>, они
+    отобразятся как текст, а не превратятся в тег.</p>
+
+<p><code>innerHTML</code> позволяет вставить настоящую разметку:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const box = document.querySelector(&quot;.box&quot;);</span><span class="code-row">box.innerHTML = &quot;&lt;strong&gt;Важно:&lt;/strong&gt; текст с разметкой&quot;;</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        innerHTML и пользовательские данные
+    </div>
+    <p>Никогда не вставляйте в <code>innerHTML</code> то, что ввёл пользователь. Строка
+        <code>&lt;img src=x onerror="..."&gt;</code> превратится в исполняемый код - это
+        называется XSS-атакой. Для данных из форм используйте <code>textContent</code>,
+        а элементы создавайте через <code>createElement</code>.</p>
+</div>
+
+<h2>Классы и стили</h2>
+
+<p>Для управления классами есть <code>classList</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const card = document.querySelector(&quot;.card&quot;);</span><span class="code-row"></span><span class="code-row">card.classList.add(&quot;active&quot;);       // добавить класс</span><span class="code-row">card.classList.remove(&quot;hidden&quot;);    // убрать класс</span><span class="code-row">card.classList.toggle(&quot;dark&quot;);      // переключить</span><span class="code-row">console.log(card.classList.contains(&quot;active&quot;)); // true</span></code></pre>
+
+<p>Это предпочтительный способ менять внешний вид: стили остаются в CSS, а JavaScript только
+    включает и выключает готовые классы.</p>
+
+<p>Прямые инлайновые стили тоже возможны, но используются реже - для вычисляемых значений:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const bar = document.querySelector(&quot;.progress-bar&quot;);</span><span class="code-row"></span><span class="code-row">bar.style.width = &quot;75%&quot;;</span><span class="code-row">bar.style.backgroundColor = &quot;#ff5a00&quot;;</span></code></pre>
+
+<p>Обратите внимание на camelCase: в CSS свойство <code>background-color</code>, в JavaScript -
+    <code>backgroundColor</code>.</p>
+
+<h2>data-атрибуты</h2>
+
+<p>Часто нужно привязать к элементу свои данные: идентификатор товара, номер страницы, тип
+    кнопки. Для этого служат <code>data-</code> атрибуты:</p>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;button class=&quot;buy&quot; data-product-id=&quot;42&quot; data-price=&quot;1990&quot;&gt;Купить&lt;/button&gt;</span></code></pre>
+
+<pre class="code-numbered"><code><span class="code-row">const button = document.querySelector(&quot;.buy&quot;);</span><span class="code-row"></span><span class="code-row">console.log(button.dataset.productId); // &quot;42&quot;</span><span class="code-row">console.log(button.dataset.price);     // &quot;1990&quot; - это строка</span></code></pre>
+
+<p>Имена приводятся к camelCase: <code>data-product-id</code> становится
+    <code>dataset.productId</code>. Значения всегда строки, поэтому числа нужно приводить
+    через <code>Number()</code>.</p>
+
+<h2>Создаём элементы</h2>
+
+<p>Вставлять разметку через <code>innerHTML</code> удобно, но для динамических списков лучше
+    создавать узлы явно:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const list = document.querySelector(&quot;.list&quot;);</span><span class="code-row"></span><span class="code-row">const item = document.createElement(&quot;li&quot;);</span><span class="code-row">item.textContent = &quot;Новый пункт&quot;;</span><span class="code-row">item.classList.add(&quot;list-item&quot;);</span><span class="code-row"></span><span class="code-row">list.append(item);</span></code></pre>
+
+<p>Основные методы вставки:</p>
+<ul>
+    <li><strong><code>append</code></strong> - добавить в конец элемента.</li>
+    <li><strong><code>prepend</code></strong> - добавить в начало.</li>
+    <li><strong><code>before</code> / <code>after</code></strong> - вставить рядом с элементом.</li>
+    <li><strong><code>remove</code></strong> - удалить элемент со страницы.</li>
+</ul>
+
+<p>Полный пример - добавляем пункт в список по клику:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const list = document.querySelector(&quot;.list&quot;);</span><span class="code-row">const button = document.querySelector(&quot;#add&quot;);</span><span class="code-row"></span><span class="code-row">button.addEventListener(&quot;click&quot;, () =&gt; {</span><span class="code-row">    const item = document.createElement(&quot;li&quot;);</span><span class="code-row">    item.textContent = `Пункт ${list.children.length + 1}`;</span><span class="code-row">    list.append(item);</span><span class="code-row">});</span></code></pre>
+
+<p>Про <code>addEventListener</code> подробно поговорим в следующем уроке, но общая идея уже
+    видна: «когда произойдёт клик - выполни вот это».</p>
+
+<h2>Полезные свойства</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const el = document.querySelector(&quot;.card&quot;);</span><span class="code-row"></span><span class="code-row">el.parentElement;      // родитель</span><span class="code-row">el.children;           // дочерние элементы</span><span class="code-row">el.nextElementSibling; // следующий сосед</span><span class="code-row">el.id;                 // id</span><span class="code-row">el.tagName;            // имя тега в верхнем регистре</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Где запускать скрипт
+    </div>
+    <p>Если скрипт подключён в <code>&lt;head&gt;</code> без <code>defer</code>, элементы
+        ещё не существуют и <code>querySelector</code> вернёт <code>null</code>. Два рабочих
+        варианта: подключить скрипт в конце <code>&lt;body&gt;</code> или добавить
+        <code>defer</code> к тегу <code>&lt;script&gt;</code>.</p>
+</div>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>querySelector</code>
+        <span>первый элемент по селектору</span>
+    </li>
+    <li>
+        <code>querySelectorAll</code>
+        <span>все элементы по селектору</span>
+    </li>
+    <li>
+        <code>textContent</code>
+        <span>текст без разметки</span>
+    </li>
+    <li>
+        <code>innerHTML</code>
+        <span>разметка (осторожно!)</span>
+    </li>
+    <li>
+        <code>classList</code>
+        <span>add / remove / toggle</span>
+    </li>
+    <li>
+        <code>dataset</code>
+        <span>доступ к data-атрибутам</span>
+    </li>
+    <li>
+        <code>createElement</code>
+        <span>создать новый элемент</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Cannot read properties of null»</strong>. Элемент не найден: опечатка в
+        селекторе или скрипт выполнился раньше разметки. Проверьте селектор в консоли:
+        <code>document.querySelector(".card")</code>.</li>
+    <li><strong>Изменения не видны</strong>. Возможно, вы изменили не тот элемент или
+        <code>querySelectorAll</code> вернул коллекцию, а вы работаете с ней как с одним
+        элементом.</li>
+    <li><strong><code>forEach</code> не работает на коллекции</strong>. <code>children</code>
+        и <code>getElementsByClassName</code> возвращают <code>HTMLCollection</code> без
+        <code>forEach</code> - превратите её в массив:
+        <code>Array.from(...)</code> или используйте <code>querySelectorAll</code>.</li>
+    <li><strong>Разметка «съела» стили</strong>. После <code>innerHTML = "..."</code> старые
+        дочерние элементы удалены вместе с обработчиками. Создавайте элементы заново.</li>
+    <li><strong>Пользовательский текст сломал вёрстку</strong>. Используйте
+        <code>textContent</code> вместо <code>innerHTML</code>.</li>
+    <li><strong>«Элемент не найден», хотя он точно есть.</strong> Скрипт выполнился до того, как браузер построил разметку. Подключите его в конце <code>&lt;body&gt;</code> или с <code>defer</code> - это самая частая причина такой ситуации.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Новый заголовок</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">На странице есть <code>&lt;h1&gt;</code>. Замените его текст
+                на «Привет из JavaScript» и добавьте класс <code>highlight</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Найдите элемент через <code>document.querySelector("h1")</code>, измените
+                        <code>textContent</code> и вызовите <code>classList.add("highlight")</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const title = document.querySelector(&quot;h1&quot;);</span><span class="code-row">title.textContent = &quot;Привет из JavaScript&quot;;</span><span class="code-row">title.classList.add(&quot;highlight&quot;);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Чётные строки</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">У списка <code>.list</code> подсветите классом
+                <code>even</code> каждую вторую строку.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>querySelectorAll(".list li")</code> и <code>forEach</code>
+                        с индексом. Чётные индексы 0, 2, 4 - это визуально первая, третья,
+                        пятая строки. Значит, подсвечивать нужно нечётные индексы.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const items = document.querySelectorAll(&quot;.list li&quot;);</span><span class="code-row"></span><span class="code-row">items.forEach((item, index) =&gt; {</span><span class="code-row">    if (index % 2 === 1) {</span><span class="code-row">        item.classList.add(&quot;even&quot;);</span><span class="code-row">    }</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Список из массива</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Дан массив <code>["HTML", "CSS", "JavaScript"]</code> и пустой
+                <code>&lt;ul class="skills"&gt;&lt;/ul&gt;</code>. Заполните список элементами
+                массива, создавая <code>li</code> через <code>createElement</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Найдите список, пройдитесь по массиву через <code>forEach</code>,
+                        создайте элемент, задайте <code>textContent</code> и добавьте через
+                        <code>append</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const skills = [&quot;HTML&quot;, &quot;CSS&quot;, &quot;JavaScript&quot;];</span><span class="code-row">const list = document.querySelector(&quot;.skills&quot;);</span><span class="code-row"></span><span class="code-row">skills.forEach((skill) =&gt; {</span><span class="code-row">    const item = document.createElement(&quot;li&quot;);</span><span class="code-row">    item.textContent = skill;</span><span class="code-row">    list.append(item);</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Внешние ссылки</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Сделайте так, чтобы все ссылки, начинающиеся с <code>http</code>, открывались в новой вкладке и не передавали реферер.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Пройдитесь по ссылкам через <code>querySelectorAll</code> и выставьте <code>target</code> и <code>rel</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">document.querySelectorAll(&quot;a&quot;).forEach((link) =&gt; {</span><span class="code-row">    if (link.href.startsWith(&quot;http&quot;)) {</span><span class="code-row">        link.target = &quot;_blank&quot;;</span><span class="code-row">        link.rel = &quot;noopener noreferrer&quot;;</span><span class="code-row">    }</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>JavaScript наконец добрался до страницы. Вы знаете:</p>
+<ul>
+    <li>Что такое DOM и почему это не HTML-файл.</li>
+    <li>Как искать элементы по CSS-селектору.</li>
+    <li>Как менять текст, классы, стили и атрибуты.</li>
+    <li>Как создавать и вставлять новые элементы.</li>
+</ul>
+
+<p>Мы умеем менять страницу, но пока только вручную - при загрузке. Настоящий интерфейс
+    реагирует на пользователя: клики, ввод, отправку форм. В следующем уроке разберём
+    <strong>события</strong> - и страница станет интерактивной.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="../beginner/lesson-09.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-11.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

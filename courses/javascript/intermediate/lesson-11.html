@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>События и обработчики - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="intermediate" data-lesson-id="lesson-11">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 11</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson active" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>События и обработчики</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Страница, которая меняется только при перезагрузке, - это красивая картинка. Настоящий
+    интерфейс отвечает на действия: нажали кнопку - открылось меню, ввели текст - обновился
+    список. В основе всего этого лежат события.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Научимся подписываться на события через <code>addEventListener</code>.</li>
+    <li>Разберём основные типы событий и объект события.</li>
+    <li>Поймём, зачем нужен <code>preventDefault</code>.</li>
+    <li>Освоим делегирование - приём, без которого не живёт ни один список.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Дверной звонок: кнопка запускает одно и то же действие, кто бы ни нажал.</p>
+</div>
+
+<h2>Первое событие</h2>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;button class=&quot;btn&quot;&gt;Нажми меня&lt;/button&gt;</span></code></pre>
+
+<pre class="code-numbered"><code><span class="code-row">const button = document.querySelector(&quot;.btn&quot;);</span><span class="code-row"></span><span class="code-row">button.addEventListener(&quot;click&quot;, () =&gt; {</span><span class="code-row">    console.log(&quot;Клик!&quot;);</span><span class="code-row">});</span></code></pre>
+
+<p><code>addEventListener</code> принимает два аргумента: имя события и функцию, которая
+    выполнится, когда оно произойдёт. Такую функцию называют <strong>обработчиком</strong>.</p>
+
+<p>Обработчик можно вынести в отдельную функцию - так проще переиспользовать и удалять:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function handleClick() {</span><span class="code-row">    console.log(&quot;Клик!&quot;);</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">button.addEventListener(&quot;click&quot;, handleClick);</span><span class="code-row">button.removeEventListener(&quot;click&quot;, handleClick);</span></code></pre>
+
+<p>Обратите внимание: передаётся <strong>имя функции без скобок</strong>. Если написать
+    <code>handleClick()</code>, функция вызовется сразу, а в обработчик попадёт её результат
+    (<code>undefined</code>).</p>
+
+<h2>Основные события</h2>
+
+<ul>
+    <li><strong><code>click</code></strong> - клик мышью или тапом.</li>
+    <li><strong><code>input</code></strong> - ввод в поле, срабатывает на каждое изменение.</li>
+    <li><strong><code>change</code></strong> - значение изменилось и поле потеряло фокус.</li>
+    <li><strong><code>submit</code></strong> - отправка формы.</li>
+    <li><strong><code>keydown</code></strong> - нажатие клавиши.</li>
+    <li><strong><code>DOMContentLoaded</code></strong> - страница разобрана и готова.</li>
+</ul>
+
+<p>Пример с полем ввода - живой счётчик символов:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const input = document.querySelector(&quot;#message&quot;);</span><span class="code-row">const counter = document.querySelector(&quot;.counter&quot;);</span><span class="code-row"></span><span class="code-row">input.addEventListener(&quot;input&quot;, () =&gt; {</span><span class="code-row">    counter.textContent = `${input.value.length} символов`;</span><span class="code-row">});</span></code></pre>
+
+<h2>Объект события</h2>
+
+<p>Обработчик получает аргумент - объект с деталями произошедшего. Чаще всего нужны два
+    свойства:</p>
+
+<pre class="code-numbered"><code><span class="code-row">button.addEventListener(&quot;click&quot;, (event) =&gt; {</span><span class="code-row">    console.log(event.type);   // &quot;click&quot;</span><span class="code-row">    console.log(event.target); // элемент, по которому кликнули</span><span class="code-row">});</span></code></pre>
+
+<ul>
+    <li><strong><code>event.target</code></strong> - тот элемент, на котором произошло событие.</li>
+    <li><strong><code>event.currentTarget</code></strong> - элемент, на который навешен
+        обработчик.</li>
+</ul>
+
+<p>Разница видна, когда обработчик стоит на контейнере, а кликают по вложенной кнопке.
+    Об этом - в разделе про делегирование.</p>
+
+<h2>preventDefault</h2>
+
+<p>У некоторых событий есть поведение по умолчанию. Форма отправляется и перезагружает
+    страницу, ссылка переходит по адресу, чекбокс переключается. Если это поведение нужно
+    отменить, вызывают <code>preventDefault()</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;form class=&quot;form&quot;&gt;</span><span class="code-row">    &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;</span><span class="code-row">    &lt;button type=&quot;submit&quot;&gt;Отправить&lt;/button&gt;</span><span class="code-row">&lt;/form&gt;</span></code></pre>
+
+<pre class="code-numbered"><code><span class="code-row">const form = document.querySelector(&quot;.form&quot;);</span><span class="code-row"></span><span class="code-row">form.addEventListener(&quot;submit&quot;, (event) =&gt; {</span><span class="code-row">    event.preventDefault(); // страница не перезагрузится</span><span class="code-row"></span><span class="code-row">    const name = form.elements.name.value;</span><span class="code-row">    console.log(`Привет, ${name}!`);</span><span class="code-row">});</span></code></pre>
+
+<p>Без этой строки браузер отправит форму и перезагрузит страницу - а вместе с ней исчезнут
+    все результаты работы JavaScript.</p>
+
+<h2>Всплытие</h2>
+
+<p>Событие возникает на конкретном элементе, а затем «всплывает» вверх по дереву: от элемента
+    к родителю, потом к его родителю и так до <code>document</code>. Это значит, что обработчик
+    на контейнере поймает клики по всем вложенным элементам:</p>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;div class=&quot;menu&quot;&gt;</span><span class="code-row">    &lt;button&gt;Профиль&lt;/button&gt;</span><span class="code-row">    &lt;button&gt;Настройки&lt;/button&gt;</span><span class="code-row">&lt;/div&gt;</span></code></pre>
+
+<pre class="code-numbered"><code><span class="code-row">const menu = document.querySelector(&quot;.menu&quot;);</span><span class="code-row"></span><span class="code-row">menu.addEventListener(&quot;click&quot;, (event) =&gt; {</span><span class="code-row">    console.log(event.target.textContent); // текст нажатой кнопки</span><span class="code-row">});</span></code></pre>
+
+<p>Один обработчик обслуживает все кнопки сразу. Останавливается всплытие вызовом
+    <code>event.stopPropagation()</code>, но злоупотреблять им не стоит: это ломает
+    ожидаемое поведение вложенных компонентов.</p>
+
+<h2>Делегирование</h2>
+
+<p>Представьте список задач, где элементы добавляются и удаляются динамически. Вешать
+    обработчик на каждую кнопку «удалить» - плохая идея: новые кнопки останутся без
+    обработчиков.</p>
+
+<p>Решение - повесить один обработчик на контейнер и вычислять цель через
+    <code>closest</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;ul class=&quot;tasks&quot;&gt;</span><span class="code-row">    &lt;li&gt;</span><span class="code-row">        &lt;span&gt;Купить хлеб&lt;/span&gt;</span><span class="code-row">        &lt;button class=&quot;delete&quot; data-id=&quot;1&quot;&gt;×&lt;/button&gt;</span><span class="code-row">    &lt;/li&gt;</span><span class="code-row">&lt;/ul&gt;</span></code></pre>
+
+<pre class="code-numbered"><code><span class="code-row">const list = document.querySelector(&quot;.tasks&quot;);</span><span class="code-row"></span><span class="code-row">list.addEventListener(&quot;click&quot;, (event) =&gt; {</span><span class="code-row">    const button = event.target.closest(&quot;.delete&quot;);</span><span class="code-row">    if (!button) return; // клик не по кнопке - игнорируем</span><span class="code-row"></span><span class="code-row">    const item = button.closest(&quot;li&quot;);</span><span class="code-row">    item.remove();</span><span class="code-row">});</span></code></pre>
+
+<p><code>closest</code> поднимается от цели вверх по дереву и возвращает ближайший элемент,
+    подходящий под селектор. Если клик пришёлся по иконке внутри кнопки, он всё равно
+    найдёт кнопку.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Почему делегирование - стандарт
+    </div>
+    <p>Один обработчик вместо сотни, автоматическая поддержка новых элементов и меньше памяти.
+        Именно так работают почти все реальные списки, таблицы и меню.</p>
+</div>
+
+<h2>Снятие обработчика и once</h2>
+
+<p>Если обработчик нужно вызвать ровно один раз, есть опция:</p>
+
+<pre class="code-numbered"><code><span class="code-row">button.addEventListener(&quot;click&quot;, () =&gt; {</span><span class="code-row">    console.log(&quot;Это сообщение появится только один раз&quot;);</span><span class="code-row">}, { once: true });</span></code></pre>
+
+<p>В остальных случаях обработчик снимают вручную через <code>removeEventListener</code> -
+с той же функцией, что передавали. Если передать новую анонимную функцию, снятие не сработает:
+    это другой объект.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>addEventListener</code>
+        <span>подписаться на событие</span>
+    </li>
+    <li>
+        <code>click</code>
+        <span>клик</span>
+    </li>
+    <li>
+        <code>input</code>
+        <span>ввод в поле</span>
+    </li>
+    <li>
+        <code>submit</code>
+        <span>отправка формы</span>
+    </li>
+    <li>
+        <code>event.target</code>
+        <span>элемент события</span>
+    </li>
+    <li>
+        <code>preventDefault()</code>
+        <span>отменить поведение по умолчанию</span>
+    </li>
+    <li>
+        <code>closest</code>
+        <span>ближайший родитель по селектору</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Обработчик не срабатывает</strong>. Элемент не найден (проверьте селектор)
+        или скрипт подключён раньше разметки.</li>
+    <li><strong>Функция вызывается сразу при загрузке</strong>. В <code>addEventListener</code>
+        передали <code>handleClick()</code> со скобками вместо <code>handleClick</code>.</li>
+    <li><strong>Страница перезагружается при отправке формы</strong>. Забыли
+        <code>event.preventDefault()</code>.</li>
+    <li><strong>Событие срабатывает дважды</strong>. Обработчик навешен повторно - например,
+        при каждом рендере списка. Навешивайте один раз на контейнер.</li>
+    <li><strong><code>removeEventListener</code> не работает</strong>. Передана другая
+        функция (новая стрелочная) вместо той же ссылки на обработчик.</li>
+    <li><strong>Кнопка срабатывает через раз или дважды.</strong> Обработчик навесили повторно: например, при каждом обновлении списка. Навешивайте один раз - или снимайте старый перед новым.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Счётчик кликов</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Есть кнопка <code>.counter-btn</code> и элемент
+                <code>.counter-value</code> с нулём. При каждом клике увеличивайте число на
+                экране на единицу.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Заведите переменную <code>count</code> во внешней области, увеличивайте
+                        её в обработчике и записывайте в <code>textContent</code>. Текст из
+                        элемента читать обратно не нужно - это строка.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const button = document.querySelector(&quot;.counter-btn&quot;);</span><span class="code-row">const value = document.querySelector(&quot;.counter-value&quot;);</span><span class="code-row"></span><span class="code-row">let count = 0;</span><span class="code-row"></span><span class="code-row">button.addEventListener(&quot;click&quot;, () =&gt; {</span><span class="code-row">    count += 1;</span><span class="code-row">    value.textContent = count;</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Живой поиск</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Дан список городов и поле поиска. При вводе скрывайте через
+                класс <code>hidden</code> те города, названия которых не содержат введённую
+                строку.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Приводите обе строки к нижнему регистру через <code>toLowerCase()</code>,
+                        иначе «Москва» не найдётся по запросу «моск». Класс переключайте через
+                        <code>classList.toggle("hidden", условие)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const search = document.querySelector(&quot;#search&quot;);</span><span class="code-row">const cities = document.querySelectorAll(&quot;.city&quot;);</span><span class="code-row"></span><span class="code-row">search.addEventListener(&quot;input&quot;, () =&gt; {</span><span class="code-row">    const query = search.value.toLowerCase().trim();</span><span class="code-row"></span><span class="code-row">    cities.forEach((city) =&gt; {</span><span class="code-row">        const matches = city.textContent.toLowerCase().includes(query);</span><span class="code-row">        city.classList.toggle(&quot;hidden&quot;, !matches);</span><span class="code-row">    });</span><span class="code-row">});</span></code></pre>
+                    <p><code>trim()</code> убирает случайные пробелы по краям - иначе запрос
+                        « Москва» не найдёт ничего.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Удаление через делегирование</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">В списке <code>.tasks</code> у каждой строки есть кнопка
+                <code>.delete</code>. Навесьте <strong>один</strong> обработчик на список,
+                который удаляет нажатую строку. Проверьте, что он работает и для строк,
+                добавленных после загрузки.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>В обработчике сначала найдите кнопку: <code>event.target.closest(".delete")</code>.
+                        Если её нет - выходим. Затем ищем строку через
+                        <code>button.closest("li")</code> и вызываем <code>remove()</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const list = document.querySelector(&quot;.tasks&quot;);</span><span class="code-row"></span><span class="code-row">list.addEventListener(&quot;click&quot;, (event) =&gt; {</span><span class="code-row">    const button = event.target.closest(&quot;.delete&quot;);</span><span class="code-row">    if (!button) return;</span><span class="code-row"></span><span class="code-row">    button.closest(&quot;li&quot;).remove();</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Переключатель темы</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Кнопка <code>.theme-toggle</code> должна включать и выключать класс <code>dark</code> у <code>body</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Используйте <code>classList.toggle</code> в обработчике клика.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">const button = document.querySelector(&quot;.theme-toggle&quot;);</span><span class="code-row"></span><span class="code-row">button.addEventListener(&quot;click&quot;, () =&gt; {</span><span class="code-row">    document.body.classList.toggle(&quot;dark&quot;);</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Страница стала интерактивной. Вы знаете:</p>
+<ul>
+    <li>Как подписаться на событие и снять обработчик.</li>
+    <li>Какие события используют чаще всего.</li>
+    <li>Зачем нужен <code>preventDefault</code> и что такое всплытие.</li>
+    <li>Как работает делегирование и почему это стандарт.</li>
+</ul>
+
+<p>Клики и ввод мы обрабатывать умеем, но настоящие данные приходят из форм: регистрация,
+    поиск, оформление заказа. В следующем уроке разберём <strong>формы и валидацию</strong>:
+    как читать поля, показывать понятные ошибки и собирать данные через <code>FormData</code>.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-10.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-12.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Функции: строки, даты, NULL и CASE - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="intermediate" data-lesson-id="lesson-11">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 11</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson active" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Функции: строки, даты, NULL и CASE</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Данные редко лежат в идеальном виде. Имена приходят в разном регистре, даты - строками,
+    пустые значения мешают расчётам. Функции SQL приводят всё это в порядок прямо в запросе.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём строковые функции.</li>
+    <li>Научимся работать с датами.</li>
+    <li>Поймём <code>COALESCE</code> и <code>CASE</code>.</li>
+    <li>Освоим приведение типов через <code>CAST</code>.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Кухонный комбайн: одни и те же продукты можно нарезать, взбить или перемолоть. Функции делают то же с данными.</p>
+</div>
+
+<h2>Строки</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    UPPER(name)              AS upper_name,</span><span class="code-row">    LOWER(email)             AS lower_email,</span><span class="code-row">    LENGTH(name)             AS name_length,</span><span class="code-row">    TRIM(&#x27;  Анна  &#x27;)         AS trimmed,</span><span class="code-row">    SUBSTR(email, 1, 5)      AS email_start,</span><span class="code-row">    REPLACE(phone, &#x27;-&#x27;, &#x27;&#x27;)  AS phone_digits</span><span class="code-row">FROM users;</span></code></pre>
+
+<ul>
+    <li><strong><code>UPPER</code> / <code>LOWER</code></strong> - регистр.</li>
+    <li><strong><code>LENGTH</code></strong> - длина в символах (в MySQL -
+        <code>CHAR_LENGTH</code>).</li>
+    <li><strong><code>TRIM</code></strong> - убирает пробелы по краям.</li>
+    <li><strong><code>SUBSTR</code></strong> - подстрока с позиции (нумерация с 1!).</li>
+    <li><strong><code>REPLACE</code></strong> - замена всех вхождений.</li>
+</ul>
+
+<p>Склейка:</p>
+
+<pre class="code-numbered"><code><span class="code-row">-- SQLite, PostgreSQL, Oracle</span><span class="code-row">SELECT name || &#x27; &lt;&#x27; || email || &#x27;&gt;&#x27; AS contact FROM users;</span><span class="code-row"></span><span class="code-row">-- MySQL</span><span class="code-row">SELECT CONCAT(name, &#x27; &lt;&#x27;, email, &#x27;&gt;&#x27;) AS contact FROM users;</span></code></pre>
+
+<h2>Числа и округление</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    ROUND(price * 1.2, 2) AS with_vat,</span><span class="code-row">    ABS(balance)          AS absolute,</span><span class="code-row">    CAST(price AS REAL)   AS as_real</span><span class="code-row">FROM products;</span></code></pre>
+
+<p>Важно: <code>ROUND</code> в разных СУБД округляет по-разному в спорных случаях
+    (0.5 вверх или к чётному). Для денег надёжнее хранить копейки целым числом, а делить
+    только при выводе.</p>
+
+<h2>Даты</h2>
+
+<p>Функции дат сильнее всего отличаются между СУБД. Покажем три варианта:</p>
+
+<pre class="code-numbered"><code><span class="code-row">-- SQLite</span><span class="code-row">SELECT DATE(&#x27;now&#x27;)                       AS today;</span><span class="code-row">SELECT STRFTIME(&#x27;%Y-%m&#x27;, created_at)     AS month;</span><span class="code-row">SELECT DATE(&#x27;now&#x27;, &#x27;+7 days&#x27;)            AS in_week;</span><span class="code-row"></span><span class="code-row">-- PostgreSQL</span><span class="code-row">SELECT CURRENT_DATE                      AS today;</span><span class="code-row">SELECT DATE_TRUNC(&#x27;month&#x27;, created_at)   AS month;</span><span class="code-row">SELECT CURRENT_DATE + INTERVAL &#x27;7 days&#x27;  AS in_week;</span><span class="code-row"></span><span class="code-row">-- MySQL</span><span class="code-row">SELECT CURDATE()                         AS today;</span><span class="code-row">SELECT DATE_FORMAT(created_at, &#x27;%Y-%m&#x27;)  AS month;</span><span class="code-row">SELECT DATE_ADD(CURDATE(), INTERVAL 7 DAY) AS in_week;</span></code></pre>
+
+<p>Разница дат:</p>
+
+<pre class="code-numbered"><code><span class="code-row">-- SQLite: разница в днях</span><span class="code-row">SELECT JULIANDAY(&#x27;2026-12-31&#x27;) - JULIANDAY(&#x27;2026-01-01&#x27;);</span><span class="code-row"></span><span class="code-row">-- PostgreSQL</span><span class="code-row">SELECT DATE &#x27;2026-12-31&#x27; - DATE &#x27;2026-01-01&#x27;;</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Даты и группировка
+    </div>
+    <p>Если хранить дату со временем, <code>GROUP BY created_at</code> даст группу на каждую
+        секунду. Сначала обрежьте до дня или месяца:
+        <code>GROUP BY DATE(created_at)</code> в SQLite или
+        <code>DATE_TRUNC('day', created_at)</code> в PostgreSQL.</p>
+</div>
+
+<h2>NULL: COALESCE</h2>
+
+<p><code>COALESCE</code> возвращает первое непустое значение:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    name,</span><span class="code-row">    COALESCE(phone, &#x27;не указан&#x27;) AS phone</span><span class="code-row">FROM users;</span></code></pre>
+
+<p>Так же считают суммы с пустыми значениями:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT COALESCE(SUM(price), 0) AS total</span><span class="code-row">FROM orders</span><span class="code-row">WHERE customer_id = 999; -- заказов нет</span></code></pre>
+
+<p>Без <code>COALESCE</code> результат был бы <code>NULL</code>, а не <code>0</code>.
+    В MySQL есть <code>IFNULL</code>, в SQL Server - <code>ISNULL</code>, но
+    <code>COALESCE</code> работает везде.</p>
+
+<h2>CASE</h2>
+
+<p>Аналог <code>if/else</code> внутри запроса:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    title,</span><span class="code-row">    price,</span><span class="code-row">    CASE</span><span class="code-row">        WHEN price &lt; 1000  THEN &#x27;дешёвый&#x27;</span><span class="code-row">        WHEN price &lt; 30000 THEN &#x27;средний&#x27;</span><span class="code-row">        ELSE &#x27;дорогой&#x27;</span><span class="code-row">    END AS price_category</span><span class="code-row">FROM products;</span></code></pre>
+
+<p>Частый приём - условная агрегация:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    COUNT(*) AS total_orders,</span><span class="code-row">    SUM(CASE WHEN status = &#x27;paid&#x27; THEN 1 ELSE 0 END) AS paid_orders</span><span class="code-row">FROM orders;</span></code></pre>
+
+<p>Так одним запросом считают несколько показателей без отдельных подзапросов.</p>
+
+<h2>CAST</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT CAST(&#x27;42&#x27; AS INTEGER) + 8 AS result;  -- 50</span><span class="code-row">SELECT CAST(price AS TEXT) AS price_text FROM products;</span></code></pre>
+
+<p>Приведение нужно, когда число пришло строкой (например, из CSV) или когда нужно склеить
+    число с текстом в строгой СУБД.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>UPPER / LOWER</code>
+        <span>регистр</span>
+    </li>
+    <li>
+        <code>SUBSTR</code>
+        <span>подстрока</span>
+    </li>
+    <li>
+        <code>COALESCE</code>
+        <span>первое непустое</span>
+    </li>
+    <li>
+        <code>CASE WHEN</code>
+        <span>условие в запросе</span>
+    </li>
+    <li>
+        <code>CAST</code>
+        <span>приведение типа</span>
+    </li>
+    <li>
+        <code>DATE / DATE_TRUNC</code>
+        <span>обрезать дату</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«no such function»</strong>. Функция называется иначе в вашей СУБД. Сверьтесь
+        с документацией.</li>
+    <li><strong><code>SUBSTR</code> вернул не то</strong>. Позиции начинаются с 1, а не с 0.</li>
+    <li><strong>Сумма равна NULL</strong>. Все значения пустые. Оберните в
+        <code>COALESCE</code>.</li>
+    <li><strong>Дата сравнивается как строка</strong>. Формат <code>YYYY-MM-DD</code>
+        сортируется правильно, а <code>DD.MM.YYYY</code> - нет.</li>
+    <li><strong>CASE вернул NULL</strong>. Ни одно условие не совпало, а
+        <code>ELSE</code> не указан.</li>
+    <li><strong>«В отчёте пустые ячейки».</strong> Это не пустая строка, а <code>NULL</code>: конкатенация с ним даёт <code>NULL</code>. Оборачивайте в <code>COALESCE</code>.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Красивый контакт</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите строку вида «Анна &lt;anna@example.com&gt;» для всех
+                пользователей. Если почта не указана - подставьте «нет почты».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Склейка через <code>||</code> и <code>COALESCE(email, 'нет почты')</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT name || &#x27; &lt;&#x27; || COALESCE(email, &#x27;нет почты&#x27;) || &#x27;&gt;&#x27; AS contact</span><span class="code-row">FROM users;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Категории цен</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Разметьте товары: до 1000 - «бюджет», от 1000 до 30000 -
+                «стандарт», дороже - «премиум». Посчитайте количество товаров в каждой
+                категории.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сначала <code>CASE</code> в подзапросе, затем <code>GROUP BY</code>
+                        по получившейся категории.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT category, COUNT(*) AS products_count</span><span class="code-row">FROM (</span><span class="code-row">    SELECT CASE</span><span class="code-row">        WHEN price &lt; 1000  THEN &#x27;бюджет&#x27;</span><span class="code-row">        WHEN price &lt; 30000 THEN &#x27;стандарт&#x27;</span><span class="code-row">        ELSE &#x27;премиум&#x27;</span><span class="code-row">    END AS category</span><span class="code-row">    FROM products</span><span class="code-row">) AS t</span><span class="code-row">GROUP BY category;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Продажи по месяцам</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Посчитайте количество заказов и сумму по месяцам. Даты
+                хранятся в <code>created_at</code> в формате ISO.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>В SQLite: <code>STRFTIME('%Y-%m', created_at)</code>.
+                        В PostgreSQL: <code>TO_CHAR(created_at, 'YYYY-MM')</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    STRFTIME(&#x27;%Y-%m&#x27;, created_at) AS month,</span><span class="code-row">    COUNT(*)                      AS orders_count,</span><span class="code-row">    SUM(price)                    AS revenue</span><span class="code-row">FROM orders</span><span class="code-row">GROUP BY month</span><span class="code-row">ORDER BY month;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Подпись пользователя</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите строку «Анна (25 лет)». Если возраст неизвестен - «Анна (возраст не указан)».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Склейте имя и <code>COALESCE(age || ' лет', 'возраст не указан')</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    name || &#x27; (&#x27; || COALESCE(age || &#x27; лет&#x27;, &#x27;возраст не указан&#x27;) || &#x27;)&#x27; AS label</span><span class="code-row">FROM users;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Функции делают данные удобными. Теперь вы знаете:</p>
+<ul>
+    <li>Как менять регистр, обрезать и склеивать строки.</li>
+    <li>Как работать с датами в разных СУБД.</li>
+    <li>Как подставлять значения вместо NULL.</li>
+    <li>Как строить условия через <code>CASE</code>.</li>
+</ul>
+
+<p>Следующий урок - про скорость. Узнаем, почему один и тот же запрос выполняется секунду
+    или час, и как индексы меняют всё.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-10.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-12.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

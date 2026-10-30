@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переменные и типы данных - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="beginner" data-lesson-id="lesson-02">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 02</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson active" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Переменные и типы данных</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>В прошлом уроке мы выводили готовые значения. Но программа становится полезной, когда
+    умеет <em>запоминать</em> данные: имя пользователя, количество товаров, результат
+    вычисления. Для этого нужны переменные.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Научимся создавать переменные через <code>let</code> и <code>const</code>.</li>
+    <li>Разберём основные типы данных: строки, числа, логические значения.</li>
+    <li>Познакомимся с шаблонными строками - самым удобным способом собрать текст.</li>
+    <li>Поймём, почему <code>"5" + 1</code> даёт <code>"51"</code>, а не <code>6</code>.</li>
+</ul>
+
+<h2>Что такое переменная</h2>
+
+<p>Переменная - это именованная ячейка памяти. Вы кладёте в неё значение и потом обращаетесь
+    к нему по имени. Аналогия простая: это подписанная коробка, на которой написано
+    «возраст», а внутри лежит число 25.</p>
+
+<p>В современном JavaScript переменные создают двумя способами:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let city = &quot;Москва&quot;;</span><span class="code-row">const country = &quot;Россия&quot;;</span><span class="code-row"></span><span class="code-row">console.log(city);</span><span class="code-row">console.log(country);</span></code></pre>
+
+<ul>
+    <li><strong><code>let</code></strong> - переменная, которую можно изменить позже.</li>
+    <li><strong><code>const</code></strong> - константа: значение задаётся один раз и больше
+        не меняется.</li>
+</ul>
+
+<p>Почему не <code>var</code>? Он существует с первых версий языка, но ведёт себя странно:
+    игнорирует блоки кода и позволяет использовать переменную до объявления. Сейчас
+    <code>var</code> в новом коде не используют. Правило простое: по умолчанию
+    <code>const</code>, а <code>let</code> - только если значение действительно будет меняться.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Почему const по умолчанию
+    </div>
+    <p>Чем меньше в программе «подвижных» сущностей, тем проще искать ошибки. Если вы случайно
+        перезапишете <code>const</code>, браузер сразу об этом скажет. А вот случайную
+        перезапись <code>let</code> придётся искать глазами.</p>
+</div>
+
+<h2>Основные типы данных</h2>
+
+<p>JavaScript - язык с динамической типизацией: тип определяется значением, а не объявлением
+    переменной. Основных типов, с которыми вы будете работать каждый день, пять.</p>
+
+<h3>Строка (string)</h3>
+
+<p>Любой текст в кавычках. Подходят одинарные, двойные и обратные кавычки:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let name = &quot;Алексей&quot;;</span><span class="code-row">let greeting = &#x27;Привет&#x27;;</span><span class="code-row">let template = `Обратные кавычки`;</span></code></pre>
+
+<h3>Число (number)</h3>
+
+<p>Отдельного типа для целых и дробных чисел нет - это всё <code>number</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let age = 25;</span><span class="code-row">let price = 199.99;</span><span class="code-row">let temperature = -7;</span></code></pre>
+
+<h3>Логический тип (boolean)</h3>
+
+<p>Только два значения: <code>true</code> или <code>false</code>. Без кавычек - иначе это
+    уже строка.</p>
+
+<pre class="code-numbered"><code><span class="code-row">let isStudent = true;</span><span class="code-row">let hasAccess = false;</span></code></pre>
+
+<h3>null и undefined</h3>
+
+<p><code>null</code> - «пусто, задано намеренно». <code>undefined</code> - «значение не задано
+    вообще». Разница тонкая, но важная:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let empty = null;        // пусто сознательно</span><span class="code-row">let notDefined;          // значение не присвоено</span><span class="code-row">console.log(notDefined); // undefined</span></code></pre>
+
+<h2>typeof: узнаём тип</h2>
+
+<p>Оператор <code>typeof</code> возвращает тип значения строкой. Это лучший способ проверить,
+    с чем вы имеете дело:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(typeof &quot;Привет&quot;);   // &quot;string&quot;</span><span class="code-row">console.log(typeof 42);         // &quot;number&quot;</span><span class="code-row">console.log(typeof true);       // &quot;boolean&quot;</span><span class="code-row">console.log(typeof undefined);  // &quot;undefined&quot;</span><span class="code-row">console.log(typeof null);       // &quot;object&quot; - историческая особенность языка</span><span class="code-row">console.log(typeof 42n);        // &quot;bigint&quot;</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        typeof null - это object
+    </div>
+    <p>Ошибка, которая живёт в JavaScript с 1995 года. Проверять «пустое» значение через
+        <code>typeof x === "object"</code> нельзя - используйте строгое сравнение
+        <code>x === null</code>.</p>
+</div>
+
+<h2>Шаблонные строки</h2>
+
+<p>Склеивать текст через плюс быстро надоедает. Гораздо удобнее обратные кавычки: внутрь
+    можно вставлять значения через <code>${...}</code>.</p>
+
+<pre class="code-numbered"><code><span class="code-row">let name = &quot;Алексей&quot;;</span><span class="code-row">let age = 25;</span><span class="code-row"></span><span class="code-row">console.log(&quot;Меня зовут &quot; + name + &quot;, мне &quot; + age + &quot; лет&quot;);</span><span class="code-row">console.log(`Меня зовут ${name}, мне ${age} лет`);</span></code></pre>
+
+<p>Обе строки дадут одинаковый результат, но вторая читается заметно легче. Внутри
+    <code>${}</code> можно писать не только имена переменных, но и целые выражения:</p>
+
+<pre class="code-numbered"><code><span class="code-row">let a = 7;</span><span class="code-row">let b = 3;</span><span class="code-row"></span><span class="code-row">console.log(`${a} + ${b} = ${a + b}`);</span></code></pre>
+
+<p>На экране появится <code>7 + 3 = 10</code>.</p>
+
+<h2>Приведение типов</h2>
+
+<p>JavaScript умеет преобразовывать типы автоматически, и это источник половины неожиданных
+    результатов у новичков. Классический пример:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(5 + 3);      // 8</span><span class="code-row">console.log(&quot;5&quot; + 3);    // &quot;53&quot;</span><span class="code-row">console.log(&quot;5&quot; - 3);    // 2</span></code></pre>
+
+<p>Причина в том, что знак <code>+</code> умеет и складывать числа, и склеивать строки.
+    Если хотя бы один операнд - строка, <code>+</code> выберет склейку. А минус строкой быть
+    не может, поэтому <code>"5"</code> превращается в число.</p>
+
+<p>Чтобы не полагаться на эти правила, приводите типы явно:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(Number(&quot;42&quot;));      // 42</span><span class="code-row">console.log(Number(&quot;Привет&quot;));  // NaN - Not a Number</span><span class="code-row">console.log(String(42));        // &quot;42&quot;</span><span class="code-row">console.log(Boolean(0));        // false</span></code></pre>
+
+<p><code>NaN</code> расшифровывается как «Not a Number» и означает неудачное числовое
+    преобразование. Проверить его можно функцией <code>Number.isNaN()</code>.</p>
+
+<h2>Как называть переменные</h2>
+
+<p>Правила языка минимальны: имя может содержать латинские буквы, цифры, <code>$</code> и
+    <code>_</code>, не может начинаться с цифры и не должно совпадать с зарезервированными
+    словами вроде <code>let</code> или <code>class</code>. Но есть правила хорошего тона:</p>
+
+<ul>
+    <li><strong>camelCase.</strong> <code>userName</code>, <code>totalPrice</code>,
+        <code>isActive</code> - каждое слово с большой буквы, кроме первого.</li>
+    <li><strong>Имя отвечает на вопрос «что здесь лежит».</strong> <code>a</code>,
+        <code>b</code>, <code>data1</code> плохие. <code>userAge</code>, <code>cartItems</code> хорошие.</li>
+    <li><strong>Логические переменные начинаются с is / has / can.</strong>
+        <code>isLoading</code>, <code>hasAccess</code>, <code>canPay</code>.</li>
+    <li><strong>Одно слово - один смысл.</strong> Если где-то <code>user</code>, а где-то
+        <code>person</code> для одного и того же - это путаница.</li>
+</ul>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>let</code>
+        <span>переменная, которую можно изменить</span>
+    </li>
+    <li>
+        <code>const</code>
+        <span>константа, менять нельзя</span>
+    </li>
+    <li>
+        <code>typeof</code>
+        <span>тип значения</span>
+    </li>
+    <li>
+        <code>`${...}`</code>
+        <span>вставка значения в строку</span>
+    </li>
+    <li>
+        <code>Number()</code>
+        <span>приведение к числу</span>
+    </li>
+    <li>
+        <code>String()</code>
+        <span>приведение к строке</span>
+    </li>
+    <li>
+        <code>NaN</code>
+        <span>результат неудачного вычисления</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Uncaught TypeError: Assignment to constant variable»</strong>. Вы пытаетесь
+        переприсвоить <code>const</code>. Либо замените на <code>let</code>, либо заведите
+        новую переменную - второе чаще правильнее.</li>
+    <li><strong>«Uncaught SyntaxError: Missing initializer in const declaration»</strong>.
+        <code>const</code> нельзя объявить без значения: <code>const name;</code> не сработает,
+        нужно <code>const name = "Алексей";</code>.</li>
+    <li><strong>Получилось <code>"25"</code>, а не <code>25</code></strong>. Значение пришло
+        строкой - например, из поля ввода. Приводите через <code>Number()</code>.</li>
+    <li><strong><code>undefined</code> в шаблонной строке</strong>. Переменная объявлена, но
+        значение не присвоено, либо опечатка в имени. Проверьте <code>typeof</code>.</li>
+    <li><strong>«... is not defined»</strong>. Переменная не объявлена или объявлена в другом
+        блоке кода. Объявление должно быть до первого использования.</li>
+    <li><strong>Число из формы ведёт себя как текст.</strong> <code>prompt</code> и <code>input.value</code> всегда возвращают строку. «10» + 5 даст «105», а не 15 - приводите через <code>Number()</code>.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Анкета</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте три константы: имя, возраст и город. Выведите одной
+                шаблонной строкой: «Меня зовут Алексей, мне 25 лет, я из Москвы».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Используйте обратные кавычки и <code>${}</code> вокруг имён переменных.
+                        Не забудьте, что запятые и пробелы - часть текста.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const name = &quot;Алексей&quot;;</span><span class="code-row">const age = 25;</span><span class="code-row">const city = &quot;Москва&quot;;</span><span class="code-row"></span><span class="code-row">console.log(`Меня зовут ${name}, мне ${age} лет, я из ${city}`);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Чек в магазине</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Товар стоит 1200 рублей, скидка - 15%. Посчитайте итоговую
+                сумму и выведите её одной строкой: «К оплате: 1020 рублей». Скидку храните
+                отдельной константой.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Размер скидки в процентах нужно перевести в долю: <code>15 / 100</code>.
+                        Итог: <code>price - price * discount</code>. Округлить результат можно
+                        методом <code>toFixed(0)</code> - он вернёт строку.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const price = 1200;</span><span class="code-row">const discount = 15 / 100;</span><span class="code-row"></span><span class="code-row">const total = price - price * discount;</span><span class="code-row">console.log(`К оплате: ${total} рублей`);</span></code></pre>
+                    <p>Если нужна сумма без копеек, используйте
+                        <code>total.toFixed(0)</code>.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Найдите ошибки</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Код должен посчитать сумму двух чисел и вывести 30. Найдите
+                три ошибки.</p>
+<pre class="code-numbered"><code><span class="code-row">const a = &quot;10&quot;;</span><span class="code-row">let b = 20;</span><span class="code-row">b = b + 5;</span><span class="code-row"></span><span class="code-row">console.log(&quot;Сумма: &quot; + a + b);</span></code></pre>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Первая ошибка - <code>a</code> хранит строку. Вторая - из-за этого
+                        <code>+</code> склеивает, а не складывает. Третья - порядок вывода:
+                        сначала числа, потом текст.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const a = 10;</span><span class="code-row">let b = 20;</span><span class="code-row">b = b + 5;</span><span class="code-row"></span><span class="code-row">console.log(`Сумма: ${a + b}`);</span></code></pre>
+                    <p>Внутри <code>${}</code> выражение вычисляется целиком, поэтому склейки
+                        не происходит. Результат: <code>Сумма: 35</code>.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Поменяйте местами</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">В переменных <code>a = 1</code> и <code>b = 2</code> поменяйте значения местами так, чтобы получилось <code>a = 2</code>, <code>b = 1</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Заведите третью переменную для временного хранения значения.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">let a = 1;</span><span class="code-row">let b = 2;</span><span class="code-row"></span><span class="code-row">const temp = a;</span><span class="code-row">a = b;</span><span class="code-row">b = temp;</span><span class="code-row"></span><span class="code-row">console.log(a, b); // 2 1</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Теперь программа умеет хранить данные. Вы знаете:</p>
+<ul>
+    <li>Чем отличаются <code>let</code> и <code>const</code> и почему <code>var</code>
+        лучше не трогать.</li>
+    <li>Какие бывают типы данных и как проверить тип через <code>typeof</code>.</li>
+    <li>Как собирать строки через шаблонные литералы.</li>
+    <li>Почему <code>"5" + 1</code> даёт <code>"51"</code> и как приводить типы явно.</li>
+</ul>
+
+<p>Данные есть, но программа всё ещё выполняет всё подряд, сверху вниз. Она не умеет
+    выбирать: показать одно, если число положительное, и совсем другое, если отрицательное.
+    В следующем уроке разберём <strong>операторы и условия</strong> - и научим код принимать
+    решения.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-01.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-03.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

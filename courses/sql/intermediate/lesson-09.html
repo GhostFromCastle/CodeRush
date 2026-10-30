@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ключи и ограничения - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="intermediate" data-lesson-id="lesson-09">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 09</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson active" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Ключи и ограничения</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>База данных отличается от набора CSV-файлов не только языком запросов. Главное - она
+    <em>следит за правилами</em>. Эти правила называются ограничениями, и они спасают от
+    мусора в данных.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём первичный и внешний ключи.</li>
+    <li>Освоим <code>NOT NULL</code>, <code>UNIQUE</code>, <code>DEFAULT</code>, <code>CHECK</code>.</li>
+    <li>Поймём, что происходит при удалении связанных строк.</li>
+    <li>Научимся читать ошибки ограничений.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Паспорт: уникальный номер (PRIMARY KEY), прописка ссылается на дом (FOREIGN KEY), без паспорта нельзя (NOT NULL).</p>
+</div>
+
+<h2>PRIMARY KEY</h2>
+
+<p>Первичный ключ однозначно определяет строку. В таблице может быть только один первичный
+    ключ, и он не может содержать <code>NULL</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE users (</span><span class="code-row">    id    INTEGER PRIMARY KEY,</span><span class="code-row">    name  TEXT NOT NULL,</span><span class="code-row">    email TEXT NOT NULL UNIQUE</span><span class="code-row">);</span></code></pre>
+
+<p>В SQLite <code>INTEGER PRIMARY KEY</code> автоматически становится автоинкрементным:
+    если не указать значение, база подставит следующее число. В PostgreSQL для этого
+    используют <code>SERIAL</code> или <code>GENERATED ALWAYS AS IDENTITY</code>, в MySQL -
+    <code>AUTO_INCREMENT</code>.</p>
+
+<p>Ключ может быть составным - из нескольких столбцов:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE order_items (</span><span class="code-row">    order_id   INTEGER,</span><span class="code-row">    product_id INTEGER,</span><span class="code-row">    quantity   INTEGER NOT NULL,</span><span class="code-row">    PRIMARY KEY (order_id, product_id)</span><span class="code-row">);</span></code></pre>
+
+<p>Такая пара уникальна: один товар не может встречаться в заказе дважды отдельными строками -
+    вместо этого увеличивают <code>quantity</code>.</p>
+
+<h2>NOT NULL и DEFAULT</h2>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE products (</span><span class="code-row">    id    INTEGER PRIMARY KEY,</span><span class="code-row">    title TEXT    NOT NULL,</span><span class="code-row">    price INTEGER NOT NULL DEFAULT 0,</span><span class="code-row">    stock INTEGER NOT NULL DEFAULT 0</span><span class="code-row">);</span></code></pre>
+
+<p><code>NOT NULL</code> запрещает пустое значение. <code>DEFAULT</code> подставляет значение,
+    если столбец не указан при вставке.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        NULL - не пустая строка
+    </div>
+    <p><code>''</code> (пустая строка) и <code>NULL</code> - разные вещи. <code>NOT NULL</code>
+        пропустит пустую строку. Если пустые значения недопустимы, добавьте проверку:
+        <code>CHECK (TRIM(name) &lt;&gt; '')</code>.</p>
+</div>
+
+<h2>UNIQUE</h2>
+
+<p>Запрещает повторяющиеся значения. В отличие от первичного ключа, уникальных ограничений
+    может быть несколько:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE users (</span><span class="code-row">    id    INTEGER PRIMARY KEY,</span><span class="code-row">    email TEXT NOT NULL UNIQUE,</span><span class="code-row">    phone TEXT UNIQUE</span><span class="code-row">);</span></code></pre>
+
+<p>При этом <code>UNIQUE</code> в большинстве СУБД разрешает несколько <code>NULL</code>:
+    два пользователя без телефона - нормально, а два с одинаковым номером - нет.</p>
+
+<h2>CHECK</h2>
+
+<p>Проверка условия на уровне строки:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE products (</span><span class="code-row">    id    INTEGER PRIMARY KEY,</span><span class="code-row">    title TEXT NOT NULL,</span><span class="code-row">    price INTEGER NOT NULL CHECK (price &gt;= 0),</span><span class="code-row">    stock INTEGER NOT NULL DEFAULT 0 CHECK (stock &gt;= 0)</span><span class="code-row">);</span></code></pre>
+
+<p>Теперь попытка вставить отрицательную цену закончится ошибкой
+    <code>CHECK constraint failed</code>. Это лучше, чем потом искать, почему сумма заказа
+    отрицательная.</p>
+
+<h2>FOREIGN KEY</h2>
+
+<p>Внешний ключ связывает строку с другой таблицей и не даёт создать «заказ на
+    несуществующего клиента»:</p>
+
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE orders (</span><span class="code-row">    id          INTEGER PRIMARY KEY,</span><span class="code-row">    customer_id INTEGER NOT NULL,</span><span class="code-row">    price       INTEGER NOT NULL,</span><span class="code-row">    created_at  TEXT    NOT NULL DEFAULT CURRENT_DATE,</span><span class="code-row">    FOREIGN KEY (customer_id) REFERENCES users (id)</span><span class="code-row">);</span></code></pre>
+
+<p>Теперь база проверит: значение <code>customer_id</code> должно существовать в
+    <code>users.id</code>. Попытка вставить 999 при отсутствии такого пользователя даст
+    <code>FOREIGN KEY constraint failed</code>.</p>
+
+<h2>Что делать при удалении</h2>
+
+<p>Если удалить пользователя, у которого есть заказы, возможны варианты. Поведение задаётся
+    в <code>ON DELETE</code>:</p>
+
+<table>
+    <thead>
+        <tr><th>Правило</th><th>Что произойдёт</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>RESTRICT</code></td><td>Удаление запрещено, пока есть заказы (по умолчанию)</td></tr>
+        <tr><td><code>CASCADE</code></td><td>Удалятся и все его заказы</td></tr>
+        <tr><td><code>SET NULL</code></td><td>У заказов <code>customer_id</code> станет NULL</td></tr>
+        <tr><td><code>NO ACTION</code></td><td>Проверка откладывается до конца операции</td></tr>
+    </tbody>
+</table>
+
+<pre class="code-numbered"><code><span class="code-row">FOREIGN KEY (customer_id) REFERENCES users (id) ON DELETE CASCADE</span></code></pre>
+
+<p><strong>Осторожно с каскадом.</strong> Удаление одного пользователя может унести тысячи
+    заказов. В финансовых системах почти всегда выбирают <code>RESTRICT</code>, а данные
+    «удаляют» логически - через столбец <code>deleted_at</code>.</p>
+
+<h2>Как читать ошибки ограничений</h2>
+
+<ul>
+    <li><strong><code>NOT NULL constraint failed: users.name</code></strong> - не передано
+        обязательное поле.</li>
+    <li><strong><code>UNIQUE constraint failed: users.email</code></strong> - такой email
+        уже есть.</li>
+    <li><strong><code>CHECK constraint failed: price &gt;= 0</code></strong> - значение
+        нарушило правило.</li>
+    <li><strong><code>FOREIGN KEY constraint failed</code></strong> - ссылка на
+        несуществующую строку либо удаление, на которое есть ссылки.</li>
+</ul>
+
+<p>Хорошая новость: эти ошибки - не поломка, а защита. Они означают, что база не дала
+    сохранить некорректные данные.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>PRIMARY KEY</code>
+        <span>уникальный идентификатор</span>
+    </li>
+    <li>
+        <code>FOREIGN KEY</code>
+        <span>ссылка на другую таблицу</span>
+    </li>
+    <li>
+        <code>NOT NULL</code>
+        <span>обязательное поле</span>
+    </li>
+    <li>
+        <code>UNIQUE</code>
+        <span>без повторов</span>
+    </li>
+    <li>
+        <code>CHECK</code>
+        <span>правило для значения</span>
+    </li>
+    <li>
+        <code>ON DELETE CASCADE</code>
+        <span>удалить связанные</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Не получается вставить строку</strong>. Проверьте <code>NOT NULL</code> и
+        <code>CHECK</code>: скорее всего, одно из значений не проходит.</li>
+    <li><strong>«UNIQUE constraint failed» при обновлении</strong>. Меняете email на уже
+        существующий.</li>
+    <li><strong>Не удаляется пользователь</strong>. На него ссылаются заказы, действует
+        <code>RESTRICT</code>. Сначала решите, что делать с заказами.</li>
+    <li><strong>Внешний ключ не проверяется</strong>. В SQLite он по умолчанию отключён -
+        выполните <code>PRAGMA foreign_keys = ON;</code>.</li>
+    <li><strong>«В базе два клиента с одним телефоном».</strong> Ограничение не поставили заранее, и приложение создало дубли. Чистка данных - отдельная большая работа, поэтому правила лучше задавать сразу.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Таблица с правилами</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Создайте таблицу <code>reviews</code>: id, product_id
+                (внешний ключ на products), rating от 1 до 5, comment (может быть пустым),
+                created_at по умолчанию текущая дата.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Для рейтинга подойдёт <code>CHECK (rating BETWEEN 1 AND 5)</code>,
+                        для даты - <code>DEFAULT CURRENT_DATE</code>,
+                        для связи - <code>FOREIGN KEY (product_id) REFERENCES products(id)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">CREATE TABLE reviews (</span><span class="code-row">    id         INTEGER PRIMARY KEY,</span><span class="code-row">    product_id INTEGER NOT NULL,</span><span class="code-row">    rating     INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),</span><span class="code-row">    comment    TEXT,</span><span class="code-row">    created_at TEXT NOT NULL DEFAULT CURRENT_DATE,</span><span class="code-row">    FOREIGN KEY (product_id) REFERENCES products (id)</span><span class="code-row">);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Проверьте защиту</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Попробуйте нарушить каждое ограничение из задачи 1: поставить
+                рейтинг 7, вставить отзыв на несуществующий товар, оставить
+                <code>product_id</code> пустым. Запишите текст каждой ошибки.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Ошибки не надо исправлять - их надо прочитать. Каждая начинается с
+                        названия ограничения.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">INSERT INTO reviews (product_id, rating) VALUES (1, 7);</span><span class="code-row">-- CHECK constraint failed: rating BETWEEN 1 AND 5</span><span class="code-row"></span><span class="code-row">INSERT INTO reviews (product_id, rating) VALUES (999, 5);</span><span class="code-row">-- FOREIGN KEY constraint failed</span><span class="code-row"></span><span class="code-row">INSERT INTO reviews (rating) VALUES (5);</span><span class="code-row">-- NOT NULL constraint failed: reviews.product_id</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Каскад или запрет</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Для интернет-магазина решите, какое правило удаления выбрать
+                для отзывов и для заказов. Обоснуйте.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Отзывы без товара бессмысленны. Заказы - финансовые документы, их
+                        нельзя терять.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Отзывы - <code>ON DELETE CASCADE</code>: товар удалили, отзывы о нём
+                        больше не нужны. Заказы - <code>ON DELETE RESTRICT</code>: пользователя
+                        с историей покупок удалять нельзя, только помечать архивным. Это
+                        стандартная практика в системах с деньгами.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Уникальный телефон</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Запретите два одинаковых телефона в таблице <code>users</code>, не пересоздавая её.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>На существующую таблицу можно добавить уникальный индекс.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">CREATE UNIQUE INDEX idx_users_phone ON users (phone);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Теперь база защищает данные сама. Вы знаете:</p>
+<ul>
+    <li>Как устроены первичный и внешний ключи.</li>
+    <li>Как запретить пустые, повторяющиеся и некорректные значения.</li>
+    <li>Что происходит со связанными строками при удалении.</li>
+    <li>Как читать ошибки ограничений.</li>
+</ul>
+
+<p>Следующий урок - как проектировать схему с нуля: создать таблицы, изменить их и разложить
+    данные так, чтобы не было дублей. Разберём нормализацию.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-08.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-10.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

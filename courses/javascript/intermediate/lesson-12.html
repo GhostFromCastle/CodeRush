@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Формы и валидация - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="intermediate" data-lesson-id="lesson-12">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 12</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson active" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Формы и валидация</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Формы - главный способ получить данные от пользователя: регистрация, поиск, оформление
+    заказа. Браузер умеет многое сам, но без JavaScript не обойтись: нужно проверить ввод,
+    показать понятную ошибку и отправить данные без перезагрузки страницы.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Научимся читать значения из разных полей.</li>
+    <li>Разберём встроенную HTML-валидацию и свои проверки.</li>
+    <li>Покажем ошибки так, чтобы их понял любой пользователь.</li>
+    <li>Соберём данные формы через <code>FormData</code>.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Бланк в поликлинике: пока не заполнены обязательные поля, регистратор документ не примет. Форма ведёт себя так же.</p>
+</div>
+
+<h2>Чтение значений</h2>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;form class=&quot;form&quot;&gt;</span><span class="code-row">    &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;field-name&quot;&gt;</span><span class="code-row">    &lt;input type=&quot;email&quot; name=&quot;email&quot; class=&quot;field-email&quot;&gt;</span><span class="code-row">    &lt;input type=&quot;checkbox&quot; name=&quot;agree&quot; class=&quot;field-agree&quot;&gt;</span><span class="code-row">    &lt;button type=&quot;submit&quot;&gt;Отправить&lt;/button&gt;</span><span class="code-row">&lt;/form&gt;</span></code></pre>
+
+<pre class="code-numbered"><code><span class="code-row">const form = document.querySelector(&quot;.form&quot;);</span><span class="code-row"></span><span class="code-row">form.addEventListener(&quot;submit&quot;, (event) =&gt; {</span><span class="code-row">    event.preventDefault();</span><span class="code-row"></span><span class="code-row">    const name = form.elements.name.value;</span><span class="code-row">    const email = form.elements.email.value;</span><span class="code-row">    const agree = form.elements.agree.checked;</span><span class="code-row"></span><span class="code-row">    console.log({ name, email, agree });</span><span class="code-row">});</span></code></pre>
+
+<p>Ключевой момент: <code>form.elements</code> даёт доступ к полям по атрибуту
+    <code>name</code>. Без <code>name</code> поле не попадёт ни в <code>elements</code>,
+    ни в отправленные данные - это одна из самых частых причин «пустой формы».</p>
+
+<p>У разных полей разные свойства:</p>
+
+<ul>
+    <li><strong>text, email, password, textarea, select</strong> - <code>.value</code>.</li>
+    <li><strong>checkbox, radio</strong> - <code>.checked</code> (логическое значение).</li>
+    <li><strong>file</strong> - <code>.files</code> (список файлов).</li>
+</ul>
+
+<h2>События формы</h2>
+
+<ul>
+    <li><strong><code>submit</code></strong> - нажали кнопку отправки или Enter в поле.</li>
+    <li><strong><code>input</code></strong> - значение меняется на каждом нажатии клавиши.</li>
+    <li><strong><code>change</code></strong> - значение изменилось и поле потеряло фокус
+        (для <code>select</code> и <code>checkbox</code> срабатывает сразу).</li>
+    <li><strong><code>focus</code> / <code>blur</code></strong> - поле получило или потеряло
+        фокус.</li>
+</ul>
+
+<p>Для живой проверки обычно используют <code>input</code>, для финальной - <code>submit</code>.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Всегда preventDefault
+    </div>
+    <p>По умолчанию <code>submit</code> отправляет форму на сервер и перезагружает страницу.
+        Если вы обрабатываете данные в JavaScript, вызовите
+        <code>event.preventDefault()</code> в самом начале обработчика. Иначе результат
+        работы исчезнет вместе со страницей.</p>
+</div>
+
+<h2>Встроенная валидация</h2>
+
+<p>Браузер проверяет форму сам, если заданы атрибуты:</p>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;form class=&quot;signup&quot;&gt;</span><span class="code-row">    &lt;input type=&quot;text&quot; name=&quot;name&quot; required minlength=&quot;2&quot; maxlength=&quot;30&quot;&gt;</span><span class="code-row">    &lt;input type=&quot;email&quot; name=&quot;email&quot; required&gt;</span><span class="code-row">    &lt;input type=&quot;password&quot; name=&quot;password&quot; required minlength=&quot;8&quot;&gt;</span><span class="code-row">    &lt;input type=&quot;number&quot; name=&quot;age&quot; min=&quot;18&quot; max=&quot;120&quot;&gt;</span><span class="code-row">    &lt;input type=&quot;text&quot; name=&quot;phone&quot; pattern=&quot;\+7\d{10}&quot; title=&quot;Формат: +79991234567&quot;&gt;</span><span class="code-row">    &lt;button type=&quot;submit&quot;&gt;Зарегистрироваться&lt;/button&gt;</span><span class="code-row">&lt;/form&gt;</span></code></pre>
+
+<ul>
+    <li><strong><code>required</code></strong> - поле обязательно.</li>
+    <li><strong><code>type="email"</code></strong> - браузер проверит формат адреса.</li>
+    <li><strong><code>minlength</code> / <code>maxlength</code></strong> - длина текста.</li>
+    <li><strong><code>min</code> / <code>max</code></strong> - диапазон для чисел.</li>
+    <li><strong><code>pattern</code></strong> - регулярное выражение для проверки.</li>
+</ul>
+
+<p>Проверить программно можно методами формы и поля:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const input = form.elements.name;</span><span class="code-row"></span><span class="code-row">console.log(form.checkValidity());   // вся форма валидна?</span><span class="code-row">console.log(input.checkValidity());  // конкретное поле</span><span class="code-row">console.log(input.validationMessage); // текст ошибки от браузера</span><span class="code-row"></span><span class="code-row">input.reportValidity(); // показать подсказку браузера</span></code></pre>
+
+<h2>Свои сообщения об ошибках</h2>
+
+<p>Браузерные сообщения зависят от языка системы и не всегда понятны. Свой текст задают
+    через <code>setCustomValidity</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">function validatePassword(input) {</span><span class="code-row">    if (input.value.length &lt; 8) {</span><span class="code-row">        input.setCustomValidity(&quot;Пароль должен быть не короче 8 символов&quot;);</span><span class="code-row">    } else if (!/[A-Za-z]/.test(input.value)) {</span><span class="code-row">        input.setCustomValidity(&quot;Добавьте хотя бы одну букву&quot;);</span><span class="code-row">    } else {</span><span class="code-row">        input.setCustomValidity(&quot;&quot;); // ошибки нет</span><span class="code-row">    }</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">const password = form.elements.password;</span><span class="code-row"></span><span class="code-row">password.addEventListener(&quot;input&quot;, () =&gt; {</span><span class="code-row">    validatePassword(password);</span><span class="code-row">    password.reportValidity();</span><span class="code-row">});</span></code></pre>
+
+<p>Пустая строка в <code>setCustomValidity</code> обязательна: пока там есть текст, поле
+    считается невалидным навсегда.</p>
+
+<h2>Своя проверка и понятный интерфейс</h2>
+
+<p>Часто нужна не всплывающая подсказка, а текст под полем. Схема простая: проверяем,
+    показываем сообщение, помечаем поле классом.</p>
+
+<div class="code-example-card">
+    <div class="code-example-header">
+        <i class="devicon-javascript-plain code-example-icon"></i>
+        <span>JavaScript</span>
+    </div>
+    <pre class="code-example-body"><code>function showError(input, message) {
+    const error = input.closest(&quot;.field&quot;).querySelector(&quot;.field-error&quot;);
+
+    if (message) {
+        error.textContent = message;
+        input.classList.add(&quot;is-invalid&quot;);
+        input.setAttribute(&quot;aria-invalid&quot;, &quot;true&quot;);
+    } else {
+        error.textContent = &quot;&quot;;
+        input.classList.remove(&quot;is-invalid&quot;);
+        input.removeAttribute(&quot;aria-invalid&quot;);
+    }
+}
+
+form.addEventListener(&quot;submit&quot;, (event) =&gt; {
+    event.preventDefault();
+
+    const name = form.elements.name.value.trim();
+    const email = form.elements.email.value.trim();
+
+    let isValid = true;
+
+    if (name.length &lt; 2) {
+        showError(form.elements.name, &quot;Введите имя - минимум 2 символа&quot;);
+        isValid = false;
+    } else {
+        showError(form.elements.name, &quot;&quot;);
+    }
+
+    if (!email.includes(&quot;@&quot;)) {
+        showError(form.elements.email, &quot;Проверьте адрес почты&quot;);
+        isValid = false;
+    } else {
+        showError(form.elements.email, &quot;&quot;);
+    }
+
+    if (!isValid) return;
+
+    console.log(&quot;Отправляем:&quot;, { name, email });
+});</code></pre>
+</div>
+
+<p>Принципы хорошей валидации:</p>
+
+<ul>
+    <li><strong>Проверяйте на сервере тоже.</strong> Всё, что делает браузер, можно обойти
+        через DevTools. Клиентская валидация нужна для удобства, серверная - для
+        безопасности.</li>
+    <li><strong>Говорите, что именно не так.</strong> «Ошибка» бесполезна, «пароль короче
+        8 символов» - понятна.</li>
+    <li><strong>Не ругайте пользователя до того, как он закончил.</strong> Проверяйте поле
+        на <code>blur</code> или при отправке, а не на каждом нажатии клавиши.</li>
+    <li><strong>Переносите фокус на первое проблемное поле.</strong> Так пользователь
+        не ищет ошибку глазами.</li>
+</ul>
+
+<h2>FormData</h2>
+
+<p><code>FormData</code> собирает все поля формы автоматически - с учётом <code>name</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">form.addEventListener(&quot;submit&quot;, (event) =&gt; {</span><span class="code-row">    event.preventDefault();</span><span class="code-row"></span><span class="code-row">    const data = new FormData(form);</span><span class="code-row"></span><span class="code-row">    console.log(data.get(&quot;name&quot;));</span><span class="code-row">    console.log(data.get(&quot;email&quot;));</span><span class="code-row"></span><span class="code-row">    const values = Object.fromEntries(data.entries());</span><span class="code-row">    console.log(values); // { name: &quot;Алексей&quot;, email: &quot;...&quot; }</span><span class="code-row">});</span></code></pre>
+
+<ul>
+    <li><strong><code>get(name)</code></strong> - первое значение поля.</li>
+    <li><strong><code>getAll(name)</code></strong> - все значения (для чекбоксов с одинаковым
+        именем, например).</li>
+    <li><strong><code>entries()</code></strong> - пары «имя: значение» для перебора.</li>
+</ul>
+
+<p><code>Object.fromEntries</code> превращает пары в обычный объект - удобно для отправки
+    через <code>fetch</code> в виде JSON.</p>
+
+<h2>Сброс и фокус</h2>
+
+<pre class="code-numbered"><code><span class="code-row">form.reset();          // вернуть поля к исходным значениям</span><span class="code-row">input.focus();         // поставить курсор</span><span class="code-row">input.select();        // выделить текст</span></code></pre>
+
+<p>После успешной отправки логично очистить форму и поставить фокус в первое поле - так
+    пользователю проще ввести следующую запись.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>form.elements.name</code>
+        <span>поле по имени</span>
+    </li>
+    <li>
+        <code>.value</code>
+        <span>значение поля</span>
+    </li>
+    <li>
+        <code>.checked</code>
+        <span>состояние чекбокса</span>
+    </li>
+    <li>
+        <code>preventDefault</code>
+        <span>не перезагружать страницу</span>
+    </li>
+    <li>
+        <code>checkValidity</code>
+        <span>проверка по правилам HTML</span>
+    </li>
+    <li>
+        <code>setCustomValidity</code>
+        <span>своё сообщение об ошибке</span>
+    </li>
+    <li>
+        <code>new FormData(form)</code>
+        <span>все данные формы</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong><code>form.elements.name</code> равно <code>undefined</code></strong>.
+        У поля нет атрибута <code>name</code> или имя написано иначе.</li>
+    <li><strong>Страница перезагружается при отправке</strong>. Нет
+        <code>event.preventDefault()</code> или обработчик повешен на <code>click</code>
+        кнопки вместо <code>submit</code> формы.</li>
+    <li><strong>Чекбокс всегда <code>true</code></strong>. Прочитано <code>.value</code>
+        вместо <code>.checked</code>: у чекбокса <code>value</code> - это строка
+        <code>"on"</code>.</li>
+    <li><strong>Валидация «застряла»</strong>. В <code>setCustomValidity</code> не сбросили
+        текст в пустую строку при исправлении.</li>
+    <li><strong><code>FormData</code> пустая</strong>. У полей нет <code>name</code>,
+        или поля лежат вне этой формы.</li>
+    <li><strong>Нажали «Отправить» - страница моргнула и всё пропало.</strong> Форма ушла на сервер и перезагрузилась. Без <code>event.preventDefault()</code> браузер ведёт себя так по умолчанию, и это не баг.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Регистрация</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Соберите данные формы регистрации (имя, почта, возраст)
+                через <code>FormData</code> и выведите объект в консоль. Форма не должна
+                перезагружать страницу.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Слушайте <code>submit</code>, вызовите <code>preventDefault()</code>,
+                        создайте <code>new FormData(form)</code> и превратите его в объект
+                        через <code>Object.fromEntries(data.entries())</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const form = document.querySelector(&quot;.signup&quot;);</span><span class="code-row"></span><span class="code-row">form.addEventListener(&quot;submit&quot;, (event) =&gt; {</span><span class="code-row">    event.preventDefault();</span><span class="code-row"></span><span class="code-row">    const data = new FormData(form);</span><span class="code-row">    const values = Object.fromEntries(data.entries());</span><span class="code-row"></span><span class="code-row">    console.log(values);</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Пароль и повтор</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Два поля: пароль и повтор пароля. При отправке проверьте,
+                что пароль не короче 8 символов и оба значения совпадают. Выведите ошибку
+                под соответствующим полем.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сравнивайте <code>password.value === confirm.value</code>. Для вывода
+                        ошибки используйте элемент с классом <code>.field-error</code> рядом
+                        с полем и <code>closest(".field")</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">form.addEventListener(&quot;submit&quot;, (event) =&gt; {</span><span class="code-row">    event.preventDefault();</span><span class="code-row"></span><span class="code-row">    const password = form.elements.password.value;</span><span class="code-row">    const confirm = form.elements.confirm.value;</span><span class="code-row"></span><span class="code-row">    if (password.length &lt; 8) {</span><span class="code-row">        showError(form.elements.password, &quot;Минимум 8 символов&quot;);</span><span class="code-row">        return;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    if (password !== confirm) {</span><span class="code-row">        showError(form.elements.confirm, &quot;Пароли не совпадают&quot;);</span><span class="code-row">        return;</span><span class="code-row">    }</span><span class="code-row"></span><span class="code-row">    console.log(&quot;Форма валидна&quot;);</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Живой счётчик символов</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">В <code>textarea</code> с ограничением 200 символов
+                показывайте, сколько осталось. Если осталось меньше 20 - подсветите счётчик
+                красным классом.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Слушайте <code>input</code>, считайте
+                        <code>maxLength - value.length</code> и переключайте класс через
+                        <code>classList.toggle("is-low", left &lt; 20)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const textarea = document.querySelector(&quot;.message&quot;);</span><span class="code-row">const counter = document.querySelector(&quot;.counter&quot;);</span><span class="code-row">const max = 200;</span><span class="code-row"></span><span class="code-row">textarea.addEventListener(&quot;input&quot;, () =&gt; {</span><span class="code-row">    const left = max - textarea.value.length;</span><span class="code-row"></span><span class="code-row">    counter.textContent = `Осталось: ${left}`;</span><span class="code-row">    counter.classList.toggle(&quot;is-low&quot;, left &lt; 20);</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Показать пароль</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Добавьте кнопку «Показать пароль», которая переключает тип поля между <code>password</code> и <code>text</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Меняйте <code>input.type</code> и текст кнопки в одном обработчике.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">const input = document.querySelector(&quot;.password&quot;);</span><span class="code-row">const toggle = document.querySelector(&quot;.toggle-password&quot;);</span><span class="code-row"></span><span class="code-row">toggle.addEventListener(&quot;click&quot;, () =&gt; {</span><span class="code-row">    const hidden = input.type === &quot;password&quot;;</span><span class="code-row">    input.type = hidden ? &quot;text&quot; : &quot;password&quot;;</span><span class="code-row">    toggle.textContent = hidden ? &quot;Скрыть&quot; : &quot;Показать&quot;;</span><span class="code-row">});</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Формы больше не чёрный ящик. Вы знаете:</p>
+<ul>
+    <li>Как читать значения полей разных типов.</li>
+    <li>Как работает встроенная валидация и чем она ограничена.</li>
+    <li>Как показывать понятные ошибки и не раздражать пользователя.</li>
+    <li>Как собрать данные через <code>FormData</code>.</li>
+</ul>
+
+<p>Дальше - <strong>современный синтаксис</strong>: деструктуризация, spread, опциональная
+    цепочка и коллекции <code>Map</code> и <code>Set</code>. Эти приёмы встречаются в каждом
+    втором файле реального проекта.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-11.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-13.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

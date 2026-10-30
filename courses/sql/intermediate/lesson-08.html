@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подзапросы и EXISTS - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="intermediate" data-lesson-id="lesson-08">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">Уже в теме</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 08</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../beginner/lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../beginner/lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson active" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Подзапросы и EXISTS</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-fire"></i> Средний уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Иногда ответ нельзя получить одним плоским запросом: сначала нужно посчитать одно,
+    потом использовать это в другом. Для этого существуют подзапросы - запрос внутри запроса.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберём скалярные подзапросы.</li>
+    <li>Научимся использовать <code>IN</code> и <code>EXISTS</code>.</li>
+    <li>Поймём, что такое коррелированный подзапрос.</li>
+    <li>Сравним подзапросы с соединениями.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Матрёшка: внутри одного запроса живёт другой, поменьше.</p>
+</div>
+
+<h2>Скалярный подзапрос</h2>
+
+<p>Подзапрос в скобках возвращает одно значение и может стоять в любом месте, где допустимо
+    значение:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT title, price</span><span class="code-row">FROM products</span><span class="code-row">WHERE price &gt; (SELECT AVG(price) FROM products);</span></code></pre>
+
+<p>Сначала выполняется внутренний запрос - получаем среднюю цену. Затем внешний сравнивает
+    с ней каждую строку. Результат: товары дороже среднего.</p>
+
+<p>Такой подзапрос можно использовать и в <code>SELECT</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    title,</span><span class="code-row">    price,</span><span class="code-row">    price - (SELECT AVG(price) FROM products) AS diff_from_avg</span><span class="code-row">FROM products;</span></code></pre>
+
+<h2>IN и NOT IN</h2>
+
+<p>Подзапрос может вернуть столбец значений - тогда его используют со списком:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name</span><span class="code-row">FROM users</span><span class="code-row">WHERE id IN (</span><span class="code-row">    SELECT customer_id FROM orders WHERE price &gt; 50000</span><span class="code-row">);</span></code></pre>
+
+<p>Читается: «пользователи, чей id есть среди клиентов с крупными заказами».</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        NOT IN и NULL
+    </div>
+    <p>Если подзапрос вернёт хотя бы один <code>NULL</code>,
+        <code>NOT IN</code> не вернёт <strong>ничего</strong>. Причина - логика трёхзначности.
+        Надёжнее использовать <code>NOT EXISTS</code> или добавить
+        <code>WHERE customer_id IS NOT NULL</code> внутри подзапроса.</p>
+</div>
+
+<h2>EXISTS</h2>
+
+<p><code>EXISTS</code> проверяет не значения, а факт наличия строк:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT u.name</span><span class="code-row">FROM users AS u</span><span class="code-row">WHERE EXISTS (</span><span class="code-row">    SELECT 1</span><span class="code-row">    FROM orders AS o</span><span class="code-row">    WHERE o.customer_id = u.id</span><span class="code-row">);</span></code></pre>
+
+<p>Результат: пользователи, у которых есть хотя бы один заказ. Внутри <code>SELECT 1</code> -
+    традиция: конкретные столбцы не важны, проверяется сам факт.</p>
+
+<p>Обратная задача - клиенты без заказов:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT u.name</span><span class="code-row">FROM users AS u</span><span class="code-row">WHERE NOT EXISTS (</span><span class="code-row">    SELECT 1 FROM orders AS o WHERE o.customer_id = u.id</span><span class="code-row">);</span></code></pre>
+
+<h2>Коррелированный подзапрос</h2>
+
+<p>В примерах выше подзапрос ссылается на <code>u.id</code> из внешнего запроса. Такой подзапрос
+    называется коррелированным: он выполняется для каждой строки внешнего запроса.</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    u.name,</span><span class="code-row">    (SELECT COUNT(*) FROM orders o WHERE o.customer_id = u.id) AS orders_count</span><span class="code-row">FROM users AS u;</span></code></pre>
+
+<p>Для каждого пользователя база считает его заказы. Результат тот же, что у
+    <code>LEFT JOIN + GROUP BY</code>, но записан иначе.</p>
+
+<h2>Подзапрос в FROM</h2>
+
+<p>Подзапрос может заменить таблицу - получается «производная таблица»:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    customer_id,</span><span class="code-row">    total</span><span class="code-row">FROM (</span><span class="code-row">    SELECT</span><span class="code-row">        customer_id,</span><span class="code-row">        SUM(price) AS total</span><span class="code-row">    FROM orders</span><span class="code-row">    GROUP BY customer_id</span><span class="code-row">) AS totals</span><span class="code-row">WHERE total &gt; 50000;</span></code></pre>
+
+<p>Сначала считается агрегат по клиентам, затем внешний запрос фильтрует результат. Псевдоним
+    <code>AS totals</code> обязателен: у производной таблицы должно быть имя.</p>
+
+<h2>Подзапрос или JOIN?</h2>
+
+<p>Многие задачи решаются обоими способами. Ориентируйтесь на читаемость:</p>
+
+<ul>
+    <li><strong>Подзапрос</strong> лучше, когда нужен один агрегат или проверка существования.</li>
+    <li><strong>JOIN</strong> лучше, когда нужны столбцы из второй таблицы.</li>
+    <li>По производительности современные СУБД часто преобразуют одно в другое - не
+        оптимизируйте вслепую, смотрите план запроса.</li>
+</ul>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>(SELECT ...)</code>
+        <span>подзапрос</span>
+    </li>
+    <li>
+        <code>IN</code>
+        <span>значение из набора</span>
+    </li>
+    <li>
+        <code>EXISTS</code>
+        <span>есть ли строки</span>
+    </li>
+    <li>
+        <code>NOT EXISTS</code>
+        <span>строк нет</span>
+    </li>
+    <li>
+        <code>FROM (SELECT ...) AS t</code>
+        <span>производная таблица</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«Subquery returns more than one row»</strong>. Скалярный подзапрос вернул
+        несколько значений - добавьте <code>LIMIT 1</code> или используйте <code>IN</code>.</li>
+    <li><strong>NOT IN ничего не находит</strong>. В подзапросе есть NULL. Замените на
+        <code>NOT EXISTS</code>.</li>
+    <li><strong>Запрос очень медленный</strong>. Коррелированный подзапрос выполняется для
+        каждой строки. Попробуйте переписать через <code>JOIN</code>.</li>
+    <li><strong>«Every derived table must have its own alias»</strong>. Забыли
+        <code>AS имя</code> после подзапроса в <code>FROM</code>.</li>
+    <li><strong>«Подзапрос вернул несколько строк».</strong> Скалярный подзапрос должен возвращать одно значение. Если значений много - используйте <code>IN</code> или <code>EXISTS</code>.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Дороже среднего</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите товары, цена которых выше средней по всей таблице.
+                В результате покажите название, цену и разницу со средней.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Среднее: <code>(SELECT AVG(price) FROM products)</code>. Его можно
+                        использовать и в <code>WHERE</code>, и в <code>SELECT</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    title,</span><span class="code-row">    price,</span><span class="code-row">    price - (SELECT AVG(price) FROM products) AS diff</span><span class="code-row">FROM products</span><span class="code-row">WHERE price &gt; (SELECT AVG(price) FROM products);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Покупатели</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Найдите имена пользователей, сделавших хотя бы один заказ
+                дороже 50 000. Решите задачу через <code>IN</code> и через
+                <code>EXISTS</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Через <code>IN</code>: <code>id IN (SELECT customer_id FROM orders
+                        WHERE price &gt; 50000)</code>. Через <code>EXISTS</code> - подзапрос
+                        с условием на <code>u.id</code> и цену.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT name FROM users</span><span class="code-row">WHERE id IN (SELECT customer_id FROM orders WHERE price &gt; 50000);</span><span class="code-row"></span><span class="code-row">SELECT u.name FROM users AS u</span><span class="code-row">WHERE EXISTS (</span><span class="code-row">    SELECT 1 FROM orders AS o</span><span class="code-row">    WHERE o.customer_id = u.id AND o.price &gt; 50000</span><span class="code-row">);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Клиенты без заказов</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Решите задачу из прошлого урока через <code>NOT EXISTS</code>
+                и сравните с вариантом через <code>LEFT JOIN ... IS NULL</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = u.id)</code>.
+                        Результат должен совпасть.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT u.name</span><span class="code-row">FROM users AS u</span><span class="code-row">WHERE NOT EXISTS (</span><span class="code-row">    SELECT 1 FROM orders AS o WHERE o.customer_id = u.id</span><span class="code-row">);</span></code></pre>
+                    <p>Оба варианта дают одинаковый результат. <code>NOT EXISTS</code> обычно
+                        читается яснее и не ломается на NULL.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Дороже среднего в категории</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Найдите товары, цена которых выше средней цены в их собственной категории.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Нужен коррелированный подзапрос: средняя цена считается для <code>category_id</code> текущей строки.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">SELECT p.title, p.price, p.category_id</span><span class="code-row">FROM products AS p</span><span class="code-row">WHERE p.price &gt; (</span><span class="code-row">    SELECT AVG(p2.price)</span><span class="code-row">    FROM products AS p2</span><span class="code-row">    WHERE p2.category_id = p.category_id</span><span class="code-row">);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы научились вкладывать запросы друг в друга. Теперь вы знаете:</p>
+<ul>
+    <li>Где можно использовать скалярный подзапрос.</li>
+    <li>Чем <code>IN</code> отличается от <code>EXISTS</code>.</li>
+    <li>Что такое коррелированный подзапрос и чем он дорог.</li>
+    <li>Как заменить подзапрос соединением и наоборот.</li>
+</ul>
+
+<p>Следующий урок - про фундамент базы: ключи и ограничения. Именно они не дают появиться
+    заказу без клиента и пользователю с пустым именем.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-07.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-09.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

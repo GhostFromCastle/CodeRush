@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Что такое JavaScript и первая программа - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="beginner" data-lesson-id="lesson-01">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 01</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson active" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Что такое JavaScript и первая программа</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~20 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Добро пожаловать на курс JavaScript! Если вы читаете этот текст, значит, вы готовы
+    добавить движение в свои страницы. HTML отвечает за структуру, CSS - за внешний вид,
+    а JavaScript - за поведение. Это единственный язык, который браузер понимает
+    из коробки, без установки чего-либо.</p>
+
+<p>В этом уроке мы не будем углубляться в теорию. Мы просто:</p>
+<ul>
+    <li>Разберёмся, где вообще выполняется JavaScript.</li>
+    <li>Откроем консоль разработчика и запустим первую команду.</li>
+    <li>Подключим отдельный файл к странице и увидим результат.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Пульт от телевизора: HTML - корпус и экран, CSS - оформление, JavaScript - кнопки, которые заставляют всё это работать.</p>
+</div>
+
+<h2>Почему именно JavaScript</h2>
+
+<p>JavaScript - это язык, который оживляет страницу. HTML-разметка сама по себе статична:
+    по ней нельзя ничего посчитать, переключить или изменить без перезагрузки. Именно JS
+    обрабатывает клики, проверяет формы, подгружает данные и перерисовывает интерфейс.</p>
+
+<ul>
+    <li><strong>Работает везде.</strong> Движок JavaScript встроен в каждый браузер. Открыли
+        страницу - код уже готов выполняться.</li>
+    <li><strong>Один язык на всю веб-разработку.</strong> На нём пишут и то, что происходит
+        в браузере, и серверную часть (Node.js, Deno).</li>
+    <li><strong>Огромная экосистема.</strong> Библиотеки на любой вкус, от анимаций до
+        интерфейсов и работы с картами.</li>
+    <li><strong>Быстрый старт.</strong> Чтобы написать первую программу, достаточно блокнота
+        и браузера.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-info"></i>
+        JavaScript и Java - не одно и то же
+    </div>
+    <p>Названия похожи, но это два совершенно разных языка. Java - строгий, компилируемый язык
+        для больших систем. JavaScript - гибкий язык для браузера. Общего у них примерно
+        столько же, сколько у слова «кот» и «котлета».</p>
+</div>
+
+<h2>Где выполняется JavaScript</h2>
+
+<p>Когда браузер загружает страницу, он разбирает HTML и CSS, а затем ищет в разметке
+    подключённые скрипты. Найденный код передаётся специальной программе - <strong>движку
+    JavaScript</strong>. В Chrome и Edge это V8, в Firefox - SpiderMonkey, в Safari - JavaScriptCore.</p>
+
+<p>Удобнее всего проверять код прямо в браузере, не трогая файлы. Для этого есть
+    <strong>консоль разработчика</strong>:</p>
+
+<ol>
+    <li>Откройте любую страницу в браузере.</li>
+    <li>Нажмите <strong>F12</strong> (или правой кнопкой → «Посмотреть код»).</li>
+    <li>Перейдите на вкладку <strong>Console</strong>.</li>
+</ol>
+
+<p>Внизу появится строка ввода. Это полноценная песочница: здесь можно выполнять любые
+    команды и сразу видеть результат.</p>
+
+<h2>Первая программа: Hello, World!</h2>
+
+<p>Традиция в программировании: первая программа на любом языке должна вывести на экран
+    «Hello, World!». В JavaScript для вывода в консоль используется <code>console.log</code>.
+    Наберите в консоли:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;Hello, World!&quot;);</span></code></pre>
+
+<p>Нажмите <strong>Enter</strong> - и увидите строку ниже:</p>
+
+<pre class="code-numbered"><code><span class="code-row">Hello, World!</span></code></pre>
+
+<p>Поздравляем! Вы только что написали и выполнили свою первую программу на JavaScript.</p>
+
+<h2>Разбор: что такое console.log</h2>
+
+<p>Давайте посмотрим на команду по частям:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;Hello, World!&quot;);</span></code></pre>
+
+<ul>
+    <li><strong><code>console</code></strong> - встроенный объект браузера, «окно» для вывода
+        служебной информации.</li>
+    <li><strong>Точка <code>.</code></strong> - обращение к тому, что лежит внутри объекта.</li>
+    <li><strong><code>log</code></strong> - метод, который печатает переданное значение.</li>
+    <li><strong>Круглые скобки</strong> - вызов метода. Всё, что внутри, - данные для вывода.</li>
+    <li><strong>Кавычки</strong> - это <strong>строка</strong>, то есть текст. Без кавычек
+        браузер решит, что <code>Hello</code> - имя переменной, и выдаст ошибку.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Точка с запятой
+    </div>
+    <p>Точка с запятой в конце инструкции формально необязательна - JavaScript сам понимает,
+        где заканчивается выражение. Но привычка ставить её спасает от редких и очень
+        неприятных ошибок. Правило простое: одна инструкция - одна точка с запятой.</p>
+</div>
+
+<h2>Подключаем отдельный файл</h2>
+
+<p>В консоли удобно экспериментировать, но настоящий код живёт в файлах. Создайте рядом
+    с HTML-страницей файл <code>script.js</code> и подключите его перед закрывающим
+    тегом <code>&lt;/body&gt;</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">&lt;!DOCTYPE html&gt;</span><span class="code-row">&lt;html lang=&quot;ru&quot;&gt;</span><span class="code-row">&lt;head&gt;</span><span class="code-row">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><span class="code-row">    &lt;title&gt;Первая страница&lt;/title&gt;</span><span class="code-row">&lt;/head&gt;</span><span class="code-row">&lt;body&gt;</span><span class="code-row">    &lt;h1&gt;Моя первая страница&lt;/h1&gt;</span><span class="code-row"></span><span class="code-row">    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</span><span class="code-row">&lt;/body&gt;</span><span class="code-row">&lt;/html&gt;</span></code></pre>
+
+<p>А в самом файле <code>script.js</code> напишите:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;Скрипт подключён!&quot;);</span><span class="code-row">console.log(2 + 2);</span></code></pre>
+
+<p>Откройте страницу и загляните в консоль. Увидите две строки: текст и число <code>4</code>.
+    Обратите внимание: <code>"2 + 2"</code> в кавычках - это текст, а <code>2 + 2</code> без
+    кавычек - вычисление. Разница принципиальная, и дальше мы будем встречаться с ней постоянно.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Атрибут defer
+    </div>
+    <p>Если скрипт лежит в <code>&lt;head&gt;</code> и обращается к элементам страницы, он
+        сработает раньше, чем эти элементы появятся. Добавьте <code>defer</code> -
+        <code>&lt;script src="script.js" defer&gt;&lt;/script&gt;</code> - и браузер выполнит
+        код только после построения страницы. Мы будем использовать этот приём в уроках про DOM.</p>
+</div>
+
+<h2>Комментарии</h2>
+
+<p>Комментарии - это заметки для людей. Браузер их игнорирует. В JavaScript их два вида:</p>
+
+<pre class="code-numbered"><code><span class="code-row">// Однострочный комментарий - до конца строки</span><span class="code-row"></span><span class="code-row">/*</span><span class="code-row">   Многострочный комментарий.</span><span class="code-row">   Удобен для больших пояснений.</span><span class="code-row">*/</span><span class="code-row">console.log(&quot;Код работает&quot;); // комментарий после инструкции тоже допустим</span></code></pre>
+
+<p>Хорошее правило: комментарий объясняет <em>зачем</em>, а не <em>что</em>. Строка
+    <code>// прибавляем единицу</code> над <code>i++</code> бесполезна. А вот
+    <code>// компенсируем часовой пояс сервера</code> - уже полезно.</p>
+
+<h2>Шпаргалка</h2>
+
+<p>Самое важное в одном месте:</p>
+
+<ul class="operator-list">
+    <li>
+        <code>console.log()</code>
+        <span>вывод значения в консоль</span>
+    </li>
+    <li>
+        <code>F12</code>
+        <span>открыть инструменты разработчика</span>
+    </li>
+    <li>
+        <code>"текст"</code>
+        <span>строка в кавычках</span>
+    </li>
+    <li>
+        <code>//</code>
+        <span>однострочный комментарий</span>
+    </li>
+    <li>
+        <code>;</code>
+        <span>конец инструкции</span>
+    </li>
+    <li>
+        <code>&lt;script src="..."&gt;</code>
+        <span>подключение файла со скриптом</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<p>Разберём типичные проблемы, с которыми сталкиваются новички на самом первом уроке.</p>
+
+<ul>
+    <li><strong>«Uncaught ReferenceError: consol is not defined»</strong>. Опечатка в слове
+        <code>console</code>. JavaScript чувствителен к регистру: <code>Console</code>,
+        <code>CONSOLE</code> и <code>consol</code> - разные имена.</li>
+    <li><strong>В консоли пусто</strong>. Проверьте, что скрипт действительно подключён и путь
+        к файлу правильный. Если открыть консоль на другой вкладке или другом сайте, вывод
+        будет не там.</li>
+    <li><strong>«Uncaught SyntaxError: Invalid or unexpected token»</strong>. Скорее всего,
+        использованы «умные» кавычки из Word или мессенджера. Нужны обычные
+        <code>"..."</code> или <code>'...'</code> в английской раскладке.</li>
+    <li><strong>Вместо русского текста кракозябры</strong>. Добавьте в <code>&lt;head&gt;</code>
+        строку <code>&lt;meta charset="UTF-8"&gt;</code> и сохраните файл в UTF-8.</li>
+    <li><strong>Код выполнился раньше страницы</strong>. Если скрипт обращается к элементам,
+        которых ещё нет, перенесите его в конец <code>&lt;body&gt;</code> или добавьте
+        <code>defer</code>.</li>
+    <li><strong>Скрипт работает в консоли, но не на странице.</strong> Чаще всего файл подключён по неверному пути или стоит в <code>&lt;head&gt;</code> без <code>defer</code>. Проверьте вкладку Network: если файла нет в списке, браузер его не загрузил.</li>
+</ul>
+
+<p>Если что-то не получается - напишите нам в
+    <a href="https://t.me/GhostFromCastle" target="_blank" rel="noopener noreferrer">Telegram</a>,
+    разберёмся вместе.
+</p>
+
+<h2>Практика</h2>
+
+<p>Три задачи по возрастающей сложности. У каждой есть подсказка и решение учителя.</p>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Поздоровайтесь</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите в консоль две строки: «Привет, мир!» и «Я учу JavaScript».
+                Используйте <code>console.log</code>.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Нужны две отдельные инструкции - по одной на каждую строку. Не забудьте
+                        кавычки вокруг текста и точку с запятой в конце.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;Привет, мир!&quot;);</span><span class="code-row">console.log(&quot;Я учу JavaScript&quot;);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Визитка</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите в консоль три строки: ваше имя, возраст и город.
+                Каждая строка должна быть на новой строке.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Возраст можно вывести числом, без кавычек: <code>console.log(25);</code>.
+                        Так вы попутно увидите разницу между строкой и числом в консоли -
+                        строка показывается в кавычках (или чёрным), число - синим.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;Алексей&quot;);</span><span class="code-row">console.log(25);</span><span class="code-row">console.log(&quot;Москва&quot;);</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Найдите ошибки</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Перед вами код с ошибками. Найдите и исправьте их, чтобы
+                программа вывела текст без ошибок в консоли.</p>
+<pre class="code-numbered"><code><span class="code-row">console.log(Привет);</span><span class="code-row">consol.log(&quot;Как дела?&quot;);</span><span class="code-row">Console.log(&quot;Пока!&quot;);</span></code></pre>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Три ошибки: отсутствуют кавычки в первой строке, опечатка в слове
+                        <code>console</code> во второй, и неправильный регистр в третьей.
+                        JavaScript чувствителен к регистру.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;Привет&quot;);</span><span class="code-row">console.log(&quot;Как дела?&quot;);</span><span class="code-row">console.log(&quot;Пока!&quot;);</span></code></pre>
+                    <p>Обратите внимание: <code>Console</code> с большой буквы - уже другое
+                        имя, которого в браузере нет.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Объясните результат</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выполните в консоли <code>console.log("2" + 2)</code> и <code>console.log(2 + 2)</code>. Объясните, почему результаты разные.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Обратите внимание на кавычки. Если хотя бы одна сторона - строка, плюс склеивает.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">console.log(&quot;2&quot; + 2); // &quot;22&quot;</span><span class="code-row">console.log(2 + 2);   // 4</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Сегодня мы разобрались с главным вопросом: где выполняется JavaScript. Теперь вы знаете:</p>
+<ul>
+    <li>Что JavaScript отвечает за поведение страницы, а не за её структуру и внешний вид.</li>
+    <li>Как открыть консоль разработчика и выполнить в ней код.</li>
+    <li>Как подключить внешний файл через <code>&lt;script src="..."&gt;</code>.</li>
+    <li>Что такое <code>console.log</code> и почему текст пишется в кавычках.</li>
+    <li>Как работают комментарии и зачем нужна точка с запятой.</li>
+</ul>
+
+<p>Пока наши программы не умеют запоминать данные - каждая строка существует сама по себе.
+    Это неудобно: любой калькулятор должен где-то хранить числа, а форма - имя пользователя.
+    В следующем уроке мы познакомимся с <strong>переменными</strong> и типами данных: узнаем,
+    как JavaScript хранит текст, числа и логические значения, и научимся собирать строки
+    из кусочков. До встречи!</p>
+
+
+                <div class="lesson-actions">
+                    <span></span>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-02.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

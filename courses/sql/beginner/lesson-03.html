@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELECT: столбцы, псевдонимы, сортировка - SQL и базы данных - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="sql" data-level="beginner" data-lesson-id="lesson-03">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">SQL и базы данных</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 03</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Зачем нужны базы данных и что такое SQL</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Установка и первый запрос</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson active" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>SELECT: столбцы, псевдонимы, сортировка</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>WHERE: фильтруем строки</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Агрегаты, GROUP BY и HAVING</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>INSERT, UPDATE, DELETE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>JOIN: соединяем таблицы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Подзапросы и EXISTS</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Ключи и ограничения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>CREATE, ALTER и нормализация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>Функции: строки, даты, NULL и CASE</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Индексы и EXPLAIN</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Транзакции и ACID</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Оконные функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>CTE, представления и триггеры</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Финальный проект: база интернет-магазина</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>SELECT: столбцы, псевдонимы, сортировка</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p><code>SELECT *</code> удобен, пока таблица маленькая. В реальной базе столбцов десятки,
+    строк - миллионы, и тянуть всё подряд бессмысленно. Учимся выбирать точно.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Научимся указывать нужные столбцы и переименовывать их.</li>
+    <li>Разберём <code>DISTINCT</code> и вычисляемые столбцы.</li>
+    <li>Освоим сортировку <code>ORDER BY</code> и ограничение <code>LIMIT</code>.</li>
+    <li>Поймём порядок, в котором база выполняет запрос.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Меню: можно заказать только нужные блюда, а не всё подряд. SELECT с перечислением столбцов работает так же.</p>
+</div>
+
+<h2>Нужные столбцы</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name, email</span><span class="code-row">FROM users;</span></code></pre>
+
+<p>Вместо звёздочки перечисляем поля через запятую. Это не только экономит трафик: запрос
+    становится понятнее, а база может не читать лишние данные.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Почему SELECT * в коде - плохая привычка
+    </div>
+    <p>Сегодня в таблице пять столбцов, завтра добавили десятый с большим текстом - и старый
+        запрос внезапно стал тяжёлым. Кроме того, код, который рассчитывает на порядок
+        столбцов, ломается при изменении схемы. Перечисляйте поля явно.</p>
+</div>
+
+<h2>Псевдонимы</h2>
+
+<p>Столбцу можно дать другое имя в результате - через <code>AS</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    name  AS &quot;Имя&quot;,</span><span class="code-row">    email AS &quot;Почта&quot;</span><span class="code-row">FROM users;</span></code></pre>
+
+<p>Кавычки нужны, если в имени есть пробелы или русские буквы. Псевдоним существует только
+    в результате запроса - в таблице столбец по-прежнему называется <code>name</code>.</p>
+
+<p>Псевдонимы пригодятся и для вычисляемых столбцов:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    title,</span><span class="code-row">    price,</span><span class="code-row">    price * 0.2 AS tax</span><span class="code-row">FROM products;</span></code></pre>
+
+<h2>Вычисления и склейка</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    title,</span><span class="code-row">    price,</span><span class="code-row">    price * 1.2 AS price_with_vat</span><span class="code-row">FROM products;</span></code></pre>
+
+<p>Для строк в SQLite, PostgreSQL и Oracle работает оператор <code>||</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name || &#x27; &lt;&#x27; || email || &#x27;&gt;&#x27; AS contact</span><span class="code-row">FROM users;</span></code></pre>
+
+<p>В MySQL вместо него используют <code>CONCAT()</code>. Если планируете переносить код между
+    СУБД, держите это в голове.</p>
+
+<h2>Убираем дубли: DISTINCT</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT DISTINCT age</span><span class="code-row">FROM users;</span></code></pre>
+
+<p>Если несколько пользователей одного возраста, в результате он появится один раз.
+    <code>DISTINCT</code> применяется ко всей строке результата, а не к одному столбцу:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT DISTINCT age, name</span><span class="code-row">FROM users;</span></code></pre>
+
+<p>Здесь дубли будут убираться по паре «возраст + имя», поэтому строк станет почти столько же,
+    сколько было.</p>
+
+<h2>Сортировка: ORDER BY</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name, age</span><span class="code-row">FROM users</span><span class="code-row">ORDER BY age;</span></code></pre>
+
+<p>По умолчанию сортировка по возрастанию. Явно это записывают как <code>ASC</code>, обратная -
+    <code>DESC</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name, age</span><span class="code-row">FROM users</span><span class="code-row">ORDER BY age DESC;</span></code></pre>
+
+<p>Можно сортировать по нескольким столбцам. Первый - главный, второй решает ничьи:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name, age</span><span class="code-row">FROM users</span><span class="code-row">ORDER BY age DESC, name ASC;</span></code></pre>
+
+<p>NULL в SQLite и PostgreSQL при сортировке по возрастанию идут первыми, в MySQL - последними.
+    Если порядок важен, задавайте его явно:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name, age</span><span class="code-row">FROM users</span><span class="code-row">ORDER BY age IS NULL, age;</span></code></pre>
+
+<h2>Ограничение строк: LIMIT</h2>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name, age</span><span class="code-row">FROM users</span><span class="code-row">ORDER BY age DESC</span><span class="code-row">LIMIT 2;</span></code></pre>
+
+<p>Получим двух самых взрослых. <code>LIMIT</code> без <code>ORDER BY</code> почти бессмыслен:
+    база вправе вернуть любые строки, и результат будет меняться от запуска к запуску.</p>
+
+<p>Для постраничного вывода используют <code>OFFSET</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">SELECT name</span><span class="code-row">FROM users</span><span class="code-row">ORDER BY id</span><span class="code-row">LIMIT 2 OFFSET 2;   -- третья и четвёртая строки</span></code></pre>
+
+<p>В MySQL вместо <code>LIMIT 2 OFFSET 2</code> пишут <code>LIMIT 2, 2</code>, в SQL Server -
+    <code>OFFSET ... FETCH</code>.</p>
+
+<h2>Порядок выполнения</h2>
+
+<p>Запрос пишется в одном порядке, а выполняется в другом:</p>
+
+<pre class="code-numbered"><code><span class="code-row">FROM      -- 1. берём таблицу</span><span class="code-row">WHERE     -- 2. фильтруем строки</span><span class="code-row">SELECT    -- 3. выбираем и вычисляем столбцы</span><span class="code-row">ORDER BY  -- 4. сортируем</span><span class="code-row">LIMIT     -- 5. ограничиваем количество</span></code></pre>
+
+<p>Поэтому псевдоним из <code>SELECT</code> нельзя использовать в <code>WHERE</code>
+    (его ещё не существует), но можно в <code>ORDER BY</code> (он уже вычислен).</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>SELECT col1, col2</code>
+        <span>выбрать столбцы</span>
+    </li>
+    <li>
+        <code>AS name</code>
+        <span>псевдоним</span>
+    </li>
+    <li>
+        <code>DISTINCT</code>
+        <span>убрать дубли</span>
+    </li>
+    <li>
+        <code>ORDER BY</code>
+        <span>сортировка</span>
+    </li>
+    <li>
+        <code>DESC</code>
+        <span>по убыванию</span>
+    </li>
+    <li>
+        <code>LIMIT / OFFSET</code>
+        <span>сколько строк и с какой</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>«No such column: Имя»</strong>. Псевдоним в двойных кавычках, а обращение
+        без них - или наоборот. Имена с пробелами и русскими буквами всегда в кавычках.</li>
+    <li><strong>LIMIT возвращает разные строки</strong>. Нет <code>ORDER BY</code> -
+        порядок не гарантирован.</li>
+    <li><strong>DISTINCT не убрал дубли</strong>. Выбрано несколько столбцов: уникальность
+        проверяется по всей строке.</li>
+    <li><strong>Сортировка «неправильная»</strong>. Число хранится как текст: тогда
+        <code>10</code> идёт раньше <code>2</code>. Проверьте тип столбца.</li>
+    <li><strong>Псевдоним не виден в WHERE</strong>. Так и должно быть: <code>WHERE</code>
+        выполняется раньше <code>SELECT</code>. Повторите выражение или используйте
+        подзапрос.</li>
+    <li><strong>«Отчёт сломался после добавления столбца».</strong> В запросе стоял <code>SELECT *</code>, и код ожидал прежний порядок колонок. Перечисляйте поля явно.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Витрина товаров</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите название и цену товаров, переименовав столбцы в
+                «Товар» и «Цена, ₽», отсортируйте по цене от дорогих к дешёвым.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>SELECT title AS "Товар", price AS "Цена, ₽" FROM products
+                        ORDER BY price DESC;</code></p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT title AS &quot;Товар&quot;, price AS &quot;Цена, ₽&quot;</span><span class="code-row">FROM products</span><span class="code-row">ORDER BY price DESC;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Уникальные значения</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите список уникальных возрастов пользователей, отсортированный
+                по возрастанию. Сколько строк получилось?</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>SELECT DISTINCT age FROM users ORDER BY age;</code>. Строк будет
+                        столько, сколько разных возрастов, включая NULL.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT DISTINCT age</span><span class="code-row">FROM users</span><span class="code-row">ORDER BY age;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Страница 2</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите вторую страницу списка пользователей: по два
+                человека на страницу, сортировка по <code>id</code>. То есть строки 3 и 4.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p><code>LIMIT 2 OFFSET 2</code>: пропустить первые две строки и взять
+                        следующие две.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">SELECT id, name</span><span class="code-row">FROM users</span><span class="code-row">ORDER BY id</span><span class="code-row">LIMIT 2 OFFSET 2;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Цена упаковки</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите название, цену за штуку и цену упаковки из 6 штук. Столбец назовите «Упаковка».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Умножьте цену на 6 и дайте псевдоним в кавычках.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">SELECT</span><span class="code-row">    title,</span><span class="code-row">    price,</span><span class="code-row">    price * 6 AS &quot;Упаковка&quot;</span><span class="code-row">FROM products;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Вы научились выбирать данные осмысленно. Теперь вы знаете:</p>
+<ul>
+    <li>Как указать нужные столбцы и дать им псевдонимы.</li>
+    <li>Как убрать дубли через <code>DISTINCT</code>.</li>
+    <li>Как сортировать и ограничивать результат.</li>
+    <li>В каком порядке база выполняет части запроса.</li>
+</ul>
+
+<p>Но пока мы забираем все строки. Следующий урок - про <code>WHERE</code>: научимся
+    оставлять только нужные записи по любым условиям.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-02.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-04.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

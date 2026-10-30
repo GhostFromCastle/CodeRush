@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Числа и Math - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="beginner" data-lesson-id="lesson-09">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 09</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson active" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Числа и Math</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~25 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Числа кажутся простой темой, пока не начнёшь считать деньги. <code>0.1 + 0.2</code>
+    в консоли выдаёт <code>0.30000000000000004</code>, цена в чеке округляется не туда,
+    а «случайное число от 1 до 10» иногда возвращает 0 или 11. Разберёмся, почему так
+    происходит и как с этим жить.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Поймём, как JavaScript хранит числа и откуда берутся неточности.</li>
+    <li>Научимся округлять правильно и предсказуемо.</li>
+    <li>Освоим объект <code>Math</code> и генерацию случайных чисел.</li>
+    <li>Разберёмся с <code>NaN</code>, <code>Infinity</code> и приведением типов.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Касса: копейки удобнее считать целыми монетами, чем дробными рублями. Иначе на округлениях теряется копейка, а в отчёте не сходится итог.</p>
+</div>
+
+<h2>Один тип на всё</h2>
+
+<p>В JavaScript нет отдельных типов для целых и дробных чисел. Есть один -
+    <code>number</code>, основанный на 64-битном формате с плавающей точкой (IEEE 754).</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(typeof 42);      // &quot;number&quot;</span><span class="code-row">console.log(typeof 3.14);    // &quot;number&quot;</span><span class="code-row">console.log(typeof -7);      // &quot;number&quot;</span></code></pre>
+
+<p>Отсюда и берутся особенности:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(0.1 + 0.2);          // 0.30000000000000004</span><span class="code-row">console.log(0.1 + 0.2 === 0.3);  // false</span><span class="code-row">console.log(1 / 0);              // Infinity</span><span class="code-row">console.log(-1 / 0);             // -Infinity</span><span class="code-row">console.log(0 / 0);              // NaN</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-info"></i>
+        Это не баг, а цена скорости
+    </div>
+    <p>Дробные числа хранятся в двоичном виде, и большинство десятичных дробей нельзя
+        представить точно - так же как 1/3 нельзя записать конечной десятичной дробью.
+        Поэтому сравнивать дробные числа «в лоб» через <code>===</code> нельзя. Сравнивайте
+        с допуском: <code>Math.abs(a - b) &lt; 1e-9</code>.</p>
+</div>
+
+<h2>Округление</h2>
+
+<pre class="code-numbered"><code><span class="code-row">console.log((0.1 + 0.2).toFixed(2)); // &quot;0.30&quot;</span><span class="code-row">console.log((12.345).toFixed(2));    // &quot;12.35&quot;</span><span class="code-row">console.log((1500).toLocaleString(&quot;ru-RU&quot;)); // &quot;1 500&quot;</span></code></pre>
+
+<p><code>toFixed</code> возвращает строку - это важно, если дальше нужно считать. Для
+    денег его применяют только на последнем шаге, при выводе:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const price = 1990;</span><span class="code-row">const discount = 0.15;</span><span class="code-row"></span><span class="code-row">const total = price * (1 - discount);</span><span class="code-row">console.log(`${total.toFixed(2)} ₽`); // &quot;1691.50 ₽&quot;</span></code></pre>
+
+<h2>Math: встроенная математика</h2>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(Math.round(4.6));  // 5 - ближайшее целое</span><span class="code-row">console.log(Math.floor(4.9));  // 4 - вниз</span><span class="code-row">console.log(Math.ceil(4.1));   // 5 - вверх</span><span class="code-row">console.log(Math.trunc(4.9));  // 4 - отбросить дробную часть</span><span class="code-row">console.log(Math.abs(-7));     // 7 - модуль</span><span class="code-row">console.log(Math.min(3, 8, 1)); // 1</span><span class="code-row">console.log(Math.max(3, 8, 1)); // 8</span><span class="code-row">console.log(Math.pow(2, 10));   // 1024</span><span class="code-row">console.log(Math.sqrt(81));     // 9</span></code></pre>
+
+<p>Осторожно с отрицательными числами: <code>Math.floor(-4.1)</code> даст
+    <code>-5</code>, а <code>Math.trunc(-4.1)</code> - <code>-4</code>. Это разные
+    операции.</p>
+
+<h2>Случайные числа</h2>
+
+<p><code>Math.random()</code> возвращает дробное число от 0 включительно до 1 не
+    включительно. Само по себе оно редко нужно - обычно требуется целое в диапазоне:</p>
+
+<pre class="code-numbered"><code><span class="code-row">// целое от 0 до 9</span><span class="code-row">const digit = Math.floor(Math.random() * 10);</span><span class="code-row"></span><span class="code-row">// целое от min до max включительно</span><span class="code-row">function randomInt(min, max) {</span><span class="code-row">    return Math.floor(Math.random() * (max - min + 1)) + min;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(randomInt(1, 6)); // как кубик</span></code></pre>
+
+<p>Формула запоминается легко: <em>умножить на количество вариантов, прибавить минимум,
+    округлить вниз</em>. Без <code>+ 1</code> верхняя граница никогда не выпадет.</p>
+
+<h2>Преобразование строк в числа</h2>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(Number(&quot;42&quot;));       // 42</span><span class="code-row">console.log(Number(&quot;42.5&quot;));     // 42.5</span><span class="code-row">console.log(Number(&quot;&quot;));         // 0</span><span class="code-row">console.log(Number(&quot;Привет&quot;));   // NaN</span><span class="code-row"></span><span class="code-row">console.log(parseInt(&quot;42px&quot;));   // 42 - читает до первого нечисла</span><span class="code-row">console.log(parseFloat(&quot;3.14м&quot;)); // 3.14</span></code></pre>
+
+<p>Разница важна: <code>Number</code> требует, чтобы вся строка была числом,
+    <code>parseInt</code> и <code>parseFloat</code> читают число с начала и игнорируют
+    остаток. Для данных из формы чаще нужен <code>Number</code>: если пользователь ввёл
+    мусор, лучше получить <code>NaN</code> и показать ошибку, чем молча взять половину.</p>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Запятая вместо точки
+    </div>
+    <p><code>Number("3,14")</code> вернёт <code>NaN</code>, а <code>parseInt("3,14")</code> -
+        <code>3</code>. В русской раскладке пользователи часто вводят запятую. Заменяйте её
+        перед преобразованием: <code>Number(value.replace(",", "."))</code>.</p>
+</div>
+
+<h2>NaN и проверки</h2>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(NaN === NaN);          // false - вот такая особенность</span><span class="code-row">console.log(Number.isNaN(NaN));    // true</span><span class="code-row">console.log(isNaN(&quot;Привет&quot;));      // true - сначала приводит к числу</span></code></pre>
+
+<p>Используйте <code>Number.isNaN</code>: глобальная <code>isNaN</code> сначала пытается
+    преобразовать значение в число, поэтому <code>isNaN("abc")</code> тоже истинно.
+    А ещё есть полезные проверки:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(Number.isInteger(5));    // true</span><span class="code-row">console.log(Number.isInteger(5.5));  // false</span><span class="code-row">console.log(Number.isFinite(1 / 0)); // false</span></code></pre>
+
+<h2>BigInt для огромных чисел</h2>
+
+<p>Обычный <code>number</code> теряет точность после 2⁵³. Для огромных целых есть
+    <code>BigInt</code> - к литералу добавляют <code>n</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const big = 9007199254740993n;</span><span class="code-row">console.log(big + 1n); // 9007199254740994n</span></code></pre>
+
+<p>Смешивать <code>BigInt</code> и обычные числа в одной операции нельзя - будет ошибка.
+    В повседневной вёрстке он нужен редко, но полезно знать, что он существует.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>toFixed(2)</code>
+        <span>округлить до копеек (строка)</span>
+    </li>
+    <li>
+        <code>Math.round</code>
+        <span>ближайшее целое</span>
+    </li>
+    <li>
+        <code>Math.floor</code>
+        <span>вниз</span>
+    </li>
+    <li>
+        <code>Math.ceil</code>
+        <span>вверх</span>
+    </li>
+    <li>
+        <code>Math.random</code>
+        <span>дробное от 0 до 1</span>
+    </li>
+    <li>
+        <code>Number()</code>
+        <span>строка в число</span>
+    </li>
+    <li>
+        <code>Number.isNaN</code>
+        <span>проверка «не число»</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong><code>0.1 + 0.2 !== 0.3</code></strong>. Особенность хранения дробей.
+        Сравнивайте с допуском или округляйте через <code>toFixed</code>.</li>
+    <li><strong><code>NaN</code> вместо числа</strong>. Строка не преобразовалась:
+        лишние пробелы, запятая, буквы. Проверяйте <code>Number.isNaN</code> до вычислений.</li>
+    <li><strong>Случайное число иногда равно максимуму + 1</strong>. Формула без
+        <code>+ 1</code> в скобках или <code>Math.ceil</code> вместо <code>floor</code>.</li>
+    <li><strong><code>toFixed</code> вернул строку</strong>. Так и задумано. Для дальнейших
+        вычислений используйте <code>Number(total.toFixed(2))</code>.</li>
+    <li><strong>Огромное число стало неточным</strong>. Вышли за пределы безопасных целых.
+        Нужен <code>BigInt</code> или строковое представление.</li>
+    <li><strong>В чеке не сходится копейка.</strong> Цена хранится в дробных числах, и округление каждого шага даёт расхождение. В реальных проектах деньги считают в копейках целыми числами, а делят только при выводе.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Цена со скидкой</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Товар стоит 2499 ₽, скидка 17%. Выведите итоговую цену
+                с двумя знаками после запятой и пробелом между тысячами: «2 074.17 ₽».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сначала посчитайте число, затем округлите через <code>toFixed(2)</code>.
+                        Для разделителя тысяч можно применить
+                        <code>Number(...).toLocaleString("ru-RU")</code> с настройками
+                        дробной части.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const price = 2499;</span><span class="code-row">const discount = 0.17;</span><span class="code-row"></span><span class="code-row">const total = price * (1 - discount);</span><span class="code-row"></span><span class="code-row">const formatted = total.toLocaleString(&quot;ru-RU&quot;, {</span><span class="code-row">    minimumFractionDigits: 2,</span><span class="code-row">    maximumFractionDigits: 2</span><span class="code-row">});</span><span class="code-row"></span><span class="code-row">console.log(`${formatted} ₽`); // &quot;2 074,17 ₽&quot;</span></code></pre>
+                    <p>В русской локали разделитель - запятая. Если нужна точка, используйте
+                        <code>total.toFixed(2)</code>.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Кубик</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>rollDice()</code>, которая возвращает
+                целое число от 1 до 6. Проверьте её в цикле из 20 бросков и убедитесь, что
+                числа не выходят за диапазон.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Формула: <code>Math.floor(Math.random() * 6) + 1</code>. Шесть вариантов,
+                        минимум один.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function rollDice() {</span><span class="code-row">    return Math.floor(Math.random() * 6) + 1;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">for (let i = 0; i &lt; 20; i++) {</span><span class="code-row">    console.log(rollDice());</span><span class="code-row">}</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Безопасный ввод числа</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>toNumber(value)</code>, которая
+                принимает строку, заменяет запятую на точку, убирает пробелы и возвращает
+                число или <code>null</code>, если получилось не число.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Приведите к строке, замените запятую, уберите пробелы через
+                        <code>replaceAll(" ", "")</code>, затем <code>Number(...)</code>.
+                        Проверяйте результат через <code>Number.isNaN</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function toNumber(value) {</span><span class="code-row">    const normalized = String(value)</span><span class="code-row">        .trim()</span><span class="code-row">        .replaceAll(&quot; &quot;, &quot;&quot;)</span><span class="code-row">        .replace(&quot;,&quot;, &quot;.&quot;);</span><span class="code-row"></span><span class="code-row">    const number = Number(normalized);</span><span class="code-row">    return Number.isNaN(number) ? null : number;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(toNumber(&quot;1 234,56&quot;)); // 1234.56</span><span class="code-row">console.log(toNumber(&quot;abc&quot;));      // null</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Среднее с округлением</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Выведите среднее трёх чисел <code>10, 15, 20</code> с двумя знаками после запятой.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сложите, разделите на 3 и примените <code>toFixed(2)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">const a = 10;</span><span class="code-row">const b = 15;</span><span class="code-row">const c = 20;</span><span class="code-row"></span><span class="code-row">const avg = (a + b + c) / 3;</span><span class="code-row">console.log(avg.toFixed(2)); // &quot;15.00&quot;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Теперь числа не преподносят сюрпризов. Вы знаете:</p>
+<ul>
+    <li>Почему дробные вычисления дают неточный результат и как с этим работать.</li>
+    <li>Как округлять деньги и выводить их красиво.</li>
+    <li>Как генерировать случайные числа в нужном диапазоне.</li>
+    <li>Как безопасно превращать пользовательский ввод в число.</li>
+</ul>
+
+<p>Начальный уровень на этом закончен: вы прошли путь от первой строки в консоли до
+    структур данных и преобразований. Дальше начинается самое интересное - <strong>DOM</strong>.
+    Мы научимся находить элементы на странице, менять текст и классы, реагировать на клики
+    и превратим статичную разметку в живой интерфейс.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-08.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="../intermediate/lesson-10.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>

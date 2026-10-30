@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Строки: методы и шаблоны - JavaScript в браузере - CodeRush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/fill/style.css">
+    <link rel="icon" type="image/png" href="../../../data/favicons/favicon-96x96.png?v=20261008" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="../../../data/favicons/favicon.svg?v=20261008">
+    <link rel="shortcut icon" href="../../../data/favicons/favicon.ico?v=20261008">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../data/favicons/apple-touch-icon.png?v=20261008">
+    <meta name="apple-mobile-web-app-title" content="CodeRush">
+    <link rel="manifest" href="../../../data/favicons/site.webmanifest?v=20261008">
+    <link rel="stylesheet" href="../../../css/main.css">
+</head>
+
+<body data-course-id="javascript" data-level="beginner" data-lesson-id="lesson-08">
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="top-nav">
+                <a href="../../../index.html" class="logo" aria-label="CodeRush">
+                    <i class="ph-fill ph-code"></i>
+                    <span>Code<span class="logo-accent">Rush</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../index.html">К уровню</a>
+                    <a href="../../../index.html#catalog">Все курсы</a>
+                </div>
+                <button class="burger-menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="../../../index.html">Главная</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="../index.html">JavaScript в браузере</a>
+            <i class="ph ph-caret-right"></i>
+            <a href="index.html">С нуля</a>
+            <i class="ph ph-caret-right"></i>
+            <span>Урок 08</span>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="lesson-layout">
+            <aside class="lesson-sidebar">
+                <div class="sidebar-title">Уроки курса</div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Начальный уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="lesson-01.html" class="sidebar-lesson" data-lesson-id="lesson-01">
+                            <span class="sidebar-lesson-num">01</span>
+                            <span>Что такое JavaScript и первая программа</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-02.html" class="sidebar-lesson" data-lesson-id="lesson-02">
+                            <span class="sidebar-lesson-num">02</span>
+                            <span>Переменные и типы данных</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-03.html" class="sidebar-lesson" data-lesson-id="lesson-03">
+                            <span class="sidebar-lesson-num">03</span>
+                            <span>Операторы и условия</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-04.html" class="sidebar-lesson" data-lesson-id="lesson-04">
+                            <span class="sidebar-lesson-num">04</span>
+                            <span>Циклы: for и while</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-05.html" class="sidebar-lesson" data-lesson-id="lesson-05">
+                            <span class="sidebar-lesson-num">05</span>
+                            <span>Функции</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-06.html" class="sidebar-lesson" data-lesson-id="lesson-06">
+                            <span class="sidebar-lesson-num">06</span>
+                            <span>Массивы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-07.html" class="sidebar-lesson" data-lesson-id="lesson-07">
+                            <span class="sidebar-lesson-num">07</span>
+                            <span>Объекты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-08.html" class="sidebar-lesson active" data-lesson-id="lesson-08">
+                            <span class="sidebar-lesson-num">08</span>
+                            <span>Строки: методы и шаблоны</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="lesson-09.html" class="sidebar-lesson" data-lesson-id="lesson-09">
+                            <span class="sidebar-lesson-num">09</span>
+                            <span>Числа и Math</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Средний уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../intermediate/lesson-10.html" class="sidebar-lesson" data-lesson-id="lesson-10">
+                            <span class="sidebar-lesson-num">10</span>
+                            <span>DOM: находим и меняем элементы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-11.html" class="sidebar-lesson" data-lesson-id="lesson-11">
+                            <span class="sidebar-lesson-num">11</span>
+                            <span>События и обработчики</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-12.html" class="sidebar-lesson" data-lesson-id="lesson-12">
+                            <span class="sidebar-lesson-num">12</span>
+                            <span>Формы и валидация</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-13.html" class="sidebar-lesson" data-lesson-id="lesson-13">
+                            <span class="sidebar-lesson-num">13</span>
+                            <span>Современный синтаксис ES6+</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-14.html" class="sidebar-lesson" data-lesson-id="lesson-14">
+                            <span class="sidebar-lesson-num">14</span>
+                            <span>Методы массивов и строк</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-15.html" class="sidebar-lesson" data-lesson-id="lesson-15">
+                            <span class="sidebar-lesson-num">15</span>
+                            <span>Асинхронность: таймеры и промисы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-16.html" class="sidebar-lesson" data-lesson-id="lesson-16">
+                            <span class="sidebar-lesson-num">16</span>
+                            <span>Fetch и работа с API</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-17.html" class="sidebar-lesson" data-lesson-id="lesson-17">
+                            <span class="sidebar-lesson-num">17</span>
+                            <span>Регулярные выражения</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../intermediate/lesson-18.html" class="sidebar-lesson" data-lesson-id="lesson-18">
+                            <span class="sidebar-lesson-num">18</span>
+                            <span>Даты и время</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Продвинутый уровень</div>
+                    <div class="sidebar-lessons">
+                        <a href="../advanced/lesson-19.html" class="sidebar-lesson" data-lesson-id="lesson-19">
+                            <span class="sidebar-lesson-num">19</span>
+                            <span>Замыкания, область видимости и this</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-20.html" class="sidebar-lesson" data-lesson-id="lesson-20">
+                            <span class="sidebar-lesson-num">20</span>
+                            <span>Прототипы и классы</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-21.html" class="sidebar-lesson" data-lesson-id="lesson-21">
+                            <span class="sidebar-lesson-num">21</span>
+                            <span>Ошибки, отладка и модули</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-22.html" class="sidebar-lesson" data-lesson-id="lesson-22">
+                            <span class="sidebar-lesson-num">22</span>
+                            <span>Данные в браузере: JSON и localStorage</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-23.html" class="sidebar-lesson" data-lesson-id="lesson-23">
+                            <span class="sidebar-lesson-num">23</span>
+                            <span>Файлы в браузере: File API и drag & drop</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-24.html" class="sidebar-lesson" data-lesson-id="lesson-24">
+                            <span class="sidebar-lesson-num">24</span>
+                            <span>Анимации и requestAnimationFrame</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-25.html" class="sidebar-lesson" data-lesson-id="lesson-25">
+                            <span class="sidebar-lesson-num">25</span>
+                            <span>Тестирование и инструменты</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-26.html" class="sidebar-lesson" data-lesson-id="lesson-26">
+                            <span class="sidebar-lesson-num">26</span>
+                            <span>Безопасность и производительность</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                        <a href="../advanced/lesson-27.html" class="sidebar-lesson" data-lesson-id="lesson-27">
+                            <span class="sidebar-lesson-num">27</span>
+                            <span>Финальный проект: TODO-приложение</span>
+                            <span class="sidebar-lesson-check"><i class="ph ph-circle"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <article class="lesson-content">
+                <h1>Строки: методы и шаблоны</h1>
+                <div class="lesson-meta">
+                    <span><i class="ph ph-clock"></i> ~30 минут</span>
+                    <span><i class="ph ph-seedling"></i> Начальный уровень</span>
+                    <span><i class="ph ph-code"></i> Теория и Практика</span>
+                </div>
+
+
+<p>Мы уже работали со строками: выводили текст, склеивали через плюс, вставляли значения
+    в шаблонные литералы. Но у строк есть целый набор методов, и половина задач в реальном
+    коде - это именно работа с текстом: обрезать пробелы, проверить домен, собрать адрес,
+    разобрать CSV.</p>
+
+<p>В этом уроке мы:</p>
+<ul>
+    <li>Разберёмся, как строка хранит символы и почему её нельзя изменить.</li>
+    <li>Освоим методы обрезки, поиска и замены.</li>
+    <li>Научимся разбивать текст на части и собирать обратно.</li>
+    <li>Поймём, почему «Москва» и «москва» - разные строки.</li>
+</ul>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-lightbulb"></i>
+        Аналогия
+    </div>
+    <p>Бусы: бусины нанизаны по порядку, каждую можно найти по номеру, но заменить одну, не пересобрав нить, нельзя. Строка устроена так же.</p>
+</div>
+
+<h2>Строка как последовательность символов</h2>
+
+<p>У каждого символа есть индекс, и счёт начинается с нуля. Свойство <code>length</code>
+    показывает количество символов:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const word = &quot;JavaScript&quot;;</span><span class="code-row"></span><span class="code-row">console.log(word.length);  // 10</span><span class="code-row">console.log(word[0]);      // &quot;J&quot;</span><span class="code-row">console.log(word[4]);      // &quot;S&quot;</span><span class="code-row">console.log(word[99]);     // undefined</span></code></pre>
+
+<p>Последний символ получают через <code>length - 1</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(word[word.length - 1]); // &quot;t&quot;</span></code></pre>
+
+<div class="callout">
+    <div class="callout-title">
+        <i class="ph ph-warning"></i>
+        Строки неизменяемы
+    </div>
+    <p>Отдельный символ нельзя заменить по индексу: <code>word[0] = "j"</code> молча ничего
+        не сделает. Любой метод возвращает <strong>новую</strong> строку, а исходная остаётся
+        прежней. Поэтому результат всегда нужно присваивать:
+        <code>word = word.toLowerCase()</code>.</p>
+</div>
+
+<h2>Сборка текста</h2>
+
+<p>Три способа склеить строку - от худшего к лучшему:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const name = &quot;Алексей&quot;;</span><span class="code-row">const city = &quot;Москва&quot;;</span><span class="code-row"></span><span class="code-row">console.log(&quot;Привет, &quot; + name + &quot; из &quot; + city);</span><span class="code-row">console.log(`Привет, ${name} из ${city}`);</span></code></pre>
+
+<p>Шаблонные литералы удобнее: внутри <code>${}</code> можно писать выражения, а сама строка
+    переносит переводы строк:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const price = 1500;</span><span class="code-row">const count = 3;</span><span class="code-row"></span><span class="code-row">console.log(`Итого: ${price * count} ₽`);</span><span class="code-row"></span><span class="code-row">const letter = `Уважаемый клиент!</span><span class="code-row"></span><span class="code-row">Ваш заказ на сумму ${price * count} ₽ готов.`;</span></code></pre>
+
+<h2>Регистр и пробелы</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const raw = &quot;  JavaScript  &quot;;</span><span class="code-row"></span><span class="code-row">console.log(raw.trim());          // &quot;JavaScript&quot;</span><span class="code-row">console.log(raw.toUpperCase());   // &quot;  JAVASCRIPT  &quot;</span><span class="code-row">console.log(raw.toLowerCase());   // &quot;  javascript  &quot;</span></code></pre>
+
+<p><code>trim()</code> убирает пробелы, табы и переводы строк по краям. Это первое, что
+    делают с данными из формы: пользователь почти всегда оставляет лишний пробел.</p>
+
+<p>Частая ошибка - сравнивать строки без нормализации:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const input = &quot; Москва &quot;;</span><span class="code-row"></span><span class="code-row">console.log(input === &quot;Москва&quot;);              // false</span><span class="code-row">console.log(input.trim() === &quot;Москва&quot;);       // true</span></code></pre>
+
+<h2>Поиск внутри строки</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const email = &quot;alex@example.com&quot;;</span><span class="code-row"></span><span class="code-row">console.log(email.includes(&quot;@&quot;));        // true</span><span class="code-row">console.log(email.startsWith(&quot;alex&quot;));   // true</span><span class="code-row">console.log(email.endsWith(&quot;.com&quot;));     // true</span><span class="code-row">console.log(email.indexOf(&quot;@&quot;));         // 4</span><span class="code-row">console.log(email.indexOf(&quot;!&quot;));         // -1</span></code></pre>
+
+<p><code>indexOf</code> возвращает <code>-1</code>, если ничего не найдено. Проверять
+    наличие лучше через <code>includes</code> - читается понятнее и не требует сравнения
+    с минус единицей.</p>
+
+<p>Помните: поиск учитывает регистр. «Москва» не содержит «моск»:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;Москва&quot;.includes(&quot;моск&quot;));                    // false</span><span class="code-row">console.log(&quot;Москва&quot;.toLowerCase().includes(&quot;моск&quot;));      // true</span></code></pre>
+
+<h2>Вырезаем часть строки</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const iso = &quot;2026-10-30&quot;;</span><span class="code-row"></span><span class="code-row">const year = iso.slice(0, 4);   // &quot;2026&quot;</span><span class="code-row">const month = iso.slice(5, 7);  // &quot;10&quot;</span><span class="code-row">const day = iso.slice(-2);      // &quot;30&quot;</span></code></pre>
+
+<p><code>slice(start, end)</code> берёт символы с <code>start</code> включительно до
+    <code>end</code> не включая. Отрицательные значения считаются с конца. Второй аргумент
+    можно не указывать - тогда берётся всё до конца строки.</p>
+
+<h2>Замена</h2>
+
+<pre class="code-numbered"><code><span class="code-row">const text = &quot;яблоко, банан, яблоко&quot;;</span><span class="code-row"></span><span class="code-row">console.log(text.replace(&quot;яблоко&quot;, &quot;груша&quot;));    // первый только</span><span class="code-row">console.log(text.replaceAll(&quot;яблоко&quot;, &quot;груша&quot;)); // все</span></code></pre>
+
+<p><code>replace</code> без регулярного выражения заменяет только первое вхождение. Это
+    ловушка, на которой спотыкаются почти все: кажется, что метод сломан. Для всех
+    вхождений нужен <code>replaceAll</code> (поддерживается во всех современных браузерах).</p>
+
+<h2>Разбить и собрать</h2>
+
+<p>Пара <code>split</code> / <code>join</code> - рабочий инструмент для CSV, тегов и путей:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const csv = &quot;яблоко;банан;груша&quot;;</span><span class="code-row"></span><span class="code-row">const fruits = csv.split(&quot;;&quot;);</span><span class="code-row">console.log(fruits);        // [&quot;яблоко&quot;, &quot;банан&quot;, &quot;груша&quot;]</span><span class="code-row"></span><span class="code-row">console.log(fruits.join(&quot;, &quot;)); // &quot;яблоко, банан, груша&quot;</span></code></pre>
+
+<p>Разбить на отдельные символы - <code>split("")</code>. Обратная операция - уже знакомый
+    <code>join("")</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;JavaScript&quot;.split(&quot;&quot;).reverse().join(&quot;&quot;)); // tpircSavaJ</span></code></pre>
+
+<h2>Дополнение и повтор</h2>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;42&quot;.padStart(5, &quot;0&quot;));   // &quot;00042&quot;</span><span class="code-row">console.log(&quot;42&quot;.padEnd(5, &quot;.&quot;));     // &quot;42...&quot;</span><span class="code-row">console.log(&quot;-&quot;.repeat(20));          // &quot;--------------------&quot;</span></code></pre>
+
+<p><code>padStart</code> незаменим для номеров, кодов и времени: час <code>9</code>
+    превращается в <code>"09"</code>.</p>
+
+<h2>Сравнение строк</h2>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;apple&quot; &lt; &quot;banana&quot;);            // true - посимвольно, по коду символов</span><span class="code-row">console.log(&quot;ёлка&quot;.localeCompare(&quot;ель&quot;));   // 1  - корректно для русского</span></code></pre>
+
+<p>Обычные <code>&lt;</code> и <code>&gt;</code> сравнивают коды символов, а не алфавит
+    языка. Для сортировки русских слов используйте <code>localeCompare</code>:</p>
+
+<pre class="code-numbered"><code><span class="code-row">const words = [&quot;ёлка&quot;, &quot;яблоко&quot;, &quot;арбуз&quot;];</span><span class="code-row">console.log(words.sort((a, b) =&gt; a.localeCompare(b)));</span><span class="code-row">// [&quot;арбуз&quot;, &quot;ёлка&quot;, &quot;яблоко&quot;]</span></code></pre>
+
+<h2>Про эмодзи и длину</h2>
+
+<pre class="code-numbered"><code><span class="code-row">console.log(&quot;😀&quot;.length);        // 2 - суррогатная пара</span><span class="code-row">console.log([...&quot;😀&quot;].length);   // 1 - настоящие символы</span></code></pre>
+
+<p>Некоторые символы занимают в памяти две позиции. Если длина важна для эмодзи,
+    разворачивайте строку в массив через spread.</p>
+
+<h2>Шпаргалка</h2>
+
+<ul class="operator-list">
+    <li>
+        <code>length</code>
+        <span>количество символов</span>
+    </li>
+    <li>
+        <code>trim</code>
+        <span>убрать пробелы по краям</span>
+    </li>
+    <li>
+        <code>includes</code>
+        <span>есть ли подстрока</span>
+    </li>
+    <li>
+        <code>slice</code>
+        <span>вырезать часть</span>
+    </li>
+    <li>
+        <code>replaceAll</code>
+        <span>заменить все вхождения</span>
+    </li>
+    <li>
+        <code>split / join</code>
+        <span>разбить и собрать</span>
+    </li>
+    <li>
+        <code>padStart</code>
+        <span>дополнить до длины</span>
+    </li>
+</ul>
+
+<h2>Если что-то не работает</h2>
+
+<ul>
+    <li><strong>Метод «не меняет» строку</strong>. Он возвращает новую. Присвойте результат:
+        <code>text = text.trim()</code>.</li>
+    <li><strong><code>replace</code> заменил только первое вхождение</strong>. Так и задумано.
+        Используйте <code>replaceAll</code>.</li>
+    <li><strong>Поиск не находит слово</strong>. Разный регистр или лишние пробелы.
+        Нормализуйте обе строки: <code>trim().toLowerCase()</code>.</li>
+    <li><strong><code>slice(0, 4)</code> вернул пустую строку</strong>. Начало больше конца
+        или строка короче, чем вы думаете. Проверьте <code>length</code>.</li>
+    <li><strong>В тексте «умные» кавычки из Word</strong>. Они выглядят как обычные, но это
+        другие символы. Набирайте код в редакторе, а не копируйте из документа.</li>
+    <li><strong>Логин не находится, хотя имя введено правильно.</strong> В конце строки остался пробел или другой регистр. Нормализуйте ввод: <code>trim().toLowerCase()</code> - до сравнения.</li>
+</ul>
+
+<h2>Практика</h2>
+
+<div class="task-list">
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 1. Нормализация имени</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Строка <code>"  аЛеКсЕй  "</code> должна превратиться
+                в «Алексей»: без пробелов, с большой первой буквой и строчными остальными.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сначала <code>trim()</code> и <code>toLowerCase()</code>, затем первая
+                        буква через <code>slice(0, 1).toUpperCase()</code> плюс остаток
+                        <code>slice(1)</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const raw = &quot;  аЛеКсЕй  &quot;;</span><span class="code-row"></span><span class="code-row">const clean = raw.trim().toLowerCase();</span><span class="code-row">const name = clean[0].toUpperCase() + clean.slice(1);</span><span class="code-row"></span><span class="code-row">console.log(name); // &quot;Алексей&quot;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 2. Проверка адреса</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Напишите функцию <code>isSiteAddress(value)</code>, которая
+                возвращает <code>true</code>, если строка начинается с <code>https://</code>
+                и заканчивается на <code>.ru</code> или <code>.com</code>. Регистр не должен
+                иметь значения.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Приведите строку к нижнему регистру и используйте
+                        <code>startsWith</code> и <code>endsWith</code>. Проверку окончаний
+                        можно объединить через <code>||</code>.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">function isSiteAddress(value) {</span><span class="code-row">    const url = value.trim().toLowerCase();</span><span class="code-row"></span><span class="code-row">    const secure = url.startsWith(&quot;https://&quot;);</span><span class="code-row">    const domainOk = url.endsWith(&quot;.ru&quot;) || url.endsWith(&quot;.com&quot;);</span><span class="code-row"></span><span class="code-row">    return secure &amp;&amp; domainOk;</span><span class="code-row">}</span><span class="code-row"></span><span class="code-row">console.log(isSiteAddress(&quot;https://example.com&quot;)); // true</span><span class="code-row">console.log(isSiteAddress(&quot;http://example.com&quot;));  // false</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 3. Подсчёт слов</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Посчитайте количество слов в строке. Несколько пробелов
+                подряд не должны считаться за отдельные слова.</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Сначала обрежьте строку, затем разбейте по пробелу: <code>split(" ")</code>.
+                        Но между словами может быть несколько пробелов - лучше разбить
+                        по одному или более пробелу регулярным выражением <code>/\s+/</code>,
+                        которое разберём чуть позже.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+<pre class="code-numbered"><code><span class="code-row">const text = &quot;JavaScript   это   язык веба&quot;;</span><span class="code-row"></span><span class="code-row">const words = text.trim().split(/\s+/);</span><span class="code-row">console.log(words.length); // 4</span></code></pre>
+                    <p>Если регулярные выражения пока пугают, сработает и такой вариант:
+                        <code>text.trim().split(" ").filter(Boolean)</code> - он выбрасывает
+                        пустые куски.</p>
+                </div>
+            </details>
+        </div>
+    </details>
+
+    <details class="faq-item task-item">
+        <summary>
+            <span>Задача 4. Инициалы</span>
+            <span class="faq-icon"><i class="ph ph-plus"></i></span>
+        </summary>
+        <div class="faq-answer">
+            <p class="task-desc">Из строки «Алексей Кузнецов» получите «А. К.».</p>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Подсказка</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Разбейте строку по пробелу, возьмите первые буквы и добавьте точку.</p>
+                </div>
+            </details>
+
+            <details class="faq-item task-nested">
+                <summary>
+                    <span>Решение учителя</span>
+                    <span class="faq-icon"><i class="ph ph-plus"></i></span>
+                </summary>
+                <div class="faq-answer">
+                    <pre class="code-numbered"><code><span class="code-row">const fullName = &quot;Алексей Кузнецов&quot;;</span><span class="code-row"></span><span class="code-row">const initials = fullName</span><span class="code-row">    .split(&quot; &quot;)</span><span class="code-row">    .map((part) =&gt; part[0] + &quot;.&quot;)</span><span class="code-row">    .join(&quot; &quot;);</span><span class="code-row"></span><span class="code-row">console.log(initials); // &quot;А. К.&quot;</span></code></pre>
+                </div>
+            </details>
+        </div>
+    </details>
+</div>
+
+<h2>Что мы узнали и что дальше</h2>
+
+<p>Текст больше не чёрный ящик. Вы знаете:</p>
+<ul>
+    <li>Что строка - последовательность символов с индексами и что она неизменяема.</li>
+    <li>Как нормализовать ввод: <code>trim</code>, регистр, поиск.</li>
+    <li>Как вырезать, заменять, разбивать и собирать текст.</li>
+    <li>Почему сравнивать строки лучше через <code>localeCompare</code>.</li>
+</ul>
+
+<p>Дальше - числа. Казалось бы, что сложного: <code>2 + 2 = 4</code>. Но почему
+    <code>0.1 + 0.2</code> даёт не <code>0.3</code>? Как округлить цену до копеек и не
+    потерять деньги? Как получить случайное число в нужном диапазоне? Об этом - следующий
+    урок.</p>
+
+
+                <div class="lesson-actions">
+                    <a href="lesson-07.html" class="btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Предыдущий урок
+                    </a>
+                    <button class="btn-complete">
+                        <i class="ph ph-check-circle"></i> Отметить как пройденный
+                    </button>
+                    <a href="lesson-09.html" class="btn-secondary" data-action="next">
+                        Следующий урок <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script type="module" src="../../../js/main.js"></script>
+</body>
+
+</html>
